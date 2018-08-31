@@ -1,0 +1,13 @@
+version=git
+url=git://git.suckless.org/ubase
+
+build_system () {
+	cp -rav $CERD/ubase/ubase $TMPD/system/sources
+	cd $TMPD/system/sources/ubase
+	
+	cp -av $CERD/ubase/stty.c .
+	sed -i -e '/stat /a\' -e '        stty              \\' Makefile 
+
+	make CC="$CC" AR=$AR RANLIB=$RANLIB
+	make PREFIX=$GLAD install
+}

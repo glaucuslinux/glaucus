@@ -1,0 +1,11 @@
+version=git
+url=git://git.r-36.net/svc
+
+build_system () {
+	cp -rav $CERD/svc/svc/bin/svc $GLAD/bin
+	cp -rav $CERD/svc/svc/svc.d $GLAD/bin/svc.d
+
+	mkdir $GLAD/bin/svc.d/run
+
+	chmod 755 $GLAD/bin/svc
+}

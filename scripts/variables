@@ -1,0 +1,29 @@
+assign_basic_variables () {
+	ARCH=x86_64
+	TRPL=$ARCH-linux-musl
+
+	CERD=/home/glaucus/cerata
+	TMPD=/home/glaucus/temporary
+	PRFX=/home/glaucus/toolchain
+	GLAD=/home/glaucus/system
+
+	PATH=$PRFX/bin:/bin
+
+	MAKEFLAGS=-j1
+}
+
+assign_system_variables () {
+	CFLAGS='-Os -s -fomit-frame-pointer -pipe'
+	CXXFLAGS=$CFLAGS
+	CPPFLAGS=$CFLAGS
+	LDFLAGS='-Wl,--as-needed -Wl,--hash-style=gnu -Wl,--strip-all'
+	
+	CC="$TRPL-gcc"
+	CXX="$TRPL-g++"
+	AR="$TRPL-ar"
+	AS="$TRPL-as"
+	LD="$TRPL-ld"
+	RANLIB="$TRPL-ranlib"
+	READELF="$TRPL-readelf"
+	STRIP="$TRPL-strip"
+}

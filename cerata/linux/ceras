@@ -1,0 +1,27 @@
+version=4.18.3
+url=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz
+checksum=fe7f3f328deca5fc90e5b8f77b1204ca0412a2ba3e7c14259bbdb872af0e678d7d080b357f5ef301ca7c9db1a342d14d645c46b6ce681f7d241b963b18b97197
+
+build_toolchain () {
+	tar xfv $CERD/linux/linux-$version.tar.xz -C $TMPD/toolchain/sources
+
+	cd $TMPD/toolchain/sources/linux-$version
+
+	make mrproper
+        make O=$TMPD/toolchain/builds/linux ARCH=$ARCH headers_check
+        make O=$TMPD/toolchain/builds/linux ARCH=$ARCH INSTALL_HDR_PATH=$PRFX/$TRPL headers_install
+}
+
+build_system () {
+	tar xfv $CERD/linux/linux-$version.tar.xz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/linux-$version
+	
+	make mrproper
+	cp $CERD/linux/glaucus.config .config
+	
+	make ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
+	make ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
+	make ARCH=$ARCH CROSS_COMPILE=$TRPL-
+	make ARCH=$ARCH CROSS_COMPILE=$TRPL- INSTALL_PATH=$GLAD/boot install
+}

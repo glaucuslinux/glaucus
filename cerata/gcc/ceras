@@ -1,0 +1,71 @@
+version=8.2.0
+url=https://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
+checksum=64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed
+
+build_toolchain () {
+	case $1 in
+		gcc_1)
+			cd $TMPD/toolchain/builds/$1
+
+			$TMPD/toolchain/sources/gcc-$version/configure \
+				--prefix=$PRFX \
+				--build=$ARCH-linux-gnu \
+				--host=$ARCH-linux-gnu \
+				--target=$TRPL \
+				--with-sysroot=$PRFX/$TRPL \
+				--disable-nls \
+				--disable-shared \
+				--without-headers \
+				--with-newlib \
+				--disable-decimal-float \
+				--disable-libgomp \
+				--disable-libatomic \
+				--disable-libstdcxx \
+				--disable-libsanitizer \
+				--disable-libvtv \
+				--disable-libmpx \
+				--disable-libssp \
+				--disable-libquadmath \
+				--without-isl \
+				--disable-multilib \
+				--disable-threads \
+				--enable-languages=c \
+				--with-arch=x86-64
+			
+			make all-gcc all-target-libgcc
+			make install-gcc install-target-libgcc
+			;;
+		
+		gcc_2)
+			cd $TMPD/toolchain/builds/$1
+
+			$TMPD/toolchain/sources/gcc-$version/configure \
+				--prefix=$PRFX \
+				--build=$ARCH-linux-gnu \
+				--host=$ARCH-linux-gnu \
+				--target=$TRPL \
+				--with-sysroot=$PRFX/$TRPL \
+				--with-native-system-header-dir=/include \
+				--disable-nls \
+				--disable-libgomp \
+				--disable-libatomic \
+				--disable-libstdcxx \
+				--disable-libsanitizer \
+				--disable-libvtv \
+				--disable-libmpx \
+				--disable-libssp \
+				--disable-libquadmath \
+				--without-isl \
+				--disable-multilib \
+				--enable-languages=c \
+				--with-arch=x86-64
+			
+			make
+			make install
+			;;
+	esac
+}
+
+build_system () {
+	:
+}

@@ -1,0 +1,38 @@
+version=1.1.19
+url=http://www.musl-libc.org/releases/musl-$version.tar.gz
+checksum=abee52d53af4b3c14c9088866c911a24d2b6ef67dc494f38a7a09dfe77250026f77528c24c52469c89cffa8ced2f0fa95badbdcf8d4460c90faba47e3927bcc5
+
+build_toolchain () {
+	tar xfv $CERD/musl/musl-$version.tar.gz -C $TMPD/toolchain/sources
+
+	cd $TMPD/toolchain/builds/musl
+
+	$TMPD/toolchain/sources/musl-$version/configure \
+                CC=$TRPL-gcc \
+                CROSS_COMPILE=$TRPL- \
+                --prefix=/ \
+                --target=$TRPL \
+                --disable-debug \
+                --disable-warnings
+        make
+        make DESTDIR=$PRFX/$TRPL install
+}
+
+build_system () {
+	tar xfv $CERD/musl/musl-$version.tar.gz -C $TMPD/system/sources
+
+	mkdir $TMPD/system/builds/musl
+	cd $TMPD/system/builds/musl
+
+	$TMPD/system/sources/musl-$version/configure \
+		CFLAGS="$CFLAGS" \
+		LDFLAGS="$LDFLAGS" \
+		CROSS_COMPILE=$TRPL- \
+		--prefix=/ \
+		--target=$TRPL \
+		--disable-debug \
+		--disable-warnings \
+		--disable-static
+	make
+	make DESTDIR=$GLAD install-libs
+}

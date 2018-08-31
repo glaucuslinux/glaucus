@@ -1,0 +1,10 @@
+version=git
+url=git://git.suckless.org/sbase
+
+build_system () {
+	cp -rav $CERD/sbase/sbase $TMPD/system/sources
+	cd $TMPD/system/sources/sbase
+
+	make CC="$CC" AR=$AR RANLIB=$RANLIB
+	make PREFIX=$GLAD install
+}

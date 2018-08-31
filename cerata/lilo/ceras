@@ -1,0 +1,25 @@
+version=24.2
+url=https://alioth-archive.debian.org/releases/lilo/Lilo/$version/lilo-$version.tar.gz
+checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
+
+build_system () {
+	tar xfv $CERD/lilo/lilo-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/lilo-$version
+	patch -p1 -i $CERD/lilo/patches/lilo.patch
+	
+	make PATH=$PRFX/bin:$GLAD/bin:/bin
+	make DESTDIR=$GLAD install
+
+	cat > $GLAD/etc/lilo.conf << EOF
+lba32
+boot=/dev/sda
+map=/boot/System.map
+default=glaucus
+
+image=/boot/vmlinuz
+	label=glaucus
+	read-only
+	append="root=/dev/sda1 rootfstype=ext4 init=/bin/sinit"
+EOF
+}

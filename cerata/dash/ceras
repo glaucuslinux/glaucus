@@ -1,0 +1,16 @@
+version=git
+url=git://git.kernel.org/pub/scm/utils/dash/dash.git
+
+build_system () {
+	cp -rav $CERD/dash/dash $TMPD/system/sources
+
+	cd $TMPD/system/sources/dash
+	./autogen.sh
+	./configure --prefix=$GLAD --host=$TRPL --disable-static
+
+	make
+	make install-strip
+
+	cd $GLAD/bin
+	ln -sfv dash sh
+}

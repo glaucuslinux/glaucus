@@ -1,0 +1,36 @@
+version=1.44.4
+url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$version/e2fsprogs-$version.tar.xz
+checksum=52e39565dee30997b9c245b5d8791844067a903a570082f3a5ff9d9ef96624535322617bb21029056c88259fef46416eb1181bd7aec419e64fc021830887ec8f
+
+build_system () {
+	tar xfv $CERD/e2fsprogs/e2fsprogs-$version.tar.xz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/e2fsprogs-$version
+	patch -p1 -i $CERD/e2fsprogs/patches/e2fsprogs.patch
+	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$GLAD \
+		--build=$TRPL \
+		--host=$TRPL \
+		--host=$TRPL \
+		--with-root-prefix= \
+		--enable-symlink-install \
+		--enable-elf-shlibs \
+		--disable-bsd-shlibs \
+		--disable-testio-debug \
+		--disable-e2initrd-helper \
+		--disable-tdb \
+		--disable-nls \
+		--disable-fuse2fs \
+		--disable-debugfs \
+		--disable-defrag \
+		--disable-imager \
+		--disable-mmp \
+		--disable-resizer \
+		--enable-fsck
+	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
+
+	cp e2fsck/e2fsck $GLAD/sbin
+	cp misc/fsck $GLAD/sbin
+
+	cd $GLAD/sbin
+	ln -sf e2fsck fsck.ext4
+}

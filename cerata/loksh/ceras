@@ -1,0 +1,10 @@
+version=git
+url=https://github.com/dimkr/loksh
+
+build_system () {
+	cp -rav $CERD/loksh/loksh $TMPD/system/sources
+	cd $TMPD/system/sources/loksh
+
+	make CC="$CC" CFLAGS="$CFLAGS" LD="$LD" LDFLAGS="$LDFLAGS"
+	make PREFIX=$GLAD install
+}

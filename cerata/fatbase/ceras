@@ -1,0 +1,6 @@
+version=git
+url=git://git.2f30.org/fatbase.git
+
+build_system () {
+	:
+}

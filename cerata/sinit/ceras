@@ -1,0 +1,12 @@
+version=git
+url=git://git.suckless.org/sinit
+
+build_system () {
+	cp -rav $CERD/sinit/sinit $TMPD/system/sources
+	cd $TMPD/system/sources/sinit
+
+	sed -i s/-static// config.mk
+
+	make CC="$CC"
+	make PREFIX=$GLAD install
+}

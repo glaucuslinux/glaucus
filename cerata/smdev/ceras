@@ -1,0 +1,10 @@
+version=git
+url=git://git.suckless.org/smdev
+
+build_system () {
+	cp -rav $CERD/smdev/smdev $TMPD/system/sources
+	cd $TMPD/system/sources/smdev
+
+	make CC="$CC"
+	make PREFIX=$GLAD install
+}
