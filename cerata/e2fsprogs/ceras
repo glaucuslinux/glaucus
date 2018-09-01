@@ -28,9 +28,15 @@ build_system () {
 		--enable-fsck
 	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
 
-	cp e2fsck/e2fsck $GLAD/sbin
-	cp misc/fsck $GLAD/sbin
+	cp e2fsck/e2fsck $GLAD/bin
+	cp misc/blkid $GLAD/bin
+	cp misc/chattr $GLAD/bin
+	cp misc/fsck $GLAD/bin
+	cp misc/lsattr $GLAD/bin
+	cp misc/mke2fs $GLAD/bin
+	cp misc/tune2fs $GLAD/bin
 
-	cd $GLAD/sbin
+	cd $GLAD/bin
 	ln -sf e2fsck fsck.ext4
+	ln -sf mke2fs mkfs.ext4
 }

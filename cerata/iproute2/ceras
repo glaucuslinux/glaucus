@@ -10,6 +10,7 @@ build_system () {
 	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c
 	sed -i -e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
 		-e '/genl/d' Makefile
+	
 	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
 	sed -i -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
 		-e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
@@ -22,7 +23,8 @@ build_system () {
 		-e 's/HAVE_CAP:=y/HAVE_CAP:=n/g' \
 		-e '/HAVE_CAP/{n;N;d}' \
 		config.mk
+	
 	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	DESTDIR=$GLAD make install
+	
+	cp ip/ip $GLAD/bin
 }
-

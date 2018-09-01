@@ -6,7 +6,7 @@ build_system () {
 
 	cd $TMPD/system/sources/dash
 	./autogen.sh
-	./configure --prefix=$GLAD --host=$TRPL --disable-static
+	./configure CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" --prefix=$GLAD --host=$TRPL --disable-static
 
 	make
 	make install-strip

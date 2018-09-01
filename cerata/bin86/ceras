@@ -8,8 +8,8 @@ build_system () {
 
 	patch $TMPD/system/sources/bin86-$version/ld/x86_aout.h -p1 -i $CERD/bin86/patches/bin86.diff
 	
-	make CC="$CC" CFLAGS="$CFLAGS"
+	CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
 
-	mkdir -p $GLAD/man/man1
-	make CC="$CC" PREFIX=$GLAD install
+	mkdir -p $GLAD/share/man/man1
+	PREFIX=$GLAD make install
 }
