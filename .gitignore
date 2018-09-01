@@ -35,6 +35,9 @@ glaucus.img
 
 logs/
 
+!scripts/system/
+!scripts/toolchain/
+
 system/
 
 temporary/
