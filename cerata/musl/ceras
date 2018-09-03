@@ -15,7 +15,7 @@ build_toolchain () {
                 --disable-debug \
                 --disable-warnings
         make
-        make DESTDIR=$PRFX/$TRPL install
+        DESTDIR=$PRFX/$TRPL make install
 }
 
 build_system () {
@@ -34,5 +34,5 @@ build_system () {
 		--disable-warnings \
 		--disable-static
 	make
-	make DESTDIR=$GLAD install-libs
+	DESTDIR=$GLAD make install-libs
 }

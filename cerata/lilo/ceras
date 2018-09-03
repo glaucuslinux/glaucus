@@ -8,8 +8,8 @@ build_system () {
 	cd $TMPD/system/sources/lilo-$version
 	patch -p1 -i $CERD/lilo/patches/lilo.patch
 	
-	make PATH=$PRFX/bin:$GLAD/bin:/bin
-	make DESTDIR=$GLAD install
+	PATH=$PRFX/bin:$GLAD/bin:/bin make
+	DESTDIR=$GLAD make install
 
 	cat > $GLAD/etc/lilo.conf << EOF
 lba32

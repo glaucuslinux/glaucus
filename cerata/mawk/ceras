@@ -5,6 +5,6 @@ checksum=4ed6ca0ecca12e7409d3d364b72dc6a2b411c61bf53fe8aa0b0cac65a3bdb941921c0b8
 build_system () {
 	cd $TMPD/system/sources/mawk
 
-	make CC="$CC" CFLAGS="$CFLAGS" LD="$LD" LDFLAGS="$LDFLAGS"
-	make PREFIX=$GLAD install
+	CC="$CC" CFLAGS="$CFLAGS" LD="$LD" LDFLAGS="$LDFLAGS" make
+	PREFIX=$GLAD make install
 }

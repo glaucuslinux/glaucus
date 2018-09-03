@@ -8,6 +8,14 @@ build_system () {
 	cp -av $CERD/ubase/stty.c .
 	sed -i -e '/stat /a\' -e '        stty              \\' Makefile 
 
-	make CC="$CC" AR=$AR RANLIB=$RANLIB
-	make PREFIX=$GLAD install
+	sed -i -e "s#/usr/local#$GLAD#g" \
+		-e "/CC =/ cCC = $CC" \
+		-e "/AR =/ cAR = $AR" \
+		-e "/RANLIB =/ cRANLIB = $RANLIB" \
+		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -Wextra" \
+		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+		config.mk
+
+	make
+	make install
 }

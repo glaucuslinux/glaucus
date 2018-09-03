@@ -8,8 +8,8 @@ build_toolchain () {
 	cd $TMPD/toolchain/sources/linux-$version
 
 	make mrproper
-        make O=$TMPD/toolchain/builds/linux ARCH=$ARCH headers_check
-        make O=$TMPD/toolchain/builds/linux ARCH=$ARCH INSTALL_HDR_PATH=$PRFX/$TRPL headers_install
+        O=$TMPD/toolchain/builds/linux ARCH=$ARCH make headers_check
+        O=$TMPD/toolchain/builds/linux ARCH=$ARCH INSTALL_HDR_PATH=$PRFX/$TRPL make headers_install
 }
 
 build_system () {
@@ -20,8 +20,8 @@ build_system () {
 	make mrproper
 	cp $CERD/linux/glaucus.config .config
 	
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL-
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- INSTALL_PATH=$GLAD/boot install
+	ARCH=$ARCH CROSS_COMPILE=$TRPL- make oldconfig
+	ARCH=$ARCH CROSS_COMPILE=$TRPL- make prepare
+	ARCH=$ARCH CROSS_COMPILE=$TRPL-
+	ARCH=$ARCH CROSS_COMPILE=$TRPL- INSTALL_PATH=$GLAD/boot make install
 }
