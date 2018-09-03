@@ -22,6 +22,6 @@ build_system () {
 	
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- make oldconfig
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- make prepare
-	ARCH=$ARCH CROSS_COMPILE=$TRPL-
+	ARCH=$ARCH CROSS_COMPILE=$TRPL- make
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- INSTALL_PATH=$GLAD/boot make install
 }

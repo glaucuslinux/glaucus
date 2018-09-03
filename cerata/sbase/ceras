@@ -5,6 +5,14 @@ build_system () {
 	cp -rav $CERD/sbase/sbase $TMPD/system/sources
 	cd $TMPD/system/sources/sbase
 
-	make CC="$CC" AR=$AR RANLIB=$RANLIB
-	make PREFIX=$GLAD install
+	sed -i -e "s#/usr/local#$GLAD#g" \
+		-e "/CC =/ cCC = $CC" \
+		-e "/AR =/ cAR = $AR" \
+		-e "/RANLIB =/ cRANLIB = $RANLIB" \
+		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
+		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+		config.mk
+	
+	make
+	make install
 }

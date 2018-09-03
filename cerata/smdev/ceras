@@ -5,6 +5,12 @@ build_system () {
 	cp -rav $CERD/smdev/smdev $TMPD/system/sources
 	cd $TMPD/system/sources/smdev
 
+	sed -i -e "/PREFIX=/ cPREFIX = $GLAD" \
+		-e "/CC =/ cCC = $CC" \
+		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
+		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+		config.mk
+
 	make CC="$CC"
 	make PREFIX=$GLAD install
 }

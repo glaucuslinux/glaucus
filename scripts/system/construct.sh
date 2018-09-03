@@ -76,8 +76,8 @@ cd - 1>/dev/null
 
 /bin/hostname glaucus
 
-/sbin/ip addr add 127.0.0.1/8 dev lo broadcast + scope host
-/sbin/ip link set lo up
+/bin/ip addr add 127.0.0.1/8 dev lo broadcast + scope host
+/bin/ip link set lo up
 
 export TZ="Asia/Damascus"
 /bin/hwclock -s -u /dev/rtc0
