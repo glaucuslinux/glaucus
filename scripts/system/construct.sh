@@ -151,6 +151,7 @@ construct bin86 lilo
 construct linux
 construct e2fsprogs
 construct iproute2
+construct mawk
 configure
 
 # . /home/glaucus/scripts/system/img.sh
