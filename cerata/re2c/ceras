@@ -1,0 +1,16 @@
+version=1.1.1
+url=https://github.com/skvadrik/re2c/releases/download/$version/re2c-$version.tar.gz
+checksum=a6fe73611103588043748340976f0e6d07169a6546cb80627c0ccd2ceac83f362dbbf371530361d893537fd95deb19503b2c73c41ed40efe7787210d6c757397
+
+build_system () {
+	tar xfv $CERD/re2c/re2c-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/re2c-$version
+	./autogen.sh
+	./configure --prefix=$GLAD \
+		CC=$CC \
+		CFLAGS="$CFLAGS" \
+		LDFLAGS="$LDFLAGS"
+	make
+	make install-strip
+}

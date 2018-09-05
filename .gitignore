@@ -7,6 +7,7 @@
 
 cerata/bin86/bin86-0.16.21.tar.gz
 cerata/binutils/binutils-2.31.1.tar.xz
+cerata/byacc/byacc-20180609.tgz
 cerata/dash/dash/
 cerata/e2fsprogs/e2fsprogs-1.44.4.tar.xz
 cerata/fatbase/fatbase/
@@ -24,6 +25,7 @@ cerata/musl/musl-1.1.19.tar.gz
 cerata/nnn/nnn/
 cerata/plan9port/plan9port/
 cerata/python/Python-3.7.0.tar.xz
+cerata/re2c/re2c-1.1.1.tar.gz
 cerata/sbase/sbase/
 cerata/sdhcp/sdhcp/
 cerata/sinit/sinit/
@@ -34,6 +36,8 @@ cerata/ubase/ubase/
 glaucus.img
 
 logs/
+
+play/
 
 system/
 
