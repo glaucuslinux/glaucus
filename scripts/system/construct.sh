@@ -3,7 +3,7 @@
 prepare () {
 	. /home/glaucus/scripts/variables
 	. /home/glaucus/scripts/system/clean.sh
-
+	
 	assign_basic_variables
 	assign_system_variables
 
@@ -13,7 +13,11 @@ prepare () {
 	install -d -m 0750 $GLAD/root
 
 	cp $PRFX/$TRPL/lib64/libgcc_s.so.1 $GLAD/lib
-	$STRIP $GLAD/lib/libgcc_s.so.1
+	cp $PRFX/$TRPL/lib64/libstdc++.so.6.0.25 $GLAD/lib
+
+	cd $GLAD/lib
+	ln -sfv libstdc++.so.6.0.25 libstdc++.so.6
+	$STRIP libgcc_s.so.1 libstdc++.so.6.0.25
 }
 
 construct () {
@@ -141,6 +145,10 @@ EOF
 
 	cd $GLAD/bin
 	chmod 755 rc.init rc.shutdown poweroff reboot
+
+cat > $GLAD/root/.kshrc << EOF
+export PS1="[\u@\h:\w]\$ "
+EOF
 }
 
 prepare
@@ -152,6 +160,8 @@ construct linux
 construct e2fsprogs
 construct iproute2
 construct mawk byacc re2c
+# construct miniz
+# construct mandoc
 configure
 
 # . /home/glaucus/scripts/system/img.sh

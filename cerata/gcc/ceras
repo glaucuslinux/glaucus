@@ -49,7 +49,7 @@ build_toolchain () {
 				--disable-nls \
 				--disable-libgomp \
 				--disable-libatomic \
-				--disable-libstdcxx \
+				--disable-libstdcxx-pch \
 				--disable-libsanitizer \
 				--disable-libvtv \
 				--disable-libmpx \
@@ -57,7 +57,7 @@ build_toolchain () {
 				--disable-libquadmath \
 				--without-isl \
 				--disable-multilib \
-				--enable-languages=c \
+				--enable-languages=c,c++ \
 				--with-arch=x86-64
 			
 			make

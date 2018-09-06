@@ -1,0 +1,12 @@
+version=git
+url=https://github.com/richgel999/miniz
+
+build_system () {
+	cp -rav $CERD/miniz/miniz $TMPD/system/sources
+	mkdir -v $TMPD/system/builds/miniz
+
+	cd $TMPD/system/builds/miniz
+	CC=$CC CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" PATH=$PRFX/bin:/bin cmake $CERD/miniz/miniz
+	make
+	make DESTDIR=/home/glaucus/system install
+}

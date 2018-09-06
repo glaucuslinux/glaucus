@@ -6,10 +6,11 @@ build_system () {
 	tar xfv $CERD/re2c/re2c-$version.tar.gz -C $TMPD/system/sources
 
 	cd $TMPD/system/sources/re2c-$version
-	./autogen.sh
 	./configure --prefix=$GLAD \
 		CC=$CC \
+		CXX=$CXX \
 		CFLAGS="$CFLAGS" \
+		CXXFLAGS="$CXXFLAGS" \
 		LDFLAGS="$LDFLAGS"
 	make
 	make install-strip

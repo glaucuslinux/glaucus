@@ -3,7 +3,7 @@
 prepare () {
 	. /home/glaucus/scripts/variables
 	. /home/glaucus/scripts/toolchain/clean.sh
-
+	
 	assign_basic_variables
 
 	. $CERD/gcc/ceras
