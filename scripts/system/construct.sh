@@ -146,7 +146,7 @@ EOF
 	cd $GLAD/bin
 	chmod 755 rc.init rc.shutdown poweroff reboot
 
-cat > $GLAD/root/.kshrc << EOF
+cat > $GLAD/root/.profile << EOF
 export PS1="[\u@\h:\w]\$ "
 EOF
 }
@@ -155,13 +155,13 @@ prepare
 construct musl
 construct sbase ubase sinit smdev svc
 construct dash loksh
-construct bin86 lilo
+#construct bin86 lilo
 construct linux
 construct e2fsprogs
 construct iproute2
 construct mawk byacc re2c
-# construct miniz
-# construct mandoc
+construct zlib
+construct mandoc
 configure
 
 # . /home/glaucus/scripts/system/img.sh

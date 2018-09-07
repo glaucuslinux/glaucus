@@ -20,7 +20,6 @@ cerata/linux/linux-4.18.5.tar.xz
 cerata/loksh/loksh/
 cerata/mandoc/mandoc-1.14.4.tar.gz
 cerata/mawk/mawk-1.3.4-20171017.tgz
-cerata/miniz/miniz
 cerata/mpc/mpc-1.1.0.tar.gz
 cerata/mpfr/mpfr-4.0.1.tar.xz
 cerata/musl/musl-1.1.20.tar.gz
@@ -34,6 +33,7 @@ cerata/sinit/sinit/
 cerata/smdev/smdev/
 cerata/svc/svc/
 cerata/ubase/ubase/
+cerata/zlib/zlib-1.2.11.tar.xz
 
 glaucus.img
 

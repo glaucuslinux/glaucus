@@ -7,7 +7,7 @@ build_system () {
 
 	sed -i s/-static// config.mk
 
-	sed -i -e "/PREFIX =/ cPREFIX = $GLAD" \
+	sed -i -e "s#/usr/local#$GLAD#g" \
 		-e "/CC =/ cCC = $CC" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -Wall -Wextra" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \

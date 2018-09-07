@@ -7,8 +7,16 @@ build_system () {
 
 	cd $TMPD/system/sources/mandoc-$version
 
+cat > configure.local << EOF
+OSNAME=glaucus
+PREFIX=$GLAD
+AR=$AR
+CC=$CC
+CFLAGS="$CFLAGS"
+LDFLAGS="$LDFLAGS"
+EOF
 
-
+	./configure
 	make
 	make install
 }
