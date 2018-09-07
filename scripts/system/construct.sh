@@ -155,7 +155,7 @@ prepare
 construct musl
 construct sbase ubase sinit smdev svc
 construct dash loksh
-#construct bin86 lilo
+construct bin86 lilo
 construct linux
 construct e2fsprogs
 construct iproute2

@@ -10,6 +10,6 @@ build_system () {
 	
 	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
 
-	mkdir -p $GLAD/share/man/man1
+	mkdir -p $GLAD/man/man1
 	make PREFIX=$GLAD install
 }

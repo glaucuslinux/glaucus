@@ -27,7 +27,16 @@ build_system () {
 		--disable-resizer \
 		--enable-fsck
 	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
+	
+	cd lib/
+	for dir in blkid e2p et ext2fs uuid
+	do
+		cd $dir
+		make DESTDIR=$GLAD install
+		cd ..
+	done
 
+	cd ..
 	cp e2fsck/e2fsck $GLAD/bin
 	cp misc/blkid $GLAD/bin
 	cp misc/chattr $GLAD/bin

@@ -7,9 +7,18 @@ build_system () {
 
 	cd $TMPD/system/sources/lilo-$version
 	patch -p1 -i $CERD/lilo/patches/lilo.patch
-	
-	PATH=$PRFX/bin:$GLAD/bin:/bin CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	DESTDIR=$GLAD make install
+	sed -i "/checkit/d" Makefile
+	sed -i -e "/OPT=/ cOPT=$CFLAGS" \
+		-e "/SBIN_DIR=/ cSBIN_DIR=/bin" \
+		-e "/USRSBIN_DIR=/ cUSRSBIN_DIR=/bin" \
+		make.vars
+	sed -i -e "/CC=/ cCC=$CC" \
+		-e "/AS86=/ cAS86=$GLAD/bin/as86 -0 -a" \
+		-e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
+		src/Makefile
+		
+	make
+	cp -rav src/lilo $GLAD/bin
 
 	cat > $GLAD/etc/lilo.conf << EOF
 lba32

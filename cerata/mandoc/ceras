@@ -8,11 +8,14 @@ build_system () {
 	cd $TMPD/system/sources/mandoc-$version
 
 cat > configure.local << EOF
+HAVE_WCHAR=1
 OSNAME=glaucus
 PREFIX=$GLAD
+MANPATH_DEFAULT=/share/man
 AR=$AR
 CC=$CC
-CFLAGS="$CFLAGS"
+CFLAGS="$CFLAGS -I$GLAD/include"
+LDADD="-lz -L$GLAD/lib"
 LDFLAGS="$LDFLAGS"
 EOF
 
