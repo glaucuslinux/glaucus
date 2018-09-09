@@ -1,6 +1,5 @@
 version=4.0.1
 url=https://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
-checksum=137ad68bc1e33a155edc1247fcdba27f999cf48ed526773136584090ddf2cfdfc9ea79fbf74ea1943b835b4b1ff29b05087114738c6ad3b485848540f30cac4f
 
 build_toolchain () {
 	cd $TMPD/toolchain/sources/gcc-*

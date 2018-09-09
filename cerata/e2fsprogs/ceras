@@ -1,6 +1,5 @@
 version=1.44.4
 url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$version/e2fsprogs-$version.tar.xz
-checksum=52e39565dee30997b9c245b5d8791844067a903a570082f3a5ff9d9ef96624535322617bb21029056c88259fef46416eb1181bd7aec419e64fc021830887ec8f
 
 build_system () {
 	tar xfv $CERD/e2fsprogs/e2fsprogs-$version.tar.xz -C $TMPD/system/sources

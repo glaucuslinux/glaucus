@@ -1,6 +1,5 @@
 version=1.1.20
 url=http://www.musl-libc.org/releases/musl-$version.tar.gz
-checksum=d3a7a30aa375ca50d7dcfbd618581d59e1aa5378417f50a0ca5510099336fd74cc9db468e05c93dda3067abd890f6bd47af226c3446bb833adf0a5054bff2e5d
 
 build_toolchain () {
 	tar xfv $CERD/musl/musl-$version.tar.gz -C $TMPD/toolchain/sources

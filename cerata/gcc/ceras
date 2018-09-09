@@ -1,6 +1,5 @@
 version=8.2.0
 url=https://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
-checksum=64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed
 
 build_toolchain () {
 	case $1 in

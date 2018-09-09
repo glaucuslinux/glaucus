@@ -1,6 +1,5 @@
 version=4.18.5
 url=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz
-checksum=604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be2542c8f37c025cb3d625905d30e4c8c37267f0285aea25bbbe5aa3457040c
 
 build_toolchain () {
 	tar xfv $CERD/linux/linux-$version.tar.xz -C $TMPD/toolchain/sources

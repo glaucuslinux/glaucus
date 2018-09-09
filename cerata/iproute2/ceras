@@ -1,6 +1,5 @@
 version=4.18.0
 url=https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
-checksum=c7c8e8e76c78faf63548da641769cf9f51811a308cd8eeec171f5f46423f116ff123033f11a554609825aba6d078c95dbbe36aa7ab23bd8d87b3a0d5100be1a9
 
 build_system () {
 	tar xfv $CERD/iproute2/iproute2-$version.tar.xz -C $TMPD/system/sources

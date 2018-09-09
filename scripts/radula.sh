@@ -13,15 +13,11 @@ case $2 in
 		;;
 	*)
 		wget $3 -P /home/glaucus/cerata/$1
-		cat >> /home/glaucus/cerata/$1/ceras << EOF
-checksum=$(echo $(sha512sum "/home/glaucus/cerata/$1/$(basename $3)") | awk '{print $1}')
-EOF
 		;;
 esac
 
 cat >> /home/glaucus/cerata/$1/ceras << EOF
 
 build_system () {
-	:
 }
 EOF

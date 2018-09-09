@@ -1,6 +1,5 @@
 version=530
 url=http://www.greenwoodsoftware.com/less/less-530.tar.gz
-checksum=8d83a18b5648c4fe85921a563aa2c40bcf495aeb611098c83cd167b1e2f706649846cdf457c8506ae2683ab362ad970a0b261747349673020894bccdb9acbc10
 
 build_system () {
 	:
