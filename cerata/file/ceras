@@ -1,0 +1,11 @@
+version=5.34
+url=ftp://ftp.astron.com/pub/file/file-$version.tar.gz
+
+build_system () {
+	tar xfv $CERD/file/file-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/file-$version
+	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix= --disable-libseccomp
+	make
+	make DESTDIR=$GLAD install
+}

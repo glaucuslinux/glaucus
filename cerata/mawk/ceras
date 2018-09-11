@@ -12,4 +12,6 @@ build_system () {
 
 	make
 	make install
+	cd $GLAD/bin
+	ln -sfv mawk awk
 }

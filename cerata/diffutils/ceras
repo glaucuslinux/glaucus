@@ -1,0 +1,5 @@
+version=3.6
+url=https://ftp.gnu.org/gnu/diffutils/diffutils-3.6.tar.xz
+
+build_system () {
+}

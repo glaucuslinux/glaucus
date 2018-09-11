@@ -9,8 +9,10 @@ cerata/bin86/bin86-0.16.21.tar.gz
 cerata/binutils/binutils-2.31.1.tar.xz
 cerata/byacc/byacc-20180609.tgz
 cerata/dash/dash/
+cerata/diffutils/diffutils-3.6.tar.xz
 cerata/e2fsprogs/e2fsprogs-1.44.4.tar.xz
 cerata/fatbase/fatbase/
+cerata/file/file-5.34.tar.gz
 cerata/gcc/gcc-8.2.0.tar.xz
 cerata/gmp/gmp-6.1.2.tar.xz
 cerata/hbase/hbase/
