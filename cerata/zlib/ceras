@@ -6,8 +6,7 @@ build_system () {
 
 	cd $TMPD/system/sources/zlib-$version
 	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
-		--prefix=$GLAD \
-		--libdir=$GLAD/lib
+		--prefix=
 	make
-	make install
+	make DESTDIR=$GLAD install
 }

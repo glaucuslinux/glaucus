@@ -1,5 +1,13 @@
 version=3.6
-url=https://ftp.gnu.org/gnu/diffutils/diffutils-3.6.tar.xz
+url=https://ftp.gnu.org/gnu/diffutils/diffutils-$version.tar.xz
 
 build_system () {
+	tar xfv $CERD/diffutils/diffutils-$version.tar.xz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/diffutils-$version
+	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
+		--disable-nls
+	make
+	make DESTDIR=$GLAD install
 }

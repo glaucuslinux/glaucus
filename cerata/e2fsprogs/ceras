@@ -6,7 +6,8 @@ build_system () {
 
 	cd $TMPD/system/sources/e2fsprogs-$version
 	patch -p1 -i $CERD/e2fsprogs/patches/e2fsprogs.patch
-	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$GLAD \
+	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
 		--build=$TRPL \
 		--host=$TRPL \
 		--host=$TRPL \
