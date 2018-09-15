@@ -1,0 +1,5 @@
+version=git
+url=https://github.com/Duncaen/OpenDoas
+
+build_system () {
+}

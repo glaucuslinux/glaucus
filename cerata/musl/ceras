@@ -27,7 +27,7 @@ build_system () {
 		CFLAGS="$CFLAGS" \
 		LDFLAGS="$LDFLAGS" \
 		CROSS_COMPILE=$TRPL- \
-		--prefix=/ \
+		--prefix= \
 		--target=$TRPL \
 		--disable-debug \
 		--disable-warnings \

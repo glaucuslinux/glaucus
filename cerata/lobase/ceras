@@ -1,0 +1,32 @@
+version=git
+url=https://github.com/Duncaen/lobase
+
+build_system () {
+	cp -rav ~/cerata/lobase/lobase $TMPD/system/sources
+
+	cd $TMPD/system/sources/lobase
+	autoreconf -fi
+	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=
+	cd lib/libopenbsd
+	make
+	cd ../liboutil
+	make
+	cd ../../usr.bin/diff
+	make
+	make DESTDIR=$GLAD install
+	cd ../fmt
+	make
+	make DESTDIR=$GLAD install
+	cd ../patch
+	make
+	make DESTDIR=$GLAD install
+	cd ../sort
+	make
+	make DESTDIR=$GLAD install
+	cd ../../bin/ls
+	make
+	make DESTDIR=$GLAD install
+	cd ../pax
+	make
+	make DESTDIR=$GLAD install
+}
