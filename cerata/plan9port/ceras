@@ -1,6 +1,0 @@
-version=git
-url=https://github.com/9fans/plan9port
-
-build_system () {
-	:
-}

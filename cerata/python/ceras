@@ -1,6 +1,0 @@
-version=3.7.0
-url=https://www.python.org/ftp/python/$version/Python-$version.tar.xz
-
-build_system () {
-	:
-}

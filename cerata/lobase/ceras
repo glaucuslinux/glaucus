@@ -13,20 +13,20 @@ build_system () {
 	make
 	cd ../../usr.bin/diff
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 	cd ../fmt
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 	cd ../patch
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 	cd ../sort
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 	cd ../../bin/ls
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 	cd ../pax
 	make
-	make DESTDIR=$GLAD install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share install
 }

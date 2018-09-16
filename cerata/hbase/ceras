@@ -1,6 +1,0 @@
-version=git
-url=git://git.2f30.org/hbase.git
-
-build_system () {
-	:
-}
