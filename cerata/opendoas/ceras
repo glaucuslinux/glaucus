@@ -2,4 +2,10 @@ version=git
 url=https://github.com/Duncaen/OpenDoas
 
 build_system () {
+	cp -rav $CERD/opendoas/opendoas $TMPD/system/sources
+
+	cd $TMPD/system/sources/opendoas
+	AR=$AR CC=$CC LD=$LD YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$GLAD
+	AR=$AR CC=$CC LD=$LD YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
+#	make install
 }
