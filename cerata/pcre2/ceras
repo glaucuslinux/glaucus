@@ -1,0 +1,5 @@
+version=10.32
+url=https://ftp.pcre.org/pub/pcre/pcre2-$version.tar.gz
+
+build_system () {
+}
