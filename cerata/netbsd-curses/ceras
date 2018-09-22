@@ -1,0 +1,16 @@
+version=git
+url=https://github.com/sabotage-linux/netbsd-curses
+
+build_system () {
+	cp -rav $CERD/netbsd-curses/netbsd-curses $TMPD/system/sources
+
+	cd $TMPD/system/sources/netbsd-curses
+cat > config.mak << EOF
+PREFIX = 
+CC = $CC
+CFLAGS = $CFLAGS
+LDFLAGS = $LDFLAGS
+EOF
+	make all-dynamic
+	make DESTDIR=$GLAD install-dynamic
+}

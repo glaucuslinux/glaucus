@@ -8,7 +8,8 @@ build_system () {
 	sed -i 's/-Werror //' Makefile
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
 	sed -i 's#/usr##' config.mk
+	sed -i 's/root/glaucus/' Makefile
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-#	sudo AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
-#	sudo rm -rfv $GLAD/usr
+	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
+#	rm -rfv $GLAD/usr
 }
