@@ -7,7 +7,7 @@ build_system () {
 
 	sed -i s/-static// config.mk
 
-	sed -i -e "s#/usr/local#$GLAD#g" \
+	sed -i -e 's#/usr/local##g' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -Wall -Wextra" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
@@ -15,5 +15,5 @@ build_system () {
 		config.mk
 
 	make
-	make install
+	make DESTDIR=$GLAD install
 }

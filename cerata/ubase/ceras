@@ -8,7 +8,7 @@ build_system () {
 	cp -av $CERD/ubase/stty.c .
 	sed -i -e '/stat /a\' -e '        stty              \\' Makefile 
 
-	sed -i -e "s#/usr/local#$GLAD#g" \
+	sed -i -e 's#/usr/local##g' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/AR =/ cAR = $AR" \
 		-e "/RANLIB =/ cRANLIB = $RANLIB" \
@@ -17,5 +17,5 @@ build_system () {
 		config.mk
 
 	make
-	make install
+	make DESTDIR=$GLAD install
 }

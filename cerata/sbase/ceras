@@ -5,14 +5,14 @@ build_system () {
 	cp -rav $CERD/sbase/sbase $TMPD/system/sources
 	cd $TMPD/system/sources/sbase
 
-	sed -i -e "s#/usr/local#$GLAD#g" \
+	sed -i -e 's#/usr/local##g' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/AR =/ cAR = $AR" \
 		-e "/RANLIB =/ cRANLIB = $RANLIB" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
 		config.mk
-	
+	sed -i '25s@/@#@g' ed.c
 	make
-	make install
+	make DESTDIR=$GLAD install
 }

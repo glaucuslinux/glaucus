@@ -9,6 +9,6 @@ build_system () {
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
 	sed -i 's#/usr##' config.mk
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	sudo AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
-	sudo rm -rfv $GLAD/usr
+#	sudo AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
+#	sudo rm -rfv $GLAD/usr
 }
