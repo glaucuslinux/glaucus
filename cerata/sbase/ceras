@@ -12,7 +12,6 @@ build_system () {
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
 		config.mk
-	sed -i '25s@/@#@g' ed.c
 	make
 	make DESTDIR=$GLAD install
 }

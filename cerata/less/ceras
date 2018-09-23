@@ -1,6 +1,13 @@
-version=530
-url=http://www.greenwoodsoftware.com/less/less-530.tar.gz
+version=538
+url=http://www.greenwoodsoftware.com/less/less-$version.tar.gz
 
 build_system () {
-	:
+	tar xfv $CERD/less/less-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/less-$version
+	CC=$CC AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" ./configure \
+		--prefix= \
+		--with-regex=pcre2
+	make
+	make DESTDIR=$GLAD install
 }

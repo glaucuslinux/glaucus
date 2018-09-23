@@ -2,4 +2,13 @@ version=10.32
 url=https://ftp.pcre.org/pub/pcre/pcre2-$version.tar.gz
 
 build_system () {
+	tar xfv $CERD/pcre2/pcre2-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/pcre2-$version
+	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
+		--disable-static \
+		--enable-jit
+	make
+	make DESTDIR=$GLAD install
 }

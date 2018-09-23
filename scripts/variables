@@ -23,6 +23,7 @@ assign_system_variables () {
 	AR="$TRPL-ar"
 	AS="$TRPL-as"
 	LD="$TRPL-ld"
+	OBJDUMP="$TRPL-objdump"
 	RANLIB="$TRPL-ranlib"
 	READELF="$TRPL-readelf"
 	STRIP="$TRPL-strip"
