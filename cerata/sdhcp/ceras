@@ -2,5 +2,15 @@ version=git
 url=git://git.2f30.org/sdhcp.git
 
 build_system () {
-	:
+	cp -rav $CERD/sdhcp/sdhcp $TMPD/system/sources
+	cd $TMPD/system/sources/sdhcp
+	
+	sed -i -e 's#/usr/local##' \
+		-e "/CC        =/ cCC        = $CC" \
+		-e "/CFLAGS    =/ cCFLAGS    = $CFLAGS -Wall -Wextra -pedantic -std=c99 -D_BSD_SOURCE" \
+		-e "/LDFLAGS   =/ cLDFLAGS   = $LDFLAGS" \
+		config.mk
+	sed -i 's/sbin/bin/g' Makefile
+	make
+	make DESTDIR=$GLAD install
 }

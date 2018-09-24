@@ -5,17 +5,13 @@ build_system () {
 	cp -rav $CERD/ubase/ubase $TMPD/system/sources
 	cd $TMPD/system/sources/ubase
 	
-	cp -av $CERD/ubase/stty.c .
-	sed -i -e '/stat /a\' -e '        stty              \\' Makefile 
-
-	sed -i -e 's#/usr/local##g' \
+	sed -i -e 's#/usr/local##' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/AR =/ cAR = $AR" \
 		-e "/RANLIB =/ cRANLIB = $RANLIB" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -Wextra" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
 		config.mk
-
 	make
 	make DESTDIR=$GLAD install
 }

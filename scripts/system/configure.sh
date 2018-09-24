@@ -117,7 +117,7 @@ EOF
 cd $GLAD/bin
 chmod 755 rc.init rc.shutdown poweroff reboot
 
-cat > $GLAD/root/.profile << EOF
+cat > $GLAD/etc/profile << EOF
 export PS1="[\033[0;44m\u@\h:\033[1m\w\033[0m]$ "
 export PAGER=/bin/less
 

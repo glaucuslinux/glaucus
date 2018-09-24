@@ -5,6 +5,10 @@ build_system () {
 	cp -rav $CERD/lobase/lobase $TMPD/system/sources
 
 	cd $TMPD/system/sources/lobase
+	sed -i -e 's/${DESTDIR}//' \
+		-e 's/$$s//' \
+		-e '10d' \
+		mk/bsd.man.mk
 	autoreconf -fi
 	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=
 	cd lib/libopenbsd
@@ -13,23 +17,23 @@ build_system () {
 	make
 	cd ../../usr.bin/diff
 	make
-	make DESTDIR=$GLAD/bin/ install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../fmt
 	make
-	make DESTDIR=$GLAD/bin/ install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../patch
 	make
-	make DESTDIR=$GLAD/bin/ install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../sort
 	make
-	make DESTDIR=$GLAD/bin/ install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../../bin/ls
 	make
-	make DESTDIR=$GLAD/bin/ install
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../pax
 	make
-	make DESTDIR=$GLAD/bin/ install
-
-	mv -v $GLAD/bin/share/man/man1/* $GLAD/share/man/man1
-	rm -rfv $GLAD/bin/share
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	cd ../stty
+	make
+	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
 }

@@ -10,7 +10,7 @@ construct () {
 
 . /home/glaucus/scripts/system/prepare.sh
 construct musl
-construct sbase ubase lobase sinit smdev svc
+construct sbase ubase lobase sinit smdev svc sdhcp
 construct dash loksh
 construct mawk byacc re2c
 construct zlib netbsd-curses pcre2 less mandoc

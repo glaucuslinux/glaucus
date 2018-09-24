@@ -5,7 +5,7 @@ build_system () {
 	cp -rav $CERD/sbase/sbase $TMPD/system/sources
 	cd $TMPD/system/sources/sbase
 
-	sed -i -e 's#/usr/local##g' \
+	sed -i -e 's#/usr/local##' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/AR =/ cAR = $AR" \
 		-e "/RANLIB =/ cRANLIB = $RANLIB" \
