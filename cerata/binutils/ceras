@@ -1,5 +1,6 @@
 version=2.31.1
 url=https://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz
+release=1
 
 build_toolchain () {
 	tar xfv $CERD/binutils/binutils-$version.tar.xz -C $TMPD/toolchain/sources

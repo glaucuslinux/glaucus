@@ -1,5 +1,6 @@
 version=8.2.0
 url=https://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.xz
+release=1
 
 build_toolchain () {
 	case $1 in

@@ -1,5 +1,6 @@
 version=git
 url=https://github.com/jarun/nnn
+release=1
 
 build_system () {
 	:

@@ -1,5 +1,6 @@
 version=git
 url=git://git.2f30.org/sdhcp.git
+release=1
 
 build_system () {
 	cp -rav $CERD/sdhcp/sdhcp $TMPD/system/sources

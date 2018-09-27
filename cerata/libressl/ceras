@@ -1,0 +1,6 @@
+version=2.8.1
+url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.1.tar.gz
+release=1
+
+build_system () {
+}

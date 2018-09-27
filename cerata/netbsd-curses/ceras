@@ -1,5 +1,6 @@
 version=git
 url=https://github.com/sabotage-linux/netbsd-curses
+release=1
 
 build_system () {
 	cp -rav $CERD/netbsd-curses/netbsd-curses $TMPD/system/sources

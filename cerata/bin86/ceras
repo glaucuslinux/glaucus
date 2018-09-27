@@ -1,5 +1,6 @@
 version=0.16.21
 url=http://v3.sk/~lkundrak/dev86/bin86-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/bin86/bin86-$version.tar.gz -C $TMPD/system/sources

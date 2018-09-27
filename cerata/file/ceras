@@ -1,5 +1,6 @@
 version=5.34
 url=ftp://ftp.astron.com/pub/file/file-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/file/file-$version.tar.gz -C $TMPD/system/sources

@@ -1,5 +1,6 @@
 version=10.32
 url=https://ftp.pcre.org/pub/pcre/pcre2-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/pcre2/pcre2-$version.tar.gz -C $TMPD/system/sources

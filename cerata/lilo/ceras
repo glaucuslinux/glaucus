@@ -1,5 +1,6 @@
 version=24.2
 url=https://alioth-archive.debian.org/releases/lilo/Lilo/$version/lilo-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/lilo/lilo-$version.tar.gz -C $TMPD/system/sources

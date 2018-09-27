@@ -1,5 +1,6 @@
 version=1.3.4-20171017
 url=ftp://ftp.invisible-island.net/mawk/mawk-1.3.4-$version.tgz
+release=1
 
 build_system () {
 	tar xfv $CERD/mawk/mawk-$version.tgz -C $TMPD/system/sources

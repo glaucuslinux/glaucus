@@ -1,5 +1,6 @@
 version=1.1.1
 url=https://github.com/skvadrik/re2c/releases/download/$version/re2c-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/re2c/re2c-$version.tar.gz -C $TMPD/system/sources

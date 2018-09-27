@@ -1,5 +1,6 @@
 version=6.1.2
 url=https://gmplib.org/download/gmp/gmp-$version.tar.xz
+release=1
 
 build_toolchain () {
 	cd $TMPD/toolchain/sources/gcc-*

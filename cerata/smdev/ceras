@@ -1,5 +1,6 @@
 version=git
 url=git://git.suckless.org/smdev
+release=1
 
 build_system () {
 	cp -rav $CERD/smdev/smdev $TMPD/system/sources

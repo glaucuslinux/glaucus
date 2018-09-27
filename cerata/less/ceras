@@ -1,5 +1,6 @@
 version=538
 url=http://www.greenwoodsoftware.com/less/less-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/less/less-$version.tar.gz -C $TMPD/system/sources

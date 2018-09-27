@@ -1,5 +1,6 @@
 version=1.14.4
 url=http://mandoc.bsd.lv/snapshots/mandoc-$version.tar.gz
+release=1
 
 build_system () {
 	tar xfv $CERD/mandoc/mandoc-$version.tar.gz -C $TMPD/system/sources

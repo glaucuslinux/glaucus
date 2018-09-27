@@ -1,5 +1,6 @@
 version=git
 url=git://git.suckless.org/sbase
+release=1
 
 build_system () {
 	cp -rav $CERD/sbase/sbase $TMPD/system/sources

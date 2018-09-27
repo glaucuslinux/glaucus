@@ -1,5 +1,6 @@
 version=20180609
 url=ftp://ftp.invisible-island.net/byacc/byacc-$version.tgz
+release=1
 
 build_system () {
 	tar xfv $CERD/byacc/byacc-$version.tgz -C $TMPD/system/sources

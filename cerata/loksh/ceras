@@ -1,5 +1,6 @@
 version=git
 url=https://github.com/dimkr/loksh
+release=1
 
 build_system () {
 	cp -rav $CERD/loksh/loksh $TMPD/system/sources

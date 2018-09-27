@@ -5,6 +5,7 @@ mkdir /home/glaucus/cerata/$1
 cat > /home/glaucus/cerata/$1/ceras << EOF
 version=$2
 url=$3
+release=1
 EOF
 
 case $2 in
