@@ -4,7 +4,7 @@ construct () {
 	for item in "$@"
 	do
 		. $CERD/$item/ceras
-		build_system
+		build
 	done
 }
 

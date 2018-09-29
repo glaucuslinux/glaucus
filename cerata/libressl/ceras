@@ -1,6 +1,14 @@
 version=2.8.1
-url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.1.tar.gz
+url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$version.tar.gz
 release=1
 
 build_system () {
+	tar xfv $CERD/libressl/libressl-$version.tar.gz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/libressl-$version
+	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
+		--disable-static
+	make
+	make DESTDIR=$GLAD install
 }

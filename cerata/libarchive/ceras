@@ -9,8 +9,12 @@ build_system () {
 	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
 		--prefix= \
 		--disable-static \
+		--disable-bsdtar \
 		--disable-acl \
+		--without-zstd \
 		--without-cng \
+		--without-nettle \
+		--without-openssl \
 		--without-xml2 \
 		--without-expat
 	make
