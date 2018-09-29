@@ -3,4 +3,13 @@ url=https://tukaani.org/xz/xz-$version.tar.xz
 release=1
 
 build_system () {
+	tar xfv $CERD/xz/xz-$version.tar.xz -C $TMPD/system/sources
+
+	cd $TMPD/system/sources/xz-$version
+	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
+		--disable-static \
+		--disable-nls
+	make
+	make DESTDIR=$GLAD install
 }

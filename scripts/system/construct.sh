@@ -13,7 +13,8 @@ construct musl
 construct sbase ubase lobase sinit smdev svc sdhcp
 construct dash loksh
 construct mawk byacc re2c
-construct zlib netbsd-curses pcre2 less mandoc
+construct zlib xz libarchive
+construct netbsd-curses pcre2 less mandoc
 construct e2fsprogs iproute2 file opendoas
 construct bin86 lilo linux
 . /home/glaucus/scripts/system/configure.sh
