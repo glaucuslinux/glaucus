@@ -1,25 +1,25 @@
+name=linux
 version=4.18.5
-url=https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz
 release=1
+description='The Linux kernel and modules'
+arch=x86_64
+url=https://cdn.kernel.org/pub/$name/kernel/v4.x/$name-$version.tar.xz
+license=GPLv2
+checksum=604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be2542c8f37c025cb3d625905d30e4c8c37267f0285aea25bbbe5aa3457040c
 
 build_toolchain () {
-	tar xfv $CERD/linux/linux-$version.tar.xz -C $TMPD/toolchain/sources
-
-	cd $TMPD/toolchain/sources/linux-$version
-
+	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
+	cd $TMPD/toolchain/sources/$name-$version
 	make mrproper
-        O=$TMPD/toolchain/builds/linux ARCH=$ARCH make headers_check
-        O=$TMPD/toolchain/builds/linux ARCH=$ARCH INSTALL_HDR_PATH=$PRFX/$TRPL make headers_install
+        O=$TMPD/toolchain/builds/$name ARCH=$ARCH make headers_check
+        O=$TMPD/toolchain/builds/$name ARCH=$ARCH INSTALL_HDR_PATH=$PRFX/$TRPL make headers_install
 }
 
-build_system () {
-	tar xfv $CERD/linux/linux-$version.tar.xz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/linux-$version
-	
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
 	make mrproper
-	cp $CERD/linux/glaucus.config .config
-	
+	cp $CERD/$name/glaucus.config .config
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- make oldconfig
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- make prepare
 	ARCH=$ARCH CROSS_COMPILE=$TRPL- make

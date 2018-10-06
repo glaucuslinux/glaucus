@@ -1,17 +1,19 @@
+name=smdev
 version=git
-url=git://git.suckless.org/smdev
 release=1
+description='Suckless mdev'
+arch=x86_64
+url=git://git.suckless.org/$name
+license=MIT
 
-build_system () {
-	cp -rav $CERD/smdev/smdev $TMPD/system/sources
-	cd $TMPD/system/sources/smdev
-
+build () {
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	sed -i -e '/PREFIX =/ cPREFIX = ' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
 		config.mk
-
 	make
 	make DESTDIR=$GLAD install
 }

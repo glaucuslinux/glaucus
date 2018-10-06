@@ -1,19 +1,19 @@
 name=byacc
-ver=20180609
-rel=1
-desc='Berkeley Yacc LALR parser generator - the best variant of the Unix Yacc LALR parser generator'
+version=20180609
+release=1
+description='Berkeley Yacc LALR parser generator is the best variant of the Unix Yacc LALR parser generator'
 arch=x86_64
 url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz
-lic=PD
-sum=45aa6de839ca23385ab832685fdaa49225dcde6a40bdb990eefde8ab1be2cfe063875072e844629ac91e9533e6e310fa0bb8a6bd01e246a1cefc67bbc3c175f9
+license=PD
+checksum=45aa6de839ca23385ab832685fdaa49225dcde6a40bdb990eefde8ab1be2cfe063875072e844629ac91e9533e6e310fa0bb8a6bd01e246a1cefc67bbc3c175f9
 
-build_system () {
+build () {
 	tar xfv $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
-	./configure --prefix=$GLAD \
+	./configure --prefix= \
 		CC=$CC \
 		CFLAGS="$CFLAGS" \
 		LDFLAGS="$LDFLAGS"
 	make
-	make install
+	make DESTDIR=$GLAD install
 }

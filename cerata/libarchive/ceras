@@ -1,11 +1,15 @@
+name=libarchive
 version=3.3.3
-url=https://www.libarchive.org/downloads/libarchive-$version.tar.gz
 release=1
+description='Multi-format archive and compression library'
+arch=x86_64
+url=https://www.$name.org/downloads/$name-$version.tar.gz
+license=BSDv3
+checksum=9d12b47d6976efa9f98e62c25d8b85fd745d4e9ca7b7e6d36bfe095dfe5c4db017d4e785d110f3758f5938dad6f1a1b009267fd7e82cb7212e93e1aea237bab7
 
-build_system () {
-	tar xfv $CERD/libarchive/libarchive-$version.tar.gz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/libarchive-$version
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
 	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
 		--prefix= \
 		--disable-static \

@@ -1,18 +1,20 @@
 name=dash
-ver=git
-rel=1
-desc='The Debian Almquist Shell is a POSIX-compliant shell derived from the NetBSD Almquist Shell'
+version=git
+release=1
+description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 arch=x86_64
 url=git://git.kernel.org/pub/scm/utils/$name/$name.git
-lic=BSD
+license=BSDv3
 
 build () {
 	cp -rav $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
 	./autogen.sh
-	./configure CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" --prefix=$GLAD --host=$TRPL --disable-static
+	AWK=$GLAD/bin/mawk CC=$CC STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix= \
+		--disable-static
 	make
-	make install-strip
+	make DESTDIR=$GLAD install-strip
 	cd $GLAD/bin
 	ln -sfv $name sh
 }

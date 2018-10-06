@@ -1,11 +1,15 @@
+name=xz
 version=5.2.4
-url=https://tukaani.org/xz/xz-$version.tar.xz
 release=1
+description='A free general-purpose data compression software with a high compression ratio'
+arch=x86_64
+url=https://tukaani.org/$name/$name-$version.tar.xz
+license='PD LGPLv2.1 GPLv2 GPLv3'
+checksum=00db7dd31a61541b1ce6946e0f21106f418dd1ac3f27cdb8682979cbc3bd777cd6dd1f04f9ba257a0a7e24041e15ca40d0dd5c130380dce62280af67a0beb97f
 
-build_system () {
-	tar xfv $CERD/xz/xz-$version.tar.xz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/xz-$version
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
 	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
 		--prefix= \
 		--disable-static \

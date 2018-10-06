@@ -1,11 +1,14 @@
+name=re2c
 version=1.1.1
-url=https://github.com/skvadrik/re2c/releases/download/$version/re2c-$version.tar.gz
 release=1
+description='Free and open-source lexer generator for C and C++'
+arch=x86_64
+url=https://github.com/skvadrik/$name/releases/download/$version/$name-$version.tar.gz
+license=PD
 
-build_system () {
-	tar xfv $CERD/re2c/re2c-$version.tar.gz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/re2c-$version
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
 	./configure --prefix=$GLAD \
 		CC=$CC \
 		CXX=$CXX \

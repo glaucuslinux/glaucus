@@ -1,16 +1,19 @@
+name=iproute2
 version=4.18.0
-url=https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
 release=1
+description='A collection of utilities for controlling TCP/IP networking and traffic control in Linux'
+arch=x86_64
+url=https://mirrors.edge.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz
+license=GPLv2
+checksum=c7c8e8e76c78faf63548da641769cf9f51811a308cd8eeec171f5f46423f116ff123033f11a554609825aba6d078c95dbbe36aa7ab23bd8d87b3a0d5100be1a9
 
-build_system () {
-	tar xfv $CERD/iproute2/iproute2-$version.tar.xz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/iproute2-$version
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
 	rm -rfv include/netinet include/linux include/ip{,6}tables{,_common}.h include/libiptc
 	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c
 	sed -i -e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
 		-e '/genl/d' Makefile
-	
 	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
 	sed -i -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
 		-e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
@@ -23,8 +26,6 @@ build_system () {
 		-e 's/HAVE_CAP:=y/HAVE_CAP:=n/g' \
 		-e '/HAVE_CAP/{n;N;d}' \
 		config.mk
-	
 	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	
 	cp ip/ip $GLAD/bin
 }

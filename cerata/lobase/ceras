@@ -1,11 +1,14 @@
+name=lobase
 version=git
-url=https://github.com/Duncaen/lobase
 release=1
+description='A port of the OpenBSD userland to Linux'
+arch=x86_64
+url=https://github.com/Duncaen/$name
+license=''
 
-build_system () {
-	cp -rav $CERD/lobase/lobase $TMPD/system/sources
-
-	cd $TMPD/system/sources/lobase
+build () {
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	sed -i -e 's/${DESTDIR}//' \
 		-e 's/$$s//' \
 		-e '10d' \

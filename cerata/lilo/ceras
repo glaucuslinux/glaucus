@@ -1,12 +1,16 @@
+name=lilo
 version=24.2
-url=https://alioth-archive.debian.org/releases/lilo/Lilo/$version/lilo-$version.tar.gz
 release=1
+description='Standard LInux boot LOader'
+arch=x86_64
+url=https://alioth-archive.debian.org/releases/$name/Lilo/$version/$name-$version.tar.gz
+license='BSDv2 GPLv2'
+checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
 
-build_system () {
-	tar xfv $CERD/lilo/lilo-$version.tar.gz -C $TMPD/system/sources
-
-	cd $TMPD/system/sources/lilo-$version
-	patch -p1 -i $CERD/lilo/patches/lilo.patch
+build () {
+	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
+	patch -p1 -i $CERD/$name/patches/$name.patch
 	sed -i "/checkit/d" Makefile
 	sed -i -e "/OPT=/ cOPT=$CFLAGS" \
 		-e "/SBIN_DIR=/ cSBIN_DIR=/bin" \
@@ -16,11 +20,9 @@ build_system () {
 		-e "/AS86=/ cAS86=$GLAD/bin/as86 -0 -a" \
 		-e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
 		src/Makefile
-		
 	make
-	cp -rav src/lilo $GLAD/bin
-
-	cat > $GLAD/etc/lilo.conf << EOF
+	cp -rav src/$name $GLAD/bin
+	cat > $GLAD/etc/$name.conf << EOF
 lba32
 boot=/dev/sda
 map=/boot/System.map

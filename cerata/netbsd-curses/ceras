@@ -1,11 +1,14 @@
+name=netbsd-curses
 version=git
-url=https://github.com/sabotage-linux/netbsd-curses
 release=1
+description="A port of NetBSD's curses library for usage on Linux systems"
+arch=x86_64
+url=https://github.com/sabotage-linux/$name
+license='BSDv3 BSDv2'
 
-build_system () {
-	cp -rav $CERD/netbsd-curses/netbsd-curses $TMPD/system/sources
-
-	cd $TMPD/system/sources/netbsd-curses
+build () {
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 cat > config.mak << EOF
 PREFIX = 
 CC = $CC

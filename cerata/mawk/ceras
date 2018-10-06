@@ -1,18 +1,21 @@
+name=mawk
 version=1.3.4-20171017
-url=ftp://ftp.invisible-island.net/mawk/mawk-1.3.4-$version.tgz
 release=1
+description='An interpreter for the AWK Programming Language faster than gawk'
+arch=x86_64
+url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz
+license=GPLv2
+checksum=4ed6ca0ecca12e7409d3d364b72dc6a2b411c61bf53fe8aa0b0cac65a3bdb941921c0b81d94f34c8ac9f4922c8c7566d347b5e6b5c74518ae3a88904f9e20f27
 
-build_system () {
-	tar xfv $CERD/mawk/mawk-$version.tgz -C $TMPD/system/sources
-	cd $TMPD/system/sources/mawk-$version
-
-	./configure --prefix=$GLAD \
+build () {
+	tar xfv $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
+	./configure --prefix= \
 		CC=$CC \
 		CFLAGS="$CFLAGS" \
 		LDFLAGS="$LDFLAGS"
-
 	make
-	make install
+	make DESTDIR=$GLAD install
 	cd $GLAD/bin
-	ln -sfv mawk awk
+	ln -sfv $name awk
 }

@@ -1,20 +1,21 @@
+name=sinit
 version=git
-url=git://git.suckless.org/sinit
 release=1
+description='Suckless init'
+arch=x86_64
+url=git://git.suckless.org/$name
+license=MIT
 
-build_system () {
-	cp -rav $CERD/sinit/sinit $TMPD/system/sources
-	cd $TMPD/system/sources/sinit
-
+build () {
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	sed -i s/-static// config.mk
-
 	sed -i -e 's#/usr/local##g' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -Wall -Wextra" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
 		-e s/-static// \
 		config.mk
-
 	make
 	make DESTDIR=$GLAD install
 }

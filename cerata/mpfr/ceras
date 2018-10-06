@@ -1,9 +1,17 @@
+name=mpfr
 version=4.0.1
-url=https://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz
 release=1
+description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
+arch=x86_64
+url=https://www.$name.org/$name-current/$name-$version.tar.xz
+license=LGPLv2.1
+checksum=137ad68bc1e33a155edc1247fcdba27f999cf48ed526773136584090ddf2cfdfc9ea79fbf74ea1943b835b4b1ff29b05087114738c6ad3b485848540f30cac4f
 
 build_toolchain () {
 	cd $TMPD/toolchain/sources/gcc-*
-	tar xfv $CERD/mpfr/mpfr-$version.tar.xz -C .
-	mv mpfr-$version mpfr
+	tar xfv $CERD/$name/$name-$version.tar.xz -C .
+	mv $name-$version $name
+}
+
+build () {
 }

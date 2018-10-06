@@ -1,9 +1,14 @@
+name=gmp
 version=6.1.2
-url=https://gmplib.org/download/gmp/gmp-$version.tar.xz
 release=1
+description='A free library for arbitrary multiprecision arithmetic, operating on signed integers, rational numbers, and floating-point numbers'
+arch=x86_64
+url=https://gmplib.org/download/$name/$name-$version.tar.xz
+license='LGPLv3 GPLv2'
+checksum=9f098281c0593b76ee174b722936952671fab1dae353ce3ed436a31fe2bc9d542eca752353f6645b7077c1f395ab4fdd355c58e08e2a801368f1375690eee2c6
 
 build_toolchain () {
 	cd $TMPD/toolchain/sources/gcc-*
-	tar xfv $CERD/gmp/gmp-$version.tar.xz -C .
-	mv gmp-$version gmp
+	tar xfv $CERD/$name/$name-$version.tar.xz -C .
+	mv $name-$version $name
 }

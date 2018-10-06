@@ -1,11 +1,14 @@
+name=sdhcp
 version=git
-url=git://git.2f30.org/sdhcp.git
 release=1
+description='Simple DHCP client'
+arch=x86_64
+url=git://git.2f30.org/$name.git
+license=MIT
 
-build_system () {
-	cp -rav $CERD/sdhcp/sdhcp $TMPD/system/sources
-	cd $TMPD/system/sources/sdhcp
-	
+build () {
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	sed -i -e 's#/usr/local##' \
 		-e "/CC        =/ cCC        = $CC" \
 		-e "/CFLAGS    =/ cCFLAGS    = $CFLAGS -Wall -Wextra -pedantic -std=c99 -D_BSD_SOURCE" \

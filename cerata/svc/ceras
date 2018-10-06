@@ -1,12 +1,14 @@
+name=svc
 version=git
-url=git://git.r-36.net/svc
 release=1
+description='Simple service scripts and examples, to be used everywhere'
+arch=x86_64
+url=git://git.r-36.net/$name
+license=MIT
 
-build_system () {
-	cp -rav $CERD/svc/svc/bin/svc $GLAD/bin
-	cp -rav $CERD/svc/svc/svc.d $GLAD/bin/svc.d
-
-	mkdir $GLAD/bin/svc.d/run
-
-	chmod 755 $GLAD/bin/svc
+build () {
+	cp -rav $CERD/$name/$name/bin/$name $GLAD/bin
+	cp -rav $CERD/$name/$name/$name.d $GLAD/bin/$name.d
+	mkdir $GLAD/bin/$name.d/run
+	chmod 755 $GLAD/bin/$name
 }
