@@ -15,7 +15,11 @@ build_toolchain () {
                 --target=$TRPL \
                 --with-sysroot=$PRFX/$TRPL \
                 --disable-nls \
-                --disable-multilib
+                --disable-multilib \
+		--disable-compressed-debug-sections \
+		--disable-werror \
+		--disable-ppl-version-check \
+		--disable-cloog-version-check
         make configure-host
         make
         make install

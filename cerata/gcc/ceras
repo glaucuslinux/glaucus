@@ -23,14 +23,20 @@ build_toolchain () {
 				--with-newlib \
 				--disable-decimal-float \
 				--disable-libgomp \
+				--disable-libmudflap \
 				--disable-libatomic \
 				--disable-libstdcxx \
+				--disable-gnu-indirect-function \
 				--disable-libsanitizer \
+				--disable-libitm \
 				--disable-libvtv \
+				--disable-libcilkrts \
 				--disable-libmpx \
 				--disable-libssp \
 				--disable-libquadmath \
 				--without-isl \
+				--without-ppl \
+				--without-cloog \
 				--disable-multilib \
 				--disable-threads \
 				--enable-languages=c \
@@ -49,8 +55,11 @@ build_toolchain () {
 				--with-native-system-header-dir=/include \
 				--disable-nls \
 				--disable-libgomp \
+				--disable-libmudflap \
 				--disable-libatomic \
 				--disable-libstdcxx-pch \
+				--disable-symvers \
+				--disable-gnu-indirect-function \
 				--disable-libsanitizer \
 				--disable-libvtv \
 				--disable-libmpx \

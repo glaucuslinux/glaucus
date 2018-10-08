@@ -4,7 +4,7 @@ release=1
 description='Free and open-source lexer generator for C and C++'
 arch=x86_64
 url=https://github.com/skvadrik/$name/releases/download/$version/$name-$version.tar.gz
-license=PD
+license='GPLv3 PD PHPv3.01'
 
 build () {
 	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources

@@ -18,11 +18,12 @@ MANPATH_DEFAULT=/share/man
 AR=$AR
 CC=$CC
 CFLAGS="$CFLAGS -I$GLAD/include"
-LDADD="-lz -L$GLAD/lib"
+LDADD="-L$GLAD/lib"
 LDFLAGS="$LDFLAGS"
 EOF
 	./configure
-	sed -i -e "/SBINDIR\t\t=/ cSBINDIR\t\t= $GLAD/bin" \
+	sed -i -e "/BINDIR\t\t=/ cBINDIR\t\t= $GLAD/bin" \
+		-e "/SBINDIR\t\t=/ cSBINDIR\t\t= $GLAD/bin" \
 		-e "/MANDIR\t\t=/ cMANDIR\t\t= $GLAD/share/man" \
 		Makefile.local
 	make

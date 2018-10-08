@@ -33,7 +33,11 @@ build () {
 		--target=$TRPL \
 		--disable-debug \
 		--disable-warnings \
-		--disable-static
+		--disable-static \
+		--without-libpam \
+		--without-audit \
+		--without-selinux \
+		--without-nscd
 	make
 	DESTDIR=$GLAD make install-libs
 }

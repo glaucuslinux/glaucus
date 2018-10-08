@@ -4,7 +4,7 @@ release=1
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 arch=x86_64
 url=git://git.kernel.org/pub/scm/utils/$name/$name.git
-license=BSDv3
+license='BSDv3 GPLv2 PD'
 
 build () {
 	cp -rav $CERD/$name/$name $TMPD/system/sources
