@@ -26,4 +26,5 @@ build_toolchain () {
 }
 
 build () {
+	:
 }

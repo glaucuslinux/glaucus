@@ -4,7 +4,7 @@ release=1
 description='Noice is Not Noice, a noicer fork... The fastest terminal file manager ever written'
 arch=x86_64
 url=https://github.com/jarun/$name
-license=BSDv2
+license='BSDv2 LGPLv2.1'
 
 build () {
 }

@@ -4,7 +4,7 @@ release=1
 description='A portable version of the OpenBSD `doas` command'
 arch=x86_64
 url=https://github.com/Duncaen/OpenDoas
-license='ISC'
+license='BSDv2 ISC'
 
 build () {
 	cp -rav $CERD/$name/$name $TMPD/system/sources

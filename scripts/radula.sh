@@ -27,5 +27,6 @@ esac
 cat >> /home/glaucus/cerata/$1/ceras << EOF
 
 build () {
+	:
 }
 EOF

@@ -66,14 +66,17 @@ build_toolchain () {
 				--disable-libssp \
 				--disable-libquadmath \
 				--without-isl \
+				--without-ppl \
+				--without-cloog \
 				--disable-multilib \
 				--enable-languages=c,c++ \
 				--with-arch=x86-64
-			make
+			make AS_FOR_TARGET="$PRFX/bin/$TRPL-as" LD_FOR_TARGET="$PRFX/bin/$TRPL-ld"
 			make install
 			;;
 	esac
 }
 
 build () {
+	:
 }
