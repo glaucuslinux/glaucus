@@ -5,7 +5,7 @@ description='The Linux kernel and modules'
 arch=x86_64
 url=https://cdn.kernel.org/pub/$name/kernel/v4.x/$name-$version.tar.xz
 license=GPLv2
-checksum=604b334ccd74b230faf21db8887e382c49d4877ec8ce8298c079001a12222a6c7be2542c8f37c025cb3d625905d30e4c8c37267f0285aea25bbbe5aa3457040c
+checksum=24fb002c0a519b4b01968c21bfd0e4cdabb3b8f6ed1adca8305703d1d01b16efa2461c16eb8ffc7b192733a9b249f73b7ffc617152cca1b0d3d141152ccff3a7
 
 build_toolchain () {
 	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
