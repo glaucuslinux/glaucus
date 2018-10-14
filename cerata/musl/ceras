@@ -4,7 +4,7 @@ release=1
 description='An implementation of the standard library functionality described in the ISO C and POSIX standards, plus common extensions, intended for use on Linux-based systems'
 arch=x86_64
 url=http://www.$name-libc.org/releases/$name-$version.tar.gz
-license=MIT
+license='BSDv2 LGPLv2.1+ MIT PD'
 checksum=d3a7a30aa375ca50d7dcfbd618581d59e1aa5378417f50a0ca5510099336fd74cc9db468e05c93dda3067abd890f6bd47af226c3446bb833adf0a5054bff2e5d
 
 build_toolchain () {
