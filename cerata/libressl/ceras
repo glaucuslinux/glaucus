@@ -4,7 +4,7 @@ release=1
 description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
 arch=x86_64
 url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/$name-$version.tar.gz
-license='Apachev1.0 BSDv4 ISC OpenSSL PD SSLeay'
+license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 checksum=57af2c7a1a8522dca25c4e6371cb44f5ab074be1aded153e6e5fca4fa0844518710f7ce834d4dd309086686c492f10fca83f4d45c084eb49607cb5861f07ac99
 
 build () {

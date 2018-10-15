@@ -15,7 +15,7 @@ construct mawk byacc re2c
 construct dash loksh
 construct zlib xz libarchive
 construct netbsd-curses pcre2 less mandoc
-construct e2fsprogs iproute2 file opendoas
+construct e2fsprogs iproute2 file opendoas libressl
 construct bin86 lilo linux
 . /home/glaucus/scripts/system/configure.sh
 
