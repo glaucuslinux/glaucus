@@ -4,7 +4,7 @@ release=1
 description='A port of the OpenBSD ksh to Linux'
 arch=x86_64
 url=https://github.com/dimkr/$name
-license=
+license=PD
 
 build () {
 	cp -rav $CERD/$name/$name $TMPD/system/sources
