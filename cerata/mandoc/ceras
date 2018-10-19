@@ -22,10 +22,14 @@ LDADD="-L$GLAD/lib"
 LDFLAGS="$LDFLAGS"
 EOF
 	./configure
-	sed -i -e "/BINDIR\t\t=/ cBINDIR\t\t= /bin" \
-		-e "/SBINDIR\t\t=/ cSBINDIR\t\t= /bin" \
-		-e "/MANDIR\t\t=/ cMANDIR\t\t= /share/man" \
+	sed -i -e 's#BINDIR\t\t= /usr/local/bin#BINDIR\t\t= /bin#' \
+		-e '10d' \
+		-e '/BIN_FROM_SBIN\t=/ cBIN_FROM_SBIN\t= bin' \
+		-e '/MANDIR\t\t=/ cMANDIR\t\t= /share/man' \
 		Makefile.local
+	sed -i -e 's#${BIN_FROM_SBIN}/##' \
+		-e 's/SBINDIR/BINDIR/' \
+		Makefile
 	make
 	make DESTDIR=$GLAD install
 }

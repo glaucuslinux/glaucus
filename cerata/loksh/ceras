@@ -9,6 +9,13 @@ license=PD
 build () {
 	cp -rav $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
-	CC="$CC" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	PREFIX=$GLAD make install
+	sed -i -e "/CC ?=/ cCC = $CC" \
+		-e "/CFLAGS ?=/ cCFLAGS = $CFLAGS -I$GLAD/include" \
+		-e "/LDFLAGS ?=/ cLDFLAGS = $LDFLAGS -L$GLAD/lib" \
+		-e '/PREFIX ?=/ cPREFIX = ' \
+		-e 's/?//' \
+		-e '28s/$/-lterminfo/' \
+		Makefile
+	make
+	make DESTDIR=$GLAD install
 }
