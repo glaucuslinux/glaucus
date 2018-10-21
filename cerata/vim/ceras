@@ -1,0 +1,26 @@
+name=vim
+version=8.1.0489
+release=1
+description=''
+arch=x86_64
+url=https://github.com/$name/$name/archive/v$version.tar.gz
+license=
+checksum=6d60f30e9d89c5ba6e96be6b38c2585b7740e27e67a3698999ce05817d7ad0475e6d0ef33a3fc8165574fc79c4816357b44f69f6288ea54c35591fb773b2710a
+
+build () {
+	tar xfv $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
+	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" ./configure \
+		--prefix= \
+		--without-x \
+		--disable-gui \
+		--disable-netbeans \
+		--disable-darwin \
+		--disable-gtktest \
+		--disable-nls \
+		--disable-gpm \
+		--disable-acl \
+		--without-local-dir
+	make
+	make DESTDIR=$GLAD install
+}
