@@ -48,7 +48,7 @@ build () {
 		--without-developer-dir \
 		--without-local-dir \
 		--without-global-runtime \
-		--with-features=tiny \
+		--with-features=normal \
 		--without-lua-prefix \
 		--without-luajit \
 		--without-plthome \
