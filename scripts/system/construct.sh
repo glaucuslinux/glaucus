@@ -16,7 +16,7 @@ construct zlib xz libarchive
 construct dash
 construct netbsd-curses loksh pcre2 less mandoc
 construct e2fsprogs iproute2 file opendoas libressl
-construct bin86 lilo linux
+construct linux bin86 lilo
 construct vim
 . /home/glaucus/scripts/system/configure.sh
 

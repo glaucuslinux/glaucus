@@ -23,5 +23,6 @@ build () {
 	make ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
 	make ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
 	make ARCH=$ARCH CROSS_COMPILE=$TRPL-
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- INSTALL_PATH=$GLAD/boot install
+	cat arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
+	cp System.map $GLAD/boot
 }
