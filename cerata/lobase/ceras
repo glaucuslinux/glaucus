@@ -21,23 +21,30 @@ build () {
 	make
 	cd ../../usr.bin/diff
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../fmt
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../patch
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../sort
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../../bin/ls
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../pax
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	install -c pax $GLAD/bin
+	cd $GLAD/bin
+	ln -sfv pax cpio
+	ln -sfv pax tar
+	cd $TMPD/system/sources/$name/bin/pax
+	install -c -m 444 cpio.1 $GLAD/share/man/man1
+	install -c -m 444 pax.1 $GLAD/share/man/man1
+	install -c -m 444 tar.1 $GLAD/share/man/man1
 	cd ../stty
 	make
-	make DESTDIR=$GLAD/bin MANDIR=$GLAD/share/man/man1 install
+	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 }
