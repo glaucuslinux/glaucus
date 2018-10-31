@@ -64,5 +64,6 @@ build () {
 		--without-gnome \
 		--without-motif-lib
 	make
+	sed -i -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" runtime/doc/Makefile
 	make DESTDIR=$GLAD install
 }
