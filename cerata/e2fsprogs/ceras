@@ -11,7 +11,7 @@ build () {
 	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	patch -p1 -i $CERD/$name/patches/$name.patch
-	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+	AWK=$GLAD/bin/mawk CC=$CC CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS" LIBS=-L$GLAD/lib ./configure \
 		--prefix= \
 		--build=$TRPL \
 		--host=$TRPL \
@@ -31,23 +31,24 @@ build () {
 		--disable-mmp \
 		--disable-resizer \
 		--enable-fsck
-	CC=$CC LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
+	make
 	cd lib/
 	for dir in blkid e2p et ext2fs uuid
 	do
 		cd $dir
+		sed -i -e "/LDCONFIG/d" Makefile
 		make DESTDIR=$GLAD install
 		cd ..
 	done
 	cd ..
-	cp e2fsck/e2fsck $GLAD/bin
-	cp misc/blkid $GLAD/bin
-	cp misc/chattr $GLAD/bin
-	cp misc/fsck $GLAD/bin
-	cp misc/lsattr $GLAD/bin
-	cp misc/mke2fs $GLAD/bin
-	cp misc/tune2fs $GLAD/bin
+	cp -v e2fsck/e2fsck $GLAD/bin
+	cp -v misc/blkid $GLAD/bin
+	cp -v misc/chattr $GLAD/bin
+	cp -v misc/fsck $GLAD/bin
+	cp -v misc/lsattr $GLAD/bin
+	cp -v misc/mke2fs $GLAD/bin
+	cp -v misc/tune2fs $GLAD/bin
 	cd $GLAD/bin
-	ln -sf e2fsck fsck.ext4
-	ln -sf mke2fs mkfs.ext4
+	ln -sfv e2fsck fsck.ext4
+	ln -sfv mke2fs mkfs.ext4
 }
