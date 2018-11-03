@@ -18,7 +18,7 @@ build_toolchain () {
                 --disable-debug \
                 --disable-warnings
         make
-        DESTDIR=$PRFX/$TRPL make install
+        make DESTDIR=$PRFX/$TRPL install
 }
 
 build () {
@@ -39,5 +39,10 @@ build () {
 		--without-selinux \
 		--without-nscd
 	make
-	DESTDIR=$GLAD make install-libs
+	make DESTDIR=$GLAD install-libs
+	$STRIP -v $GLAD/lib/Scrt1.o \
+		$GLAD/lib/crt1.o \
+		$GLAD/lib/crti.o \
+		$GLAD/lib/crtn.o \
+		$GLAD/lib/rcrt1.o
 }
