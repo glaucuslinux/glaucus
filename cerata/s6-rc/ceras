@@ -1,0 +1,12 @@
+name=s6-rc
+version=0.4.1.0
+release=1
+description=''
+arch=x86_64
+url=https://github.com/skarnet/s6-rc/archive/v0.4.1.0.tar.gz
+license=ISC
+checksum=13cbd46aac0076f5f8c3b41e7983d433dbde2e14b194c6486c3ad61503a2e91ffa1550785ee0244433e6690203fd406be81ef7c6d056de733d8425c0c757aba6
+
+build () {
+	:
+}

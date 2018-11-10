@@ -1,0 +1,12 @@
+name=s6
+version=2.7.2.1
+release=1
+description=''
+arch=x86_64
+url=https://github.com/skarnet/s6/archive/v2.7.2.1.tar.gz
+license=ISC
+checksum=bf8ed88d3954e826b0be69a85a42468c11e130ec72875d691436930ba59771040e1413137c2a197bd6a386149bf6a837e38fe66763655af61b38bcc254b065cb
+
+build () {
+	:
+}

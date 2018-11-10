@@ -1,0 +1,12 @@
+name=skalibs
+version=2.7.0.0
+release=1
+description=''
+arch=x86_64
+url=https://github.com/skarnet/skalibs/archive/v2.7.0.0.tar.gz
+license=ISC
+checksum=69c22578b97ff1e21cf492cf8ca67cd3b0ef9fd2d5e9d8b18a660f84d542dde715f3e54536b63524104492cb7c6ccbddf421c04bf63558efdc64f4eef97838aa
+
+build () {
+	:
+}

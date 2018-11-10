@@ -11,6 +11,7 @@ cerata/byacc/byacc-20180609.tgz
 cerata/curl/curl-7.61.1.tar.xz
 cerata/dash/dash/
 cerata/e2fsprogs/e2fsprogs-1.44.4.tar.xz
+cerata/execline/v2.5.0.1.tar.gz
 cerata/file/file-5.34.tar.gz
 cerata/gcc/gcc-8.2.0.tar.xz
 cerata/gmp/gmp-6.1.2.tar.xz
@@ -32,9 +33,12 @@ cerata/nnn/nnn/
 cerata/opendoas/opendoas/
 cerata/pcre2/pcre2-10.32.tar.gz
 cerata/re2c/re2c-1.1.1.tar.gz
+cerata/s6/v2.7.2.1.tar.gz
+cerata/s6-rc/v0.4.1.0.tar.gz
 cerata/sbase/sbase/
 cerata/sdhcp/sdhcp/
 cerata/sinit/sinit/
+cerata/skalibs/v2.7.0.0.tar.gz
 cerata/smdev/smdev/
 cerata/svc/svc/
 cerata/ubase/ubase/
