@@ -9,7 +9,7 @@ checksum=9f098281c0593b76ee174b722936952671fab1dae353ce3ed436a31fe2bc9d542eca752
 
 build_toolchain () {
 	cd $TMPD/toolchain/sources/gcc-*
-	tar xfv $CERD/$name/$name-$version.tar.xz -C .
+	tar xvf $CERD/$name/$name-$version.tar.xz -C .
 	mv $name-$version $name
 }
 

@@ -8,7 +8,7 @@ license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 checksum=57af2c7a1a8522dca25c4e6371cb44f5ab074be1aded153e6e5fca4fa0844518710f7ce834d4dd309086686c492f10fca83f4d45c084eb49607cb5861f07ac99
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
 		--prefix= \

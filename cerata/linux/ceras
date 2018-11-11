@@ -8,7 +8,7 @@ license=GPLv2
 checksum=24fb002c0a519b4b01968c21bfd0e4cdabb3b8f6ed1adca8305703d1d01b16efa2461c16eb8ffc7b192733a9b249f73b7ffc617152cca1b0d3d141152ccff3a7
 
 build_toolchain () {
-	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
+	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
 	cd $TMPD/toolchain/sources/$name-$version
 	make mrproper
         make O=$TMPD/toolchain/builds/$name ARCH=$ARCH headers_check
@@ -16,7 +16,7 @@ build_toolchain () {
 }
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	make mrproper
 	cp $CERD/$name/glaucus.config .config

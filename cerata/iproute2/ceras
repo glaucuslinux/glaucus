@@ -8,7 +8,7 @@ license=GPLv2
 checksum=c7c8e8e76c78faf63548da641769cf9f51811a308cd8eeec171f5f46423f116ff123033f11a554609825aba6d078c95dbbe36aa7ab23bd8d87b3a0d5100be1a9
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	rm -rfv include/netinet include/linux include/ip{,6}tables{,_common}.h include/libiptc
 	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c

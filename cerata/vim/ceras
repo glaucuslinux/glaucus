@@ -8,7 +8,7 @@ license='GPLv2+ LGPLv2.1+ MIT vim'
 checksum=6d60f30e9d89c5ba6e96be6b38c2585b7740e27e67a3698999ce05817d7ad0475e6d0ef33a3fc8165574fc79c4816357b44f69f6288ea54c35591fb773b2710a
 
 build () {
-	tar xfv $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" ./configure \
 		--prefix= \

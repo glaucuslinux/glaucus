@@ -8,7 +8,7 @@ license=BSDv3
 checksum=b0a247dc6411546f231f7588b979bc89f4c6d498a27232fb1e883d5222b9275d7b87c6afc0c67f11a453b35238dca472d14246e8bcb38df70f3701f9f3e8030f
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
 		--prefix= \

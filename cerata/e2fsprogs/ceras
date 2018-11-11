@@ -8,7 +8,7 @@ license='BSDv3 GPLv2 LGPLv2 MIT'
 checksum=52e39565dee30997b9c245b5d8791844067a903a570082f3a5ff9d9ef96624535322617bb21029056c88259fef46416eb1181bd7aec419e64fc021830887ec8f
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	patch -p1 -i $CERD/$name/patches/$name.patch
 	AWK=$GLAD/bin/mawk CC=$CC CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS" LIBS=-L$GLAD/lib ./configure \

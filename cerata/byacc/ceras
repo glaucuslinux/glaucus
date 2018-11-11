@@ -8,7 +8,7 @@ license=PD
 checksum=45aa6de839ca23385ab832685fdaa49225dcde6a40bdb990eefde8ab1be2cfe063875072e844629ac91e9533e6e310fa0bb8a6bd01e246a1cefc67bbc3c175f9
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	./configure --prefix= \
 		CC=$CC \

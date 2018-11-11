@@ -8,7 +8,7 @@ license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
 checksum=57849f8496fd356a66e5559804fdd907059dc2e2f75ede470a25c65b1c499481aad3d7978454b15a15e94c07c9d6795864e8705304a2281dacf1c4e31501bed8
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix= --disable-libseccomp
 	make

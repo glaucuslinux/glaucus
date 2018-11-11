@@ -8,7 +8,7 @@ license=GPLv2
 checksum=4ed6ca0ecca12e7409d3d364b72dc6a2b411c61bf53fe8aa0b0cac65a3bdb941921c0b81d94f34c8ac9f4922c8c7566d347b5e6b5c74518ae3a88904f9e20f27
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tgz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	./configure --prefix= \
 		CC=$CC \

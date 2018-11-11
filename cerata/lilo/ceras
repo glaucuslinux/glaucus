@@ -8,7 +8,7 @@ license='BSDv3 GPLv2 LGPLv2.1'
 checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	patch -p1 -i $CERD/$name/patches/$name.patch
 	sed -i "/checkit/d" Makefile

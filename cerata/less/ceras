@@ -8,7 +8,7 @@ license='BSDv2 GPLv3'
 checksum=55012727f855de1c5e451dead0533e0d8505c0c829ff4f624bfadee998278ca372f201e1f58c23f09e0c4a2d424a17fcce6d3ebb18dd1c3bb757f5ccd8aaa330
 
 build () {
-	tar xfv $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	CC=$CC AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" ./configure \
 		--prefix= \
