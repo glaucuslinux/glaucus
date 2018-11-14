@@ -1,10 +1,11 @@
 name=nnn
 version=git
 release=1
-description='Noice is Not Noice, a noicer fork... The fastest terminal file manager ever written'
+description=''
 arch=x86_64
-url=https://github.com/jarun/$name
-license='BSDv2 LGPLv2.1'
+url=https://github.com/jarun/nnn
+license=
 
 build () {
+	:
 }

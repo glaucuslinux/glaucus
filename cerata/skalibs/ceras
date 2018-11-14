@@ -8,9 +8,9 @@ license=ISC
 checksum=69c22578b97ff1e21cf492cf8ca67cd3b0ef9fd2d5e9d8b18a660f84d542dde715f3e54536b63524104492cb7c6ccbddf421c04bf63558efdc64f4eef97838aa
 
 build () {
-	tar xvf $CERD/$name/$name-$version -C $TMPD/system/sources
+	tar xvf $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
-	AR=$AR CC=$CC RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+	AR=$AR CC=$CC RANLIB=$RANLIB STRIP=$STRIP LDFLAGS="$LDFLAGS" ./configure \
 		--prefix=/ \
 		--disable-static
 	sed -i -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" config.mak
