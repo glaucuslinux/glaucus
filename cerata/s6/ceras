@@ -8,5 +8,18 @@ license=ISC
 checksum=bf8ed88d3954e826b0be69a85a42468c11e130ec72875d691436930ba59771040e1413137c2a197bd6a386149bf6a837e38fe66763655af61b38bcc254b065cb
 
 build () {
-	:
+	tar xvf $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
+	cd $TMPD/system/sources/$name-$version
+	AR=$AR CC=$CC RANLIB=$RANLIB STRIP=$STRIP LDFLAGS="$LDFLAGS" ./configure \
+		--prefix=/ \
+		--libexecdir=/lib/libexec \
+		--with-sysdeps=$GLAD/lib/skalibs/sysdeps \
+		--with-include=$GLAD/include \
+		--with-dynlib=$GLAD/lib \
+		--enable-shared \
+		--disable-static \
+		--disable-allstatic
+	sed -i -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" config.mak
+	make
+	make DESTDIR=$GLAD install
 }
