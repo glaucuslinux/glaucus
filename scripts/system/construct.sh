@@ -18,7 +18,7 @@ construct netbsd-curses loksh pcre2 less mandoc
 construct e2fsprogs iproute2 file opendoas libressl
 construct linux bin86 lilo
 construct vim
-construct skalibs execline s6
+#construct skalibs execline s6
 . /home/glaucus/scripts/system/configure.sh
 
 # . /home/glaucus/scripts/system/img.sh

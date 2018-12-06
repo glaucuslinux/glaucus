@@ -1,11 +1,11 @@
 name=less
-version=538
+version=546
 release=1
 description='A free, open-source and text-based terminal file pager'
 arch=x86_64
 url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
 license='BSDv2 GPLv3'
-checksum=55012727f855de1c5e451dead0533e0d8505c0c829ff4f624bfadee998278ca372f201e1f58c23f09e0c4a2d424a17fcce6d3ebb18dd1c3bb757f5ccd8aaa330
+checksum=bdfb1501b65d7f17b09293b00f04dd3ea3f5edebf981d9530a12bdfb9a95676823328e2eb42e45b2d924f09883e1632d09fefb564645b6029e2f2dade6bb7654
 
 build () {
 	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources

@@ -1,16 +1,16 @@
 name=zlib
-version=1.2.11
+version=git
 release=1
 description='A Massively Spiffy Yet Delicately Unobtrusive Compression Library'
 arch=x86_64
-url=https://$name.net/$name-$version.tar.xz
+url=https://github.com/madler/$name
 license='BSLv1.0 ZLIB'
-checksum=b7f50ada138c7f93eb7eb1631efccd1d9f03a5e77b6c13c8b757017b2d462e19d2d3e01c50fad60a4ae1bc86d431f6f94c72c11ff410c25121e571953017cb67
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	mkdir -v $TMPD/system/builds/$name
+	cd $TMPD/system/builds/$name
+	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name/configure \
 		--prefix= \
 		--shared
 	make

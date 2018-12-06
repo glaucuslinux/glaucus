@@ -16,5 +16,5 @@ build () {
 	make
 	make DESTDIR=$GLAD install-strip
 	cd $GLAD/bin
-	ln -sfv $name sh
+	ln -fsv $name sh
 }

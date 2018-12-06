@@ -1,16 +1,16 @@
 name=vim
-version=8.1.0489
+version=git
 release=1
 description=''
 arch=x86_64
-url=https://github.com/$name/$name/archive/v$version.tar.gz
+url=https://github.com/$name/$name
 license='GPLv2+ LGPLv2.1+ MIT vim'
-checksum=6d60f30e9d89c5ba6e96be6b38c2585b7740e27e67a3698999ce05817d7ad0475e6d0ef33a3fc8165574fc79c4816357b44f69f6288ea54c35591fb773b2710a
 
 build () {
-	tar xvf $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" ./configure \
+	cp -rav $CERD/$name/$name $TMPD/system/sources
+	mkdir $TMPD/system/builds/$name
+	cd $TMPD/system/builds/$name
+	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" $TMPD/system/sources/$name/configure \
 		--prefix= \
 		--disable-darwin \
 		--disable-smack \

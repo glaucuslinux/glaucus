@@ -1,15 +1,14 @@
 name=e2fsprogs
-version=1.44.4
+version=git
 release=1
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 arch=x86_64
-url=https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/$name/v$version/$name-$version.tar.xz
+url=git://git.kernel.org/pub/scm/fs/ext2/$name.git
 license='BSDv3 GPLv2 LGPLv2 MIT'
-checksum=52e39565dee30997b9c245b5d8791844067a903a570082f3a5ff9d9ef96624535322617bb21029056c88259fef46416eb1181bd7aec419e64fc021830887ec8f
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	patch -p1 -i $CERD/$name/patches/$name.patch
 	AWK=$GLAD/bin/mawk CC=$CC CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS" LIBS=-L$GLAD/lib ./configure \
 		--prefix= \
@@ -49,6 +48,6 @@ build () {
 	cp -v misc/mke2fs $GLAD/bin
 	cp -v misc/tune2fs $GLAD/bin
 	cd $GLAD/bin
-	ln -sfv e2fsck fsck.ext4
-	ln -sfv mke2fs mkfs.ext4
+	ln -fsv e2fsck fsck.ext4
+	ln -fsv mke2fs mkfs.ext4
 }

@@ -1,18 +1,17 @@
 name=musl
-version=1.1.20
+version=git
 release=1
 description='An implementation of the standard library functionality described in the ISO C and POSIX standards, plus common extensions, intended for use on Linux-based systems'
 arch=x86_64
-url=http://www.$name-libc.org/releases/$name-$version.tar.gz
+url=git://git.musl-libc.org/musl
 license='BSDv2 LGPLv2.1+ MIT PD'
-checksum=d3a7a30aa375ca50d7dcfbd618581d59e1aa5378417f50a0ca5510099336fd74cc9db468e05c93dda3067abd890f6bd47af226c3446bb833adf0a5054bff2e5d
 
 build_toolchain () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/toolchain/sources
+	cp -rav $CERD/$name/$name $TMPD/toolchain/sources
 	cd $TMPD/toolchain/builds/$name
-	$TMPD/toolchain/sources/$name-$version/configure \
-                CC=$TRPL-gcc \
-                CROSS_COMPILE=$TRPL- \
+	$TMPD/toolchain/sources/$name/configure \
+		CC=$TRPL-gcc \
+		CROSS_COMPILE=$TRPL- \
                 --prefix=/ \
                 --target=$TRPL \
                 --disable-debug \
@@ -22,10 +21,10 @@ build_toolchain () {
 }
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	cp -rav $CERD/$name/$name $TMPD/system/sources
 	mkdir $TMPD/system/builds/$name
 	cd $TMPD/system/builds/$name
-	$TMPD/system/sources/$name-$version/configure \
+	$TMPD/system/sources/$name/configure \
 		CFLAGS="$CFLAGS" \
 		LDFLAGS="$LDFLAGS" \
 		CROSS_COMPILE=$TRPL- \

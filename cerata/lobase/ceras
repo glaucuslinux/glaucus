@@ -3,7 +3,7 @@ version=git
 release=1
 description='A port of the OpenBSD userland to Linux'
 arch=x86_64
-url=https://github.com/Duncaen/$name
+url=https://github.com/Duncaen/$name.git/
 license='ISC PD'
 
 build () {
@@ -38,8 +38,8 @@ build () {
 	make
 	install -c pax $GLAD/bin
 	cd $GLAD/bin
-	ln -sfv pax cpio
-	ln -sfv pax tar
+	ln -fsv pax cpio
+	ln -fsv pax tar
 	cd $TMPD/system/sources/$name/bin/pax
 	install -c -m 444 cpio.1 $GLAD/share/man/man1
 	install -c -m 444 pax.1 $GLAD/share/man/man1

@@ -1,11 +1,11 @@
 name=linux
-version=4.18.13
+version=4.19.5
 release=1
 description='The Linux kernel and modules'
 arch=x86_64
 url=https://cdn.kernel.org/pub/$name/kernel/v4.x/$name-$version.tar.xz
 license=GPLv2
-checksum=24fb002c0a519b4b01968c21bfd0e4cdabb3b8f6ed1adca8305703d1d01b16efa2461c16eb8ffc7b192733a9b249f73b7ffc617152cca1b0d3d141152ccff3a7
+checksum=ee460800a071aeae966078d3e7dc525e1e8e9cbb406fe878438c55da4ea42d10f50c0ebfcf3ee4c792f3cc984ee8d8d3acdb8ca6bc11536fa6a4391de58643fb
 
 build_toolchain () {
 	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources

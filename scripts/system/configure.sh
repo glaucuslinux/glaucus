@@ -55,7 +55,7 @@ cd - 1>/dev/null
 /bin/ip link set lo up
 
 export TZ="Asia/Damascus"
-/bin/hwclock -s -u /dev/rtc0
+/bin/hwclock -s /dev/rtc0
 unset TZ
 
 [ -f /etc/random-seed ] && /bin/cat /etc/random-seed >/dev/urandom
@@ -76,7 +76,7 @@ umask 022
 /bin/stty onlcr
 
 export TZ="Asia/Damascus"
-/bin/hwclock -u -w /dev/rtc0
+/bin/hwclock -w /dev/rtc0
 unset TZ
 
 /bin/dd if=/dev/urandom of=/etc/random-seed count=1 bs=512 2>/dev/null
@@ -117,8 +117,11 @@ EOF
 cd $GLAD/bin
 chmod 755 rc.init rc.shutdown poweroff reboot
 
-cat > $GLAD/etc/profile << EOF
+cat > $GLAD/etc/profile << 'EOF'
 export PS1="[\033[0;44m\u@\h\033[0m:\033[1m\w\033[0m]$ "
+
+export HISTFILE=$HOME/.ksh_history
+
 export PAGER=/bin/less
 
 alias ls='ls -F'

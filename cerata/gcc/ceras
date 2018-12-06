@@ -71,7 +71,7 @@ build_toolchain () {
 				--disable-multilib \
 				--enable-languages=c,c++ \
 				--with-arch=x86-64
-			make AS_FOR_TARGET="$PRFX/bin/$TRPL-as" LD_FOR_TARGET="$PRFX/bin/$TRPL-ld"
+			make AS_FOR_TARGET="$TRPL-as" LD_FOR_TARGET="$TRPL-ld"
 			make install
 			;;
 	esac

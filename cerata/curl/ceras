@@ -1,11 +1,10 @@
 name=curl
-version=7.61.1
+version=git
 release=1
 description=''
 arch=x86_64
-url=https://curl.haxx.se/download/curl-7.61.1.tar.xz
+url=https://github.com/$name/$name
 license=MIT
-checksum=e6f82a7292c70841162480c8880d25046bcfa64058f4ff76f7d398c85da569af1c244442c9c58a3478d59264365ff8e39eed2fb564cb137118588f7862e64e9a
 
 build () {
 }

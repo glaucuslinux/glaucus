@@ -1,16 +1,16 @@
 name=file
-version=5.34
+version=git
 release=1
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 arch=x86_64
-url=ftp://ftp.astron.com/pub/$name/$name-$version.tar.gz
+url=https://github.com/$name/$name
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
-checksum=57849f8496fd356a66e5559804fdd907059dc2e2f75ede470a25c65b1c499481aad3d7978454b15a15e94c07c9d6795864e8705304a2281dacf1c4e31501bed8
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix= --disable-libseccomp
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	mkdir -v $TMPD/system/builds/$name
+	cd $TMPD/system/builds/$name
+	CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name/configure --prefix= --disable-libseccomp
 	make
 	make DESTDIR=$GLAD install
 }

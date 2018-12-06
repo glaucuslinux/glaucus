@@ -1,21 +1,22 @@
 name=iproute2
-version=4.18.0
+version=git
 release=1
 description='A collection of utilities for controlling TCP/IP networking and traffic control in Linux'
 arch=x86_64
-url=https://mirrors.edge.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz
+url=git://git.kernel.org/pub/scm/network/$name/$name.git
 license=GPLv2
-checksum=c7c8e8e76c78faf63548da641769cf9f51811a308cd8eeec171f5f46423f116ff123033f11a554609825aba6d078c95dbbe36aa7ab23bd8d87b3a0d5100be1a9
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	rm -rfv include/netinet include/linux include/ip{,6}tables{,_common}.h include/libiptc
-	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c
-	sed -i -e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
-		-e '/genl/d' Makefile
-	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
-	sed -i -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
+	rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet
+	sed -e 's:TCPI_OPT_ECN_SEEN:16:' \
+		-i misc/ss.c
+	sed -e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
+		-e '/genl/d' \
+		-i Makefile
+	AR=$AR CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
+	sed -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
 		-e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
 		-e '/IPSET/{n;d}' \
 		-e 's/IP_CONFIG_SETNS:=y/IP_CONFIG_SETNS:=n/g' \
@@ -25,7 +26,7 @@ build () {
 		-e '/HAVE_MNL/{n;N;d}' \
 		-e 's/HAVE_CAP:=y/HAVE_CAP:=n/g' \
 		-e '/HAVE_CAP/{n;N;d}' \
-		config.mk
-	CC=$CC AR=$AR LD=$LD CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
+		-i config.mk
+	AR=$AR CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
 	cp ip/ip $GLAD/bin
 }

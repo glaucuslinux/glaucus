@@ -1,7 +1,7 @@
 name=bin86
 version=0.16.21
 release=1
-description='A complete cross-development C assembler and linker which can generate 16 or 32-bit code for the production of 8086 executables'
+description='A simple complete cross-development C assembler and linker which can generate 16 or 32-bit code for the production of 8086 - 80386 executables'
 arch=x86_64
 url=http://v3.sk/~lkundrak/dev86/$name-$version.tar.gz
 license=GPLv2+
@@ -11,7 +11,8 @@ build () {
 	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
 	cd $TMPD/system/sources/$name-$version
 	patch -p0 -i $CERD/$name/patches/$name.diff
-	sed -i '9d;11d;12d;13d' Makefile
+	sed -e '9d;11d;12d;13d' \
+		-i Makefile
 	make CC=$CC CFLAGS="$CFLAGS -D_POSIX_SOURCE" LDFLAGS="$LDFLAGS"
 	make PREFIX=$GLAD install
 }

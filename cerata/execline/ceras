@@ -1,15 +1,14 @@
 name=execline
-version=2.5.0.1
+version=git
 release=1
 description=''
 arch=x86_64
-url=https://github.com/skarnet/$name/archive/v$version.tar.gz
+url=git://git.skarnet.org/$name
 license=ISC
-checksum=cea9b3a164873d50ada712c1f9f6d90467d99c970a43d0dbf59be04e7562f7602f70c015a618d809b74881dc2449ef2e48e611f58dade728ec05893cac477b65
 
 build () {
-	tar xvf $CERD/$name/v$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
 	AR=$AR CC=$CC RANLIB=$RANLIB STRIP=$STRIP LDFLAGS="$LDFLAGS" ./configure \
 		--prefix=/ \
 		--with-sysdeps=$GLAD/lib/skalibs/sysdeps \
