@@ -7,10 +7,9 @@ url=https://github.com/$name/$name
 license='GPLv2+ LGPLv2.1+ MIT vim'
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
-	mkdir $TMPD/system/builds/$name
-	cd $TMPD/system/builds/$name
-	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" $TMPD/system/sources/$name/configure \
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
+	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" ./configure \
 		--prefix= \
 		--disable-darwin \
 		--disable-smack \
@@ -64,6 +63,7 @@ build () {
 		--without-gnome \
 		--without-motif-lib
 	make
-	sed -i -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" runtime/doc/Makefile
+	sed -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" \
+		-i runtime/doc/Makefile
 	make DESTDIR=$GLAD install
 }

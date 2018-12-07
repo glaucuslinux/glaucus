@@ -20,9 +20,10 @@ build () {
 	cd $TMPD/system/sources/$name-$version
 	make mrproper
 	cp $CERD/$name/glaucus.config .config
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
-	make ARCH=$ARCH CROSS_COMPILE=$TRPL-
-	cat arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
-	cp System.map $GLAD/boot
+	mkdir -v $TMPD/system/builds/$name
+	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
+	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
+	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL-
+	cat $TMPD/system/builds/$name/arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
+	cp -av $TMPD/system/builds/$name/System.map $GLAD/boot
 }

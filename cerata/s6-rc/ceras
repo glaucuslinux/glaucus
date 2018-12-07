@@ -3,7 +3,7 @@ version=git
 release=1
 description=''
 arch=x86_64
-url=git://git.skarnet.org/s6-rc
+url=git://git.skarnet.org/$name
 license=ISC
 
 build () {

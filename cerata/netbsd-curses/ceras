@@ -7,7 +7,7 @@ url=https://github.com/sabotage-linux/$name
 license='BSDv3 BSDv2'
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
 cat > config.mak << EOF
 PREFIX = 

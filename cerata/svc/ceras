@@ -7,8 +7,8 @@ url=git://git.r-36.net/$name
 license=MIT
 
 build () {
-	cp -rav $CERD/$name/$name/bin/$name $GLAD/bin
-	cp -rav $CERD/$name/$name/$name.d $GLAD/bin/$name.d
-	mkdir $GLAD/bin/$name.d/run
-	chmod 755 $GLAD/bin/$name
+	cp -arv $CERD/$name/$name/bin/$name $GLAD/bin
+	cp -arv $CERD/$name/$name/$name.d $GLAD/bin/$name.d
+	mkdir -v $GLAD/bin/$name.d/run
+	chmod -v 755 $GLAD/bin/$name
 }

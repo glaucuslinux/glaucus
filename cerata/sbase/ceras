@@ -7,15 +7,15 @@ url=git://git.suckless.org/$name
 license=MIT
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
-	sed -i -e 's#/usr/local##' \
+	sed -e 's#/usr/local##' \
 		-e "/CC =/ cCC = $CC" \
 		-e "/AR =/ cAR = $AR" \
 		-e "/RANLIB =/ cRANLIB = $RANLIB" \
 		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
 		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
-		config.mk
+		-i config.mk
 	make
 	make DESTDIR=$GLAD install
 }

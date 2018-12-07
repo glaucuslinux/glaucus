@@ -7,7 +7,7 @@ url=https://github.com/Duncaen/$name.git/
 license='ISC PD'
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
 	sed -i -e 's/${DESTDIR}//' \
 		-e 's/$$s//' \
@@ -36,14 +36,14 @@ build () {
 	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install
 	cd ../pax
 	make
-	install -c pax $GLAD/bin
+	install -v pax $GLAD/bin
 	cd $GLAD/bin
 	ln -fsv pax cpio
 	ln -fsv pax tar
 	cd $TMPD/system/sources/$name/bin/pax
-	install -c -m 444 cpio.1 $GLAD/share/man/man1
-	install -c -m 444 pax.1 $GLAD/share/man/man1
-	install -c -m 444 tar.1 $GLAD/share/man/man1
+	install -mv 444 cpio.1 $GLAD/share/man/man1
+	install -mv 444 pax.1 $GLAD/share/man/man1
+	install -mv 444 tar.1 $GLAD/share/man/man1
 	cd ../stty
 	make
 	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install

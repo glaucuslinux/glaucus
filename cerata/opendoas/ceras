@@ -7,12 +7,15 @@ url=https://github.com/Duncaen/OpenDoas
 license='BSDv2 ISC'
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
-	sed -i 's/-Werror //' Makefile
+	sed -e 's/-Werror //' \
+		-i Makefile
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
-	sed -i 's#/usr##' config.mk
-	sed -i 's/root/glaucus/' Makefile
+	sed -e 's#/usr##' \
+		-i config.mk
+	sed -e 's/root/glaucus/' \
+		-i Makefile
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
 	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
 }

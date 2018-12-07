@@ -16,6 +16,9 @@ case $2 in
 	git)
 		git clone $3 /home/glaucus/cerata/$1/$1
 		;;
+	svn)
+		svn co $3 /home/glaucus/cerata/$1/$1
+		;;
 	*)
 		curl $3 -o /home/glaucus/cerata/$1
 cat >> /home/glaucus/cerata/$1/ceras << EOF

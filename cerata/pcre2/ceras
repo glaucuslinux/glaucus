@@ -8,8 +8,9 @@ license=BSDv3
 
 build () {
 	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+	mkdir -v $TMPD/system/builds/$name
+	cd $TMPD/system/builds/$name
+	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name-$version/configure \
 		--prefix= \
 		--disable-static \
 		--enable-jit

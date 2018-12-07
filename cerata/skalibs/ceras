@@ -3,16 +3,17 @@ version=git
 release=1
 description=''
 arch=x86_64
-url=git://git.skarnet.org/skalibs
+url=git://git.skarnet.org/$name
 license=ISC
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
 	AR=$AR CC=$CC RANLIB=$RANLIB STRIP=$STRIP LDFLAGS="$LDFLAGS" ./configure \
 		--prefix=/ \
 		--disable-static
-	sed -i -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" config.mak
+	sed -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" \
+		-i config.mak
 	make
 	make DESTDIR=$GLAD install
 }

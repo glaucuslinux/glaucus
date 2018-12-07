@@ -7,7 +7,7 @@ url=git://git.musl-libc.org/musl
 license='BSDv2 LGPLv2.1+ MIT PD'
 
 build_toolchain () {
-	cp -rav $CERD/$name/$name $TMPD/toolchain/sources
+	cp -arv $CERD/$name/$name $TMPD/toolchain/sources
 	cd $TMPD/toolchain/builds/$name
 	$TMPD/toolchain/sources/$name/configure \
 		CC=$TRPL-gcc \
@@ -21,8 +21,8 @@ build_toolchain () {
 }
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
-	mkdir $TMPD/system/builds/$name
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	mkdir -v $TMPD/system/builds/$name
 	cd $TMPD/system/builds/$name
 	$TMPD/system/sources/$name/configure \
 		CFLAGS="$CFLAGS" \

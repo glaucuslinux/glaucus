@@ -3,8 +3,8 @@ version=git
 release=1
 description=''
 arch=x86_64
-url=https://github.com/jarun/nnn
-license=
+url=https://github.com/jarun/$name
+license=BSDv2
 
 build () {
 	:
