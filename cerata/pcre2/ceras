@@ -3,14 +3,16 @@ version=svn
 release=1
 description='The 2nd version of the Perl 5 Compatible Regular Expressions library'
 arch=x86_64
-url=svn://vcs.exim.org/pcre2/code/trunk
+url=svn://vcs.exim.org/$name/code/trunk
 license=BSDv3
 
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cd $TMPD/system/sources/$name
+	autoreconf -vfi
 	mkdir -v $TMPD/system/builds/$name
 	cd $TMPD/system/builds/$name
-	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name-$version/configure \
+	AR=$AR AS=$AS CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP AWK=$GLAD/bin/mawk CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name/configure \
 		--prefix= \
 		--disable-static \
 		--enable-jit

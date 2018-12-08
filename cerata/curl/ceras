@@ -7,4 +7,5 @@ url=https://github.com/$name/$name
 license=MIT
 
 build () {
+	:
 }

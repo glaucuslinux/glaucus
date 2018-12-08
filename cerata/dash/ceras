@@ -7,7 +7,7 @@ url=git://git.kernel.org/pub/scm/utils/$name/$name.git
 license='BSDv3 GPLv2 PD'
 
 build () {
-	cp -rav $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
 	./autogen.sh
 	AWK=$GLAD/bin/mawk CC=$CC STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \

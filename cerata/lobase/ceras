@@ -13,7 +13,7 @@ build () {
 		-e 's/$$s//' \
 		-e '10d' \
 		mk/bsd.man.mk
-	autoreconf -fi
+	autoreconf -vfi
 	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=
 	cd lib/libopenbsd
 	make
@@ -41,9 +41,9 @@ build () {
 	ln -fsv pax cpio
 	ln -fsv pax tar
 	cd $TMPD/system/sources/$name/bin/pax
-	install -mv 444 cpio.1 $GLAD/share/man/man1
-	install -mv 444 pax.1 $GLAD/share/man/man1
-	install -mv 444 tar.1 $GLAD/share/man/man1
+	install -vm 444 cpio.1 $GLAD/share/man/man1
+	install -vm 444 pax.1 $GLAD/share/man/man1
+	install -vm 444 tar.1 $GLAD/share/man/man1
 	cd ../stty
 	make
 	make DESTDIR=$GLAD BINDIR=/bin MANDIR=$GLAD/share/man/man1 install

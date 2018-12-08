@@ -7,7 +7,7 @@ url=https://github.com/Duncaen/OpenDoas
 license='BSDv2 ISC'
 
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
+	cp -arv $CERD/$name/OpenDoas $TMPD/system/sources/$name
 	cd $TMPD/system/sources/$name
 	sed -e 's/-Werror //' \
 		-i Makefile

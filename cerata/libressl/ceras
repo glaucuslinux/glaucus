@@ -8,6 +8,8 @@ license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 
 build () {
 	cp -arv $CERD/$name/portable $TMPD/system/sources/$name
+	cd $TMPD/system/sources/$name
+	./autogen.sh
 	mkdir $TMPD/system/builds/$name
 	cd $TMPD/system/builds/$name
 	AR=$AR AS=$AS AWK=$GLAD/bin/mawk CC=$CC OBJDUMP=$OBJDUMP RANLIB=$RANLIB STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $TMPD/system/sources/$name/configure \
