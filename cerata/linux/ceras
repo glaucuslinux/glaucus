@@ -17,10 +17,10 @@ build_toolchain () {
 
 build () {
 	tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
+	mkdir -v $TMPD/system/builds/$name
+	cp -av $CERD/$name/glaucus.config $TMPD/system/builds/$name/.config
 	cd $TMPD/system/sources/$name-$version
 	make mrproper
-	cp $CERD/$name/glaucus.config .config
-	mkdir -v $TMPD/system/builds/$name
 	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL- oldconfig
 	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL- prepare
 	make O=$TMPD/system/builds/$name ARCH=$ARCH CROSS_COMPILE=$TRPL-

@@ -13,4 +13,4 @@ while true; do
 done
 
 mkdir /home/glaucus/logs/system/$file
-sh /home/glaucus/scripts/system/construct.sh 2> /home/glaucus/logs/system/$file/stderr.log > /home/glaucus/logs/system/$file/stdout.log
+(sh /home/glaucus/scripts/system/construct.sh | tee /home/glaucus/logs/system/$file/stdout.log) 3>&1 1>&2 2>&3 | tee /home/glaucus/logs/system/$file/stderr.log

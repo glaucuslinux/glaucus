@@ -7,13 +7,13 @@ url=https://github.com/ThomasDickey/$name-snapshots
 license=GPLv2
 
 build () {
-	cp -arv $CERD/$name/$name-snapshots $TMPD/system/sources/$name
 	mkdir -v $TMPD/system/builds/$name
 	cd $TMPD/system/builds/$name
-	$TMPD/system/sources/$name/configure --prefix= \
+	$CERD/$name/$name-snapshots/configure --prefix= \
 		CC=$CC \
 		CFLAGS="$CFLAGS" \
 		LDFLAGS="$LDFLAGS"
+	cp -arv $CERD/$name/$name-snapshots/man $TMPD/system/builds/$name
 	make
 	make DESTDIR=$GLAD install
 	cd $GLAD/bin
