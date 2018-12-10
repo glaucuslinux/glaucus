@@ -13,7 +13,7 @@ build () {
 	sed -e 's:TCPI_OPT_ECN_SEEN:16:' \
 		-i misc/ss.c
 	sed -e '/ARPD/d' \
-		-e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
+		-e '/^SUBDIRS=/s:=.*:=lib ip:' \
 		-e '/genl/d' \
 		-i Makefile
 	sed -e 's/.m_ipt.o//' \

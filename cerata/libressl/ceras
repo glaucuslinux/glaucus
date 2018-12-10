@@ -8,6 +8,7 @@ license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 
 build () {
 	cp -arv $CERD/$name/portable $TMPD/system/sources/$name
+	cp -arv $CERD/$name/openbsd $TMPD/system/sources/$name
 	cd $TMPD/system/sources/$name
 	./autogen.sh
 	mkdir -v $TMPD/system/builds/$name
