@@ -9,12 +9,15 @@ license=GPLv2
 build () {
 	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
-	rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet
+	rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet man/man8/arpd.8
 	sed -e 's:TCPI_OPT_ECN_SEEN:16:' \
 		-i misc/ss.c
-	sed -e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
+	sed -e '/ARPD/d' \
+		-e '/^SUBDIRS=/s:=.*:=lib tc ip:' \
 		-e '/genl/d' \
 		-i Makefile
+	sed -e 's/.m_ipt.o//' \
+		-i tc/Makefile
 	AR=$AR CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
 	sed -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
 		-e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
@@ -28,5 +31,5 @@ build () {
 		-e '/HAVE_CAP/{n;N;d}' \
 		-i config.mk
 	AR=$AR CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	cp ip/ip $GLAD/bin
+	cp -av ip/ip $GLAD/bin
 }

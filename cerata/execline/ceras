@@ -17,7 +17,8 @@ build () {
 		--enable-shared \
 		--disable-static \
 		--disable-allstatic
-	sed -i -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" config.mak
+	sed -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" \
+		-i config.mak
 	make
 	make DESTDIR=$GLAD install
 }

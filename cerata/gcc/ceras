@@ -13,8 +13,8 @@ build_toolchain () {
 			cd $TMPD/toolchain/builds/$1
 			$TMPD/toolchain/sources/$name-$version/configure \
 				--prefix=$PRFX \
-				--build=$ARCH-linux-gnu \
-				--host=$ARCH-linux-gnu \
+				--build=$ARCH-pc-linux-gnu \
+				--host=$ARCH-pc-linux-gnu \
 				--target=$TRPL \
 				--with-sysroot=$PRFX/$TRPL \
 				--disable-nls \
@@ -48,8 +48,8 @@ build_toolchain () {
 			cd $TMPD/toolchain/builds/$1
 			$TMPD/toolchain/sources/$name-$version/configure \
 				--prefix=$PRFX \
-				--build=$ARCH-linux-gnu \
-				--host=$ARCH-linux-gnu \
+				--build=$ARCH-pc-linux-gnu \
+				--host=$ARCH-pc-linux-gnu \
 				--target=$TRPL \
 				--with-sysroot=$PRFX/$TRPL \
 				--with-native-system-header-dir=/include \

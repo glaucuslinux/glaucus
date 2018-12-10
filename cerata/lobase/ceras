@@ -9,12 +9,13 @@ license='ISC PD'
 build () {
 	cp -arv $CERD/$name/$name $TMPD/system/sources
 	cd $TMPD/system/sources/$name
-	sed -i -e 's/${DESTDIR}//' \
+	sed -e 's/${DESTDIR}//' \
 		-e 's/$$s//' \
 		-e '10d' \
-		mk/bsd.man.mk
+		-i mk/bsd.man.mk
 	autoreconf -vfi
-	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=
+	AR=$AR CC=$CC RANLIB=$RANLIB CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
+		--prefix=
 	cd lib/libopenbsd
 	make
 	cd ../liboutil
