@@ -35,6 +35,9 @@ cerata/opendoas/OpenDoas/
 cerata/pcre2/pcre2/
 cerata/re2c/re2c/
 cerata/s6/s6/
+cerata/s6-linux-init/s6-linux-init/
+cerata/s6-linux-utils/s6-linux-utils/
+cerata/s6-portable-utils/s6-portable-utils/
 cerata/s6-rc/s6-rc/
 cerata/sbase/sbase/
 cerata/sdhcp/sdhcp/
