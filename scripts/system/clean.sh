@@ -1,5 +1,4 @@
 #!/bin/dash -ex
-
 rm -rfv /home/glaucus/temporary/system/builds/*
 rm -rfv /home/glaucus/temporary/system/sources/*
 rm -rfv /home/glaucus/system/*
