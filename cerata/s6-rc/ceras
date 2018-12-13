@@ -5,7 +5,6 @@ description=''
 arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC
-
 build () {
-	:
+        :
 }

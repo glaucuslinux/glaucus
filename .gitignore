@@ -4,6 +4,7 @@
 .subversion/
 .vim/
 .viminfo
+.vimrc
 .wget-hsts
 cerata/bin86/bin86-0.16.21.tar.gz
 cerata/binutils/binutils-2.31.1.tar.xz
@@ -21,7 +22,7 @@ cerata/libarchive/libarchive/
 cerata/libressl/openbsd/
 cerata/libressl/portable/
 cerata/lilo/lilo-24.2.tar.gz
-cerata/linux/linux-4.19.5.tar.xz
+cerata/linux/linux-4.19.8.tar.xz
 cerata/lobase/lobase/
 cerata/loksh/loksh/
 cerata/mandoc/mandoc-1.14.4.tar.gz

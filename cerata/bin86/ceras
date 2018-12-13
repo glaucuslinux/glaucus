@@ -6,13 +6,17 @@ arch=x86_64
 url=http://v3.sk/~lkundrak/dev86/$name-$version.tar.gz
 license=GPLv2+
 checksum=e80e06965fbdcf13100aae4690071d01a6efe74aed7ff8f14e5892c6803393a1b5acda1296e0f0e1837dfb73e0edd02e9cccfeabbeabe1b68fa6b6b85ced1f56
-
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	patch -p0 -i $CERD/$name/patches/$name.diff
-	sed -e '9d;11d;12d;13d' \
-		-i Makefile
-	make CC=$CC CFLAGS="$CFLAGS -D_POSIX_SOURCE" LDFLAGS="$LDFLAGS"
-	make PREFIX=$GLAD install
+        tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+        cd $TMPD/system/sources/$name-$version
+        patch -p0 -i $CERD/$name/patches/$name.diff
+        sed -e '9d;11d;12d;13d' \
+                -i Makefile
+        make \
+                CC=$CC \
+                CFLAGS="$CFLAGS -D_POSIX_SOURCE" \
+                LDFLAGS="$LDFLAGS"
+        make \
+                PREFIX=$GLAD \
+                install
 }

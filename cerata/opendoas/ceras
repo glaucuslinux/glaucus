@@ -5,17 +5,25 @@ description='A portable version of the OpenBSD `doas` command'
 arch=x86_64
 url=https://github.com/Duncaen/OpenDoas
 license='BSDv2 ISC'
-
 build () {
-	cp -arv $CERD/$name/OpenDoas $TMPD/system/sources/$name
-	cd $TMPD/system/sources/$name
-	sed -e 's/-Werror //' \
-		-i Makefile
-	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure
-	sed -e 's#/usr##' \
-		-i config.mk
-	sed -e 's/root/glaucus/' \
-		-i Makefile
-	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make
-	AR=$AR CC=$CC YACC=$GLAD/bin/yacc CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/OpenDoas $TMPD/system/sources/$name
+        cd $TMPD/system/sources/$name
+        sed -e 's/-Werror //' \
+                -i Makefile
+        CC=$CC \
+        CFLAGS="$CFLAGS" \
+        LDFLAGS="$LDFLAGS" \
+        ./configure
+        sed -e 's#/usr##' \
+                -i config.mk
+        sed -e 's/root/glaucus/' \
+                -i Makefile
+        AR=$AR \
+        CC=$CC \
+        CFLAGS="$CFLAGS" \
+        LDFLAGS="$LDFLAGS" \
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

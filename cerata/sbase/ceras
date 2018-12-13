@@ -5,17 +5,18 @@ description='Suckless Unix tools'
 arch=x86_64
 url=git://git.suckless.org/$name
 license=MIT
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	sed -e 's#/usr/local##' \
-		-e "/CC =/ cCC = $CC" \
-		-e "/AR =/ cAR = $AR" \
-		-e "/RANLIB =/ cRANLIB = $RANLIB" \
-		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
-		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
-		-i config.mk
-	make
-	make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        sed -e 's#/usr/local##' \
+                -e "/CC =/ cCC = $CC" \
+                -e "/AR =/ cAR = $AR" \
+                -e "/RANLIB =/ cRANLIB = $RANLIB" \
+                -e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic" \
+                -e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+                -i config.mk
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

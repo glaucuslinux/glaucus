@@ -5,17 +5,18 @@ description='A port of the OpenBSD ksh to Linux'
 arch=x86_64
 url=https://github.com/dimkr/$name
 license=PD
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	sed -e "/CC ?=/ cCC = $CC" \
-		-e "/CFLAGS ?=/ cCFLAGS = $CFLAGS -I$GLAD/include" \
-		-e "/LDFLAGS ?=/ cLDFLAGS = $LDFLAGS -L$GLAD/lib" \
-		-e '/PREFIX ?=/ cPREFIX = ' \
-		-e 's/?//' \
-		-e '28s/$/-lterminfo/' \
-		-i Makefile
-	make
-	make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        sed -e "/CC ?=/ cCC = $CC" \
+                -e "/CFLAGS ?=/ cCFLAGS = $CFLAGS -I$GLAD/include" \
+                -e "/LDFLAGS ?=/ cLDFLAGS = $LDFLAGS -L$GLAD/lib" \
+                -e '/PREFIX ?=/ cPREFIX = ' \
+                -e 's/?//' \
+                -e '28s/$/-lterminfo/' \
+                -i Makefile
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

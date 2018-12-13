@@ -5,43 +5,45 @@ description='An implementation of the standard library functionality described i
 arch=x86_64
 url=git://git.$name-libc.org/$name
 license='BSDv2 LGPLv2.1+ MIT PD'
-
 build_toolchain () {
-	cp -arv $CERD/$name/$name $TMPD/toolchain/sources
-	cd $TMPD/toolchain/builds/$name
-	$TMPD/toolchain/sources/$name/configure \
-		CC=$TRPL-gcc \
-		CROSS_COMPILE=$TRPL- \
+        cp -arv $CERD/$name/$name $TMPD/toolchain/sources
+        cd $TMPD/toolchain/builds/$name
+        $TMPD/toolchain/sources/$name/configure \
+                CC=$TRPL-gcc \
+                CROSS_COMPILE=$TRPL- \
                 --prefix=/ \
                 --target=$TRPL \
                 --disable-debug \
                 --disable-warnings
         make
-        make DESTDIR=$PRFX/$TRPL install
+        make \
+                DESTDIR=$PRFX/$TRPL \
+                install
 }
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	mkdir -v $TMPD/system/builds/$name
-	cd $TMPD/system/builds/$name
-	$TMPD/system/sources/$name/configure \
-		CFLAGS="$CFLAGS" \
-		LDFLAGS="$LDFLAGS" \
-		CROSS_COMPILE=$TRPL- \
-		--prefix= \
-		--target=$TRPL \
-		--disable-debug \
-		--disable-warnings \
-		--disable-static \
-		--without-libpam \
-		--without-audit \
-		--without-selinux \
-		--without-nscd
-	make
-	make DESTDIR=$GLAD install-libs
-	$STRIP -v $GLAD/lib/Scrt1.o \
-		$GLAD/lib/crt1.o \
-		$GLAD/lib/crti.o \
-		$GLAD/lib/crtn.o \
-		$GLAD/lib/rcrt1.o
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        mkdir -v $TMPD/system/builds/$name
+        cd $TMPD/system/builds/$name
+        $TMPD/system/sources/$name/configure \
+                CFLAGS="$CFLAGS" \
+                LDFLAGS="$LDFLAGS" \
+                CROSS_COMPILE=$TRPL- \
+                --prefix= \
+                --target=$TRPL \
+                --disable-debug \
+                --disable-warnings \
+                --disable-static \
+                --without-libpam \
+                --without-audit \
+                --without-selinux \
+                --without-nscd
+        make
+        make \
+                DESTDIR=$GLAD \
+                install-libs
+        $STRIP -v $GLAD/lib/Scrt1.o \
+                $GLAD/lib/crt1.o \
+                $GLAD/lib/crti.o \
+                $GLAD/lib/crtn.o \
+                $GLAD/lib/rcrt1.o
 }

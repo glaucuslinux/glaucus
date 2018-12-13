@@ -6,77 +6,82 @@ arch=x86_64
 url=https://ftp.gnu.org/gnu/$name/$name-$version/$name-$version.tar.xz
 license='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
 checksum=64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed
-
 build_toolchain () {
-	case $1 in
-		gcc_1)
-			cd $TMPD/toolchain/builds/$1
-			$TMPD/toolchain/sources/$name-$version/configure \
-				--prefix=$PRFX \
-				--build=$ARCH-pc-linux-gnu \
-				--host=$ARCH-pc-linux-gnu \
-				--target=$TRPL \
-				--with-sysroot=$PRFX/$TRPL \
-				--disable-nls \
-				--disable-shared \
-				--without-headers \
-				--with-newlib \
-				--disable-decimal-float \
-				--disable-libgomp \
-				--disable-libmudflap \
-				--disable-libatomic \
-				--disable-libstdcxx \
-				--disable-gnu-indirect-function \
-				--disable-libsanitizer \
-				--disable-libitm \
-				--disable-libvtv \
-				--disable-libcilkrts \
-				--disable-libmpx \
-				--disable-libssp \
-				--disable-libquadmath \
-				--without-isl \
-				--without-ppl \
-				--without-cloog \
-				--disable-multilib \
-				--disable-threads \
-				--enable-languages=c \
-				--with-arch=x86-64
-			make all-gcc all-target-libgcc
-			make install-gcc install-target-libgcc
-			;;
-		gcc_2)
-			cd $TMPD/toolchain/builds/$1
-			$TMPD/toolchain/sources/$name-$version/configure \
-				--prefix=$PRFX \
-				--build=$ARCH-pc-linux-gnu \
-				--host=$ARCH-pc-linux-gnu \
-				--target=$TRPL \
-				--with-sysroot=$PRFX/$TRPL \
-				--with-native-system-header-dir=/include \
-				--disable-nls \
-				--disable-libgomp \
-				--disable-libmudflap \
-				--disable-libatomic \
-				--disable-libstdcxx-pch \
-				--disable-symvers \
-				--disable-gnu-indirect-function \
-				--disable-libsanitizer \
-				--disable-libvtv \
-				--disable-libmpx \
-				--disable-libssp \
-				--disable-libquadmath \
-				--without-isl \
-				--without-ppl \
-				--without-cloog \
-				--disable-multilib \
-				--enable-languages=c,c++ \
-				--with-arch=x86-64
-			make AS_FOR_TARGET="$TRPL-as" LD_FOR_TARGET="$TRPL-ld"
-			make install
-			;;
-	esac
+        case $1 in
+                gcc_1)
+                        cd $TMPD/toolchain/builds/$1
+                        $TMPD/toolchain/sources/$name-$version/configure \
+                                --prefix=$PRFX \
+                                --build=$ARCH-pc-linux-gnu \
+                                --host=$ARCH-pc-linux-gnu \
+                                --target=$TRPL \
+                                --with-sysroot=$PRFX/$TRPL \
+                                --disable-nls \
+                                --disable-shared \
+                                --without-headers \
+                                --with-newlib \
+                                --disable-decimal-float \
+                                --disable-libgomp \
+                                --disable-libmudflap \
+                                --disable-libatomic \
+                                --disable-libstdcxx \
+                                --disable-gnu-indirect-function \
+                                --disable-libsanitizer \
+                                --disable-libitm \
+                                --disable-libvtv \
+                                --disable-libcilkrts \
+                                --disable-libmpx \
+                                --disable-libssp \
+                                --disable-libquadmath \
+                                --without-isl \
+                                --without-ppl \
+                                --without-cloog \
+                                --disable-multilib \
+                                --disable-threads \
+                                --enable-languages=c \
+                                --with-arch=x86-64
+                        make \
+                                all-gcc \
+                                all-target-libgcc
+                        make \
+                                install-gcc \
+                                install-target-libgcc
+                        ;;
+                gcc_2)
+                        cd $TMPD/toolchain/builds/$1
+                        $TMPD/toolchain/sources/$name-$version/configure \
+                                --prefix=$PRFX \
+                                --build=$ARCH-pc-linux-gnu \
+                                --host=$ARCH-pc-linux-gnu \
+                                --target=$TRPL \
+                                --with-sysroot=$PRFX/$TRPL \
+                                --with-native-system-header-dir=/include \
+                                --disable-nls \
+                                --disable-libgomp \
+                                --disable-libmudflap \
+                                --disable-libatomic \
+                                --disable-libstdcxx-pch \
+                                --disable-symvers \
+                                --disable-gnu-indirect-function \
+                                --disable-libsanitizer \
+                                --disable-libvtv \
+                                --disable-libmpx \
+                                --disable-libssp \
+                                --disable-libquadmath \
+                                --without-isl \
+                                --without-ppl \
+                                --without-cloog \
+                                --disable-multilib \
+                                --enable-languages=c,c++ \
+                                --with-arch=x86-64
+                        make \
+                                AS_FOR_TARGET="$TRPL-as" \
+                                LD_FOR_TARGET="$TRPL-ld"
+                        make \
+                                install
+                        ;;
+        esac
 }
-
 build () {
-	:
+        :
 }

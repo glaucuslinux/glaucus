@@ -6,32 +6,31 @@ arch=x86_64
 url=https://alioth-archive.debian.org/releases/$name/Lilo/$version/$name-$version.tar.gz
 license='BSDv3 GPLv2 LGPLv2.1'
 checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
-
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
-	patch -p1 -i $CERD/$name/patches/$name.patch
-	sed -e "/checkit/d" \
-		-i Makefile
-	sed -e "/OPT=/ cOPT=$CFLAGS" \
-		-e "/SBIN_DIR=/ cSBIN_DIR=/bin" \
-		-e "/USRSBIN_DIR=/ cUSRSBIN_DIR=/bin" \
-		-i make.vars
-	sed -e "/CC=/ cCC=$CC" \
-		-e "/AS86=/ cAS86=$GLAD/bin/as86 -0 -a" \
-		-e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
-		-i src/Makefile
-	make
-	cp -arv src/$name $GLAD/bin
-	cat > $GLAD/etc/$name.conf << EOF
+        tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+        cd $TMPD/system/sources/$name-$version
+        patch -p1 -i $CERD/$name/patches/$name.patch
+        sed -e "/checkit/d" \
+                -i Makefile
+        sed -e "/OPT=/ cOPT=$CFLAGS" \
+                -e "/SBIN_DIR=/ cSBIN_DIR=/bin" \
+                -e "/USRSBIN_DIR=/ cUSRSBIN_DIR=/bin" \
+                -i make.vars
+        sed -e "/CC=/ cCC=$CC" \
+                -e "/AS86=/ cAS86=$GLAD/bin/as86 -0 -a" \
+                -e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
+                -i src/Makefile
+        AS=$AS \
+        make
+        cp -arv src/$name $GLAD/bin
+cat > $GLAD/etc/$name.conf << EOF
 lba32
 boot=/dev/sda
 map=/boot/System.map
 default=glaucus
-
 image=/boot/vmlinuz
-	label=glaucus
-	read-only
-	append="root=/dev/sda1 rootfstype=ext4 init=/bin/sinit"
+        label=glaucus
+        read-only
+        append="root=/dev/sda1 rootfstype=ext4 init=/bin/sinit"
 EOF
 }

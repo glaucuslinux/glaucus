@@ -5,18 +5,19 @@ description='Suckless init'
 arch=x86_64
 url=git://git.suckless.org/$name
 license=MIT
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	sed -e 's/-static//' \
-		-i config.mk
-	sed -e 's#/usr/local##g' \
-		-e "/CC =/ cCC = $CC" \
-		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -Wall -Wextra" \
-		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
-		-e 's/-static//' \
-		-i config.mk
-	make
-	make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        sed -e 's/-static//' \
+                -i config.mk
+        sed -e 's#/usr/local##g' \
+                -e "/CC =/ cCC = $CC" \
+                -e "/CFLAGS   =/ cCFLAGS = $CFLAGS -Wall -Wextra" \
+                -e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+                -e 's/-static//' \
+                -i config.mk
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

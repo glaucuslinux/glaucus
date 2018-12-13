@@ -5,16 +5,23 @@ description='The Debian Almquist shell is a POSIX-compliant shell derived from t
 arch=x86_64
 url=git://git.kernel.org/pub/scm/utils/$name/$name.git
 license='BSDv3 GPLv2 PD'
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	./autogen.sh
-	AWK=$GLAD/bin/mawk CC=$CC STRIP=$STRIP CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ./configure \
-		--prefix= \
-		--disable-static
-	make
-	make DESTDIR=$GLAD install-strip
-	cd $GLAD/bin
-	ln -fsv $name sh
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        ./autogen.sh
+        AWK=$GLAD/bin/mawk \
+        CC=$CC \
+        STRIP=$STRIP \
+        YACC=$GLAD/bin/yacc \
+        CFLAGS="$CFLAGS" \
+        LDFLAGS="$LDFLAGS" \
+        ./configure \
+                --prefix= \
+                --disable-static
+        make
+        make \
+                DESTDIR=$GLAD \
+                install-strip
+        cd $GLAD/bin
+        ln -fsv $name sh
 }

@@ -5,15 +5,17 @@ description='Suckless mdev'
 arch=x86_64
 url=git://git.suckless.org/$name
 license=MIT
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	sed -e '/PREFIX =/ cPREFIX = ' \
-		-e "/CC =/ cCC = $CC" \
-		-e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
-		-e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
-		-i config.mk
-	make
-	make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        sed -e '/PREFIX =/ cPREFIX = ' \
+                -e "/CC =/ cCC = $CC" \
+                -e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
+                -e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+                -i config.mk
+        AR=$AR \
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

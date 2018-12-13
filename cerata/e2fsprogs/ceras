@@ -5,50 +5,59 @@ description='The standard utilities for ext2/ext3/ext4 filesystems'
 arch=x86_64
 url=git://git.kernel.org/pub/scm/fs/ext2/$name.git
 license='BSDv3 GPLv2 LGPLv2 MIT'
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	patch -p1 -i $CERD/$name/patches/$name.patch
-	AWK=$GLAD/bin/mawk CC=$CC CFLAGS="$CFLAGS -I$GLAD/include" LDFLAGS="$LDFLAGS" LIBS=-L$GLAD/lib ./configure \
-		--prefix= \
-		--build=$TRPL \
-		--host=$TRPL \
-		--host=$TRPL \
-		--with-root-prefix= \
-		--enable-symlink-install \
-		--enable-elf-shlibs \
-		--disable-bsd-shlibs \
-		--disable-testio-debug \
-		--disable-e2initrd-helper \
-		--disable-tdb \
-		--disable-nls \
-		--disable-fuse2fs \
-		--disable-debugfs \
-		--disable-defrag \
-		--disable-imager \
-		--disable-mmp \
-		--disable-resizer \
-		--enable-fsck
-	make
-	cd lib/
-	for dir in blkid e2p et ext2fs uuid
-	do
-		cd $dir
-		sed -e "/LDCONFIG/d" \
-			-i Makefile
-		make DESTDIR=$GLAD install
-		cd ..
-	done
-	cd ..
-	cp -av e2fsck/e2fsck $GLAD/bin
-	cp -av misc/blkid $GLAD/bin
-	cp -av misc/chattr $GLAD/bin
-	cp -av misc/fsck $GLAD/bin
-	cp -av misc/lsattr $GLAD/bin
-	cp -av misc/mke2fs $GLAD/bin
-	cp -av misc/tune2fs $GLAD/bin
-	cd $GLAD/bin
-	ln -fsv e2fsck fsck.ext4
-	ln -fsv mke2fs mkfs.ext4
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        patch -p1 -i $CERD/$name/patches/$name.patch
+        AWK=$GLAD/bin/mawk \
+        CC=$CC \
+        RANLIB=$RANLIB \
+        STRIP=$STRIP \
+        YACC=$GLAD/bin/yacc \
+        CFLAGS="$CFLAGS -I$GLAD/include" \
+        LDFLAGS="$LDFLAGS" \
+        LIBS=-L$GLAD/lib \
+        ./configure \
+                --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --host=$TRPL \
+                --with-root-prefix= \
+                --enable-symlink-install \
+                --enable-elf-shlibs \
+                --disable-bsd-shlibs \
+                --disable-testio-debug \
+                --disable-e2initrd-helper \
+                --disable-tdb \
+                --disable-nls \
+                --disable-fuse2fs \
+                --disable-debugfs \
+                --disable-defrag \
+                --disable-imager \
+                --disable-mmp \
+                --disable-resizer \
+                --enable-fsck
+        make
+        cd lib/
+        for dir in blkid e2p et ext2fs uuid
+        do
+                cd $dir
+                sed -e "/LDCONFIG/d" \
+                        -i Makefile
+                make \
+                        DESTDIR=$GLAD \
+                        install-strip
+                cd ..
+        done
+        cd ..
+        cp -av e2fsck/e2fsck $GLAD/bin
+        cp -av misc/blkid $GLAD/bin
+        cp -av misc/chattr $GLAD/bin
+        cp -av misc/fsck $GLAD/bin
+        cp -av misc/lsattr $GLAD/bin
+        cp -av misc/mke2fs $GLAD/bin
+        cp -av misc/tune2fs $GLAD/bin
+        cd $GLAD/bin
+        ln -fsv e2fsck fsck.ext4
+        ln -fsv mke2fs mkfs.ext4
 }

@@ -5,65 +5,72 @@ description=''
 arch=x86_64
 url=https://github.com/$name/$name
 license='GPLv2+ LGPLv2.1+ MIT vim'
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	CC=$CC CFLAGS="$CFLAGS" CPPFLAGS="-I$GLAD/include" LDFLAGS="$LDFLAGS -L$GLAD/lib" LD_LIBRARY_PATH="$GLAD/lib" ./configure \
-		--prefix= \
-		--disable-darwin \
-		--disable-smack \
-		--disable-selinux \
-		--disable-xsmp \
-		--disable-xsmp-interact \
-		--disable-mzschemeinterp \
-		--disable-cscope \
-		--disable-workshop \
-		--disable-netbeans \
-		--disable-channel \
-		--disable-terminal \
-		--disable-autoservername \
-		--disable-multibyte \
-		--disable-hangulinput \
-		--disable-xim \
-		--disable-fontset \
-		--disable-gui \
-		--disable-gtk2-check \
-		--disable-gnome-check \
-		--disable-gtk3-check \
-		--disable-motif-check \
-		--disable-athena-check \
-		--disable-nextaw-check \
-		--disable-carbon-check \
-		--disable-gtktest \
-		--disable-icon-cache-update \
-		--disable-desktop-database-update \
-		--disable-largefile \
-		--disable-acl \
-		--disable-gpm \
-		--disable-sysmouse \
-		--disable-nls \
-		--without-mac-arch \
-		--without-developer-dir \
-		--without-local-dir \
-		--without-global-runtime \
-		--with-features=normal \
-		--without-lua-prefix \
-		--without-luajit \
-		--without-plthome \
-		--without-python-command \
-		--without-python-config-dir \
-		--without-python3-command \
-		--without-python3-config-dir \
-		--without-tclsh \
-		--without-ruby-command \
-		--without-x \
-		--without-gnome-includes \
-		--without-gnome-libs \
-		--without-gnome \
-		--without-motif-lib
-	make
-	sed -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" \
-		-i runtime/doc/Makefile
-	make DESTDIR=$GLAD install
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        AWK=$GLAD/bin/mawk \
+        CC=$CC \
+        CFLAGS="$CFLAGS" \
+        CPPFLAGS="-I$GLAD/include" \
+        LDFLAGS="$LDFLAGS -L$GLAD/lib" \
+        LD_LIBRARY_PATH="$GLAD/lib" \
+        ./configure \
+                --prefix= \
+                --disable-darwin \
+                --disable-smack \
+                --disable-selinux \
+                --disable-xsmp \
+                --disable-xsmp-interact \
+                --disable-mzschemeinterp \
+                --disable-cscope \
+                --disable-workshop \
+                --disable-netbeans \
+                --disable-channel \
+                --disable-terminal \
+                --disable-autoservername \
+                --disable-multibyte \
+                --disable-hangulinput \
+                --disable-xim \
+                --disable-fontset \
+                --disable-gui \
+                --disable-gtk2-check \
+                --disable-gnome-check \
+                --disable-gtk3-check \
+                --disable-motif-check \
+                --disable-athena-check \
+                --disable-nextaw-check \
+                --disable-carbon-check \
+                --disable-gtktest \
+                --disable-icon-cache-update \
+                --disable-desktop-database-update \
+                --disable-largefile \
+                --disable-acl \
+                --disable-gpm \
+                --disable-sysmouse \
+                --disable-nls \
+                --without-mac-arch \
+                --without-developer-dir \
+                --without-local-dir \
+                --without-global-runtime \
+                --with-features=normal \
+                --without-lua-prefix \
+                --without-luajit \
+                --without-plthome \
+                --without-python-command \
+                --without-python-config-dir \
+                --without-python3-command \
+                --without-python3-config-dir \
+                --without-tclsh \
+                --without-ruby-command \
+                --without-x \
+                --without-gnome-includes \
+                --without-gnome-libs \
+                --without-gnome \
+                --without-motif-lib
+        make
+        sed -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" \
+                -i runtime/doc/Makefile
+        make \
+                DESTDIR=$GLAD \
+                install
 }

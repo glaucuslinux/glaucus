@@ -5,7 +5,6 @@ description=''
 arch=x86_64
 url=https://github.com/jarun/$name
 license=BSDv2
-
 build () {
-	:
+        :
 }

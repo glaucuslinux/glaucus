@@ -5,21 +5,26 @@ description="A port of NetBSD's curses library for usage on Linux systems"
 arch=x86_64
 url=https://github.com/sabotage-linux/$name
 license='BSDv3 BSDv2'
-
 build () {
-	cp -arv $CERD/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
+        cp -arv $CERD/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
 cat > config.mak << EOF
 PREFIX = 
+AR = $AR
+AWK = $AWK
 CC = $CC
+RANLIB = $RANLIB
 CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
-	make all-dynamic
-	make DESTDIR=$GLAD install-dynamic
-	$STRIP -v $GLAD/lib/libcurses.so \
-		$GLAD/lib/libform.so \
-		$GLAD/lib/libmenu.so \
-		$GLAD/lib/libpanel.so \
-		$GLAD/lib/libterminfo.so
+        make \
+                all-dynamic
+        make \
+                DESTDIR=$GLAD \
+                install-dynamic
+        $STRIP -v $GLAD/lib/libcurses.so \
+                $GLAD/lib/libform.so \
+                $GLAD/lib/libmenu.so \
+                $GLAD/lib/libpanel.so \
+                $GLAD/lib/libterminfo.so
 }

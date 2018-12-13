@@ -6,10 +6,9 @@ arch=x86_64
 url=http://$name.bsd.lv/snapshots/$name-$version.tar.gz
 license=ISC
 checksum=c68390711a739284ad9a61364f3fea76c0c48c02b4830d6326b07c4188d099e3720ae3b91fc3b083269381b417b7e3f3647d13a54ed2548f8c2f94122f8a7d97
-
 build () {
-	tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-	cd $TMPD/system/sources/$name-$version
+        tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
+        cd $TMPD/system/sources/$name-$version
 cat > configure.local << EOF
 HAVE_WCHAR=1
 OSNAME=glaucus
@@ -21,15 +20,17 @@ CFLAGS="$CFLAGS -I$GLAD/include"
 LDADD="-L$GLAD/lib"
 LDFLAGS="$LDFLAGS"
 EOF
-	./configure
-	sed -e 's#BINDIR\t\t= /usr/local/bin#BINDIR\t\t= /bin#' \
-		-e '10d' \
-		-e '/BIN_FROM_SBIN\t=/ cBIN_FROM_SBIN\t= bin' \
-		-e '/MANDIR\t\t=/ cMANDIR\t\t= /share/man' \
-		-i Makefile.local
-	sed -e 's#${BIN_FROM_SBIN}/##' \
-		-e 's/SBINDIR/BINDIR/' \
-		-i Makefile
-	make
-	make DESTDIR=$GLAD install
+        ./configure
+        sed -e 's#BINDIR\t\t= /usr/local/bin#BINDIR\t\t= /bin#' \
+                -e '10d' \
+                -e '/BIN_FROM_SBIN\t=/ cBIN_FROM_SBIN\t= bin' \
+                -e '/MANDIR\t\t=/ cMANDIR\t\t= /share/man' \
+                -i Makefile.local
+        sed -e 's#${BIN_FROM_SBIN}/##' \
+                -e 's/SBINDIR/BINDIR/' \
+                -i Makefile
+        make
+        make \
+                DESTDIR=$GLAD \
+                install
 }

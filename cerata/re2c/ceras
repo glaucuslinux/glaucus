@@ -5,20 +5,26 @@ description='Free and open-source lexer generator for C and C++'
 arch=x86_64
 url=https://github.com/skvadrik/$name
 license='GPLv3 PD PHPv3.01'
-
 build () {
-	cp -arv $CERD/$name/$name/$name $TMPD/system/sources
-	cd $TMPD/system/sources/$name
-	autoreconf -vfi
-	mkdir -v $TMPD/system/builds/$name
-	cd $TMPD/system/builds/$name
-	$TMPD/system/sources/$name/configure \
-		--prefix=$GLAD \
-		CC=$CC \
-		CXX=$CXX \
-		CFLAGS="$CFLAGS" \
-		CXXFLAGS="$CXXFLAGS" \
-		LDFLAGS="$LDFLAGS"
-	make
-	make install-strip
+        cp -arv $CERD/$name/$name/$name $TMPD/system/sources
+        cd $TMPD/system/sources/$name
+        autoreconf -vfi
+        mkdir -v $TMPD/system/builds/$name
+        cd $TMPD/system/builds/$name
+        AWK=$GLAD/bin/mawk \
+        BISON=$GLAD/bin/yacc \
+        CC=$CC \
+        CXX=$CXX \
+        STRIP=$STRIP \
+        CFLAGS="$CFLAGS" \
+        CXXFLAGS="$CXXFLAGS" \
+        LDFLAGS="$LDFLAGS" \
+        $TMPD/system/sources/$name/configure \
+                --prefix= \
+                --disable-silent-rules \
+                --disable-dependency-tracking
+        make
+        make \
+                DESTDIR=$GLAD \
+                install-strip
 }
