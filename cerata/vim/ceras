@@ -10,6 +10,7 @@ build () {
         cd $TMPD/system/sources/$name
         AWK=$GLAD/bin/mawk \
         CC=$CC \
+        STRIP=$STRIP \
         CFLAGS="$CFLAGS" \
         CPPFLAGS="-I$GLAD/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \

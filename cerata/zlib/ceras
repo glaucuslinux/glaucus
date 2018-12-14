@@ -12,13 +12,11 @@ build () {
         AR=$AR \
         AS=$AS \
         CC=$CC \
-        CXX=$CXX \
         LD=$LD \
         NM=$NM \
         RANLIB=$RANLIB \
         STRIP=$STRIP \
         CFLAGS="$CFLAGS" \
-        CXXFLAGS="$CXXFLAGS" \
         LDFLAGS="$LDFLAGS" \
         $TMPD/system/sources/$name/configure \
                 --prefix= \

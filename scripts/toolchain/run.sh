@@ -9,4 +9,4 @@ while true; do
         fi
 done
 mkdir /home/glaucus/logs/toolchain/$file
-(sh /home/glaucus/scripts/toolchain/construct.sh | tee /home/glaucus/logs/toolchain/$file/stdout.log) 3>&1 1>&2 2>&3 | tee /home/glaucus/logs/toolchain/$file/stderr.log
+(dash /home/glaucus/scripts/toolchain/construct.sh | tee /home/glaucus/logs/toolchain/$file/stdout.log) 3>&1 1>&2 2>&3 | tee /home/glaucus/logs/toolchain/$file/stderr.log

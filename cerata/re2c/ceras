@@ -12,7 +12,6 @@ build () {
         mkdir -v $TMPD/system/builds/$name
         cd $TMPD/system/builds/$name
         AWK=$GLAD/bin/mawk \
-        BISON=$GLAD/bin/yacc \
         CC=$CC \
         CXX=$CXX \
         STRIP=$STRIP \
