@@ -6,7 +6,7 @@ arch=x86_64
 url=https://github.com/sabotage-linux/$name
 license='BSDv3 BSDv2'
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
 cat > config.mak << EOF
 PREFIX = 

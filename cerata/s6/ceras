@@ -6,7 +6,7 @@ arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         AR=$AR \
         CC=$CC \

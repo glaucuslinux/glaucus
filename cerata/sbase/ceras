@@ -6,7 +6,7 @@ arch=x86_64
 url=git://git.suckless.org/$name
 license=MIT
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         sed -e 's#/usr/local##' \
                 -e "/CC =/ cCC = $CC" \

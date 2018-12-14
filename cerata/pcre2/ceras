@@ -6,7 +6,7 @@ arch=x86_64
 url=svn://vcs.exim.org/$name/code/trunk
 license=BSDv3
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         autoreconf -vfi
         mkdir -v $TMPD/system/builds/$name

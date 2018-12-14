@@ -6,9 +6,10 @@ arch=x86_64
 url=https://github.com/Duncaen/OpenDoas
 license='BSDv2 ISC'
 build () {
-        cp -arv $CERD/$name/OpenDoas $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/OpenDoas/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
-        sed -e 's/-Werror //' \
+        sed -e 's/root/glaucus/' \
+                -e 's/-Werror //' \
                 -i Makefile
         CC=$CC \
         CFLAGS="$CFLAGS" \
@@ -16,8 +17,6 @@ build () {
         ./configure
         sed -e 's#/usr##' \
                 -i config.mk
-        sed -e 's/root/glaucus/' \
-                -i Makefile
         AR=$AR \
         CC=$CC \
         CFLAGS="$CFLAGS" \

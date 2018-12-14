@@ -6,8 +6,8 @@ arch=x86_64
 url=https://github.com/$name-portable/portable
 license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 build () {
-        cp -arv $CERD/$name/portable $TMPD/system/sources/$name
-        cp -arv $CERD/$name/openbsd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/portable/ $TMPD/system/sources/$name/ --delete
+        rsync -vah $CERD/$name/openbsd/ $TMPD/system/sources/$name/openbsd/ --delete
         cd $TMPD/system/sources/$name
         ./autogen.sh
         mkdir -v $TMPD/system/builds/$name

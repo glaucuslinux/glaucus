@@ -6,7 +6,7 @@ arch=x86_64
 url=https://git.tukaani.org/$name.git
 license='GPLv2+ GPLv3+ LGPLv2.1+ PD'
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         autoreconf -vfi
         mkdir -v $TMPD/system/builds/$name

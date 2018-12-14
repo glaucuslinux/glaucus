@@ -6,7 +6,7 @@ arch=x86_64
 url=git://git.kernel.org/pub/scm/fs/ext2/$name.git
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
         AWK=$GLAD/bin/mawk \

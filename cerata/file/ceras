@@ -6,7 +6,7 @@ arch=x86_64
 url=https://github.com/$name/$name
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         autoreconf -vfi
         AR=$AR \

@@ -6,7 +6,7 @@ arch=x86_64
 url=https://github.com/skvadrik/$name
 license='GPLv3 PD PHPv3.01'
 build () {
-        cp -arv $CERD/$name/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         autoreconf -vfi
         mkdir -v $TMPD/system/builds/$name

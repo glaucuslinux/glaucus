@@ -6,7 +6,7 @@ arch=x86_64
 url=git://git.kernel.org/pub/scm/network/$name/$name.git
 license=GPLv2
 build () {
-        cp -arv $CERD/$name/$name $TMPD/system/sources
+        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
         cd $TMPD/system/sources/$name
         rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet man/man8/arpd.8
         sed -e 's:TCPI_OPT_ECN_SEEN:16:' \
