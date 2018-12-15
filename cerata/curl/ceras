@@ -1,7 +1,7 @@
 name=curl
 version=git
 release=1
-description=''
+description='A command line tool and library for transferring data with URLs'
 arch=x86_64
 url=https://github.com/$name/$name
 license=MIT

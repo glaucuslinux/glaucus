@@ -1,7 +1,7 @@
 name=execline
 version=git
 release=1
-description=''
+description='A small and non-interactive scripting language, like sh; but with different syntax'
 arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC

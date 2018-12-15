@@ -39,7 +39,6 @@ build () {
                 sed -e "/LDCONFIG/d" \
                         -i Makefile
                 make \
-                        DESTDIR=$GLAD \
                         install-strip
                 cd ..
         done
