@@ -7,8 +7,9 @@ url=http://$name.bsd.lv/snapshots/$name-$version.tar.gz
 license=ISC
 checksum=c68390711a739284ad9a61364f3fea76c0c48c02b4830d6326b07c4188d099e3720ae3b91fc3b083269381b417b7e3f3647d13a54ed2548f8c2f94122f8a7d97
 build () {
-        tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-        cd $TMPD/system/sources/$name-$version
+        tar xvf $CERD/$name/$name-$version.tar.gz -C $SSRC
+        mv $SSRC/$name-$version $SSRC/$name
+        cd $SSRC/$name
 cat > configure.local << EOF
 HAVE_WCHAR=1
 OSNAME=glaucus
@@ -31,6 +32,5 @@ EOF
                 -i Makefile
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }

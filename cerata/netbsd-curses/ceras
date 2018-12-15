@@ -6,8 +6,8 @@ arch=x86_64
 url=https://github.com/sabotage-linux/$name
 license='BSDv3 BSDv2'
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
 cat > config.mak << EOF
 PREFIX = 
 AR = $AR
@@ -20,7 +20,6 @@ EOF
         make \
                 all-dynamic
         make \
-                DESTDIR=$GLAD \
                 install-dynamic
         $STRIP -v $GLAD/lib/libcurses.so \
                 $GLAD/lib/libform.so \

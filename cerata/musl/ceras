@@ -6,7 +6,7 @@ arch=x86_64
 url=git://git.$name-libc.org/$name
 license='BSDv2 LGPLv2.1+ MIT PD'
 build_toolchain () {
-        cd $TMPD/toolchain/builds/$name
+        cd $TBLD/$name
         $CERD/$name/$name/configure \
                 CC=$TRPL-gcc \
                 CROSS_COMPILE=$TRPL- \
@@ -20,12 +20,9 @@ build_toolchain () {
                 install
 }
 build () {
-        mkdir -v $TMPD/system/builds/$name
-        cd $TMPD/system/builds/$name
+        mkdir -v $SBLD/$name
+        cd $SBLD/$name
         $CERD/$name/$name/configure \
-                CFLAGS="$CFLAGS" \
-                LDFLAGS="$LDFLAGS" \
-                CROSS_COMPILE=$TRPL- \
                 --prefix= \
                 --target=$TRPL \
                 --disable-debug \
@@ -37,7 +34,6 @@ build () {
                 --without-nscd
         make
         make \
-                DESTDIR=$GLAD \
                 install-libs
         $STRIP -v $GLAD/lib/Scrt1.o \
                 $GLAD/lib/crt1.o \

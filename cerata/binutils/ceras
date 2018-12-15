@@ -7,9 +7,9 @@ url=https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
 license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
 checksum=0fca326feb1d5f5fe505a827b20237fe3ec9c13eaf7ec7e35847fd71184f605ba1cefe1314b1b8f8a29c0aa9d88162849ee1c1a3e70c2f7407d88339b17edb30
 build_toolchain () {
-        tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
-        cd $TMPD/toolchain/builds/$name
-        $TMPD/toolchain/sources/$name-$version/configure \
+        tar xvf $CERD/$name/$name-$version.tar.xz -C $TSRC
+        cd $TBLD/$name
+        $TSRC/$name-$version/configure \
                 --prefix=$PRFX \
                 --target=$TRPL \
                 --with-sysroot=$PRFX/$TRPL \

@@ -6,22 +6,13 @@ arch=x86_64
 url=https://github.com/Duncaen/$name.git/
 license='ISC PD'
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         sed -e 's/${DESTDIR}//' \
                 -e 's/$$s//' \
                 -e '10d' \
                 -i mk/bsd.man.mk
         autoreconf -vfi
-        AR=$AR \
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        LD=$LD \
-        RANLIB=$RANLIB \
-        YACC=$GLAD/bin/yacc \
-        CFLAGS="$CFLAGS" \
-        CXXFLAGS="$CXXFLAGS" \
-        LDFLAGS="$LDFLAGS" \
         ./configure \
                 --prefix=
         cd lib/libopenbsd
@@ -31,35 +22,30 @@ build () {
         cd ../../usr.bin/diff
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
         cd ../fmt
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
         cd ../patch
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
         cd ../sort
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
         cd ../../bin/ls
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
@@ -69,14 +55,13 @@ build () {
         cd $GLAD/bin
         ln -fsv pax cpio
         ln -fsv pax tar
-        cd $TMPD/system/sources/$name/bin/pax
+        cd $SSRC/$name/bin/pax
         install -vm 444 cpio.1 $GLAD/share/man/man1
         install -vm 444 pax.1 $GLAD/share/man/man1
         install -vm 444 tar.1 $GLAD/share/man/man1
         cd ../stty
         make
         make \
-                DESTDIR=$GLAD \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install

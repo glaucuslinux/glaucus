@@ -7,41 +7,36 @@ url=https://cdn.kernel.org/pub/$name/kernel/v4.x/$name-$version.tar.xz
 license=GPLv2
 checksum=c863dbfcba413a1d9ee396c20d40ede6c5f07f168f74ef604c261b11797226dced1912270203b2a2d3be000284f6cca72df6ed52675e260e8289a87b0d65f282
 build_toolchain () {
-        tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
-        cd $TMPD/toolchain/sources/$name-$version
+        tar xvf $CERD/$name/$name-$version.tar.xz -C $TSRC
+        cd $TSRC/$name-$version
         make \
                 mrproper
         make \
-                O=$TMPD/toolchain/builds/$name \
+                O=$TBLD/$name \
                 ARCH=$ARCH \
                 headers_check
         make \
-                O=$TMPD/toolchain/builds/$name \
+                O=$TBLD/$name \
                 ARCH=$ARCH \
                 INSTALL_HDR_PATH=$PRFX/$TRPL \
                 headers_install
 }
 build () {
-        tar xvf $CERD/$name/$name-$version.tar.xz -C $TMPD/system/sources
-        mkdir -v $TMPD/system/builds/$name
-        cp -av $CERD/$name/glaucus.config $TMPD/system/builds/$name/.config
-        cd $TMPD/system/sources/$name-$version
+        tar xvf $CERD/$name/$name-$version.tar.xz -C $SSRC
+        mv $SSRC/$name-$version $SSRC/$name
+        mkdir -v $SBLD/$name
+        cp -av $CERD/$name/glaucus.config $SBLD/$name/.config
+        cd $SSRC/$name
         make \
                 mrproper
         make \
-                O=$TMPD/system/builds/$name \
-                ARCH=$ARCH \
-                CROSS_COMPILE=$TRPL- \
+                O=$SBLD/$name \
                 oldconfig
         make \
-                O=$TMPD/system/builds/$name \
-                ARCH=$ARCH \
-                CROSS_COMPILE=$TRPL- \
+                O=$SBLD/$name \
                 prepare
         make \
-                O=$TMPD/system/builds/$name \
-                ARCH=$ARCH \
-                CROSS_COMPILE=$TRPL-
-        cat $TMPD/system/builds/$name/arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
-        cp -av $TMPD/system/builds/$name/System.map $GLAD/boot
+                O=$SBLD/$name
+        cat $SBLD/$name/arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
+        cp -av $SBLD/$name/System.map $GLAD/boot
 }

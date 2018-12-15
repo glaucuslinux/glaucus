@@ -6,8 +6,8 @@ arch=x86_64
 url=git://git.kernel.org/pub/scm/network/$name/$name.git
 license=GPLv2
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet man/man8/arpd.8
         sed -e 's:TCPI_OPT_ECN_SEEN:16:' \
                 -i misc/ss.c
@@ -17,11 +17,6 @@ build () {
                 -i Makefile
         sed -e 's/.m_ipt.o//' \
                 -i tc/Makefile
-        AR=$AR \
-        CC=$CC \
-        YACC=$GLAD/bin/yacc \
-        CFLAGS="$CFLAGS" \
-        LDFLAGS="$LDFLAGS" \
         ./configure
 	sed -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
                 -e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
@@ -34,11 +29,6 @@ build () {
                 -e 's/HAVE_CAP:=y/HAVE_CAP:=n/g' \
                 -e '/HAVE_CAP/{n;N;d}' \
                 -i config.mk
-        AR=$AR \
-        CC=$CC \
-        YACC=$GLAD/bin/yacc \
-        CFLAGS="$CFLAGS" \
-        LDFLAGS="$LDFLAGS" \
         make
         cp -av ip/ip $GLAD/bin
 }

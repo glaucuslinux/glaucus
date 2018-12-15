@@ -6,22 +6,13 @@ arch=x86_64
 url=https://github.com/madler/$name
 license='BSLv1.0 ZLIB'
 build () {
-        mkdir -v $TMPD/system/builds/$name
-        cd $TMPD/system/builds/$name
-        AR=$AR \
-        AS=$AS \
-        CC=$CC \
-        LD=$LD \
-        NM=$NM \
-        RANLIB=$RANLIB \
-        STRIP=$STRIP \
-        CFLAGS="$CFLAGS" \
-        LDFLAGS="$LDFLAGS" \
+        mkdir -v $SBLD/$name
+        cd $SBLD/$name
+        DFLAGS="$LDFLAGS" \
         $CERD/$name/$name/configure \
                 --prefix= \
                 --shared
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }

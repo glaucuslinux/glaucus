@@ -7,7 +7,7 @@ url=https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
 checksum=72d657958b07c7812dc9c7cbae093118ce0e454c68a585bfb0e2fa559f1bf7c5f49b93906f580ab3f1073e5b595d23c6494d4d76b765d16dde857a18dd239628
 build_toolchain () {
-        cd $TMPD/toolchain/sources/gcc-*
+        cd $TSRC/gcc-*
         tar xvf $CERD/$name/$name-$version.tar.gz -C .
         mv $name-$version $name
 }

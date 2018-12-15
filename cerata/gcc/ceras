@@ -9,8 +9,8 @@ checksum=64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e85828
 build_toolchain () {
         case $1 in
                 gcc_1)
-                        cd $TMPD/toolchain/builds/$1
-                        $TMPD/toolchain/sources/$name-$version/configure \
+                        cd $TBLD/$1
+                        $TSRC/$name-$version/configure \
                                 --prefix=$PRFX \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
@@ -48,8 +48,8 @@ build_toolchain () {
                                 install-target-libgcc
                         ;;
                 gcc_2)
-                        cd $TMPD/toolchain/builds/$1
-                        $TMPD/toolchain/sources/$name-$version/configure \
+                        cd $TBLD/$1
+                        $TSRC/$name-$version/configure \
                                 --prefix=$PRFX \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \

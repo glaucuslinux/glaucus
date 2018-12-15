@@ -7,11 +7,9 @@ url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
 license='BSDv2 GPLv3'
 checksum=4f85019a6617b90ac1dec4009f62e6ca223af326b08d1f39eaea39d96b5e975f4cc0072cdfa73cff8fa71fe7859cba36f0e58104cc5754fa5b262d8341743d51
 build () {
-        tar xvf $CERD/$name/$name-$version.tar.gz -C $TMPD/system/sources
-        cd $TMPD/system/sources/$name-$version
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        LD=$LD \
+        tar xvf $CERD/$name/$name-$version.tar.gz -C $SSRC
+        mv $SSRC/$name-$version $SSRC/$name
+        cd $SSRC/$name
         CFLAGS="$CFLAGS -I$GLAD/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \
         ./configure \
@@ -19,6 +17,6 @@ build () {
                 --with-regex=pcre2
         make
         make \
-                DESTDIR=$GLAD \
+                DESTDIR=$DESTDIR \
                 install-strip
 }

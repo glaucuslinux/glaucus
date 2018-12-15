@@ -1,25 +1,33 @@
 assign_basic_variables () {
-        ARCH=x86_64
-        TRPL=$ARCH-linux-musl
-        CERD=/home/glaucus/cerata
-        TMPD=/home/glaucus/temporary
-        PRFX=/home/glaucus/toolchain
-        GLAD=/home/glaucus/system
-        PATH=$PRFX/bin:/bin
-        MAKEFLAGS=-j1
+        export ARCH=x86_64
+        export TRPL=$ARCH-linux-musl
+        export CERD=/home/glaucus/cerata
+        export TMPD=/home/glaucus/temporary
+        export SBLD=$TMPD/system/builds
+        export TBLD=$TMPD/toolchain/builds
+        export SSRC=$TMPD/system/sources
+        export TSRC=$TMPD/toolchain/sources
+        export GLAD=/home/glaucus/system
+        export PRFX=/home/glaucus/toolchain
+        export PATH=$PRFX/bin:/usr/bin
+        export MAKEFLAGS=-j1
 }
 assign_system_variables () {
-        AR="$TRPL-ar"
-        AS="$TRPL-as"
-        CC="$TRPL-gcc"
-        CXX="$TRPL-g++"
-        LD="$TRPL-ld"
-        NM="$TRPL-nm"
-        OBJDUMP="$TRPL-objdump"
-        RANLIB="$TRPL-ranlib"
-        READELF="$TRPL-readelf"
-        STRIP="$TRPL-strip"
-        CFLAGS='-Os -s -fomit-frame-pointer -pipe'
-        CXXFLAGS=$CFLAGS
-        LDFLAGS='-Wl,--as-needed -Wl,--hash-style=gnu -Wl,--strip-all'
+        export AR=$TRPL-ar
+        export AS=$TRPL-as
+        export AWK=$GLAD/bin/mawk
+        export CC=$TRPL-gcc
+        export CFLAGS='-Os -s -fomit-frame-pointer -pipe'
+        export CROSS_COMPILE=$TRPL-
+        export CXX=$TRPL-g++
+        export CXXFLAGS="$CFLAGS"
+        export DESTDIR=$GLAD
+        export LD=$TRPL-ld
+        export LDFLAGS='-Wl,--as-needed -Wl,--hash-style=gnu -Wl,--strip-all'
+        export NM=$TRPL-nm
+        export OBJDUMP=$TRPL-objdump
+        export RANLIB=$TRPL-ranlib
+        export READELF=$TRPL-readelf
+        export STRIP=$TRPL-strip
+        export YACC=$GLAD/bin/yacc
 }

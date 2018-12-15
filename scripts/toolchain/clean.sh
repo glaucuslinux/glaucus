@@ -1,4 +1,4 @@
 #!/bin/dash -ex
-rm -rfv /home/glaucus/temporary/toolchain/builds/*
-rm -rfv /home/glaucus/temporary/toolchain/sources/*
-rm -rfv /home/glaucus/toolchain/*
+rm -frv /home/glaucus/temporary/toolchain/builds/*
+rm -frv /home/glaucus/temporary/toolchain/sources/*
+rm -frv /home/glaucus/toolchain/*

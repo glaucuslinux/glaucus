@@ -6,13 +6,8 @@ arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
-        AR=$AR \
-        CC=$CC \
-        RANLIB=$RANLIB \
-        STRIP=$STRIP \
-        LDFLAGS="$LDFLAGS" \
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         ./configure \
                 --prefix=/ \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
@@ -25,6 +20,5 @@ build () {
                 -i config.mak
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }

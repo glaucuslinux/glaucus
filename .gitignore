@@ -1,6 +1,9 @@
 .bash_history
+.bash_history.swp
 .cache/
 .gitconfig
+.lesshst
+.ssh/
 .subversion/
 .vim/
 .viminfo

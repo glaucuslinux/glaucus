@@ -27,14 +27,14 @@ umask 022
 echo /bin/smdev > /proc/sys/kernel/hotplug
 /bin/smdev -s
 cd /dev
-/bin/ln -sf /proc/self/fd/0 stdin
-/bin/ln -sf /proc/self/fd/1 stdout
-/bin/ln -sf /proc/self/fd/2 stderr
-/bin/ln -sf /proc/self/fd fd
+/bin/ln -fs /proc/self/fd/0 stdin
+/bin/ln -fs /proc/self/fd/1 stdout
+/bin/ln -fs /proc/self/fd/2 stderr
+/bin/ln -fs /proc/self/fd fd
 cd - 1>/dev/null
 /bin/mount -o remount,rw /
 /bin/mount -a
-/bin/ln -sf /proc/mounts /etc/mtab
+/bin/ln -fs /proc/mounts /etc/mtab
 /bin/hostname glaucus
 /bin/ip addr add 127.0.0.1/8 dev lo broadcast + scope host
 /bin/ip link set lo up

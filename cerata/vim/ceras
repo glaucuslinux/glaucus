@@ -6,12 +6,8 @@ arch=x86_64
 url=https://github.com/$name/$name
 license='GPLv2+ LGPLv2.1+ MIT vim'
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        STRIP=$STRIP \
-        CFLAGS="$CFLAGS" \
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         CPPFLAGS="-I$GLAD/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \
         LD_LIBRARY_PATH="$GLAD/lib" \
@@ -72,6 +68,5 @@ build () {
         sed -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" \
                 -i runtime/doc/Makefile
         make \
-                DESTDIR=$GLAD \
                 install
 }

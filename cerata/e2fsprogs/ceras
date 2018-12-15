@@ -6,16 +6,10 @@ arch=x86_64
 url=git://git.kernel.org/pub/scm/fs/ext2/$name.git
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        RANLIB=$RANLIB \
-        STRIP=$STRIP \
-        YACC=$GLAD/bin/yacc \
         CFLAGS="$CFLAGS -I$GLAD/include" \
-        LDFLAGS="$LDFLAGS" \
         LIBS=-L$GLAD/lib \
         ./configure \
                 --prefix= \

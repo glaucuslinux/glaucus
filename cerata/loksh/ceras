@@ -6,17 +6,17 @@ arch=x86_64
 url=https://github.com/dimkr/$name
 license=PD
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         sed -e "/CC ?=/ cCC = $CC" \
                 -e "/CFLAGS ?=/ cCFLAGS = $CFLAGS -I$GLAD/include" \
                 -e "/LDFLAGS ?=/ cLDFLAGS = $LDFLAGS -L$GLAD/lib" \
+                -e "/DESTDIR ?=/ cDESTDIR = $DESTDIR" \
                 -e '/PREFIX ?=/ cPREFIX = ' \
                 -e 's/?//' \
                 -e '28s/$/-lterminfo/' \
                 -i Makefile
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }

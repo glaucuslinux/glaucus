@@ -6,20 +6,9 @@ arch=x86_64
 url=https://github.com/$name/$name
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         autoreconf -vfi
-        AR=$AR \
-        AS=$AS \
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        LD=$LD \
-        NM=$NM \
-        OBJDUMP=$OBJDUMP \
-        RANLIB=$RANLIB \
-        STRIP=$STRIP \
-        CFLAGS="$CFLAGS" \
-        LDFLAGS="$LDFLAGS" \
         ./configure \
                 --build=$ARCH-pc-linux-gnu \
                 --host=$TRPL \
@@ -27,6 +16,5 @@ build () {
                 --disable-libseccomp
         make
         make \
-                DESTDIR=$GLAD \
                 install-strip
 }

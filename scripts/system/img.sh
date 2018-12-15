@@ -9,7 +9,7 @@ losetup $lodev /home/glaucus/glaucus.img
 partx -a $lodev
 mkfs.ext4 ${lodev}p1
 mount ${lodev}p1 /mnt/loop
-rm -rfv /mnt/loop/lost+found
+rm -frv /mnt/loop/lost+found
 fakeroot cp -arvP /home/glaucus/system/* /mnt/loop
 mkdir -p /mnt/loop/boot/extlinux
 cp /home/glaucus/scripts/extlinux.conf /mnt/loop/boot/extlinux/

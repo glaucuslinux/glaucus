@@ -4,8 +4,8 @@ prepare () {
         . /home/glaucus/scripts/variables
         assign_basic_variables
         . $CERD/gcc/ceras
-        tar xfv $CERD/$name/$name-$version.tar.xz -C $TMPD/toolchain/sources
-        cd $TMPD/toolchain/builds
+        tar xfv $CERD/$name/$name-$version.tar.xz -C $TSRC
+        cd $TBLD
         mkdir -v linux binutils gcc_1 musl gcc_2
 }
 construct () {

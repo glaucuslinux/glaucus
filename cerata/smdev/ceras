@@ -6,16 +6,14 @@ arch=x86_64
 url=git://git.suckless.org/$name
 license=MIT
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         sed -e '/PREFIX =/ cPREFIX = ' \
                 -e "/CC =/ cCC = $CC" \
                 -e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
                 -e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
                 -i config.mk
-        AR=$AR \
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }

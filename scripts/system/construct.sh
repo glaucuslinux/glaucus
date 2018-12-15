@@ -8,10 +8,10 @@ construct () {
 }
 . /home/glaucus/scripts/system/prepare.sh
 construct musl
+construct mawk byacc mawk re2c
 construct sbase ubase lobase
 construct sinit smdev svc
 construct sdhcp
-construct mawk byacc mawk re2c
 construct dash
 construct zlib xz libarchive
 construct netbsd-curses loksh pcre2 less mandoc

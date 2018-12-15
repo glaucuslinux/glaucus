@@ -6,24 +6,16 @@ arch=x86_64
 url=https://github.com/skvadrik/$name
 license='GPLv3 PD PHPv3.01'
 build () {
-        rsync -vah $CERD/$name/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         autoreconf -vfi
-        mkdir -v $TMPD/system/builds/$name
-        cd $TMPD/system/builds/$name
-        AWK=$GLAD/bin/mawk \
-        CC=$CC \
-        CXX=$CXX \
-        STRIP=$STRIP \
-        CFLAGS="$CFLAGS" \
-        CXXFLAGS="$CXXFLAGS" \
-        LDFLAGS="$LDFLAGS" \
-        $TMPD/system/sources/$name/configure \
+        mkdir -v $SBLD/$name
+        cd $SBLD/$name
+        $SSRC/$name/configure \
                 --prefix= \
                 --disable-silent-rules \
                 --disable-dependency-tracking
         make
         make \
-                DESTDIR=$GLAD \
                 install-strip
 }

@@ -6,18 +6,17 @@ arch=x86_64
 url=git://git.2f30.org/$name.git
 license=MIT
 build () {
-        rsync -vah $CERD/$name/$name/ $TMPD/system/sources/$name/ --delete
-        cd $TMPD/system/sources/$name
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
         sed -e 's#/usr/local##' \
+                -e "/DESTDIR   =/ cDESTDIR   = $DESTDIR" \
                 -e "/CC        =/ cCC        = $CC" \
                 -e "/CFLAGS    =/ cCFLAGS    = $CFLAGS -Wall -Wextra -pedantic -std=c99 -D_BSD_SOURCE" \
                 -e "/LDFLAGS   =/ cLDFLAGS   = $LDFLAGS" \
                 -i config.mk
         sed -e 's/sbin/bin/g' \
                 -i Makefile
-        AR=$AR \
         make
         make \
-                DESTDIR=$GLAD \
                 install
 }
