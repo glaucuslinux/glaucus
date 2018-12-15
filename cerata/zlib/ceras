@@ -8,7 +8,6 @@ license='BSLv1.0 ZLIB'
 build () {
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        DFLAGS="$LDFLAGS" \
         $CERD/$name/$name/configure \
                 --prefix= \
                 --shared

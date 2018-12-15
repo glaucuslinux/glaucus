@@ -1,7 +1,7 @@
 name=s6-portable-utils
 version=git
 release=1
-description=''
+description="skarnet's set of tiny general Unix utilities optimized for simplicity and small size"
 arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC

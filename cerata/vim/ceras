@@ -1,7 +1,7 @@
 name=vim
 version=git
 release=1
-description=''
+description='A highly configurable ubiquitous text editor for efficiently creating and changing any kind of text'
 arch=x86_64
 url=https://github.com/$name/$name
 license='GPLv2+ LGPLv2.1+ MIT vim'

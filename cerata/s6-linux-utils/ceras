@@ -1,7 +1,7 @@
 name=s6-linux-utils
 version=git
 release=1
-description=''
+description="skarnet's set of minimalistic Linux-specific system utilities"
 arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC

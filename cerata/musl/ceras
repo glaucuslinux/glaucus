@@ -35,6 +35,8 @@ build () {
         make
         make \
                 install-libs
+        cd $GLAD/bin
+        ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
         $STRIP -v $GLAD/lib/Scrt1.o \
                 $GLAD/lib/crt1.o \
                 $GLAD/lib/crti.o \

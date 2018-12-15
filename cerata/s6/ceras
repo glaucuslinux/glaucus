@@ -1,7 +1,7 @@
 name=s6
 version=git
 release=1
-description=''
+description="skarnet's small suite of programs for UNIX, designed to allow process supervision"
 arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC
