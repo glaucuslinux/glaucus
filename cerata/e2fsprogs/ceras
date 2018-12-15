@@ -43,13 +43,13 @@ build () {
                 cd ..
         done
         cd ..
-        cp -av e2fsck/e2fsck $GLAD/bin
-        cp -av misc/blkid $GLAD/bin
-        cp -av misc/chattr $GLAD/bin
-        cp -av misc/fsck $GLAD/bin
-        cp -av misc/lsattr $GLAD/bin
-        cp -av misc/mke2fs $GLAD/bin
-        cp -av misc/tune2fs $GLAD/bin
+        rsync -vah e2fsck/e2fsck $GLAD/bin --delete
+        rsync -vah misc/blkid $GLAD/bin --delete
+        rsync -vah misc/chattr $GLAD/bin --delete
+        rsync -vah misc/fsck $GLAD/bin --delete
+        rsync -vah misc/lsattr $GLAD/bin --delete
+        rsync -vah misc/mke2fs $GLAD/bin --delete
+        rsync -vah misc/tune2fs $GLAD/bin --delete
         cd $GLAD/bin
         ln -fsv e2fsck fsck.ext4
         ln -fsv mke2fs mkfs.ext4

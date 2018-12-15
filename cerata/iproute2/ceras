@@ -1,7 +1,7 @@
 name=iproute2
 version=git
 release=1
-description='A collection of utilities for controlling TCP/IP networking and traffic control in Linux'
+description='A collection of utilities for controlling TCP/IP networking and traffic in Linux'
 arch=x86_64
 url=git://git.kernel.org/pub/scm/network/$name/$name.git
 license=GPLv2
@@ -30,5 +30,5 @@ build () {
                 -e '/HAVE_CAP/{n;N;d}' \
                 -i config.mk
         make
-        cp -av ip/ip $GLAD/bin
+        rsync -vah ip/ip $GLAD/bin --delete
 }

@@ -7,9 +7,9 @@ url=https://ftp.gnu.org/gnu/$name/$name-$version/$name-$version.tar.xz
 license='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
 checksum=64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed
 build_toolchain () {
+        cd $TBLD/$1
         case $1 in
                 gcc_1)
-                        cd $TBLD/$1
                         $TSRC/$name-$version/configure \
                                 --prefix=$PRFX \
                                 --build=$ARCH-pc-linux-gnu \
@@ -48,7 +48,6 @@ build_toolchain () {
                                 install-target-libgcc
                         ;;
                 gcc_2)
-                        cd $TBLD/$1
                         $TSRC/$name-$version/configure \
                                 --prefix=$PRFX \
                                 --build=$ARCH-pc-linux-gnu \

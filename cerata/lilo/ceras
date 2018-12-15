@@ -22,7 +22,7 @@ build () {
                 -e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
                 -i src/Makefile
         make
-        cp -arv src/$name $GLAD/bin
+        rsync -vah src/$name $GLAD/bin --delete
 cat > $GLAD/etc/$name.conf << EOF
 lba32
 boot=/dev/sda

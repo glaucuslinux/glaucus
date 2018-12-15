@@ -25,7 +25,7 @@ build () {
         tar xvf $CERD/$name/$name-$version.tar.xz -C $SSRC
         mv $SSRC/$name-$version $SSRC/$name
         mkdir -v $SBLD/$name
-        cp -av $CERD/$name/glaucus.config $SBLD/$name/.config
+        rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
         cd $SSRC/$name
         make \
                 mrproper
@@ -38,5 +38,5 @@ build () {
         make \
                 O=$SBLD/$name
         cat $SBLD/$name/arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
-        cp -av $SBLD/$name/System.map $GLAD/boot
+        rsync -vah $SBLD/$name/System.map $GLAD/boot --delete
 }

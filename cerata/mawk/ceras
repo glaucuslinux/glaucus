@@ -10,7 +10,7 @@ build () {
         cd $SBLD/$name
         $CERD/$name/$name-snapshots/configure \
                 --prefix=
-        cp -arv $CERD/$name/$name-snapshots/man $SBLD/$name
+        rsync -vah $CERD/$name/$name-snapshots/man $SBLD/$name --delete
         make
         make \
                 install

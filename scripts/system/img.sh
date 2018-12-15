@@ -11,9 +11,9 @@ mkfs.ext4 ${lodev}p1
 mount ${lodev}p1 /mnt/loop
 rm -frv /mnt/loop/lost+found
 fakeroot cp -arvP /home/glaucus/system/* /mnt/loop
-mkdir -p /mnt/loop/boot/extlinux
-cp /home/glaucus/scripts/extlinux.conf /mnt/loop/boot/extlinux/
-chown -R root:root /mnt/loop/*
+mkdir -pv /mnt/loop/boot/extlinux
+rsync -vah /home/glaucus/scripts/extlinux.conf /mnt/loop/boot/extlinux --delete
+chown -vR root:root /mnt/loop/*
 extlinux --install /mnt/loop/boot/extlinux/
 umount /mnt/loop
 partx -d $lodev
