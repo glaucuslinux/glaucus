@@ -11,8 +11,8 @@ build () {
         mv $SSRC/$name-$version $SSRC/$name
         cd $SSRC/$name
         patch -p0 -i $CERD/$name/patches/$name.diff
-        sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE" \
-                -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS" \
+        sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
+                -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
                 -e '9d;11d;12d;13d' \
                 -i Makefile
         make

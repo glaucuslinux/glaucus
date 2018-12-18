@@ -18,8 +18,8 @@ build () {
                 -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/bin/' \
                 -i make.vars
         sed -e "s/CC=.*/CC=$CC/" \
-                -e 's/as86/\/home\/glaucus\/system\/bin/as86/' \
-                -e 's/ld86/\/home\/glaucus\/system\/bin/ld86/' \
+                -e 's/as86/\/home\/glaucus\/system\/bin\/as86/' \
+                -e 's/ld86/\/home\/glaucus\/system\/bin\/ld86/' \
                 -i src/Makefile
         make
         rsync -vah src/$name $GLAD/bin --delete
