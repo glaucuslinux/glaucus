@@ -65,7 +65,8 @@ build () {
                 --without-gnome \
                 --without-motif-lib
         make
-        sed -e "/esX/s#^#\tLD_LIBRARY_PATH=$GLAD/lib#" \
+        sed -e '/esX/s/^\t/ /' \
+                -e '/esX/s/^/\tLD_LIBRARY_PATH=\/home\/glaucus\/system\/lib/' \
                 -i runtime/doc/Makefile
         make \
                 install

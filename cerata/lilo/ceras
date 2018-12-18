@@ -11,15 +11,15 @@ build () {
         mv $SSRC/$name-$version $SSRC/$name
         cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
-        sed -e "/checkit/d" \
+        sed -e '/checkit/d' \
                 -i Makefile
-        sed -e "/OPT=/ cOPT=$CFLAGS" \
-                -e "/SBIN_DIR=/ cSBIN_DIR=/bin" \
-                -e "/USRSBIN_DIR=/ cUSRSBIN_DIR=/bin" \
+        sed -e "s/OPT=.*/OPT=$CFLAGS" \
+                -e 's/SBIN_DIR=\/sbin/SBIN_DIR=\/bin/' \
+                -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/bin/' \
                 -i make.vars
-        sed -e "/CC=/ cCC=$CC" \
-                -e "/AS86=/ cAS86=$GLAD/bin/as86 -0 -a" \
-                -e "/LD86=/ cLD86=$GLAD/bin/ld86 -0" \
+        sed -e "s/CC=.*/CC=$CC/" \
+                -e 's/as86/\/home\/glaucus\/system\/bin/as86/' \
+                -e 's/ld86/\/home\/glaucus\/system\/bin/ld86/' \
                 -i src/Makefile
         make
         rsync -vah src/$name $GLAD/bin --delete
@@ -31,6 +31,6 @@ default=glaucus
 image=/boot/vmlinuz
         label=glaucus
         read-only
-        append="root=/dev/sda1 rootfstype=ext4 init=/bin/sinit"
+        append="root=/dev/sda1 rootfstype=ext4 init=/bin/init"
 EOF
 }

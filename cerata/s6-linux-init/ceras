@@ -17,7 +17,8 @@ build () {
                 --enable-shared \
                 --disable-static \
                 --disable-allstatic
-        sed -e "/CFLAGS :=/ cCFLAGS := $CFLAGS -fno-stack-protector" \
+        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+                -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
         make \

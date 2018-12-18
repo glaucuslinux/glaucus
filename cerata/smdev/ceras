@@ -8,10 +8,10 @@ license=MIT
 build () {
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
-        sed -e '/PREFIX =/ cPREFIX = ' \
-                -e "/CC =/ cCC = $CC" \
-                -e "/CFLAGS   =/ cCFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE" \
-                -e "/LDFLAGS  =/ cLDFLAGS = $LDFLAGS" \
+        sed -e 's/PREFIX = .*/PREFIX =/' \
+                -e "s/CC = .*/CC = $CC/" \
+                -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
+                -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         make
         make \

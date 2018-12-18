@@ -22,12 +22,12 @@ LDADD="-L$GLAD/lib"
 LDFLAGS="$LDFLAGS"
 EOF
         ./configure
-        sed -e 's#BINDIR\t\t= /usr/local/bin#BINDIR\t\t= /bin#' \
+        sed -e 's/BINDIR\t\t= \/usr\/local\/bin/BINDIR\t\t= \/bin/' \
                 -e '10d' \
-                -e '/BIN_FROM_SBIN\t=/ cBIN_FROM_SBIN\t= bin' \
-                -e '/MANDIR\t\t=/ cMANDIR\t\t= /share/man' \
+                -e 's/BIN_FROM_SBIN\t= ..\/bin/BIN_FROM_SBIN\t= bin/' \
+                -e 's/MANDIR\t\t= .*/MANDIR\t\t= \/share\/man/' \
                 -i Makefile.local
-        sed -e 's#${BIN_FROM_SBIN}/##' \
+        sed -e 's/${BIN_FROM_SBIN}\///' \
                 -e 's/SBINDIR/BINDIR/' \
                 -i Makefile
         make

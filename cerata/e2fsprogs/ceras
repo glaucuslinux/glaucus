@@ -36,7 +36,7 @@ build () {
         for dir in blkid e2p et ext2fs uuid
         do
                 cd $dir
-                sed -e "/LDCONFIG/d" \
+                sed -e '/LDCONFIG/d' \
                         -i Makefile
                 make \
                         install-strip

@@ -23,7 +23,7 @@ assign_system_variables () {
         export CXXFLAGS="$CFLAGS"
         export DESTDIR=$GLAD
         export LD=$TRPL-ld
-        export LDFLAGS='-Wl,--as-needed -Wl,--hash-style=gnu -Wl,--strip-all'
+        export LDFLAGS='-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu'
         export NM=$TRPL-nm
         export OBJDUMP=$TRPL-objdump
         export RANLIB=$TRPL-ranlib

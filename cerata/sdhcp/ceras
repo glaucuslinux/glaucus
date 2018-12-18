@@ -8,11 +8,11 @@ license=MIT
 build () {
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
-        sed -e 's#/usr/local##' \
-                -e "/DESTDIR   =/ cDESTDIR   = $DESTDIR" \
-                -e "/CC        =/ cCC        = $CC" \
-                -e "/CFLAGS    =/ cCFLAGS    = $CFLAGS -Wall -Wextra -pedantic -std=c99 -D_BSD_SOURCE" \
-                -e "/LDFLAGS   =/ cLDFLAGS   = $LDFLAGS" \
+        sed -e 's/PREFIX    = .*/PREFIX    =/' \
+                -e 's/DESTDIR   =/DESTDIR   = \/home\/glaucus\/system/' \
+                -e "s/CC        = .*/CC        = $CC/" \
+                -e "s/CFLAGS    = .*/CFLAGS    = $CFLAGS -Wall -Wextra -pedantic -std=c99 -D_DEFAULT_SOURCE/" \
+                -e "s/LDFLAGS   = .*/LDFLAGS   = $LDFLAGS/" \
                 -i config.mk
         sed -e 's/sbin/bin/g' \
                 -i Makefile

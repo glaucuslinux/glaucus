@@ -6,5 +6,21 @@ arch=x86_64
 url=git://git.skarnet.org/$name
 license=ISC
 build () {
-        :
+        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        cd $SSRC/$name
+        ./configure \
+                --prefix=/ \
+                --libexecdir=/lib/libexec \
+                --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
+                --with-include=$GLAD/include \
+                --with-dynlib=$GLAD/lib \
+                --enable-shared \
+                --disable-static \
+                --disable-allstatic
+        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+                -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/lib/" \
+                -i config.mak
+        make
+        make \
+                install
 }
