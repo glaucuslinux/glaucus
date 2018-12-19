@@ -6,6 +6,7 @@ arch=x86_64
 url=git://git.$name-libc.org/$name
 license='BSDv2 LGPLv2.1+ MIT PD'
 build_toolchain () {
+        mkdir -v $TBLD/$name
         cd $TBLD/$name
         $CERD/$name/$name/configure \
                 CC=$TRPL-gcc \
@@ -37,9 +38,9 @@ build () {
                 install-libs
         cd $GLAD/bin
         ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
-        $STRIP -v $GLAD/lib/Scrt1.o \
-                $GLAD/lib/crt1.o \
-                $GLAD/lib/crti.o \
-                $GLAD/lib/crtn.o \
-                $GLAD/lib/rcrt1.o
+#        $STRIP -v $GLAD/lib/Scrt1.o \
+#                $GLAD/lib/crt1.o \
+#                $GLAD/lib/crti.o \
+#                $GLAD/lib/crtn.o \
+#                $GLAD/lib/rcrt1.o
 }

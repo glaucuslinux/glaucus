@@ -8,7 +8,9 @@ license=GPLv2
 checksum=c863dbfcba413a1d9ee396c20d40ede6c5f07f168f74ef604c261b11797226dced1912270203b2a2d3be000284f6cca72df6ed52675e260e8289a87b0d65f282
 build_toolchain () {
         tar xvf $CERD/$name/$name-$version.tar.xz -C $TSRC
-        cd $TSRC/$name-$version
+        mv $TSRC/$name-$version $TSRC/$name
+        mkdir -v $TBLD/$name
+        cd $TSRC/$name
         make \
                 mrproper
         make \
