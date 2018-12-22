@@ -1,8 +1,4 @@
 #!/bin/dash -ex
-. /home/glaucus/scripts/variables
-. /home/glaucus/scripts/system/clean.sh
-assign_basic_variables
-assign_system_variables
 cd $GLAD
 mkdir -pv bin boot dev etc lib proc sys tmp run
 install -dvm 0750 $GLAD/root
