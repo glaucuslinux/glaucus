@@ -2,7 +2,7 @@ name=iproute2
 version=git
 release=1
 arch=x86_64
-url=https://git.kernel.org/pub/scm/network/$name/$name.git
+url=https://git.kernel.org/pub/scm/network/$name/$name
 description='A collection of utilities for controlling TCP/IP networking and traffic in Linux'
 license=GPLv2
 build(){
