@@ -1,11 +1,11 @@
 name=zlib
 version=git
 release=1
-description='A Massively Spiffy Yet Delicately Unobtrusive Compression Library'
 arch=x86_64
 url=https://github.com/madler/$name
+description='A Massively Spiffy Yet Delicately Unobtrusive Compression Library'
 license='BSLv1.0 ZLIB'
-build () {
+build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \

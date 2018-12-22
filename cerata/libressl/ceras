@@ -1,13 +1,13 @@
 name=libressl
 version=git
 release=1
-description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
 arch=x86_64
 url=https://github.com/$name-portable/portable
+description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
 license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
-build () {
-        rsync -vah $CERD/$name/portable/ $SSRC/$name/ --delete
-        rsync -vah $CERD/$name/openbsd/ $SSRC/$name/openbsd/ --delete
+build(){
+        rsync -vah $CERD/$name/portable/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/openbsd $SSRC/$name --delete
         cd $SSRC/$name
         ./autogen.sh
         mkdir -v $SBLD/$name

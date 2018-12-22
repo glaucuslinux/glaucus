@@ -1,11 +1,11 @@
 name=lobase
 version=git
 release=1
-description='A port of the OpenBSD userland to Linux'
 arch=x86_64
-url=https://github.com/Duncaen/$name.git/
+url=https://github.com/Duncaen/$name
+description='A port of the OpenBSD userland to Linux'
 license='ISC PD'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         sed -e 's/${DESTDIR}//' \

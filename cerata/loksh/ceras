@@ -1,11 +1,11 @@
 name=loksh
 version=git
 release=1
-description='A port of the OpenBSD ksh to Linux'
 arch=x86_64
 url=https://github.com/dimkr/$name
+description='A port of the OpenBSD ksh to Linux'
 license=PD
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         sed -e "s/CC ?= .*/CC = $CC/" \

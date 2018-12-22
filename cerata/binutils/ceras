@@ -1,15 +1,24 @@
 name=binutils
 version=2.31.1
 release=1
-description='The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files'
 arch=x86_64
 url=https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
-license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
 checksum=0fca326feb1d5f5fe505a827b20237fe3ec9c13eaf7ec7e35847fd71184f605ba1cefe1314b1b8f8a29c0aa9d88162849ee1c1a3e70c2f7407d88339b17edb30
+<<<<<<< HEAD
+description='The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files'
+license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
+build_toolchain(){
+        mkdir -v $TBLD/$name
+        cd $TBLD/$name
+        $CERD/$name/$name/configure \
+=======
 build_toolchain () {
         tar xvf $CERD/$name/$name-$version.tar.xz -C $TSRC
+        mv $TSRC/$name-$version $TSRC/$name
+        mkdir -v $TBLD/$name
         cd $TBLD/$name
-        $TSRC/$name-$version/configure \
+        $TSRC/$name/configure \
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
                 --prefix=$PRFX \
                 --target=$TRPL \
                 --with-sysroot=$PRFX/$TRPL \
@@ -25,6 +34,6 @@ build_toolchain () {
         make \
                 install
 }
-build () {
+build(){
         :
 }

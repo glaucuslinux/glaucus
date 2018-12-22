@@ -1,11 +1,11 @@
 name=svc
 version=git
 release=1
-description='Simple service scripts and examples, to be used everywhere'
 arch=x86_64
 url=git://git.r-36.net/$name
+description='Simple service scripts and examples, to be used everywhere'
 license=MIT
-build () {
+build(){
         rsync -vah $CERD/$name/$name/bin/$name $GLAD/bin/$name --delete
         rsync -vah $CERD/$name/$name/$name.d/ $GLAD/bin/$name.d/ --delete
         mkdir -v $GLAD/bin/$name.d/run

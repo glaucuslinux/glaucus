@@ -1,11 +1,11 @@
 name=skalibs
 version=git
 release=1
-description="skarnet's general purpose C libraries for system programming and small and secure C development"
 arch=x86_64
 url=git://git.skarnet.org/$name
+description="skarnet's general purpose C libraries for system programming and small and secure C development"
 license=ISC
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         ./configure \

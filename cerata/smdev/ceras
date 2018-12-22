@@ -1,11 +1,11 @@
 name=smdev
 version=git
 release=1
-description='Suckless mdev'
 arch=x86_64
-url=git://git.suckless.org/$name
+url=https://git.suckless.org/$name
+description='Suckless mdev'
 license=MIT
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         sed -e 's/PREFIX = .*/PREFIX =/' \

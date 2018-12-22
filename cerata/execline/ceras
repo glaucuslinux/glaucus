@@ -1,11 +1,11 @@
 name=execline
 version=git
 release=1
-description='A small and non-interactive scripting language, like sh; but with different syntax'
 arch=x86_64
 url=git://git.skarnet.org/$name
+description='A small and non-interactive scripting language, like sh; but with different syntax'
 license=ISC
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         ./configure \

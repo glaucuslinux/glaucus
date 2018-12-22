@@ -1,11 +1,11 @@
 name=file
 version=git
 release=1
-description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 arch=x86_64
 url=https://github.com/$name/$name
+description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         autoreconf -vfi

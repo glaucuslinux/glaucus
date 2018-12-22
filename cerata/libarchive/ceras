@@ -1,11 +1,11 @@
 name=libarchive
 version=git
 release=1
-description='Multi-format archive and compression library'
 arch=x86_64
 url=https://github.com/$name/$name
+description='Multi-format archive and compression library'
 license=BSDv3
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         autoreconf -vfi

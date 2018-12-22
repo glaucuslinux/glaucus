@@ -1,11 +1,11 @@
 name=vim
 version=git
 release=1
-description='A highly configurable ubiquitous text editor for efficiently creating and changing any kind of text'
 arch=x86_64
 url=https://github.com/$name/$name
+description='A highly configurable ubiquitous text editor for efficiently creating and changing any kind of text'
 license='GPLv2+ LGPLv2.1+ MIT vim'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         CPPFLAGS="-I$GLAD/include" \

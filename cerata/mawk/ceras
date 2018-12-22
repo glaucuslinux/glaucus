@@ -1,16 +1,16 @@
 name=mawk
 version=git
 release=1
-description='An interpreter for the AWK Programming Language faster than gawk'
 arch=x86_64
 url=https://github.com/ThomasDickey/$name-snapshots
+description='An interpreter for the AWK Programming Language faster than gawk'
 license=GPLv2
-build () {
+build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name-snapshots/configure \
                 --prefix=
-        rsync -vah $CERD/$name/$name-snapshots/man $SBLD/$name --delete
+        rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
         make \
                 install

@@ -1,11 +1,11 @@
 name=opendoas
 version=git
 release=1
-description='A portable version of the OpenBSD `doas` command'
 arch=x86_64
 url=https://github.com/Duncaen/OpenDoas
+description='A portable version of the OpenBSD `doas` command'
 license='BSDv2 ISC'
-build () {
+build(){
         rsync -vah $CERD/$name/OpenDoas/ $SSRC/$name/ --delete
         cd $SSRC/$name
         sed -e 's/root/glaucus/' \

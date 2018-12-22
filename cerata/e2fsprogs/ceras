@@ -1,11 +1,11 @@
 name=e2fsprogs
 version=git
 release=1
-description='The standard utilities for ext2/ext3/ext4 filesystems'
 arch=x86_64
-url=git://git.kernel.org/pub/scm/fs/ext2/$name.git
+url=https://git.kernel.org/pub/scm/fs/ext2/$name.git
+description='The standard utilities for ext2/ext3/ext4 filesystems'
 license='BSDv3 GPLv2 LGPLv2 MIT'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch

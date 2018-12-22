@@ -1,11 +1,11 @@
 name=netbsd-curses
 version=git
 release=1
-description="A port of NetBSD's curses library for usage on Linux systems"
 arch=x86_64
 url=https://github.com/sabotage-linux/$name
+description="A port of NetBSD's curses library for usage on Linux systems"
 license='BSDv3 BSDv2'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
 cat > config.mak << EOF

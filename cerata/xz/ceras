@@ -1,11 +1,11 @@
 name=xz
 version=git
 release=1
-description='A free general-purpose data compression software with a high compression ratio'
 arch=x86_64
-url=https://git.tukaani.org/$name.git
+url=https://git.tukaani.org/$name.$version
+description='A free general-purpose data compression software with a high compression ratio'
 license='GPLv2+ GPLv3+ LGPLv2.1+ PD'
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         autoreconf -vfi

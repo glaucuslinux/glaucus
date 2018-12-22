@@ -1,11 +1,11 @@
 name=sdhcp
 version=git
 release=1
-description='Simple DHCP client'
 arch=x86_64
 url=git://git.2f30.org/$name.git
+description='Simple DHCP client'
 license=MIT
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         sed -e 's/PREFIX    = .*/PREFIX    =/' \

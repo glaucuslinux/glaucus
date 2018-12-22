@@ -1,11 +1,11 @@
 name=s6-linux-init
 version=git
 release=1
-description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
 arch=x86_64
 url=git://git.skarnet.org/$name
+description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
 license=ISC
-build () {
+build(){
         rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         ./configure \

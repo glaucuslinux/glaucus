@@ -1,16 +1,13 @@
 name=mpc
-version=1.1.0
+version=git
 release=1
-description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 arch=x86_64
-url=https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
+description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
-checksum=72d657958b07c7812dc9c7cbae093118ce0e454c68a585bfb0e2fa559f1bf7c5f49b93906f580ab3f1073e5b595d23c6494d4d76b765d16dde857a18dd239628
-build_toolchain () {
-        cd $TSRC/gcc-*
-        tar xvf $CERD/$name/$name-$version.tar.gz -C .
-        mv $name-$version $name
+build_toolchain(){
+        rsync -vah $CERD/$name/$name $CERD/gcc/gcc --delete
 }
-build () {
+build(){
         :
 }

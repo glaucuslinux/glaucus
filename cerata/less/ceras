@@ -1,14 +1,13 @@
 name=less
 version=547
 release=1
-description='A free, open-source and text-based terminal file pager'
 arch=x86_64
 url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
-license='BSDv2 GPLv3'
 checksum=4f85019a6617b90ac1dec4009f62e6ca223af326b08d1f39eaea39d96b5e975f4cc0072cdfa73cff8fa71fe7859cba36f0e58104cc5754fa5b262d8341743d51
-build () {
-        tar xvf $CERD/$name/$name-$version.tar.gz -C $SSRC
-        mv $SSRC/$name-$version $SSRC/$name
+description='A free, open-source and text-based terminal file pager'
+license='BSDv2 GPLv3'
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         CFLAGS="$CFLAGS -I$GLAD/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \

@@ -1,4 +1,5 @@
 #!/usr/bin/dash -ex
+. /home/glaucus/scripts/update.sh
 count=1
 while true; do
         file=$count

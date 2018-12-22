@@ -1,10 +1,10 @@
 name=nnn
 version=git
 release=1
-description='The fastest terminal file manager ever written'
 arch=x86_64
 url=https://github.com/jarun/$name
+description='The fastest terminal file manager ever written'
 license=BSDv2
-build () {
+build(){
         :
 }

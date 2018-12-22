@@ -1,14 +1,9 @@
 #!/usr/bin/dash -ex
-prepare () {
-        . /home/glaucus/scripts/toolchain/clean.sh
-        . /home/glaucus/scripts/variables
-        assign_basic_variables
-        . $CERD/gcc/ceras
-        tar xfv $CERD/$name/$name-$version.tar.xz -C $TSRC
-        cd $TBLD
-        mkdir -v linux binutils gcc_1 musl gcc_2
-}
+<<<<<<< HEAD
+construct(){
+=======
 construct () {
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
         for item in "$@"
         do
                 case $item in
@@ -23,5 +18,7 @@ construct () {
                 esac
         done
 }
-prepare
+. /home/glaucus/scripts/toolchain/clean.sh
+. /home/glaucus/scripts/variables
+assign_basic_variables
 construct linux binutils gmp mpc mpfr gcc_1 musl gcc_2

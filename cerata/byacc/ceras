@@ -1,17 +1,15 @@
 name=byacc
 version=20180609
 release=1
-description='Berkeley Yacc LALR parser generator is the best variant of the Unix Yacc LALR parser generator'
 arch=x86_64
 url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz
-license=PD
 checksum=45aa6de839ca23385ab832685fdaa49225dcde6a40bdb990eefde8ab1be2cfe063875072e844629ac91e9533e6e310fa0bb8a6bd01e246a1cefc67bbc3c175f9
-build () {
-        tar xvf $CERD/$name/$name-$version.tgz -C $SSRC
-        mv $SSRC/$name-$version $SSRC/$name
+description='Berkeley Yacc LALR parser generator is the best variant of the Unix Yacc LALR parser generator'
+license=PD
+build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        $SSRC/$name/configure \
+        $CERD/$name/$name/configure \
                 --prefix=
         make
         make \
