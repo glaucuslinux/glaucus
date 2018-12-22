@@ -66,5 +66,3 @@ play/
 system/
 temporary/
 toolchain/
-!scripts/system/
-!scripts/toolchain/
