@@ -2,7 +2,7 @@ name=s6-rc
 version=git
 release=1
 arch=x86_64
-url=git://git.skarnet.org/$name
+url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
 description="skarnet's service manager for s6-based systems"
 license=ISC
 build(){

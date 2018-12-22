@@ -2,7 +2,7 @@ name=s6-linux-init
 version=git
 release=1
 arch=x86_64
-url=git://git.skarnet.org/$name
+url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
 description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
 license=ISC
 build(){
