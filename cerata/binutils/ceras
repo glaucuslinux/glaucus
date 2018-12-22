@@ -18,6 +18,9 @@ build_toolchain () {
         mkdir -v $TBLD/$name
         cd $TBLD/$name
         $TSRC/$name/configure \
+<<<<<<< HEAD
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
+=======
 >>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
                 --prefix=$PRFX \
                 --target=$TRPL \

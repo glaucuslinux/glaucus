@@ -11,6 +11,9 @@ build_toolchain(){
 =======
 build_toolchain () {
         tar xfv $CERD/$name/$name-$version.tar.xz -C $TSRC
+<<<<<<< HEAD
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
+=======
 >>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
         mkdir -v $TBLD/$1
         cd $TBLD/$1

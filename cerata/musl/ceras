@@ -9,6 +9,9 @@ license='BSDv2 LGPLv2.1+ MIT PD'
 build_toolchain(){
 =======
 build_toolchain () {
+<<<<<<< HEAD
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
+=======
 >>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
         mkdir -v $TBLD/$name
         cd $TBLD/$name

@@ -1,7 +1,10 @@
 #!/usr/bin/dash -ex
 <<<<<<< HEAD
+<<<<<<< HEAD
 construct(){
 =======
+=======
+>>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
 construct () {
 >>>>>>> cad9b0b9592f2a00ae3f18c547d72250341be9c5
         for item in "$@"
