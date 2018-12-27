@@ -17,6 +17,8 @@ RANLIB = $RANLIB
 CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
+        sed -e 's/-O0 //' \
+                -i GNUmakefile
         make \
                 all-dynamic
         make \

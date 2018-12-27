@@ -9,6 +9,8 @@ build(){
         rsync -vah $CERD/$name/$name/$name/ $SSRC/$name/ --delete
         cd $SSRC/$name
         autoreconf -vfi
+        sed -e 's/-O2//' \
+                -i configure
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
