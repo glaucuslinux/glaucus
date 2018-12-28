@@ -7,6 +7,7 @@ mkdir -pv logs/toolchain
 mkdir -v play
 mkdir -v system
 mkdir -pv temporary/system/builds
+mkdir -v temporary/system/cerata
 mkdir -v temporary/system/sources
 mkdir -pv temporary/toolchain/builds
 mkdir -v temporary/toolchain/sources

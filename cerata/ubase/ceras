@@ -2,7 +2,7 @@ name=ubase
 version=git
 release=1
 arch=x86_64
-url=https://git.suckless.org/$name
+url=https://$version.suckless.org/$name
 description='Suckless Linux base utils'
 license=MIT
 build(){

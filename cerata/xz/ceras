@@ -2,7 +2,7 @@ name=xz
 version=git
 release=1
 arch=x86_64
-url=https://git.tukaani.org/$name.$version
+url=https://$version.tukaani.org/$name.$version
 description='A free general-purpose data compression software with a high compression ratio'
 license='GPLv2+ GPLv3+ LGPLv2.1+ PD'
 build(){

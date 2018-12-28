@@ -2,7 +2,7 @@ name=sinit
 version=git
 release=1
 arch=x86_64
-url=https://git.suckless.org/$name
+url=https://$version.suckless.org/$name
 description='Suckless init'
 license=MIT
 build(){

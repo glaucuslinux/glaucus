@@ -2,7 +2,7 @@ name=dash
 version=git
 release=1
 arch=x86_64
-url=https://git.kernel.org/pub/scm/utils/$name/$name
+url=https://$version.kernel.org/pub/scm/utils/$name/$name.$version
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 license='BSDv3 GPLv2 PD'
 build(){

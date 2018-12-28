@@ -2,7 +2,7 @@ name=e2fsprogs
 version=git
 release=1
 arch=x86_64
-url=https://git.kernel.org/pub/scm/fs/ext2/$name
+url=https://$version.kernel.org/pub/scm/fs/ext2/$name.$version
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build(){

@@ -2,12 +2,12 @@ name=linux
 version=git
 release=1
 arch=x86_64
-url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name-stable
+url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name.$version
 description='The Linux kernel and modules'
 license=GPLv2
 build_toolchain(){
         mkdir -v $TBLD/$name
-        cd $CERD/$name/$name-stable
+        cd $CERD/$name/$name
         make \
                 mrproper
         make \
@@ -23,7 +23,7 @@ build_toolchain(){
 build(){
         mkdir -v $SBLD/$name
         rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
-        cd $CERD/$name/$name-stable
+        cd $CERD/$name/$name
         make \
                 mrproper
         make \
