@@ -10,9 +10,9 @@ build_toolchain(){
         mkdir -v $TBLD/$name
         cd $TBLD/$name
         $CERD/$name/$name/configure \
-                --prefix=$PRFX \
+                --prefix=$TOOL \
                 --target=$TRPL \
-                --with-sysroot=$PRFX/$TRPL \
+                --with-sysroot=$TOOL/$TRPL \
                 --disable-nls \
                 --disable-multilib \
                 --disable-compressed-debug-sections \

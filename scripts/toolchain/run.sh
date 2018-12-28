@@ -3,6 +3,7 @@
 . /home/glaucus/scripts/update.sh
 . /home/glaucus/scripts/variables
 assign_basic_variables
+assign_toolchain_variables
 count=1
 while true; do
         file=$count

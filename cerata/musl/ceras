@@ -17,7 +17,7 @@ build_toolchain(){
                 --disable-warnings
         make
         make \
-                DESTDIR=$PRFX/$TRPL \
+                DESTDIR=$TOOL/$TRPL \
                 install
 }
 build(){

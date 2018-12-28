@@ -12,11 +12,11 @@ build_toolchain(){
         case $1 in
                 gcc_1)
                         $CERD/$name/$name/configure \
-                                --prefix=$PRFX \
+                                --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
                                 --target=$TRPL \
-                                --with-sysroot=$PRFX/$TRPL \
+                                --with-sysroot=$TOOL/$TRPL \
                                 --disable-nls \
                                 --disable-shared \
                                 --without-headers \
@@ -50,11 +50,11 @@ build_toolchain(){
                         ;;
                 gcc_2)
                         $CERD/$name/$name/configure \
-                                --prefix=$PRFX \
+                                --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
                                 --target=$TRPL \
-                                --with-sysroot=$PRFX/$TRPL \
+                                --with-sysroot=$TOOL/$TRPL \
                                 --with-native-system-header-dir=/include \
                                 --disable-nls \
                                 --disable-libgomp \

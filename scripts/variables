@@ -3,11 +3,13 @@ assign_basic_variables(){
         export TRPL=$ARCH-linux-musl
         export CERD=/home/glaucus/cerata
         export TMPD=/home/glaucus/temporary
+        export TOOL=/home/glaucus/toolchain
+        export PATH=$TOOL/bin:/usr/bin
+        export MAKEFLAGS=-j1
+}
+assign_toolchain_variables(){
         export TBLD=$TMPD/toolchain/builds
         export TSRC=$TMPD/toolchain/sources
-        export PRFX=/home/glaucus/toolchain
-        export PATH=$PRFX/bin:/usr/bin
-        export MAKEFLAGS=-j1
 }
 assign_system_variables(){
         export GLAD=/home/glaucus/system
