@@ -6,9 +6,11 @@ assign_basic_variables
 assign_system_variables
 . /home/glaucus/scripts/system/prepare.sh
 count=1
-while true; do
+while true
+do
         file=$count
-        if [ -d "/home/glaucus/logs/system/$file" ]; then
+        if [ -d "/home/glaucus/logs/system/$file" ]
+        then
                 count=$(($count + 1))
         else
                 break

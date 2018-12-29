@@ -5,9 +5,11 @@
 assign_basic_variables
 assign_toolchain_variables
 count=1
-while true; do
+while true
+do
         file=$count
-        if [ -d "/home/glaucus/logs/toolchain/$file" ]; then
+        if [ -d "/home/glaucus/logs/toolchain/$file" ]
+        then
                 count=$(($count + 1))
         else
                 break

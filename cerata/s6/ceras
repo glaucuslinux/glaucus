@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
+cysts='execline skalibs'
 description="skarnet's small suite of programs for UNIX, designed to allow process supervision"
 license=ISC
 build(){

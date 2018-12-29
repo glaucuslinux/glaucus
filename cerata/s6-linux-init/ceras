@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
+cysts='execline skalibs s6 s6-linux-utils s6-portable-utils'
 description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
 license=ISC
 build(){
