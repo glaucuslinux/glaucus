@@ -35,12 +35,14 @@ build(){
                 --without-nscd
         make
         make \
+                DESTDIR=$SCER/$name/sac \
                 install-libs
-        cd $GLAD/bin
+        mkdir -v $SCER/$name/sac/bin
+        cd $SCER/$name/sac/bin
         ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
-        $STRIP -v $GLAD/lib/Scrt1.o \
-                $GLAD/lib/crt1.o \
-                $GLAD/lib/crti.o \
-                $GLAD/lib/crtn.o \
-                $GLAD/lib/rcrt1.o
+        $STRIP -v $SCER/$name/sac/lib/Scrt1.o \
+                $SCER/$name/sac/lib/crt1.o \
+                $SCER/$name/sac/lib/crti.o \
+                $SCER/$name/sac/lib/crtn.o \
+                $SCER/$name/sac/lib/rcrt1.o
 }

@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.kernel.org/pub/scm/fs/ext2/$name.$version
+cyst=musl
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build(){
@@ -15,22 +16,21 @@ build(){
                 --prefix= \
                 --build=$TRPL \
                 --host=$TRPL \
-                --host=$TRPL \
-                --with-root-prefix= \
                 --enable-symlink-install \
                 --enable-elf-shlibs \
                 --disable-bsd-shlibs \
                 --disable-testio-debug \
-                --disable-e2initrd-helper \
+                --disable-debugfs \
+                --disable-imager \
+                --disable-resizer \
+                --disable-defrag \
+                --enable-fsck \
+                --disable-uuidd \
+                --disable-mmp \
                 --disable-tdb \
                 --disable-nls \
                 --disable-fuse2fs \
-                --disable-debugfs \
-                --disable-defrag \
-                --disable-imager \
-                --disable-mmp \
-                --disable-resizer \
-                --enable-fsck
+                --with-root-prefix=
         make
         cd lib/
         for dir in blkid e2p et ext2fs uuid
@@ -38,19 +38,32 @@ build(){
                 cd $dir
                 sed -e '/LDCONFIG/d' \
                         -i Makefile
+                if [ ! -d $SCER/$name/sac/share/man/man3 ]
+                then
+                        mkdir -pv $SCER/$name/sac/share/man/man3
+                fi
                 make \
+                        DESTDIR=$SCER/$name/sac \
                         install-strip
                 cd ..
         done
         cd ..
-        rsync -vah e2fsck/e2fsck $GLAD/bin --delete
-        rsync -vah misc/blkid $GLAD/bin --delete
-        rsync -vah misc/chattr $GLAD/bin --delete
-        rsync -vah misc/fsck $GLAD/bin --delete
-        rsync -vah misc/lsattr $GLAD/bin --delete
-        rsync -vah misc/mke2fs $GLAD/bin --delete
-        rsync -vah misc/tune2fs $GLAD/bin --delete
-        cd $GLAD/bin
+        install -v e2fsck/e2fsck $SCER/$name/sac/bin
+        install -v misc/blkid $SCER/$name/sac/bin
+        install -v misc/chattr $SCER/$name/sac/bin
+        install -v misc/fsck $SCER/$name/sac/bin
+        install -v misc/lsattr $SCER/$name/sac/bin
+        install -v misc/mke2fs $SCER/$name/sac/bin
+        install -v misc/tune2fs $SCER/$name/sac/bin
+        cd $SCER/$name/sac/bin
         ln -fsv e2fsck fsck.ext4
         ln -fsv mke2fs mkfs.ext4
+        sed -e 's/\/home\/glaucus\/system//' \
+                -i compile_et
+        cd ../lib
+        rm -frv libblkid.a \
+                libcom_err.a \
+                libe2p.a \
+                libext2fs \
+                libuuid.a
 }

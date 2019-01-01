@@ -71,4 +71,7 @@ build(){
                 -i runtime/doc/Makefile
         make \
                 install
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install
 }

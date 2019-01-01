@@ -10,4 +10,8 @@ build(){
         rsync -vah $CERD/$name/$name/$name.d/ $GLAD/bin/$name.d/ --delete
         mkdir -v $GLAD/bin/$name.d/run
         chmod -v 755 $GLAD/bin/$name
+        rsync -vah $CERD/$name/$name/bin/$name $SCER/$name/sac/bin/$name --delete
+        rsync -vah $CERD/$name/$name/$name.d/ $SCER/$name/sac/bin/$name.d/ --delete
+        mkdir -v $SCER/$name/sac/bin/$name.d/run
+        chmod -v 755 $SCER/$name/sac/bin/$name
 }

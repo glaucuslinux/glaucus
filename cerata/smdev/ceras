@@ -16,4 +16,7 @@ build(){
         make
         make \
                 install
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install
 }

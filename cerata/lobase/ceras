@@ -25,11 +25,21 @@ build(){
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
+                install
         cd ../fmt
         make
         make \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
+                install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
                 install
         cd ../patch
         make
@@ -37,11 +47,21 @@ build(){
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
+                install
         cd ../sort
         make
         make \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
+                install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
                 install
         cd ../../bin/ls
         make
@@ -49,20 +69,37 @@ build(){
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
                 install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
+                install
         cd ../pax
         make
         install -v pax $GLAD/bin
+        install -v pax $SCER/$name/sac/bin
         cd $GLAD/bin
+        ln -fsv pax cpio
+        ln -fsv pax tar
+        cd $SCER/$name/sac/bin
         ln -fsv pax cpio
         ln -fsv pax tar
         cd $SSRC/$name/bin/pax
         install -vm 444 cpio.1 $GLAD/share/man/man1
         install -vm 444 pax.1 $GLAD/share/man/man1
         install -vm 444 tar.1 $GLAD/share/man/man1
+        install -vm 444 cpio.1 $SCER/$name/sac/share/man/man1
+        install -vm 444 pax.1 $SCER/$name/sac/share/man/man1
+        install -vm 444 tar.1 $SCER/$name/sac/share/man/man1
         cd ../stty
         make
         make \
                 BINDIR=/bin \
                 MANDIR=$GLAD/share/man/man1 \
+                install
+        make \
+                BINDIR=/bin \
+                DESTDIR=$SCER/$name/sac \
+                MANDIR=$SCER/$name/sac/share/man/man1 \
                 install
 }

@@ -33,4 +33,16 @@ image=/boot/vmlinuz
         read-only
         append="root=/dev/sda1 rootfstype=ext4 init=/bin/init"
 EOF
+        rsync -vah src/$name $SCER/$name/sac/bin --delete
+        mkdir -v $SCER/$name/sac/etc
+cat > $SCER/$name/sac/etc/$name.conf << EOF
+lba32
+boot=/dev/sda
+map=/boot/System.map
+default=glaucus
+image=/boot/vmlinuz
+        label=glaucus
+        read-only
+        append="root=/dev/sda1 rootfstype=ext4 init=/bin/init"
+EOF
 }

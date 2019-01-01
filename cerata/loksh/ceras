@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/dimkr/$name
+cysts='netbsd-curses'
 description='A port of the OpenBSD ksh to Linux'
 license=PD
 build(){
@@ -18,5 +19,8 @@ build(){
                 -i Makefile
         make
         make \
+                install
+        make \
+                DESTDIR=$SCER/$name/sac \
                 install
 }

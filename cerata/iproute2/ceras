@@ -32,5 +32,5 @@ build(){
                 -e '/HAVE_CAP/{n;N;d}' \
                 -i config.mk
         make
-        rsync -vah ip/ip $GLAD/bin --delete
+        install -v ip/ip $SCER/$name/sac/bin
 }

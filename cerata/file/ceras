@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name/$name
+cyst=musl
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
 build(){
@@ -10,11 +11,13 @@ build(){
         cd $SSRC/$name
         autoreconf -vfi
         ./configure \
-                --build=$ARCH-pc-linux-gnu \
+                --build=$TRPL \
                 --host=$TRPL \
                 --prefix= \
-                --disable-libseccomp
+                --disable-libseccomp \
+                --enable-fsect-man5
         make
         make \
+                DESTDIR=$SCER/$name/sac \
                 install-strip
 }

@@ -1,5 +1,5 @@
 #!/bin/dash -ex
-mkdir /home/glaucus/cerata/$1
+mkdir -v /home/glaucus/cerata/$1
 cat > /home/glaucus/cerata/$1/ceras << EOF
 name=$1
 version=$2

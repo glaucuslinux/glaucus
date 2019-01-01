@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
-cysts='execline skalibs'
+cysts='skalibs execline'
 description="skarnet's small suite of programs for UNIX, designed to allow process supervision"
 license=ISC
 build(){
@@ -23,5 +23,8 @@ build(){
                 -i config.mak
         make
         make \
+                install
+        make \
+                DESTDIR=$SCER/$name/sac \
                 install
 }

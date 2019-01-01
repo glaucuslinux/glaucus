@@ -3,14 +3,23 @@ version=20180609
 release=1
 arch=x86_64
 url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz
+cyst=musl
 description='Berkeley Yacc LALR parser generator is the best variant of the Unix Yacc LALR parser generator'
 license=PD
 build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \
-                --prefix=
+                --prefix= \
+                --program-prefix=b \
+                --build=$TRPL \
+                --host=$TRPL
         make
         make \
+                check
+        make \
+                DESTDIR=$SCER/$name/sac \
                 install
+        cd $SCER/$name/sac/bin
+        ln -fsv $name yacc
 }

@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
+cysts=skalibs
 description="skarnet's set of minimalistic Linux-specific system utilities"
 license=ISC
 build(){
@@ -22,5 +23,8 @@ build(){
                 -i config.mak
         make
         make \
+                install
+        make \
+                DESTDIR=$SCER/$name/sac \
                 install
 }

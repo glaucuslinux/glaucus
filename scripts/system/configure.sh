@@ -86,3 +86,9 @@ export HISTFILE=$HOME.ksh_history
 export PAGER=/bin/less
 alias ls='ls -F'
 EOF
+cat > $GLAD/etc/shells << EOF
+/bin/dash
+/bin/ksh
+/bin/loksh
+/bin/sh
+EOF

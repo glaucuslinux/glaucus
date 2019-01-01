@@ -36,4 +36,6 @@ build(){
                 O=$SBLD/$name
         cat $SBLD/$name/arch/x86/boot/bzImage > $GLAD/boot/vmlinuz
         rsync -vah $SBLD/$name/System.map $GLAD/boot --delete
+        cat $SBLD/$name/arch/x86/boot/bzImage > $SCER/$name/sac/boot/vmlinuz
+        rsync -vah $SBLD/$name/System.map $SCER/$name/sac/boot --delete
 }

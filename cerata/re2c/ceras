@@ -20,4 +20,7 @@ build(){
         make
         make \
                 install-strip
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install-strip
 }

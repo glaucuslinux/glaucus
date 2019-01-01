@@ -24,7 +24,6 @@ assign_system_variables(){
         export CROSS_COMPILE=$TRPL-
         export CXX=$TRPL-g++
         export CXXFLAGS="$CFLAGS"
-        export DESTDIR=$GLAD
         export LD=$TRPL-ld
         export LDFLAGS='-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu'
         export NM=$TRPL-nm

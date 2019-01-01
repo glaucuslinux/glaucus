@@ -16,13 +16,8 @@ build(){
         rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
         make \
-                install
-        make \
                 DESTDIR=$SCER/$name/sac \
                 install
-        cd $GLAD/bin
-        ln -fsv $name awk
         cd $SCER/$name/sac/bin
         ln -fsv $name awk
-        envenomate
 }

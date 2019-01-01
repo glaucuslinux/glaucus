@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.kernel.org/pub/scm/utils/$name/$name.$version
+cyst=musl
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 license='BSDv3 GPLv2 PD'
 build(){
@@ -11,10 +12,12 @@ build(){
         ./autogen.sh
         ./configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
                 --disable-static
         make
+        mkdir -v $SCER/$name/sac/bin
         make \
+                DESTDIR=$SCER/$name/sac \
                 install-strip
-        cd $GLAD/bin
-        ln -fsv $name sh
 }

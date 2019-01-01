@@ -2,18 +2,12 @@
 construct(){
         for item in $@
         do
-                if [ -d $CERD/$item ]
+                if grep -q cyst $CERD/$item/ceras
                 then
-                                if grep -q cysts $CERD/$item/ceras
-                                then
-                                        . $CERD/$item/ceras
-                                        temp="$temp $cysts $item"
-                                else
-                                        temp="$temp $item"
-                                fi
+                        . $CERD/$item/ceras
+                        temp="$temp $cyst$cysts $item"
                 else
-                        echo "$item isn't a valid ceras."
-                        exit 1
+                        temp="$temp $item"
                 fi
         done
         for item in $temp
@@ -22,26 +16,26 @@ construct(){
                 then
                         . $CERD/$item/ceras
                         mkdir -pv $SCER/$name/sac
-                        mkdir -pv $SCER/$name/venom
                         build
-                else
-                        echo $item is already installed.
-                        #exit 1
+                        envenomate
                 fi
         done
 }
 envenomate(){
+        mkdir -v $SCER/$name/venom
         cd $SCER/$name/sac
-        sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz * | sed '/\/$/d') > ../venom/checksum
+        sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz * | sed '/\/$/d' | sort) > ../venom/$name-$version-$release-$arch.checksum
+        tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
+        rsync -vah $SCER/$name/venom $GLAD/share/cerata/$name --delete
 }
-construct musl
-construct mawk byacc mawk re2c
-#construct sbase ubase lobase
+construct musl \
+        mawk #byacc mawk re2c \
+        #sbase ubase lobase \
+        #sdhcp \
+        #dash loksh \
+        #libarchive \
+        #less mandoc vim \
+        construct e2fsprogs #iproute2 file opendoas libressl \
+        #linux lilo \
+        #s6 s6-linux-init s6-rc
 #construct sinit smdev svc
-#construct sdhcp
-#construct dash
-#construct zlib xz libarchive
-construct loksh less mandoc vim
-#construct e2fsprogs iproute2 file opendoas libressl
-#construct linux lilo
-#construct s6 s6-linux-init s6-rc

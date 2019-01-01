@@ -23,9 +23,17 @@ EOF
                 all-dynamic
         make \
                 install-dynamic
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install-dynamic
         $STRIP -v $GLAD/lib/libcurses.so \
                 $GLAD/lib/libform.so \
                 $GLAD/lib/libmenu.so \
                 $GLAD/lib/libpanel.so \
                 $GLAD/lib/libterminfo.so
+        $STRIP -v $SCER/$name/sac/lib/libcurses.so \
+                $SCER/$name/sac/lib/libform.so \
+                $SCER/$name/sac/lib/libmenu.so \
+                $SCER/$name/sac/lib/libpanel.so \
+                $SCER/$name/sac/lib/libterminfo.so
 }
