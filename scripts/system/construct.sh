@@ -28,14 +28,16 @@ envenomate(){
         tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
         rsync -vah $SCER/$name/venom $GLAD/share/cerata/$name --delete
 }
-construct musl \
-        mawk #byacc mawk re2c \
-        #sbase ubase lobase \
+#construct musl \
+        #mawk byacc mawk re2c \
+        #sbase ubase lobase
         #sdhcp \
         #dash loksh \
         #libarchive \
         #less mandoc vim \
-        construct e2fsprogs #iproute2 file opendoas libressl \
+        #e2fsprogs iproute2 file opendoas libressl \
         #linux lilo \
         #s6 s6-linux-init s6-rc
 #construct sinit smdev svc
+#construct musl opendoas
+construct svc #sbase ubase lobase sdhcp sinit smdev svc 

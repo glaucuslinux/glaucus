@@ -37,7 +37,7 @@ build(){
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-libs
-        mkdir -v $SCER/$name/sac/bin
+        install -dv $SCER/$name/sac/bin
         cd $SCER/$name/sac/bin
         ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
         $STRIP -v $SCER/$name/sac/lib/Scrt1.o \

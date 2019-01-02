@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/ThomasDickey/$name-snapshots
+cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
 license=GPLv2
 build(){
@@ -12,7 +13,10 @@ build(){
         fi
         cd $SBLD/$name
         $CERD/$name/$name-snapshots/configure \
-                --prefix=
+                --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --target=$TRPL
         rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
         make \

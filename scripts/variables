@@ -2,6 +2,9 @@ assign_basic_variables(){
         export ARCH=x86_64
         export TRPL=$ARCH-linux-musl
         export CERD=/home/glaucus/cerata
+        export LOGD=/home/glaucus/logs
+        export SLOG=$LOGD/system
+        export TLOG=$LOGD/toolchain
         export TMPD=/home/glaucus/temporary
         export TOOL=/home/glaucus/toolchain
         export PATH=$TOOL/bin:/usr/bin

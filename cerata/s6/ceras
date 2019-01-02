@@ -7,9 +7,12 @@ cysts='skalibs execline'
 description="skarnet's small suite of programs for UNIX, designed to allow process supervision"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
+                --host=$TRPL \
+                --target=$TRPL \
+                --build=$TRPL \
                 --prefix=/ \
                 --libexecdir=/lib/libexec \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
@@ -22,8 +25,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

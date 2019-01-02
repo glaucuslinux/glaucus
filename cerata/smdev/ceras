@@ -6,7 +6,7 @@ url=https://$version.suckless.org/$name
 description='Suckless mdev'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/PREFIX = .*/PREFIX =/' \
                 -e "s/CC = .*/CC = $CC/" \
@@ -14,8 +14,6 @@ build(){
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

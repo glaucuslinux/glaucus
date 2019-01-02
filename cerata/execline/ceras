@@ -7,11 +7,12 @@ cysts='musl skalibs'
 description='A small and non-interactive scripting language, like sh; but with different syntax'
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
                 --target=$TRPL \
                 --host=$TRPL \
+                --build=$TRPL \
                 --prefix=/ \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
                 --with-include=$GLAD/include \
@@ -23,8 +24,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

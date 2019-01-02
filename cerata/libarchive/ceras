@@ -7,13 +7,15 @@ cysts='xz zlib'
 description='Multi-format archive and compression library'
 license=BSDv3
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         autoreconf -vfi
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
                 --disable-static \
                 --disable-bsdtar \
                 --disable-acl \
@@ -24,8 +26,6 @@ build(){
                 --without-xml2 \
                 --without-expat
         make
-        make \
-                install-strip
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-strip

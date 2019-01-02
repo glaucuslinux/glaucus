@@ -3,21 +3,24 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
+cyst=musl
 description="skarnet's general purpose C libraries for system programming and small and secure C development"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
+                --build=$TRPL \
+                --target=$TRPL \
+                --host=$TRPL \
                 --prefix=/ \
                 --disable-static \
-                --disable-ipv6
+                --disable-ipv6 \
+                --enable-clock
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

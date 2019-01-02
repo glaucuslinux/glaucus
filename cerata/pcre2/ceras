@@ -3,6 +3,7 @@ version=svn
 release=1
 arch=x86_64
 url=svn://vcs.exim.org/$name/code/trunk
+cyst=musl
 description='The 2nd version of the Perl 5 Compatible Regular Expressions library'
 license=BSDv3
 build(){
@@ -13,11 +14,12 @@ build(){
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --target=$TRPL \
                 --disable-static \
                 --enable-jit
         make
-        make \
-                install-strip
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-strip

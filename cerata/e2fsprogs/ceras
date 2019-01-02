@@ -7,7 +7,7 @@ cyst=musl
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
         CFLAGS="$CFLAGS -I$GLAD/include" \
@@ -40,7 +40,7 @@ build(){
                         -i Makefile
                 if [ ! -d $SCER/$name/sac/share/man/man3 ]
                 then
-                        mkdir -pv $SCER/$name/sac/share/man/man3
+                        install -dv $SCER/$name/sac/share/man/man3
                 fi
                 make \
                         DESTDIR=$SCER/$name/sac \
@@ -48,13 +48,7 @@ build(){
                 cd ..
         done
         cd ..
-        install -v e2fsck/e2fsck $SCER/$name/sac/bin
-        install -v misc/blkid $SCER/$name/sac/bin
-        install -v misc/chattr $SCER/$name/sac/bin
-        install -v misc/fsck $SCER/$name/sac/bin
-        install -v misc/lsattr $SCER/$name/sac/bin
-        install -v misc/mke2fs $SCER/$name/sac/bin
-        install -v misc/tune2fs $SCER/$name/sac/bin
+        install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr misc/mke2fs misc/tune2fs -t $SCER/$name/sac/bin
         cd $SCER/$name/sac/bin
         ln -fsv e2fsck fsck.ext4
         ln -fsv mke2fs mkfs.ext4

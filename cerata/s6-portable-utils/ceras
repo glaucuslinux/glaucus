@@ -3,13 +3,16 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
-cysts=skalibs
+cyst=skalibs
 description="skarnet's set of tiny general Unix utilities optimized for simplicity and small size"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
+                --host=$TRPL \
+                --target=$TRPL \
+                --build=$TRPL \
                 --prefix=/ \
                 --libexecdir=/lib/libexec \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
@@ -22,8 +25,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

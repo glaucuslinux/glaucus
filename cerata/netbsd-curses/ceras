@@ -3,10 +3,11 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/sabotage-linux/$name
+cyst=musl
 description="A port of NetBSD's curses library for usage on Linux systems"
 license='BSDv3 BSDv2'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
 cat > config.mak << EOF
 PREFIX = 
@@ -22,15 +23,8 @@ EOF
         make \
                 all-dynamic
         make \
-                install-dynamic
-        make \
                 DESTDIR=$SCER/$name/sac \
                 install-dynamic
-        $STRIP -v $GLAD/lib/libcurses.so \
-                $GLAD/lib/libform.so \
-                $GLAD/lib/libmenu.so \
-                $GLAD/lib/libpanel.so \
-                $GLAD/lib/libterminfo.so
         $STRIP -v $SCER/$name/sac/lib/libcurses.so \
                 $SCER/$name/sac/lib/libform.so \
                 $SCER/$name/sac/lib/libmenu.so \

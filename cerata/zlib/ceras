@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/madler/$name
+cyst=musl
 description='A Massively Spiffy Yet Delicately Unobtrusive Compression Library'
 license='BSLv1.0 ZLIB'
 build(){
@@ -12,8 +13,6 @@ build(){
                 --prefix= \
                 --shared
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

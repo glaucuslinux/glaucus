@@ -7,9 +7,12 @@ cysts='skalibs execline s6'
 description="skarnet's service manager for s6-based systems"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
+                --host=$TRPL \
+                --target=$TRPL \
+                --build=$TRPL \
                 --prefix=/ \
                 --libexecdir=/lib/libexec \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
@@ -22,8 +25,6 @@ build(){
                 -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/lib/" \
                 -i config.mak
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

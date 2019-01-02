@@ -6,7 +6,7 @@ url=$version://$version.2f30.org/$name.$version
 description='Simple DHCP client'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/PREFIX    = .*/PREFIX    =/' \
                 -e 's/DESTDIR   =/DESTDIR   = \/home\/glaucus\/system/' \
@@ -17,8 +17,6 @@ build(){
         sed -e 's/sbin/bin/g' \
                 -i Makefile
         make
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

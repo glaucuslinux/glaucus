@@ -3,10 +3,11 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/skvadrik/$name
+cyst=musl
 description='Free and open-source lexer generator for C and C++'
 license='GPLv3 PD PHPv3.01'
 build(){
-        rsync -vah $CERD/$name/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name/$name $SSRC --delete
         cd $SSRC/$name
         autoreconf -vfi
         sed -e 's/-O2//' \
@@ -15,11 +16,12 @@ build(){
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --target=$TRPL \
                 --disable-silent-rules \
                 --disable-dependency-tracking
         make
-        make \
-                install-strip
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-strip

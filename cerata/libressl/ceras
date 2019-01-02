@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name-portable/portable
+cyst=musl
 description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
 license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 build(){
@@ -14,10 +15,10 @@ build(){
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
                 --disable-static
         make
-        make \
-                install-strip
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-strip

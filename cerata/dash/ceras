@@ -7,7 +7,7 @@ cyst=musl
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 license='BSDv3 GPLv2 PD'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./autogen.sh
         ./configure \
@@ -16,7 +16,7 @@ build(){
                 --host=$TRPL \
                 --disable-static
         make
-        mkdir -v $SCER/$name/sac/bin
+        install -dv $SCER/$name/sac/bin
         make \
                 DESTDIR=$SCER/$name/sac \
                 install-strip

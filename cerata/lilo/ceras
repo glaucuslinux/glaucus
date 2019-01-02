@@ -4,7 +4,7 @@ release=1
 arch=x86_64
 url=https://alioth-archive.debian.org/releases/$name/Lilo/$version/$name-$version.tar.gz
 checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
-cysts=bin86
+cyst=bin86
 description='Standard LInux boot LOader'
 license='BSDv3 GPLv2 LGPLv2.1'
 build(){
@@ -22,19 +22,8 @@ build(){
                 -e 's/ld86/\/home\/glaucus\/system\/bin\/ld86/' \
                 -i src/Makefile
         make
-        rsync -vah src/$name $GLAD/bin --delete
-cat > $GLAD/etc/$name.conf << EOF
-lba32
-boot=/dev/sda
-map=/boot/System.map
-default=glaucus
-image=/boot/vmlinuz
-        label=glaucus
-        read-only
-        append="root=/dev/sda1 rootfstype=ext4 init=/bin/init"
-EOF
-        rsync -vah src/$name $SCER/$name/sac/bin --delete
-        mkdir -v $SCER/$name/sac/etc
+        install -v src/$name $SCER/$name/sac/bin
+        install -dv $SCER/$name/sac/etc
 cat > $SCER/$name/sac/etc/$name.conf << EOF
 lba32
 boot=/dev/sda

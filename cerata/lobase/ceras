@@ -6,7 +6,7 @@ url=https://github.com/Duncaen/$name
 description='A port of the OpenBSD userland to Linux'
 license='ISC PD'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/${DESTDIR}//' \
                 -e 's/$$s//' \
@@ -14,92 +14,46 @@ build(){
                 -i mk/bsd.man.mk
         autoreconf -vfi
         ./configure \
-                --prefix=
-        cd lib/libopenbsd
+                --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --target=$TRPL
+        cd lib
+        for dir in libopenbsd liboutil
+        do
+                cd $dir
+                make
+                cd ..
+        done
+        cd ../usr.bin
+        for dir in diff fmt patch sort
+        do
+                cd $dir
+                make
+                make \
+                        BINDIR=/bin \
+                        DESTDIR=$SCER/$name/sac \
+                        MANDIR=$SCER/$name/sac/share/man/man1 \
+                        install
+                cd ..
+        done
+        cd ../bin
+        for dir in ls stty
+        do
+                cd $dir
+                make
+                make \
+                        BINDIR=/bin \
+                        DESTDIR=$SCER/$name/sac \
+                        MANDIR=$SCER/$name/sac/share/man/man1 \
+                        install
+                cd ..
+        done
+        cd pax
         make
-        cd ../liboutil
-        make
-        cd ../../usr.bin/diff
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
-        cd ../fmt
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
-        cd ../patch
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
-        cd ../sort
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
-        cd ../../bin/ls
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
-        cd ../pax
-        make
-        install -v pax $GLAD/bin
         install -v pax $SCER/$name/sac/bin
-        cd $GLAD/bin
-        ln -fsv pax cpio
-        ln -fsv pax tar
+        install -vm 444 -D cpio.1 pax.1 tar.1 -t $SCER/$name/sac/share/man/man1
         cd $SCER/$name/sac/bin
         ln -fsv pax cpio
         ln -fsv pax tar
-        cd $SSRC/$name/bin/pax
-        install -vm 444 cpio.1 $GLAD/share/man/man1
-        install -vm 444 pax.1 $GLAD/share/man/man1
-        install -vm 444 tar.1 $GLAD/share/man/man1
-        install -vm 444 cpio.1 $SCER/$name/sac/share/man/man1
-        install -vm 444 pax.1 $SCER/$name/sac/share/man/man1
-        install -vm 444 tar.1 $SCER/$name/sac/share/man/man1
-        cd ../stty
-        make
-        make \
-                BINDIR=/bin \
-                MANDIR=$GLAD/share/man/man1 \
-                install
-        make \
-                BINDIR=/bin \
-                DESTDIR=$SCER/$name/sac \
-                MANDIR=$SCER/$name/sac/share/man/man1 \
-                install
 }

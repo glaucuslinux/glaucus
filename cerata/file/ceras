@@ -7,7 +7,7 @@ cyst=musl
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 license='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         autoreconf -vfi
         ./configure \

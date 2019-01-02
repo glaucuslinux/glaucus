@@ -3,17 +3,20 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name/$name
-cysts='musl pcre2'
+cysts='musl mawk netbsd-curses pcre2'
 description='A highly configurable ubiquitous text editor for efficiently creating and changing any kind of text'
 license='GPLv2+ LGPLv2.1+ MIT vim'
 build(){
-        rsync -vah $CERD/$name/$name/ $SSRC/$name/ --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         CPPFLAGS="-I$GLAD/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \
         LD_LIBRARY_PATH="$GLAD/lib" \
         ./configure \
                 --prefix= \
+                --build=$TRPL \
+                --host=$TRPL \
+                --target=$TRPL \
                 --disable-darwin \
                 --disable-smack \
                 --disable-selinux \
@@ -69,8 +72,6 @@ build(){
         sed -e '/esX/s/^\t/ /' \
                 -e '/esX/s/^/\tLD_LIBRARY_PATH=\/home\/glaucus\/system\/lib/' \
                 -i runtime/doc/Makefile
-        make \
-                install
         make \
                 DESTDIR=$SCER/$name/sac \
                 install
