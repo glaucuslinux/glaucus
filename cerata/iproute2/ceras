@@ -10,12 +10,16 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet man/man8/arpd.8
-        sed -e '/ARPD/d' \
+        sed -e 's/if grep -q //' \
+                -i configure
+        sed -e 's/PREFIX?=\/usr/PREFIX=/' \
+                -e '/ARPD/d' \
+                -e "s/CC := gcc/CC = $CC/"  \
+                -e "s/HOSTCC ?= .*/HOSTCC = $CC/"  \
+                -e "s/CCOPTS = -O2/CCOPTS = $CFLAGS/" \
                 -e 's/SUBDIRS=.*/SUBDIRS=lib ip/' \
                 -e '/genl/d' \
                 -i Makefile
-        sed -e 's/if grep -q //' \
-                -i configure
         sed -e 's/TCPI_OPT_ECN_SEEN/16/' \
                 -i misc/ss.c
         sed -e 's/.m_ipt.o//' \
@@ -33,5 +37,6 @@ build(){
                 -e '/HAVE_CAP/{n;N;d}' \
                 -i config.mk
         make
-        install -v ip/ip $SCER/$name/sac/bin
+        install -Dv ip/ip $SCER/$name/sac/bin/ip
+        install -Dv man/man8/ip.8 $SCER/$name/sac/share/man/man8/ip.8
 }

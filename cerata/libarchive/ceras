@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name/$name
-cysts='xz zlib'
+cysts='musl mawk'
 description='Multi-format archive and compression library'
 license=BSDv3
 build(){
@@ -16,6 +16,7 @@ build(){
                 --prefix= \
                 --build=$TRPL \
                 --host=$TRPL \
+                --target=$TRPL \
                 --disable-static \
                 --disable-bsdtar \
                 --disable-acl \

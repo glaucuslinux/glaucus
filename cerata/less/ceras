@@ -4,7 +4,7 @@ release=1
 arch=x86_64
 url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
 checksum=4e42ed3812d038634a12ae6f719869b228fe4ec270ceda560afb666543669f40c0c5746fc9b94c00584e78db356d900347ec5b7e3ca15249a9656dbd8b6b8dcb
-cysts='musl netbsd-curses pcre2'
+cysts='musl mawk netbsd-curses pcre2'
 description='A free, open-source and text-based terminal file pager'
 license='BSDv2 GPLv3'
 build(){
@@ -16,6 +16,7 @@ build(){
                 --prefix= \
                 --build=$TRPL \
                 --host=$TRPL \
+                --target=$TRPL \
                 --with-regex=pcre2
         make
         make \

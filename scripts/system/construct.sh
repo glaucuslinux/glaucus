@@ -1,43 +1,25 @@
 #!/bin/dash -ex
-construct(){
+envenomate(){
         for item in $@
         do
-                if grep -q cyst $CERD/$item/ceras
-                then
-                        . $CERD/$item/ceras
-                        temp="$temp $cyst$cysts $item"
-                else
-                        temp="$temp $item"
-                fi
-        done
-        for item in $temp
-        do
-                if [ ! -d $SCER/$item/sac ]
-                then
-                        . $CERD/$item/ceras
-                        mkdir -pv $SCER/$name/sac
-                        build
-                        envenomate
-                fi
+                install -dv $SCER/$item/sac $SCER/$item/venom
+                . $CERD/$item/ceras
+                build
+                cd $SCER/$item/sac
+                sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz * | sed '/\/$/d' | sort) > ../venom/checksum
+                tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
+                rsync -vah $SCER/$name/venom $GLAD/share/cerata/$name --delete
         done
 }
-envenomate(){
-        mkdir -v $SCER/$name/venom
-        cd $SCER/$name/sac
-        sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz * | sed '/\/$/d' | sort) > ../venom/$name-$version-$release-$arch.checksum
-        tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
-        rsync -vah $SCER/$name/venom $GLAD/share/cerata/$name --delete
-}
-#construct musl \
+#envenomate musl \
         #mawk byacc mawk re2c \
-        #sbase ubase lobase
+        #sbase ubase lobase \
+        #sinit smdev svc \
         #sdhcp \
-        #dash loksh \
-        #libarchive \
-        #less mandoc vim \
+        #netbsd-curses dash loksh \
+        #xz zlib libarchive \
+        #pcre2 less mandoc vim \
         #e2fsprogs iproute2 file opendoas libressl \
-        #linux lilo \
-        #s6 s6-linux-init s6-rc
-#construct sinit smdev svc
-#construct musl opendoas
-construct svc #sbase ubase lobase sdhcp sinit smdev svc 
+        #linux bin86 lilo \
+        #skalibs execline s6-portable-utils s6-linux-utils s6 s6-linux-init s6-rc
+envenomate musl mawk libressl

@@ -9,11 +9,12 @@ license=PD
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e "s/CC ?= .*/CC = $CC/" \
-                -e "s/CFLAGS ?= .*/CFLAGS = $CFLAGS -I\/home\/glaucus\/system\/include/" \
+        sed -e "s/CC ?= cc/CC = $CC/" \
+                -e "s/CFLAGS ?= -O2/CFLAGS = $CFLAGS -I\/home\/glaucus\/system\/include/" \
                 -e "s/LDFLAGS ?=/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/lib/" \
-                -e 's/DESTDIR ?= .*/DESTDIR = \/home\/glaucus\/system/' \
+                -e 's/DESTDIR ?= \//DESTDIR = \/home\/glaucus\/system/' \
                 -e 's/PREFIX ?= \/usr/PREFIX =/' \
+                -e 's/BIN_NAME ?= ksh/BIN_NAME = loksh/' \
                 -e 's/?//' \
                 -e '28s/$/-lterminfo/' \
                 -i Makefile
@@ -21,4 +22,6 @@ build(){
         make \
                 DESTDIR=$SCER/$name/sac \
                 install
+        cd $SCER/$name/sac/bin
+        ln -fsv $name ksh
 }

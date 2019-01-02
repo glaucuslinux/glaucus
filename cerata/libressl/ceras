@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name-portable/portable
-cyst=musl
+cysts='musl mawk'
 description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
 license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 build(){
@@ -11,12 +11,18 @@ build(){
         rsync -vah $CERD/$name/openbsd $SSRC/$name --delete
         cd $SSRC/$name
         ./autogen.sh
+        sed -e "s/USER_CFLAGS=.*/USER_CFLAGS=\"$CFLAGS\"/" \
+                -e "s/CFLAGS=\"-g\"/CFLAGS=\"$CFLAGS\"/" \
+                -e "s/CFLAGS=\"-g -O2\"/CFLAGS=\"$CFLAGS\"/" \
+                -e "s/CFLAGS=\"-O2\"/CFLAGS=\"$CFLAGS\"/" \
+                -i configure
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
                 --build=$TRPL \
                 --host=$TRPL \
+                --target=$TRPL \
                 --disable-static
         make
         make \

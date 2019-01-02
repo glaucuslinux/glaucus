@@ -26,6 +26,8 @@ build(){
         $CERD/$name/$name/configure \
                 --prefix= \
                 --target=$TRPL \
+                --host=$TRPL \
+                --build=$TRPL \
                 --disable-debug \
                 --disable-warnings \
                 --disable-static \

@@ -10,10 +10,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
+                --prefix=/ \
                 --target=$TRPL \
                 --host=$TRPL \
                 --build=$TRPL \
-                --prefix=/ \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
                 --with-include=$GLAD/include \
                 --with-dynlib=$GLAD/lib \

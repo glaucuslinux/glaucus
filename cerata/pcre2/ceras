@@ -3,7 +3,7 @@ version=svn
 release=1
 arch=x86_64
 url=svn://vcs.exim.org/$name/code/trunk
-cyst=musl
+cysts='musl mawk'
 description='The 2nd version of the Perl 5 Compatible Regular Expressions library'
 license=BSDv3
 build(){

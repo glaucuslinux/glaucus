@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.kernel.org/pub/scm/fs/ext2/$name.$version
-cyst=musl
+cysts='musl mawk'
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build(){
@@ -16,6 +16,7 @@ build(){
                 --prefix= \
                 --build=$TRPL \
                 --host=$TRPL \
+                --target=$TRPL \
                 --enable-symlink-install \
                 --enable-elf-shlibs \
                 --disable-bsd-shlibs \

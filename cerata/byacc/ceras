@@ -13,10 +13,9 @@ build(){
                 --prefix= \
                 --program-prefix=b \
                 --build=$TRPL \
-                --host=$TRPL
+                --host=$TRPL \
+                --target=$TRPL
         make
-        make \
-                check
         make \
                 DESTDIR=$SCER/$name/sac \
                 install

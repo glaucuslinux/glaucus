@@ -10,14 +10,13 @@ license=GPLv2+
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        patch -p0 -i $CERD/$name/patches/$name.diff
+        patch -p0 -i $CERD/$name/patches/$name.patch
         sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
                 -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
                 -e '9d;11d;12d;13d' \
                 -i Makefile
         make
-        install -dv $SCER/$name/sac/bin \
-                $SCER/$name/sac/share/man/man1
+        install -dv $SCER/$name/sac/bin $SCER/$name/sac/share/man/man1
         make \
                 PREFIX=$SCER/$name/sac \
                 install

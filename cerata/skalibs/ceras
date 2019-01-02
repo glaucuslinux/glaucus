@@ -10,10 +10,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --build=$TRPL \
+                --prefix=/ \
                 --target=$TRPL \
                 --host=$TRPL \
-                --prefix=/ \
+                --build=$TRPL \
                 --disable-static \
                 --disable-ipv6 \
                 --enable-clock
