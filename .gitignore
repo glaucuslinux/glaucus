@@ -41,7 +41,6 @@ cerata/mpc/mpc/
 cerata/mpfr/trunk/
 cerata/musl/musl/
 cerata/netbsd-curses/netbsd-curses/
-cerata/nnn/nnn/
 cerata/opendoas/OpenDoas/
 cerata/pcre2/trunk/
 cerata/re2c/re2c/
@@ -50,13 +49,11 @@ cerata/s6-linux-init/s6-linux-init/
 cerata/s6-linux-utils/s6-linux-utils/
 cerata/s6-portable-utils/s6-portable-utils/
 cerata/s6-rc/s6-rc/
-cerata/sbase/sbase/
 cerata/sdhcp/sdhcp/
 cerata/sinit/sinit/
 cerata/skalibs/skalibs/
 cerata/smdev/smdev/
 cerata/svc/svc/
-cerata/ubase/ubase/
 cerata/vim/vim/
 cerata/xz/xz/
 cerata/zlib/zlib/

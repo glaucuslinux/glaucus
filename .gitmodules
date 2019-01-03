@@ -1,0 +1,9 @@
+[submodule "cerata/sbase/sbase"]
+	path = cerata/sbase/sbase
+	url = https://git.suckless.org/sbase
+[submodule "cerata/ubase/ubase"]
+	path = cerata/ubase/ubase
+	url = https://git.suckless.org/ubase
+[submodule "cerata/nnn/nnn"]
+	path = cerata/nnn/nnn
+	url = https://github.com/jarun/nnn
