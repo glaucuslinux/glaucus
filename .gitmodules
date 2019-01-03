@@ -7,3 +7,96 @@
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
 	url = https://github.com/jarun/nnn
+[submodule "cerata/dash/dash"]
+	path = cerata/dash/dash
+	url = https://git.kernel.org/pub/scm/utils/dash/dash.git
+[submodule "cerata/e2fsprogs/e2fsprogs"]
+	path = cerata/e2fsprogs/e2fsprogs
+	url = https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+[submodule "cerata/execline/execline"]
+	path = cerata/execline/execline
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/execline
+[submodule "cerata/iproute2/iproute2"]
+	path = cerata/iproute2/iproute2
+	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
+[submodule "cerata/linux/linux"]
+	path = cerata/linux/linux
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+[submodule "cerata/xz/xz"]
+	path = cerata/xz/xz
+	url = https://git.tukaani.org/xz.git
+[submodule "cerata/svc/svc"]
+	path = cerata/svc/svc
+	url = git://git.r-36.net/svc
+[submodule "cerata/smdev/smdev"]
+	path = cerata/smdev/smdev
+	url = https://git.suckless.org/smdev
+[submodule "cerata/s6/s6"]
+	path = cerata/s6/s6
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6
+[submodule "cerata/s6-rc/s6-rc"]
+	path = cerata/s6-rc/s6-rc
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-rc
+[submodule "cerata/s6-linux-init/s6-linux-init"]
+	path = cerata/s6-linux-init/s6-linux-init
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-linux-init
+[submodule "cerata/s6-linux-utils/s6-linux-utils"]
+	path = cerata/s6-linux-utils/s6-linux-utils
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-linux-utils
+[submodule "cerata/s6-portable-utils/s6-portable-utils"]
+	path = cerata/s6-portable-utils/s6-portable-utils
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-portable-utils
+[submodule "cerata/skalibs/skalibs"]
+	path = cerata/skalibs/skalibs
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/skalibs
+[submodule "cerata/sinit/sinit"]
+	path = cerata/sinit/sinit
+	url = https://git.suckless.org/sinit
+[submodule "cerata/sdhcp/sdhcp"]
+	path = cerata/sdhcp/sdhcp
+	url = git://git.2f30.org/sdhcp.git
+[submodule "cerata/opendoas/OpenDoas"]
+	path = cerata/opendoas/OpenDoas
+	url = https://github.com/Duncaen/OpenDoas.git
+[submodule "cerata/netbsd-curses/netbsd-curses"]
+	path = cerata/netbsd-curses/netbsd-curses
+	url = https://github.com/sabotage-linux/netbsd-curses.git
+[submodule "cerata/loksh/loksh"]
+	path = cerata/loksh/loksh
+	url = https://github.com/dimkr/loksh.git
+[submodule "cerata/file/file"]
+	path = cerata/file/file
+	url = https://github.com/file/file.git
+[submodule "cerata/musl/musl"]
+	path = cerata/musl/musl
+	url = git://git.musl-libc.org/musl
+[submodule "cerata/re2c/re2c"]
+	path = cerata/re2c/re2c
+	url = https://github.com/skvadrik/re2c.git
+[submodule "cerata/curl/curl"]
+	path = cerata/curl/curl
+	url = https://github.com/curl/curl.git
+[submodule "cerata/libarchive/libarchive"]
+	path = cerata/libarchive/libarchive
+	url = https://github.com/libarchive/libarchive.git
+[submodule "cerata/mpc/mpc"]
+	path = cerata/mpc/mpc
+	url = https://scm.gforge.inria.fr/anonscm/git/mpc/mpc.git
+[submodule "cerata/lobase/lobase"]
+	path = cerata/lobase/lobase
+	url = https://github.com/Duncaen/lobase.git
+[submodule "cerata/mawk/mawk-snapshots"]
+	path = cerata/mawk/mawk-snapshots
+	url = https://github.com/ThomasDickey/mawk-snapshots.git
+[submodule "cerata/libressl/openbsd"]
+	path = cerata/libressl/openbsd
+	url = https://github.com/libressl-portable/openbsd.git
+[submodule "cerata/vim/vim"]
+	path = cerata/vim/vim
+	url = https://github.com/vim/vim.git
+[submodule "cerata/zlib/zlib"]
+	path = cerata/zlib/zlib
+	url = https://github.com/madler/zlib.git
+[submodule "cerata/libressl/portable"]
+	path = cerata/libressl/portable
+	url = https://github.com/libressl-portable/portable.git
