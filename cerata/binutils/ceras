@@ -11,8 +11,8 @@ build_toolchain(){
         cd $TBLD/$name
         $CERD/$name/$name/configure \
                 --prefix=$TOOL \
-                --target=$TRPL \
-                --with-sysroot=$TOOL/$TRPL \
+                --target=$TUPL \
+                --with-sysroot=$TOOL/$TUPL \
                 --disable-nls \
                 --disable-multilib \
                 --disable-compressed-debug-sections \

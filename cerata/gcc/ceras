@@ -15,8 +15,8 @@ build_toolchain(){
                                 --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
-                                --target=$TRPL \
-                                --with-sysroot=$TOOL/$TRPL \
+                                --target=$TUPL \
+                                --with-sysroot=$TOOL/$TUPL \
                                 --disable-nls \
                                 --disable-shared \
                                 --without-headers \
@@ -53,8 +53,8 @@ build_toolchain(){
                                 --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
-                                --target=$TRPL \
-                                --with-sysroot=$TOOL/$TRPL \
+                                --target=$TUPL \
+                                --with-sysroot=$TOOL/$TUPL \
                                 --with-native-system-header-dir=/include \
                                 --disable-nls \
                                 --disable-libgomp \
@@ -75,8 +75,8 @@ build_toolchain(){
                                 --enable-languages=c,c++ \
                                 --with-arch=x86-64
                         make \
-                                AS_FOR_TARGET="$TRPL-as" \
-                                LD_FOR_TARGET="$TRPL-ld"
+                                AS_FOR_TARGET="$TUPL-as" \
+                                LD_FOR_TARGET="$TUPL-ld"
                         make \
                                 install
                         ;;

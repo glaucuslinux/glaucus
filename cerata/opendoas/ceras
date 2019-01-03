@@ -14,9 +14,9 @@ build(){
                 -i Makefile
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --without-pam
         sed -e 's/\/usr//' \
                 -i config.mk

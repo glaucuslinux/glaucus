@@ -12,9 +12,9 @@ build(){
         $CERD/$name/$name/configure \
                 --prefix= \
                 --program-prefix=b \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
         make
         make \
                 DESTDIR=$SCER/$name/sac \

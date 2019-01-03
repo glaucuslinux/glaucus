@@ -11,9 +11,9 @@ build(){
         cd $SSRC/$name
         ./configure \
                 --prefix=/ \
-                --target=$TRPL \
-                --host=$TRPL \
-                --build=$TRPL \
+                --target=$TUPL \
+                --host=$TUPL \
+                --build=$TUPL \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
                 --with-include=$GLAD/include \
                 --with-dynlib=$GLAD/lib \

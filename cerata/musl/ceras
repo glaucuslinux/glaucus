@@ -9,15 +9,15 @@ build_toolchain(){
         mkdir -v $TBLD/$name
         cd $TBLD/$name
         $CERD/$name/$name/configure \
-                CC=$TRPL-gcc \
-                CROSS_COMPILE=$TRPL- \
+                CC=$TUPL-gcc \
+                CROSS_COMPILE=$TUPL- \
                 --prefix=/ \
-                --target=$TRPL \
+                --target=$TUPL \
                 --disable-debug \
                 --disable-warnings
         make
         make \
-                DESTDIR=$TOOL/$TRPL \
+                DESTDIR=$TOOL/$TUPL \
                 install
 }
 build(){
@@ -25,9 +25,9 @@ build(){
         cd $SBLD/$name
         $CERD/$name/$name/configure \
                 --prefix= \
-                --target=$TRPL \
-                --host=$TRPL \
-                --build=$TRPL \
+                --target=$TUPL \
+                --host=$TUPL \
+                --build=$TUPL \
                 --disable-debug \
                 --disable-warnings \
                 --disable-static \

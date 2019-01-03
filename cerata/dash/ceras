@@ -12,9 +12,9 @@ build(){
         ./autogen.sh
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --disable-static
         make
         install -dv $SCER/$name/sac/bin

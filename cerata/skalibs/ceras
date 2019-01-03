@@ -11,9 +11,9 @@ build(){
         cd $SSRC/$name
         ./configure \
                 --prefix=/ \
-                --target=$TRPL \
-                --host=$TRPL \
-                --build=$TRPL \
+                --target=$TUPL \
+                --host=$TUPL \
+                --build=$TUPL \
                 --disable-static \
                 --disable-ipv6 \
                 --enable-clock

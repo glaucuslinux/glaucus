@@ -1,6 +1,6 @@
 assign_basic_variables(){
         export ARCH=x86_64
-        export TRPL=$ARCH-linux-musl
+        export TUPL=$ARCH-pc-linux-musl
         export CERD=/home/glaucus/cerata
         export LOGD=/home/glaucus/logs
         export SLOG=$LOGD/system
@@ -19,20 +19,20 @@ assign_system_variables(){
         export SBLD=$TMPD/system/builds
         export SCER=$TMPD/system/cerata
         export SSRC=$TMPD/system/sources
-        export AR=$TRPL-ar
-        export AS=$TRPL-as
+        export AR=$TUPL-ar
+        export AS=$TUPL-as
         export AWK=$GLAD/bin/mawk
-        export CC=$TRPL-gcc
+        export CC=$TUPL-gcc
         export CFLAGS='-Os -s -fomit-frame-pointer -pipe'
-        export CROSS_COMPILE=$TRPL-
-        export CXX=$TRPL-g++
+        export CROSS_COMPILE=$TUPL-
+        export CXX=$TUPL-g++
         export CXXFLAGS="$CFLAGS"
-        export LD=$TRPL-ld
+        export LD=$TUPL-ld
         export LDFLAGS='-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu'
-        export NM=$TRPL-nm
-        export OBJDUMP=$TRPL-objdump
-        export RANLIB=$TRPL-ranlib
-        export READELF=$TRPL-readelf
-        export STRIP=$TRPL-strip
+        export NM=$TUPL-nm
+        export OBJDUMP=$TUPL-objdump
+        export RANLIB=$TUPL-ranlib
+        export READELF=$TUPL-readelf
+        export STRIP=$TUPL-strip
         export YACC=$GLAD/bin/yacc
 }

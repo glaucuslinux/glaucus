@@ -14,9 +14,9 @@ build(){
         LIBS=-L$GLAD/lib \
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --enable-symlink-install \
                 --enable-elf-shlibs \
                 --disable-bsd-shlibs \

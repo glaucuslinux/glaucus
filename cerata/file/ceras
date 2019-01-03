@@ -11,9 +11,9 @@ build(){
         cd $SSRC/$name
         autoreconf -vfi
         ./configure \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --prefix= \
                 --disable-libseccomp \
                 --enable-fsect-man5

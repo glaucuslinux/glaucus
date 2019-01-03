@@ -16,9 +16,9 @@ build(){
         autoreconf -vfi
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
         cd lib
         for dir in libopenbsd liboutil
         do

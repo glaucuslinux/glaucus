@@ -17,7 +17,7 @@ build_toolchain(){
         make \
                 O=$TBLD/$name \
                 ARCH=$ARCH \
-                INSTALL_HDR_PATH=$TOOL/$TRPL \
+                INSTALL_HDR_PATH=$TOOL/$TUPL \
                 headers_install
 }
 build(){
@@ -34,6 +34,6 @@ build(){
                 prepare
         make \
                 O=$SBLD/$name
-        cat $SBLD/$name/arch/x86/boot/bzImage > $SCER/$name/sac/boot/vmlinuz
+        install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
         install -v $SBLD/$name/System.map $SCER/$name/sac/boot
 }

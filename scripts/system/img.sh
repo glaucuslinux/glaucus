@@ -9,10 +9,9 @@ losetup $lodev /home/glaucus/glaucus.img
 partx -a $lodev
 mkfs.ext4 ${lodev}p1
 mount ${lodev}p1 /mnt/loop
-rm -frv /mnt/loop/lost+found
-fakeroot cp -arvP /home/glaucus/system/* /mnt/loop
-install -Dv /home/glaucus/scripts/extlinux.conf /mnt/loop/boot/extlinux/extlinux.conf
-chown -vR root:root /mnt/loop/*
+fakeroot rsync -vah /home/glaucus/system/ /mnt/loop --delete
+install -Dv /home/glaucus/scripts/extlinux.conf -t /mnt/loop/boot/extlinux
+chown -vR root:root /mnt/loop
 extlinux --install /mnt/loop/boot/extlinux
 umount /mnt/loop
 partx -d $lodev

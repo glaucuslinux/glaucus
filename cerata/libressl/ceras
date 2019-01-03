@@ -20,9 +20,9 @@ build(){
         cd $SBLD/$name
         $SSRC/$name/configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --disable-static
         make
         make \

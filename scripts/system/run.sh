@@ -19,6 +19,6 @@ do
         fi
 done
 mkdir -v $SLOG/$file
-(dash /home/glaucus/scripts/system/construct.sh | tee $SLOG/$file/stdout.log) 3>&1 1>&2 2>&3 | tee $SLOG/$file/stderr.log
+(dash /home/glaucus/scripts/system/envenomate.sh | tee $SLOG/$file/stdout.log) 3>&1 1>&2 2>&3 | tee $SLOG/$file/stderr.log
 . /home/glaucus/scripts/system/configure.sh
 sudo dash /home/glaucus/scripts/system/img.sh

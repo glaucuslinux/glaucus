@@ -14,9 +14,9 @@ build(){
         LD_LIBRARY_PATH="$GLAD/lib" \
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --disable-darwin \
                 --disable-smack \
                 --disable-selinux \

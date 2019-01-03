@@ -14,9 +14,9 @@ build(){
         LDFLAGS="$LDFLAGS -L$GLAD/lib" \
         ./configure \
                 --prefix= \
-                --build=$TRPL \
-                --host=$TRPL \
-                --target=$TRPL \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
                 --with-regex=pcre2
         make
         make \
