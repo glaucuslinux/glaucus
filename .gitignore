@@ -29,9 +29,8 @@ cerata/pcre2/trunk/
 glaucus.img
 logs/
 play/
-!scripts/system/
-!scripts/toolchain/
 system/
 temporary/
 toolchain/
-
+!scripts/system/
+!scripts/toolchain/
