@@ -55,9 +55,6 @@
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c.git
-[submodule "cerata/s6/s6"]
-	path = cerata/s6/s6
-	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6
 [submodule "cerata/s6-linux-init/s6-linux-init"]
 	path = cerata/s6-linux-init/s6-linux-init
 	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-linux-init
@@ -70,6 +67,9 @@
 [submodule "cerata/s6-rc/s6-rc"]
 	path = cerata/s6-rc/s6-rc
 	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6-rc
+[submodule "cerata/s6/s6"]
+	path = cerata/s6/s6
+	url = https://git.skarnet.org/cgi-bin/cgit.cgi/s6
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase
