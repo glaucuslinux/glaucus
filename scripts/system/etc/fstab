@@ -1,0 +1,2 @@
+/dev/sda1 / ext4 defaults 0 1
+tmp /tmp tmpfs nosuid,noexec 0 0

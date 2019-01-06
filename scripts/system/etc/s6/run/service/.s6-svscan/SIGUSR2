@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+forefround { /etc/s6/rc.shutdown }
+s6-svscanctl -st /run/service
