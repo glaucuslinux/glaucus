@@ -1,5 +1,2 @@
 #!/bin/execlineb -P
-if -nt
-{
-        
-}
+s6-rc-init /run/service && exec s6-rc -u change all

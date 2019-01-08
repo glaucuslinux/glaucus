@@ -1,2 +1,0 @@
-#!/bin/execlineb -P
-exec -c /etc/s6/run/service/.s6-svscan/SIGQUIT

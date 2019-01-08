@@ -1,11 +1,11 @@
 #!/usr/bin/dash -ex
+. /home/glaucus/scripts/variables
+assign_basic_variables
+assign_system_variables
 . /home/glaucus/scripts/system/clean.sh
 case $1 in
         upgrade) . /home/glaucus/scripts/update.sh ;;
 esac
-. /home/glaucus/scripts/variables
-assign_basic_variables
-assign_system_variables
 . /home/glaucus/scripts/system/prepare.sh
 count=1
 while true
