@@ -1,0 +1,16 @@
+proc
+sys
+dev
+devpts
+shm
+tmp
+ro
+fd
+fsck
+rw
+lock
+hostname
+hwclock
+urandom
+utmp
+tty

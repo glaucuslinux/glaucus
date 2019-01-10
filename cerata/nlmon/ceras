@@ -1,0 +1,10 @@
+name=nlmon
+version=git
+release=1
+arch=x86_64
+url=git://r-36.net/nlmon
+description=''
+license=
+build(){
+        :
+}

@@ -14,13 +14,15 @@ envenomate(){
 envenomate musl \
         mawk byacc mawk \
         sbase ubase lobase \
+        smdev nldev nlmon \
         netbsd-curses dash loksh \
         e2fsprogs \
         linux \
         skalibs execline s6-portable-utils s6-linux-utils s6 s6-linux-init s6-rc
 #envenomate sinit svc
 #envenomate re2c \
-        #smdev sdhcp \
+        #smdev nldev nlmon \
+        #sdhcp \
         #xz zlib libarchive \
         #pcre2 less mandoc vim \
         #iproute2 file opendoas libressl \

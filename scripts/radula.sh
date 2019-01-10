@@ -4,9 +4,9 @@ cat > /home/glaucus/cerata/$1/ceras << EOF
 name=$1
 version=$2
 release=1
-description=''
 arch=x86_64
 url=$3
+description=''
 license=
 EOF
 case $2 in

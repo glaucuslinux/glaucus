@@ -46,6 +46,12 @@
 [submodule "cerata/netbsd-curses/netbsd-curses"]
 	path = cerata/netbsd-curses/netbsd-curses
 	url = https://github.com/sabotage-linux/netbsd-curses.git
+[submodule "cerata/nldev/nldev"]
+	path = cerata/nldev/nldev
+	url = git://r-36.net/nldev
+[submodule "cerata/nlmon/nlmon"]
+	path = cerata/nlmon/nlmon
+	url = git://r-36.net/nlmon
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
 	url = https://github.com/jarun/nnn

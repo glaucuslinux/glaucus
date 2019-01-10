@@ -1,0 +1,1 @@
+hwclock -s /dev/rtc0

@@ -1,0 +1,4 @@
+s6-ln -nsf /proc/self/fd /dev/fd
+s6-ln -sf fd/0 /dev/stdin
+s6-ln -sf fd/1 /dev/stdout
+s6-ln -sf fd/2 /dev/stderr

@@ -1,0 +1,2 @@
+mkdir -v /dev/shm
+s6-mount -n -t tmpfs -o noatime,nodev,noexec,nosuid shm /dev/shm
