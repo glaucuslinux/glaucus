@@ -1,1 +1,0 @@
-s6-mount -n -t proc -o nodev,noexec,nosuid proc /proc

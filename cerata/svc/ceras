@@ -2,7 +2,7 @@ name=svc
 version=git
 release=1
 arch=x86_64
-url=$version://$version.r-36.net/$name
+url=$version://r-36.net/$name
 description='Simple service scripts and examples, to be used everywhere'
 license=MIT
 build(){

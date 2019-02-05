@@ -2,9 +2,21 @@ name=nldev
 version=git
 release=1
 arch=x86_64
-url=git://r-36.net/nldev
-description=''
-license=
+url=$version://r-36.net/$name
+description='A netlink frontend for mdev, replacing the over-engineered udevd'
+license=MIT
 build(){
-        :
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        echo "HI I'm before sed"
+        sed -e 's/PREFIX = .*/PREFIX =/' \
+                -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I$GLAD\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L$GLAD\/lib/" \
+                -e "s/CC = .*/CC = $CC/" \
+                -i config.mk
+        echo "HI I'm after sed"
+        make
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install
 }

@@ -54,7 +54,7 @@
 	url = git://r-36.net/nlmon
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
-	url = https://github.com/jarun/nnn
+	url = https://github.com/jarun/nnn.git
 [submodule "cerata/opendoas/OpenDoas"]
 	path = cerata/opendoas/OpenDoas
 	url = https://github.com/Duncaen/OpenDoas.git
@@ -93,7 +93,7 @@
 	url = https://git.suckless.org/smdev
 [submodule "cerata/svc/svc"]
 	path = cerata/svc/svc
-	url = git://git.r-36.net/svc
+	url = git://r-36.net/svc
 [submodule "cerata/ubase/ubase"]
 	path = cerata/ubase/ubase
 	url = https://git.suckless.org/ubase

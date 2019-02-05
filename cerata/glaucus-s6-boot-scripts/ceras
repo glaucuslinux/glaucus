@@ -1,0 +1,12 @@
+name=glaucus-s6-boot-scripts
+version=git
+release=1
+arch=x86_64
+url=https://github.com/firasuke/$name.$version
+cysts='skalibs execline s6-portable-utils s6-linux-utils s6'
+description='s6 boot scripts for glaucus'
+license=ISC
+build(){
+        mkdir -v $SCER/$name/sac/etc
+        rsync -vah $CERD/$name/$name/ $SCER/$name/sac/etc/s6 --delete
+}

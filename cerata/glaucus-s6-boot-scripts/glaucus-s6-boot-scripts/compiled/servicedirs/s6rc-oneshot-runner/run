@@ -1,0 +1,8 @@
+#!/bin/execlineb -P
+fdmove -c 2 1
+fdmove 1 3
+s6-ipcserver-socketbinder -- s
+s6-ipcserverd -1 --
+s6-ipcserver-access -v0 -E -l0 -i data/rules --
+s6-sudod -t 30000 --
+/lib/libexec/s6-rc-oneshot-run -l ../.. --

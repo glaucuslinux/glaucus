@@ -1,2 +1,0 @@
-s6-mkdir -v /dev/pts
-s6-mount -n -t devpts -o noexec,nosuid,gid=0,mode=0600 devpts /dev/pts

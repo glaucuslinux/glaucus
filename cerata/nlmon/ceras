@@ -2,9 +2,19 @@ name=nlmon
 version=git
 release=1
 arch=x86_64
-url=git://r-36.net/nlmon
-description=''
-license=
+url=$version://r-36.net/$name
+description='Replaces udevadm for monitoring network devices'
+license=MIT
 build(){
-        :
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        sed -e 's/PREFIX ?= .*/PREFIX =/' \
+                -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I$GLAD\/include -DVERSION=0.3/" \
+                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L$GLAD\/lib/" \
+                -e "s/CC = .*/CC = $CC/" \
+                -i config.mk
+        make
+        make \
+                DESTDIR=$SCER/$name/sac \
+                install
 }

@@ -19,12 +19,12 @@ build(){
         make \
                 DESTDIR=$SCER/$name/sac \
                 install
-        install -m 744 -Dv $SCER/$name/proceeddev $SCER/$name/sac/etc/$name/proceeddev
-        install -m 644 -Dv $SCER/$name/00-modprobe \
-                $SCER/$name/01-uuid \
-                $SCER/$name/10-cdrom \
-                $SCER/$name/20-pci \
-                $SCER/$name/20-platform \
+        install -m 744 -Dv $CERD/$name/proceeddev $SCER/$name/sac/etc/$name/proceeddev
+        install -m 644 -Dv $CERD/$name/00-modprobe \
+                $CERD/$name/01-uuid \
+                $CERD/$name/10-cdrom \
+                $CERD/$name/20-pci \
+                $CERD/$name/20-platform \
                 -t $SCER/$name/sac/etc/$name/add
-        install -m 644 -Dv $SCER/$name/99-remove_links $SCER/$name/sac/etc/$name/remove
+        install -m 644 -Dv $CERD/$name/99-remove_links $SCER/$name/sac/etc/$name/remove
 }

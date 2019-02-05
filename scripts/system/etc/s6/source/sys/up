@@ -1,1 +1,0 @@
-s6-mount -n -t sysfs -o noatime,nodev,noexec,nosuid sys /sys
