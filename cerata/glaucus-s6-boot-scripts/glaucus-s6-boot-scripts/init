@@ -20,4 +20,4 @@ background
 unexport !
 cd /run/service
 fdmove -c 2 1
-s6-svscan -st0
+s6-svscan -st0 /run/service

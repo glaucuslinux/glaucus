@@ -2,7 +2,7 @@ name=s6-rc
 version=git
 release=1
 arch=x86_64
-url=https://$version.skarnet.org/cgi-bin/c$version.cgi/$name
+url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline s6'
 description="skarnet's service manager for s6-based systems"
 license=ISC
@@ -15,6 +15,7 @@ build(){
                 --host=$TUPL \
                 --build=$TUPL \
                 --libexecdir=/lib/libexec \
+                --livedir=/run/service \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
                 --with-include=$GLAD/include \
                 --with-dynlib=$GLAD/lib \

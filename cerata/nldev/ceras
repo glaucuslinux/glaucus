@@ -8,13 +8,11 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        echo "HI I'm before sed"
         sed -e 's/PREFIX = .*/PREFIX =/' \
-                -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I$GLAD\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
-                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L$GLAD\/lib/" \
+                -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/lib/" \
                 -e "s/CC = .*/CC = $CC/" \
                 -i config.mk
-        echo "HI I'm after sed"
         make
         make \
                 DESTDIR=$SCER/$name/sac \
