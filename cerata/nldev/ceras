@@ -8,7 +8,7 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e 's/PREFIX = .*/PREFIX =/' \
+        sed -e 's/PREFIX = \/usr/PREFIX =/' \
                 -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
                 -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/lib/" \
                 -e "s/CC = .*/CC = $CC/" \

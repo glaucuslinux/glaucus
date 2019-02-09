@@ -15,7 +15,7 @@ build(){
                 --host=$TUPL \
                 --build=$TUPL \
                 --libexecdir=/lib/libexec \
-                --livedir=/run/service \
+                --livedir=/run/live \
                 --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
                 --with-include=$GLAD/include \
                 --with-dynlib=$GLAD/lib \

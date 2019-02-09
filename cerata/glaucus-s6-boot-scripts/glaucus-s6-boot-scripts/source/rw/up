@@ -1,1 +1,1 @@
-s6-mount -o remount,rw /
+mount -o remount,rw /

@@ -1,5 +1,5 @@
 #!/bin/execlineb -P
-/bin/export PATH /bin
+export PATH /bin
 cd /
 s6-setsid -b 
 umask 022
@@ -18,6 +18,5 @@ background
         /etc/s6/rc.init
 }
 unexport !
-cd /run/service
 fdmove -c 2 1
 s6-svscan -st0 /run/service

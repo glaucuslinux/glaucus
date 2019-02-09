@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-rc-init /run/service && exec s6-rc -u change all
+s6-rc-init -c /etc/s6/compiled /run/service && exec s6-rc -u change all
