@@ -1,2 +1,5 @@
-s6-mkdir -v /dev/shm
-s6-mount -nt tmpfs -o noatime,nodev,noexec,nosuid shm /dev/shm
+foreground
+{
+        if { s6-mkdir -v /dev/shm }
+        s6-mount -nt tmpfs -o noatime,nodev,noexec,nosuid shm /dev/shm
+}

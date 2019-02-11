@@ -1,2 +1,6 @@
 #!/bin/execlineb -P
-s6-rc-init -c /etc/s6/compiled /run/service && exec s6-rc -u change all
+foreground
+{
+        if { s6-rc-init -c /etc/s6/compiled /run/service }
+        s6-rc -u change all
+}

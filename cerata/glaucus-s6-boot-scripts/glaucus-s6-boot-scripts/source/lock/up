@@ -1,1 +1,1 @@
-s6-mkdir -v /run/lock
+foreground { s6-mkdir -v /run/lock }

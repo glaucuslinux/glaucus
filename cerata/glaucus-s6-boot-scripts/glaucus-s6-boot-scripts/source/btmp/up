@@ -1,0 +1,1 @@
+foreground { install -m 0600 -o root -g utmp /dev/null /var/log/btmp }

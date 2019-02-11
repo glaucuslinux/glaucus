@@ -1,1 +1,1 @@
-dd if=/dev/urandom of=/var/lib/urandom/seed count=1 bs=512
+foreground { dd if=/dev/urandom of=/var/lib/urandom/seed count=1 bs=512 }

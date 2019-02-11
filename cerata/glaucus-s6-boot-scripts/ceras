@@ -9,4 +9,5 @@ license=ISC
 build(){
         mkdir -v $SCER/$name/sac/etc
         rsync -vah $CERD/$name/$name/ $SCER/$name/sac/etc/s6 --delete
+        LD_LIBRARY_PATH=$GLAD/lib $GLAD/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled $SCER/$name/sac/etc/s6/source
 }

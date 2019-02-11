@@ -1,1 +1,1 @@
-fsck -ATa
+foreground { fsck }

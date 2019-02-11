@@ -1,2 +1,5 @@
-s6-mount -nt tmpfs -o noatime,nodev,nosuid tmp /tmp
-install -dm 1733 /tmp/.X11-unix /tmp/.ICE-unix
+foreground
+{
+        if { s6-mount -nt tmpfs -o noatime,nodev,nosuid tmp /tmp }
+        install -dm 1733 /tmp/.X11-unix /tmp/.ICE-unix
+}

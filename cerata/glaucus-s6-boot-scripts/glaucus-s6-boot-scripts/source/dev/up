@@ -1,1 +1,0 @@
-s6-mount -nt tmpfs -o nosuid,mode=0755 dev /dev

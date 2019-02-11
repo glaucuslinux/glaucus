@@ -1,1 +1,1 @@
-s6-hostname glaucus
+foreground { s6-hostname glaucus }

@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-getty
+foreground { getty }

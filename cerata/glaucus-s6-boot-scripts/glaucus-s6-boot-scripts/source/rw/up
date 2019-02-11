@@ -1,1 +1,1 @@
-mount -o remount,rw /
+foreground { mount -o remount,rw / }

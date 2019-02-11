@@ -1,1 +1,1 @@
-s6-mount -nt sysfs -o noatime,nodev,noexec,nosuid sys /sys
+foreground { s6-mount -nt sysfs -o noatime,nodev,noexec,nosuid sys /sys }
