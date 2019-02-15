@@ -1,5 +1,3 @@
-foreground
-{
-        if { s6-mkdir -v /dev/pts }
-        s6-mount -nt devpts -o noexec,nosuid,gid=0,mode=0600 devpts /dev/pts
-}
+#!/bin/execlineb -P
+if { s6-mkdir -v /dev/pts }
+s6-mount -nt devpts -o noexec,nosuid,gid=0,mode=0600 devpts /dev/pts

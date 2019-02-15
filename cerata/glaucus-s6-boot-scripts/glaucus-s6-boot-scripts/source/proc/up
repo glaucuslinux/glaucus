@@ -1,1 +1,2 @@
-foreground { s6-mount -nt proc -o nodev,noexec,nosuid proc /proc }
+#!/bin/execlineb -P
+s6-mount -nt proc -o nodev,noexec,nosuid proc /proc

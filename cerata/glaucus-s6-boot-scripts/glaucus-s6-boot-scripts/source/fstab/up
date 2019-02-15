@@ -1,1 +1,2 @@
-foreground { mount -a }
+#!/bin/execlineb -P
+mount -a

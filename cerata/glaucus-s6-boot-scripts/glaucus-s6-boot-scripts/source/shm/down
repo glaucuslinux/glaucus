@@ -1,1 +1,2 @@
-s6-umount /dev/shm
+#!/bin/execlineb -P
+s6-umount /run/shm

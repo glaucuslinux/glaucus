@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-exec s6-rc -da change
+s6-rc -da change

@@ -15,5 +15,4 @@ fstab
 hostname
 hwclock
 urandom
-utmp
 tty

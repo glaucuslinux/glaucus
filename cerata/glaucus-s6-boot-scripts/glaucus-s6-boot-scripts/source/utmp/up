@@ -1,1 +1,2 @@
-foreground { install -m 0664 -o root -g utmp /dev/null /run/utmp }
+#!/bin/execlineb -P
+install -m 0664 -o root -g utmp /dev/null /run/utmp

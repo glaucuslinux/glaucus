@@ -1,1 +1,2 @@
-foreground { hwclock -s /dev/rtc0 }
+#!/bin/execlineb -P
+hwclock -s /dev/rtc0

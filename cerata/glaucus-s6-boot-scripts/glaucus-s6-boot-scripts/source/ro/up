@@ -1,1 +1,2 @@
-foreground { mount -o remount,ro / }
+#!/bin/execlineb -P
+mount -o remount,ro /

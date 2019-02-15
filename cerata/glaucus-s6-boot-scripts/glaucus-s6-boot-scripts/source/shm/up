@@ -1,5 +1,4 @@
-foreground
-{
-        if { s6-mkdir -v /dev/shm }
-        s6-mount -nt tmpfs -o noatime,nodev,noexec,nosuid shm /dev/shm
-}
+#!/bin/execlineb -P
+if { s6-mkdir -v /run/shm }
+if { s6-mount -nt tmpfs -o noatime,nodev,noexec,nosuid shm /run/shm }
+s6-ln -sf /run/shm /dev/shm

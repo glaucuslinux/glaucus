@@ -7,16 +7,16 @@ foreground
 {
         if { s6-mount -nt tmpfs -o mode=0755 tmpfs /run }
         if { s6-hiercopy /etc/s6/run /run }
-        s6-mkfifo -m 0600 /run/service/s6-log/fifo
+        s6-mkfifo -m 0600 /run/service/log/fifo
 }
 emptyenv -p
 s6-envdir -I /etc/s6/env
 redirfd -r 0 /dev/null
-redirfd -wnb 1 /run/service/s6-log/fifo
+redirfd -wnb 1 /run/service/log/fifo
 background
 {
         s6-setsid
-        redirfd -w 1 /run/service/s6-log/fifo
+        redirfd -w 1 /run/service/log/fifo
         fdmove -c 1 2
         /etc/s6/rc.init
 }

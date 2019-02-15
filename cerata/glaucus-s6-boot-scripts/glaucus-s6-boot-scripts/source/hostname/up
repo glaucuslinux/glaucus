@@ -1,1 +1,2 @@
-foreground { s6-hostname glaucus }
+#!/bin/execlineb -P
+s6-hostname glaucus

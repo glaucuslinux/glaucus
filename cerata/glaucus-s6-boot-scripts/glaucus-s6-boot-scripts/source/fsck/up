@@ -1,1 +1,2 @@
-foreground { fsck }
+#!/bin/execlineb -P
+fsck

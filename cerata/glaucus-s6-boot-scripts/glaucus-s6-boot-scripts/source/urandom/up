@@ -1,1 +1,2 @@
-foreground { dd if=/dev/urandom of=/var/lib/urandom/seed count=1 bs=512 }
+#!/bin/execlineb -P
+dd if=/dev/urandom of=/var/lib/urandom/seed count=1 bs=512
