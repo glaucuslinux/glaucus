@@ -1,5 +1,5 @@
 name=less
-version=548
+version=549
 release=1
 arch=x86_64
 url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
