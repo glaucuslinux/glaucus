@@ -1,3 +1,2 @@
 #!/bin/execlineb -P
-if { s6-mkdir -v /run/lock }
-s6-ln -sf /run/lock /var/lock
+s6-mkdir -v /run/lock

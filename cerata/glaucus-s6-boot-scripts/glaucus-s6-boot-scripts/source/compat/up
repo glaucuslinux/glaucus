@@ -1,0 +1,5 @@
+#!/bin/execlineb -P
+if { s6-ln -sf /run /var/run }
+if { s6-ln -sf /run/lock /var/lock }
+if { s6-ln -sf /run/shm /dev/shm }
+s6-ln -sf /run/tmp /tmp

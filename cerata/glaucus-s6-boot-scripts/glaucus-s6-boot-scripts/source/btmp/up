@@ -1,2 +1,4 @@
 #!/bin/execlineb -P
-install -m 0600 -o root -g utmp /dev/null /var/log/btmp
+s6-touch /var/log/btmp
+s6-chmod 0600 /var/log/btmp
+s6-chown -u 0 -g 5 /var/log/btmp

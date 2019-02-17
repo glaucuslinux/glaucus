@@ -1,2 +1,4 @@
 #!/bin/execlineb -P
-install -m 0664 -o root -g utmp /dev/null /run/utmp
+s6-touch /run/utmp
+s6-chmod 0664 /run/utmp
+s6-chown -u 0 -g 5 /run/utmp
