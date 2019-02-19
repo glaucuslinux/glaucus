@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-mount -nt proc -o nodev,noexec,nosuid proc /proc
+mount -nt proc -o nodev,noexec,nosuid proc /proc

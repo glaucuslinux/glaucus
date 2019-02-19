@@ -1,4 +1,4 @@
 #!/bin/execlineb -P
-s6-touch /run/utmp
-s6-chmod 0664 /run/utmp
-s6-chown -u 0 -g 5 /run/utmp
+touch /run/utmp
+chmod 0664 /run/utmp
+chown -u 0 -g 5 /run/utmp

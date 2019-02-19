@@ -1,4 +1,6 @@
 #!/bin/execlineb -P
-if { s6-mkdir -v /run/tmp }
-if { s6-mount -nt tmpfs -o noatime,nodev,nosuid tmp /run/tmp }
-install -dm 1733 /run/tmp/.X11-unix /run/tmp/.ICE-unix
+if { mkdir /run/tmp }
+if { mount -nt tmpfs -o noatime,nodev,nosuid tmp /run/tmp }
+if { mkdir /run/tmp/.X11-unix /run/tmp/.ICE-unix }
+if { chmod 1733 /run/tmp/.X11-unix }
+chmod 1733 /run/tmp/.ICE-unix

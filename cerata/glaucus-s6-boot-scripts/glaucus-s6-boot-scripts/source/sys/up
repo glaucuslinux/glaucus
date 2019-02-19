@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-mount -nt sysfs -o noatime,nodev,noexec,nosuid sys /sys
+mount -nt sysfs -o noatime,nodev,noexec,nosuid sys /sys

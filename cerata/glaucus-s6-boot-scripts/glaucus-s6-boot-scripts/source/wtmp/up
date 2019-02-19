@@ -1,4 +1,4 @@
 #!/bin/execlineb -P
-s6-touch /var/log/wtmp
-s6-chmod 0664 /var/log/wtmp
-s6-chown -u 0 -g 5 /var/log/wtmp
+touch /var/log/wtmp
+chmod 0664 /var/log/wtmp
+chown -u 0 -g 5 /var/log/wtmp

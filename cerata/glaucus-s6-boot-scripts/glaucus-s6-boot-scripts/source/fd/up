@@ -1,5 +1,5 @@
 #!/bin/execlineb -P
-if { s6-ln -nsf /proc/self/fd /dev/fd }
-if { s6-ln -sf fd/0 /dev/stdin }
-if { s6-ln -sf fd/1 /dev/stdout }
-s6-ln -sf fd/2 /dev/stderr
+if { ln -fs /proc/self/fd /dev/fd }
+if { ln -fs fd/0 /dev/stdin }
+if { ln -fs fd/1 /dev/stdout }
+ln -fs fd/2 /dev/stderr

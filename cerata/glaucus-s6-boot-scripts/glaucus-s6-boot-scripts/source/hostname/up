@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-hostname glaucus
+hostname glaucus

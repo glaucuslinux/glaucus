@@ -5,9 +5,9 @@ s6-setsid -b
 umask 022
 foreground
 {
-        if { s6-mount -nt tmpfs -o mode=0755 tmpfs /run }
-        if { s6-hiercopy /etc/s6/run /run }
-        s6-mkfifo -m 0600 /run/service/log/fifo
+        if { mount -nt tmpfs -o mode=0755 tmpfs /run }
+        if { cp -ar /etc/s6/run / }
+        mkfifo -m 0600 /run/service/log/fifo
 }
 emptyenv -p
 s6-envdir -I /etc/s6/env

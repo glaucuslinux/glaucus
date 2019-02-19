@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-umount /dev/pts
+umount /dev/pts

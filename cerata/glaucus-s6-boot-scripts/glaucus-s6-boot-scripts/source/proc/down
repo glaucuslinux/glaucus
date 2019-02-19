@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-umount /proc
+umount /proc

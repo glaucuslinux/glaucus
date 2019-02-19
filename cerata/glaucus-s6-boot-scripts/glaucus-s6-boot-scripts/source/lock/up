@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-mkdir -v /run/lock
+mkdir /run/lock

@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-s6-umount /run/shm
+umount /run/shm
