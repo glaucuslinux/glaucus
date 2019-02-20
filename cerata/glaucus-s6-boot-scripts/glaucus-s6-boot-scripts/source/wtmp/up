@@ -1,4 +1,2 @@
 #!/bin/execlineb -P
-touch /var/log/wtmp
-chmod 0664 /var/log/wtmp
-chown -u 0 -g 5 /var/log/wtmp
+install -g utmp -o root -m0664 /dev/null /var/log/wtmp

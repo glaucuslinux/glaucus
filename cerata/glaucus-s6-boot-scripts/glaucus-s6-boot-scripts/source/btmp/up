@@ -1,4 +1,2 @@
 #!/bin/execlineb -P
-touch /var/log/btmp
-chmod 0600 /var/log/btmp
-chown -u 0 -g 5 /var/log/btmp
+install -g utmp -o root -m0600 /dev/null /var/log/btmp

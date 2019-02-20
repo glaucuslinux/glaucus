@@ -1,4 +1,2 @@
 #!/bin/execlineb -P
-touch /run/utmp
-chmod 0664 /run/utmp
-chown -u 0 -g 5 /run/utmp
+install -g utmp -o root -m0664 /dev/null /run/utmp

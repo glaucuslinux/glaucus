@@ -18,7 +18,7 @@ envenomate musl \
         netbsd-curses dash loksh \
         e2fsprogs \
         linux \
-        skalibs execline s6-portable-utils s6-linux-utils s6 s6-rc glaucus-s6-boot-scripts
+        skalibs execline s6 s6-rc glaucus-s6-boot-scripts
 #envenomate sinit svc
 #envenomate re2c \
         #smdev nldev nlmon \
@@ -27,4 +27,4 @@ envenomate musl \
         #pcre2 less mandoc vim \
         #iproute2 file opendoas libressl \
         #bin86 lilo
-        #s6-linux-init
+        #s6-portable-utils s6-linux-utils s6-linux-init
