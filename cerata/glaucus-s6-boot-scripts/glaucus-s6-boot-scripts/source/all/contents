@@ -10,7 +10,6 @@ fsck
 rw
 fstab
 hwclock
-hostname
 utmp
 compat
 urandom
