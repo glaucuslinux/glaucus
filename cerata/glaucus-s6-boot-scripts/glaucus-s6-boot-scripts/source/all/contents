@@ -4,8 +4,6 @@ lock
 devpts
 shm
 tmp
-ro
-fd
 fsck
 rw
 fstab

@@ -1,5 +1,0 @@
-#!/bin/execlineb -P
-if { ln -fs /proc/self/fd /dev/fd }
-if { ln -fs fd/0 /dev/stdin }
-if { ln -fs fd/1 /dev/stdout }
-ln -fs fd/2 /dev/stderr
