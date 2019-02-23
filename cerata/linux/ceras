@@ -2,7 +2,7 @@ name=linux
 version=git
 release=1
 arch=x86_64
-url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name.$version
+url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name
 description='The Linux kernel and modules'
 license=GPLv2
 build_toolchain(){

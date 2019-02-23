@@ -2,7 +2,7 @@ name=mpc
 version=git
 release=1
 arch=x86_64
-url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name.$version
+url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){

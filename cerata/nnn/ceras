@@ -2,7 +2,7 @@ name=nnn
 version=git
 release=1
 arch=x86_64
-url=https://github.com/jarun/$name.$version
+url=https://github.com/jarun/$name
 description='The fastest terminal file manager ever written'
 license=BSDv2
 build(){

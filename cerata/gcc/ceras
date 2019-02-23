@@ -1,5 +1,5 @@
 name=gcc
-version=8.2.0
+version=8.3.0
 release=1
 arch=x86_64
 url=https://ftp.gnu.org/gnu/$name/$name-$version/$name-$version.tar.xz

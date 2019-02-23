@@ -2,7 +2,7 @@ name=sdhcp
 version=git
 release=1
 arch=x86_64
-url=$version://$version.2f30.org/$name.$version
+url=$version://$version.2f30.org/$name
 description='Simple DHCP client'
 license=MIT
 build(){

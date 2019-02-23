@@ -2,12 +2,12 @@ name=opendoas
 version=git
 release=1
 arch=x86_64
-url=https://github.com/Duncaen/OpenDoas.$version
+url=https://$version.duncano.de/$name
 cyst='musl byacc'
 description='A portable version of the OpenBSD `doas` command'
 license='BSDv2 ISC'
 build(){
-        rsync -vah $CERD/$name/OpenDoas/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/root/glaucus/' \
                 -e 's/-Werror //' \
