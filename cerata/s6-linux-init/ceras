@@ -28,11 +28,4 @@ build(){
         make \
                 DESTDIR=$SCER/$name/sac \
                 install
-        sudo LD_LIBRARY_PATH=$GLAD/lib $SCER/$name/sac/bin/s6-linux-init-maker \
-                -c /etc/s6-linux-init \
-                -G '/bin/agetty 38400 tty1' \
-                -2 /etc/s6/rc.init \
-                -Z /etc/s6/rc.shutdown \
-                -p /bin \
-                $GLAD/etc/s6
 }
