@@ -13,6 +13,8 @@ build(){
                 -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/lib/" \
                 -e "s/CC = .*/CC = $CC/" \
                 -i config.mk
+        sed 's/busybox ash/sh/' \
+                -i nltrigger run_nldev
         make
         make \
                 DESTDIR=$SCER/$name/sac \

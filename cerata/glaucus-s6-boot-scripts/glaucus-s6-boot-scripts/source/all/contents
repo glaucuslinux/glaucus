@@ -4,6 +4,9 @@ lock
 devpts
 shm
 tmp
+smdev
+nldev
+nltrigger
 fsck
 rw
 fstab

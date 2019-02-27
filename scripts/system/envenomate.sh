@@ -19,12 +19,11 @@ envenomate musl \
         e2fsprogs \
         linux \
         skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
-#envenomate sinit svc
-#envenomate re2c \
-        #smdev nldev nlmon \
-        #sdhcp \
-        #xz zlib libarchive \
-        #pcre2 less mandoc vim \
-        #iproute2 file opendoas libressl \
-        #bin86 lilo
-        #s6-portable-utils s6-linux-utils
+envenomate re2c \
+        sinit svc \
+        sdhcp \
+        xz zlib libarchive \
+        pcre2 less mandoc vim \
+        iproute2 file opendoas libressl \
+        bin86 lilo \
+        s6-portable-utils s6-linux-utils
