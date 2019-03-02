@@ -1,3 +1,6 @@
+[submodule "cerata/cloog/cloog"]
+	path = cerata/cloog/cloog
+	url = https://repo.or.cz/cloog
 [submodule "cerata/curl/curl"]
 	path = cerata/curl/curl
 	url = https://github.com/curl/curl
@@ -7,6 +10,9 @@
 [submodule "cerata/e2fsprogs/e2fsprogs"]
 	path = cerata/e2fsprogs/e2fsprogs
 	url = https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs
+[submodule "cerata/elfutils/elfutils"]
+	path = cerata/elfutils/elfutils
+	url = https://sourceware.org/git/elfutils.git
 [submodule "cerata/execline/execline"]
 	path = cerata/execline/execline
 	url = https://skarnet.org/cgi-bin/cgit.cgi/execline
@@ -16,6 +22,9 @@
 [submodule "cerata/iproute2/iproute2"]
 	path = cerata/iproute2/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
+[submodule "cerata/isl/isl"]
+	path = cerata/isl/isl
+	url = https://repo.or.cz/isl
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
@@ -58,6 +67,9 @@
 [submodule "cerata/opendoas/opendoas"]
 	path = cerata/opendoas/opendoas
 	url = https://git.duncano.de/opendoas
+[submodule "cerata/openscop/openscop"]
+	path = cerata/openscop/openscop
+	url = https://github.com/periscop/openscop
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c

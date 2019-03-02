@@ -1,0 +1,13 @@
+name=isl
+version=git
+release=1
+arch=x86_64
+url=https://repo.or.cz/$name
+description='A library for manipulating sets and relations of integer points bounded by linear constraints'
+license=MIT
+build_toolchain(){
+        :
+}
+build(){
+        :
+}

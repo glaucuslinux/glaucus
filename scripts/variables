@@ -23,12 +23,13 @@ assign_system_variables(){
         export AS=$TUPL-as
         export AWK=$GLAD/bin/mawk
         export CC=$TUPL-gcc
-        export CFLAGS='-Os -s -fomit-frame-pointer -pipe'
         export CROSS_COMPILE=$TUPL-
         export CXX=$TUPL-g++
-        export CXXFLAGS="$CFLAGS"
         export LD=$TUPL-ld
-        export LDFLAGS='-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu'
+        export LTO='-flto -fuse-linker-plugin -fno-fat-lto-objects'
+        export CFLAGS="-Os -s -fomit-frame-pointer -pipe $LTO"
+        export CXXFLAGS="$CFLAGS"
+        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-nm
         export OBJDUMP=$TUPL-objdump
         export RANLIB=$TUPL-ranlib
