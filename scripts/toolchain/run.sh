@@ -1,11 +1,8 @@
 #!/usr/bin/dash -ex
-. /home/glaucus/scripts/toolchain/clean.sh
-case $1 in
-        upgrade) . /home/glaucus/scripts/update.sh ;;
-esac
 . /home/glaucus/scripts/variables
 assign_basic_variables
 assign_toolchain_variables
+. /home/glaucus/scripts/toolchain/clean.sh
 count=1
 while true
 do

@@ -35,8 +35,6 @@ build_toolchain(){
                                 --disable-libssp \
                                 --disable-libquadmath \
                                 --without-isl \
-                                --without-ppl \
-                                --without-cloog \
                                 --disable-multilib \
                                 --disable-threads \
                                 --enable-languages=c \
@@ -68,9 +66,6 @@ build_toolchain(){
                                 --disable-libmpx \
                                 --disable-libssp \
                                 --disable-libquadmath \
-                                --without-isl \
-                                --without-ppl \
-                                --without-cloog \
                                 --disable-multilib \
                                 --enable-languages=c,c++ \
                                 --with-arch=x86-64

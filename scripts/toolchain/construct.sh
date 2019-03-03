@@ -1,9 +1,9 @@
 #!/usr/bin/dash -ex
 construct(){
-        for item in "$@"
+        for item in $@
         do
                 case $item in
-                        linux|binutils|gmp|mpc|mpfr|musl)
+                        linux|binutils|gmp|mpfr|mpc|isl|musl)
                                 . $CERD/$item/ceras
                                 build_toolchain
                                 ;;
@@ -14,4 +14,4 @@ construct(){
                 esac
         done
 }
-construct linux binutils gmp mpc mpfr gcc_1 musl gcc_2
+construct linux binutils gmp mpfr mpc isl gcc_1 musl gcc_2

@@ -12,7 +12,6 @@ assign_basic_variables(){
 }
 assign_toolchain_variables(){
         export TBLD=$TMPD/toolchain/builds
-        export TSRC=$TMPD/toolchain/sources
 }
 assign_system_variables(){
         export GLAD=/home/glaucus/system
