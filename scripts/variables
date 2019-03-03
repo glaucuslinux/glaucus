@@ -18,7 +18,7 @@ assign_system_variables(){
         export SBLD=$TMPD/system/builds
         export SCER=$TMPD/system/cerata
         export SSRC=$TMPD/system/sources
-        export AR=$TUPL-ar
+        export AR=$TUPL-gcc-ar
         export AS=$TUPL-as
         export AWK=$GLAD/bin/mawk
         export CC=$TUPL-gcc
@@ -29,9 +29,9 @@ assign_system_variables(){
         export CFLAGS="-Os -s -fomit-frame-pointer -pipe $LTO"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
-        export NM=$TUPL-nm
+        export NM=$TUPL-gcc-nm
         export OBJDUMP=$TUPL-objdump
-        export RANLIB=$TUPL-ranlib
+        export RANLIB=$TUPL-gcc-ranlib
         export READELF=$TUPL-readelf
         export STRIP=$TUPL-strip
         export YACC=$GLAD/bin/yacc

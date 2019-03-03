@@ -34,7 +34,6 @@ build_toolchain(){
                                 --disable-libmpx \
                                 --disable-libssp \
                                 --disable-libquadmath \
-                                --without-isl \
                                 --disable-multilib \
                                 --disable-threads \
                                 --enable-languages=c \
