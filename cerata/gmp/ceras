@@ -7,6 +7,8 @@ description='A free library for arbitrary multiprecision arithmetic, operating o
 license='GPLv2 LGPLv3 PD'
 build_toolchain(){
         rsync -vah $CERD/$name/$name $CERD/gcc/gcc --delete
+        cd $CERD/gcc/gcc/$name
+        ./.bootstrap
 }
 build(){
         :
