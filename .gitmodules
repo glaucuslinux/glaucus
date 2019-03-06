@@ -1,3 +1,6 @@
+[submodule "cerata/binutils/binutils-gdb"]
+	path = cerata/binutils/binutils-gdb
+	url = https://sourceware.org/git/binutils-gdb.git
 [submodule "cerata/cloog/cloog"]
 	path = cerata/cloog/cloog
 	url = https://repo.or.cz/cloog

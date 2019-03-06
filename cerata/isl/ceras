@@ -6,8 +6,8 @@ url=https://repo.or.cz/$name
 description='A library for manipulating sets and relations of integer points bounded by linear constraints'
 license=MIT
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $CERD/gcc/gcc --delete
-        cd $CERD/gcc/gcc/$name
+        rsync -vah $CERD/$name/$name $CERD/gcc/trunk --delete
+        cd $CERD/gcc/trunk/$name
         ./autogen.sh
 }
 build(){

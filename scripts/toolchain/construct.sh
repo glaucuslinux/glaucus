@@ -14,4 +14,10 @@ construct(){
                 esac
         done
 }
-construct linux binutils gmp mpfr mpc isl gcc_1 musl gcc_2
+construct linux \
+        binutils \
+        gmp mpfr mpc isl \
+        gcc_1 \
+        musl \
+        gmp mpfr mpc isl \
+        gcc_2

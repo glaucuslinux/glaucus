@@ -6,7 +6,9 @@ url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
 description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
 license='LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/trunk/ $CERD/gcc/gcc/$name --delete
+        rsync -vah $CERD/$name/trunk/ $CERD/gcc/trunk/$name --delete
+        cd $CERD/gcc/trunk/$name
+        ./autogen.sh
 }
 build(){
         :
