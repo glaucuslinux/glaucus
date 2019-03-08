@@ -24,6 +24,7 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \
+                CFLAGS='-Os -s -fomit-frame-pointer -pipe' \
                 --prefix= \
                 --target=$TUPL \
                 --host=$TUPL \

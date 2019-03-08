@@ -6,9 +6,9 @@ url=https://gmplib.org/repo/$name
 description='A free library for arbitrary multiprecision arithmetic, operating on signed integers, rational numbers, and floating-point numbers'
 license='GPLv2 LGPLv3 PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $CERD/gcc/trunk --delete
-        cd $CERD/gcc/trunk/$name
-        ./.bootstrap
+        rsync -vah $CERD/$name/$name $TSRC/gcc --delete
+        #cd $TSRC/gcc/$name
+        #./.bootstrap
 }
 build(){
         :

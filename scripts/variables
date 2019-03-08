@@ -12,6 +12,7 @@ assign_basic_variables(){
 }
 assign_toolchain_variables(){
         export TBLD=$TMPD/toolchain/builds
+        export TSRC=$TMPD/toolchain/sources
 }
 assign_system_variables(){
         export GLAD=/home/glaucus/system
@@ -26,9 +27,9 @@ assign_system_variables(){
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export LTO='-flto -fuse-linker-plugin -fno-fat-lto-objects'
-        export CFLAGS="-Os -s -fomit-frame-pointer -pipe $LTO"
+        export CFLAGS="-Os -s -fomit-frame-pointer -pipe"
         export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
+        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu"
         export NM=$TUPL-gcc-nm
         export OBJDUMP=$TUPL-objdump
         export RANLIB=$TUPL-gcc-ranlib

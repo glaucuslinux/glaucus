@@ -6,9 +6,9 @@ url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $CERD/gcc/trunk --delete
-        cd $CERD/gcc/trunk/$name
-        autoreconf -vi
+        rsync -vah $CERD/$name/$name $TSRC/gcc --delete
+        #cd $TSRC/gcc/$name
+        #autoreconf -vi
 }
 build(){
         :

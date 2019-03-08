@@ -1,6 +1,7 @@
 #!/usr/bin/dash -ex
 . /home/glaucus/scripts/variables
 assign_basic_variables
+export PATH=$PATH:/usr/bin/core_perl
 assign_toolchain_variables
 . /home/glaucus/scripts/toolchain/clean.sh
 count=1

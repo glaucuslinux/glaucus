@@ -6,11 +6,14 @@ url=https://$name.gnu.org/$version/$name/trunk
 description='The GNU Compiler Collection'
 license='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
 build_toolchain(){
+        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude gmp --exclude mpfr --exclude mpc --exclude isl
+        #cd $TSRC/$name
+        #./contrib/gcc_update
         mkdir -v $TBLD/$1
         cd $TBLD/$1
         case $1 in
                 gcc_1)
-                        $CERD/$name/trunk/configure \
+                        $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
@@ -43,7 +46,7 @@ build_toolchain(){
                                 install-target-libgcc
                         ;;
                 gcc_2)
-                        $CERD/$name/trunk/configure \
+                        $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$ARCH-pc-linux-gnu \
@@ -60,6 +63,7 @@ build_toolchain(){
                                 --disable-libvtv \
                                 --disable-libssp \
                                 --disable-libquadmath \
+                                --without-isl \
                                 --disable-multilib \
                                 --enable-languages=c,c++ \
                                 --with-arch=x86-64
