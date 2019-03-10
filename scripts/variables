@@ -27,9 +27,9 @@ assign_system_variables(){
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export LTO='-flto -fuse-linker-plugin -fno-fat-lto-objects'
-        export CFLAGS="-Os -s -fomit-frame-pointer -pipe"
+        export CFLAGS="-Os -s -fomit-frame-pointer -pipe $LTO"
         export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu"
+        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm
         export OBJDUMP=$TUPL-objdump
         export RANLIB=$TUPL-gcc-ranlib

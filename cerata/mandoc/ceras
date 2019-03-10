@@ -14,7 +14,7 @@ cat > configure.local << EOF
 HAVE_WCHAR=1
 OSNAME=glaucus
 PREFIX=
-MANPATH_DEFAULT=/share/man
+MANPATH_DEFAULT=/usr/share/man
 AR=$AR
 CC=$CC
 CFLAGS="$CFLAGS -I$GLAD/include"
@@ -25,7 +25,7 @@ EOF
         sed -e 's/BINDIR\t\t= \/usr\/local\/bin/BINDIR\t\t= \/bin/' \
                 -e '10d' \
                 -e 's/BIN_FROM_SBIN\t= ..\/bin/BIN_FROM_SBIN\t= bin/' \
-                -e 's/MANDIR\t\t= .*/MANDIR\t\t= \/share\/man/' \
+                -e 's/MANDIR\t\t= .*/MANDIR\t\t= \/usr\/share\/man/' \
                 -i Makefile.local
         sed -e 's/${BIN_FROM_SBIN}\///' \
                 -e 's/SBINDIR/BINDIR/' \

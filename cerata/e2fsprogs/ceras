@@ -39,10 +39,7 @@ build(){
                 cd $dir
                 sed -e '/LDCONFIG/d' \
                         -i Makefile
-                if [ ! -d $SCER/$name/sac/share/man/man3 ]
-                then
-                        install -dv $SCER/$name/sac/share/man/man3
-                fi
+                install -dv $SCER/$name/sac/usr/share/man/man3
                 make \
                         DESTDIR=$SCER/$name/sac \
                         install-strip
@@ -59,6 +56,6 @@ build(){
         rm -frv libblkid.a \
                 libcom_err.a \
                 libe2p.a \
-                libext2fs \
+                libext2fs.a \
                 libuuid.a
 }

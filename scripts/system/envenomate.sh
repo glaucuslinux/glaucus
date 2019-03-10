@@ -8,7 +8,7 @@ envenomate(){
                 cd $SCER/$item/sac
                 sudo sha512sum $(sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
                 tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
-                rsync -vah $SCER/$name/venom $GLAD/share/cerata/$name --delete
+                rsync -vah $SCER/$name/venom $GLAD/usr/cerata/$name --delete
         done
 }
 envenomate musl \

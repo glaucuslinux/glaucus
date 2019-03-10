@@ -34,7 +34,7 @@ build(){
                 make \
                         BINDIR=/bin \
                         DESTDIR=$SCER/$name/sac \
-                        MANDIR=$SCER/$name/sac/share/man/man1 \
+                        MANDIR=$SCER/$name/sac/usr/share/man/man1 \
                         install
                 cd ..
         done
@@ -46,14 +46,14 @@ build(){
                 make \
                         BINDIR=/bin \
                         DESTDIR=$SCER/$name/sac \
-                        MANDIR=$SCER/$name/sac/share/man/man1 \
+                        MANDIR=$SCER/$name/sac/usr/share/man/man1 \
                         install
                 cd ..
         done
         cd pax
         make
         install -v pax $SCER/$name/sac/bin
-        install -m 444 -Dv cpio.1 pax.1 tar.1 -t $SCER/$name/sac/share/man/man1
+        install -m 444 -Dv cpio.1 pax.1 tar.1 -t $SCER/$name/sac/usr/share/man/man1
         cd $SCER/$name/sac/bin
         ln -fsv pax cpio
         ln -fsv pax tar

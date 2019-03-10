@@ -38,5 +38,5 @@ build(){
                 -i config.mk
         make
         install -Dv ip/ip $SCER/$name/sac/bin/ip
-        install -Dv man/man8/ip.8 $SCER/$name/sac/share/man/man8/ip.8
+        install -Dv man/man8/ip.8 $SCER/$name/sac/usr/share/man/man8/ip.8
 }

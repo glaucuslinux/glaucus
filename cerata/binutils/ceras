@@ -16,7 +16,8 @@ build_toolchain(){
                 --disable-nls \
                 --disable-multilib \
                 --disable-compressed-debug-sections \
-                --disable-werror
+                --disable-werror \
+                --disable-gdb
         make \
                 configure-host
         make
