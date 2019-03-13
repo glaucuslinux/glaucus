@@ -6,9 +6,7 @@ url=https://$name.gnu.org/$version/$name/trunk
 description='The GNU Compiler Collection'
 license='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
 build_toolchain(){
-        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude gmp --exclude mpfr --exclude mpc --exclude isl
-        #cd $TSRC/$name
-        #./contrib/gcc_update
+        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
         mkdir -v $TBLD/$1
         cd $TBLD/$1
         case $1 in
@@ -33,7 +31,9 @@ build_toolchain(){
                                 --disable-libvtv \
                                 --disable-libssp \
                                 --disable-libquadmath \
-                                --without-isl \
+                                --with-mpc=$TOOL \
+                                --with-mpfr=$TOOL \
+                                --with-gmp=$TOOL \
                                 --disable-multilib \
                                 --disable-threads \
                                 --enable-languages=c \
@@ -63,7 +63,10 @@ build_toolchain(){
                                 --disable-libvtv \
                                 --disable-libssp \
                                 --disable-libquadmath \
-                                --without-isl \
+                                --with-mpc=$TOOL \
+                                --with-mpfr=$TOOL \
+                                --with-gmp=$TOOL \
+                                --with-isl=$TOOL \
                                 --disable-multilib \
                                 --enable-languages=c,c++ \
                                 --with-arch=x86-64

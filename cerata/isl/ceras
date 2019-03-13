@@ -6,9 +6,14 @@ url=https://repo.or.cz/$name
 description='A library for manipulating sets and relations of integer points bounded by linear constraints'
 license=MIT
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC/gcc --delete
-        cd $TSRC/gcc/$name
+        rsync -vah $CERD/$name/$name $TSRC --delete
+        cd $TSRC/$name
         ./autogen.sh
+        ./configure \
+                --prefix=$TOOL \
+                --with-gmp=$TOOL
+        make
+        make install
 }
 build(){
         :

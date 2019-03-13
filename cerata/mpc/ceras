@@ -3,12 +3,19 @@ version=git
 release=1
 arch=x86_64
 url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
+cysts='musl gmp mpfr'
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC/gcc --delete
-        #cd $TSRC/gcc/$name
-        #autoreconf -vi
+        rsync -vah $CERD/$name/$name $TSRC --delete
+        cd $TSRC/$name
+        autoreconf -vi
+        ./configure \
+                --prefix=$TOOL \
+                --with-mpfr=$TOOL \
+                --with-gmp=$TOOL
+        make
+        make install
 }
 build(){
         :

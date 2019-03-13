@@ -12,11 +12,12 @@ build_toolchain(){
         $TSRC/$name/configure \
                 --prefix=$TOOL \
                 --target=$TUPL \
-                --with-sysroot=$TOOL/$TUPL \
+                --enable-gold \
+                --disable-ld \
                 --disable-nls \
-                --disable-multilib \
-                --disable-compressed-debug-sections \
                 --disable-werror \
+                --with-sysroot=$TOOL/$TUPL \
+                --disable-multilib \
                 --disable-gdb
         make \
                 configure-host
