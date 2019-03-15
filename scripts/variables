@@ -13,6 +13,7 @@ assign_basic_variables(){
 assign_toolchain_variables(){
         export TBLD=$TMPD/toolchain/builds
         export TSRC=$TMPD/toolchain/sources
+        export LD_LIBRARY_PATH=$TOOL/lib
 }
 assign_system_variables(){
         export GLAD=/home/glaucus/system
@@ -26,8 +27,9 @@ assign_system_variables(){
         export CROSS_COMPILE=$TUPL-
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
+        export GRAPHITE='-floop-strip-mine -floop-block -fgraphite-identity'
         export LTO='-flto -fuse-linker-plugin -fno-fat-lto-objects'
-        export CFLAGS="-Os -s -fomit-frame-pointer -pipe $LTO"
+        export CFLAGS="-Ofast -s -fomit-frame-pointer -pipe $LTO $GRAPHITE"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm

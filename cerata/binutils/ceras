@@ -12,11 +12,12 @@ build_toolchain(){
         $TSRC/$name/configure \
                 --prefix=$TOOL \
                 --target=$TUPL \
+                --with-sysroot=$TOOL/$TUPL \
                 --enable-gold \
                 --disable-ld \
+                --enable-plugins \
                 --disable-nls \
                 --disable-werror \
-                --with-sysroot=$TOOL/$TUPL \
                 --disable-multilib \
                 --disable-gdb
         make \

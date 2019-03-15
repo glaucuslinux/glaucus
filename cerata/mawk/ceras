@@ -7,10 +7,7 @@ cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
 license=GPLv2
 build(){
-        if [ ! -d $SBLD/$name ]
-        then
-                mkdir -v $SBLD/$name
-        fi
+        mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name-snapshots/configure \
                 --prefix= \

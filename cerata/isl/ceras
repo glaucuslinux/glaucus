@@ -11,6 +11,7 @@ build_toolchain(){
         ./autogen.sh
         ./configure \
                 --prefix=$TOOL \
+                --disable-shared \
                 --with-gmp=$TOOL
         make
         make install

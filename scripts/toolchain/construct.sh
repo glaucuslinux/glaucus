@@ -16,7 +16,7 @@ construct(){
 }
 construct linux \
         binutils \
-        gmp mpfr mpc isl \
+        gmp mpfr mpc \
         gcc_1 \
         musl \
         gmp mpfr mpc isl \

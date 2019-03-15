@@ -12,6 +12,7 @@ build_toolchain(){
         autoreconf -vi
         ./configure \
                 --prefix=$TOOL \
+                --disable-shared \
                 --with-mpfr=$TOOL \
                 --with-gmp=$TOOL
         make
