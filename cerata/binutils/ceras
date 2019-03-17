@@ -13,18 +13,13 @@ build_toolchain(){
                 --prefix=$TOOL \
                 --target=$TUPL \
                 --with-sysroot=$TOOL/$TUPL \
-                --enable-gold \
-                --disable-ld \
-                --enable-plugins \
                 --disable-nls \
                 --disable-werror \
                 --disable-multilib \
                 --disable-gdb
-        make \
-                configure-host
+        make configure-host
         make
-        make \
-                install
+        make install
 }
 build(){
         :

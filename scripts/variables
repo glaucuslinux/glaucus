@@ -28,8 +28,8 @@ assign_system_variables(){
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export GRAPHITE='-floop-strip-mine -floop-block -fgraphite-identity'
-        export LTO='-flto -fuse-linker-plugin -fno-fat-lto-objects'
-        export CFLAGS="-Ofast -s -fomit-frame-pointer -pipe $LTO $GRAPHITE"
+        export LTO='-flto -fuse-linker-plugin'
+        export CFLAGS="-pipe -Ofast -s $LTO $GRAPHITE"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm

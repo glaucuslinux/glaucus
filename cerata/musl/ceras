@@ -23,7 +23,6 @@ build_toolchain(){
 build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        echo hello here are the values of graphite $GRAPHITE and lto $LTO
         $CERD/$name/$name/configure \
                 CFLAGS="-Ofast -s -fomit-frame-pointer -pipe $GRAPHITE" \
                 --prefix= \
