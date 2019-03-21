@@ -16,6 +16,7 @@ build_toolchain(){
                                 --prefix=$TOOL \
                                 --with-native-system-header-dir=/include \
                                 --disable-shared \
+                                --disable-multilib \
                                 --disable-threads \
                                 --with-arch=x86-64 \
                                 --enable-languages=c \
@@ -27,17 +28,16 @@ build_toolchain(){
                                 --disable-libvtv \
                                 --disable-nls \
                                 --disable-decimal-float \
-                                --with-sysroot=$TOOL/$TUPL \
-                                --without-headers \
-                                --with-newlib \
-                                --disable-libatomic \
-                                --disable-libstdcxx \
-                                --disable-libitm \
                                 --with-gmp=$TOOL \
                                 --with-mpfr=$TOOL \
                                 --with-mpc=$TOOL \
                                 --without-isl \
-                                --disable-multilib
+                                --with-sysroot=$TOOL/$TUPL \
+                                --without-headers \
+                                --with-newlib \
+                                --disable-libatomic \
+                                --disable-libitm \
+                                --disable-libstdcxx
                         make all-gcc \
                                 all-target-libgcc
                         make install-gcc \
@@ -48,24 +48,25 @@ build_toolchain(){
                                 --target=$TUPL \
                                 --prefix=$TOOL \
                                 --with-native-system-header-dir=/include \
+                                --disable-multilib \
                                 --with-arch=x86-64 \
+                                --disable-bootstrap \
                                 --enable-languages=c,c++ \
                                 --disable-libsanitizer \
                                 --disable-libssp \
                                 --disable-libquadmath \
                                 --disable-libvtv \
                                 --disable-nls \
-                                --with-sysroot=$TOOL/$TUPL \
-                                --disable-libatomic \
-                                --disable-libstdcxx-pch \
-                                --disable-symvers \
                                 --with-gmp=$TOOL \
                                 --with-mpfr=$TOOL \
                                 --with-mpc=$TOOL \
                                 --with-isl=$TOOL \
-                                --disable-multilib
-                        make AS_FOR_TARGET="$TUPL-as" \
-                                LD_FOR_TARGET="$TUPL-ld"
+                                --with-linker-hash-style=gnu \
+                                --with-sysroot=$TOOL/$TUPL \
+                                --disable-symvers \
+                                --disable-libatomic \
+                                --disable-libstdcxx-pch
+                        make
                         make install
                         ;;
         esac
