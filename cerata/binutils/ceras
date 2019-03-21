@@ -12,10 +12,9 @@ build_toolchain(){
         $TSRC/$name/configure \
                 --prefix=$TOOL \
                 --target=$TUPL \
-                --with-sysroot=$TOOL/$TUPL \
                 --disable-nls \
-                --disable-werror \
-                --disable-multilib \
+                --with-lib-path=$TOOL/lib \
+                --with-sysroot=$TOOL/$TUPL \
                 --disable-gdb
         make configure-host
         make

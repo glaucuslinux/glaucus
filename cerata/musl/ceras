@@ -24,7 +24,7 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \
-                CFLAGS="-Ofast -s -fomit-frame-pointer -pipe $GRAPHITE" \
+                CFLAGS="-Ofast -s $GRAPHITE" \
                 --prefix= \
                 --target=$TUPL \
                 --host=$TUPL \
