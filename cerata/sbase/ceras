@@ -8,7 +8,7 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e '5s/PREFIX = .*/PREFIX =/' \
+        sed -e 's/^PREFIX = .*/PREFIX =/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/AR = .*/AR = $AR/" \
                 -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
@@ -16,7 +16,6 @@ build(){
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

@@ -39,7 +39,7 @@ build(){
                 cd $dir
                 sed -e '/LDCONFIG/d' \
                         -i Makefile
-                install -dv $SCER/$name/sac/usr/share/man/man3
+                install -dv $SCER/$name/sac/share/man/man3
                 make \
                         DESTDIR=$SCER/$name/sac \
                         install-strip

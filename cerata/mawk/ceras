@@ -7,6 +7,10 @@ cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
 license=GPLv2
 build(){
+        if [ -d $SBLD/$name ]
+        then
+                rm -frv $SBLD/$name
+        fi
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name-snapshots/configure \
@@ -16,8 +20,7 @@ build(){
                 --target=$TUPL
         rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
         cd $SCER/$name/sac/bin
         ln -fsv $name awk
