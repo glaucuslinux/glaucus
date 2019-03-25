@@ -28,13 +28,13 @@ assign_system_variables(){
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export GRAPHITE='-floop-strip-mine -floop-block -fgraphite-identity'
+        export IPA='-fipa-pta'
         export LTO='-flto'
+        export MARCH='-march=x86-64'
         export OPENMP='-fopenmp'
-        export PGO='-fprofile-generate'
-        export CFLAGS="-pipe $OPENMP -Ofast $LTO $GRAPHITE $PGO -s"
-        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $GRAPHITE $PGO -s"
-        export CFLAGSNOOPENMP="-pipe -Ofast $LTO $GRAPHITE $PGO -s"
-        export CFLAGSNOPGO="-pipe $OPENMP -Ofast $LTO $GRAPHITE -s"
+        export CFLAGS="-pipe $OPENMP -Ofast $IPA $GRAPHITE $LTO -s $MARCH"
+        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $IPA $GRAPHITE -s $MARCH"
+        export CFLAGSNOOPENMP="-pipe -Ofast $IPA $GRAPHITE $LTO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm

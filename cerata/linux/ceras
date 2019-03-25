@@ -24,9 +24,9 @@ build(){
         make mrproper
         make O=$SBLD/$name \
                 oldconfig
-        CFLAGS="$CFLAGSNOPGO" make O=$SBLD/$name \
+        make O=$SBLD/$name \
                 prepare
-        CFLAGS="$CFLAGSNOPGO" make O=$SBLD/$name
+        make O=$SBLD/$name
         install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
         install -v $SBLD/$name/System.map $SCER/$name/sac/boot
 }
