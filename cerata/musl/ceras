@@ -24,7 +24,7 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \
-                CFLAGS="-pipe $OPENMP -Ofast $GRAPHITE -s" \
+                CFLAGS="$CFLAGSNOLTO" \
                 --prefix= \
                 --target=$TUPL \
                 --host=$TUPL \

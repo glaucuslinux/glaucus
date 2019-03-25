@@ -13,7 +13,7 @@ build(){
         fi
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        $CERD/$name/$name-snapshots/configure \
+        CFLAGS="$CFLAGSNOOPENMP" $CERD/$name/$name-snapshots/configure \
                 --prefix= \
                 --build=$TUPL \
                 --host=$TUPL \

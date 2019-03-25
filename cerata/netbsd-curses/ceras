@@ -15,7 +15,7 @@ AR = $AR
 AWK = $AWK
 CC = $CC
 RANLIB = $RANLIB
-CFLAGS = $CFLAGS
+CFLAGS = $CFLAGSNOPGO
 LDFLAGS = $LDFLAGS
 EOF
         sed -e 's/-O0 //' \

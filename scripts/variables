@@ -30,7 +30,11 @@ assign_system_variables(){
         export GRAPHITE='-floop-strip-mine -floop-block -fgraphite-identity'
         export LTO='-flto'
         export OPENMP='-fopenmp'
-        export CFLAGS="-pipe $OPENMP -Ofast $LTO $GRAPHITE -s"
+        export PGO='-fprofile-generate'
+        export CFLAGS="-pipe $OPENMP -Ofast $LTO $GRAPHITE $PGO -s"
+        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $GRAPHITE $PGO -s"
+        export CFLAGSNOOPENMP="-pipe -Ofast $LTO $GRAPHITE $PGO -s"
+        export CFLAGSNOPGO="-pipe $OPENMP -Ofast $LTO $GRAPHITE -s"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm
