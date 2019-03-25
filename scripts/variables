@@ -27,14 +27,15 @@ assign_system_variables(){
         export CROSS_COMPILE=$TUPL-
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
-        export GRAPHITE='-floop-strip-mine -floop-block -fgraphite-identity'
+        export GRAPHITE='-fgraphite-identity -floop-nest-optimize'
+        export GCSE='-fgcse-sm -fgcse-las'
         export IPA='-fipa-pta'
         export LTO='-flto'
         export MARCH='-march=x86-64'
         export OPENMP='-fopenmp'
-        export CFLAGS="-pipe $OPENMP -Ofast $IPA $GRAPHITE $LTO -s $MARCH"
-        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $IPA $GRAPHITE -s $MARCH"
-        export CFLAGSNOOPENMP="-pipe -Ofast $IPA $GRAPHITE $LTO -s $MARCH"
+        export CFLAGS="-pipe $OPENMP -Ofast $GCSE $IPA $GRAPHITE $LTO -s $MARCH"
+        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $GCSE $IPA $GRAPHITE -s $MARCH"
+        export CFLAGSNOOPENMP="-pipe -Ofast $GCSE $IPA $GRAPHITE $LTO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm
