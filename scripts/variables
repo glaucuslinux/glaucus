@@ -28,13 +28,13 @@ assign_system_variables(){
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export GCSE='-fgcse-sm -fgcse-las'
-        export GRAPHITE='-fgraphite-identity -floop-nest-optimize'
+        export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
         export IPA='-fipa-pta'
         export LTO='-flto'
         export MARCH='-march=x86-64'
         export OPENMP='-fopenmp'
+        export OTHER='-fmerge-all-constants -fmodulo-sched -fmodulo-sched-allow-regmoves -fdevirtualize-at-ltrans -fira-loop-pressure -ftree-loop-im -fivopts -fvariable-expansion-in-unroller'
         export PGO='-ftracer -funroll-loops'
-        export OTHER='-ftree-loop-im -fivopts'
         export CFLAGS="-pipe $OPENMP -Ofast $GCSE $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
         export CFLAGSNOLTO="-pipe $OPENMP -Ofast $GCSE $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
         export CFLAGSNOOPENMP="-pipe -Ofast $GCSE $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
