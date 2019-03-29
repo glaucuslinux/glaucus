@@ -31,16 +31,15 @@ assign_system_variables(){
         export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
         export IPA='-fipa-pta'
         export IRA='-fira-loop-pressure'
-        export IVO='-fivopts'
         export LTO='-flto'
         export MARCH='-march=x86-64'
         export OPENMP='-fopenmp'
-        export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -ftree-loop-im -fvariable-expansion-in-unroller'
+        export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
         export PGO='-ftracer -funroll-loops'
         export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
-        export CFLAGS="-pipe $OPENMP -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $IVO $OTHER $LTO $PGO -s $MARCH"
-        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $IVO $OTHER $PGO -s $MARCH"
-        export CFLAGSNOOPENMP="-pipe -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $IVO $OTHER $LTO $PGO -s $MARCH"
+        export CFLAGS="-pipe $OPENMP -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
+        export CFLAGSNOLTO="-pipe $OPENMP -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
+        export CFLAGSNOOPENMP="-pipe -Ofast $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,--hash-style=gnu $CFLAGS"
         export NM=$TUPL-gcc-nm
