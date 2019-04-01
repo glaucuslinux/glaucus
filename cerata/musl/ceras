@@ -1,7 +1,7 @@
 name=musl
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.$name-libc.org/c$version/$name
 description='An implementation of the standard library functionality described in the ISO C and POSIX standards, plus common extensions, intended for use on Linux-based systems'
 license='BSDv2 LGPLv2.1+ MIT PD'
@@ -13,11 +13,9 @@ build_toolchain(){
                 CROSS_COMPILE=$TUPL- \
                 --prefix=/ \
                 --target=$TUPL \
-                --disable-debug \
-                --disable-warnings
+                --disable-static
         make
-        make \
-                DESTDIR=$TOOL/$TUPL \
+        make DESTDIR=$TOOL/$TUPL \
                 install
 }
 build(){
@@ -25,27 +23,21 @@ build(){
         cd $SBLD/$name
         $CERD/$name/$name/configure \
                 CFLAGS="$CFLAGSNOLTO" \
-                --prefix= \
+                --prefix=/usr \
+                --syslibdir=/usr/lib \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
-                --disable-debug \
-                --disable-warnings \
-                --disable-static \
-                --without-libpam \
-                --without-audit \
-                --without-selinux \
-                --without-nscd
+                --disable-static
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install-libs
-        install -dv $SCER/$name/sac/bin
-        cd $SCER/$name/sac/bin
+        install -dv $SCER/$name/sac/usr/bin
+        cd $SCER/$name/sac/usr/bin
         ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
-        $STRIP -v $SCER/$name/sac/lib/Scrt1.o \
-                $SCER/$name/sac/lib/crt1.o \
-                $SCER/$name/sac/lib/crti.o \
-                $SCER/$name/sac/lib/crtn.o \
-                $SCER/$name/sac/lib/rcrt1.o
+        $STRIP -v $SCER/$name/sac/usr/lib/Scrt1.o \
+                $SCER/$name/sac/usr/lib/crt1.o \
+                $SCER/$name/sac/usr/lib/crti.o \
+                $SCER/$name/sac/usr/lib/crtn.o \
+                $SCER/$name/sac/usr/lib/rcrt1.o
 }

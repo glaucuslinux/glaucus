@@ -1,7 +1,7 @@
 name=binutils
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://sourceware.org/$version/$name-gdb.$version
 description='The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files'
 license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
@@ -12,9 +12,11 @@ build_toolchain(){
         $TSRC/$name/configure \
                 --prefix=$TOOL \
                 --target=$TUPL \
+                --enable-lto \
                 --disable-nls \
-                --with-lib-path=$TOOL/lib \
                 --with-sysroot=$TOOL/$TUPL \
+                --with-lib-path=$TOOL/lib \
+                --disable-multilib \
                 --disable-gdb
         make configure-host
         make

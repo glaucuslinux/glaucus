@@ -1,7 +1,7 @@
 name=netbsd-curses
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/sabotage-linux/$name
 cyst=musl
 description="A port of NetBSD's curses library for usage on Linux systems"
@@ -10,7 +10,7 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
 cat > config.mak << EOF
-PREFIX = 
+PREFIX = /usr
 AR = $AR
 AWK = $AWK
 CC = $CC
@@ -20,14 +20,12 @@ LDFLAGS = $LDFLAGS
 EOF
         sed -e 's/-O0 //' \
                 -i GNUmakefile
-        make \
-                all-dynamic
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make all-dynamic
+        make DESTDIR=$SCER/$name/sac \
                 install-dynamic
-        $STRIP -v $SCER/$name/sac/lib/libcurses.so \
-                $SCER/$name/sac/lib/libform.so \
-                $SCER/$name/sac/lib/libmenu.so \
-                $SCER/$name/sac/lib/libpanel.so \
-                $SCER/$name/sac/lib/libterminfo.so
+        $STRIP -v $SCER/$name/sac/usr/lib/libcurses.so \
+                $SCER/$name/sac/usr/lib/libform.so \
+                $SCER/$name/sac/usr/lib/libmenu.so \
+                $SCER/$name/sac/usr/lib/libpanel.so \
+                $SCER/$name/sac/usr/lib/libterminfo.so
 }

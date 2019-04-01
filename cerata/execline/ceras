@@ -1,7 +1,7 @@
 name=execline
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='musl skalibs'
 description='A small and non-interactive scripting language, like sh; but with different syntax'
@@ -10,13 +10,13 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/ \
+                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
-                --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
-                --with-include=$GLAD/include \
-                --with-dynlib=$GLAD/lib \
+                --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
+                --with-include=$GLAD/usr/include \
+                --with-dynlib=$GLAD/usr/lib \
                 --enable-shared \
                 --disable-static \
                 --disable-allstatic
@@ -24,7 +24,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

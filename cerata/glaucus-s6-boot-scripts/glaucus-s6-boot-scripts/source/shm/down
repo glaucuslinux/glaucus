@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
+#!/usr/bin/execlineb -P
 umount /run/shm

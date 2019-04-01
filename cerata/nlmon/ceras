@@ -1,20 +1,18 @@
 name=nlmon
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=$version://r-36.net/$name
 description='Replaces udevadm for monitoring network devices'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e 's/PREFIX ?= .*/PREFIX =/' \
-                -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/include -DVERSION=0.3/" \
-                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/lib/" \
+        sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3/" \
+                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
                 -e "s/CC = .*/CC = $CC/" \
                 -i config.mk
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

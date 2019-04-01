@@ -1,7 +1,7 @@
 name=e2fsprogs
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.kernel.org/pub/scm/fs/ext2/$name
 cysts='musl mawk'
 description='The standard utilities for ext2/ext3/ext4 filesystems'
@@ -10,10 +10,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
-        CFLAGS="$CFLAGS -I$GLAD/include" \
-        LIBS=-L$GLAD/lib \
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        LIBS=-L$GLAD/usr/lib \
         ./configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
@@ -30,24 +30,20 @@ build(){
                 --disable-mmp \
                 --disable-tdb \
                 --disable-nls \
-                --disable-fuse2fs \
-                --with-root-prefix=
+                --disable-fuse2fs
         make
-        cd lib/
-        for dir in blkid e2p et ext2fs uuid
+        for dir in lib/blkid lib/e2p lib/et lib/ext2fs lib/uuid
         do
                 cd $dir
                 sed -e '/LDCONFIG/d' \
                         -i Makefile
-                install -dv $SCER/$name/sac/share/man/man3
-                make \
-                        DESTDIR=$SCER/$name/sac \
+                install -dv $SCER/$name/sac/usr/share/man/man3
+                make DESTDIR=$SCER/$name/sac \
                         install-strip
-                cd ..
+                cd ../..
         done
-        cd ..
-        install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr misc/mke2fs misc/tune2fs -t $SCER/$name/sac/bin
-        cd $SCER/$name/sac/bin
+        install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr misc/mke2fs misc/tune2fs -t $SCER/$name/sac/usr/bin
+        cd $SCER/$name/sac/usr/bin
         ln -fsv e2fsck fsck.ext4
         ln -fsv mke2fs mkfs.ext4
         sed -e 's/\/home\/glaucus\/system//' \

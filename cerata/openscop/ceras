@@ -1,7 +1,7 @@
 name=openscop
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/periscop/$name
 description='A Specification and a Library for Data Exchange in Polyhedral Compilation Tools'
 license=BSDv3

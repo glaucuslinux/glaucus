@@ -1,7 +1,7 @@
 name=dash
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.kernel.org/pub/scm/utils/$name/$name
 cysts='musl mawk'
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
@@ -11,16 +11,15 @@ build(){
         cd $SSRC/$name
         ./autogen.sh
         ./configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static
         make
-        install -dv $SCER/$name/sac/bin
-        make \
-                DESTDIR=$SCER/$name/sac \
+        install -dv $SCER/$name/sac/usr/bin
+        make DESTDIR=$SCER/$name/sac \
                 install-strip
-        cd $SCER/$name/sac/bin
+        cd $SCER/$name/sac/usr/bin
         ln -fsv $name sh
 }

@@ -1,7 +1,7 @@
 name=opendoas
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.duncano.de/$name
 cyst='musl byacc'
 description='A portable version of the OpenBSD `doas` command'

@@ -1,7 +1,7 @@
 name=mpfr
 version=svn
 release=1
-arch=x86_64
+arch=x86-64
 url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
 cysts='musl gmp'
 description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'

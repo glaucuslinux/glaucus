@@ -1,7 +1,7 @@
 name=smdev
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.suckless.org/$name
 description='Suckless mdev'
 license=MIT
@@ -10,14 +10,13 @@ build(){
         rsync -vah $CERD/$name/config.h $SSRC --delete
         cd $SSRC/$name
         patch -Np1 -i $CERD/$name/patches/$name.patch
-        sed -e 's/PREFIX = .*/PREFIX =/' \
+        sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
         install -m 744 -Dv $CERD/$name/proceeddev $SCER/$name/sac/etc/$name/proceeddev
         install -m 644 -Dv $CERD/$name/00-modprobe \

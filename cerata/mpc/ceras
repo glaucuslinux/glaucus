@@ -1,7 +1,7 @@
 name=mpc
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
 cysts='musl gmp mpfr'
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'

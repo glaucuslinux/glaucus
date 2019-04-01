@@ -1,7 +1,7 @@
 name=s6-rc
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline s6'
 description="skarnet's service manager for s6-based systems"
@@ -10,23 +10,22 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/ \
+                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
-                --libexecdir=/lib/libexec \
+                --libexecdir=/usr/lib/libexec \
                 --livedir=/run/live \
-                --with-sysdeps=$GLAD/lib/skalibs/sysdeps \
-                --with-include=$GLAD/include \
-                --with-dynlib=$GLAD/lib \
+                --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
+                --with-include=$GLAD/usr/include \
+                --with-dynlib=$GLAD/usr/lib \
                 --enable-shared \
                 --disable-static \
                 --disable-allstatic
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-                -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/lib/" \
+                -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/usr\/lib/" \
                 -i config.mak
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

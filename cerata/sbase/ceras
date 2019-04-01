@@ -1,14 +1,14 @@
 name=sbase
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.suckless.org/$name
 description='Suckless Unix tools'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e 's/^PREFIX = .*/PREFIX =/' \
+        sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/AR = .*/AR = $AR/" \
                 -e "s/RANLIB = .*/RANLIB = $RANLIB/" \

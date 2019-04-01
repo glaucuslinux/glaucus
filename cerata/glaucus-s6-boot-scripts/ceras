@@ -1,7 +1,7 @@
 name=glaucus-s6-boot-scripts
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/firasuke/$name
 cysts='skalibs execline s6-portable-utils s6-linux-utils s6'
 description='s6 boot scripts for glaucus'
@@ -9,5 +9,5 @@ license=ISC
 build(){
         mkdir -v $SCER/$name/sac/etc
         rsync -vah $CERD/$name/$name/ $SCER/$name/sac/etc/s6 --delete
-        LD_LIBRARY_PATH=$GLAD/lib $GLAD/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled $SCER/$name/sac/etc/s6/source
+        LD_LIBRARY_PATH=$GLAD/usr/lib $GLAD/usr/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled $SCER/$name/sac/etc/s6/source
 }

@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
+#!/usr/bin/execlineb -P
 install -g utmp -o root -m0664 /dev/null /var/log/wtmp

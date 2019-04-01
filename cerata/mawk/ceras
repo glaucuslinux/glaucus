@@ -1,7 +1,7 @@
 name=mawk
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/ThomasDickey/$name-snapshots
 cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
@@ -14,7 +14,7 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         CFLAGS="$CFLAGSNOOPENMP" $CERD/$name/$name-snapshots/configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL
@@ -22,6 +22,6 @@ build(){
         make
         make DESTDIR=$SCER/$name/sac \
                 install
-        cd $SCER/$name/sac/bin
+        cd $SCER/$name/sac/usr/bin
         ln -fsv $name awk
 }

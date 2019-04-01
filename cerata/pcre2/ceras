@@ -1,7 +1,7 @@
 name=pcre2
 version=svn
 release=1
-arch=x86_64
+arch=x86-64
 url=svn://vcs.exim.org/$name/code/trunk
 cysts='musl mawk'
 description='The 2nd version of the Perl 5 Compatible Regular Expressions library'

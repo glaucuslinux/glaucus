@@ -1,7 +1,7 @@
 name=mandoc
 version=1.14.4
 release=1
-arch=x86_64
+arch=x86-64
 url=http://$name.bsd.lv/snapshots/$name-$version.tar.gz
 checksum=c68390711a739284ad9a61364f3fea76c0c48c02b4830d6326b07c4188d099e3720ae3b91fc3b083269381b417b7e3f3647d13a54ed2548f8c2f94122f8a7d97
 cysts='musl zlib'

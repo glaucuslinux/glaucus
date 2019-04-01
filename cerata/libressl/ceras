@@ -1,7 +1,7 @@
 name=libressl
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name-portable/portable
 cysts='musl mawk'
 description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'

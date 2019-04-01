@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
-nldev -r /bin/smdev
+#!/usr/bin/execlineb -P
+nldev -r /usr/bin/smdev

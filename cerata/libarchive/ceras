@@ -1,7 +1,7 @@
 name=libarchive
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name/$name
 cysts='musl mawk'
 description='Multi-format archive and compression library'

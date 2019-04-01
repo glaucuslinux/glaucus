@@ -1,7 +1,7 @@
 name=skalibs
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cyst=musl
 description="skarnet's general purpose C libraries for system programming and small and secure C development"
@@ -10,7 +10,7 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/ \
+                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
@@ -21,7 +21,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

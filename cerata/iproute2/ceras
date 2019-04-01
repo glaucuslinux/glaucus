@@ -1,7 +1,7 @@
 name=iproute2
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.kernel.org/pub/scm/network/$name/$name
 cyst=musl
 description='A collection of utilities for controlling TCP/IP networking and traffic in Linux'

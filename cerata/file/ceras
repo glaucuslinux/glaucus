@@ -1,7 +1,7 @@
 name=file
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name/$name
 cysts='musl mawk'
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'

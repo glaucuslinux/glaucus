@@ -1,7 +1,7 @@
 name=xz
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.tukaani.org/$name.$version
 cysts='musl mawk'
 description='A free general-purpose data compression software with a high compression ratio'
@@ -13,7 +13,7 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
@@ -23,7 +23,6 @@ build(){
                 --disable-rpath \
                 --disable-werror
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install-strip
 }

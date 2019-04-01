@@ -1,12 +1,12 @@
 name=svc
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=$version://r-36.net/$name
 description='Simple service scripts and examples, to be used everywhere'
 license=MIT
 build(){
-        install -Dvm 755 $CERD/$name/$name/bin/$name -t $SCER/$name/sac/bin
-        rsync -vah $CERD/$name/$name/$name.d/ $SCER/$name/sac/bin/$name.d/ --delete
-        install -dv $SCER/$name/sac/bin/$name.d/run
+        install -Dvm 755 $CERD/$name/$name/bin/$name -t $SCER/$name/sac/usr/bin
+        rsync -vah $CERD/$name/$name/$name.d/ $SCER/$name/sac/usr/bin/$name.d/ --delete
+        install -dv $SCER/$name/sac/usr/bin/$name.d/run
 }

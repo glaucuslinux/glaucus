@@ -1,21 +1,19 @@
 name=sinit
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://$version.suckless.org/$name
 description='Suckless init'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e '5s/PREFIX = .*/PREFIX =/' \
+        sed -e 's/^PREFIX = .*/PREFIX =\/usr/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -Wall -Wextra/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
-                -e 's/-static//' \
                 -i config.mk
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }
