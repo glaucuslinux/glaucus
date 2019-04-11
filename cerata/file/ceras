@@ -11,14 +11,13 @@ build(){
         cd $SSRC/$name
         autoreconf -vfi
         ./configure \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --prefix= \
                 --disable-libseccomp \
                 --enable-fsect-man5
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install-strip
 }

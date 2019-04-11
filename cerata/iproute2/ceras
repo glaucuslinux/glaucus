@@ -12,8 +12,7 @@ build(){
         rm -frv include/ip6tables.h include/iptables include/iptables.h include/libiptc include/netinet man/man8/arpd.8
         sed -e 's/if grep -q //' \
                 -i configure
-        sed -e 's/PREFIX?=\/usr/PREFIX=/' \
-                -e '/ARPD/d' \
+        sed -e '/ARPD/d' \
                 -e "s/CC := gcc/CC = $CC/"  \
                 -e "s/HOSTCC ?= .*/HOSTCC = $CC/"  \
                 -e "s/CCOPTS = -O2/CCOPTS = $CFLAGS/" \
@@ -37,6 +36,6 @@ build(){
                 -e '/HAVE_CAP/{n;N;d}' \
                 -i config.mk
         make
-        install -Dv ip/ip $SCER/$name/sac/bin/ip
+        install -Dv ip/ip $SCER/$name/sac/usr/bin/ip
         install -Dv man/man8/ip.8 $SCER/$name/sac/usr/share/man/man8/ip.8
 }

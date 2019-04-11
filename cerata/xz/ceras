@@ -9,7 +9,7 @@ license='GPLv2+ GPLv3+ LGPLv2.1+ PD'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        autoreconf -vfi
+        ./autogen.sh
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
@@ -19,9 +19,7 @@ build(){
                 --target=$TUPL \
                 --disable-doc \
                 --disable-static \
-                --disable-nls \
-                --disable-rpath \
-                --disable-werror
+                --disable-nls
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

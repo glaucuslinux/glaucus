@@ -10,10 +10,9 @@ build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $CERD/$name/$name/configure \
-                --prefix= \
+                --prefix=/usr \
                 --shared
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

@@ -9,11 +9,11 @@ license='GPLv2+ LGPLv2.1+ MIT vim'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CPPFLAGS="-I$GLAD/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/lib" \
-        LD_LIBRARY_PATH="$GLAD/lib" \
+        CPPFLAGS="-I$GLAD/usr/include" \
+        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
+        LD_LIBRARY_PATH="$GLAD/usr/lib" \
         ./configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
@@ -68,9 +68,8 @@ build(){
                 --without-motif-lib
         make
         sed -e '/esX/s/^\t/ /' \
-                -e '/esX/s/^/\tLD_LIBRARY_PATH=\/home\/glaucus\/system\/lib/' \
+                -e '/esX/s/^/\tLD_LIBRARY_PATH=\/home\/glaucus\/system\/usr\/lib/' \
                 -i runtime/doc/Makefile
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

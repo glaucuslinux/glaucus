@@ -9,18 +9,17 @@ license=BSDv3
 build(){
         rsync -vah $CERD/$name/trunk/ $SSRC/$name --delete
         cd $SSRC/$name
-        autoreconf -vfi
+        ./autogen.sh
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static \
                 --enable-jit
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install-strip
 }

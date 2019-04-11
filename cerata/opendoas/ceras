@@ -10,18 +10,14 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/root/glaucus/' \
-                -e 's/-Werror //' \
                 -i Makefile
         ./configure \
-                --prefix= \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --without-pam
-        sed -e 's/\/usr//' \
-                -i config.mk
+                --without-pam \
+                --with-timestamp
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install
 }

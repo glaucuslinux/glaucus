@@ -7,22 +7,20 @@ cyst='musl mawk'
 description='Free and open-source lexer generator for C and C++'
 license='GPLv3 PD PHPv3.01'
 build(){
-        rsync -vah $CERD/$name/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        autoreconf -vfi
+        ./autogen.sh
         sed -e 's/-O2//' \
                 -i configure
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         $SSRC/$name/configure \
-                --prefix= \
+                --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-silent-rules \
-                --disable-dependency-tracking
+                --disable-static
         make
-        make \
-                DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$name/sac \
                 install-strip
 }
