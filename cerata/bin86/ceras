@@ -16,7 +16,7 @@ build(){
                 -e '9d;11d;12d;13d' \
                 -i Makefile
         make
-        install -dv $SCER/$name/sac/bin $SCER/$name/sac/usr/share/man/man1
-        make PREFIX=$SCER/$name/sac \
+        install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
+        make PREFIX=$SCER/$name/sac/usr \
                 install
 }

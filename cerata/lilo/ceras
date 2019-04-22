@@ -11,7 +11,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         patch -p1 -i $CERD/$name/patches/$name.patch
-        sed -e "s/OPT=.*/OPT=$CFLAGS" \
+        sed -e "/images/d" \
+                -e "/checkit/d" \
+                -i Makefile
+        sed -e "s/OPT=.*/OPT=$CFLAGS/" \
                 -e 's/SBIN_DIR=\/sbin/SBIN_DIR=\/usr\/bin/' \
                 -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/usr\/bin/' \
                 -i make.vars

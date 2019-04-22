@@ -16,7 +16,7 @@ OSNAME=glaucus
 PREFIX=/usr
 AR=$AR
 CC=$CC
-CFLAGS="$CFLAGS -I$GLAD/usr/include"
+CFLAGS="$CFLAGSNOOPENMP -I$GLAD/usr/include"
 LDADD="-L$GLAD/usr/lib"
 LDFLAGS="$LDFLAGS"
 EOF
