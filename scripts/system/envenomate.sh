@@ -15,7 +15,7 @@ envenomate musl \
         mawk byacc mawk \
         sbase ubase lobase \
         smdev nldev nlmon \
-        netbsd-curses procps-ng dash loksh \
+        netbsd-curses procps dash loksh \
         e2fsprogs file \
         linux \
         skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts

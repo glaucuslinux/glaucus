@@ -1,8 +1,8 @@
-name=procps-ng
+name=procps
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.com/$name/procps
+url=https://gitlab.com/$name-ng/$name
 description='Command line and full screen utilities for browsing procfs'
 license='GPLv2+ GPLv3+ LGPLv2.1+'
 build(){
