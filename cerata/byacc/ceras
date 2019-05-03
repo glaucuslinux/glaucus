@@ -5,6 +5,7 @@ arch=x86-64
 url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz
 cyst=musl
 description='Berkeley Yacc LALR parser generator is the best variant of the Unix Yacc LALR parser generator'
+cluster=core
 license=PD
 build(){
         mkdir -v $SBLD/$name

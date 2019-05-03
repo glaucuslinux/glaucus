@@ -5,6 +5,7 @@ arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline s6-portable-utils s6-linux-utils s6'
 description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
+cluster=core
 license=ISC
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

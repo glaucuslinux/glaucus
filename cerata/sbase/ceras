@@ -4,6 +4,7 @@ release=1
 arch=x86-64
 url=https://$version.suckless.org/$name
 description='Suckless Unix tools'
+cluster=core
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

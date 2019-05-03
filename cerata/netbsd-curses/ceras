@@ -5,6 +5,7 @@ arch=x86-64
 url=https://github.com/sabotage-linux/$name
 cyst=musl
 description="A port of NetBSD's curses library for usage on Linux systems"
+cluster=core
 license='BSDv3 BSDv2'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

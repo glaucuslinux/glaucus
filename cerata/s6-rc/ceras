@@ -5,6 +5,7 @@ arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline s6'
 description="skarnet's service manager for s6-based systems"
+cluster=core
 license=ISC
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

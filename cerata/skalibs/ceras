@@ -5,6 +5,7 @@ arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cyst=musl
 description="skarnet's general purpose C libraries for system programming and small and secure C development"
+cluster=core
 license=ISC
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

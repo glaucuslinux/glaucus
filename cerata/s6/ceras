@@ -5,6 +5,7 @@ arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline'
 description="skarnet's small suite of programs for UNIX, designed to allow process supervision"
+cluster=core
 license=ISC
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

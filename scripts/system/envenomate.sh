@@ -15,16 +15,16 @@ envenomate musl \
         mawk byacc mawk \
         sbase ubase lobase \
         smdev nldev nlmon \
-        netbsd-curses dash loksh \
-        e2fsprogs \
+        netbsd-curses procps-ng dash loksh \
+        e2fsprogs file \
         linux \
         skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
-envenomate re2c \
-        sinit svc \
-        sdhcp \
-        xz zlib libarchive \
-        pcre2 less mandoc vim \
-        iproute2 file opendoas \
-        bin86 lilo \
-        s6-portable-utils s6-linux-utils
+#envenomate re2c \
+        #sinit svc \
+        #sdhcp \
+        #xz zlib libarchive \
+        #pcre2 less mandoc vim \
+        #iproute2 opendoas \
+        #bin86 lilo \
+        #s6-portable-utils s6-linux-utils
 #envenomate libressl

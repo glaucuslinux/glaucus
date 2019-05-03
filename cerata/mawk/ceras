@@ -5,6 +5,7 @@ arch=x86-64
 url=https://github.com/ThomasDickey/$name-snapshots
 cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
+cluster=core
 license=GPLv2
 build(){
         if [ -d $SBLD/$name ]

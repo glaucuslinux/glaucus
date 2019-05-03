@@ -5,6 +5,7 @@ arch=x86-64
 url=https://github.com/firasuke/$name
 cysts='skalibs execline s6-portable-utils s6-linux-utils s6'
 description='s6 boot scripts for glaucus'
+cluster=core
 license=ISC
 build(){
         mkdir -v $SCER/$name/sac/etc

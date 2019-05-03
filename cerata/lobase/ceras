@@ -5,6 +5,7 @@ arch=x86-64
 url=https://$version.duncano.de/$name
 cyst=mawk
 description='A port of the OpenBSD userland to Linux'
+cluster=core
 license='ISC PD'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

@@ -5,6 +5,7 @@ arch=x86-64
 url=https://$version.kernel.org/pub/scm/fs/ext2/$name
 cysts='musl mawk'
 description='The standard utilities for ext2/ext3/ext4 filesystems'
+cluster=core
 license='BSDv3 GPLv2 LGPLv2 MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

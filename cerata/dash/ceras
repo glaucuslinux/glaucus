@@ -5,6 +5,7 @@ arch=x86-64
 url=https://$version.kernel.org/pub/scm/utils/$name/$name
 cysts='musl mawk'
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
+cluster=core
 license='BSDv3 GPLv2 PD'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

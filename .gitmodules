@@ -73,6 +73,9 @@
 [submodule "cerata/openscop/openscop"]
 	path = cerata/openscop/openscop
 	url = https://github.com/periscop/openscop
+[submodule "cerata/procps-ng/procps-ng"]
+	path = cerata/procps-ng/procps-ng
+	url = /home/glaucus/cerata/procps-ng/procps-ng
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c

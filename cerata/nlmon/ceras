@@ -4,6 +4,7 @@ release=1
 arch=x86-64
 url=$version://r-36.net/$name
 description='Replaces udevadm for monitoring network devices'
+cluster=core
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

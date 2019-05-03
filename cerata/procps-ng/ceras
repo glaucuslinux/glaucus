@@ -1,0 +1,25 @@
+name=procps-ng
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.com/$name/procps
+description='Command line and full screen utilities for browsing procfs'
+license='GPLv2+ GPLv3+ LGPLv2.1+'
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./autogen.sh
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -Wl,-rpath-link,$GLAD/usr/lib -lncursesw -lterminfo" \
+        LD_LIBRARY_PATH="$GLAD/usr/lib" \
+        ./configure \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static \
+                --disable-nls
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install
+}
