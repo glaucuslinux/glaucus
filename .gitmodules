@@ -118,6 +118,15 @@
 [submodule "cerata/vim/vim"]
 	path = cerata/vim/vim
 	url = https://github.com/vim/vim
+[submodule "cerata/wayland/wayland"]
+	path = cerata/wayland/wayland
+	url = https://gitlab.freedesktop.org/wayland/wayland
+[submodule "cerata/wayland-protocols/wayland-protocols"]
+	path = cerata/wayland-protocols/wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols
+[submodule "cerata/weston/weston"]
+	path = cerata/weston/weston
+	url = https://gitlab.freedesktop.org/wayland/weston
 [submodule "cerata/xz/xz"]
 	path = cerata/xz/xz
 	url = https://git.tukaani.org/xz.git

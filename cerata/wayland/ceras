@@ -1,0 +1,22 @@
+name=wayland
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/$name/$name
+cyst='musl'
+description='Core Wayland window system protocol'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        mkdir -v $SBLD/$name
+        cd $SBLD/$name
+        $SSRC/$name/autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-documentation
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}
