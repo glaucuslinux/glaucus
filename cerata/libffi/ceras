@@ -1,27 +1,24 @@
-name=procps
+name=libffi
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.com/$name-ng/$name
-cysts='musl netbsd-curses'
-description='Command line and full screen utilities for browsing procfs'
-license='GPLv2+ GPLv3+ LGPLv2.1+'
+url=https://github.com/$name/$name
+description='A portable foreign-function interface library'
+license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./autogen.sh
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo" \
         $SSRC/$name/configure \
                 --prefix=/usr \
-                --sbindir=/usr/bin \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static \
-                --disable-nls
+                --disable-static
+        sed -e 's/\/\.\.\/lib64//' \
+                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

@@ -3,19 +3,24 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/$name/$name
-cyst='musl'
+cysts='musl expat libffi'
 description='Core Wayland window system protocol'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         mkdir -v $SBLD/$name
         cd $SBLD/$name
+        FFI_CFLAGS="-I$GLAD/usr/include" \
+        FFI_LIBS="-L$GLAD/usr/lib" \
+        EXPAT_CFLAGS="-I$GLAD/usr/include" \
+        EXPAT_LIBS="-L$GLAD/usr/lib" \
         $SSRC/$name/autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-documentation
+                --disable-documentation \
+                --disable-dtd-validation
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

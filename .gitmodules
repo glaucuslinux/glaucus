@@ -19,6 +19,9 @@
 [submodule "cerata/execline/execline"]
 	path = cerata/execline/execline
 	url = https://skarnet.org/cgi-bin/cgit.cgi/execline
+[submodule "cerata/expat/libexpat"]
+	path = cerata/expat/libexpat
+	url = https://github.com/libexpat/libexpat
 [submodule "cerata/file/file"]
 	path = cerata/file/file
 	url = https://github.com/file/file
@@ -31,6 +34,9 @@
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
+[submodule "cerata/libffi/libffi"]
+	path = cerata/libffi/libffi
+	url = https://github.com/libffi/libffi
 [submodule "cerata/libressl/openbsd"]
 	path = cerata/libressl/openbsd
 	url = https://github.com/libressl-portable/openbsd

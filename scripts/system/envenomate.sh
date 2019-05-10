@@ -11,19 +11,14 @@ envenomate(){
                 rsync -vah $SCER/$name/venom $GLAD/usr/cerata/$name --delete
         done
 }
-envenomate musl \
-        mawk byacc mawk
-
-#envenomate sbase ubase lobase \
-        #smdev nldev nlmon
-
-#envenomate netbsd-curses procps dash loksh \
-        #e2fsprogs file
-
+envenomate musl
+envenomate mawk byacc mawk
+#envenomate sbase ubase lobase
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash loksh
+#envenomate e2fsprogs file
 #envenomate linux
-
 #envenomate skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
-
 #envenomate re2c \
         #sinit svc \
         #sdhcp \
@@ -32,7 +27,5 @@ envenomate musl \
         #iproute2 opendoas \
         #bin86 lilo \
         #s6-portable-utils s6-linux-utils
-
-envenomate wayland
-
+envenomate expat libffi wayland wayland-protocols
 #envenomate libressl

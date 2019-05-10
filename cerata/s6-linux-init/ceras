@@ -16,6 +16,7 @@ build(){
                 --host=$TUPL \
                 --build=$TUPL \
                 --libexecdir=/usr/lib/libexec \
+                --skeldir=/etc/s6-linux-init/skel \
                 --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
                 --with-include=$GLAD/usr/include \
                 --with-dynlib=$GLAD/usr/lib \
