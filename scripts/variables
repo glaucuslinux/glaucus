@@ -6,7 +6,7 @@ assign_basic_variables(){
         export SLOG=$LOGD/system
         export TLOG=$LOGD/toolchain
         export TMPD=/home/glaucus/temporary
-        export TOOL=/home/glaucus/toolchain
+        export TOOL=/toolchain
         export PATH=$TOOL/bin:/usr/bin
         export MAKEFLAGS=-j1
 }
@@ -43,5 +43,5 @@ assign_system_variables(){
         export CFLAGSNOLTO="-pipe -fopenmp -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
         export CFLAGSNOOPENMP="-pipe -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
+        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,-rpath=\/usr\/lib $CFLAGS"
 }

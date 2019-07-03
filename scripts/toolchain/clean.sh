@@ -1,3 +1,4 @@
-#!/bin/dash -ex
-rm -frv $TBLD $TOOL
-mkdir -v $TBLD $TOOL
+#!/usr/bin/dash -ex
+sudo rm -frv $TBLD $TOOL /home/glaucus/toolchain
+mkdir -v $TBLD /home/glaucus/toolchain
+sudo ln -fsv /home/glaucus/toolchain /

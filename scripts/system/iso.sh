@@ -1,4 +1,4 @@
-#!/bin/dash -ex
+#!/usr/bin/dash -ex
 #rsync -vah /home/glaucus/system /home/glaucus/temporary/system/iso --delete
 #mkdir -v \
 #        /home/glaucus/temporary/system/iso/isolinux \

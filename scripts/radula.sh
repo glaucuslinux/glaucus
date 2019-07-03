@@ -1,4 +1,4 @@
-#!/bin/dash -ex
+#!/usr/bin/dash -ex
 mkdir -v /home/glaucus/cerata/$1
 cat > /home/glaucus/cerata/$1/ceras << EOF
 name=$1

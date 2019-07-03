@@ -9,6 +9,10 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        sed -e 's/.*types.*/#include <sys\/sysmacros.h>/' \
+                -i mknod.c mountpoint.c stat.c
+        sed -e '/stat.h/a #include <sys/sysmacros.h>' \
+                -i libutil/tty.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/AR = .*/AR = $AR/" \

@@ -1,4 +1,4 @@
-#!/bin/dash -ex
+#!/usr/bin/dash -ex
 qemu-img create -f raw /home/glaucus/glaucus.img 128M
 dd if=/usr/lib/syslinux/bios/mbr.bin of=/home/glaucus/glaucus.img conv=notrunc bs=440 count=1
 parted -s /home/glaucus/glaucus.img mklabel msdos

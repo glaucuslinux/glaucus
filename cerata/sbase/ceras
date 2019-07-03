@@ -9,6 +9,9 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        sed -e '/types/,+1d' \
+                -e "/endif/d" \
+                -i ls.c tar.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $CC/" \
                 -e "s/AR = .*/AR = $AR/" \

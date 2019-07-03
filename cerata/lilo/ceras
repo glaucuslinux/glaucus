@@ -21,7 +21,7 @@ build(){
         sed -e "s/CC=.*/CC=$CC/" \
                 -e 's/as86/\/home\/glaucus\/system\/usr\/bin\/as86/' \
                 -e 's/ld86/\/home\/glaucus\/system\/usr\/bin\/ld86/' \
-                -e 's/NASM=nasm/NASM=\/home\/glaucus\/toolchain\/bin\/x86_64-pc-linux-musl-as/' \
+                -e "s/NASM=nasm/NASM=\\$TOOL\/bin\/x86_64-pc-linux-musl-as/" \
                 -i src/Makefile
         make
         install -Dv src/$name $SCER/$name/sac/usr/bin/$name

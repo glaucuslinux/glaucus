@@ -10,6 +10,8 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         rsync -vah $CERD/$name/config.h $SSRC --delete
         cd $SSRC/$name
+        sed -e '/types/a #include <sys/sysmacros.h>' \
+                -i smdev.c
         patch -Np1 -i $CERD/$name/patches/$name.patch
         sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $CC/" \

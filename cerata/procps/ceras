@@ -5,6 +5,7 @@ arch=x86_64
 url=https://gitlab.com/$name-ng/$name
 cysts='musl netbsd-curses'
 description='Command line and full screen utilities for browsing procfs'
+cluster=core
 license='GPLv2+ GPLv3+ LGPLv2.1+'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete

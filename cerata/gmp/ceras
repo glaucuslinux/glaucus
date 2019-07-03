@@ -1,5 +1,5 @@
 name=gmp
-version=git
+version=hg
 release=1
 arch=x86-64
 url=https://gmplib.org/repo/$name
