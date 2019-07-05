@@ -3,19 +3,20 @@ assign_basic_variables(){
         export TUPL=$ARCH-pc-linux-musl
         export CERD=/home/glaucus/cerata
         export LOGD=/home/glaucus/logs
-        export SLOG=$LOGD/system
-        export TLOG=$LOGD/toolchain
         export TMPD=/home/glaucus/temporary
         export TOOL=/toolchain
         export PATH=$TOOL/bin:/usr/bin
         export MAKEFLAGS=-j1
 }
 assign_toolchain_variables(){
+        export CROS=/home/glaucus/cross
+        export TLOG=$LOGD/toolchain
         export TBLD=$TMPD/toolchain/builds
         export TSRC=$TMPD/toolchain/sources
         export LD_LIBRARY_PATH=$TOOL/lib
 }
 assign_system_variables(){
+        export SLOG=$LOGD/system
         export GLAD=/home/glaucus/system
         export SBLD=$TMPD/system/builds
         export SCER=$TMPD/system/cerata
@@ -43,5 +44,5 @@ assign_system_variables(){
         export CFLAGSNOLTO="-pipe -fopenmp -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
         export CFLAGSNOOPENMP="-pipe -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed -Wl,-rpath=\/usr\/lib $CFLAGS"
+        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
 }

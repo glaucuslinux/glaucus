@@ -6,13 +6,32 @@ url=https://gmplib.org/repo/$name
 description='A free library for arbitrary multiprecision arithmetic, operating on signed integers, rational numbers, and floating-point numbers'
 license='GPLv2 LGPLv3 PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC --delete
-        cd $TSRC/$name
+        rsync -vah $CERD/$name/$name/ $TSRC/$1 --delete
+        cd $TSRC/$1
         ./.bootstrap
-        ./configure \
-                --prefix=$TOOL \
-                --disable-shared \
-                --enable-cxx
+        case $1 in 
+                gmp_1)
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --enable-cxx
+                        ;;
+                gmp_2)
+                        AR=$TUPL-gcc-ar \
+                        AS=$TUPL-as \
+                        CC=$TUPL-gcc \
+                        LD=$TUPL-ld \
+                        NM=$TUPL-gcc-nm \
+                        OBJDUMP=$TUPL-objdump \
+                        RANLIB=$TUPL-gcc-ranlib \
+                        READELF=$TUPL-readelf \
+                        STRIP=$TUPL-strip \
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --enable-cxx
+                        ;;
+        esac
         make
         make install
 }

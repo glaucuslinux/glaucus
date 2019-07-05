@@ -9,6 +9,15 @@ build_toolchain(){
         rsync -vah $CERD/$name/$name $TSRC --delete
         cd $TSRC/$name
         ./autogen.sh
+        AR=$TUPL-gcc-ar \
+        AS=$TUPL-as \
+        CC=$TUPL-gcc \
+        LD=$TUPL-ld \
+        NM=$TUPL-gcc-nm \
+        OBJDUMP=$TUPL-objdump \
+        RANLIB=$TUPL-gcc-ranlib \
+        READELF=$TUPL-readelf \
+        STRIP=$TUPL-strip \
         ./configure \
                 --prefix=$TOOL \
                 --disable-shared \

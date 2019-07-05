@@ -7,14 +7,35 @@ cysts='musl gmp'
 description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
 license='LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
-        cd $TSRC/$name
+        rsync -vah $CERD/$name/trunk/ $TSRC/$1 --delete
+        cd $TSRC/$1
         ./autogen.sh
-        ./configure \
-                --prefix=$TOOL \
-                --disable-shared \
-                --enable-lto \
-                --with-gmp=$TOOL
+        case $1 in 
+                mpfr_1)
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --enable-lto \
+                                --with-gmp=$TOOL
+                        ;;
+                mpfr_2)
+                        AR=$TUPL-gcc-ar \
+                        AS=$TUPL-as \
+                        CC=$TUPL-gcc \
+                        LD=$TUPL-ld \
+                        NM=$TUPL-gcc-nm \
+                        OBJDUMP=$TUPL-objdump \
+                        RANLIB=$TUPL-gcc-ranlib \
+                        READELF=$TUPL-readelf \
+                        STRIP=$TUPL-strip \
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --enable-lto \
+                                --with-gmp=$TOOL
+                        ;;
+        esac
+
         make
         make install
 }

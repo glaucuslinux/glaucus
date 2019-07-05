@@ -12,12 +12,14 @@ build_toolchain(){
         $CERD/$name/$name/configure \
                 CC=$TUPL-gcc \
                 CROSS_COMPILE=$TUPL- \
-                --prefix=/ \
+                --prefix=$TOOL \
+                --syslibdir=$TOOL/lib \
+                --host=$TUPL \
+                --build=$TUPL \
                 --target=$TUPL \
                 --disable-static
         make
-        make DESTDIR=$TOOL/$TUPL \
-                install
+        make install
 }
 build(){
         mkdir -v $SBLD/$name

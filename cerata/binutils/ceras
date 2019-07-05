@@ -7,20 +7,51 @@ description='The GNU assembler, linker and binary utilities necessary to assembl
 license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
 build_toolchain(){
         rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
-        mkdir -v $TBLD/$name
-        cd $TBLD/$name
-        $TSRC/$name/configure \
-                --prefix=$TOOL \
-                --target=$TUPL \
-                --enable-lto \
-                --disable-nls \
-                --with-sysroot=$TOOL/$TUPL \
-                --with-lib-path=$TOOL/lib \
-                --disable-multilib \
-                --disable-gdb
-        make configure-host
-        make
-        make install
+        mkdir -v $TBLD/$1
+        cd $TBLD/$1
+        case $1 in
+                binutils_1)
+                        $TSRC/$name/configure \
+                                --prefix=$TOOL \
+                                --target=$TUPL \
+                                --enable-lto \
+                                --disable-nls \
+                                --with-sysroot=$CROS \
+                                --with-lib-path=$TOOL/lib \
+                                --disable-multilib \
+                                --disable-gdb
+                        make configure-host
+                        make
+                        mkdir -v $TOOL/lib && ln -fsv lib $TOOL/lib64
+                        make install
+                        ;;
+                binutils_2)
+                        AR=$TUPL-gcc-ar \
+                        AS=$TUPL-as \
+                        CC=$TUPL-gcc \
+                        LD=$TUPL-ld \
+                        NM=$TUPL-gcc-nm \
+                        OBJDUMP=$TUPL-objdump \
+                        RANLIB=$TUPL-gcc-ranlib \
+                        READELF=$TUPL-readelf \
+                        STRIP=$TUPL-strip \
+                        $TSRC/$name/configure \
+                                --prefix=$TOOL \
+                                --target=$TUPL \
+                                --enable-lto \
+                                --disable-nls \
+                                --with-sysroot \
+                                --with-lib-path=$TOOL/lib \
+                                --disable-multilib \
+                                --disable-gdb
+                        make
+                        make install
+                        make -C ld clean
+                        make -C ld LIB_PATH=/usr/lib:/lib
+                        cp -av ld/ld-new $TOOL/bin
+                        ;;
+        esac
+
 }
 build(){
         :

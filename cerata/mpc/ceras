@@ -7,14 +7,34 @@ cysts='musl gmp mpfr'
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC --delete
-        cd $TSRC/$name
+        rsync -vah $CERD/$name/$name/ $TSRC/$1 --delete
+        cd $TSRC/$1
         autoreconf -vi
-        ./configure \
-                --prefix=$TOOL \
-                --disable-shared \
-                --with-mpfr=$TOOL \
-                --with-gmp=$TOOL
+        case $1 in
+                mpc_1)
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --with-mpfr=$TOOL \
+                                --with-gmp=$TOOL
+                        ;;
+                mpc_2)
+                        AR=$TUPL-gcc-ar \
+                        AS=$TUPL-as \
+                        CC=$TUPL-gcc \
+                        LD=$TUPL-ld \
+                        NM=$TUPL-gcc-nm \
+                        OBJDUMP=$TUPL-objdump \
+                        RANLIB=$TUPL-gcc-ranlib \
+                        READELF=$TUPL-readelf \
+                        STRIP=$TUPL-strip \
+                        ./configure \
+                                --prefix=$TOOL \
+                                --disable-shared \
+                                --with-mpfr=$TOOL \
+                                --with-gmp=$TOOL
+                        ;;
+        esac
         make
         make install
 }

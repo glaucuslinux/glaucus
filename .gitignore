@@ -23,10 +23,10 @@ cerata/mandoc/mandoc-1.14.5.tar.gz
 cerata/mpfr/trunk/
 cerata/pcre2/trunk/
 glaucus.img
+cross/
 logs/
 play/
 system/
 temporary/
-toolchain/
 !scripts/system/
 !scripts/toolchain/
