@@ -3,12 +3,16 @@ cd /home/glaucus
 git config --global user.name "Firas Khalil Khana"
 git config --global user.email "firasuke@gmail.com"
 mkdir -pv \
-        cross \
-        cross/toolchain \
+        tools \
+        tools/cross \
+        tools/toolchain \
+        logs/cross \
         logs/system \
         logs/toolchain \
         play \
         system \
+        temporary/cross/builds \
+        temporary/cross/sources \
         temporary/system/builds \
         temporary/system/cerata \
         temporary/system/sources \

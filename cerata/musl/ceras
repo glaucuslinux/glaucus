@@ -6,16 +6,30 @@ url=https://$version.$name-libc.org/c$version/$name
 description='An implementation of the standard library functionality described in the ISO C and POSIX standards, plus common extensions, intended for use on Linux-based systems'
 cluster=core
 license='BSDv2 LGPLv2.1+ MIT PD'
+build_cross(){
+        mkdir -v $CBLD/$name
+        cd $CBLD/$name
+        $CERD/$name/$name/configure \
+                CROSS_COMPILE=$TUPL- \
+                --prefix=$CRSL \
+                --target=$TUPL \
+                --disable-static
+        rm -frv Makefile
+        cp -av $CERD/$name/$name/Makefile .
+        sed -e '/$(DESTDIR)$(LDSO_PATHNAME):/,+2d' \
+                -i Makefile
+        make
+        make install
+        cd $CRSL/lib
+        ln -fsv libc.so ld-$name-$ARCH.so.1
+}
 build_toolchain(){
         mkdir -v $TBLD/$name
         cd $TBLD/$name
         $CERD/$name/$name/configure \
-                CC=$TUPL-gcc \
                 CROSS_COMPILE=$TUPL- \
-                --prefix=$TOOL \
-                --syslibdir=$TOOL/lib \
-                --host=$TUPL \
-                --build=$TUPL \
+                --prefix=$TLCL \
+                --syslibdir=$TLCL/lib \
                 --target=$TUPL \
                 --disable-static
         make

@@ -23,7 +23,7 @@ construct(){
                                 . $CERD/gcc/ceras
                                 build_toolchain $item
                                 ;;
-                        linux|musl|isl)
+                        linux|musl|libstdc++-v3|isl)
                                 . $CERD/$item/ceras
                                 build_toolchain
                                 ;;
@@ -35,6 +35,7 @@ construct binutils_1 \
         gcc_1 \
         linux \
         musl \
+        libstdc++-v3 \
         binutils_2 \
         gmp_2 mpfr_2 mpc_2 isl \
         gcc_2

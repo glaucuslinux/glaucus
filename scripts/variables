@@ -4,34 +4,59 @@ assign_basic_variables(){
         export CERD=/home/glaucus/cerata
         export LOGD=/home/glaucus/logs
         export TMPD=/home/glaucus/temporary
-        export TOOL=/toolchain
-        export PATH=$TOOL/bin:/usr/bin
+        export TOOL=/home/glaucus/tools
         export MAKEFLAGS=-j1
 }
+assign_cross_variables(){
+        export CRSS=$TOOL/cross
+        export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
+        export CRSL=/cross
+        export CLOG=$LOGD/cross
+        export CBLD=$TMPD/cross/builds
+        export CSRC=$TMPD/cross/sources
+}
 assign_toolchain_variables(){
-        export CROS=/home/glaucus/cross
+        export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
+        export TLCH=$TOOL/toolchain
+        export TLCL=/toolchain
         export TLOG=$LOGD/toolchain
         export TBLD=$TMPD/toolchain/builds
         export TSRC=$TMPD/toolchain/sources
-        export LD_LIBRARY_PATH=$TOOL/lib
+        export AR=$TUPL-gcc-ar
+        export AS=$TUPL-as
+        export CC=$TUPL-gcc
+        export CXX=$TUPL-g++
+        export LD=$TUPL-ld
+        export NM=$TUPL-gcc-nm
+        export OBJCOPY=$TUPL-objcopy
+        export OBJDUMP=$TUPL-objdump
+        export RANLIB=$TUPL-gcc-ranlib
+        export READELF=$TUPL-readelf
+        export SIZE=$TUPL-size
+        export STRINGS=$TUPL-strings
+        export STRIP=$TUPL-strip
 }
 assign_system_variables(){
-        export SLOG=$LOGD/system
+        export PATH=$TLCH/bin:/usr/bin
         export GLAD=/home/glaucus/system
+        export SLOG=$LOGD/system
         export SBLD=$TMPD/system/builds
         export SCER=$TMPD/system/cerata
         export SSRC=$TMPD/system/sources
+        export CROSS_COMPILE=$TUPL-
         export AR=$TUPL-gcc-ar
         export AS=$TUPL-as
         export AWK=$GLAD/usr/bin/mawk
         export CC=$TUPL-gcc
-        export CROSS_COMPILE=$TUPL-
         export CXX=$TUPL-g++
         export LD=$TUPL-ld
         export NM=$TUPL-gcc-nm
+        export OBJCOPY=$TUPL-objcopy
         export OBJDUMP=$TUPL-objdump
         export RANLIB=$TUPL-gcc-ranlib
         export READELF=$TUPL-readelf
+        export SIZE=$TUPL-size
+        export STRINGS=$TUPL-strings
         export STRIP=$TUPL-strip
         export YACC=$GLAD/usr/bin/yacc
         export GCSE='-fgcse-sm -fgcse-las'

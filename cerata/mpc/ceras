@@ -6,6 +6,19 @@ url=https://scm.gforge.inria.fr/anonscm/$version/$name/$name
 cysts='musl gmp mpfr'
 description='A C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result'
 license='GFDLv1.3+ LGPLv2.1+ LGPLv3.0+ PD'
+build_cross(){
+        rsync -vah $CERD/$name/$name/ $CSRC/$name --delete
+        cd $CSRC/$name
+        autoreconf -vi
+        LDFLAGS="-Wl,-rpath=$CRSL/lib" \
+        ./configure \
+                --prefix=$CRSL \
+                --disable-static \
+                --with-mpfr=$CRSL \
+                --with-gmp=$CRSL
+        make
+        make install
+}
 build_toolchain(){
         rsync -vah $CERD/$name/$name/ $TSRC/$1 --delete
         cd $TSRC/$1
@@ -14,23 +27,27 @@ build_toolchain(){
                 mpc_1)
                         ./configure \
                                 --prefix=$TOOL \
-                                --disable-shared \
+                                --disable-static \
                                 --with-mpfr=$TOOL \
                                 --with-gmp=$TOOL
                         ;;
                 mpc_2)
-                        AR=$TUPL-gcc-ar \
+                        AR=$TUPL-ar \
                         AS=$TUPL-as \
                         CC=$TUPL-gcc \
+                        CXX=$TUPL-g++ \
                         LD=$TUPL-ld \
-                        NM=$TUPL-gcc-nm \
+                        NM=$TUPL-nm \
+                        OBJCOPY=$TUPL-objcopy \
                         OBJDUMP=$TUPL-objdump \
-                        RANLIB=$TUPL-gcc-ranlib \
+                        RANLIB=$TUPL-ranlib \
                         READELF=$TUPL-readelf \
+                        SIZE=$TUPL-size \
+                        STRINGS=$TUPL-strings \
                         STRIP=$TUPL-strip \
                         ./configure \
                                 --prefix=$TOOL \
-                                --disable-shared \
+                                --disable-static \
                                 --with-mpfr=$TOOL \
                                 --with-gmp=$TOOL
                         ;;

@@ -5,6 +5,23 @@ arch=x86-64
 url=https://sourceware.org/$version/$name-gdb.$version
 description='The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files'
 license='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
+build_cross(){
+        rsync -vah $CERD/$name/$name-gdb/ $CSRC/$name --delete
+        mkdir -v $CBLD/$name
+        cd $CBLD/$name
+        $CSRC/$name/configure \
+                --prefix=$CRSL \
+                --target=$TUPL \
+                --enable-lto \
+                --disable-nls \
+                --with-sysroot=$CRSL/$TUPL \
+                --with-lib-path=$CRSL/lib \
+                --disable-multilib \
+                --disable-gdb
+        make configure-host
+        make
+        make install
+}
 build_toolchain(){
         rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
         mkdir -v $TBLD/$1
@@ -12,30 +29,26 @@ build_toolchain(){
         case $1 in
                 binutils_1)
                         $TSRC/$name/configure \
-                                --prefix=$TOOL \
+                                --build=$ARCH-pc-linux-gnu \
+                                --host=$TUPL \
+                                --prefix=$TLCL \
                                 --target=$TUPL \
                                 --enable-lto \
                                 --disable-nls \
-                                --with-sysroot=$CROS \
-                                --with-lib-path=$TOOL/lib \
+                                --with-sysroot=$TLCL \
+                                --with-lib-path=$TLCL/lib \
                                 --disable-multilib \
                                 --disable-gdb
-                        make configure-host
                         make
-                        mkdir -v $TOOL/lib && ln -fsv lib $TOOL/lib64
+                        mkdir -v $TLCL/lib && ln -fsv lib $TLCL/lib64
                         make install
+                        make -C ld clean
+                        make -C ld LIB_PATH=$TLCL/lib
                         ;;
                 binutils_2)
-                        AR=$TUPL-gcc-ar \
-                        AS=$TUPL-as \
-                        CC=$TUPL-gcc \
-                        LD=$TUPL-ld \
-                        NM=$TUPL-gcc-nm \
-                        OBJDUMP=$TUPL-objdump \
-                        RANLIB=$TUPL-gcc-ranlib \
-                        READELF=$TUPL-readelf \
-                        STRIP=$TUPL-strip \
                         $TSRC/$name/configure \
+                                --build=$ARCH-pc-linux-gnu \
+                                --host=$TUPL \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
                                 --enable-lto \
@@ -47,11 +60,10 @@ build_toolchain(){
                         make
                         make install
                         make -C ld clean
-                        make -C ld LIB_PATH=/usr/lib:/lib
-                        cp -av ld/ld-new $TOOL/bin
+                        make -C ld LIB_PATH=/usr/lib
                         ;;
         esac
-
+        cp -av ld/ld-new $TLCL/bin
 }
 build(){
         :

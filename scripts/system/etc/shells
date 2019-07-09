@@ -1,4 +1,4 @@
-/bin/dash
-/bin/ksh
-/bin/loksh
-/bin/sh
+/usr/bin/dash
+/usr/bin/ksh
+/usr/bin/loksh
+/usr/bin/sh

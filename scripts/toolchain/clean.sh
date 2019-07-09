@@ -1,4 +1,4 @@
 #!/usr/bin/dash -ex
-sudo rm -frv $TBLD $TOOL $CROS
-mkdir -v $TBLD $CROS $CROS/toolchain
-sudo ln -fsv $CROS/toolchain /
+sudo rm -frv $TBLD $TLCL $TLCH
+install -dv $TBLD $TLCH
+sudo ln -fsv $TLCH /
