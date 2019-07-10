@@ -27,8 +27,10 @@ build_toolchain(){
                 headers_check
         make O=$TBLD/$name \
                 ARCH=$ARCH \
-                INSTALL_HDR_PATH=$TLCL/include \
+                INSTALL_HDR_PATH=dest \
                 headers_install
+        find $TBLD/$name/dest/include \( -name ..install.cmd -o -name .install \) -delete
+        cp -arv $TBLD/$name/dest/include/* $TLCL/include
 }
 build(){
         mkdir -v $SBLD/$name

@@ -15,7 +15,6 @@ build_cross(){
                 --enable-lto \
                 --disable-nls \
                 --with-sysroot=$CRSL/$TUPL \
-                --with-lib-path=$CRSL/lib \
                 --disable-multilib \
                 --disable-gdb
         make configure-host
@@ -35,7 +34,7 @@ build_toolchain(){
                                 --target=$TUPL \
                                 --enable-lto \
                                 --disable-nls \
-                                --with-sysroot=$TLCL \
+                                --with-sysroot=$TOOL \
                                 --with-lib-path=$TLCL/lib \
                                 --disable-multilib \
                                 --disable-gdb
@@ -49,12 +48,12 @@ build_toolchain(){
                         $TSRC/$name/configure \
                                 --build=$ARCH-pc-linux-gnu \
                                 --host=$TUPL \
-                                --prefix=$TOOL \
+                                --prefix=$TLCL \
                                 --target=$TUPL \
                                 --enable-lto \
                                 --disable-nls \
                                 --with-sysroot \
-                                --with-lib-path=$TOOL/lib \
+                                --with-lib-path=$TLCL/lib \
                                 --disable-multilib \
                                 --disable-gdb
                         make

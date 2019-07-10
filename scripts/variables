@@ -5,10 +5,11 @@ assign_basic_variables(){
         export LOGD=/home/glaucus/logs
         export TMPD=/home/glaucus/temporary
         export TOOL=/home/glaucus/tools
+        export CRSS=$TOOL/cross
+        export TLCH=$TOOL/toolchain
         export MAKEFLAGS=-j1
 }
 assign_cross_variables(){
-        export CRSS=$TOOL/cross
         export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
         export CRSL=/cross
         export CLOG=$LOGD/cross
@@ -17,7 +18,6 @@ assign_cross_variables(){
 }
 assign_toolchain_variables(){
         export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
-        export TLCH=$TOOL/toolchain
         export TLCL=/toolchain
         export TLOG=$LOGD/toolchain
         export TBLD=$TMPD/toolchain/builds
