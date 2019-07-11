@@ -6,18 +6,6 @@ url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name
 description='The Linux kernel and modules'
 cluster=core
 license=GPLv2
-build_cross(){
-        mkdir -v $CBLD/$name
-        cd $CERD/$name/$name
-        make mrproper
-        make O=$CBLD/$name \
-                ARCH=$ARCH \
-                headers_check
-        make O=$CBLD/$name \
-                ARCH=$ARCH \
-                INSTALL_HDR_PATH=$CRSL/$TUPL \
-                headers_install
-}
 build_toolchain(){
         mkdir -v $TBLD/$name
         cd $CERD/$name/$name
@@ -27,10 +15,9 @@ build_toolchain(){
                 headers_check
         make O=$TBLD/$name \
                 ARCH=$ARCH \
-                INSTALL_HDR_PATH=dest \
+                INSTALL_HDR_PATH=$TOOL/$TUPL \
                 headers_install
-        find $TBLD/$name/dest/include \( -name ..install.cmd -o -name .install \) -delete
-        cp -arv $TBLD/$name/dest/include/* $TLCL/include
+        find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
 }
 build(){
         mkdir -v $SBLD/$name

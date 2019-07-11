@@ -4,40 +4,16 @@ assign_basic_variables(){
         export CERD=/home/glaucus/cerata
         export LOGD=/home/glaucus/logs
         export TMPD=/home/glaucus/temporary
-        export TOOL=/home/glaucus/tools
-        export CRSS=$TOOL/cross
-        export TLCH=$TOOL/toolchain
+        export TOOL=/home/glaucus/toolchain
+        export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
         export MAKEFLAGS=-j1
 }
-assign_cross_variables(){
-        export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
-        export CRSL=/cross
-        export CLOG=$LOGD/cross
-        export CBLD=$TMPD/cross/builds
-        export CSRC=$TMPD/cross/sources
-}
 assign_toolchain_variables(){
-        export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
-        export TLCL=/toolchain
         export TLOG=$LOGD/toolchain
         export TBLD=$TMPD/toolchain/builds
         export TSRC=$TMPD/toolchain/sources
-        export AR=$TUPL-gcc-ar
-        export AS=$TUPL-as
-        export CC=$TUPL-gcc
-        export CXX=$TUPL-g++
-        export LD=$TUPL-ld
-        export NM=$TUPL-gcc-nm
-        export OBJCOPY=$TUPL-objcopy
-        export OBJDUMP=$TUPL-objdump
-        export RANLIB=$TUPL-gcc-ranlib
-        export READELF=$TUPL-readelf
-        export SIZE=$TUPL-size
-        export STRINGS=$TUPL-strings
-        export STRIP=$TUPL-strip
 }
 assign_system_variables(){
-        export PATH=$TLCH/bin:/usr/bin
         export GLAD=/home/glaucus/system
         export SLOG=$LOGD/system
         export SBLD=$TMPD/system/builds
@@ -65,9 +41,9 @@ assign_system_variables(){
         export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
         export PGO='-ftracer -funroll-loops'
         export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
-        export CFLAGS="-pipe -fopenmp -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
-        export CFLAGSNOLTO="-pipe -fopenmp -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
-        export CFLAGSNOOPENMP="-pipe -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+        export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+        export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
+        export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
 }

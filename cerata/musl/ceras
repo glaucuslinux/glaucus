@@ -7,12 +7,13 @@ description='An implementation of the standard library functionality described i
 cluster=core
 license='BSDv2 LGPLv2.1+ MIT PD'
 build_cross(){
-        mkdir -v $CBLD/$name
-        cd $CBLD/$name
+        mkdir -v $TBLD/$name
+        cd $TBLD/$name
         $CERD/$name/$name/configure \
                 CROSS_COMPILE=$TUPL- \
-                --prefix=$CRSL \
+                --prefix=$TOOL/$TUPL \
                 --target=$TUPL \
+                --disable-wrapper \
                 --disable-static
         rm -frv Makefile
         cp -av $CERD/$name/$name/Makefile .
@@ -20,20 +21,8 @@ build_cross(){
                 -i Makefile
         make
         make install
-        cd $CRSL/lib
+        cd $TOOL/$TUPL/lib
         ln -fsv libc.so ld-$name-$ARCH.so.1
-}
-build_toolchain(){
-        mkdir -v $TBLD/$name
-        cd $TBLD/$name
-        $CERD/$name/$name/configure \
-                CROSS_COMPILE=$TUPL- \
-                --prefix=$TLCL \
-                --syslibdir=$TLCL/lib \
-                --target=$TUPL \
-                --disable-static
-        make
-        make install
 }
 build(){
         mkdir -v $SBLD/$name

@@ -6,51 +6,15 @@ url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
 cysts='musl gmp'
 description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
 license='LGPLv2.1+ LGPLv3.0+ PD'
-build_cross(){
-        rsync -vah $CERD/$name/trunk/ $CSRC/$name --delete
-        cd $CSRC/$name
-        ./autogen.sh
-        LDFLAGS="-Wl,-rpath=$CRSL/lib" \
-        ./configure \
-                --prefix=$CRSL \
-                --disable-static \
-                --with-gmp=$CRSL
-        make
-        make install
-}
 build_toolchain(){
-        rsync -vah $CERD/$name/trunk/ $TSRC/$1 --delete
-        cd $TSRC/$1
+        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
+        cd $TSRC/$name
         ./autogen.sh
-        case $1 in 
-                mpfr_1)
-                        ./configure \
-                                --prefix=$TOOL \
-                                --disable-static \
-                                --enable-lto \
-                                --with-gmp=$TOOL
-                        ;;
-                mpfr_2)
-                        AR=$TUPL-ar \
-                        AS=$TUPL-as \
-                        CC=$TUPL-gcc \
-                        CXX=$TUPL-g++ \
-                        LD=$TUPL-ld \
-                        NM=$TUPL-nm \
-                        OBJCOPY=$TUPL-objcopy \
-                        OBJDUMP=$TUPL-objdump \
-                        RANLIB=$TUPL-ranlib \
-                        READELF=$TUPL-readelf \
-                        SIZE=$TUPL-size \
-                        STRINGS=$TUPL-strings \
-                        STRIP=$TUPL-strip \
-                        ./configure \
-                                --prefix=$TOOL \
-                                --disable-static \
-                                --enable-lto \
-                                --with-gmp=$TOOL
-                        ;;
-        esac
+        LDFLAGS="-Wl,-rpath=$TOOL/lib" \
+        ./configure \
+                --prefix=$TOOL \
+                --disable-static \
+                --with-gmp=$TOOL
         make
         make install
 }
