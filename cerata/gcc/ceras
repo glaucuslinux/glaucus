@@ -10,30 +10,27 @@ build_toolchain(){
         cd $TSRC/$name/$name/config
         for file in i386/linux.h i386/linux64.h linux.h
         do
-                sed -e "s/\/lib/\\$TOOL&/" \
+                sed -e "s/\/lib/\\$TOOL\/$TUPL&/" \
                         -i $file
                 echo "
 #undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
+#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/$TUPL/lib/\"
 
 #undef STANDARD_STARTFILE_PREFIX_2
 #define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
         done
         sed -e '/m64/s/lib64/lib/' \
                 -i i386/t-linux64
-        sed -e "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
+        sed -e "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/$TUPL\/lib\/ld-musl-$ARCH.so.1/" \
                 -i linux.h
         mkdir -v $TBLD/$1
         case $1 in
                 gcc_1)
                         cd $TBLD/$1
-                        touch $TLCL/include/limits.h
                         $TSRC/$name/configure \
-                                --build=$ARCH-pc-linux-gnu \
-                                --host=$TUPL \
-                                --prefix=$TLCL \
+                                --prefix=$TOOL \
                                 --target=$TUPL \
-                                --with-native-system-header-dir=$TLCL/include \
+                                --with-native-system-header-dir=/include \
                                 --disable-shared \
                                 --disable-multilib \
                                 --disable-threads \
@@ -47,16 +44,14 @@ build_toolchain(){
                                 --disable-libvtv \
                                 --disable-nls \
                                 --disable-decimal-float \
-                                --with-gmp=$TLCL \
-                                --with-mpfr=$TLCL \
-                                --with-mpc=$TLCL \
+                                --with-gmp=$TOOL \
+                                --with-mpfr=$TOOL \
+                                --with-mpc=$TOOL \
                                 --without-isl \
-                                --with-local-prefix=$TLCL \
-                                --with-sysroot=$TOOL \
+                                --with-sysroot=$TOOL/$TUPL \
                                 --without-headers \
                                 --with-newlib \
                                 --disable-libatomic \
-                                --disable-libstdcxx-pch \
                                 --disable-libitm \
                                 --disable-libstdcxx
                         make all-gcc \
@@ -68,14 +63,10 @@ build_toolchain(){
                         cd ..
                         cat limitx.h glimits.h limity.h > `dirname $($TUPL-gcc -print-libgcc-file-name)`/include-fixed/limits.h
                         cd $TBLD/$1
-                        AR=ar \
-                        LDFLAGS="-Wl,-rpath=$CRSL/lib" \
                         $TSRC/$name/configure \
-                                --build=$ARCH-pc-linux-gnu \
-                                --host=$TUPL \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
-                                --with-native-system-header-dir=$TOOL/include \
+                                --with-native-system-header-dir=/include \
                                 --disable-static \
                                 --disable-multilib \
                                 --with-arch=x86-64 \
@@ -98,11 +89,8 @@ build_toolchain(){
                         make AS_FOR_TARGET=$TUPL-as \
                                 LD_FOR_TARGET=$TUPL-ld
                         make install
-                        ln -fsv gcc $TOOL/bin/cc
-                        mv -v $TOOL/bin/ld $TOOL/bin/ld-old
-                        mv -v $TOOL/$TUPL/bin/ld $TOOL/$TUPL/bin/ld-old
-                        mv -v $TOOL/bin/ld-new $TOOL/bin/ld
-                        ln -fsv $TOOL/bin/ld $TOOL/$TUPL/bin/ld
+                        cd $TOOL/bin
+                        ln -fsv $TUPL-gcc cc
                         $TUPL-gcc -dumpspecs > `dirname $($TUPL-gcc -print-libgcc-file-name)`/specs
                         ;;
         esac

@@ -1,12 +1,5 @@
 # glaucuslinux
-Named after the smallest and most venemous sea slug *glaucus bennettae*, glaucus is a highly optimized and extremely lightweight suckless Linux distribution built from scratch.
-
-## Supported Architectures
-* x86_64-pc-linux-musl
-
-## Minimum Requirements
-* 32 MB RAM (qemu limit)
-* qemu CPU
+glaucus is a highly optimized and extremely lightweight suckless Linux distribution built from scratch.
 
 ## Features
 * musl libc
@@ -17,6 +10,13 @@ Named after the smallest and most venemous sea slug *glaucus bennettae*, glaucus
 * latest developmental sources (gcc 10+, gmp developmental, mpfr, mpc)
 * built with ISL and graphite optimizations enabled
 * built with PGO and LTO
+
+## Supported Architectures
+* x86_64-pc-linux-musl
+
+## Minimum Requirements
+* 32 MB RAM (qemu limit)
+* qemu CPU
 
 ## Optimizations
 * -Ofast
@@ -70,6 +70,8 @@ glaucus's core system is built up from the following main components:
 * If it ain't active, we ain't using it.
 
 ## Naming Scheme
+Named after the smallest and most venemous sea slug *glaucus bennettae*, 
+
 Named after the:
 
 * smallest
@@ -106,7 +108,7 @@ Named after the:
 Firas Khalil Khana (firasuke@gmail.com)
 
 ## License
-glaucuslinux is licensed under the internet s c ISC license. see LICENSE.
+glaucus is licensed under the Internet Systems Consortium (ISC) license. See LICENSE.
 
 ## Donations
 * PayPal

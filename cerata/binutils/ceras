@@ -19,11 +19,7 @@ build_toolchain(){
                 --disable-gdb
         make configure-host
         make
-        mkdir -v $TLCL/lib && ln -fsv lib $TLCL/lib64
         make install
-        make -C ld clean
-        make -C ld LIB_PATH=$TLCL/lib
-        cp -av ld/ld-new $TLCL/bin
 }
 build(){
         :

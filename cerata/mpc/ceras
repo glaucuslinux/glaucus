@@ -10,7 +10,6 @@ build_toolchain(){
         rsync -vah $CERD/$name/$name/ $TSRC/$name --delete
         cd $TSRC/$name
         autoreconf -vi
-        LDFLAGS="-Wl,-rpath=$TOOL/lib" \
         ./configure \
                 --prefix=$TOOL \
                 --disable-static \

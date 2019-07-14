@@ -4,7 +4,7 @@ assign_basic_variables(){
         export CERD=/home/glaucus/cerata
         export LOGD=/home/glaucus/logs
         export TMPD=/home/glaucus/temporary
-        export TOOL=/home/glaucus/toolchain
+        export TOOL=/toolchain
         export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
         export MAKEFLAGS=-j1
 }
