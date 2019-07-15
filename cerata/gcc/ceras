@@ -63,6 +63,7 @@ build_toolchain(){
                         cd ..
                         cat limitx.h glimits.h limity.h > `dirname $($TUPL-gcc -print-libgcc-file-name)`/include-fixed/limits.h
                         cd $TBLD/$1
+                        LD_LIBRARY_PATH=$TOOL/lib \
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
@@ -81,7 +82,7 @@ build_toolchain(){
                                 --with-mpfr=$TOOL \
                                 --with-mpc=$TOOL \
                                 --with-isl=$TOOL \
-                                --with-local-prefix=$TOOL \
+                                --with-sysroot=$TOOL/$TUPL \
                                 --with-linker-hash-style=gnu \
                                 --disable-symvers \
                                 --disable-libatomic \
