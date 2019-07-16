@@ -19,7 +19,7 @@ build_toolchain(){
                 --disable-gdb
         make configure-host
         make
-        make install
+        make install-strip
 }
 build(){
         :

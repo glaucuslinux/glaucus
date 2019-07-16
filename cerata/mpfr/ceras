@@ -15,7 +15,7 @@ build_toolchain(){
                 --disable-static \
                 --with-gmp=$TOOL
         make
-        make install
+        make install-strip
 }
 build(){
         :

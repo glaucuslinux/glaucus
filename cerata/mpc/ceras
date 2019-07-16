@@ -16,7 +16,7 @@ build_toolchain(){
                 --with-mpfr=$TOOL \
                 --with-gmp=$TOOL
         make
-        make install
+        make install-strip
 }
 build(){
         :

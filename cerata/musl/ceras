@@ -12,17 +12,12 @@ build_toolchain(){
         $CERD/$name/$name/configure \
                 CROSS_COMPILE=$TUPL- \
                 --prefix=$TOOL/$TUPL \
+                --syslibdir=/usr/lib \
                 --target=$TUPL \
                 --disable-wrapper \
                 --disable-static
-        rm -frv Makefile
-        cp -av $CERD/$name/$name/Makefile .
-        sed -e '/$(DESTDIR)$(LDSO_PATHNAME):/,+2d' \
-                -i Makefile
         make
-        make install
-        cd $TOOL/$TUPL/lib
-        ln -fsv libc.so ld-$name-$ARCH.so.1
+        sudo make install
 }
 build(){
         mkdir -v $SBLD/$name

@@ -63,7 +63,7 @@ build_toolchain(){
                         cd ..
                         cat limitx.h glimits.h limity.h > `dirname $($TUPL-gcc -print-libgcc-file-name)`/include-fixed/limits.h
                         cd $TBLD/$1
-                        LD_LIBRARY_PATH=$TOOL/lib \
+                        LDFLAGS="-Wl,-rpath,$TOOL/lib" \
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
@@ -89,7 +89,7 @@ build_toolchain(){
                                 --disable-libstdcxx-pch
                         make AS_FOR_TARGET=$TUPL-as \
                                 LD_FOR_TARGET=$TUPL-ld
-                        make install
+                        make install-strip
                         cd $TOOL/bin
                         ln -fsv $TUPL-gcc cc
                         $TUPL-gcc -dumpspecs > `dirname $($TUPL-gcc -print-libgcc-file-name)`/specs

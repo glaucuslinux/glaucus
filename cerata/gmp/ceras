@@ -14,7 +14,7 @@ build_toolchain(){
                 --disable-static \
                 --enable-cxx
         make
-        make install
+        make install-strip
 }
 build(){
         :

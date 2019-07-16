@@ -1,4 +1,4 @@
-# glaucuslinux
+# glaucus
 glaucus is a highly optimized and extremely lightweight suckless Linux distribution built from scratch.
 
 ## Features
