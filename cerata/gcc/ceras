@@ -10,18 +10,18 @@ build_toolchain(){
         cd $TSRC/$name/$name/config
         for file in i386/linux.h i386/linux64.h linux.h
         do
-                sed -e "s/\/lib/\\$TOOL\/$TUPL&/" \
+                sed -e "s/\/lib/\/usr\/lib&/" \
                         -i $file
                 echo "
 #undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/$TUPL/lib/\"
+#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
 
 #undef STANDARD_STARTFILE_PREFIX_2
 #define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
         done
         sed -e '/m64/s/lib64/lib/' \
                 -i i386/t-linux64
-        sed -e "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/$TUPL\/lib\/ld-musl-$ARCH.so.1/" \
+        sed -e "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
                 -i linux.h
         mkdir -v $TBLD/$1
         case $1 in
@@ -30,6 +30,7 @@ build_toolchain(){
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
+                                --with-local-prefix=$TOOL \
                                 --with-native-system-header-dir=/include \
                                 --disable-shared \
                                 --disable-multilib \
@@ -67,6 +68,7 @@ build_toolchain(){
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
+                                --with-local-prefix=$TOOL \
                                 --with-native-system-header-dir=/include \
                                 --disable-static \
                                 --disable-multilib \
@@ -92,7 +94,9 @@ build_toolchain(){
                         make install-strip
                         cd $TOOL/bin
                         ln -fsv $TUPL-gcc cc
-                        $TUPL-gcc -dumpspecs > `dirname $($TUPL-gcc -print-libgcc-file-name)`/specs
+                        $TUPL-gcc -dumpspecs | sed -e "/\*startfile_prefix_spec:/{n;s/.*/\\$TOOL\/lib/}" \
+                                -e "/\*cpp:/{n;s/$/ -isystem \\$TOOL\/include/}" > `dirname $($TUPL-gcc -print-libgcc-file-name)`/specs
+
                         ;;
         esac
 }
