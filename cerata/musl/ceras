@@ -29,6 +29,7 @@ build(){
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
+                --disable-wrapper \
                 --disable-static
         make
         make DESTDIR=$SCER/$name/sac \

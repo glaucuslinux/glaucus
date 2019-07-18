@@ -13,7 +13,7 @@ build(){
                 -e "/endif/d" \
                 -i ls.c tar.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/CC = .*/CC = $CC/" \
+                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/AR = .*/AR = $AR/" \
                 -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \

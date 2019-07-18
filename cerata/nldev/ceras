@@ -11,7 +11,7 @@ build(){
         cd $SSRC/$name
         sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
                 -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
-                -e "s/CC = .*/CC = $CC/" \
+                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -i config.mk
         sed 's/busybox ash/sh/' \
                 -i nltrigger run_nldev

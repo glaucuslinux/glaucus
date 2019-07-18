@@ -10,7 +10,7 @@ build_toolchain(){
         cd $TSRC/$name/$name/config
         for file in i386/linux.h i386/linux64.h linux.h
         do
-                sed -e "s/\/lib/\/usr\/lib&/" \
+                sed -e "s/\/lib/\/usr&/" \
                         -i $file
                 echo "
 #undef STANDARD_STARTFILE_PREFIX_1

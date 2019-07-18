@@ -10,17 +10,18 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        FFI_CFLAGS="-I$GLAD/usr/include" \
-        FFI_LIBS="-L$GLAD/usr/lib" \
         EXPAT_CFLAGS="-I$GLAD/usr/include" \
-        EXPAT_LIBS="-L$GLAD/usr/lib" \
+        EXPAT_LIBS="-L$GLAD/usr/libs -lexpat" \
+        FFI_CFLAGS="-I$GLAD/usr/include" \
+        FFI_LIBS="-L$GLAD/usr/libs -lffi" \
         $SSRC/$name/autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-documentation \
-                --disable-dtd-validation
+                --disable-dtd-validation \
+                --with-host-scanner
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

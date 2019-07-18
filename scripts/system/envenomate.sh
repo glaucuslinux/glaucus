@@ -13,12 +13,12 @@ envenomate(){
 }
 envenomate musl
 envenomate mawk byacc mawk
-envenomate sbase ubase lobase
-envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash loksh
-envenomate e2fsprogs
-envenomate linux
-envenomate skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate sbase ubase lobase
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash loksh
+#envenomate e2fsprogs
+#envenomate linux
+#envenomate skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c \
         #sinit svc \
         #sdhcp \
@@ -27,5 +27,5 @@ envenomate skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
         #file iproute2 opendoas \
         #bin86 lilo \
         #s6-portable-utils s6-linux-utils
-#envenomate expat libffi wayland wayland-protocols
+envenomate expat libffi wayland wayland-protocols
 #envenomate libressl

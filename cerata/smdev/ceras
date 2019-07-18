@@ -14,7 +14,7 @@ build(){
                 -i smdev.c
         patch -Np1 -i $CERD/$name/patches/$name.patch
         sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/CC = .*/CC = $CC/" \
+                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
