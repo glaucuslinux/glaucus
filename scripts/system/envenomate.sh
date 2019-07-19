@@ -25,7 +25,7 @@ envenomate mawk byacc mawk
         #xz zlib libarchive \
         #pcre2 less mandoc vim \
         #file iproute2 opendoas \
+        #expat libffi wayland wayland-protocols \
         #bin86 lilo \
         #s6-portable-utils s6-linux-utils
-envenomate expat libffi wayland wayland-protocols
-#envenomate libressl
+envenomate libressl

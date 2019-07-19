@@ -13,8 +13,8 @@ build(){
         sed -e 's/if grep -q //' \
                 -i configure
         sed -e '/ARPD/d' \
-                -e "s/CC := gcc/CC = $CC/"  \
-                -e "s/HOSTCC ?= .*/HOSTCC = $CC/"  \
+                -e "s/CC := gcc/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
+                -e "s/HOSTCC ?= .*/HOSTCC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
                 -e "s/CCOPTS = -O2/CCOPTS = $CFLAGS/" \
                 -e 's/SUBDIRS=.*/SUBDIRS=lib ip/' \
                 -e '/genl/d' \

@@ -18,7 +18,7 @@ build(){
                 -e 's/SBIN_DIR=\/sbin/SBIN_DIR=\/usr\/bin/' \
                 -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/usr\/bin/' \
                 -i make.vars
-        sed -e "s/CC=.*/CC=$CC/" \
+        sed -e "s/CC=.*/CC=$TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e 's/as86/\/home\/glaucus\/system\/usr\/bin\/as86/' \
                 -e 's/ld86/\/home\/glaucus\/system\/usr\/bin\/ld86/' \
                 -e "s/NASM=nasm/NASM=\\$TOOL\/bin\/x86_64-pc-linux-musl-as/" \

@@ -9,7 +9,7 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         sed -e 's/^PREFIX = .*/PREFIX =\/usr/' \
-                -e "s/CC = .*/CC = $CC/" \
+                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -Wall -Wextra/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
