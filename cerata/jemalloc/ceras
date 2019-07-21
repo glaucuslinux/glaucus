@@ -1,0 +1,20 @@
+name=jemalloc
+version=git
+release=1
+arch=x86_64
+url=https://github.com/$name/$name
+description='A general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support'
+license=BSDv2
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install
+}

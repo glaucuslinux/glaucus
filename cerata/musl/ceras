@@ -16,6 +16,10 @@ build_toolchain(){
                 --target=$TUPL \
                 --disable-wrapper \
                 --disable-static
+        rm -fv Makefile
+        cp -arv $CERD/$name/$name/Makefile .
+        sed 's/$(INSTALL) -D -l/sudo &/' \
+                -i Makefile
         make
         sudo make install
 }

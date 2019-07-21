@@ -10,8 +10,6 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         autoreconf -vfi
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
         ./configure \
                 --prefix=/usr \
                 --build=$TUPL \

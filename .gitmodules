@@ -31,6 +31,9 @@
 [submodule "cerata/isl/isl"]
 	path = cerata/isl/isl
 	url = https://repo.or.cz/isl
+[submodule "cerata/jemalloc/jemalloc"]
+	path = cerata/jemalloc/jemalloc
+	url = https://github.com/jemalloc/jemalloc
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive

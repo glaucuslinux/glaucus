@@ -89,14 +89,10 @@ build_toolchain(){
                                 --disable-symvers \
                                 --disable-libatomic \
                                 --disable-libstdcxx-pch
-                        make AS_FOR_TARGET=$TUPL-as \
-                                LD_FOR_TARGET=$TUPL-ld
+                        make
                         make install-strip
                         cd $TOOL/bin
                         ln -fsv $TUPL-gcc cc
-                        $TUPL-gcc -dumpspecs | sed -e "/\*startfile_prefix_spec:/{n;s/.*/\\$TOOL\/lib/}" \
-                                -e "/\*cpp:/{n;s/$/ -isystem \\$TOOL\/include/}" > `dirname $($TUPL-gcc -print-libgcc-file-name)`/specs
-
                         ;;
         esac
 }
