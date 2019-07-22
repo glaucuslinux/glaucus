@@ -9,6 +9,10 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        sed -e 's/\/var\/run/\/run/' \
+                -i config.def.h
+        sed -e 's/\/bin/\/usr&/' \
+                -i config.def.h getty.8 getty.c login.c su.c
         sed -e 's/.*types.*/#include <sys\/sysmacros.h>/' \
                 -i mknod.c mountpoint.c stat.c
         sed -e '/stat.h/a #include <sys/sysmacros.h>' \

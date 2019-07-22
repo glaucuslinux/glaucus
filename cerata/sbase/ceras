@@ -9,8 +9,12 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        sed -e 's/\/bin/\/usr&/' \
+                -i chroot.c cron.c xargs.c
+        sed -e 's/\/tmp/\/run\/tmp/' \
+                -i ed.c mktemp.1 mktemp.c sponge.c
         sed -e '/types/,+1d' \
-                -e "/endif/d" \
+                -e '/endif/d' \
                 -i ls.c tar.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
