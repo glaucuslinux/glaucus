@@ -3,7 +3,9 @@ cd /
 redirfd -w 1 /dev/console
 fdmove -c 2 1
 if { s6-svc -X /run/service/log }
-unexport ?
-s6-sync
-s6-nuke -ht
-s6-nuke -k
+if { s6-nuke -t }
+if { s6-nuke -k }
+if { umount -a }
+if { s6-sync }
+if { mount -o remount,ro / }
+s6-$1 -f
