@@ -19,7 +19,8 @@ RANLIB = $RANLIB
 CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
-        sed -e 's/-O0 //' \
+        sed -e '/$(BINDIR)\/clear/ s/$/.sh/' \
+                -e 's/-O0 //' \
                 -i GNUmakefile
         make all-dynamic
         make DESTDIR=$SCER/$name/sac \
