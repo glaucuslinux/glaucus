@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+s6-linux-init-shutdown -ah now

@@ -9,13 +9,13 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        sed -e 's/\/var\/run/\/run/' \
+        sed 's/\/var\/run/\/run/' \
                 -i config.def.h
-        sed -e 's/\/bin/\/usr&/' \
+        sed 's/\/bin/\/usr&/' \
                 -i config.def.h getty.8 getty.c login.c su.c
-        sed -e 's/.*types.*/#include <sys\/sysmacros.h>/' \
+        sed 's/.*types.*/#include <sys\/sysmacros.h>/' \
                 -i mknod.c mountpoint.c stat.c
-        sed -e '/stat.h/a #include <sys/sysmacros.h>' \
+        sed '/stat.h/a #include <sys/sysmacros.h>' \
                 -i libutil/tty.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
                 -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
@@ -24,6 +24,8 @@ build(){
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -Wextra/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
+        sed '/halt/d' \
+                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install
