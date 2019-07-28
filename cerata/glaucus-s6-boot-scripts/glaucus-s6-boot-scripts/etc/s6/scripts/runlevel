@@ -1,0 +1,3 @@
+#!/usr/bin/dash -e
+test "$#" -gt 0 || { echo 'runlevel: fatal: too few arguments' 1>&2 ; exit 100 ; }
+exec s6-rc -upv2 change $1

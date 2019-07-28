@@ -18,7 +18,7 @@ envenomate smdev nldev nlmon
 envenomate netbsd-curses procps dash loksh
 envenomate e2fsprogs
 envenomate linux
-envenomate skalibs execline s6 s6-rc glaucus-s6-boot-scripts
+envenomate skalibs execline s6 s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c \
         #sinit svc \
         #sdhcp \
@@ -28,4 +28,4 @@ envenomate skalibs execline s6 s6-rc glaucus-s6-boot-scripts
         #expat libffi wayland wayland-protocols \
         #jemalloc \
         #bin86 lilo \
-        #s6-linux-init s6-portable-utils s6-linux-utils
+        #s6-portable-utils s6-linux-utils

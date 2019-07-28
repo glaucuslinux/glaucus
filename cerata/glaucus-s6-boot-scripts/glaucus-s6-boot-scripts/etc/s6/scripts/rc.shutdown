@@ -1,0 +1,2 @@
+#!/usr/bin/dash -e
+exec s6-rc -badv2 change
