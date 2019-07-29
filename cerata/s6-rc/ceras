@@ -11,10 +11,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
+                --prefix=/usr \
                 --libexecdir=/usr/lib/libexec \
                 --livedir=/run/live \
                 --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
@@ -22,11 +22,12 @@ build(){
                 --with-dynlib=$GLAD/usr/lib \
                 --enable-shared \
                 --disable-static \
-                --disable-allstatic
+                --disable-allstatic \
+                --disable-all-pic
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/usr\/lib/" \
                 -i config.mak
-        make
+        make strip
         make DESTDIR=$SCER/$name/sac \
                 install
 }

@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
-cysts='skalibs execline s6'
+cysts='skalibs execline s6 nsss utmps'
 description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
 cluster=core
 license=ISC
@@ -11,10 +11,10 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
+                --prefix=/usr \
                 --libexecdir=/usr/lib/libexec \
                 --skeldir=/etc/s6-linux-init/skel \
                 --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
@@ -22,11 +22,14 @@ build(){
                 --with-dynlib=$GLAD/usr/lib \
                 --enable-shared \
                 --disable-static \
-                --disable-allstatic
+                --disable-allstatic \
+                --disable-all-pic \
+                --enable-nsss \
+                --enable-utmps
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
-        make
+        make strip
         make DESTDIR=$SCER/$name/sac \
                 install
         rm -frv $SCER/$name/sac/etc

@@ -10,21 +10,22 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
+                --prefix=/usr \
                 --libexecdir=/usr/lib/libexec \
                 --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
                 --with-include=$GLAD/usr/include \
                 --with-dynlib=$GLAD/usr/lib \
                 --enable-shared \
                 --disable-static \
-                --disable-allstatic
+                --disable-allstatic \
+                --disable-all-pic
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
-        make
+        make strip
         make DESTDIR=$SCER/$name/sac \
                 install
 }

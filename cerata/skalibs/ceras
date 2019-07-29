@@ -11,17 +11,18 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
-                --prefix=/usr \
                 --target=$TUPL \
                 --host=$TUPL \
                 --build=$TUPL \
+                --prefix=/usr \
                 --disable-static \
+                --disable-all-pic \
                 --disable-ipv6 \
                 --enable-clock
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
-        make
+        make strip
         make DESTDIR=$SCER/$name/sac \
                 install
 }
