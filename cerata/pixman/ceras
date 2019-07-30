@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://anon$version.freedesktop.org/$version/$name
-cyst=musl
+cysts='musl zlib libpng'
 description='A low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization'
 license=MIT
 build(){
@@ -13,7 +13,15 @@ build(){
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL 
+                --target=$TUPL \
+                --disable-static \
+                --disable-loongson-mmi \
+                --disable-arm-simd \
+                --disable-arm-neon \
+                --disable-arm-iwmmxt \
+                --disable-arm-iwmmxt2 \
+                --disable-mips-dspr2 \
+                --disable-gtk
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

@@ -1,25 +1,20 @@
-name=libffi
+name=json-c
 version=git
 release=1
 arch=x86_64
-url=https://github.com/$name/$name
+url=https://github.com/json-c/json-c
 cyst=musl
-description='A portable foreign-function interface library'
+description='A JSON implementation in C'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./autogen.sh
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $SSRC/$name/configure \
+        ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static
-        sed -e 's/\/\.\.\/lib64//' \
-                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

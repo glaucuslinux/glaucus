@@ -4,14 +4,18 @@ release=1
 arch=x86_64
 url=https://anon$git.freedesktop.org/$git/$name
 cysts='musl zlib libpng pixman'
-description=''
-license=
+description='A 2D graphics library with support for multiple output devices'
+license='LGPLv2.1 MPLv1.1'
 build(){
-        ./configure \
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        CPPFLAGS="-I$GLAD/usr/include" \
+        ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL
+                --target=$TUPL \
+                --disable-static
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

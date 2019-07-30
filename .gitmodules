@@ -37,6 +37,9 @@
 [submodule "cerata/jemalloc/jemalloc"]
 	path = cerata/jemalloc/jemalloc
 	url = https://github.com/jemalloc/jemalloc
+[submodule "cerata/json-c/json-c"]
+	path = cerata/json-c/json-c
+	url = https://github.com/json-c/json-c
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
@@ -133,6 +136,12 @@
 [submodule "cerata/svc/svc"]
 	path = cerata/svc/svc
 	url = git://r-36.net/svc
+[submodule "cerata/sway/sway"]
+	path = cerata/sway/sway
+	url = https://github.com/swaywm/sway
+[submodule "cerata/swaybg/swaybg"]
+	path = cerata/swaybg/swaybg
+	url = https://github.com/swaywm/swaybg
 [submodule "cerata/ubase/ubase"]
 	path = cerata/ubase/ubase
 	url = https://git.suckless.org/ubase

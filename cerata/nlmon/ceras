@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=$version://r-36.net/$name
+cyst=musl
 description='Replaces udevadm for monitoring network devices'
 cluster=core
 license=MIT

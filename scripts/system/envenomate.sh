@@ -13,20 +13,20 @@ envenomate(){
 }
 envenomate musl
 envenomate mawk byacc mawk
-envenomate sbase ubase lobase
-envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash loksh
-envenomate e2fsprogs
-envenomate linux
-envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate sbase ubase lobase
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash loksh
+#envenomate e2fsprogs
+#envenomate linux
+#envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
-envenomate xz zlib libarchive
+envenomate zlib #xz zlib libarchive
 #envenomate pcre2 less mandoc vim
 #envenomate file iproute2 opendoas libressl
 #envenomate expat libffi wayland wayland-protocols
 #envenomate jemalloc
 #envenomate bin86 lilo
 #envenomate s6-portable-utils s6-linux-utils
-envenomate libpng pixman cairo
+envenomate libpng pixman json-c cairo

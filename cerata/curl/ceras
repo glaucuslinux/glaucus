@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://github.com/$name/$name
+cyst=musl
 description='A command line tool and library for transferring data with URLs'
 license=MIT
 build(){

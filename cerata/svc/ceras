@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=$version://r-36.net/$name
+cyst=musl
 description='Simple service scripts and examples, to be used everywhere'
 license=MIT
 build(){

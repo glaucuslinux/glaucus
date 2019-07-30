@@ -24,13 +24,17 @@ checksum=$(echo $(sha512sum /home/glaucus/cerata/$1/$(basename $3)) | awk '{prin
 EOF
                 ;;
 esac
-cat >> /home/glaucus/cerata/$1/ceras << EOF
+cat >> /home/glaucus/cerata/$1/ceras << 'EOF'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./configure
+        ./configure \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
         make
         make DESTDIR=$SCER/$name/sac \
-                install
+                install-strip
 }
 EOF

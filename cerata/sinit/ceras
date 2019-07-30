@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://$version.suckless.org/$name
+cyst=musl
 description='Suckless init'
 license=MIT
 build(){

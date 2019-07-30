@@ -1,25 +1,19 @@
-name=libffi
+name=sway
 version=git
 release=1
 arch=x86_64
-url=https://github.com/$name/$name
-cyst=musl
-description='A portable foreign-function interface library'
+url=https://github.com/swaywm/sway
+cysts='musl zlib libpng pixman cairo expat libffi wayland-protocols wayland json-c'
+description='An i3-compatible Wayland compositor'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./autogen.sh
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $SSRC/$name/configure \
+        ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static
-        sed -e 's/\/\.\.\/lib64//' \
-                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=$version://$version.2f30.org/$name
+cyst=musl
 description='Simple DHCP client'
 license=MIT
 build(){
