@@ -1,6 +1,9 @@
 [submodule "cerata/binutils/binutils-gdb"]
 	path = cerata/binutils/binutils-gdb
 	url = https://sourceware.org/git/binutils-gdb.git
+[submodule "cerata/cairo/cairo"]
+	path = cerata/cairo/cairo
+	url = https://anongit.freedesktop.org/git/cairo
 [submodule "cerata/cloog/cloog"]
 	path = cerata/cloog/cloog
 	url = https://repo.or.cz/cloog
@@ -40,6 +43,9 @@
 [submodule "cerata/libffi/libffi"]
 	path = cerata/libffi/libffi
 	url = https://github.com/libffi/libffi
+[submodule "cerata/libpng/libpng"]
+	path = cerata/libpng/libpng
+	url = https://github.com/glennrp/libpng
 [submodule "cerata/libressl/openbsd"]
 	path = cerata/libressl/openbsd
 	url = https://github.com/libressl-portable/openbsd
@@ -85,6 +91,9 @@
 [submodule "cerata/openscop/openscop"]
 	path = cerata/openscop/openscop
 	url = https://github.com/periscop/openscop
+[submodule "cerata/pixman/pixman"]
+	path = cerata/pixman/pixman
+	url = https://anongit.freedesktop.org/git/pixman
 [submodule "cerata/procps/procps"]
 	path = cerata/procps/procps
 	url = https://gitlab.com/procps-ng/procps

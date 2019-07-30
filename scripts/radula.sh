@@ -6,6 +6,7 @@ version=$2
 release=1
 arch=x86_64
 url=$3
+cysts=
 description=''
 license=
 EOF
@@ -25,6 +26,11 @@ EOF
 esac
 cat >> /home/glaucus/cerata/$1/ceras << EOF
 build(){
-        :
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./configure
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install
 }
 EOF

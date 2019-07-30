@@ -1,0 +1,20 @@
+name=pixman
+version=git
+release=1
+arch=x86_64
+url=https://anon$version.freedesktop.org/$version/$name
+cyst=musl
+description='A low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL 
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

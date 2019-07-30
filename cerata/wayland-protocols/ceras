@@ -3,6 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/wayland/$name
+cyst=musl
 description='Wayland protocols that add functionality not available in the Wayland core protocol'
 license=MIT
 build(){
