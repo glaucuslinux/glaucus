@@ -15,7 +15,11 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static
+                --disable-static \
+                --disable-xlib \
+                --disable-xcb \
+                --disable-ft \
+                --disable-gobject
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
