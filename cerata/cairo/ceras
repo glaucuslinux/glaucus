@@ -20,6 +20,8 @@ build(){
                 --disable-xcb \
                 --disable-ft \
                 --disable-gobject
+        sed '/test programs/,+1d' \
+                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
