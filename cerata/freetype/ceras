@@ -1,11 +1,11 @@
-name=sway
+name=freetype
 version=git
 release=1
 arch=x86_64
-url=https://github.com/swaywm/sway
-cysts='musl zlib libpng pixman cairo pango expat libffi wayland-protocols wayland json-c'
-description='An i3-compatible Wayland compositor'
-license=MIT
+url=https://git.sv.nongnu.org/r/freetype/freetype2
+cysts=
+description=''
+license=
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -13,7 +13,7 @@ build(){
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL \
+                --target=$TUPL
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

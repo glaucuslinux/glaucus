@@ -20,7 +20,7 @@ build(){
                 --disable-xcb \
                 --disable-ft \
                 --disable-gobject
-        sed '/test programs/,+1d' \
+        sed '/am__append_1 /s/test //' \
                 -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \

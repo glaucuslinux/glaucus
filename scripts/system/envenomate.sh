@@ -29,4 +29,4 @@ envenomate zlib #xz zlib libarchive
 #envenomate jemalloc
 #envenomate bin86 lilo
 #envenomate s6-portable-utils s6-linux-utils
-envenomate libpng pixman json-c cairo
+envenomate libpng pixman json-c cairo pango

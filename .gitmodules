@@ -28,6 +28,9 @@
 [submodule "cerata/file/file"]
 	path = cerata/file/file
 	url = https://github.com/file/file
+[submodule "cerata/freetype/freetype2"]
+	path = cerata/freetype/freetype2
+	url = https://git.sv.nongnu.org/r/freetype/freetype2
 [submodule "cerata/iproute2/iproute2"]
 	path = cerata/iproute2/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
@@ -94,6 +97,9 @@
 [submodule "cerata/openscop/openscop"]
 	path = cerata/openscop/openscop
 	url = https://github.com/periscop/openscop
+[submodule "cerata/pango/pango"]
+	path = cerata/pango/pango
+	url = https://gitlab.gnome.org/GNOME/pango
 [submodule "cerata/pixman/pixman"]
 	path = cerata/pixman/pixman
 	url = https://anongit.freedesktop.org/git/pixman
