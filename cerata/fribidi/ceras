@@ -1,0 +1,21 @@
+name=fribidi
+version=git
+release=1
+arch=x86_64
+url=https://github.com/fribidi/fribidi
+cyst=musl
+description='The Free Implementation of the Unicode Bidirectional Algorithm'
+license='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-deprecated
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.gnome.org/GNOME/$name
-cysts='musl zlib libpng pixman cairo'
+cysts='musl fribidi zlib libpng pixman cairo'
 description='A library for layout and rendering of text, with an emphasis on internationalization'
 license='LGPLv2+'
 build(){

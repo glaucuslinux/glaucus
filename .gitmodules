@@ -31,6 +31,12 @@
 [submodule "cerata/freetype/freetype2"]
 	path = cerata/freetype/freetype2
 	url = https://git.sv.nongnu.org/r/freetype/freetype2
+[submodule "cerata/fribidi/fribidi"]
+	path = cerata/fribidi/fribidi
+	url = https://github.com/fribidi/fribidi
+[submodule "cerata/glib/glib"]
+	path = cerata/glib/glib
+	url = https://gitlab.gnome.org/GNOME/glib
 [submodule "cerata/iproute2/iproute2"]
 	path = cerata/iproute2/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
