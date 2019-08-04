@@ -1,0 +1,20 @@
+name=python
+version=git
+release=1
+arch=x86_64
+url=https://github.com/$name/c$name
+cyst=musl
+description=''
+license=
+build(){
+        rsync -vah $CERD/$name/c$name/ $SSRC/$name --delete
+        cd $SSRC/$name
+        ./configure \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

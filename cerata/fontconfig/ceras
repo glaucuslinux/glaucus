@@ -1,11 +1,11 @@
-name=fribidi
+name=fontconfig
 version=git
 release=1
 arch=x86_64
-url=https://github.com/$name/$name
-cyst=musl
-description='The Free Implementation of the Unicode Bidirectional Algorithm'
-license='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
+url=https://gitlab.freedesktop.org/$name/$name
+cysts='musl freetype'
+description='Font configuration and customization library'
+license='GPLv3+ HPND MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -14,7 +14,8 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-deprecated
+                --disable-nls \
+                --disable-docs
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

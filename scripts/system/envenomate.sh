@@ -22,11 +22,15 @@ envenomate mawk byacc mawk
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
-envenomate zlib #xz zlib libarchive
+#envenomate zlib #xz zlib libarchive
 #envenomate pcre2 less mandoc vim
 #envenomate file iproute2 opendoas libressl
 #envenomate expat libffi wayland wayland-protocols
 #envenomate jemalloc
 #envenomate bin86 lilo
 #envenomate s6-portable-utils s6-linux-utils
-envenomate fribidi libpng pixman json-c cairo pango
+
+#envenomate fribidi glib libpng pixman json-c cairo pango
+#envenomate zlib glib
+envenomate harfbuzz
+envenomate python

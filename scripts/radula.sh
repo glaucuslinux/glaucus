@@ -12,13 +12,13 @@ license=
 EOF
 case $2 in
         git)
-                git clone $3 /home/glaucus/cerata/$1/$1
+                torify git clone $3 /home/glaucus/cerata/$1/$1
                 ;;
         svn)
-                svn co $3 /home/glaucus/cerata/$1/$1
+                torify svn co $3 /home/glaucus/cerata/$1/$1
                 ;;
         *)
-                curl $3 -o /home/glaucus/cerata/$1
+                torify curl $3 -o /home/glaucus/cerata/$1
 cat >> /home/glaucus/cerata/$1/ceras << EOF
 checksum=$(echo $(sha512sum /home/glaucus/cerata/$1/$(basename $3)) | awk '{print $1}')
 EOF

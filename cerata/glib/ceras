@@ -2,19 +2,27 @@ name=glib
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.gnome.org/GNOME/glib
-cysts=
-description=''
-license=
+url=https://gitlab.gnome.org/GNOME/$name
+cysts='musl mawk zlib pcre2'
+description='The low-level core library that forms the basis for projects such as GTK+ and GNOME'
+license=LGPLv2.1+
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./configure \
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        meson \
                 --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+                -Dbuild=$TUPL \
+                -Dhost=$TUPL \
+                -Dtarget=$TUPL \
+                -Dselinux=disabled \
+                -Dxattr=false \
+                -Dlibmount=false \
+                -Dinternal_pcre=true \
+                -Dbsymbolic_functions=false \
+                -Dnls=disabled \
+                build
+        DESTDIR=$SCER/$name/sac \
+                ninja \
+                -C build
 }

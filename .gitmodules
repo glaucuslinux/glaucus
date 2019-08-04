@@ -28,6 +28,9 @@
 [submodule "cerata/file/file"]
 	path = cerata/file/file
 	url = https://github.com/file/file
+[submodule "cerata/fontconfig/fontconfig"]
+	path = cerata/fontconfig/fontconfig
+	url = https://gitlab.freedesktop.org/fontconfig/fontconfig
 [submodule "cerata/freetype/freetype2"]
 	path = cerata/freetype/freetype2
 	url = https://git.sv.nongnu.org/r/freetype/freetype2
@@ -37,6 +40,9 @@
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib
+[submodule "cerata/harfbuzz/harfbuzz"]
+	path = cerata/harfbuzz/harfbuzz
+	url = https://github.com/harfbuzz/harfbuzz
 [submodule "cerata/iproute2/iproute2"]
 	path = cerata/iproute2/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
@@ -112,6 +118,9 @@
 [submodule "cerata/procps/procps"]
 	path = cerata/procps/procps
 	url = https://gitlab.com/procps-ng/procps
+[submodule "cerata/python/cpython"]
+	path = cerata/python/cpython
+	url = https://github.com/python/cpython
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c

@@ -1,11 +1,11 @@
-name=fribidi
+name=harfbuzz
 version=git
 release=1
 arch=x86_64
 url=https://github.com/$name/$name
 cyst=musl
-description='The Free Implementation of the Unicode Bidirectional Algorithm'
-license='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
+description='A text shaping engine'
+license='Apachev2.0 GPLv2+ GPLv3+ ISC MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -14,7 +14,7 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-deprecated
+                --disable-gtk-doc-html
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
