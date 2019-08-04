@@ -33,4 +33,4 @@ envenomate mawk byacc mawk
 #envenomate fribidi glib libpng pixman json-c cairo pango
 #envenomate zlib glib
 envenomate harfbuzz
-envenomate python
+#envenomate python

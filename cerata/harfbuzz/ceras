@@ -5,7 +5,7 @@ arch=x86_64
 url=https://github.com/$name/$name
 cyst=musl
 description='A text shaping engine'
-license='Apachev2.0 GPLv2+ GPLv3+ ISC MIT'
+license='Apachev2.0 GPLv2+ GPLv3+ ICU ISC MIT OFLv1.1'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -14,7 +14,12 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-gtk-doc-html
+                --disable-gtk-doc-html \
+                --without-glib \
+                --without-cairo \
+                --without-fontconfig \
+                --without-icu \
+                --without-freetype
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
