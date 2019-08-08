@@ -1,19 +1,22 @@
-name=sway
+name=libthai
 version=git
 release=1
 arch=x86_64
-url=https://github.com/swaywm/sway
-cysts='musl zlib libpng pixman cairo pango json-c libelf-compat glib fribidi freetype harfbuzz fontconfig expat libffi wayland-protocols wayland'
-description='An i3-compatible Wayland compositor'
-license=MIT
+url=https://github.com/tlwg/$name
+cysts='musl libdatrie'
+description="A set of Thai language support routines aimed to ease developers' tasks to incorporate Thai language support in their applications"
+license=LGPLv2.1+
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        ./autogen.sh
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
+                --disable-static
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

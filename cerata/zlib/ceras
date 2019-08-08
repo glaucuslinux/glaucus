@@ -5,7 +5,7 @@ arch=x86-64
 url=https://github.com/madler/$name
 cyst=musl
 description='A Massively Spiffy Yet Delicately Unobtrusive Compression Library'
-license='BSLv1.0 ZLIB'
+license='BSLv1.0 zlib'
 build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name

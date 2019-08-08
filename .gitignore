@@ -8,6 +8,8 @@
 .vim/
 .viminfo
 .wget-hsts
+cerata/argp-standalone/argp-standalone/
+cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
 cerata/bin86/bin86/
 cerata/bin86/bin86-0.16.21.tar.gz
 cerata/byacc/byacc/
@@ -21,6 +23,7 @@ cerata/lilo/lilo-24.2.tar.gz
 cerata/mandoc/mandoc/
 cerata/mandoc/mandoc-1.14.5.tar.gz
 cerata/mpfr/trunk/
+cerata/pcre/trunk/
 cerata/pcre2/trunk/
 glaucus.img
 logs/

@@ -1,22 +1,21 @@
-name=fontconfig
+name=libdatrie
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/$name/$name
-cysts='musl expat freetype'
-description='Font configuration and customization library'
-license='GPLv3+ HPND MIT'
+url=https://github.com/tlwg/$name
+cyst=musl
+description='An implementation of double-array structure for representing trie, as proposed by Junichi Aoe'
+license=LGPLv2.1+
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./autogen.sh \
+        ./autogen.sh
+        ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-nls \
-                --disable-docs \
-                --with-expat=$GLAD/usr
+                --disable-static
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

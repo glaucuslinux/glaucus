@@ -1,13 +1,25 @@
 name=elfutils
 version=git
 release=1
-arch=x86-64
+arch=x86_64
 url=https://sourceware.org/$version/$name.$version
+cyst=musl
 description='A collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux'
-license='GPLv2+ GPLv3+ LGPLv3+'
-build_toolchain(){
-        :
-}
+license=GPLv3
 build(){
-        :
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        autoreconf -vfi
+        ./configure \
+                --prefix=/usr \
+                --program-prefix=eu- \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-symbol-versioning \
+                --disable-werror \
+                --disable-nls
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
 }

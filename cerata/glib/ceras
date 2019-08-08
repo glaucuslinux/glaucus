@@ -3,26 +3,24 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.gnome.org/GNOME/$name
-cysts='musl mawk zlib pcre2'
+cysts='musl mawk libelf-compat zlib pcre'
 description='The low-level core library that forms the basis for projects such as GTK+ and GNOME'
 license=LGPLv2.1+
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        mkdir -v $SBLD/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
+        LD_LIBRARY_PATH="$GLAD/usr/lib" \
         meson \
                 --prefix=/usr \
-                -Dbuild=$TUPL \
-                -Dhost=$TUPL \
-                -Dtarget=$TUPL \
-                -Dselinux=disabled \
-                -Dxattr=false \
                 -Dlibmount=false \
-                -Dinternal_pcre=true \
-                -Dbsymbolic_functions=false \
-                -Dnls=disabled \
-                build
+                $SBLD/$name
+        LD_LIBRARY_PATH="$GLAD/usr/lib" \
+        ninja \
+                -C $SBLD/$name
         DESTDIR=$SCER/$name/sac \
-                ninja \
-                -C build
+        ninja \
+                -C $SBLD/$name install
 }

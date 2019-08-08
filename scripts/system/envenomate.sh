@@ -3,12 +3,12 @@ envenomate(){
         for item in $@
         do
                 install -dv $SCER/$item/sac $SCER/$item/venom
-                . $CERD/$item/ceras
+                . $CERD/$(echo $item | sed s/_.//)/ceras
                 build
                 cd $SCER/$item/sac
                 sudo sha512sum $(sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
-                tar xvf $SCER/$name/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
-                rsync -vah $SCER/$name/venom $GLAD/usr/cerata/$name --delete
+                tar xvf $SCER/$item/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
+                rsync -vah $SCER/$item/venom $GLAD/usr/cerata/$name --delete
         done
 }
 envenomate musl
@@ -22,7 +22,7 @@ envenomate mawk byacc mawk
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
-#envenomate zlib #xz zlib libarchive
+#envenomate xz zlib libarchive
 #envenomate pcre2 less mandoc vim
 #envenomate file iproute2 opendoas libressl
 #envenomate expat libffi wayland wayland-protocols
@@ -31,6 +31,9 @@ envenomate mawk byacc mawk
 #envenomate s6-portable-utils s6-linux-utils
 
 #envenomate fribidi glib libpng pixman json-c cairo pango
-#envenomate zlib glib
-envenomate harfbuzz
+#envenomate expat freetype_1 harfbuzz freetype_2 fontconfig fribidi libelf-compat pcre zlib glib libpng pixman json-c cairo pango
+#envenomate libelf-compat pcre zlib glib
+#envenomate expat freetype_1 harfbuzz freetype_2 fontconfig
 #envenomate python
+
+envenomate expat freetype_1 harfbuzz freetype_2 fontconfig libdatrie libthai pango

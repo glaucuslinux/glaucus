@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://github.com/$name/$name
-cyst=musl
+cysts='musl freetype'
 description='A text shaping engine'
 license='Apachev2.0 GPLv2+ GPLv3+ ICU ISC MIT OFLv1.1'
 build(){
@@ -18,8 +18,7 @@ build(){
                 --without-glib \
                 --without-cairo \
                 --without-fontconfig \
-                --without-icu \
-                --without-freetype
+                --without-icu
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

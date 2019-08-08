@@ -58,6 +58,12 @@
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
+[submodule "cerata/libdatrie/libdatrie"]
+	path = cerata/libdatrie/libdatrie
+	url = https://github.com/tlwg/libdatrie
+[submodule "cerata/libelf-compat/libelf-compat"]
+	path = cerata/libelf-compat/libelf-compat
+	url = https://github.com/sabotage-linux/libelf-compat
 [submodule "cerata/libffi/libffi"]
 	path = cerata/libffi/libffi
 	url = https://github.com/libffi/libffi
@@ -70,6 +76,9 @@
 [submodule "cerata/libressl/portable"]
 	path = cerata/libressl/portable
 	url = https://github.com/libressl-portable/portable
+[submodule "cerata/libthai/libthai"]
+	path = cerata/libthai/libthai
+	url = https://github.com/tlwg/libthai
 [submodule "cerata/linux/linux"]
 	path = cerata/linux/linux
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux

@@ -1,0 +1,24 @@
+name=argp-standalone
+version=1.4-test2
+release=1
+arch=x86_64
+url=http://www.lysator.liu.se/~nisse/misc/argp-standalone-1.4-test2.tar.gz
+cyst=musl
+description='Standalone version of arguments parsing functions from GLIBC for use with musl'
+license='GPLv2+ GPLv3+ PD XC'
+checksum=ea8f9823e62530c941702b4310a727abe234476d17b921bc0eef79fbc067995f4132a9309391ae412ecfc6d370437ffd3990bd8dac1d00ee5ff6a1588f32afd1
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        patch -p1 -i $CERD/$name/patches/$name.patch
+        sed 's/#ifdef __OPTIMIZE__/#if 0/g' \
+                -i argp-fmtstream.h
+        ./configure \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}
