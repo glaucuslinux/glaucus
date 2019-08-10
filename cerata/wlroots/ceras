@@ -1,13 +1,13 @@
-name=python
+name=wlroots
 version=git
 release=1
 arch=x86_64
-url=https://github.com/$name/c$name
-cysts='musl expat libffi'
-description='The Python programming language'
-license=
+url=https://github.com/swaywm/$name
+cysts='musl expat libffi wayland-protocols wayland zlib libpng'
+description='A modular Wayland compositor library'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/c$name/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         ./configure \
                 --prefix=/usr \

@@ -7,7 +7,7 @@ version=$2
 release=1
 arch=x86_64
 url=$3
-cysts=
+cyst=musl
 description=''
 license=
 EOF

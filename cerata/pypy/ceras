@@ -1,0 +1,13 @@
+name=pypy
+version=hg
+release=1
+arch=x86_64
+url=https://bitbucket.org/$name/$name
+cyst=musl
+description='A very fast and compliant implementation of the Python language'
+license='Apachev2.0 MIT Pythonv2.0 TCL'
+build(){
+        #pypy requires a special build method using a prebuilt python/pypy
+        #and takes a lot of time/resources...
+        #no clues evident that it won't work with -Ofast like python on gentoo
+}

@@ -32,5 +32,4 @@ build(){
         make strip
         make DESTDIR=$SCER/$name/sac \
                 install
-        rm -frv $SCER/$name/sac/etc
 }

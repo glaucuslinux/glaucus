@@ -15,9 +15,6 @@ build(){
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-gtk-doc-html \
-                --without-glib \
-                --without-cairo \
-                --without-fontconfig \
                 --without-icu
         make
         make DESTDIR=$SCER/$name/sac \

@@ -12,25 +12,23 @@ build(){
         ./autogen.sh
         case $item in
                 freetype_1)
+                        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
                         ./configure \
                                 --prefix=/usr \
                                 --build=$TUPL \
                                 --host=$TUPL \
                                 --target=$TUPL \
                                 --disable-static \
-                                --without-zlib \
-                                --without-png \
                                 --without-harfbuzz
                         ;;
                 freetype_2)
+                        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
                         ./configure \
                                 --prefix=/usr \
                                 --build=$TUPL \
                                 --host=$TUPL \
                                 --target=$TUPL \
-                                --disable-static \
-                                --without-zlib \
-                                --without-png
+                                --disable-static
                         ;;
         esac
         make

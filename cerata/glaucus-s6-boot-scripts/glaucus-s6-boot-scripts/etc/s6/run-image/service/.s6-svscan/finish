@@ -1,12 +1,4 @@
 #!/usr/bin/execlineb -P
-cd /
 redirfd -w 1 /dev/console
 fdmove -c 2 1
-if { stty onlcr }
-if { s6-svc -X /run/service/log }
-if { killall5 -s TERM }
-if { killall5 -s KILL }
-if { mount -o remount,ro / }
-if { umount -a }
-if { sync }
 s6-linux-init-hpr -fr

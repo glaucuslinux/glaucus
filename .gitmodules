@@ -190,6 +190,9 @@
 [submodule "cerata/weston/weston"]
 	path = cerata/weston/weston
 	url = https://gitlab.freedesktop.org/wayland/weston
+[submodule "cerata/wlroots/wlroots"]
+	path = cerata/wlroots/wlroots
+	url = https://github.com/swaywm/wlroots
 [submodule "cerata/xz/xz"]
 	path = cerata/xz/xz
 	url = https://git.tukaani.org/xz.git

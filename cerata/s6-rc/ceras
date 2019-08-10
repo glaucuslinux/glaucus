@@ -16,7 +16,6 @@ build(){
                 --build=$TUPL \
                 --prefix=/usr \
                 --libexecdir=/usr/lib/libexec \
-                --livedir=/run/live \
                 --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
                 --with-include=$GLAD/usr/include \
                 --with-dynlib=$GLAD/usr/lib \

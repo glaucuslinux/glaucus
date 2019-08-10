@@ -8,8 +8,6 @@ description='s6 boot scripts for glaucus'
 cluster=core
 license=ISC
 build(){
-        install -dv $SCER/$name/sac/etc $SCER/$name/sac/usr
-        rsync -vah $CERD/$name/$name/etc/s6 $SCER/$name/sac/etc --delete
-        rsync -vah $CERD/$name/$name/usr/bin $SCER/$name/sac/usr --delete
+        rsync -vah $CERD/$name/$name/ $SCER/$name/sac --delete
         LD_LIBRARY_PATH=$GLAD/usr/lib $GLAD/usr/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled $SCER/$name/sac/etc/s6/source
 }

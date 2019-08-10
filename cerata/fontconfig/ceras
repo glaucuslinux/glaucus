@@ -9,6 +9,12 @@ license='GPLv3+ HPND MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -Wl,-rpath,$GLAD/usr/lib" \
+        JSONC_CFLAGS="-I$GLAD/usr/include" \
+        JSONC_LIBS="-L$GLAD/usr/lib -ljson-c -Wl,-rpath,$GLAD/usr/lib" \
+        FREETYPE_CFLAGS="-I$GLAD/usr/include/freetype2" \
+        FREETYPE_LIBS="-L$GLAD/usr/lib -lfreetype -Wl,-rpath,$GLAD/usr/lib" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
