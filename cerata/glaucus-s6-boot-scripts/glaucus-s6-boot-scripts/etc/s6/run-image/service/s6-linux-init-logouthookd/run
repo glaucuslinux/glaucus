@@ -1,3 +1,3 @@
 #!/usr/bin/execlineb -P
-s6-ipcserver -1c 1000 -C 1000 -a 0700 s
+s6-ipcserver -1 -a 0700 s
 s6-linux-init-logouthookd

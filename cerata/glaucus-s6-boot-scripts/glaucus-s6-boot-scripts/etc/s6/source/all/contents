@@ -11,4 +11,3 @@ hwclock
 compat
 urandom
 btmp
-tty
