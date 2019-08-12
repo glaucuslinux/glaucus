@@ -175,6 +175,9 @@
 [submodule "cerata/ubase/ubase"]
 	path = cerata/ubase/ubase
 	url = https://git.suckless.org/ubase
+[submodule "cerata/util-macros/macros"]
+	path = cerata/util-macros/macros
+	url = https://gitlab.freedesktop.org/xorg/util/macros
 [submodule "cerata/utmps/utmps"]
 	path = cerata/utmps/utmps
 	url = https://skarnet.org/cgi-bin/cgit.cgi/utmps
@@ -193,6 +196,9 @@
 [submodule "cerata/wlroots/wlroots"]
 	path = cerata/wlroots/wlroots
 	url = https://github.com/swaywm/wlroots
+[submodule "cerata/xorgproto/xorgproto"]
+	path = cerata/xorgproto/xorgproto
+	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
 [submodule "cerata/xz/xz"]
 	path = cerata/xz/xz
 	url = https://git.tukaani.org/xz.git
