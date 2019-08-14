@@ -55,6 +55,24 @@
 [submodule "cerata/json-c/json-c"]
 	path = cerata/json-c/json-c
 	url = https://github.com/json-c/json-c
+[submodule "cerata/libFS/libfs"]
+	path = cerata/libFS/libfs
+	url = https://gitlab.freedesktop.org/xorg/lib/libfs
+[submodule "cerata/libICE/libice"]
+	path = cerata/libICE/libice
+	url = https://gitlab.freedesktop.org/xorg/lib/libice
+[submodule "cerata/libX11/libx11"]
+	path = cerata/libX11/libx11
+	url = https://gitlab.freedesktop.org/xorg/lib/libx11
+[submodule "cerata/libXau/libxau"]
+	path = cerata/libXau/libxau
+	url = https://gitlab.freedesktop.org/xorg/lib/libxau
+[submodule "cerata/libXdmcp/libxdmcp"]
+	path = cerata/libXdmcp/libxdmcp
+	url = https://gitlab.freedesktop.org/xorg/lib/libxdmcp
+[submodule "cerata/libXext/libxext"]
+	path = cerata/libXext/libxext
+	url = https://gitlab.freedesktop.org/xorg/lib/libxext
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
@@ -79,6 +97,12 @@
 [submodule "cerata/libthai/libthai"]
 	path = cerata/libthai/libthai
 	url = https://github.com/tlwg/libthai
+[submodule "cerata/libxcb/libxcb"]
+	path = cerata/libxcb/libxcb
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb
+[submodule "cerata/libxtrans/libxtrans"]
+	path = cerata/libxtrans/libxtrans
+	url = https://gitlab.freedesktop.org/xorg/lib/libxtrans
 [submodule "cerata/linux/linux"]
 	path = cerata/linux/linux
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
@@ -196,6 +220,9 @@
 [submodule "cerata/wlroots/wlroots"]
 	path = cerata/wlroots/wlroots
 	url = https://github.com/swaywm/wlroots
+[submodule "cerata/xcbproto/xcbproto"]
+	path = cerata/xcbproto/xcbproto
+	url = https://gitlab.freedesktop.org/xorg/proto/xcbproto
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto

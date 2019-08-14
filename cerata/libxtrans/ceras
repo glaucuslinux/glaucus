@@ -1,11 +1,11 @@
-name=xorgproto
+name=libxtrans
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/proto/$name
+url=https://gitlab.freedesktop.org/xorg/lib/$name
 cysts='musl util-macros'
-description='X Window System unified protocol definitions'
-license='BSDv2 HPND ICU MIT MIT-feh MIT-Open-Group SGI-Bv2.0 X11'
+description='X Window System Protocols Transport layer shared code'
+license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -14,7 +14,7 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-specs \
+                --disable-docs \
                 --without-xmlto \
                 --without-fop \
                 --without-xsltproc

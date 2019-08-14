@@ -1,19 +1,22 @@
-name=xorgproto
+name=libXext
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/proto/$name
-cysts='musl util-macros'
-description='X Window System unified protocol definitions'
-license='BSDv2 HPND ICU MIT MIT-feh MIT-Open-Group SGI-Bv2.0 X11'
+url=https://gitlab.freedesktop.org/xorg/lib/libxext
+cysts='musl libX11'
+description='Xlib-based library for common extensions to the X11 protocol'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/libxext/ $SSRC/$name --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        LDFLAGS="$LDFLAGS -I$GLAD/usr/lib" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
+                --disable-static \
                 --disable-specs \
                 --without-xmlto \
                 --without-fop \

@@ -1,0 +1,28 @@
+name=libxcb
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/$name
+cysts='musl util-macros xorgproto libXau xcb-proto libXdmcp'
+description='C interface to the X Window System protocol, which replaces the traditional Xlib interface'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        sed 's/pthread-stubs //' \
+                -i configure.ac
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static \
+                --disable-devel-docs \
+                --enable-dri3 \
+                --without-doxygen \
+                --without-launchd
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

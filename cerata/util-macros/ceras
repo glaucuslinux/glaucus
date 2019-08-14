@@ -7,7 +7,7 @@ cyst=musl
 description='GNU autoconf macros shared across X.Org projects'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/macros/ $SSRC/$name --delete
         cd $SSRC/$name
         ./autogen.sh \
                 --prefix=/usr \

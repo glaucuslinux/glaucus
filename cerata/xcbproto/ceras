@@ -1,11 +1,11 @@
-name=xorgproto
+name=xcbproto
 version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/proto/$name
-cysts='musl util-macros'
-description='X Window System unified protocol definitions'
-license='BSDv2 HPND ICU MIT MIT-feh MIT-Open-Group SGI-Bv2.0 X11'
+cyst=musl
+description='XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions'
+license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -13,11 +13,7 @@ build(){
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL \
-                --disable-specs \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc
+                --target=$TUPL
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

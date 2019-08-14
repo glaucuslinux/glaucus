@@ -1,0 +1,22 @@
+name=libFS
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/libfs
+cysts='musl util-macros xorgproto libxtrans'
+description='X Font Service client library'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/libfs/ $SSRC/$name --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static \
+                --disable-ipv6
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

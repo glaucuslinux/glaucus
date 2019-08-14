@@ -1,0 +1,22 @@
+name=libXau
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/libxau
+cysts='musl util-macros xorgproto'
+description='Functions for handling Xauthority files and entries'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/libxau/ $SSRC/$name --delete
+        cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

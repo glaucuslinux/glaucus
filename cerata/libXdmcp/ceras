@@ -1,20 +1,23 @@
-name=xorgproto
+name=libXdmcp
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/proto/$name
-cysts='musl util-macros'
-description='X Window System unified protocol definitions'
-license='BSDv2 HPND ICU MIT MIT-feh MIT-Open-Group SGI-Bv2.0 X11'
+url=https://gitlab.freedesktop.org/xorg/lib/libxdmcp
+cysts='musl util-macros xorgproto'
+description='X Display Manager Control Protocol library'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/libxdmcp/ $SSRC/$name --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-specs \
+                --disable-static \
+                --disable-docs \
+                --disable-unit-tests \
                 --without-xmlto \
                 --without-fop \
                 --without-xsltproc

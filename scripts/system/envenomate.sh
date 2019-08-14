@@ -13,12 +13,12 @@ envenomate(){
 }
 envenomate musl
 envenomate mawk byacc mawk
-envenomate sbase ubase lobase
-envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash loksh
-envenomate e2fsprogs
-envenomate linux
-envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate sbase ubase lobase
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash loksh
+#envenomate e2fsprogs
+#envenomate linux
+#envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
@@ -37,3 +37,7 @@ envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-sc
 #envenomate python
 
 #envenomate libdatrie libthai zlib libpng pixman cairo expat freetype_1 harfbuzz freetype_2 fontconfig pango
+
+envenomate util-macros
+envenomate xorgproto libXau libXdmcp xcbproto libxcb
+envenomate libxtrans libX11 libXext libFS libICE

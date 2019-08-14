@@ -1,20 +1,23 @@
-name=xorgproto
+name=libICE
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/proto/$name
-cysts='musl util-macros'
-description='X Window System unified protocol definitions'
-license='BSDv2 HPND ICU MIT MIT-feh MIT-Open-Group SGI-Bv2.0 X11'
+url=https://gitlab.freedesktop.org/xorg/lib/libice
+cyst=musl
+description='Inter-Client Exchange Library'
+license=
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/libice $SSRC/$name --delete
         cd $SSRC/$name
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
+                --disable-static \
+                --disable-docs \
                 --disable-specs \
+                --disable-ipv6 \
                 --without-xmlto \
                 --without-fop \
                 --without-xsltproc
