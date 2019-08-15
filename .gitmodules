@@ -61,30 +61,105 @@
 [submodule "cerata/libICE/libice"]
 	path = cerata/libICE/libice
 	url = https://gitlab.freedesktop.org/xorg/lib/libice
+[submodule "cerata/libSM/libsm"]
+	path = cerata/libSM/libsm
+	url = https://gitlab.freedesktop.org/xorg/lib/libsm
 [submodule "cerata/libX11/libx11"]
 	path = cerata/libX11/libx11
 	url = https://gitlab.freedesktop.org/xorg/lib/libx11
+[submodule "cerata/libXRes/libxres"]
+	path = cerata/libXRes/libxres
+	url = https://gitlab.freedesktop.org/xorg/lib/libxres
+[submodule "cerata/libXScrnSaver/libxscrnsaver"]
+	path = cerata/libXScrnSaver/libxscrnsaver
+	url = https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver
 [submodule "cerata/libXau/libxau"]
 	path = cerata/libXau/libxau
 	url = https://gitlab.freedesktop.org/xorg/lib/libxau
+[submodule "cerata/libXaw/libxaw"]
+	path = cerata/libXaw/libxaw
+	url = https://gitlab.freedesktop.org/xorg/lib/libxaw
+[submodule "cerata/libXcomposite/libxcomposite"]
+	path = cerata/libXcomposite/libxcomposite
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcomposite
+[submodule "cerata/libXcursor/libxcursor"]
+	path = cerata/libXcursor/libxcursor
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcursor
+[submodule "cerata/libXdamage/libxdamage"]
+	path = cerata/libXdamage/libxdamage
+	url = https://gitlab.freedesktop.org/xorg/lib/libxdamage
 [submodule "cerata/libXdmcp/libxdmcp"]
 	path = cerata/libXdmcp/libxdmcp
 	url = https://gitlab.freedesktop.org/xorg/lib/libxdmcp
 [submodule "cerata/libXext/libxext"]
 	path = cerata/libXext/libxext
 	url = https://gitlab.freedesktop.org/xorg/lib/libxext
+[submodule "cerata/libXfixes/libxfixes"]
+	path = cerata/libXfixes/libxfixes
+	url = https://gitlab.freedesktop.org/xorg/lib/libxfixes
+[submodule "cerata/libXfont/libxfont"]
+	path = cerata/libXfont/libxfont
+	url = https://gitlab.freedesktop.org/xorg/lib/libxfont
+[submodule "cerata/libXft/libxft"]
+	path = cerata/libXft/libxft
+	url = https://gitlab.freedesktop.org/xorg/lib/libxft
+[submodule "cerata/libXi/libxi"]
+	path = cerata/libXi/libxi
+	url = https://gitlab.freedesktop.org/xorg/lib/libxi
+[submodule "cerata/libXinerama/libxinerama"]
+	path = cerata/libXinerama/libxinerama
+	url = https://gitlab.freedesktop.org/xorg/lib/libxinerama
+[submodule "cerata/libXmu/libxmu"]
+	path = cerata/libXmu/libxmu
+	url = https://gitlab.freedesktop.org/xorg/lib/libxmu
+[submodule "cerata/libXpm/libxpm"]
+	path = cerata/libXpm/libxpm
+	url = https://gitlab.freedesktop.org/xorg/lib/libxpm
+[submodule "cerata/libXrandr/libxrandr"]
+	path = cerata/libXrandr/libxrandr
+	url = https://gitlab.freedesktop.org/xorg/lib/libxrandr
+[submodule "cerata/libXrender/libxrender"]
+	path = cerata/libXrender/libxrender
+	url = https://gitlab.freedesktop.org/xorg/lib/libxrender
+[submodule "cerata/libXt/libxt"]
+	path = cerata/libXt/libxt
+	url = https://gitlab.freedesktop.org/xorg/lib/libxt
+[submodule "cerata/libXtst/libxtst"]
+	path = cerata/libXtst/libxtst
+	url = https://gitlab.freedesktop.org/xorg/lib/libxtst
+[submodule "cerata/libXv/libxv"]
+	path = cerata/libXv/libxv
+	url = https://gitlab.freedesktop.org/xorg/lib/libxv
+[submodule "cerata/libXvMC/libxvmc"]
+	path = cerata/libXvMC/libxvmc
+	url = https://gitlab.freedesktop.org/xorg/lib/libxvmc
+[submodule "cerata/libXxf86dga/libxxf86dga"]
+	path = cerata/libXxf86dga/libxxf86dga
+	url = https://gitlab.freedesktop.org/xorg/lib/libxxf86dga
+[submodule "cerata/libXxf86vm/libxxf86vm"]
+	path = cerata/libXxf86vm/libxxf86vm
+	url = https://gitlab.freedesktop.org/xorg/lib/libxxf86vm
 [submodule "cerata/libarchive/libarchive"]
 	path = cerata/libarchive/libarchive
 	url = https://github.com/libarchive/libarchive
 [submodule "cerata/libdatrie/libdatrie"]
 	path = cerata/libdatrie/libdatrie
 	url = https://github.com/tlwg/libdatrie
+[submodule "cerata/libdmx/libdmx"]
+	path = cerata/libdmx/libdmx
+	url = https://gitlab.freedesktop.org/xorg/lib/libdmx
 [submodule "cerata/libelf-compat/libelf-compat"]
 	path = cerata/libelf-compat/libelf-compat
 	url = https://github.com/sabotage-linux/libelf-compat
 [submodule "cerata/libffi/libffi"]
 	path = cerata/libffi/libffi
 	url = https://github.com/libffi/libffi
+[submodule "cerata/libfontenc/libfontenc"]
+	path = cerata/libfontenc/libfontenc
+	url = https://gitlab.freedesktop.org/xorg/lib/libfontenc
+[submodule "cerata/libpciaccess/libpciaccess"]
+	path = cerata/libpciaccess/libpciaccess
+	url = https://gitlab.freedesktop.org/xorg/lib/libpciaccess
 [submodule "cerata/libpng/libpng"]
 	path = cerata/libpng/libpng
 	url = https://github.com/glennrp/libpng
@@ -100,6 +175,12 @@
 [submodule "cerata/libxcb/libxcb"]
 	path = cerata/libxcb/libxcb
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcb
+[submodule "cerata/libxkbfile/libxkbfile"]
+	path = cerata/libxkbfile/libxkbfile
+	url = https://gitlab.freedesktop.org/xorg/lib/libxkbfile
+[submodule "cerata/libxshmfence/libxshmfence"]
+	path = cerata/libxshmfence/libxshmfence
+	url = https://gitlab.freedesktop.org/xorg/lib/libxshmfence
 [submodule "cerata/libxtrans/libxtrans"]
 	path = cerata/libxtrans/libxtrans
 	url = https://gitlab.freedesktop.org/xorg/lib/libxtrans

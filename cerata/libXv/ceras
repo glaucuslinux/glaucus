@@ -1,0 +1,21 @@
+name=libXv
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/libxv
+cyst=musl
+description='Xlib-based library for the X Video (Xv) extension to the X Window System'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/libxv/ $SSRC/$name --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

@@ -1,22 +1,22 @@
-name=libFS
+name=libxshmfence
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libfs
-cysts='musl util-macros xorgproto libxtrans'
-description='X Font Service client library'
+url=https://gitlab.freedesktop.org/xorg/lib/$name
+cyst=musl
+description="Shared memory 'SyncFence' synchronization primitive"
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libfs/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static \
-                --disable-ipv6
+                --disable-futex \
+                --disable-visibility
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

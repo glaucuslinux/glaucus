@@ -1,13 +1,13 @@
-name=libFS
+name=libXcursor
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libfs
-cysts='musl util-macros xorgproto libxtrans'
-description='X Font Service client library'
+url=https://gitlab.freedesktop.org/xorg/lib/libxcursor
+cyst=musl
+description='Xlib-based Cursor management library'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libfs/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxcursor/ $SSRC/$name --delete
         cd $SSRC/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
@@ -15,8 +15,7 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static \
-                --disable-ipv6
+                --disable-static
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

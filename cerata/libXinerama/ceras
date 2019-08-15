@@ -1,0 +1,21 @@
+name=libXinerama
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/libxinerama
+cyst=musl
+description='Xlib API for Xinerama extension to X11 Protocol'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/libxinerama/ $SSRC/$name --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

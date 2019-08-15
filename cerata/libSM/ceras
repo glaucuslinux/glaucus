@@ -1,13 +1,13 @@
-name=libICE
+name=libSM
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libice
-cyst=musl
-description='Inter-Client Exchange Library'
-license=
+url=https://gitlab.freedesktop.org/xorg/lib/libsm
+cysts='musl util-macros libxtrans libICE'
+description='X Session Management Library'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/libice/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libsm/ $SSRC/$name --delete
         cd $SSRC/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
@@ -17,11 +17,11 @@ build(){
                 --target=$TUPL \
                 --disable-static \
                 --disable-docs \
-                --disable-specs \
                 --disable-ipv6 \
                 --without-xmlto \
                 --without-fop \
-                --without-xsltproc
+                --without-xsltproc \
+                --without-libuuid
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

@@ -17,6 +17,7 @@ case $2 in
                         yes) torify git clone $3 ;;
                         no) git clone $3 ;;
                 esac
+                git submodule add $3
                 ;;
         hg)
                 case $4 in

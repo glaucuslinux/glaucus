@@ -1,15 +1,14 @@
-name=libICE
+name=libXi
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libice
+url=https://gitlab.freedesktop.org/xorg/lib/libxi
 cyst=musl
-description='Inter-Client Exchange Library'
-license=
+description='Xlib library for the X Input Extension'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/libice/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxi/ $SSRC/$name --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -18,10 +17,10 @@ build(){
                 --disable-static \
                 --disable-docs \
                 --disable-specs \
-                --disable-ipv6 \
                 --without-xmlto \
                 --without-fop \
-                --without-xsltproc
+                --without-xsltproc \
+                --without-asciidoc
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

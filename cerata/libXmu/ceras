@@ -1,15 +1,14 @@
-name=libICE
+name=libXmu
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libice
+url=https://gitlab.freedesktop.org/xorg/lib/libxmu
 cyst=musl
-description='Inter-Client Exchange Library'
-license=
+description='X miscellaneous utility routines library'
+license=MIT
 build(){
-        rsync -vah $CERD/$name/libice/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxmu/ $SSRC/$name --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -17,7 +16,6 @@ build(){
                 --target=$TUPL \
                 --disable-static \
                 --disable-docs \
-                --disable-specs \
                 --disable-ipv6 \
                 --without-xmlto \
                 --without-fop \

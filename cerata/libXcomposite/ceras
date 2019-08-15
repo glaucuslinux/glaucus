@@ -1,13 +1,13 @@
-name=libFS
+name=libXcomposite
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libfs
-cysts='musl util-macros xorgproto libxtrans'
-description='X Font Service client library'
+url=https://gitlab.freedesktop.org/xorg/lib/libxcomposite
+cyst=musl
+description='Xlib-based client library for the Composite extension to the X11 protocol'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libfs/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxcomposite/ $SSRC/$name --delete
         cd $SSRC/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
@@ -16,7 +16,7 @@ build(){
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static \
-                --disable-ipv6
+                --without-xmlto
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

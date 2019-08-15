@@ -1,0 +1,21 @@
+name=libXxf86dga
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.freedesktop.org/xorg/lib/libxxf86dga
+cyst=musl
+description='Xlib-based library for the XFree86-DGA extension'
+license=MIT
+build(){
+        rsync -vah $CERD/$name/libxxf86dga $SSRC/$name --delete
+        cd $SSRC/$name
+        ./autogen.sh \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL \
+                --disable-static
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

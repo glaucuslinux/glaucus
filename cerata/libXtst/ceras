@@ -1,22 +1,24 @@
-name=libFS
+name=libXtst
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libfs
-cysts='musl util-macros xorgproto libxtrans'
-description='X Font Service client library'
+url=https://gitlab.freedesktop.org/xorg/lib/libxtst
+cyst=musl
+description='Xlib-based library for XTEST & RECORD extensions'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libfs/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxtst/ $SSRC/$name --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static \
-                --disable-ipv6
+                --disable-specs \
+                --without-xmlto \
+                --without-fop \
+                --without-xsltproc
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
