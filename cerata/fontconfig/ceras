@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/$name/$name
-cysts='musl expat freetype'
+cysts='musl expat json-c freetype'
 description='Font configuration and customization library'
 license='GPLv3+ HPND MIT'
 build(){

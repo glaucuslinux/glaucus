@@ -7,8 +7,9 @@ cyst=musl
 description='Xlib-based X-Resource extension client library'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libxres $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxres/ $SSRC/$name --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

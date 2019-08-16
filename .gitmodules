@@ -175,6 +175,24 @@
 [submodule "cerata/libxcb/libxcb"]
 	path = cerata/libxcb/libxcb
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcb
+[submodule "cerata/libxcb-cursor/libxcb-cursor"]
+	path = cerata/libxcb-cursor/libxcb-cursor
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor
+[submodule "cerata/libxcb-image/libxcb-image"]
+	path = cerata/libxcb-image/libxcb-image
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-image
+[submodule "cerata/libxcb-keysyms/libxcb-keysyms"]
+	path = cerata/libxcb-keysyms/libxcb-keysyms
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms
+[submodule "cerata/libxcb-render-util/libxcb-render-util"]
+	path = cerata/libxcb-render-util/libxcb-render-util
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util
+[submodule "cerata/libxcb-util/libxcb-util"]
+	path = cerata/libxcb-util/libxcb-util
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-util
+[submodule "cerata/libxcb-wm/libxcb-wm"]
+	path = cerata/libxcb-wm/libxcb-wm
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb-wm
 [submodule "cerata/libxkbfile/libxkbfile"]
 	path = cerata/libxkbfile/libxkbfile
 	url = https://gitlab.freedesktop.org/xorg/lib/libxkbfile
@@ -196,6 +214,9 @@
 [submodule "cerata/mawk/mawk-snapshots"]
 	path = cerata/mawk/mawk-snapshots
 	url = https://github.com/ThomasDickey/mawk-snapshots
+[submodule "cerata/mesa/mesa"]
+	path = cerata/mesa/mesa
+	url = https://gitlab.freedesktop.org/mesa/mesa
 [submodule "cerata/mpc/mpc"]
 	path = cerata/mpc/mpc
 	url = https://scm.gforge.inria.fr/anonscm/git/mpc/mpc

@@ -1,8 +1,8 @@
 #!/usr/bin/dash -ex
-qemu-img create -f raw /home/glaucus/glaucus.img 128M
+qemu-img create -f raw /home/glaucus/glaucus.img 256M
 dd if=/usr/lib/syslinux/bios/mbr.bin of=/home/glaucus/glaucus.img conv=notrunc bs=440 count=1
 parted -s /home/glaucus/glaucus.img mklabel msdos
-parted -s -a none /home/glaucus/glaucus.img mkpart primary ext4 0 128M
+parted -s -a none /home/glaucus/glaucus.img mkpart primary ext4 0 256M
 parted -s -a none /home/glaucus/glaucus.img set 1 boot on
 lodev=$(losetup -f)
 losetup $lodev /home/glaucus/glaucus.img

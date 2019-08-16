@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.sv.nongnu.org/r/$name/freetype2
-cyst=musl
+cysts='musl zlib libpng'
 description='A freely available software library to render fonts'
 license='FTL GPLv2+ MIT zlib'
 build(){

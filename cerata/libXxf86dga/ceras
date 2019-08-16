@@ -7,8 +7,9 @@ cyst=musl
 description='Xlib-based library for the XFree86-DGA extension'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libxxf86dga $SSRC/$name --delete
+        rsync -vah $CERD/$name/libxxf86dga/ $SSRC/$name --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

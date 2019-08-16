@@ -1,21 +1,24 @@
-name=libXvMC
+name=libxcb-util
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/libxvmc
+url=https://gitlab.freedesktop.org/xorg/lib/$name
 cyst=musl
-description='Xlib-based X-Video Motion Compensation API'
+description='XCB utility libraries'
 license=MIT
 build(){
-        rsync -vah $CERD/$name/libxvmc/ $SSRC/$name --delete
+        rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        $version submodule update --init
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static
+                --disable-static \
+                --disable-devel-docs \
+                --without-doxygen
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

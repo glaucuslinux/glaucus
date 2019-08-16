@@ -9,6 +9,7 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/libxtst/ $SSRC/$name --delete
         cd $SSRC/$name
+        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

@@ -1,21 +1,23 @@
-name=libfontenc
+name=libxcb-image
 version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/$name
-cysts='musl zlib'
-description='X font encoding library'
+cyst=musl
+description="XCB port of Xlib's XImage and XShmImage functions"
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+        $version submodule update --init
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static
+                --disable-static \
+                --disable-devel-docs \
+                --without-doxygen
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

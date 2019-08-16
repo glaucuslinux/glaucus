@@ -1,21 +1,19 @@
-name=libfontenc
+name=mesa
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/xorg/lib/$name
-cysts='musl zlib'
-description='X font encoding library'
+url=https://gitlab.freedesktop.org/$name/$name
+cyst=musl
+description='Mesa 3D graphics library'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
+        ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
+                --target=$TUPL
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
