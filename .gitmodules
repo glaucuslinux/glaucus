@@ -13,6 +13,9 @@
 [submodule "cerata/dash/dash"]
 	path = cerata/dash/dash
 	url = https://git.kernel.org/pub/scm/utils/dash/dash
+[submodule "cerata/drm/drm"]
+	path = cerata/drm/drm
+	url = https://gitlab.freedesktop.org/mesa/drm
 [submodule "cerata/e2fsprogs/e2fsprogs"]
 	path = cerata/e2fsprogs/e2fsprogs
 	url = https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs
@@ -37,6 +40,9 @@
 [submodule "cerata/fribidi/fribidi"]
 	path = cerata/fribidi/fribidi
 	url = https://github.com/fribidi/fribidi
+[submodule "cerata/gettext-tiny/gettext-tiny"]
+	path = cerata/gettext-tiny/gettext-tiny
+	url = https://github.com/sabotage-linux/gettext-tiny
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib
@@ -157,6 +163,12 @@
 [submodule "cerata/libfontenc/libfontenc"]
 	path = cerata/libfontenc/libfontenc
 	url = https://gitlab.freedesktop.org/xorg/lib/libfontenc
+[submodule "cerata/libinput/libinput"]
+	path = cerata/libinput/libinput
+	url = https://gitlab.freedesktop.org/libinput/libinput
+[submodule "cerata/libnl-tiny/libnl-tiny"]
+	path = cerata/libnl-tiny/libnl-tiny
+	url = https://github.com/sabotage-linux/libnl-tiny
 [submodule "cerata/libpciaccess/libpciaccess"]
 	path = cerata/libpciaccess/libpciaccess
 	url = https://gitlab.freedesktop.org/xorg/lib/libpciaccess
@@ -250,6 +262,12 @@
 [submodule "cerata/pixman/pixman"]
 	path = cerata/pixman/pixman
 	url = https://anongit.freedesktop.org/git/pixman
+[submodule "cerata/pkg-config/pkg-config"]
+	path = cerata/pkg-config/pkg-config
+	url = https://gitlab.freedesktop.org/pkg-config/pkg-config
+[submodule "cerata/pkgconf/pkgconf"]
+	path = cerata/pkgconf/pkgconf
+	url = https://github.com/pkgconf/pkgconf
 [submodule "cerata/procps/procps"]
 	path = cerata/procps/procps
 	url = https://gitlab.com/procps-ng/procps

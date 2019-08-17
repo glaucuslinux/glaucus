@@ -13,7 +13,10 @@ build(){
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
-                --target=$TUPL
+                --target=$TUPL \
+                --enable-optimizations \
+                --disable-ipv6 \
+                --with-lto
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

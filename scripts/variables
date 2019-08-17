@@ -24,6 +24,7 @@ assign_system_variables(){
         export AS=$TUPL-as
         export AWK=$GLAD/usr/bin/mawk
         export CC="$TUPL-gcc --sysroot=$GLAD"
+        export CPP="$TUPL-gcc --sysroot=$GLAD -E"
         export CXX="$TUPL-g++ --sysroot=$GLAD"
         export LD="$TUPL-ld --sysroot=$GLAD"
         export NM=$TUPL-gcc-nm

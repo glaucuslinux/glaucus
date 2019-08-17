@@ -40,6 +40,6 @@ envenomate mawk byacc mawk
 
 #envenomate util-macros
 #envenomate xorgproto libXau libXdmcp xcbproto libxcb
-envenomate zlib libpng expat json-c freetype_1 fontconfig
+envenomate zlib libpng freetype_1 #harfbuzz #freetype_2 fontconfig
 #envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
 #envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor

@@ -1,22 +1,21 @@
-name=fontconfig
+name=pkgconf
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/$name/$name
-cysts='musl expat json-c freetype'
-description='Font configuration and customization library'
-license='GPLv3+ HPND MIT'
+url=https://github.com/$name/$name
+cyst=musl
+description='A package compiler and linker metadata toolkit'
+license=ISC
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./autogen.sh \
+        ./autogen.sh
+        ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-nls \
-                --disable-docs \
-                --with-expat=$GLAD/usr
+                --disable-static
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip
