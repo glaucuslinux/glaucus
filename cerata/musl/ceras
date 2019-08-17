@@ -16,12 +16,12 @@ build_toolchain(){
                 --target=$TUPL \
                 --disable-wrapper \
                 --disable-static
-        rm -fv Makefile
-        cp -arv $CERD/$name/$name/Makefile .
+        sudo rm -fv Makefile /usr/lib/ld-$name-$ARCH.so.1
+        cp -av $CERD/$name/$name/Makefile .
         sed 's/$(INSTALL) -D -l/sudo &/' \
                 -i Makefile
         make
-        sudo make install
+        make install
 }
 build(){
         mkdir -v $SBLD/$name
@@ -35,12 +35,16 @@ build(){
                 --build=$TUPL \
                 --disable-wrapper \
                 --disable-static
+        rm -fv Makefile
+        cp -av $CERD/$name/$name/Makefile .
+        sed 's/$(libdir)\/libc.so/libc.so/' \
+                -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
                 install-libs
         install -dv $SCER/$name/sac/usr/bin
         cd $SCER/$name/sac/usr/bin
-        ln -fsv ../lib/ld-musl-x86_64.so.1 ldd
+        ln -fsv ../lib/ld-$name-$ARCH.so.1 ldd
         $STRIP -v $SCER/$name/sac/usr/lib/Scrt1.o \
                 $SCER/$name/sac/usr/lib/crt1.o \
                 $SCER/$name/sac/usr/lib/crti.o \

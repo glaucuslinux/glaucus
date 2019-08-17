@@ -13,6 +13,10 @@ build(){
         case $item in
                 freetype_1)
                         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+                        ZLIB_CFLAGS="-I$GLAD/usr/include" \
+                        ZLIB_LIBS="-L$GLAD/usr/lib" \
+                        LIBPNG_CFLAGS="-I$GLAD/usr/include" \
+                        LIBPNG_LIBS="-L$GLAD/usr/lib" \
                         ./configure \
                                 --prefix=/usr \
                                 --build=$TUPL \
@@ -23,6 +27,12 @@ build(){
                         ;;
                 freetype_2)
                         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+                        ZLIB_CFLAGS="-I$GLAD/usr/include" \
+                        ZLIB_LIBS="-L$GLAD/usr/lib" \
+                        LIBPNG_CFLAGS="-I$GLAD/usr/include" \
+                        LIBPNG_LIBS="-L$GLAD/usr/lib" \
+                        HARFBUZZ_CFLAGS="-I$GLAD/usr/include" \
+                        HARFBUZZ_LIBS="-L$GLAD/usr/lib" \
                         ./configure \
                                 --prefix=/usr \
                                 --build=$TUPL \
