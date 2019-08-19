@@ -1,0 +1,18 @@
+name=zstd
+version=git
+release=1
+arch=x86_64
+url=https://github.com/facebook/$name
+cyst=musl
+description='Zstandard - Fast real-time compression algorithm'
+license='BSDv3 GPLv2+'
+build_toolchain(){
+        rsync -vah $CERD/$name/$name $TSRC --delete
+        cd $TSRC/$name
+        make
+        make PREFIX=$TOOL \
+                install
+}
+build(){
+        :
+}

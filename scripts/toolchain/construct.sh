@@ -3,7 +3,7 @@ construct(){
         for item in $@
         do
                 case $item in
-                        linux|binutils|gmp|mpfr|mpc|musl|isl)
+                        linux|binutils|gmp|mpfr|mpc|musl|isl|zstd)
                                 . $CERD/$item/ceras
                                 build_toolchain
                                 ;;
@@ -20,4 +20,5 @@ construct linux \
         gcc_1 \
         musl \
         isl \
+        zstd \
         gcc_2
