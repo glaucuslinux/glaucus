@@ -37,7 +37,7 @@ build(){
                 --disable-static
         rm -fv Makefile
         cp -av $CERD/$name/$name/Makefile .
-        sed 's/ $(libdir)\/libc.so/libc.so/' \
+        sed 's/ $(libdir)\/libc.so/ libc.so/' \
                 -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \

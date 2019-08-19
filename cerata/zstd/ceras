@@ -9,7 +9,13 @@ license='BSDv3 GPLv2+'
 build_toolchain(){
         rsync -vah $CERD/$name/$name $TSRC --delete
         cd $TSRC/$name
-        make
+        make \
+                HAVE_THREAD=1 \
+                ZSTD_LEGACY_SUPPORT=0 \
+                HAVE_ZLIB=0 \
+                HAVE_LZMA=0 \
+                HAVE_LZ4=0 \
+                BACKTRACE=0
         make PREFIX=$TOOL \
                 install
 }

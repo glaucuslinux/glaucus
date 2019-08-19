@@ -6,23 +6,33 @@ url=https://github.com/ThomasDickey/$name-snapshots
 cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
 cluster=core
-license=GPLv2
+license=GPLv2+
 build(){
-        if [ -d $SBLD/$name ]
-        then
-                rm -frv $SBLD/$name
-        fi
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        CFLAGS="$CFLAGSNOOPENMP" $CERD/$name/$name-snapshots/configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL
+        mkdir -v $SBLD/$item
+        cd $SBLD/$item
+        case $item in
+                mawk_1)
+                        AWK=mawk \
+                        CFLAGS="$CFLAGSNOOPENMP" \
+                        $CERD/$name/$name-snapshots/configure \
+                                --prefix=/usr \
+                                --build=$TUPL \
+                                --host=$TUPL \
+                                --target=$TUPL
+                        ;;
+                mawk_2)
+                        CFLAGS="$CFLAGSNOOPENMP" \
+                        $CERD/$name/$name-snapshots/configure \
+                                --prefix=/usr \
+                                --build=$TUPL \
+                                --host=$TUPL \
+                                --target=$TUPL
+                        ;;
+        esac
         rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$item/sac \
                 install
-        cd $SCER/$name/sac/usr/bin
+        cd $SCER/$item/sac/usr/bin
         ln -fsv $name awk
 }

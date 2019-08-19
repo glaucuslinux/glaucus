@@ -12,13 +12,13 @@ envenomate(){
         done
 }
 envenomate musl
-envenomate mawk byacc mawk
-envenomate sbase ubase lobase
-envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash loksh
-envenomate e2fsprogs
-envenomate linux
-envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
+envenomate mawk_1 byacc mawk_2
+#envenomate sbase ubase lobase
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash loksh
+#envenomate e2fsprogs
+#envenomate linux
+#envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
@@ -43,4 +43,4 @@ envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-sc
 #envenomate zlib libpng freetype_1 expat fontconfig
 #envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
 #envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
-#envenomate pkgconf
+envenomate pkgconf
