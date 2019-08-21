@@ -1,0 +1,20 @@
+name=bzip2
+version=git
+release=1
+arch=x86_64
+url=git://sourceware.org/git/$name
+cyst=musl
+description=''
+license=
+build(){
+        rsync -vah $CERD/$name/$name $SSRC --delete
+        cd $SSRC/$name
+        ./configure \
+                --prefix=/usr \
+                --build=$TUPL \
+                --host=$TUPL \
+                --target=$TUPL
+        make
+        make DESTDIR=$SCER/$name/sac \
+                install-strip
+}

@@ -9,6 +9,9 @@ license='GPLv3+ HPND MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        #FREETYPE_CFLAGS="" \
+        #FREETYPE_LIBS="" \
+        CFLAGS="$CFLAGS -D_GNU_SOURCE" \
         LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
         ./autogen.sh \
                 --prefix=/usr \

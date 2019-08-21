@@ -1,6 +1,6 @@
 #!/usr/bin/execlineb -P
 redirfd -w 2 /dev/console
-redirfd -w 1 /dev/null
+redirfd -w 1 /dev/console
 redirfd -rnb 0 fifo
 s6-setuidgid root
 s6-log -bpd3 T /run/uncaught-logs

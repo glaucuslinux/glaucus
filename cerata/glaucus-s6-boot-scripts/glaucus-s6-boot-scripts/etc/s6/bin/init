@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -S0
+s6-linux-init -c /etc/s6 -p /usr/bin -m 0022 -D all

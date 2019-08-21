@@ -1,6 +1,9 @@
 [submodule "cerata/binutils/binutils-gdb"]
 	path = cerata/binutils/binutils-gdb
 	url = https://sourceware.org/git/binutils-gdb.git
+[submodule "cerata/bzip2/bzip2"]
+	path = cerata/bzip2/bzip2
+	url = git://sourceware.org/git/bzip2
 [submodule "cerata/cairo/cairo"]
 	path = cerata/cairo/cairo
 	url = https://anongit.freedesktop.org/git/cairo
