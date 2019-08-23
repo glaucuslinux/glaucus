@@ -2,19 +2,28 @@ name=bzip2
 version=git
 release=1
 arch=x86_64
-url=git://sourceware.org/git/$name
+url=$version://sourceware.org/$version/$name
 cyst=musl
-description=''
-license=
+description='A freely available, patent free, high-quality data compressor'
+license=BSDv3
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+        sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
+                -i Makefile
+        make \
+                CC="$CC" \
+                CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
+                -f Makefile-libbz2_so
+        make clean
+        make \
+                AR=$AR \
+                CC="$CC" \
+                RANLIB=$RANLIB \
+                CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
+                LDFLAGS="$LDFLAGS"
+        install -dv $SCER/$name/sac/usr/share/man/man1
+        make \
+                PREFIX=$SCER/$name/sac/usr \
+                install
 }

@@ -9,10 +9,11 @@ license='GPLv3+ HPND MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        #FREETYPE_CFLAGS="" \
-        #FREETYPE_LIBS="" \
-        CFLAGS="$CFLAGS -D_GNU_SOURCE" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
+        CPPFLAGS="-I$GLAD/usr/include" \
+        FREETYPE_CFLAGS="-I$GLAD/usr/include/freetype2 -I$GLAD/usr/include/libpng16 -I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
+        FREETYPE_LIBS="-L$GLAD/usr/lib -lfreetype" \
+        JSONC_CFLAGS="-I$GLAD/usr/include/json-c" \
+        JSONC_LIBS="-L$GLAD/usr/lib -ljson-c" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -20,6 +21,8 @@ build(){
                 --target=$TUPL \
                 --disable-nls \
                 --disable-docs \
+                --with-sysroot=$GLAD \
+                --without-libiconv \
                 --with-expat=$GLAD/usr
         make
         make DESTDIR=$SCER/$name/sac \

@@ -17,7 +17,8 @@ build(){
                 --target=$TUPL \
                 --disable-static \
                 --enable-hardware-optimizations \
-                --enable-intel-sse
+                --enable-intel-sse \
+                --with-zlib-prefix=$GLAD
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

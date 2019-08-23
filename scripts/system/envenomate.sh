@@ -18,7 +18,7 @@ envenomate mawk_1 byacc mawk_2
 #envenomate netbsd-curses procps dash loksh
 #envenomate e2fsprogs
 #envenomate linux
-envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
@@ -33,14 +33,15 @@ envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-sc
 #envenomate fribidi glib libpng pixman json-c cairo pango
 #envenomate expat freetype_1 harfbuzz freetype_2 fontconfig fribidi libelf-compat pcre zlib glib libpng pixman json-c cairo pango
 #envenomate libelf-compat pcre zlib glib
-#envenomate zlib libpng libelf-compat pcre glib expat freetype_1 fontconfig harfbuzz freetype_2 fontconfig
+#envenomate bzip2 zlib libpng libelf-compat pcre glib expat freetype_1 fontconfig harfbuzz freetype_2 fontconfig
 #envenomate python
 
-#envenomate libdatrie libthai zlib libpng pixman cairo expat freetype_1 harfbuzz freetype_2 fontconfig pango
+#envenomate libdatrie libthai bzip2 zlib libpng pixman cairo expat freetype_1 harfbuzz #freetype_2 fontconfig pango
 
 #envenomate util-macros
 #envenomate xorgproto libXau libXdmcp xcbproto libxcb
-#envenomate zlib libpng freetype_1 expat fontconfig
 #envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
 #envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
 #envenomate pkgconf
+
+envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
