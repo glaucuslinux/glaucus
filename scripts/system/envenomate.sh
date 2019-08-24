@@ -13,12 +13,13 @@ envenomate(){
 }
 envenomate musl
 envenomate mawk_1 byacc mawk_2
+#envenomate skalibs execline s6 utmps
 #envenomate sbase ubase lobase
 #envenomate smdev nldev nlmon
 #envenomate netbsd-curses procps dash loksh
 #envenomate e2fsprogs
 #envenomate linux
-#envenomate skalibs execline s6 nsss utmps s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
@@ -28,12 +29,11 @@ envenomate mawk_1 byacc mawk_2
 #envenomate expat libffi wayland wayland-protocols
 #envenomate jemalloc
 #envenomate bin86 lilo
-#envenomate s6-portable-utils s6-linux-utils
+#envenomate nsss s6-portable-utils s6-linux-utils
 
 #envenomate fribidi glib libpng pixman json-c cairo pango
 #envenomate expat freetype_1 harfbuzz freetype_2 fontconfig fribidi libelf-compat pcre zlib glib libpng pixman json-c cairo pango
-#envenomate libelf-compat pcre zlib glib
-#envenomate bzip2 zlib libpng libelf-compat pcre glib expat freetype_1 fontconfig harfbuzz freetype_2 fontconfig
+#envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
 #envenomate python
 
 #envenomate libdatrie libthai bzip2 zlib libpng pixman cairo expat freetype_1 harfbuzz #freetype_2 fontconfig pango
@@ -44,4 +44,10 @@ envenomate mawk_1 byacc mawk_2
 #envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
 #envenomate pkgconf
 
-envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
+#envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
+#envenomate util-macros
+#envenomate xorgproto libXau libXdmcp xcbproto libxcb
+#envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
+#envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
+envenomate zlib libpng pixman #cairo
+#envenomate fribidi pango

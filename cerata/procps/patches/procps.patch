@@ -1,0 +1,129 @@
+diff -urNa procps.orig/configure.ac procps/configure.ac
+--- procps.orig/configure.ac	2019-04-24 01:41:12.600481736 +0300
++++ procps/configure.ac	2019-08-23 14:47:33.190253313 +0300
+@@ -44,7 +44,7 @@
+ 
+ # Checks for header files.
+ AC_HEADER_MAJOR
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h langinfo.h libintl.h limits.h locale.h netinet/in.h stdint.h stdio_ext.h stdlib.h string.h sys/file.h sys/ioctl.h sys/param.h sys/time.h termios.h unistd.h utmp.h values.h wchar.h wctype.h])
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h langinfo.h libintl.h limits.h locale.h netinet/in.h stdint.h stdio_ext.h stdlib.h string.h sys/file.h sys/ioctl.h sys/param.h sys/time.h termios.h unistd.h utmp.h utmpx.h values.h wchar.h wctype.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_CHECK_HEADER_STDBOOL
+diff -urNa procps.orig/proc/whattime.c procps/proc/whattime.c
+--- procps.orig/proc/whattime.c	2019-04-24 01:41:12.630481451 +0300
++++ procps/proc/whattime.c	2019-08-23 14:47:33.190253313 +0300
+@@ -33,7 +33,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <time.h>
+-#include <utmp.h>
++#include <utmpx.h>
+ #include <sys/ioctl.h>
+ #include "whattime.h"
+ #include "sysinfo.h"
+@@ -42,7 +42,7 @@
+ static double av[3];
+ 
+ char *sprint_uptime(int human_readable) {
+-  struct utmp *utmpstruct;
++  struct utmpx *utmpstruct;
+   int upminutes, uphours, updays, upweeks, upyears, updecades;
+   int pos;
+   int comma;
+@@ -98,13 +98,13 @@
+ /* count the number of users */
+ 
+     numuser = 0;
+-    setutent();
+-    while ((utmpstruct = getutent())) {
++    setutxent();
++    while ((utmpstruct = getutxent())) {
+       if ((utmpstruct->ut_type == USER_PROCESS) &&
+          (utmpstruct->ut_name[0] != '\0'))
+         numuser++;
+     }
+-    endutent();
++    endutxent();
+ 
+     pos += sprintf(buf + pos, "%2d user%s, ", numuser, numuser == 1 ? "" : "s");
+ 
+diff -urNa procps.orig/w.c procps/w.c
+--- procps.orig/w.c	2019-04-24 01:41:12.643814658 +0300
++++ procps/w.c	2019-08-23 14:47:33.190253313 +0300
+@@ -23,6 +23,7 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+  */
+ 
++#include "config.h"
+ #include "c.h"
+ #include "fileutils.h"
+ #include "nls.h"
+@@ -54,14 +55,22 @@
+ #include <termios.h>
+ #include <time.h>
+ #include <unistd.h>
+-#include <utmp.h>
++#ifdef HAVE_UTMPX_H
++#	include <utmpx.h>
++#else
++#	include <utmp.h>
++#endif
+ #include <arpa/inet.h>
+ 
+ static int ignoreuser = 0;	/* for '-u' */
+ static int oldstyle = 0;	/* for '-o' */
+ static proc_t **procs;		/* our snapshot of the process table */
+ 
++#ifdef HAVE_UTMPX_H
++typedef struct utmpx utmp_t;
++#else
+ typedef struct utmp utmp_t;
++#endif
+ 
+ #ifdef W_SHOWFROM
+ # define FROM_STRING "on"
+@@ -604,11 +613,19 @@
+ 			printf(_("   IDLE WHAT\n"));
+ 	}
+ 
++#ifdef HAVE_UTMPX_H
++	setutxent();
++#else
+ 	utmpname(UTMP_FILE);
+ 	setutent();
++#endif
+ 	if (user) {
+ 		for (;;) {
++#ifdef HAVE_UTMPX_H
++			u = getutxent();
++#else
+ 			u = getutent();
++#endif
+ 			if (unlikely(!u))
+ 				break;
+ 			if (u->ut_type != USER_PROCESS)
+@@ -619,7 +636,11 @@
+ 		}
+ 	} else {
+ 		for (;;) {
++#ifdef HAVE_UTMPX_H
++			u = getutxent();
++#else
+ 			u = getutent();
++#endif
+ 			if (unlikely(!u))
+ 				break;
+ 			if (u->ut_type != USER_PROCESS)
+@@ -629,7 +650,11 @@
+ 					 fromlen, ip_addresses);
+ 		}
+ 	}
++#ifdef HAVE_UTMPX_H
++	endutxent();
++#else
+ 	endutent();
++#endif
+ 
+ 	return EXIT_SUCCESS;
+ }

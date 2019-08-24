@@ -38,13 +38,14 @@ assign_system_variables(){
         export YACC=$GLAD/usr/bin/yacc
         export GCSE='-fgcse-sm -fgcse-las'
         export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
-        export MARCH='-march=x86-64'
+        export MARCH='-march=native'
         export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
         export PGO='-ftracer -funroll-loops'
         export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
         export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
         export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
         export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+        export CPPFLAGS=-I$GLAD/usr/include
         export CXXFLAGS="$CFLAGS"
         export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
 }

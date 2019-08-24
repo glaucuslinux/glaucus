@@ -14,15 +14,18 @@ build(){
                 -i config.def.h
         sed 's/\/bin/\/usr&/' \
                 -i config.def.h getty.8 getty.c login.c su.c
+        sed 's/utmp/utmpx/' \
+                -i getty.c last.c login.c who.c
         sed 's/.*types.*/#include <sys\/sysmacros.h>/' \
                 -i mknod.c mountpoint.c stat.c
         sed '/stat.h/a #include <sys/sysmacros.h>' \
                 -i libutil/tty.c
         sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/AR = .*/AR = $AR/" \
+                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -Wextra/" \
+                -e "/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         sed '/halt/d' \

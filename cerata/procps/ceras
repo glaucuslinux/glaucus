@@ -3,18 +3,19 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.com/$name-ng/$name
-cysts='musl netbsd-curses'
+cysts='musl netbsd-curses skalibs execline s6 utmps'
 description='Command line and full screen utilities for browsing procfs'
 cluster=core
 license='GPLv2+ GPLv3+ LGPLv2.1+'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        patch -p1 -i $CERD/$name/patches/$name.patch
         ./autogen.sh
         mkdir -v $SBLD/$name
         cd $SBLD/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo" \
+        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo -lutmps -lskarnet" \
         $SSRC/$name/configure \
                 --prefix=/usr \
                 --sbindir=/usr/bin \

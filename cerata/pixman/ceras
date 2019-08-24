@@ -9,6 +9,8 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        PNG_CFLAGS="-I$GLAD/usr/include/libpng16" \
+        PNG_LIBS="-L$GLAD/usr/lib -lpng16 lz" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

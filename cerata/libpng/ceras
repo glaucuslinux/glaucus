@@ -9,7 +9,6 @@ license='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
 build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        CPPFLAGS="-I$GLAD/usr/include" \
         $CERD/$name/$name/configure \
                 --prefix=/usr \
                 --build=$TUPL \

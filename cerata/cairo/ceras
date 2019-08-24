@@ -9,7 +9,6 @@ license='LGPLv2.1 MPLv1.1'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CPPFLAGS="-I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

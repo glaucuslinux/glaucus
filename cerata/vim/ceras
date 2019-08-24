@@ -9,7 +9,6 @@ license='GPLv2+ LGPLv2.1+ MIT vim'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        CPPFLAGS="-I$GLAD/usr/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
         LD_LIBRARY_PATH="$GLAD/usr/lib" \
         ./configure \
