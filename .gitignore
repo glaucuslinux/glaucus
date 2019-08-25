@@ -1,6 +1,7 @@
 .bash_history
 .bash_history.swp
 .cache/
+.config/
 .gitconfig
 .lesshst
 .ssh/

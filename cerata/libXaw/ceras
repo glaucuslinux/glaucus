@@ -22,6 +22,7 @@ build(){
                 --without-fop \
                 --without-xsltproc
         make
+        install -dv $SCER/$name/sac/usr/lib
         make DESTDIR=$SCER/$name/sac \
                 install-strip
 }
