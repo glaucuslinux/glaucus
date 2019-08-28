@@ -3,12 +3,13 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/libxaw
-cyst=musl
+cysts='musl util-macros'
 description='X Athena Widget Set, based on the X Toolkit Intrinsics (Xt) Library'
 license=MIT
 build(){
         rsync -vah $CERD/$name/libxaw/ $SSRC/$name --delete
         cd $SSRC/$name
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

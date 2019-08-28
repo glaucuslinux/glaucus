@@ -3,12 +3,13 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/$name
-cysts='musl zlib'
+cysts='musl zlib util-macros'
 description='X font encoding library'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \

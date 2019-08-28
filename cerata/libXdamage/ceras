@@ -3,12 +3,13 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/libxdamage
-cyst=musl
+cysts='musl util-macros'
 description='X Damage Extension library'
 license=MIT
 build(){
         rsync -vah $CERD/$name/libxdamage/ $SSRC/$name --delete
         cd $SSRC/$name
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \

@@ -3,13 +3,14 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/$name
-cyst=musl
+cysts='musl util-macros'
 description="XCB port of Xlib's XImage and XShmImage functions"
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         $version submodule update --init
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -17,6 +18,7 @@ build(){
                 --target=$TUPL \
                 --disable-static \
                 --disable-devel-docs \
+                --with-sysroot=$GLAD \
                 --without-doxygen
         make
         make DESTDIR=$SCER/$name/sac \

@@ -36,12 +36,12 @@ case $2 in
                         yes) torify curl $3 -o $(basename $3) ;;
                         no) curl $3 -o $(basename $3) ;;
                 esac
-                cat >> /home/glaucus/cerata/$1/ceras << EOF
-checksum=$(echo $(sha512sum /home/glaucus/cerata/$1/$(basename $3)) | awk '{print $1}')
+                cat >> ceras << EOF
+checksum=$(echo $(sha512sum $(basename $3)) | awk '{print $1}')
 EOF
                 ;;
 esac
-cat >> /home/glaucus/cerata/$1/ceras << 'EOF'
+cat >> ceras << 'EOF'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
@@ -54,4 +54,7 @@ build(){
         make DESTDIR=$SCER/$name/sac \
                 install-strip
 }
+EOF
+cat > README.md << EOF
+# $1
 EOF

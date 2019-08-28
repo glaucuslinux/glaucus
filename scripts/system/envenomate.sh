@@ -3,10 +3,10 @@ envenomate(){
         for item in $@
         do
                 install -dv $SCER/$item/sac $SCER/$item/venom
-                . $CERD/$(echo $item | sed s/_.//)/ceras
+                . $CERD/`echo $item | sed s/_.//`/ceras
                 build
                 cd $SCER/$item/sac
-                sudo sha512sum $(sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
+                sudo sha512sum `sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort` > ../venom/checksum
                 tar xvf $SCER/$item/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
                 rsync -vah $SCER/$item/venom $GLAD/usr/cerata/$name --delete
         done
@@ -44,10 +44,11 @@ envenomate mawk_1 byacc mawk_2
 #envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
 #envenomate pkgconf
 
+envenomate pkgconf
 envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
 envenomate util-macros
 envenomate xorgproto libXau libXdmcp xcbproto libxcb
 envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
-envenomate libxcb-util libxcb-util-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
-envenomate zlib libpng pixman cairo
+envenomate libxcb-util libxcb-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
+envenomate pixman cairo
 #envenomate fribidi pango

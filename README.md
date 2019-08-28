@@ -15,19 +15,21 @@ glaucus is a highly optimized and extremely lightweight suckless Linux distribut
 * x86_64-pc-linux-musl
 
 ## Minimum Requirements
-* 32 MB RAM (qemu limit)
+* 32 MB RAM (the actual requirement is much lower as it would perfectly run in under 10MB of RAM, but that's qemu limit for you)
 * qemu CPU
 
 ## Optimizations
-* -Ofast
+glaucus utilizes a lot of optimizations that aim to provide better performance without impacting the resulting packages size and memory footprint:
+
+* -Ofast (and -O3 for packages that don't build with -Ofast)
 * GCSE
-* GRAPHITE
-* PGO
+* GRAPHITE (with latest ISL version)
+* PGO (the 2 flags that PGO checks are enabled)
 * SMS
-* OpenMP
+* OpenMP (enabled on supported packages)
 * IRA
 * IPA
-* LTO
+* LTO (with zstd compression, and falls back to zlib if zstd isn't possible)
 * STRIP
 * OTHERS
 
@@ -39,10 +41,11 @@ glaucus's core system is built up from the following main components:
 * byacc
 * suckless sbase
 * suckless ubase 
-* lobase
+* lobase (the Linux port of OpenBSD base)
 * suckless smdev
 * suckless nldev
 * suckless nlmon
+* suckless nltrigger
 * netbsd-curses
 * procps (htop built with netbsd-curses)
 * dash
@@ -52,7 +55,7 @@ glaucus's core system is built up from the following main components:
 * skalibs
 * execline
 * s6
-* s6-linux-init
+* s6-linux-init (the newer versions > 1.0)
 * s6-rc
 * glaucus-s6-boot-scripts
 
@@ -89,13 +92,13 @@ Named after the:
 * Either Binary or from Source (add march=native)
 
 ## Benchmarks
-* vs Void Linux
+* vs Void Linux (runit, has s6 repo)
 * vs Clear Linux
-* vs Gentoo Linux
+* vs Gentoo Linux (OpenRC)
 * vs Crux Linux
-* vs Adelie Linux
+* vs Adelie Linux (s6)
 * vs Arch Linux
-* vs Obarun Linux
+* vs Obarun Linux (s6)
 * vs Alpine Linux
 
 * vs morpheus
@@ -111,5 +114,5 @@ Firas Khalil Khana (firasuke@gmail.com)
 glaucus is licensed under the Internet Systems Consortium (ISC) license. See LICENSE.
 
 ## Donations
-* PayPal
+* PayPal (firasuke@gmail.com)
 * Patreon

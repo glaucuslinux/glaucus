@@ -3,12 +3,13 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/libxv
-cyst=musl
+cysts='musl util-macros'
 description='Xlib-based library for the X Video (Xv) extension to the X Window System'
 license=MIT
 build(){
         rsync -vah $CERD/$name/libxv/ $SSRC/$name --delete
         cd $SSRC/$name
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \

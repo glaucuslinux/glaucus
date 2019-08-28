@@ -15,7 +15,8 @@ build(){
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL \
-                --disable-static
+                --disable-static \
+                --with-sysroot=$GLAD
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

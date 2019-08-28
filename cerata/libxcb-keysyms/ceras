@@ -3,13 +3,14 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/$name
-cyst=musl
+cysts='musl util-macros'
 description='Standard X key constants and conversion to/from keycodes'
 license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
         $version submodule update --init
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \

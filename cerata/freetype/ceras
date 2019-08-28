@@ -29,6 +29,7 @@ build(){
                                 --with-bzip2 \
                                 --with-png \
                                 --without-harfbuzz \
+                                --without-brotli \
                                 --without-old-mac-fonts \
                                 --without-fsspec \
                                 --without-fsref \
@@ -56,6 +57,7 @@ build(){
                                 --with-bzip2 \
                                 --with-png \
                                 --with-harfbuzz \
+                                --without-brotli \
                                 --without-old-mac-fonts \
                                 --without-fsspec \
                                 --without-fsref \

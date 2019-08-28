@@ -3,12 +3,13 @@ version=git
 release=1
 arch=x86_64
 url=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver
-cyst=musl
+cysts='musl util-macros'
 description='Xlib-based X11 Screen Saver extension client library'
 license=MIT
 build(){
         rsync -vah $CERD/$name/libxscrnsaver/ $SSRC/$name --delete
         cd $SSRC/$name
+        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         ./autogen.sh \
                 --prefix=/usr \
