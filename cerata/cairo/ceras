@@ -9,29 +9,6 @@ license='LGPLv2.1 MPLv1.1'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        FONTCONFIG_CFLAGS="-I$GLAD/usr/include/freetype2 -I$GLAD/usr/include/libpng16 -I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include-glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
-        FONTCONFIG_LIBS="-L$GLAD/usr/lib -lfontconfig -lfreetype" \
-        FREETYPE_CFLAGS="-I$GLAD/usr/include/freetype2 -I$GLAD/usr/include/libpng16 -I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
-        FREETYPE_LIBS="-L$GLAD/usr/lib -lfreetype" \
-        glib_CFLAGS="-I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
-        glib_LIBS="-L$GLAD/usr/lib -lglib-2.0" \
-        pixman_CFLAGS="-I$GLAD/usr/include/pixman-1" \
-        pixman_LIBS="-L$GLAD/usr/lib -lpixman-1" \
-        png_CFLAGS="-I$GLAD/usr/include/libpng16" \
-        png_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
-        xcb_CFLAGS="-I$GLAD/usr/include/xcb" \
-        xcb_LIBS="-L$GLAD/usr/lib -lxcb -lxcb-render" \
-        xcb_shm_CFLAGS="-I$GLAD/usr/include" \
-        xcb_shm_LIBS="-L$GLAD/usr/lib -lxcb-shm" \
-        xlib_CFLAGS="-I$GLAD/usr/include" \
-        xlib_LIBS="-L$GLAD/usr/lib -lX11 -lXext" \
-        xlib_xcb_CFLAGS="-I$GLAD/usr/include" \
-        xlib_xcb_LIBS="-L$GLAD/usr/lib -lX11-xcb -lX11 -lxcb" \
-        xlib_xrender_CFLAGS="-I$GLAD/usr/include" \
-        xlib_xrender_LIBS="-L$GLAD/usr/lib -lXrender -lX11" \
-        LD_LIBRARY_PATH=$GLAD/usr/lib \
-        LIBS=-L$GLAD/usr/lib \
-        PKG_CONFIG=$GLAD/usr/bin/pkgconf \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -40,22 +17,21 @@ build(){
                 --disable-static \
                 --disable-valgrind \
                 --enable-xlib \
-                --enable-xlib-xrender \
+                --disable-xlib-xrender \
                 --enable-xcb \
-                --enable-xlib-xcb \
                 --enable-xcb-shm \
                 --disable-qt \
                 --disable-quartz \
                 --disable-quartz-font \
                 --disable-win32 \
                 --disable-win32-font \
-                --enable-png \
+                --disable-png \
                 --disable-egl \
                 --disable-glx \
                 --disable-wgl \
                 --disable-script \
-                --enable-ft \
-                --enable-fc \
+                --disable-ft \
+                --disable-fc \
                 --disable-ps \
                 --disable-pdf \
                 --disable-svg \

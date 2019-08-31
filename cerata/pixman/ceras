@@ -9,8 +9,8 @@ license=MIT
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
-        PNG_CFLAGS="-I$GLAD/usr/include/libpng16" \
-        PNG_LIBS="-L$GLAD/usr/lib -lpng16 lz" \
+        PNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
+        PNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -23,7 +23,9 @@ build(){
                 --disable-arm-iwmmxt \
                 --disable-arm-iwmmxt2 \
                 --disable-mips-dspr2 \
-                --disable-gtk
+                --disable-gtk \
+                --enable-libpng \
+                --with-sysroot=$GLAD
         make
         make DESTDIR=$SCER/$name/sac \
                 install-strip

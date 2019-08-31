@@ -10,9 +10,9 @@ build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         mkdir -v $SBLD/$name
         cd $SBLD/$name
-        EXPAT_CFLAGS="-I$GLAD/usr/include" \
+        EXPAT_CFLAGS=-I$GLAD/usr/include \
         EXPAT_LIBS="-L$GLAD/usr/libs -lexpat" \
-        FFI_CFLAGS="-I$GLAD/usr/include" \
+        FFI_CFLAGS=-I$GLAD/usr/include \
         FFI_LIBS="-L$GLAD/usr/libs -lffi" \
         $SSRC/$name/autogen.sh \
                 --prefix=/usr \

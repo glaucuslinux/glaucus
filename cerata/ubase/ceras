@@ -25,7 +25,7 @@ build(){
                 -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -Wextra/" \
-                -e "/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/" \
+                -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         sed '/halt/d' \

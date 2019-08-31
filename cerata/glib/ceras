@@ -12,12 +12,12 @@ build(){
         mkdir -v $SBLD/$name
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
-        LD_LIBRARY_PATH="$GLAD/usr/lib" \
+        LD_LIBRARY_PATH=$GLAD/usr/lib \
         meson \
                 --prefix=/usr \
                 -Dlibmount=false \
                 $SBLD/$name
-        LD_LIBRARY_PATH="$GLAD/usr/lib" \
+        LD_LIBRARY_PATH=$GLAD/usr/lib \
         ninja \
                 -C $SBLD/$name
         DESTDIR=$SCER/$name/sac \

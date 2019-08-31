@@ -12,11 +12,11 @@ build(){
         ./autogen.sh
         case $item in
                 freetype_1)
-                        ZLIB_CFLAGS="-I$GLAD/usr/include" \
+                        ZLIB_CFLAGS=-I$GLAD/usr/include \
                         ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
-                        BZIP2_CFLAGS="-I$GLAD/usr/include" \
+                        BZIP2_CFLAGS=-I$GLAD/usr/include \
                         BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
-                        LIBPNG_CFLAGS="-I$GLAD/usr/include/libpng16" \
+                        LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
                         LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
                         ./configure \
                                 --prefix=/usr \
@@ -38,11 +38,11 @@ build(){
                                 --without-ats
                         ;;
                 freetype_2)
-                        ZLIB_CFLAGS="-I$GLAD/usr/include" \
+                        ZLIB_CFLAGS=-I$GLAD/usr/include \
                         ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
-                        BZIP2_CFLAGS="-I$GLAD/usr/include" \
+                        BZIP2_CFLAGS=-I$GLAD/usr/include \
                         BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
-                        LIBPNG_CFLAGS="-I$GLAD/usr/include/libpng16" \
+                        LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
                         LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
                         HARFBUZZ_CFLAGS="-I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
                         HARFBUZZ_LIBS="-L$GLAD/usr/lib -lharfbuzz" \

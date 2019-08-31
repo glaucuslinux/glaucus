@@ -11,7 +11,7 @@ build(){
         cd $SSRC/$name
         GLIB_CFLAGS="-I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
         GLIB_LIBS="-L$GLAD/usr/lib -lglib-2.0" \
-        FREETYPE_CFLAGS="-I$GLAD/usr/include/freetype2" \
+        FREETYPE_CFLAGS=-I$GLAD/usr/include/freetype2 \
         FREETYPE_LIBS="-L$GLAD/usr/lib -lfreetype" \
         ./autogen.sh \
                 --prefix=/usr \

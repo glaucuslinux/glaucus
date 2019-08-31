@@ -24,7 +24,7 @@ build(){
                 --host=$TUPL \
                 --target=$TUPL \
                 --disable-static
-        sed -e 's/tests //' \
+        sed 's/tests //' \
                 -i Makefile
         make
         make DESTDIR=$SCER/$name/sac \
