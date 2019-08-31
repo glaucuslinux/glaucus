@@ -48,8 +48,8 @@ glaucus's core system is built up from the following main components:
 * suckless nltrigger
 * netbsd-curses
 * procps (htop built with netbsd-curses)
-* dash
-* loksh
+* dash (for running scripts)
+* loksh (the main user shell)
 * e2fsprogs
 * linux
 * skalibs
@@ -64,7 +64,7 @@ glaucus's core system is built up from the following main components:
 * re2c
 * mandoc
 * vim (built with netbsd-curses)
-* wayland only
+* wayland only (not sure how much of X11/Xorg is needed)
 
 ## Philosophy
 * smallest
@@ -73,14 +73,8 @@ glaucus's core system is built up from the following main components:
 * most active
 * most secure
 
-## Naming Scheme
-Named after the smallest and most venemous sea slug *glaucus bennettae*, 
-
-Named after the:
-
-* smallest
-* most venemous
-* albino exists (libre version)
+## Naming Convention
+Please refer to https://github.com/firasuke/glaucus/wiki/Naming-Convention
 
 ## Screenshots
 * sub 5 or sub 10 MB RAM (plus earliest images of snail with 1-2 MB RAM)

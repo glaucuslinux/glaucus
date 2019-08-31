@@ -7,10 +7,10 @@ envenomate() {
                 . $CERD/$(echo $ceras | sed s/_.//)/ceras
                 build
 
-                cd $SCER/$ceras/venom
-                sudo sha512sum $(sudo tar cJvf $name-$version-$release-$arch.tar.xz ../sac | sed '/\/$/d' | sort) | sed 's/\.\.\/sac//' > checksum
-                tar xvf $name-$version-$release-$arch.tar.xz -C $GLAD
-                rsync -vah . $GLAD/usr/cerata/$name --delete
+                cd $SCER/$ceras/sac
+                sudo sha512sum $(sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
+                tar xvf $SCER/$ceras/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
+                rsync -vah $SCER/$ceras/venom $GLAD/usr/cerata/$name --delete
         done
 }
 
