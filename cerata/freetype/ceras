@@ -10,7 +10,7 @@ build(){
         rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
         cd $SSRC/$name
         ./autogen.sh
-        case $item in
+        case $ceras in
                 freetype_1)
                         ZLIB_CFLAGS=-I$GLAD/usr/include \
                         ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
@@ -67,6 +67,6 @@ build(){
                         ;;
         esac
         make
-        make DESTDIR=$SCER/$item/sac \
+        make DESTDIR=$SCER/$ceras/sac \
                 install
 }

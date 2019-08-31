@@ -8,9 +8,9 @@ description='An interpreter for the AWK Programming Language faster than gawk'
 cluster=core
 license=GPLv2+
 build(){
-        mkdir -v $SBLD/$item
-        cd $SBLD/$item
-        case $item in
+        mkdir -v $SBLD/$ceras
+        cd $SBLD/$ceras
+        case $ceras in
                 mawk_1)
                         AWK=mawk \
                         CFLAGS="$CFLAGSNOOPENMP" \
@@ -31,8 +31,8 @@ build(){
         esac
         rsync -vah $CERD/$name/$name-snapshots/man . --delete
         make
-        make DESTDIR=$SCER/$item/sac \
+        make DESTDIR=$SCER/$ceras/sac \
                 install
-        cd $SCER/$item/sac/usr/bin
+        cd $SCER/$ceras/sac/usr/bin
         ln -fsv $name awk
 }
