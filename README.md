@@ -1,5 +1,6 @@
 # glaucus
-glaucus is a highly optimized and extremely lightweight suckless Linux distribution built from scratch.
+glaucus is a highly optimized and extremely lightweight suckless Linux
+distribution built from scratch.
 
 ## Features
 * musl libc
@@ -15,11 +16,13 @@ glaucus is a highly optimized and extremely lightweight suckless Linux distribut
 * x86_64-pc-linux-musl
 
 ## Minimum Requirements
-* 32 MB RAM (the actual requirement is much lower as it would perfectly run in under 10MB of RAM, but that's qemu limit for you)
+* 32 MB RAM (the actual requirement is much lower as it would perfectly run in
+under 10MB of RAM, but that's qemu limit for you)
 * qemu CPU
 
 ## Optimizations
-glaucus utilizes a lot of optimizations that aim to provide better performance without impacting the resulting packages size and memory footprint:
+glaucus utilizes a lot of optimizations that aim to provide better performance
+without impacting the resulting packages size and memory footprint:
 
 * -Ofast (and -O3 for packages that don't build with -Ofast)
 * GCSE
@@ -106,7 +109,12 @@ Please refer to https://github.com/firasuke/glaucus/wiki/Naming-Convention
 Firas Khalil Khana (firasuke@gmail.com)
 
 ## License
-glaucus is licensed under the Internet Systems Consortium (ISC) license. See LICENSE.
+glaucus is licensed under the Internet Systems Consortium (ISC) license.
+See LICENSE.
+
+## Dedication
+This project is dedicated to my parents for everything they've done and for
+choosing to believe in me.
 
 ## Donations
 * PayPal (firasuke@gmail.com)
