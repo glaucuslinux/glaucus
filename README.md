@@ -86,8 +86,8 @@ Please refer to https://github.com/firasuke/glaucus/wiki/Naming-Convention
 * glaucus bennettae swimming with tux and openbsd fish in the ocean
 
 ## Wiki
-* Installation instructions
-* Either Binary or from Source (add march=native)
+* Kindly refer to the [wiki](https://github.com/firasuke/glaucus/wiki) for more
+information
 
 ## Benchmarks
 * vs Void Linux (runit, has s6 repo)
@@ -113,8 +113,7 @@ glaucus is licensed under the Internet Systems Consortium (ISC) license.
 See LICENSE.
 
 ## Dedication
-This project is dedicated to my parents for everything they've done and for
-choosing to believe in me.
+This project is dedicated to my parents for choosing to believe in me.
 
 ## Donations
 * PayPal (firasuke@gmail.com)
