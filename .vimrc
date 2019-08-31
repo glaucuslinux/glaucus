@@ -1,15 +1,16 @@
 colorscheme molokai
 filetype plugin indent on
+let NERDTreeShowHidden=1
+set colorcolumn=80
+set cursorcolumn
+set cursorline
+set expandtab
+set hlsearch
+set incsearch
+set lazyredraw
+set modifiable
+set mouse=a
 set number
 set relativenumber
-syntax on
-set modifiable
-set cursorline
-set cursorcolumn
-set mouse=a
-set lazyredraw
 set t_Co=256
-set incsearch
-set hlsearch
-set expandtab
-let NERDTreeShowHidden=1
+syntax on

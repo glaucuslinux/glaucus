@@ -67,10 +67,11 @@ glaucus's core system is built up from the following main components:
 * wayland only
 
 ## Philosophy
-* If it ain't small, we ain't using it.
-* If it ain't fast, we ain't using it.
-* If it ain't simple, we ain't using it.
-* If it ain't active, we ain't using it.
+* smallest
+* simplest
+* fastest
+* most active
+* most secure
 
 ## Naming Scheme
 Named after the smallest and most venemous sea slug *glaucus bennettae*, 

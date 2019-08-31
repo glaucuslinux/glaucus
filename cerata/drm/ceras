@@ -2,10 +2,10 @@ name=drm
 version=git
 release=1
 arch=x86_64
-url=https://gitlab.freedesktop.org/mesa/$name
+url=https://gitlab.freedesktop.org/mesa/drm
 cyst=musl
-description='libdrm Direct Rendering Manager library and headers'
-license=MIT
+description=''
+license=
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
