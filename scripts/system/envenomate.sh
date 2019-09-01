@@ -24,6 +24,8 @@ core='musl
         linux
         s6-linux-init s6-rc glaucus-s6-boot-scripts'
 
+# s6-linux-utils needs to be built before nsss or it'll error out with undefined
+# references to `nsss_all_getgrgid` and `nsss_all_getpwuid`
 extra='re2c
         sinit svc
         sdhcp
@@ -33,7 +35,7 @@ extra='re2c
         expat libffi wayland wayland-protocols
         jemalloc
         bin86 lilo
-        nsss s6-portable-utils s6-linux-utils'
+        s6-linux-utils s6-portable-utils nsss'
 
 xorg='bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
         util-macros
