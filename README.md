@@ -88,7 +88,7 @@ but that's just wishful thinking).
 
 ## Inspired from
 
-glaucus took inspiration from the following projects:
+glaucus is heavily inspired by the following projects:
 
 * [Aboriginal Linux](http://landley.net/aboriginal/)
 
