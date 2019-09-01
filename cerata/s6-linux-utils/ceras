@@ -21,7 +21,8 @@ build(){
                 --enable-shared \
                 --disable-static \
                 --disable-allstatic \
-                --disable-all-pic
+                --disable-all-pic \
+                --disable-nsss
         sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak

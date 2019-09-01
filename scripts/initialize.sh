@@ -3,7 +3,6 @@ cd /home/glaucus
 mkdir -pv \
         logs/system \
         logs/toolchain \
-        play \
         system \
         toolchain \
         temporary/system/builds \

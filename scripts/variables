@@ -97,10 +97,10 @@ assign_system_variables() {
         # Then we have Graphite and ISL for loop optimization
         export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
 
-        # The regular march flag, change to `x86_64` if you want to help
+        # The regular march flag, change to `x86-64` if you want to help
         # maintain a certain ceras for a number of users, else leave it at 
         # `native` if you're only going to use the resulting cerata on your system
-        export MARCH='-march=native'
+        export MARCH='-march=x86-64'
 
         # Extra performance related flags
         export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'

@@ -27,7 +27,7 @@ core='musl
 extra='re2c
         sinit svc
         sdhcp
-        xz zlib libarchive
+        bzip2 xz zlib libarchive
         pcre2 less mandoc vim
         file iproute2 opendoas libressl
         expat libffi wayland wayland-protocols
@@ -44,5 +44,5 @@ xorg='bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 e
         fribidi libdatrie libthai pango'
 
 envenomate $core
-#envenomate $extra
+envenomate $extra
 #envenomate $xorg
