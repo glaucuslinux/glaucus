@@ -19,7 +19,7 @@ reading.
 
 ## Features
 
-glaucus boaststhe following features:
+glaucus boasts the following features:
 
 * bleeding edge as it fetches the latest sources available from upstream
 repositories for all cerata
@@ -83,6 +83,15 @@ information regarding glaucus.
 
 Please keep in mind that the wiki is nowhere near finished (I'd say it's at 10%
 but that's just wishful thinking).
+
+
+## Artwork and Screenshots
+
+Kindly refer to the [Artwork wiki page](https://github.com/firasuke/glaucus/wiki
+/Artwork) for glaucus related artwork.
+
+Kindly refer to the [Screenshots wiki page](https://github.com/firasuke/glaucus/
+wiki/Screenshots) for screenshots of glaucus in action.
 
 
 ## Inspired from
