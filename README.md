@@ -21,6 +21,10 @@ reading.
 
 glaucus boasts the following features:
 
+* extremely lightweight, as the `core` installation only needs 25MB of disk
+space and requires 33MB of RAM to boot in QEMU and idles at just under 6MB of
+RAM
+
 * bleeding edge as it fetches the latest sources available from upstream
 repositories for all cerata
 
@@ -37,36 +41,46 @@ repositories for all cerata
   2. unportable base (ubase)
   3. OpenBSD userland port to Linux (lobase)
 
+* OpenMP
 
-* built with the dangerous `Ofast` (this is only listed for bragging rights and
-to show that glaucus is capable of building with `Ofast`; however, it's highly
-recommended that you stick to `O2`, `Os` or even `O3` as executables behave
-weirdly and unexpectedly with `Ofast`. How dangerous you might ask? Imagine
-starting your machine, and seeing your trustworthy bootloader, the one that was
-always working until you recently decided to compile it with `Ofast`, failing
-to recognize any operating system previously installed on your machine...)
+* `Ofast` (this is only listed for bragging rights and to show that glaucus is
+capable of building with `Ofast`; however, it's highly recommended that you
+stick to `O2`, `Os` or even `O3` as executables behave weirdly and unexpectedly
+with `Ofast`. How dangerous you might ask? Imagine starting your machine, and
+seeing your trustworthy bootloader, the one that was always working until you
+recently decided to compile it with `Ofast`, failing to recognize any operating
+system previously installed on your machine...)
 
-* uses Link Time Optimization (LTO) (with zstd set as default compression
-method, and zlib set as a fallback method)
+* Swing Modulo Scheduling (SMS)
 
-* has Graphite Loop Optimizations (ISL)
+* Global Common Subexpression Elimination (GCSE)
 
-* has OpenMP on supported cerata
+* Integrated Register Allocation (IRA)
 
-* 150+ packages building successfully with extreme configuration variables
+* Interprocedural Pointer Analysis (IPA)
 
-* doesn't need a separate partition to build and install into
+* Graphite Loop Optimizations (ISL)
 
-* doesn't require a chroot to build correctly (hopefully this won't change
-when working on the graphics stack)
+* Link Time Optimization (LTO) (with zstd set as default compression method, and
+zlib set as a fallback method)
+
+* Extra performance related optimizations
+
+* 150+ packages building successfully
+
+* doesn't require a separate partition to build and install into
+
+* doesn't require a chroot to build correctly (hopefully this won't change when
+working on the graphics stack)
 
 
-## Supported Architecture
+## Supported Architectures
 
 Currently only `x86_64-pc-linux-musl` is supported with no plans in the near
 future to support any other architecture.
 
-ARM support might be added in the distant future though.
+ARM, Raspberry Pi and RISC-V support might be added in the distant future
+though.
 
 
 ## Minimum Requirements
