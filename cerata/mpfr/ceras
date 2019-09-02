@@ -5,7 +5,7 @@ arch=x86-64
 url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
 cysts='musl gmp'
 description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
-license='LGPLv2.1+ LGPLv3.0+ PD'
+licenses='LGPLv2.1+ LGPLv3.0+ PD'
 build_toolchain(){
         rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
         cd $TSRC/$name

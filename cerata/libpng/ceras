@@ -5,7 +5,7 @@ arch=x86_64
 url=https://github.com/glennrp/$name
 cysts='musl zlib'
 description='The official PNG reference library'
-license='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
+licenses='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
 build(){
         mkdir -v $SBLD/$name
         cd $SBLD/$name

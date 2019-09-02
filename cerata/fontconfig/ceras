@@ -5,7 +5,7 @@ arch=x86_64
 url=https://gitlab.freedesktop.org/$name/$name
 cysts='musl expat json-c freetype'
 description='Font configuration and customization library'
-license='GPLv3+ HPND MIT'
+licenses='GPLv3+ HPND MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

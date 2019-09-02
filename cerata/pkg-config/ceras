@@ -5,7 +5,7 @@ arch=x86_64
 url=https://gitlab.freedesktop.org/$name/$name
 cyst=musl
 description='A script to make putting together all the build flags when compiling/linking a lot easier'
-license='GPLv2+ ISC LGPLv2.0+ LGPLv2.1+'
+licenses='GPLv2+ ISC LGPLv2.0+ LGPLv2.1+'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

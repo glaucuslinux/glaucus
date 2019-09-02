@@ -5,7 +5,7 @@ arch=x86_64
 url=https://github.com/$name/$name
 cyst=musl
 description='The Free Implementation of the Unicode Bidirectional Algorithm'
-license='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
+licenses='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

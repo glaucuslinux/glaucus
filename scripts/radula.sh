@@ -40,32 +40,74 @@ EOF
         no) curl $3 -o $(basename $3) ;;
       esac
 
-      cat >> ceras << EOF
-checksum=$(echo $(sha512sum $(basename $3)) | awk '{print $1}')
-EOF
+      sed "/^url=.*/a checksum=$(echo $(sha512sum $(basename $3)) | awk \
+        '{print $1}')" \
+        -i ceras
       ;;
   esac
 
   cat >> ceras << 'EOF'
+
 prepare() {
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL
 }
 
 build() {
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+  make
+}
+
+install() {
+  make DESTDIR=$SCER/$name/sac \
+    install-strip
 }
 EOF
 
   cat > README.md << EOF
 # $1
+
+## Name
+$1
+
+## Version
+$2
+
+## Release
+1
+
+## Architecture
+x86_64
+
+## URL
+$3
+
+## Cyst
+* musl
+
+## Description
+
+
+## License
+
+
+## Prepare
+
+
+## Configure
+
+
+## Build
+
+
+## Install
 EOF
 
 else

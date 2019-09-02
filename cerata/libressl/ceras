@@ -5,7 +5,7 @@ arch=x86-64
 url=https://github.com/$name-portable/portable
 cysts='musl mawk'
 description='A free version of the TLS/crypto stack forked from OpenSSL with a modern codebase and improved security'
-license='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
+licenses='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 build(){
         rsync -vah $CERD/$name/portable/ $SSRC/$name --delete
         rsync -vah $CERD/$name/openbsd $SSRC/$name --delete

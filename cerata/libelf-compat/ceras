@@ -5,7 +5,7 @@ arch=x86_64
 url=https://github.com/sabotage-linux/$name
 cyst=musl
 description='libelf stripped off of elfutils 0.152 and cleaned up portability issues and autocrap'
-license='GPLv2+ GPLv3+ LGPLv3'
+licenses='GPLv2+ GPLv3+ LGPLv3'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

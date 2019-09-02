@@ -5,7 +5,7 @@ arch=x86_64
 url=https://$version.sv.nongnu.org/r/$name/freetype2
 cysts='musl zlib libpng'
 description='A freely available software library to render fonts'
-license='FTL GPLv2+ MIT zlib'
+licenses='FTL GPLv2+ MIT zlib'
 build(){
         rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
         cd $SSRC/$name

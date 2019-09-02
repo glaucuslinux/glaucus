@@ -7,16 +7,27 @@ checksum=e80e06965fbdcf13100aae4690071d01a6efe74aed7ff8f14e5892c6803393a1b5acda1
 cyst=musl
 description='A simple complete cross-development C assembler and linker which can generate 16 or 32-bit code for the production of 8086 - 80386 executables'
 license=GPLv2+
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  patch -p0 -i $CERD/$name/patches/$name.patch
+}
+
+configure() {
+  sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
+    -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
+    -e '9d;11d;12d;13d' \
+    -i Makefile
+}
+
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        patch -p0 -i $CERD/$name/patches/$name.patch
-        sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
-                -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
-                -e '9d;11d;12d;13d' \
-                -i Makefile
-        make
-        install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
-        make PREFIX=$SCER/$name/sac/usr \
-                install
+  make
+}
+
+install() {
+  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
+  make PREFIX=$SCER/$name/sac/usr \
+    install
 }

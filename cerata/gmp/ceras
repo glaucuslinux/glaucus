@@ -4,7 +4,7 @@ release=1
 arch=x86-64
 url=https://gmplib.org/repo/$name
 description='A free library for arbitrary multiprecision arithmetic, operating on signed integers, rational numbers, and floating-point numbers'
-license='GPLv2 LGPLv3 PD'
+licenses='GPLv2 LGPLv3 PD'
 build_toolchain(){
         rsync -vah $CERD/$name/$name $TSRC --delete
         cd $TSRC/$name

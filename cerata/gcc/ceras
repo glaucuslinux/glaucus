@@ -4,7 +4,7 @@ release=1
 arch=x86-64
 url=https://$name.gnu.org/$version/$name/trunk
 description='The GNU Compiler Collection'
-license='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
+licenses='Apachev2.0 FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ MIT'
 build_toolchain(){
         rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
         cd $TSRC/$name/$name/config

@@ -5,7 +5,7 @@ arch=x86-64
 url=https://$version.tukaani.org/$name.$version
 cysts='musl mawk'
 description='A free general-purpose data compression software with a high compression ratio'
-license='GPLv2+ GPLv3+ LGPLv2.1+ PD'
+licenses='GPLv2+ GPLv3+ LGPLv2.1+ PD'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

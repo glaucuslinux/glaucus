@@ -5,7 +5,7 @@ arch=x86-64
 url=https://github.com/skvadrik/$name
 cyst='musl mawk'
 description='Free and open-source lexer generator for C and C++'
-license='GPLv3 PD PHPv3.01'
+licenses='GPLv3 PD PHPv3.01'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name

@@ -6,7 +6,7 @@ url=http://www.greenwoodsoftware.com/$name/$name-$version.tar.gz
 checksum=ef5296b9ebd72f83c05cad8a0f7a5eec2290e9b358ee725e09e8541bd95f94c0e14ea22aa04b287a0654079338eaeae813f2235b8e9f819fbbc9040dd65a9585
 cysts='musl mawk netbsd-curses pcre2'
 description='A free, open-source and text-based terminal file pager'
-license='BSDv2 GPLv3'
+licenses='BSDv2 GPLv3'
 build(){
         rsync -vah $CERD/$name/$name $SSRC --delete
         cd $SSRC/$name
