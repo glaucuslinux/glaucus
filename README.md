@@ -86,7 +86,7 @@ though.
 ## Minimum Requirements
 
 Based on initial observations with QEMU, it seems that glaucus won't boot
-without having at least 36MB of RAM, even though it uses less than 6MB of RAM
+without having at least 33MB of RAM, even though it uses less than 6MB of RAM
 when idle.
 
 
@@ -95,7 +95,7 @@ when idle.
 Kindly refer to the [wiki](https://github.com/firasuke/glaucus/wiki) for more
 information regarding glaucus.
 
-Please keep in mind that the wiki is nowhere near finished (I'd say it's at 10%
+Please keep in mind that the wiki is nowhere near finished (I'd say it's at 15%
 but that's just wishful thinking).
 
 
