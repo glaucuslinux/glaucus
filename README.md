@@ -1,7 +1,7 @@
 # glaucus
 
-glaucus is a highly optimized and extremely lightweight suckless Linux
-distribution built from scratch.
+glaucus is a highly optimized and extremely lightweight Linux distribution built
+from scratch.
 
 It was previously known as snail, and has been under development for 2 years
 now.
@@ -19,25 +19,24 @@ reading.
 
 ## Features
 
-glaucus has the following features:
+glaucus boaststhe following features:
 
-* a suckless Linux distribution
+* bleeding edge as it fetches the latest sources available from upstream
+repositories for all cerata
 
-* dynamically linked (perhaps the only thing that goes against the suckless
-philosophy)
+* musl libc
 
-* uses musl libc
+* skarnet's s6 small supervision suite
+
+* skarnet's s6-linux-init tools for a Linux init system (version 1.0.3)
+
+* skarnet's s6-rc service manager for s6
 
 * replaced GNU Core Utilities with:
   1. suckless base (sbase)
   2. unportable base (ubase)
   3. OpenBSD userland port to Linux (lobase)
 
-* skarnet's s6 init system (with s6-linux-init version > 1.0)
-
-* skarnet's s6-rc service manager
-
-* uses the latest available upstream sources for all cerata
 
 * built with the dangerous `Ofast` (this is only listed for bragging rights and
 to show that glaucus is capable of building with `Ofast`; however, it's highly
@@ -266,7 +265,8 @@ This project is dedicated to my lovely parents.
 ## Donations
 
 If you like glaucus and want to support its development, then kindly donate to:
+* [Patreon](www.patreon.com/firasuke)
+
 * PayPal (firasuke@gmail.com)
-* Patreon (yet to come)
 
 Hardware donations are also accepted.
