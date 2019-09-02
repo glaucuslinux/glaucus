@@ -265,7 +265,7 @@ This project is dedicated to my lovely parents.
 ## Donations
 
 If you like glaucus and want to support its development, then kindly donate to:
-* [Patreon](www.patreon.com/firasuke)
+* [Patreon](https://www.patreon.com/firasuke)
 
 * PayPal (firasuke@gmail.com)
 
