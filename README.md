@@ -121,17 +121,19 @@ glaucus is heavily inspired by the following projects:
 
 * [bleeding-edge-toolchain](https://github.com/FreddieChopin/bleeding-edge-toolchain)
 
+* [B/LFS-s6](https://www.linuxquestions.org/questions/linux-from-scratch-13/%5Bannoucement%5D-b-lfs-s6-project-4175510228/)
+
 * [Bluedragon](https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon)
+
+* [build-linux](https://github.com/MichielDerhaeg/build-linux)
 
 * [Buildroot](https://buildroot.org)
 
 * [Build Your Own Linux](http://www.buildyourownlinux.com)
 
-* [build-linux](https://github.com/MichielDerhaeg/build-linux)
-
-* [B/LFS-s6](https://www.linuxquestions.org/questions/linux-from-scratch-13/%5Bannoucement%5D-b-lfs-s6-project-4175510228/)
-
 * [Cavium](https://github.com/Cavium-Open-Source-Distributions)
+
+* [Clear Linux OS](https://clearlinux.org)
 
 * [clfs-arm](https://github.com/LeeKyuHyuk/clfs-arm)
 
@@ -161,19 +163,17 @@ glaucus is heavily inspired by the following projects:
 
 * [GoboLinux](https://gobolinux.org)
 
-* [Intel's Clear Linux OS](https://clearlinux.org)
-
 * [KISS](https://getkiss.org)
 
-* [lightcube-bootstrap-musl](https://github.com/jhuntwork/lightcube-bootstrap-musl)
+* [LFS-s6](https://github.com/djlucas/LFS-s6)
 
 * [lh-bootstrap](https://skarnet.org/software/lh-bootstrap)
+
+* [lightcube-bootstrap-musl](https://github.com/jhuntwork/lightcube-bootstrap-musl)
 
 * [Linaro](https://www.linaro.org)
 
 * [Linux From Scratch (LFS)](http://linuxfromscratch.org)
-
-* [LFS-s6](https://github.com/djlucas/LFS-s6)
 
 * [Mere Linux](https://github.com/jhuntwork/merelinux)
 
@@ -181,9 +181,9 @@ glaucus is heavily inspired by the following projects:
 
 * [Minimal Linux Live (MLL)](http://minimal.idzona.com)
 
-* [Morpheus Linux](morpheus.2f30.org)
-
 * [mkroot](https://github.com/landley/mkroot)
+
+* [Morpheus Linux](morpheus.2f30.org)
 
 * [musl-cross](https://github.com/GregorR/musl-cross)
 
@@ -225,13 +225,13 @@ glaucus is heavily inspired by the following projects:
 
 * [s6-overlay](https://github.com/just-containers/s6-overlay)
 
-* [static linux (stali)](http://sta.li)
-
 * [Sabotage Linux](http://sabo.xyz)
 
 * [solyste](https://ywstd.fr/solyste/)
 
 * [Spark](https://fleshless.org/pages/spark.html)
+
+* [static linux (stali)](http://sta.li)
 
 * [tomsrtbt](http://www.toms.net/rb/)
 
