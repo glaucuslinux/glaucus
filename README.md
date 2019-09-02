@@ -87,11 +87,13 @@ but that's just wishful thinking).
 
 ## Artwork and Screenshots
 
-Kindly refer to the [Artwork wiki page](https://github.com/firasuke/glaucus/wiki
-/Artwork) for glaucus related artwork.
+Kindly refer to the
+[Artwork wiki page](https://github.com/firasuke/glaucus/wiki/Artwork) for
+glaucus related artwork.
 
-Kindly refer to the [Screenshots wiki page](https://github.com/firasuke/glaucus/
-wiki/Screenshots) for screenshots of glaucus in action.
+Kindly refer to the
+[Screenshots wiki page](https://github.com/firasuke/glaucus/wiki/Screenshots)
+for screenshots of glaucus in action.
 
 
 ## Inspired from
@@ -276,6 +278,8 @@ This project is dedicated to my lovely parents.
 If you like glaucus and want to support its development, then kindly donate to:
 * [Patreon](https://www.patreon.com/firasuke)
 
-* [PayPal](firasuke@gmail.com)
+* [Ko-fi](https://ko-fi.com/firasuke)
+
+* PayPal: firasuke@gmail.com
 
 Hardware donations are also accepted.
