@@ -1,6 +1,7 @@
 colorscheme molokai
 filetype plugin indent on
 let NERDTreeShowHidden=1
+set autoindent
 set colorcolumn=80
 set cursorcolumn
 set cursorline
@@ -12,5 +13,9 @@ set modifiable
 set mouse=a
 set number
 set relativenumber
+set shiftwidth=2
+set smarttab
+set softtabstop=0
 set t_Co=256
+set tabstop=2
 syntax on

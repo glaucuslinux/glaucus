@@ -7,23 +7,31 @@ checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732
 cysts='musl bin86'
 description='Standard LInux boot LOader'
 license='BSDv3 GPLv2 LGPLv2.1'
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        patch -p1 -i $CERD/$name/patches/$name.patch
-        sed -e "/images/d" \
-                -e "/checkit/d" \
-                -i Makefile
-        sed -e "s/OPT=.*/OPT=$CFLAGS/" \
-                -e 's/SBIN_DIR=\/sbin/SBIN_DIR=\/usr\/bin/' \
-                -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/usr\/bin/' \
-                -i make.vars
-        sed -e "s/CC=.*/CC=$TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -e 's/as86/\/home\/glaucus\/system\/usr\/bin\/as86/' \
-                -e 's/ld86/\/home\/glaucus\/system\/usr\/bin\/ld86/' \
-                -e "s/NASM=nasm/NASM=\\$TOOL\/bin\/x86_64-pc-linux-musl-as/" \
-                -i src/Makefile
-        make
-        install -Dv src/$name $SCER/$name/sac/usr/bin/$name
-        install -Dv $CERD/$name/$name.conf $SCER/$name/sac/etc/$name.conf
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+  
+  patch -p1 -i $CERD/$name/patches/$name.patch
+  
+  sed -e "/images/d" \
+    -e "/checkit/d" \
+    -i Makefile
+  
+  sed -e "s/OPT=.*/OPT=$CFLAGS/" \
+    -e 's/SBIN_DIR=\/sbin/SBIN_DIR=\/usr\/bin/' \
+    -e 's/USRSBIN_DIR=.*/USRSBIN_DIR=\/usr\/bin/' \
+    -i make.vars
+  
+  sed -e "s/CC=.*/CC=$TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -e 's/as86/\/home\/glaucus\/system\/usr\/bin\/as86/' \
+    -e 's/ld86/\/home\/glaucus\/system\/usr\/bin\/ld86/' \
+    -e "s/NASM=nasm/NASM=\\$TOOL\/bin\/x86_64-pc-linux-musl-as/" \
+    -i src/Makefile
+}
+
+build() {
+  make
+  install -Dv src/$name $SCER/$name/sac/usr/bin/$name
+  install -Dv $CERD/$name/$name.conf $SCER/$name/sac/etc/$name.conf
 }
