@@ -5,7 +5,7 @@ arch=x86-64
 url=https://anon$version.freedesktop.org/$version/$name
 cysts='musl zlib libpng pixman'
 description='A 2D graphics library with support for multiple output devices'
-licenses='LGPLv2.1 MPLv1.1'
+licenses='LGPLv2.1+ MPLv1.1'
 
 prepare() {
   rsync -vah $CERD/$name/$name $SSRC --delete

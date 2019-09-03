@@ -25,7 +25,7 @@ Almquist shell
 
 ## Licenses
 * BSDv3
-* GPLv2
+* GPLv2+
 * PD
 
 ## Prepare
@@ -56,7 +56,9 @@ install -dv $SCER/$name/sac/usr/bin
 make \
   DESTDIR=$SCER/$name/sac \
   install-strip
+```
 
-  cd $SCER/$name/sac/usr/bin
-  ln -fsv $name sh
+```shell
+cd $SCER/$name/sac/usr/bin
+ln -fsv $name sh
 ```

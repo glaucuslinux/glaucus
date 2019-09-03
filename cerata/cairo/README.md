@@ -25,7 +25,7 @@ https://anongit.freedesktop.org/git/cairo
 A 2D graphics library with support for multiple output devices
 
 ## Licenses
-* LGPLv2.1
+* LGPLv2.1+
 * MPLv1.1
 
 ## Prepare
