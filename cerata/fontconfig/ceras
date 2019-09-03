@@ -1,7 +1,7 @@
 name=fontconfig
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/$name/$name
 cysts='musl expat json-c freetype'
 description='Font configuration and customization library'

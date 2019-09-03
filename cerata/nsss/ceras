@@ -1,7 +1,7 @@
 name=nsss
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs s6'
 description='A statically linkable NSS-like getpwnam() implementation'

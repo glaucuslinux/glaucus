@@ -1,54 +1,66 @@
 name=cairo
 version=git
 release=1
-arch=x86_64
-url=https://anon$git.freedesktop.org/$git/$name
+arch=x86-64
+url=https://anon$version.freedesktop.org/$version/$name
 cysts='musl zlib libpng pixman'
 description='A 2D graphics library with support for multiple output devices'
 licenses='LGPLv2.1 MPLv1.1'
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LIBS=-L$GLAD/usr/lib \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-valgrind \
-                --enable-xlib \
-                --disable-xlib-xrender \
-                --enable-xcb \
-                --enable-xcb-shm \
-                --disable-qt \
-                --disable-quartz \
-                --disable-quartz-font \
-                --disable-win32 \
-                --disable-win32-font \
-                --disable-png \
-                --disable-egl \
-                --disable-glx \
-                --disable-wgl \
-                --disable-script \
-                --disable-ft \
-                --disable-fc \
-                --disable-ps \
-                --disable-pdf \
-                --disable-svg \
-                --disable-gobject \
-                --disable-full-testing \
-                --disable-trace \
-                --disable-interpreter \
-                --disable-symbol-lookup \
-                --disable-some-floating-point \
-                --with-sysroot=$GLAD \
-                --with-x \
-                --without-gallium
-        sed '/am__append_1 /s/test //' \
-                -i Makefile
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  LIBS=-L$GLAD/usr/lib \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-valgrind \
+    --enable-xlib \
+    --disable-xlib-xrender \
+    --enable-xcb \
+    --enable-xcb-shm \
+    --disable-qt \
+    --disable-quartz \
+    --disable-quartz-font \
+    --disable-win32 \
+    --disable-win32-font \
+    --disable-png \
+    --disable-egl \
+    --disable-glx \
+    --disable-wgl \
+    --disable-script \
+    --disable-ft \
+    --disable-fc \
+    --disable-ps \
+    --disable-pdf \
+    --disable-svg \
+    --disable-gobject \
+    --disable-full-testing \
+    --disable-trace \
+    --disable-interpreter \
+    --disable-symbol-lookup \
+    --disable-some-floating-point \
+    --with-sysroot=$GLAD \
+    --with-x \
+    --without-gallium
+
+  sed '/am__append_1 /s/test //' \
+    -i Makefile
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

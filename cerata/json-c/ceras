@@ -1,7 +1,7 @@
 name=json-c
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/json-c/json-c
 cyst=musl
 description='A JSON implementation in C'

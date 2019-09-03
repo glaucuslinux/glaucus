@@ -1,7 +1,7 @@
 name=libXt
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxt
 cysts='musl util-macros'
 description='X Toolkit Intrinsics library'

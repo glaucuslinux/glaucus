@@ -5,22 +5,32 @@ arch=x86-64
 url=https://sourceware.org/$version/$name-gdb.$version
 description='The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files'
 licenses='FDLv1.3+ GPLv2+ GPLv3+ LGPLv2.1+ LGPLv3+ PD'
-build_toolchain(){
-        rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
-        mkdir -v $TBLD/$name
-        cd $TBLD/$name
-        $TSRC/$name/configure \
-                --prefix=$TOOL \
-                --target=$TUPL \
-                --enable-lto \
-                --disable-nls \
-                --with-sysroot=$TOOL/$TUPL \
-                --disable-multilib \
-                --disable-gdb
-        make configure-host
-        make
-        make install
+
+prepare_toolchain() {
+  rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
+  mkdir -v $TBLD/$name
+  cd $TBLD/$name
 }
-build(){
-        :
+
+configure_toolchain() {
+  $TSRC/$name/configure \
+    --prefix=$TOOL \
+    --target=$TUPL \
+    --enable-lto \
+    --disable-nls \
+    --with-sysroot=$TOOL/$TUPL \
+    --disable-multilib \
+    --disable-gdb
+
+  make \
+    configure-host
+}
+
+build_toolchain() {
+  make
+}
+
+install_toolchain() {
+  make \
+    install-strip
 }

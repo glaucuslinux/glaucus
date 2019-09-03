@@ -55,7 +55,9 @@ sed 's/#ifdef __OPTIMIZE__/#if 0/g' \
 ```
 
 ## Build
-`make`
+```shell
+make
+```
 
 ## Install
 ```shell

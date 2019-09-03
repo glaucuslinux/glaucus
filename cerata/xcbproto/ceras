@@ -1,7 +1,7 @@
 name=xcbproto
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/proto/$name
 cyst=musl
 description='XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions'

@@ -1,7 +1,7 @@
 name=libthai
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/tlwg/$name
 cysts='musl libdatrie'
 description="A set of Thai language support routines aimed to ease developers' tasks to incorporate Thai language support in their applications"

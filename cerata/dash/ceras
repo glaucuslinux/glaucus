@@ -7,20 +7,32 @@ cysts='musl mawk'
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 cluster=core
 licenses='BSDv3 GPLv2 PD'
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./autogen.sh
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
-        make
-        install -dv $SCER/$name/sac/usr/bin
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
-        cd $SCER/$name/sac/usr/bin
-        ln -fsv $name sh
+  make
+}
+
+install() {
+  install -dv $SCER/$name/sac/usr/bin
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
+
+  cd $SCER/$name/sac/usr/bin
+  ln -fsv $name sh
 }

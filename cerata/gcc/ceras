@@ -23,10 +23,10 @@ build_toolchain(){
                 -i i386/t-linux64
         sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
                 -i linux.h
-        mkdir -v $TBLD/$1
-        case $1 in
+        mkdir -v $TBLD/$ceras
+        case $ceras in
                 gcc_1)
-                        cd $TBLD/$1
+                        cd $TBLD/$ceras
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \
                                 --target=$TUPL \
@@ -63,7 +63,7 @@ build_toolchain(){
                 gcc_2)
                         cd ..
                         cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc -print-libgcc-file-name))/include-fixed/limits.h
-                        cd $TBLD/$1
+                        cd $TBLD/$ceras
                         LDFLAGS="-Wl,-rpath,$TOOL/lib" \
                         $TSRC/$name/configure \
                                 --prefix=$TOOL \

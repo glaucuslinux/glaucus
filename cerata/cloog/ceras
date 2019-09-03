@@ -3,8 +3,22 @@ version=git
 release=1
 arch=x86-64
 url=https://repo.or.cz/$name
+cyst=musl
 description='A software which generates loops for scanning Z-polyhedra'
 licenses='GPLv3+ LGPLv2.1+'
-build(){
-        :
+
+prepare() {
+  :
+}
+
+configure() {
+  :
+}
+
+build() {
+  :
+}
+
+install() {
+  :
 }

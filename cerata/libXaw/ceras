@@ -1,7 +1,7 @@
 name=libXaw
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxaw
 cysts='musl util-macros'
 description='X Athena Widget Set, based on the X Toolkit Intrinsics (Xt) Library'

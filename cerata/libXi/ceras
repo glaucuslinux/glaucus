@@ -1,7 +1,7 @@
 name=libXi
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxi
 cysts='musl util-macros'
 description='Xlib library for the X Input Extension'

@@ -1,7 +1,7 @@
 name=pkg-config
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/$name/$name
 cyst=musl
 description='A script to make putting together all the build flags when compiling/linking a lot easier'

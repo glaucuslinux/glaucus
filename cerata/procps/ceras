@@ -1,7 +1,7 @@
 name=procps
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.com/$name-ng/$name
 cysts='musl netbsd-curses skalibs execline s6 utmps'
 description='Command line and full screen utilities for browsing procfs'

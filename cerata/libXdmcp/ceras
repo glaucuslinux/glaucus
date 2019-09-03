@@ -1,7 +1,7 @@
 name=libXdmcp
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxdmcp
 cysts='musl util-macros xorgproto'
 description='X Display Manager Control Protocol library'

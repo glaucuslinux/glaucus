@@ -1,7 +1,7 @@
 name=libnl-tiny
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/sabotage-linux/$name
 cyst=musl
 description="A fork of openwrt's tiny replacement for libnl versions 1 and 2"

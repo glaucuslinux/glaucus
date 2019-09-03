@@ -1,7 +1,7 @@
 name=expat
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/lib$name/lib$name
 cyst=musl
 description='Fast streaming XML parser written in C'

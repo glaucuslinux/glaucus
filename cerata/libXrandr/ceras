@@ -1,7 +1,7 @@
 name=libXrandr
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxrandr
 cysts='musl util-macros'
 description='Xlib Resize, Rotate and Reflection (RandR) extension library'

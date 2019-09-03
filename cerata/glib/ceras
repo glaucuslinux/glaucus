@@ -1,7 +1,7 @@
 name=glib
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.gnome.org/GNOME/$name
 cysts='musl mawk libelf-compat zlib pcre'
 description='The low-level core library that forms the basis for projects such as GTK+ and GNOME'

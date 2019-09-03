@@ -6,53 +6,64 @@ url=https://$version.kernel.org/pub/scm/fs/ext2/$name
 cysts='musl mawk'
 description='The standard utilities for ext2/ext3/ext4 filesystems'
 cluster=core
-licenses='BSDv3 GPLv2 LGPLv2 MIT'
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        patch -p1 -i $CERD/$name/patches/$name.patch
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LIBS=-L$GLAD/usr/lib \
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --enable-symlink-install \
-                --enable-elf-shlibs \
-                --disable-bsd-shlibs \
-                --disable-testio-debug \
-                --disable-debugfs \
-                --disable-imager \
-                --disable-resizer \
-                --disable-defrag \
-                --enable-fsck \
-                --disable-uuidd \
-                --disable-mmp \
-                --disable-tdb \
-                --disable-nls \
-                --disable-fuse2fs
-        make
-        for dir in lib/blkid lib/e2p lib/et lib/ext2fs lib/uuid
-        do
-                cd $dir
-                sed -e '/LDCONFIG/d' \
-                        -i Makefile
-                install -dv $SCER/$name/sac/usr/share/man/man3
-                make DESTDIR=$SCER/$name/sac \
-                        install-strip
-                cd ../..
-        done
-        install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr misc/mke2fs misc/tune2fs -t $SCER/$name/sac/usr/bin
-        cd $SCER/$name/sac/usr/bin
-        ln -fsv e2fsck fsck.ext4
-        ln -fsv mke2fs mkfs.ext4
-        sed -e 's/\/home\/glaucus\/system//' \
-                -i compile_et
-        cd ../lib
-        rm -frv libblkid.a \
-                libcom_err.a \
-                libe2p.a \
-                libext2fs.a \
-                libuuid.a
+licenses='BSDv3 GPLv2+ LGPLv2+ MIT'
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  patch -p1 -i $CERD/$name/patches/$name.patch
+}
+
+configure() {
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  LIBS=-L$GLAD/usr/lib \
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --enable-symlink-install \
+    --enable-elf-shlibs \
+    --disable-bsd-shlibs \
+    --disable-testio-debug \
+    --disable-debugfs \
+    --disable-imager \
+    --disable-resizer \
+    --disable-defrag \
+    --enable-fsck \
+    --disable-uuidd \
+    --disable-mmp \
+    --disable-tdb \
+    --disable-nls \
+    --disable-fuse2fs
+}
+
+build() {
+  make
+}
+
+install() {
+  for dir in lib/blkid lib/e2p lib/et lib/ext2fs lib/uuid; do
+    cd $dir
+    
+    install -dv $SCER/$name/sac/usr/share/man/man3
+    make \
+      DESTDIR=$SCER/$name/sac \
+      install-strip
+
+    cd ../..
+  done
+
+  install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr \
+    misc/mke2fs misc/tune2fs -t $SCER/$name/sac/usr/bin
+  cd $SCER/$name/sac/usr/bin
+  ln -fsv e2fsck fsck.ext4
+  ln -fsv mke2fs mkfs.ext4
+
+  sed 's/\/home\/glaucus\/system//' \
+    -i compile_et
+
+  cd ../lib
+  rm -fv libblkid.a libcom_err.a libe2p.a libext2fs.a libuuid.a
 }

@@ -6,6 +6,19 @@ url=https://github.com/$name/$name
 cyst=musl
 description='A command line tool and library for transferring data with URLs'
 license=MIT
-build(){
+
+prepare() {
+  :
+}
+
+configure() {
+  :
+}
+
+build() {
         :
+}
+
+install() {
+  :
 }

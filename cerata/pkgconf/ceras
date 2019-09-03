@@ -1,7 +1,7 @@
 name=pkgconf
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name/$name
 cyst=musl
 description='A package compiler and linker metadata toolkit'

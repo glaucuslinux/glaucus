@@ -1,7 +1,7 @@
 name=zstd
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/facebook/$name
 cyst=musl
 description='Zstandard - Fast real-time compression algorithm'

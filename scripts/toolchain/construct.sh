@@ -1,24 +1,22 @@
 #!/usr/bin/dash -ex
-construct(){
-        for item in $@
-        do
-                case $item in
-                        linux|binutils|gmp|mpfr|mpc|musl|isl|zstd)
-                                . $CERD/$item/ceras
-                                build_toolchain
-                                ;;
-                        gcc_*)
-                                . $CERD/gcc/ceras
-                                build_toolchain $item
-                                ;;
-                esac
-        done
+
+construct() {
+  for ceras in $@; do
+    . $CERD/$(echo $ceras | sed s/_.//)/ceras
+    prepare_toolchain && configure_toolchain && build_toolchain && \
+      install_toolchain
+  done
 }
-construct linux \
-        binutils \
-        gmp mpfr mpc \
-        gcc_1 \
-        musl \
-        isl \
-        zstd \
-        gcc_2
+
+# order is honored
+# musl, isl and zstd should only be built with the static gcc_1
+toolchain='linux
+binutils
+gmp mpfr mpc
+gcc_1
+musl
+isl
+zstd
+gcc_2'
+
+construct $toolchain

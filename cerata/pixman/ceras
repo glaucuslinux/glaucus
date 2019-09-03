@@ -1,7 +1,7 @@
 name=pixman
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://anon$version.freedesktop.org/$version/$name
 cysts='musl zlib libpng'
 description='A low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization'

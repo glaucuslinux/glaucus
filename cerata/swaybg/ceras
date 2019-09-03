@@ -1,7 +1,7 @@
 name=swaybg
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/swaywm/swaybg
 cysts='musl zlib libpng pixman cairo expat libffi wayland-protocols wayland'
 description='A wallpaper utility for Wayland compositors'

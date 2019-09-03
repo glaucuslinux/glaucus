@@ -1,7 +1,7 @@
 name=libXdamage
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxdamage
 cysts='musl util-macros'
 description='X Damage Extension library'

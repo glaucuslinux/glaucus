@@ -1,7 +1,7 @@
 name=pango
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.gnome.org/GNOME/$name
 cysts='musl libdatrie libthai fribidi glib zlib libpng pixman cairo'
 description='A library for layout and rendering of text, with an emphasis on internationalization'

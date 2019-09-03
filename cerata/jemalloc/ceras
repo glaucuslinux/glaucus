@@ -1,7 +1,7 @@
 name=jemalloc
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name/$name
 cyst=musl
 description='A general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support'

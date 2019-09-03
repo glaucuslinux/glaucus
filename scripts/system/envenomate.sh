@@ -5,8 +5,7 @@ envenomate() {
     install -dv $SCER/$ceras/sac $SCER/$ceras/venom
 
     . $CERD/$(echo $ceras | sed s/_.//)/ceras
-    prepare
-    build
+    prepare && configure && build && install
 
     cd $SCER/$ceras/sac
 

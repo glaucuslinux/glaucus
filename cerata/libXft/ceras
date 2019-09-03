@@ -1,7 +1,7 @@
 name=libXft
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxft
 cysts='musl util-macros'
 description='X FreeType library'

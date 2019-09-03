@@ -1,7 +1,7 @@
 name=libXrender
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxrender
 cysts='musl util-macros'
 description='Xlib library for the Render Extension to the X11 protocol'

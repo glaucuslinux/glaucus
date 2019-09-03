@@ -1,7 +1,7 @@
 name=libelf-compat
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/sabotage-linux/$name
 cyst=musl
 description='libelf stripped off of elfutils 0.152 and cleaned up portability issues and autocrap'

@@ -1,7 +1,7 @@
 name=python
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/$name/c$name
 cysts='musl expat libffi'
 description='The Python programming language'

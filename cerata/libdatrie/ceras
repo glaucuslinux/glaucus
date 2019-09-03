@@ -1,7 +1,7 @@
 name=libdatrie
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/tlwg/$name
 cyst=musl
 description='An implementation of double-array structure for representing trie, as proposed by Junichi Aoe'

@@ -46,11 +46,14 @@ sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
 ```
 
 ## Build
-`make`
+```shell
+make
+```
 
 ## Install
 ```shell
 install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
-make PREFIX=$SCER/$name/sac/usr \
+make \
+  PREFIX=$SCER/$name/sac/usr \
   install
 ```

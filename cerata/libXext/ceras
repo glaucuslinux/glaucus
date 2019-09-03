@@ -1,7 +1,7 @@
 name=libXext
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxext
 cysts='musl util-macros libX11'
 description='Xlib-based library for common extensions to the X11 protocol'

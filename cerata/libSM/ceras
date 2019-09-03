@@ -1,7 +1,7 @@
 name=libSM
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libsm
 cysts='musl util-macros libxtrans libICE'
 description='X Session Management Library'

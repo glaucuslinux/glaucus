@@ -1,7 +1,7 @@
 name=libpng
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/glennrp/$name
 cysts='musl zlib'
 description='The official PNG reference library'
