@@ -4,26 +4,38 @@ release=1
 arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libxaw
 cysts='musl util-macros'
-description='X Athena Widget Set, based on the X Toolkit Intrinsics (Xt) Library'
+description='X Athena Widget Set, based on the X Toolkit Intrinsics (Xt)
+Library'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/libxaw/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-specs \
-                --disable-xaw6 \
-                --disable-xaw7 \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc
-        make
-        install -dv $SCER/$name/sac/usr/lib
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/libxaw/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-specs \
+    --disable-xaw6 \
+    --disable-xaw7 \
+    --without-xmlto \
+    --without-fop \
+    --without-xsltproc
+}
+
+build() {
+  make
+}
+
+install() {
+  install -dv $SCER/$name/sac/usr/lib
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

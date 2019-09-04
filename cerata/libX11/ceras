@@ -6,25 +6,36 @@ url=https://gitlab.freedesktop.org/xorg/lib/libx11
 cysts='musl util-macros libxtrans'
 description='Core X11 protocol client library (aka "Xlib")'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/libx11/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-specs \
-                --disable-xf86bigfont \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc \
-                --without-perl \
-                --without-launchd
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/libx11/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-specs \
+    --disable-xf86bigfont \
+    --without-xmlto \
+    --without-fop \
+    --without-xsltproc \
+    --without-perl \
+    --without-launchd
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

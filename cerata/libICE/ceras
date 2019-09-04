@@ -5,25 +5,36 @@ arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/libice
 cysts='musl util-macros'
 description='Inter-Client Exchange Library'
-license=
-build(){
-        rsync -vah $CERD/$name/libice/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-docs \
-                --disable-specs \
-                --disable-ipv6 \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+license=MIT
+
+prepare() {
+  rsync -vah $CERD/$name/libice/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-docs \
+    --disable-specs \
+    --disable-ipv6 \
+    --without-xmlto \
+    --without-fop \
+    --without-xsltproc
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

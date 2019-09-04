@@ -4,23 +4,36 @@ release=1
 arch=x86-64
 url=https://gitlab.gnome.org/GNOME/$name
 cysts='musl mawk libelf-compat zlib pcre'
-description='The low-level core library that forms the basis for projects such as GTK+ and GNOME'
+description='The low-level core library that forms the basis for projects such
+as GTK+ and GNOME'
 license=LGPLv2.1+
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        mkdir -v $SBLD/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
-        LD_LIBRARY_PATH=$GLAD/usr/lib \
-        meson \
-                --prefix=/usr \
-                -Dlibmount=false \
-                $SBLD/$name
-        LD_LIBRARY_PATH=$GLAD/usr/lib \
-        ninja \
-                -C $SBLD/$name
-        DESTDIR=$SCER/$name/sac \
-        ninja \
-                -C $SBLD/$name install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+  
+  mkdir -v $SBLD/$name
+}
+
+configure() {
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
+  LD_LIBRARY_PATH=$GLAD/usr/lib \
+  meson \
+    --prefix=/usr \
+    -Dlibmount=false \
+    $SBLD/$name
+}
+
+build() {
+  LD_LIBRARY_PATH=$GLAD/usr/lib \
+  ninja \
+    -C $SBLD/$name
+}
+
+install() {
+  DESTDIR=$SCER/$name/sac \
+  ninja \
+    -C $SBLD/$name \
+    install
 }

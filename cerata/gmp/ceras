@@ -4,18 +4,26 @@ release=1
 arch=x86-64
 url=https://gmplib.org/repo/$name
 description='A free library for arbitrary multiprecision arithmetic, operating on signed integers, rational numbers, and floating-point numbers'
-licenses='GPLv2 LGPLv3 PD'
-build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC --delete
-        cd $TSRC/$name
-        ./.bootstrap
-        ./configure \
-                --prefix=$TOOL \
-                --disable-static \
-                --enable-cxx
-        make
-        make install-strip
+licenses='GPLv2+ LGPLv3+ PD'
+
+prepare_toolchain() {
+  rsync -vah $CERD/$name/$name $TSRC --delete
+  cd $TSRC/$name
 }
-build(){
-        :
+
+configure_toolchain() {
+  ./.bootstrap
+  ./configure \
+    --prefix=$TOOL \
+    --disable-static \
+    --enable-cxx
+}
+
+build_toolchain() {
+  make
+}
+
+install_toolchain() {
+  make \
+    install-strip
 }

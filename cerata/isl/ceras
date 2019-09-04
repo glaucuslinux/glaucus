@@ -3,19 +3,28 @@ version=git
 release=1
 arch=x86-64
 url=https://repo.or.cz/$name
-description='A library for manipulating sets and relations of integer points bounded by linear constraints'
+description='A library for manipulating sets and relations of integer points
+bounded by linear constraints'
 license=MIT
-build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC --delete
-        cd $TSRC/$name
-        ./autogen.sh
-        ./configure \
-                --prefix=$TOOL \
-                --disable-static \
-                --with-gmp=$TOOL
-        make
-        make install-strip
+
+prepare_toolchain() {
+  rsync -vah $CERD/$name/$name $TSRC --delete
+  cd $TSRC/$name
 }
-build(){
-        :
+
+configure_toolchain() {
+  ./autogen.sh
+  ./configure \
+    --prefix=$TOOL \
+    --disable-static \
+    --with-gmp=$TOOL
+}
+
+build_toolchain() {
+  make
+}
+
+install_toolchain() {
+  make \
+    install-strip
 }

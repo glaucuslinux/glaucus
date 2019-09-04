@@ -84,7 +84,7 @@ $2
 1
 
 ## Architecture
-x86_64
+x86-64
 
 ## URL
 $3
@@ -99,15 +99,20 @@ $3
 
 
 ## Prepare
-
+```shell
+```
 
 ## Configure
-
+```shell
+```
 
 ## Build
-
+```shell
+```
 
 ## Install
+```shell
+```
 EOF
 
 else
