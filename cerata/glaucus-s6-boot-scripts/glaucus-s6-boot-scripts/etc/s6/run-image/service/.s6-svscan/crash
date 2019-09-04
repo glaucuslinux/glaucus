@@ -1,4 +1,0 @@
-#!/usr/bin/execlineb -P
-redirfd -w 1 /dev/console
-fdmove -c 2 1
-s6-linux-init-hpr -fr

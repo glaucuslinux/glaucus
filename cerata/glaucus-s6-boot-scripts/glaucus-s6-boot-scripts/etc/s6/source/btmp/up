@@ -1,2 +1,0 @@
-#!/usr/bin/execlineb -P
-install -g utmp -o root -m0600 /dev/null /var/log/btmp

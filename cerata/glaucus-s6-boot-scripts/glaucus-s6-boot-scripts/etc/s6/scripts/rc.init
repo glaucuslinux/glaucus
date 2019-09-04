@@ -1,3 +1,0 @@
-#!/usr/bin/dash -e
-s6-rc-init -c /etc/s6/compiled /run/service
-exec /etc/s6/scripts/runlevel $1

@@ -46,6 +46,9 @@
 [submodule "cerata/gettext-tiny/gettext-tiny"]
 	path = cerata/gettext-tiny/gettext-tiny
 	url = https://github.com/sabotage-linux/gettext-tiny
+[submodule "cerata/glaucus-s6-boot-scripts/glaucus-s6-boot-scripts"]
+	path = cerata/glaucus-s6-boot-scripts/glaucus-s6-boot-scripts
+	url = https://github.com/firasuke/glaucus-s6-boot-scripts
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib

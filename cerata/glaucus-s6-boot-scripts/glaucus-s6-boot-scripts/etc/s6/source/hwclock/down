@@ -1,2 +1,0 @@
-#!/usr/bin/execlineb -P
-hwclock -w /dev/rtc0

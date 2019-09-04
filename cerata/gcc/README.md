@@ -29,7 +29,7 @@ The GNU Compiler Collection
 * LGPLv3+
 * MIT
 
-## Prepare
+## Prepare Toolchain
 ```shell
 rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
 cd $TSRC/$name/$name/config
@@ -72,7 +72,7 @@ esac
 cd $TBLD/$ceras
 ```
 
-## Configure
+## Configure Toolchain
 ```shell
 case $ceras in
   gcc_1)
@@ -136,7 +136,7 @@ case $ceras in
 esac
 ```
 
-## Build
+## Build Toolchain
 ```shell
 case $ceras in
   gcc_1)
@@ -150,7 +150,7 @@ case $ceras in
 esac
 ```
 
-## Install
+## Install Toolchain
 ```shell
 case $ceras in
   gcc_1)

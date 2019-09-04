@@ -1,5 +1,0 @@
-#!/usr/bin/execlineb -P
-fdmove -c 2 1
-fdmove 1 3
-s6-ipcserver -1 /run/utmps/.wtmpd-socket
-utmps-wtmpd

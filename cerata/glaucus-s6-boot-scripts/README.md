@@ -17,48 +17,27 @@ https://github.com/firasuke/glaucus-s6-boot-scripts
 
 ## Cysts
 * musl
-* mawk
+* skalibs
+* execline
+* s6
+* utmps
+* s6-linux-init
+* s6-rc
 
 ## Description
-The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD
-Almquist shell
+s6 boot scripts for glaucus
 
-## Licenses
-* BSDv3
-* GPLv2+
-* PD
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./autogen.sh
-./configure \
-  --prefix=/usr \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL \
-  --disable-static
-```
-
-## Build
-```shell
-make
-```
+## License
+* ISC
 
 ## Install
 ```shell
-install -dv $SCER/$name/sac/usr/bin
-make \
-  DESTDIR=$SCER/$name/sac \
-  install-strip
+rsync -vah $CERD/$name/$name/etc $SCER/$name/sac --delete
+rsync -vah $CERD/$name/$name/usr $SCER/$name/sac --delete
 ```
 
 ```shell
-cd $SCER/$name/sac/usr/bin
-ln -fsv $name sh
+LD_LIBRARY_PATH=$GLAD/usr/lib \
+$GLAD/usr/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled \
+  $SCER/$name/sac/etc/s6/source
 ```
