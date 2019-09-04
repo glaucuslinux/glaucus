@@ -5,19 +5,30 @@ arch=x86-64
 url=https://github.com/$name/$name
 cysts='musl mawk'
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
-licenses='Apachev2.0 BSDv2 BSDv3 GPLv2 LGPLv2.1'
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        autoreconf -vfi
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-libseccomp \
-                --enable-fsect-man5
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+licenses='Apachev2.0 BSDv2 BSDv3 GPLv2+ GPLv3+'
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  autoreconf -vfi
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-libseccomp \
+    --enable-fsect-man5
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

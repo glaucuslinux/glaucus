@@ -6,67 +6,78 @@ url=https://$version.sv.nongnu.org/r/$name/freetype2
 cysts='musl zlib libpng'
 description='A freely available software library to render fonts'
 licenses='FTL GPLv2+ MIT zlib'
-build(){
-        rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ./autogen.sh
-        case $ceras in
-                freetype_1)
-                        ZLIB_CFLAGS=-I$GLAD/usr/include \
-                        ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
-                        BZIP2_CFLAGS=-I$GLAD/usr/include \
-                        BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
-                        LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
-                        LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
-                        ./configure \
-                                --prefix=/usr \
-                                --build=$TUPL \
-                                --host=$TUPL \
-                                --target=$TUPL \
-                                --disable-static \
-                                --with-sysroot=$GLAD \
-                                --with-zlib \
-                                --with-bzip2 \
-                                --with-png \
-                                --without-harfbuzz \
-                                --without-brotli \
-                                --without-old-mac-fonts \
-                                --without-fsspec \
-                                --without-fsref \
-                                --without-quickdraw-toolbox \
-                                --without-quickdraw-carbon \
-                                --without-ats
-                        ;;
-                freetype_2)
-                        ZLIB_CFLAGS=-I$GLAD/usr/include \
-                        ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
-                        BZIP2_CFLAGS=-I$GLAD/usr/include \
-                        BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
-                        LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
-                        LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
-                        HARFBUZZ_CFLAGS="-I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
-                        HARFBUZZ_LIBS="-L$GLAD/usr/lib -lharfbuzz" \
-                        ./configure \
-                                --prefix=/usr \
-                                --build=$TUPL \
-                                --host=$TUPL \
-                                --target=$TUPL \
-                                --disable-static \
-                                --with-sysroot=$GLAD \
-                                --with-zlib \
-                                --with-bzip2 \
-                                --with-png \
-                                --with-harfbuzz \
-                                --without-brotli \
-                                --without-old-mac-fonts \
-                                --without-fsspec \
-                                --without-fsref \
-                                --without-quickdraw-toolbox \
-                                --without-quickdraw-carbon \
-                                --without-ats
-                        ;;
-        esac
-        make
-        make DESTDIR=$SCER/$ceras/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./autogen.sh
+  case $ceras in
+    freetype_1)
+      ZLIB_CFLAGS=-I$GLAD/usr/include \
+      ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
+      BZIP2_CFLAGS=-I$GLAD/usr/include \
+      BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
+      LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
+      LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
+      ./configure \
+        --prefix=/usr \
+        --build=$TUPL \
+        --host=$TUPL \
+        --target=$TUPL \
+        --disable-static \
+        --with-sysroot=$GLAD \
+        --with-zlib \
+        --with-bzip2 \
+        --with-png \
+        --without-harfbuzz \
+        --without-brotli \
+        --without-old-mac-fonts \
+        --without-fsspec \
+        --without-fsref \
+        --without-quickdraw-toolbox \
+        --without-quickdraw-carbon \
+        --without-ats
+      ;;
+    freetype_2)
+      ZLIB_CFLAGS=-I$GLAD/usr/include \
+      ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
+      BZIP2_CFLAGS=-I$GLAD/usr/include \
+      BZIP2_LIBS="-L$GLAD/usr/lib -lbz2" \
+      LIBPNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
+      LIBPNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
+      HARFBUZZ_CFLAGS="-I$GLAD/usr/include/harfbuzz -I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
+      HARFBUZZ_LIBS="-L$GLAD/usr/lib -lharfbuzz" \
+      ./configure \
+        --prefix=/usr \
+        --build=$TUPL \
+        --host=$TUPL \
+        --target=$TUPL \
+        --disable-static \
+        --with-sysroot=$GLAD \
+        --with-zlib \
+        --with-bzip2 \
+        --with-png \
+        --with-harfbuzz \
+        --without-brotli \
+        --without-old-mac-fonts \
+        --without-fsspec \
+        --without-fsref \
+        --without-quickdraw-toolbox \
+        --without-quickdraw-carbon \
+        --without-ats
+      ;;
+  esac
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$ceras/sac \
+    install
 }

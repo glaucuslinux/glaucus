@@ -6,22 +6,35 @@ url=https://github.com/lib$name/lib$name
 cyst=musl
 description='Fast streaming XML parser written in C'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/lib$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./buildconf.sh
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $SSRC/$name/configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --without-xmlwf \
-                --without-examples \
-                --without-tests
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/lib$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  ./buildconf.sh
+
+  mkdir -v $SBLD/$name
+  cd $SBLD/$name
+}
+
+configure() {
+  $SSRC/$name/configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --without-xmlwf \
+    --without-examples \
+    --without-tests
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

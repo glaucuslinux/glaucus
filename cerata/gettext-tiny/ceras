@@ -6,10 +6,14 @@ url=https://github.com/sabotage-linux/$name
 cyst=musl
 description='Lightweight replacements for tools typically used from the GNU gettext suite'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        cat > config.mak << EOF
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  cat > config.mak << EOF
 prefix=/usr
 LIBINTL=MUSL
 AR=$AR
@@ -18,7 +22,14 @@ RANLIB=$RANLIB
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
 EOF
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

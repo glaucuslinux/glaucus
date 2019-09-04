@@ -3,11 +3,17 @@ version=git
 release=1
 arch=x86-64
 url=https://github.com/firasuke/$name
-cysts='skalibs execline s6-portable-utils s6-linux-utils s6'
+cysts='skalibs execline s6 utmps s6-linux-init s6-rc'
 description='s6 boot scripts for glaucus'
 cluster=core
 license=ISC
-build(){
-        rsync -vah $CERD/$name/$name/ $SCER/$name/sac --delete
-        LD_LIBRARY_PATH=$GLAD/usr/lib $GLAD/usr/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled $SCER/$name/sac/etc/s6/source
+
+prepare() {
+  rsync -vah $CERD/$name/$name/ $SCER/$name/sac --delete
+}
+
+install() {
+  LD_LIBRARY_PATH=$GLAD/usr/lib \
+  $GLAD/usr/bin/s6-rc-compile $SCER/$name/sac/etc/s6/compiled \
+    $SCER/$name/sac/etc/s6/source
 }

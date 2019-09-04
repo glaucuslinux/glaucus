@@ -7,25 +7,38 @@ cysts='musl skalibs'
 description='A small and non-interactive scripting language, like sh; but with different syntax'
 cluster=core
 license=ISC
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./configure \
-                --target=$TUPL \
-                --host=$TUPL \
-                --build=$TUPL \
-                --prefix=/usr \
-                --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-                --with-include=$GLAD/usr/include \
-                --with-dynlib=$GLAD/usr/lib \
-                --enable-shared \
-                --disable-static \
-                --disable-allstatic \
-                --disable-all-pic
-        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-                -e 's/-Wl,--hash-style=both //' \
-                -i config.mak
-        make strip
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --target=$TUPL \
+    --host=$TUPL \
+    --build=$TUPL \
+    --prefix=/usr \
+    --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
+    --with-include=$GLAD/usr/include \
+    --with-dynlib=$GLAD/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e 's/-Wl,--hash-style=both //' \
+    -i config.mak
+}
+
+build() {
+  make \
+    strip
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }
