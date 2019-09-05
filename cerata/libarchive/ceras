@@ -6,26 +6,38 @@ url=https://github.com/$name/$name
 cysts='musl mawk'
 description='Multi-format archive and compression library'
 license=BSDv3
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./build/autogen.sh
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $SSRC/$name/configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-acl \
-                --without-zstd \
-                --without-cng \
-                --without-nettle \
-                --without-openssl \
-                --without-xml2 \
-                --without-expat
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  mkdir -v $SBLD/$name
+}
+
+configure() {
+  ./build/autogen.sh
+  cd $SBLD/$name
+  $SSRC/$name/configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-acl \
+    --without-zstd \
+    --without-cng \
+    --without-nettle \
+    --without-openssl \
+    --without-xml2 \
+    --without-expat
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

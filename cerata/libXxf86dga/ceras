@@ -6,18 +6,29 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxxf86dga
 cysts='musl util-macros'
 description='Xlib-based library for the XFree86-DGA extension'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/libxxf86dga/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/libxxf86dga/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

@@ -6,23 +6,34 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxdmcp
 cysts='musl util-macros xorgproto'
 description='X Display Manager Control Protocol library'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/libxdmcp/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-docs \
-                --disable-unit-tests \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/libxdmcp/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-docs \
+    --disable-unit-tests \
+    --without-xmlto \
+    --without-fop \
+    --without-xsltproc
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

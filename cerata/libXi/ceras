@@ -6,24 +6,35 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxi
 cysts='musl util-macros'
 description='Xlib library for the X Input Extension'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/libxi/ $SSRC/$name --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-docs \
-                --disable-specs \
-                --without-xmlto \
-                --without-fop \
-                --without-xsltproc \
-                --without-asciidoc
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/libxi/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-docs \
+    --disable-specs \
+    --without-xmlto \
+    --without-fop \
+    --without-xsltproc \
+    --without-asciidoc
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }
