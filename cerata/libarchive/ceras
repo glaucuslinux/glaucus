@@ -10,14 +10,11 @@ license=BSDv3
 prepare() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
-
-  mkdir -v $SBLD/$name
 }
 
 configure() {
   ./build/autogen.sh
-  cd $SBLD/$name
-  $SSRC/$name/configure \
+  ./configure \
     --prefix=/usr \
     --build=$TUPL \
     --host=$TUPL \

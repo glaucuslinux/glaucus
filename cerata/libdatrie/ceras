@@ -4,19 +4,31 @@ release=1
 arch=x86-64
 url=https://github.com/tlwg/$name
 cyst=musl
-description='An implementation of double-array structure for representing trie, as proposed by Junichi Aoe'
+description='An implementation of double-array structure for representing trie,
+as proposed by Junichi Aoe'
 license=LGPLv2.1+
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./autogen.sh
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

@@ -6,19 +6,28 @@ url=https://github.com/facebook/$name
 cyst=musl
 description='Zstandard - Fast real-time compression algorithm'
 licenses='BSDv3 GPLv2+'
-build_toolchain(){
-        rsync -vah $CERD/$name/$name $TSRC --delete
-        cd $TSRC/$name
-        make \
-                HAVE_THREAD=1 \
-                ZSTD_LEGACY_SUPPORT=0 \
-                HAVE_ZLIB=0 \
-                HAVE_LZMA=0 \
-                HAVE_LZ4=0 \
-                BACKTRACE=0
-        make PREFIX=$TOOL \
-                install
+
+prepare_toolchain() {
+  rsync -vah $CERD/$name/$name $TSRC --delete
+  cd $TSRC/$name
 }
-build(){
-        :
+
+configure_toolchain() {
+  :
+}
+
+build_toolchain() {
+  make \
+    HAVE_THREAD=1 \
+    ZSTD_LEGACY_SUPPORT=0 \
+    HAVE_ZLIB=0 \
+    HAVE_LZMA=0 \
+    HAVE_LZ4=0 \
+    BACKTRACE=0
+}
+
+install_toolchain() {
+  make \
+    PREFIX=$TOOL \
+    install
 }

@@ -7,30 +7,47 @@ cyst=musl
 description='Suckless Linux base utils'
 cluster=core
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        sed 's/\/var\/run/\/run/' \
-                -i config.def.h
-        sed 's/\/bin/\/usr&/' \
-                -i config.def.h getty.8 getty.c login.c su.c
-        sed 's/utmp/utmpx/' \
-                -i getty.c last.c login.c who.c
-        sed 's/.*types.*/#include <sys\/sysmacros.h>/' \
-                -i mknod.c mountpoint.c stat.c
-        sed '/stat.h/a #include <sys/sysmacros.h>' \
-                -i libutil/tty.c
-        sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/AR = .*/AR = $AR/" \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
-                -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -Wextra/" \
-                -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
-                -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
-                -i config.mk
-        sed '/halt/d' \
-                -i Makefile
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  sed 's/\/var\/run/\/run/' \
+    -i config.def.h
+
+  sed 's/\/bin/\/usr&/' \
+    -i config.def.h getty.8 getty.c login.c su.c
+
+  sed 's/utmp/utmpx/' \
+    -i getty.c last.c login.c who.c
+
+  sed 's/.*types.*/#include <sys\/sysmacros.h>/' \
+    -i mknod.c mountpoint.c stat.c
+
+  sed '/stat.h/a #include <sys/sysmacros.h>' \
+    -i libutil/tty.c
+}
+
+configure() {
+  sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
+    -e "s/AR = .*/AR = $AR/" \
+    -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
+    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -Wextra/" \
+    -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
+    -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
+    -i config.mk
+
+  sed '/halt/d' \
+    -i Makefile
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

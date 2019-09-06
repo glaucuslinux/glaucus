@@ -7,27 +7,38 @@ cyst=musl
 description='Suckless mdev'
 cluster=core
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        rsync -vah $CERD/$name/config.h $SSRC --delete
-        cd $SSRC/$name
-        sed -e '/types/a #include <sys/sysmacros.h>' \
-                -i smdev.c
-        patch -Np1 -i $CERD/$name/patches/$name.patch
-        sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
-                -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
-                -i config.mk
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
-        install -m 744 -Dv $CERD/$name/proceeddev $SCER/$name/sac/etc/$name/proceeddev
-        install -m 644 -Dv $CERD/$name/00-modprobe \
-                $CERD/$name/01-uuid \
-                $CERD/$name/10-cdrom \
-                $CERD/$name/20-pci \
-                $CERD/$name/20-platform \
-                -t $SCER/$name/sac/etc/$name/add
-        install -m 644 -Dv $CERD/$name/99-remove_links $SCER/$name/sac/etc/$name/remove
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/config.h $SSRC --delete
+  cd $SSRC/$name
+
+  sed -e '/types/a #include <sys/sysmacros.h>' \
+    -i smdev.c
+
+  patch -Np1 -i $CERD/$name/patches/$name.patch
+}
+
+configure() {
+  sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
+    -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
+    -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
+    -i config.mk
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
+
+  cd $CERD/$name
+  install -m 744 -Dv proceeddev $SCER/$name/sac/etc/$name/proceeddev
+  install -m 644 -Dv 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform -t \
+    $SCER/$name/sac/etc/$name/add
+  install -m 644 -Dv 99-remove_links $SCER/$name/sac/etc/$name/remove
 }

@@ -6,18 +6,29 @@ url=https://gitlab.freedesktop.org/xorg/lib/$name
 cysts='musl zlib util-macros'
 description='X font encoding library'
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

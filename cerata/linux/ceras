@@ -6,29 +6,61 @@ url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name
 description='The Linux kernel and modules'
 cluster=core
 license=GPLv2
-build_toolchain(){
-        mkdir -v $TBLD/$name
-        cd $CERD/$name/$name
-        make mrproper
-        make O=$TBLD/$name \
-                ARCH=$ARCH \
-                headers_check
-        make O=$TBLD/$name \
-                ARCH=$ARCH \
-                INSTALL_HDR_PATH=$TOOL/$TUPL \
-                headers_install
-        find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
+
+prepare_toolchain() {
+  mkdir -v $TBLD/$name
+  cd $CERD/$name/$name
+
+  make \
+    mrproper
+  make \
+    O=$TBLD/$name \
+    ARCH=$ARCH \
+    headers_check
 }
-build(){
-        mkdir -v $SBLD/$name
-        rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
-        cd $CERD/$name/$name
-        make mrproper
-        make O=$SBLD/$name \
-                oldconfig
-        make O=$SBLD/$name \
-                prepare
-        make O=$SBLD/$name
-        install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
-        install -v $SBLD/$name/System.map $SCER/$name/sac/boot
+
+configure_toolchain() {
+  :
+}
+
+build_toolchain() {
+  :
+}
+
+install_toolchain() {
+  make \
+    O=$TBLD/$name \
+    ARCH=$ARCH \
+    INSTALL_HDR_PATH=$TOOL/$TUPL \
+    headers_install
+
+  find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
+}
+
+prepare() {
+  mkdir -v $SBLD/$name
+  rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
+
+  cd $CERD/$name/$name
+  make \
+    mrproper
+}
+
+configure() {
+  make \
+    O=$SBLD/$name \
+    oldconfig
+  make \
+    O=$SBLD/$name \
+    prepare
+}
+
+build() {
+  make \
+    O=$SBLD/$name
+}
+
+install() {
+  install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
+  install -v $SBLD/$name/System.map $SCER/$name/sac/boot
 }

@@ -4,32 +4,47 @@ release=1
 arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cysts='skalibs execline s6 utmps'
-description="skarnet's set of minimalistic tools to create an s6-based init system on a Linux kernel"
+description="skarnet's set of minimalistic tools to create an s6-based init
+system on a Linux kernel"
 cluster=core
 license=ISC
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./configure \
-                --target=$TUPL \
-                --host=$TUPL \
-                --build=$TUPL \
-                --prefix=/usr \
-                --libexecdir=/usr/lib/libexec \
-                --skeldir=/etc/s6-linux-init/skel \
-                --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-                --with-include=$GLAD/usr/include \
-                --with-dynlib=$GLAD/usr/lib \
-                --enable-shared \
-                --disable-static \
-                --disable-allstatic \
-                --disable-all-pic \
-                --enable-utmps
-        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-                -e 's/-Wl,--hash-style=both //' \
-                -i config.mak
-        make strip
-        make DESTDIR=$SCER/$name/sac \
-                install
-        rm -frv $SCER/$name/sac/etc
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --target=$TUPL \
+    --host=$TUPL \
+    --build=$TUPL \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/libexec \
+    --skeldir=/etc/s6-linux-init/skel \
+    --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
+    --with-include=$GLAD/usr/include \
+    --with-dynlib=$GLAD/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic \
+    --enable-utmps
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e 's/-Wl,--hash-style=both //' \
+    -i config.mak
+}
+
+build() {
+  make \
+    strip
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
+
+  rm -frv $SCER/$name/sac/etc
 }

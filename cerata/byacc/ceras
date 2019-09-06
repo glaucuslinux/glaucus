@@ -25,7 +25,7 @@ configure() {
 }
 
 build() {
-        make
+  make
 }
 
 install() {

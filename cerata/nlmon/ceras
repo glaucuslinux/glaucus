@@ -7,14 +7,25 @@ cyst=musl
 description='Replaces udevadm for monitoring network devices'
 cluster=core
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3/" \
-                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -i config.mk
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3/" \
+    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
+    -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -i config.mk
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

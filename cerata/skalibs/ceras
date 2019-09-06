@@ -4,25 +4,39 @@ release=1
 arch=x86-64
 url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cyst=musl
-description="skarnet's general purpose C libraries for system programming and small and secure C development"
+description="skarnet's general purpose C libraries for system programming and
+small and secure C development"
 cluster=core
 license=ISC
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./configure \
-                --target=$TUPL \
-                --host=$TUPL \
-                --build=$TUPL \
-                --prefix=/usr \
-                --disable-static \
-                --disable-all-pic \
-                --disable-ipv6 \
-                --enable-clock
-        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-                -e 's/-Wl,--hash-style=both //' \
-                -i config.mak
-        make strip
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --target=$TUPL \
+    --host=$TUPL \
+    --build=$TUPL \
+    --prefix=/usr \
+    --disable-static \
+    --disable-all-pic \
+    --disable-ipv6 \
+    --enable-clock
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e 's/-Wl,--hash-style=both //' \
+    -i config.mak
+}
+
+build() {
+  make \
+    strip
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

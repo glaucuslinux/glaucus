@@ -7,24 +7,34 @@ cysts='musl netbsd-curses skalibs execline s6 utmps'
 description='Command line and full screen utilities for browsing procfs'
 cluster=core
 licenses='GPLv2+ GPLv3+ LGPLv2.1+'
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        patch -p1 -i $CERD/$name/patches/$name.patch
-        ./autogen.sh
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo -lutmps -lskarnet" \
-        $SSRC/$name/configure \
-                --prefix=/usr \
-                --sbindir=/usr/bin \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-nls
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  patch -p1 -i $CERD/$name/patches/$name.patch
+}
+
+configure() {
+  ./autogen.sh
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo -lutmps -lskarnet" \
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-nls
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

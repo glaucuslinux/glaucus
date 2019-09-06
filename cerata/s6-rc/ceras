@@ -7,26 +7,39 @@ cysts='skalibs execline s6'
 description="skarnet's service manager for s6-based systems"
 cluster=core
 license=ISC
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./configure \
-                --target=$TUPL \
-                --host=$TUPL \
-                --build=$TUPL \
-                --prefix=/usr \
-                --libexecdir=/usr/lib/libexec \
-                --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-                --with-include=$GLAD/usr/include \
-                --with-dynlib=$GLAD/usr/lib \
-                --enable-shared \
-                --disable-static \
-                --disable-allstatic \
-                --disable-all-pic
-        sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-                -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/usr\/lib/" \
-                -i config.mak
-        make strip
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --target=$TUPL \
+    --host=$TUPL \
+    --build=$TUPL \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/libexec \
+    --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
+    --with-include=$GLAD/usr/include \
+    --with-dynlib=$GLAD/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/usr\/lib/" \
+    -i config.mak
+}
+
+build() {
+  make \
+    strip
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

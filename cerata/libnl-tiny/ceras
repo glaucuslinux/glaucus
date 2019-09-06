@@ -6,12 +6,14 @@ url=https://github.com/sabotage-linux/$name
 cyst=musl
 description="A fork of openwrt's tiny replacement for libnl versions 1 and 2"
 license=LGPLv2.1
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        sed 's/ $(STATICLIB)//' \
-                -i Makefile
-        cat > config.mak << EOF
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  cat > config.mak << EOF
 prefix=/usr
 AR=$AR
 CC=$CC
@@ -20,7 +22,17 @@ CFLAGS=$CFLAGS
 CPPFLAGS=$CPPFLAGS
 LDFLAGS=$LDFLAGS
 EOF
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+sed 's/ $(STATICLIB)//' \
+    -i Makefile
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

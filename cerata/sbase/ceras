@@ -7,25 +7,39 @@ cyst=musl
 description='Suckless Unix tools'
 cluster=core
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        sed 's/\/bin/\/usr&/' \
-                -i chroot.c cron.c xargs.c
-        sed 's/\/tmp/\/run\/tmp/' \
-                -i ed.c mktemp.1 mktemp.c sponge.c
-        sed -e '/types/,+1d' \
-                -e '/endif/d' \
-                -i ls.c tar.c
-        sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
-                -e "s/AR = .*/AR = $AR/" \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
-                -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \
-                -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
-                -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
-                -i config.mk
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  sed 's/\/bin/\/usr&/' \
+    -i chroot.c cron.c xargs.c
+
+  sed 's/\/tmp/\/run\/tmp/' \
+    -i ed.c mktemp.1 mktemp.c sponge.c
+
+  sed -e '/types/,+1d' \
+    -e '/endif/d' \
+    -i ls.c tar.c
+}
+
+configure() {
+  sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
+    -e "s/AR = .*/AR = $AR/" \
+    -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
+    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \
+    -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
+    -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
+    -i config.mk
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

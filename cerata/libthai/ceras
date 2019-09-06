@@ -4,20 +4,32 @@ release=1
 arch=x86-64
 url=https://github.com/tlwg/$name
 cysts='musl libdatrie'
-description="A set of Thai language support routines aimed to ease developers' tasks to incorporate Thai language support in their applications"
+description="A set of Thai language support routines aimed to ease developers'
+tasks to incorporate Thai language support in their applications"
 license=LGPLv2.1+
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./autogen.sh
-        CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./autogen.sh
+  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

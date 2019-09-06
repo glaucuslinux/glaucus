@@ -7,32 +7,44 @@ cyst=musl
 description='An interpreter for the AWK Programming Language faster than gawk'
 cluster=core
 license=GPLv2+
-build(){
-        mkdir -v $SBLD/$ceras
-        cd $SBLD/$ceras
-        case $ceras in
-                mawk_1)
-                        AWK=mawk \
-                        CFLAGS="$CFLAGSNOOPENMP" \
-                        $CERD/$name/$name-snapshots/configure \
-                                --prefix=/usr \
-                                --build=$TUPL \
-                                --host=$TUPL \
-                                --target=$TUPL
-                        ;;
-                mawk_2)
-                        CFLAGS="$CFLAGSNOOPENMP" \
-                        $CERD/$name/$name-snapshots/configure \
-                                --prefix=/usr \
-                                --build=$TUPL \
-                                --host=$TUPL \
-                                --target=$TUPL
-                        ;;
-        esac
-        rsync -vah $CERD/$name/$name-snapshots/man . --delete
-        make
-        make DESTDIR=$SCER/$ceras/sac \
-                install
-        cd $SCER/$ceras/sac/usr/bin
-        ln -fsv $name awk
+
+prepare() {
+  mkdir -v $SBLD/$ceras
+  cd $SBLD/$ceras
+}
+
+configure() {
+  case $ceras in
+    mawk_1)
+      AWK=mawk \
+      CFLAGS="$CFLAGSNOOPENMP" \
+      $CERD/$name/$name-snapshots/configure \
+        --prefix=/usr \
+        --build=$TUPL \
+        --host=$TUPL \
+        --target=$TUPL
+      ;;
+    mawk_2)
+      CFLAGS="$CFLAGSNOOPENMP" \
+      $CERD/$name/$name-snapshots/configure \
+        --prefix=/usr \
+        --build=$TUPL \
+        --host=$TUPL \
+        --target=$TUPL
+      ;;
+  esac
+}
+
+build() {
+  make
+}
+
+install() {
+  rsync -vah $CERD/$name/$name-snapshots/man . --delete
+  make \
+    DESTDIR=$SCER/$ceras/sac \
+    install
+
+  cd $SCER/$ceras/sac/usr/bin
+  ln -fsv $name awk
 }

@@ -6,19 +6,30 @@ url=https://github.com/glennrp/$name
 cysts='musl zlib'
 description='The official PNG reference library'
 licenses='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
-build(){
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $CERD/$name/$name/configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --enable-hardware-optimizations \
-                --enable-intel-sse \
-                --with-zlib-prefix=$GLAD
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  mkdir -v $SBLD/$name
+  cd $SBLD/$name
+}
+
+configure() {
+  $CERD/$name/$name/configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --enable-hardware-optimizations \
+    --enable-intel-sse \
+    --with-zlib-prefix=$GLAD
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

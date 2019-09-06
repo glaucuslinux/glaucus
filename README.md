@@ -218,6 +218,8 @@ glaucus is heavily inspired by the following projects:
 
 * [Musl Linux From Scrath (MLFS)](https://github.com/dslm4515/Musl-LFS)
 
+* [muslpi](https://github.com/repk/muslpi)
+
 * [NetBSD](http://netbsd.org)
 
 * [noname linux](https://github.com/xhebox/noname-linux)
@@ -233,6 +235,8 @@ glaucus is heavily inspired by the following projects:
 * [OpenWrt](https://openwrt.org)
 
 * [OSDev](https://wiki.osdev.org)
+
+* [PiLFS](https://intestinate.com/pilfs)
 
 * [Prelinux](https://github.com/mikejsavage/prelinux)
 

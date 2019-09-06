@@ -3,20 +3,29 @@ version=svn
 release=1
 arch=x86-64
 url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
-cysts='musl gmp'
-description='A portable library written in C for arbitrary precision arithmetic on floating-point numbers'
+cyst=gmp
+description='A portable library written in C for arbitrary precision arithmetic
+on floating-point numbers'
 licenses='LGPLv2.1+ LGPLv3.0+ PD'
-build_toolchain(){
-        rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
-        cd $TSRC/$name
-        ./autogen.sh
-        ./configure \
-                --prefix=$TOOL \
-                --disable-static \
-                --with-gmp=$TOOL
-        make
-        make install-strip
+
+prepare_toolchain() {
+  rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
+  cd $TSRC/$name
 }
-build(){
-        :
+
+configure_toolchain() {
+  ./autogen.sh
+  ./configure \
+    --prefix=$TOOL \
+    --disable-static \
+    --with-gmp=$TOOL
+}
+
+build_toolchain() {
+  make
+}
+
+install_toolchain() {
+  make \
+    install-strip
 }

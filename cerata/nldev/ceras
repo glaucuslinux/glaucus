@@ -7,16 +7,28 @@ cyst=musl
 description='A netlink frontend for mdev, replacing the over-engineered udevd'
 cluster=core
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
-                -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
-                -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
-                -i config.mk
-        sed 's/busybox ash/sh/' \
-                -i nltrigger run_nldev
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/home\/glaucus\/system\/usr\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
+    -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
+    -i config.mk
+
+  sed 's/busybox ash/sh/' \
+    -i nltrigger run_nldev
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 }

@@ -8,6 +8,18 @@ description='s6 boot scripts for glaucus'
 cluster=core
 license=ISC
 
+prepare() {
+  :
+}
+
+configure() {
+  :
+}
+
+build() {
+  :
+}
+
 install() {
   rsync -vah $CERD/$name/$name/etc $SCER/$name/sac --delete
   rsync -vah $CERD/$name/$name/usr $SCER/$name/sac --delete

@@ -6,21 +6,33 @@ url=https://gitlab.freedesktop.org/xorg/lib/$name
 cysts='musl util-macros'
 description="XCB port of Xlib's XImage and XShmImage functions"
 license=MIT
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        $version submodule update --init
-        ACLOCAL_PATH=$GLAD/usr/share/aclocal \
-        ./autogen.sh \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL \
-                --disable-static \
-                --disable-devel-docs \
-                --with-sysroot=$GLAD \
-                --without-doxygen
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+
+  $version submodule update --init
+}
+
+configure() {
+  ACLOCAL_PATH=$GLAD/usr/share/aclocal \
+  ./autogen.sh \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static \
+    --disable-devel-docs \
+    --with-sysroot=$GLAD \
+    --without-doxygen
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

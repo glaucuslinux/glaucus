@@ -3,51 +3,77 @@ version=git
 release=1
 arch=x86-64
 url=https://$version.$name-libc.org/c$version/$name
-description='An implementation of the standard library functionality described in the ISO C and POSIX standards, plus common extensions, intended for use on Linux-based systems'
+description='An implementation of the standard library functionality described
+in the ISO C and POSIX standards, plus common extensions, intended for use on
+Linux-based systems'
 cluster=core
 licenses='BSDv2 LGPLv2.1+ MIT PD'
-build_toolchain(){
-        mkdir -v $TBLD/$name
-        cd $TBLD/$name
-        $CERD/$name/$name/configure \
-                CROSS_COMPILE=$TUPL- \
-                --prefix=$TOOL/$TUPL \
-                --syslibdir=/usr/lib \
-                --target=$TUPL \
-                --disable-wrapper \
-                --disable-static
-        sudo rm -fv Makefile /usr/lib/ld-$name-$ARCH.so.1
-        cp -av $CERD/$name/$name/Makefile .
-        sed 's/$(INSTALL) -D -l/sudo &/' \
-                -i Makefile
-        make
-        make install
+
+prepare_toolchain() {
+  mkdir -v $TBLD/$name
+  cd $TBLD/$name
 }
-build(){
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $CERD/$name/$name/configure \
-                CFLAGS="$CFLAGSNOLTO" \
-                --prefix=/usr \
-                --syslibdir=/usr/lib \
-                --target=$TUPL \
-                --host=$TUPL \
-                --build=$TUPL \
-                --disable-wrapper \
-                --disable-static
-        rm -fv Makefile
-        cp -av $CERD/$name/$name/Makefile .
-        sed 's/ $(libdir)\/libc.so/ libc.so/' \
-                -i Makefile
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-libs
-        install -dv $SCER/$name/sac/usr/bin
-        cd $SCER/$name/sac/usr/bin
-        ln -fsv ../lib/ld-$name-$ARCH.so.1 ldd
-        $STRIP -v $SCER/$name/sac/usr/lib/Scrt1.o \
-                $SCER/$name/sac/usr/lib/crt1.o \
-                $SCER/$name/sac/usr/lib/crti.o \
-                $SCER/$name/sac/usr/lib/crtn.o \
-                $SCER/$name/sac/usr/lib/rcrt1.o
+
+configure_toolchain() {
+  $CERD/$name/$name/configure \
+    CROSS_COMPILE=$TUPL- \
+    --prefix=$TOOL/$TUPL \
+    --syslibdir=/usr/lib \
+    --target=$TUPL \
+    --disable-wrapper \
+    --disable-static
+
+  sudo rm -fv Makefile /usr/lib/ld-$name-$ARCH.so.1
+
+  cp -av $CERD/$name/$name/Makefile .
+  sed 's/$(INSTALL) -D -l/sudo &/' \
+    -i Makefile
+}
+
+build_toolchain() {
+  make
+}
+
+install_toolchain() {
+  make \
+    install
+}
+
+prepare() {
+  mkdir -v $SBLD/$name
+  cd $SBLD/$name
+}
+
+configure() {
+  $CERD/$name/$name/configure \
+    CFLAGS="$CFLAGSNOLTO" \
+    --prefix=/usr \
+    --syslibdir=/usr/lib \
+    --target=$TUPL \
+    --host=$TUPL \
+    --build=$TUPL \
+    --disable-wrapper \
+    --disable-static
+
+  rm -fv Makefile
+  cp -av $CERD/$name/$name/Makefile .
+  sed 's/ $(libdir)\/libc.so/ libc.so/' \
+    -i Makefile
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-libs
+
+  install -dv $SCER/$name/sac/usr/bin
+  cd $SCER/$name/sac/usr/bin
+  ln -fsv ../lib/ld-$name-$ARCH.so.1 ldd
+
+  cd ../lib
+  $STRIP -v Scrt1.o crt1.o crti.o crtn.o rcrt1.o
 }

@@ -2,19 +2,30 @@ name=libinput
 version=git
 release=1
 arch=x86-64
-url=https://gitlab.freedesktop.org/libinput/libinput
+url=https://gitlab.freedesktop.org/$name/$name
 cyst=musl
 description='Input device management and event handling library'
-license=
-build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        ./configure \
-                --prefix=/usr \
-                --build=$TUPL \
-                --host=$TUPL \
-                --target=$TUPL
-        make
-        make DESTDIR=$SCER/$name/sac \
-                install-strip
+license=MIT
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }
