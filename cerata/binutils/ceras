@@ -14,6 +14,11 @@ prepare_toolchain() {
 }
 
 # Added --with-lib-path from LFS for better separation from the host
+#
+# GNU's gold linker doesn't like musl, as it refuses to build without
+# enabling PIE support, and bloats things up after enabling PIE support
+# and yet manages to still fail:
+# https://github.com/NixOS/nixpkgs/issues/49071
 configure_toolchain() {
   $TSRC/$name/configure \
     --prefix=$TOOL \

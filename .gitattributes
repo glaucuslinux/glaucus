@@ -1,3 +1,8 @@
+# Adding these rules to .git/info/attributes has no effect.
+#
+# Relying on filenames only also has no effect, as each file must have its
+# relative path specified.
+
 cerata/*/ceras linguist-language=Shell
 cerata/smdev/config.h linguist-language=C
 scripts/variables linguist-language=Shell

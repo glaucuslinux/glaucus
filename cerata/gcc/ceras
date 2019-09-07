@@ -10,6 +10,7 @@ prepare_toolchain() {
   rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
   cd $TSRC/$name/$name/config
 
+  # Curated and cleaned modifications to GCC's source that are still relevant
   for file in i386/linux.h i386/linux64.h linux.h; do
     sed 's/\/lib/\/usr&/' \
       -i $file
@@ -22,9 +23,11 @@ prepare_toolchain() {
 #define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
   done
 
+  # Since we're only building for x86-64
   sed '/m64/s/lib64/lib/' \
     -i i386/t-linux64
 
+  # Further optimizing the linker's path
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
@@ -33,6 +36,9 @@ prepare_toolchain() {
     gcc_2)
       cd ..
 
+      # This (and a similar command `touch $TOOL/include/limits.h`) will cause
+      # the first pass of GCC to not detect the custom installed prerequisites;
+      # hence, adding a limits.h is only done for the second pass of GCC.
       cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
         -print-libgcc-file-name))/include-fixed/limits.h
       ;;
@@ -43,9 +49,47 @@ prepare_toolchain() {
 configure_toolchain() {
   case $ceras in
     gcc_1)
-      # --with-local-prefix helps further separate from the host
+      # --with-local-prefix helps further move away from the host
+      #
       # --with-native-system-header will cause GCC to search dirname inside the
-      # system root specified by --with-sysroot; hence, /include will suffice
+      # system root specified by --with-sysroot; hence, /include will suffice.
+      # 
+      # So it'll be read as $(--with-sysroot)$(--with-native-system-header)
+      # (notice how a trailing slash is added to --with-native-system-header).
+      # 
+      # Misconfiguring the native header directory is quite easy and common and
+      # will most likely result in the following error:
+      # cc1: error: no include path in which to search for stdc-predef.h
+      #
+      # --disable-libmpx isn't relevant as MPX support was removed from GCC
+      # starting from GCC 9:
+      # https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html
+      #
+      # --disable-libmudflap is also not relevant as the mudflap run time
+      # checker was removed starting from GCC 4.9:
+      # https://gcc.gnu.org/gcc-4.9/changes.html
+      # 
+      # According to the GCC wiki, this is the 'difficult way' and is 'not 
+      # recommended'; however, it's the only way to get the latest GCC to build
+      # with the latest upstream prerequisites:
+      # https://gcc.gnu.org/wiki/InstallingGCC
+      #
+      # The first pass of GCC can be built easily without isl (isl isn't
+      # required to build GCC, simply pass --without-isl to get rid of the
+      # warnings in config.log).
+      #
+      # PPL, CLooG and OpenScop aren't needed for the latest Graphite to work,
+      # as only ISL is required.
+      #
+      # GNU's gold linker doesn't like musl, as it refuses to build without
+      # enabling PIE support, and bloats things up after enabling PIE support
+      # and yet manages to still fail:
+      # https://github.com/NixOS/nixpkgs/issues/49071
+      #
+      # Since the first pass of GCC will only be used to build musl, support
+      # for everything else is being disabled. Optimizations will also be 
+      # disabled in the near future (-O0 and -g0) to further speed up the build
+      # process.
       $TSRC/$name/configure \
         --prefix=$TOOL \
         --target=$TUPL \
@@ -85,7 +129,7 @@ configure_toolchain() {
       # We also don't have any use for libstdcxx-pch plus it takes up a lot of
       # space, so it's being disabled
       #
-      # Still thinking about separately building libstdcxx-v3, but we'll see
+      # Still thinking about separately building libstdcxx-v3, but we'll see.
       LDFLAGS="-Wl,-rpath,$TOOL/lib" \
       $TSRC/$name/configure \
         --prefix=$TOOL \

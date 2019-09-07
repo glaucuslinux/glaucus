@@ -14,6 +14,9 @@ prepare_toolchain() {
 }
 
 configure_toolchain() {
+  # LTO couldn't be enabled on the shared version of mpfr, as it would result
+  # in the following error when running configure:
+  # error: --enable-lto can only work in static mode (--disable-shared)
   ./autogen.sh
   ./configure \
     --prefix=$TOOL \

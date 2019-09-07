@@ -24,7 +24,8 @@ configure_toolchain() {
   # So (prefix alone | installs/libc.so in $PREFIX | linker (to OUR $PREFIX
   # libc.so) in host's /lib and needs sudo because of that)
   #
-  # Specifying $DESTDIR with make install, and --prefix here will install
+  # Specifying $DESTDIR with make install, and --prefix here (don't forget
+  # the trailing slash if you intend to use both of them) will install
   # everything into $DESTDIR$PREFIX (yup, there exists no forward slash between
   # these two so be careful). This will also symlink the libc.so residing in
   # $DESTDIR$PREFIX to $DESTDIR alone.
