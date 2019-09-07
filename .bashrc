@@ -1,7 +1,7 @@
 set +h
 umask 022
 export LC_ALL=POSIX
-export PATH=/home/glaucus/toolchain/bin:/usr/bin
+export PATH=/toolchain/bin:/usr/bin
 unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
 export HISTFILESIZE=
 export HISTSIZE=

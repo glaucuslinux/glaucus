@@ -28,12 +28,16 @@ build_toolchain() {
 }
 
 install_toolchain() {
+  # this only works if linux was first (in construct) as this command will erase
+  # all previously installed headers in the INSTALL_HDR_PATH destination which
+  # would then require manually copying the header files to their destination
   make \
     O=$TBLD/$name \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=$TOOL/$TUPL \
     headers_install
 
+  # Removes unnecessary files that take about 200KB of precious disk space
   find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
 }
 

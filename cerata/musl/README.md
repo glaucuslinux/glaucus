@@ -47,9 +47,6 @@ $CERD/$name/$name/configure \
 
 ```shell
 sudo rm -fv Makefile /usr/lib/ld-$name-$ARCH.so.1
-```
-
-```shell
 cp -av $CERD/$name/$name/Makefile .
 sed 's/$(INSTALL) -D -l/sudo &/' \
   -i Makefile

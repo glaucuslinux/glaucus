@@ -4,141 +4,147 @@
 # mutual variables between both the toolchain and the system should be defined
 # here
 assign_basic_variables() {
-        # Decided to go with quadruplets for tuples,
-        # and replaced unknown with pc because it's shorter and more expressive
-        export ARCH=x86_64
-        export TUPL=$ARCH-pc-linux-musl
+  # Although ARCH should be x86-64, some packages won't build successfully
+  # without x86_64, so the main approach is to use x86-64 whenever possible
+  # and switch to x86_64 once an error occurs
+  export ARCH=x86_64
+  # Decided to go with quadruplets for tuples,
+  # Replaced unknown with pc because it's shorter and more expressive
+  export TUPL=$ARCH-pc-linux-musl
 
-        # cerata is for storing upstream sources and glaucus' recipe format
-        # logs contains log files for both System and Toolchain
-        # temporary is where all the magic happens ;)
-        export CERD=/home/glaucus/cerata
-        export LOGD=/home/glaucus/logs
-        export TMPD=/home/glaucus/temporary
-        
-        # For the system wide symlink to the toolchain
-        export TOOL=/toolchain
+  # cerata is for storing upstream sources and glaucus' recipe format
+  # logs contains log files for both System and Toolchain
+  # temporary is where all the magic happens ;)
+  export CERD=/home/glaucus/cerata
+  export LOGD=/home/glaucus/logs
+  export TMPD=/home/glaucus/temporary
+  
+  # The system wide symlink to the toolchain for chroot purposes
+  export TOOL=/toolchain
 
-        # Resolves the pod2man related error until perl is added
-        export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
-        export MAKEFLAGS=-j1
+  # Resolves the pod2man related error until perl is added
+  export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
+  
+  # It's highly recommended that MAKEFLAGS value stays at -j1 for now as any
+  # higher value might cause weird problems (segfaults included). 
+  export MAKEFLAGS=-j1
 }
 
 # Toolchain-only related variables, this function will only be called when
 # building the toolchain
 assign_toolchain_variables() {
-        export TLOG=$LOGD/toolchain
-        export TBLD=$TMPD/toolchain/builds
-        export TSRC=$TMPD/toolchain/sources
+  export TLOG=$LOGD/toolchain
+  export TBLD=$TMPD/toolchain/builds
+  export TSRC=$TMPD/toolchain/sources
 }
 
 # Similarly, this will only be called when building the system
 # think of this file as Gentoo's make.conf
 assign_system_variables() {
-        # where the final system will be stored
-        # once the building process is done, you can take this directory and do
-        # whatever you want with it. Chrooting into it and creating .img/.iso
-        # files is what you'll normally be doing
-        export GLAD=/home/glaucus/system
+  # where the final system will be stored
+  # once the building process is done, you can take this directory and do
+  # whatever you want with it. Chrooting into it and creating .img/.iso
+  # files is what you'll normally be doing
+  export GLAD=/home/glaucus/system
 
-        # the cerata directory here contains the result of the build process
-        # the sources directory is just an rsync of the packages that need some
-        # sort of source modification
-        export SLOG=$LOGD/system
-        export SBLD=$TMPD/system/builds
-        export SCER=$TMPD/system/cerata
-        export SSRC=$TMPD/system/sources
+  # the cerata directory here contains the result of the build process
+  # the sources directory is just an rsync of the packages that need some
+  # sort of source modification
+  export SLOG=$LOGD/system
+  export SBLD=$TMPD/system/builds
+  export SCER=$TMPD/system/cerata
+  export SSRC=$TMPD/system/sources
 
-        # Some packages need this like musl
-        export CROSS_COMPILE=$TUPL-
-        
-        # Variables pointing to executables are sorted alphabetically
-        # Also, notice how AR, NM and RANLIB are using LTO
-        # The resulting mawk is used since it's faster and more minimal
-        export AR=$TUPL-gcc-ar
-        export AS=$TUPL-as
-        export AWK=$GLAD/usr/bin/mawk
-        
-        # The basic four all pointing to the sysroot GLAD
-        # the sysroot here should be honored and should remove the need for
-        # explicitly specifying sysroot whenever compiling a package
-        export CC="$TUPL-gcc --sysroot=$GLAD"
-        export CPP="$TUPL-gcc --sysroot=$GLAD -E"
-        export CXX="$TUPL-g++ --sysroot=$GLAD"
-        export LD="$TUPL-ld --sysroot=$GLAD"
-        
-        export NM=$TUPL-gcc-nm
-        export OBJCOPY=$TUPL-objcopy
-        export OBJDUMP=$TUPL-objdump
-        export RANLIB=$TUPL-gcc-ranlib
-        export READELF=$TUPL-readelf
-        export SIZE=$TUPL-size
-        export STRINGS=$TUPL-strings
-        export STRIP=$TUPL-strip
-        
-        # The resulting byacc is being used as it's lighter and more minimal
-        # yacc is just a symlink to byacc intended for compatibility purposes
-        export YACC=$GLAD/usr/bin/yacc
-        
-        # Optimization hell, proceed with caution!
-        # You have been warned!
+  # Some packages need this like musl
+  export CROSS_COMPILE=$TUPL-
+  
+  # Variables pointing to executables are sorted alphabetically
+  # Also, notice how AR, NM and RANLIB are using LTO
+  # The resulting mawk is used since it's faster and more minimal
+  export AR=$TUPL-gcc-ar
+  export AS=$TUPL-as
+  export AWK=$GLAD/usr/bin/mawk
+  
+  # The basic four all pointing to the sysroot GLAD
+  # the sysroot here should be honored and should remove the need for
+  # explicitly specifying sysroot whenever compiling a package
+  export CC="$TUPL-gcc --sysroot=$GLAD"
+  export CPP="$TUPL-gcc --sysroot=$GLAD -E"
+  export CXX="$TUPL-g++ --sysroot=$GLAD"
+  export LD="$TUPL-ld --sysroot=$GLAD"
+  
+  export NM=$TUPL-gcc-nm
+  export OBJCOPY=$TUPL-objcopy
+  export OBJDUMP=$TUPL-objdump
+  export RANLIB=$TUPL-gcc-ranlib
+  export READELF=$TUPL-readelf
+  export SIZE=$TUPL-size
+  export STRINGS=$TUPL-strings
+  export STRIP=$TUPL-strip
+  
+  # The resulting byacc is being used as it's lighter and more minimal
+  # yacc is just a symlink to byacc intended for compatibility purposes
+  export YACC=$GLAD/usr/bin/yacc
+  
+  # Optimization hell, proceed with caution!
+  # You have been warned!
 
-        # All performance related flags listed on the internet that are still
-        # relevant are being used here, and compiling the entire system from 
-        # source when all of them are enabled without actually testing them
-        # individually will most likely result in a bloated system with big 
-        # (and most likely slow) binaries
+  # All performance related flags listed on the internet that are still
+  # relevant are being used here, and compiling the entire system from 
+  # source when all of them are enabled without actually testing them
+  # individually will most likely result in a bloated system with big 
+  # (and most likely slow) binaries
 
-        # Again they are all listed in alphabetical order
+  # Again they are all listed in alphabetical order
 
-        # First we have Global Common Subexpression Elimination
-        export GCSE='-fgcse-sm -fgcse-las'
+  # First we have Global Common Subexpression Elimination
+  export GCSE='-fgcse-sm -fgcse-las'
 
-        # Then we have Graphite and ISL for loop optimization
-        export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
+  # Then we have Graphite and ISL for loop optimization
+  export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
 
-        # The regular march flag, change to `x86-64` if you want to help
-        # maintain a certain ceras for a number of users, else leave it at 
-        # `native` if you're only going to use the resulting cerata on your system
-        export MARCH='-march=x86-64'
+  # The regular march flag, change to `x86-64` if you want to help
+  # maintain a certain ceras for a number of users, else leave it at 
+  # `native` if you're only going to use the resulting cerata on your system
+  export MARCH='-march=x86-64'
 
-        # Extra performance related flags
-        export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
+  # Extra performance related flags
+  export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
 
-        # The purpose of PGO is to check whether it's beneficial or not to 
-        # enable these 2 flags. The current method enables both of them for all
-        # packages without checking if it's beneficial or not
-        export PGO='-ftracer -funroll-loops'
+  # The purpose of PGO is to check whether it's beneficial or not to 
+  # enable these 2 flags. The current method enables both of them for all
+  # packages without checking if it's beneficial or not
+  export PGO='-ftracer -funroll-loops'
 
-        # Enables Swing Modulo Scheduling
-        export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
+  # Enables Swing Modulo Scheduling
+  export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
 
-        # Your regular flags, ordered by the order in which they appear in 
-        # `man gcc`, the gcc `configure` file and the following link 
-        # https://gcc.gnu.org/install/configure.html
+  # Your regular flags, ordered by the order in which they appear in 
+  # `man gcc`, the gcc `configure` file and the following link 
+  # https://gcc.gnu.org/install/configure.html
 
-        # Additional optimizations are listed in the flags below without 
-        # defining them as variables these include pipe, OpenMP, the dangerous 
-        # Ofast, IRA and IPA.
+  # Additional optimizations are listed in the flags below without 
+  # defining them as variables these include pipe, OpenMP, the dangerous 
+  # Ofast, IRA and IPA.
 
-        # Changing Ofast to O3, O2 or even Os is highly recommended after 
-        # testing the results.
-        
-        # A benchmarking method should be picked to evaluate the performance,
-        # size and latencies of the resulting cerata
+  # Changing Ofast to O3, O2 or even Os is highly recommended after 
+  # testing the results.
+  
+  # A benchmarking method should be picked to evaluate the performance,
+  # size and latencies of the resulting cerata
 
-        # Additional flavors were added, one without LTO and one without OpenMP
-        # since some packages have troubles with these two enabled
+  # Additional flavors were added, one without LTO and one without OpenMP
+  # since some packages have troubles with these two enabled
 
-        # Everything is stripped and all symbols are being removed
+  # Everything is stripped and all symbols are being removed
 
-        # Notice how LDFLAGS uses CFLAGS as well since we have LTO enabled
-        export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
-        export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
-        export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
-        export CPPFLAGS=-I$GLAD/usr/include
-        export CXXFLAGS="$CFLAGS"
-        export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
+  # Notice how LDFLAGS uses CFLAGS as well since we have LTO enabled
+  export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+  export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
+  export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+  export CPPFLAGS=-I$GLAD/usr/include
+  export CXXFLAGS="$CFLAGS"
+  export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
 }
 
 assign_xorg_variables() {

@@ -21,7 +21,7 @@ https://repo.or.cz/isl
 A library for manipulating sets and relations of integer points bounded by
 linear constraints
 
-## Licenses
+## License
 * MIT
 
 ## Prepare Toolchain

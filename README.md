@@ -28,6 +28,9 @@ RAM
 * bleeding edge as it fetches the latest sources available from upstream
 repositories for all cerata
 
+* the building process (for both glaucus and its toolchain) is entirely
+automated
+
 * musl libc
 
 * skarnet's s6 small supervision suite
@@ -66,12 +69,12 @@ zlib set as a fallback method)
 
 * Extra performance related optimizations
 
-* 150+ packages building successfully
+* 130+ packages building successfully
 
 * doesn't require a separate partition to build and install into
 
-* doesn't require a chroot to build correctly (hopefully this won't change when
-working on the graphics stack)
+* doesn't require a chroot to build correctly (unfortunately this will change,
+as the graphics stack is really picky when it comes to libdirs)
 
 
 ## Supported Architectures

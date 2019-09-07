@@ -44,6 +44,7 @@ $TSRC/$name/configure \
   --enable-lto \
   --disable-nls \
   --with-sysroot=$TOOL/$TUPL \
+  --with-lib-path=$TOOL/lib \
   --disable-multilib \
   --disable-gdb
 ```
