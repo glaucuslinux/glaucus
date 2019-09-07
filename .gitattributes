@@ -1,1 +1,2 @@
-*.* linguist-language=Shell
+cerata/*/ceras linguist-language=Shell
+scripts/variables linguist-language=Shell
