@@ -256,6 +256,9 @@
 [submodule "cerata/nsss/nsss"]
 	path = cerata/nsss/nsss
 	url = https://skarnet.org/cgi-bin/cgit.cgi/nsss
+[submodule "cerata/om4/m4"]
+	path = cerata/om4/m4
+	url = https://github.com/ibara/m4
 [submodule "cerata/opendoas/opendoas"]
 	path = cerata/opendoas/opendoas
 	url = https://git.duncano.de/opendoas
@@ -298,6 +301,9 @@
 [submodule "cerata/s6-rc/s6-rc"]
 	path = cerata/s6-rc/s6-rc
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-rc
+[submodule "cerata/samurai/samurai"]
+	path = cerata/samurai/samurai
+	url = https://github.com/michaelforney/samurai
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase

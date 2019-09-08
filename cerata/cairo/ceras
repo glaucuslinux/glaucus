@@ -7,12 +7,12 @@ cysts='musl zlib libpng pixman'
 description='A 2D graphics library with support for multiple output devices'
 licenses='LGPLv2.1+ MPLv1.1'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LIBS=-L$GLAD/usr/lib \
   ./autogen.sh \
@@ -55,11 +55,11 @@ configure() {
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

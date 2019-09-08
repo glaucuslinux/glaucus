@@ -7,12 +7,12 @@ cyst=musl
 description="A fork of openwrt's tiny replacement for libnl versions 1 and 2"
 license=LGPLv2.1
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   cat > config.mak << EOF
 prefix=/usr
 AR=$AR
@@ -27,11 +27,11 @@ sed 's/ $(STATICLIB)//' \
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

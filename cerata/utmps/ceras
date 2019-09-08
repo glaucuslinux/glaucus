@@ -8,12 +8,12 @@ description='A secure utmp/wtmp implementation'
 cluster=core
 license=ISC
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./configure \
     --target=$TUPL \
     --host=$TUPL \
@@ -33,12 +33,12 @@ configure() {
     -i config.mak
 }
 
-build() {
+build_system() {
   make \
     strip
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

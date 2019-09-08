@@ -8,14 +8,14 @@ description='Command line and full screen utilities for browsing procfs'
 cluster=core
 licenses='GPLv2+ GPLv3+ LGPLv2.1+'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
   patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LDFLAGS="$LDFLAGS -L$GLAD/usr/lib -lncursesw -lterminfo -lutmps -lskarnet" \
@@ -29,11 +29,11 @@ configure() {
     --disable-nls
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

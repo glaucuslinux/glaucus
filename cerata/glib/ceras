@@ -8,14 +8,14 @@ description='The low-level core library that forms the basis for projects such
 as GTK+ and GNOME'
 license=LGPLv2.1+
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
   
   mkdir -v $SBLD/$name
 }
 
-configure() {
+configure_system() {
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
   LD_LIBRARY_PATH=$GLAD/usr/lib \
@@ -25,13 +25,13 @@ configure() {
     $SBLD/$name
 }
 
-build() {
+build_system() {
   LD_LIBRARY_PATH=$GLAD/usr/lib \
   ninja \
     -C $SBLD/$name
 }
 
-install() {
+install_system() {
   DESTDIR=$SCER/$name/sac \
   ninja \
     -C $SBLD/$name \

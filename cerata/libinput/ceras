@@ -7,12 +7,12 @@ cyst=musl
 description='Input device management and event handling library'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./configure \
     --prefix=/usr \
     --build=$TUPL \
@@ -20,11 +20,11 @@ configure() {
     --target=$TUPL
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

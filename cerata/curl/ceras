@@ -7,18 +7,18 @@ cyst=musl
 description='A command line tool and library for transferring data with URLs'
 license=MIT
 
-prepare() {
+prepare_system() {
   :
 }
 
-configure() {
+configure_system() {
   :
 }
 
-build() {
+build_system() {
         :
 }
 
-install() {
+install_system() {
   :
 }

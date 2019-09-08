@@ -8,12 +8,12 @@ description='A port of the OpenBSD ksh to Linux'
 cluster=core
 license=PD
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   sed -e "s/CC ?= cc/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
     -e "s/CFLAGS ?= -O2/CFLAGS = $CFLAGS -I\/home\/glaucus\/system\/usr\/include/" \
     -e "s/LDFLAGS ?=/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/system\/usr\/lib/" \
@@ -24,11 +24,11 @@ configure() {
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

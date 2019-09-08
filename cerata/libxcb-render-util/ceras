@@ -7,14 +7,14 @@ cysts='musl util-macros'
 description='XCB convenience functions for the Render extension'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
   $version submodule update --init
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   ./autogen.sh \
     --prefix=/usr \
@@ -26,11 +26,11 @@ configure() {
     --without-doxygen
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

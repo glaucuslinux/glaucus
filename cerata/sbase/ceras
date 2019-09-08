@@ -8,7 +8,7 @@ description='Suckless Unix tools'
 cluster=core
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
@@ -23,7 +23,7 @@ prepare() {
     -i ls.c tar.c
 }
 
-configure() {
+configure_system() {
   sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
     -e "s/AR = .*/AR = $AR/" \
     -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
@@ -34,11 +34,11 @@ configure() {
     -i config.mk
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

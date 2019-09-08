@@ -8,14 +8,14 @@ description='The standard utilities for ext2/ext3/ext4 filesystems'
 cluster=core
 licenses='BSDv3 GPLv2+ LGPLv2+ MIT'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
   patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
-configure() {
+configure_system() {
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LIBS=-L$GLAD/usr/lib \
   ./configure \
@@ -39,11 +39,11 @@ configure() {
     --disable-fuse2fs
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   for dir in lib/blkid lib/e2p lib/et lib/ext2fs lib/uuid; do
     cd $dir
     

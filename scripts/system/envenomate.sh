@@ -2,14 +2,18 @@
 
 envenomate() {
   for ceras in $@; do
+    echo Creating directories for $ceras
     install -dv $SCER/$ceras/sac $SCER/$ceras/venom
 
+    echo Sourcing $ceras ceras
     . $CERD/$(echo $ceras | sed s/_.//)/ceras
-    prepare && configure && build && install
+    prepare_system && configure_system && build_system && install_system
 
+    echo Creating $ceras tarball
     cd $SCER/$ceras/sac
-
-    sudo sha512sum $(sudo tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
+    sudo sha512sum $(sudo tar cJvf \
+      ../venom/$name-$version-$release-$arch.tar.xz . | sed -e 's/\.\///' -e \
+      '/\/$/d' | sort) > ../venom/checksum
     tar xvf $SCER/$ceras/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
 
     rsync -vah $SCER/$ceras/venom $GLAD/usr/cerata/$name --delete
@@ -49,6 +53,9 @@ libxcb-util libxcb-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-curs
 pixman cairo
 fribidi libdatrie libthai pango'
 
-envenomate $core
-envenomate $extra
+#envenomate $core
+#envenomate $extra
 #envenomate $xorg
+
+envenomate musl
+envenomate om4 qm4

@@ -23,10 +23,13 @@ cerata/lilo/lilo/
 cerata/lilo/lilo-24.2.tar.gz
 cerata/mandoc/mandoc/
 cerata/mandoc/mandoc-1.14.5.tar.gz
+cerata/minised/trunk/
 cerata/mpfr/trunk/
 cerata/pcre/trunk/
 cerata/pcre2/trunk/
 cerata/pypy/pypy/
+cerata/qm4/m4-2
+cerata/qm4/m4-2.tar.bz2
 glaucus.img
 logs/
 play/

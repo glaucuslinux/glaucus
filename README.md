@@ -42,7 +42,8 @@ automated
 * replaced GNU Core Utilities with:
   1. suckless base (sbase)
   2. unportable base (ubase)
-  3. OpenBSD userland port to Linux (lobase)
+  3. OpenBSD `ls`, `pax`, `stty`, `diff`, `fmt`, `patch` and `sort` from
+OpenBSD's userland port to Linux (lobase)
 
 * OpenMP
 

@@ -7,17 +7,17 @@ cyst=musl
 description='A freely available, patent free, high-quality data compressor'
 license=BSDv3
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
     -i Makefile
 }
 
-build() {
+build_system() {
   make \
     CC="$CC" \
     CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
@@ -34,7 +34,7 @@ build() {
     LDFLAGS="$LDFLAGS"
 }
 
-install() {
+install_system() {
   install -dv $SCER/$name/sac/usr/share/man/man1
   make \
     PREFIX=$SCER/$name/sac/usr \

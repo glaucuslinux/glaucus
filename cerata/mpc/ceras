@@ -13,7 +13,7 @@ prepare_toolchain() {
   cd $TSRC/$name
 }
 
-configure() {
+configure_system() {
   autoreconf -vi
   ./configure \
     --prefix=$TOOL \

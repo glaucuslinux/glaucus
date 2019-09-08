@@ -7,12 +7,12 @@ cysts='musl zlib'
 description='The official PNG reference library'
 licenses='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
 
-prepare() {
+prepare_system() {
   mkdir -v $SBLD/$name
   cd $SBLD/$name
 }
 
-configure() {
+configure_system() {
   $CERD/$name/$name/configure \
     --prefix=/usr \
     --build=$TUPL \
@@ -24,11 +24,11 @@ configure() {
     --with-zlib-prefix=$GLAD
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

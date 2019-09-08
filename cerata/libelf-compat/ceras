@@ -8,12 +8,12 @@ description='libelf stripped off of elfutils 0.152 and cleaned up portability
 issues and autocrap'
 licenses='GPLv2+ GPLv3+ LGPLv3'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   cat > config.mak << EOF
 prefix=/usr
 sysconfdir=/etc
@@ -24,11 +24,11 @@ RANLIB=$RANLIB
 EOF
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

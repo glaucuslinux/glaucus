@@ -7,18 +7,18 @@ cyst=musl
 description='A software which generates loops for scanning Z-polyhedra'
 licenses='GPLv3+ LGPLv2.1+'
 
-prepare() {
+prepare_system() {
   :
 }
 
-configure() {
+configure_system() {
   :
 }
 
-build() {
+build_system() {
   :
 }
 
-install() {
+install_system() {
   :
 }

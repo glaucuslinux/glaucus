@@ -8,7 +8,7 @@ description='A collection of utilities for controlling TCP/IP networking and
 traffic in Linux'
 license=GPLv2+
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
@@ -16,7 +16,7 @@ prepare() {
     include/libiptc include/netinet man/man8/arpd.8
 }
 
-configure() {
+configure_system() {
   sed -e '/ARPD/d' \
     -e "s/CC := gcc/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
     -e "s/HOSTCC ?= .*/HOSTCC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
@@ -46,11 +46,11 @@ configure() {
     -i config.mk
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   install -Dv ip/ip $SCER/$name/sac/usr/bin/ip
   install -Dv man/man8/ip.8 $SCER/$name/sac/usr/share/man/man8/ip.8
 }

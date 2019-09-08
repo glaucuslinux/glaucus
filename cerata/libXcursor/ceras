@@ -7,12 +7,12 @@ cysts='musl util-macros'
 description='Xlib-based Cursor management library'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/libxcursor/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./autogen.sh \
@@ -23,11 +23,11 @@ configure() {
     --disable-static
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

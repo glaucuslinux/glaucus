@@ -7,12 +7,12 @@ cysts='musl freetype'
 description='A text shaping engine'
 licenses='Apachev2.0 GPLv2+ GPLv3+ ICU ISC MIT OFLv1.1'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   GLIB_CFLAGS="-I$GLAD/usr/include/glib-2.0 -I$GLAD/usr/lib/glib-2.0/include" \
   GLIB_LIBS="-L$GLAD/usr/lib -lglib-2.0" \
   FREETYPE_CFLAGS=-I$GLAD/usr/include/freetype2 \
@@ -31,11 +31,11 @@ configure() {
     --with-freetype
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

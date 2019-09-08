@@ -8,12 +8,12 @@ description='An interpreter for the AWK Programming Language faster than gawk'
 cluster=core
 license=GPLv2+
 
-prepare() {
+prepare_system() {
   mkdir -v $SBLD/$ceras
   cd $SBLD/$ceras
 }
 
-configure() {
+configure_system() {
   case $ceras in
     mawk_1)
       AWK=mawk \
@@ -35,11 +35,11 @@ configure() {
   esac
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   rsync -vah $CERD/$name/$name-snapshots/man . --delete
   make \
     DESTDIR=$SCER/$ceras/sac \

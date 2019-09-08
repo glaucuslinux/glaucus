@@ -7,12 +7,12 @@ cysts='musl mawk'
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
 licenses='Apachev2.0 BSDv2 BSDv3 GPLv2+ GPLv3+'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   autoreconf -vfi
   ./configure \
     --prefix=/usr \
@@ -23,11 +23,11 @@ configure() {
     --enable-fsect-man5
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

@@ -8,12 +8,12 @@ description='A general purpose malloc(3) implementation that emphasizes
 fragmentation avoidance and scalable concurrency support'
 license=BSDv2
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh \
     --prefix=/usr \
     --build=$TUPL \
@@ -22,11 +22,11 @@ configure() {
     --disable-static
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

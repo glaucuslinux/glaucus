@@ -7,12 +7,12 @@ cyst=musl
 description='The Free Implementation of the Unicode Bidirectional Algorithm'
 licenses='GPLv2+ GPLv3+ LGPLv2.1+ MIT'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh \
     --prefix=/usr \
     --build=$TUPL \
@@ -21,11 +21,11 @@ configure() {
     --disable-deprecated
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

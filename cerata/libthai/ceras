@@ -8,12 +8,12 @@ description="A set of Thai language support routines aimed to ease developers'
 tasks to incorporate Thai language support in their applications"
 license=LGPLv2.1+
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./configure \
@@ -24,11 +24,11 @@ configure() {
     --disable-static
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

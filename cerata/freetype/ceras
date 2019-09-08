@@ -7,12 +7,12 @@ cysts='musl zlib libpng'
 description='A freely available software library to render fonts'
 licenses='FTL GPLv2+ MIT zlib'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   case $ceras in
     freetype_1)
@@ -72,11 +72,11 @@ configure() {
   esac
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$ceras/sac \
     install

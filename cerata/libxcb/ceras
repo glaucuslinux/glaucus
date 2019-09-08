@@ -8,12 +8,12 @@ description='C interface to the X Window System protocol, which replaces the
 traditional Xlib interface'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   sed 's/pthread-stubs //' \
     -i configure.ac
 
@@ -37,11 +37,11 @@ configure() {
     --without-launchd
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

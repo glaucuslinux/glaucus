@@ -8,12 +8,12 @@ cysts='musl mawk netbsd-curses pcre2'
 description='A free, open-source and text-based terminal file pager'
 licenses='BSDv2 GPLv3+'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
   ./configure \
@@ -24,11 +24,11 @@ configure() {
     --with-regex=pcre2
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

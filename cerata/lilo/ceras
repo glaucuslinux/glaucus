@@ -8,14 +8,14 @@ cysts='musl bin86'
 description='Standard LInux boot LOader'
 licenses='BSDv3 GPLv2+ LGPLv2.1+'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
   
   patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
-configure() {  
+configure_system() {  
   sed -e '/images/d' \
     -e '/checkit/d' \
     -i Makefile
@@ -32,11 +32,11 @@ configure() {
     -i src/Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   install -Dv src/$name $SCER/$name/sac/usr/bin/$name
   install -Dv $CERD/$name/$name.conf $SCER/$name/sac/etc/$name.conf
 }

@@ -7,12 +7,12 @@ cysts='musl util-macros'
 description='Xlib library for the X Input Extension'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/libxi/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./autogen.sh \
@@ -29,11 +29,11 @@ configure() {
     --without-asciidoc
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

@@ -41,7 +41,7 @@ install_toolchain() {
   find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
 }
 
-prepare() {
+prepare_system() {
   mkdir -v $SBLD/$name
   rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
 
@@ -50,7 +50,7 @@ prepare() {
     mrproper
 }
 
-configure() {
+configure_system() {
   make \
     O=$SBLD/$name \
     oldconfig
@@ -59,12 +59,12 @@ configure() {
     prepare
 }
 
-build() {
+build_system() {
   make \
     O=$SBLD/$name
 }
 
-install() {
+install_system() {
   install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
   install -v $SBLD/$name/System.map $SCER/$name/sac/boot
 }

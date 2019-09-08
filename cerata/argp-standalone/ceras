@@ -9,7 +9,7 @@ description='Standalone version of arguments parsing functions from GLIBC for
 use with musl'
 licenses='GPLv2+ GPLv3+ PD XC'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
   
@@ -19,7 +19,7 @@ prepare() {
     -i argp-fmtstream.h
 }
 
-configure() {
+configure_system() {
   ./configure \
     --prefix=/usr \
     --build=$TUPL \
@@ -27,11 +27,11 @@ configure() {
     --target=$TUPL
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

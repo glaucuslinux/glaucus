@@ -1,0 +1,39 @@
+name=qm4
+version=2
+release=1
+arch=x86_64
+url=http://haddonthethird.net/m4/m4-2.tar.bz2
+checksum=25c9e82c39f6af528459bcf3ae29775dce12bdfecc98280c8461cf47f89cacd09d04ade09001048b21fbf09fba7988a9b183f40a60c2abdb6c38655f7d5a0868
+cyst=musl
+description='Quasar M4 is an attempt to provide a drop-in replacement for the GNU implementation of the M4 macro language'
+license='BSDv0 BSDv2 BSDv3 BSDv4'
+
+prepare_system() {
+  rsync -vah $CERD/$name/m4-2/ $SSRC/$name --delete
+  cd $SSRC/$name
+
+  # this should fix the process of copying both the M4 binary and manual page,
+  # and would prevent the need for specifying $PROG
+  sed -e "s/(BINDIR)\/m4/(BINDIR)\/$name/" \
+    -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$name.1/" \
+    -i Makefile
+}
+
+configure_system() {
+  :
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    PREFIX=/usr \
+    install
+
+  # beware as this would conflict both GNU M4 and OpenBSD M4
+  cd $SCER/$name/sac/usr/bin
+  ln -fsv $name m4
+}

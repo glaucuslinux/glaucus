@@ -8,12 +8,12 @@ description='An implementation of double-array structure for representing trie,
 as proposed by Junichi Aoe'
 license=LGPLv2.1+
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -23,11 +23,11 @@ configure() {
     --disable-static
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

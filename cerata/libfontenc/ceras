@@ -7,12 +7,12 @@ cysts='musl zlib util-macros'
 description='X font encoding library'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./autogen.sh \
@@ -23,11 +23,11 @@ configure() {
     --disable-static
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

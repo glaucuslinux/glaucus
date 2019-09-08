@@ -7,12 +7,12 @@ cysts='musl mawk'
 description='Multi-format archive and compression library'
 license=BSDv3
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./build/autogen.sh
   ./configure \
     --prefix=/usr \
@@ -29,11 +29,11 @@ configure() {
     --without-expat
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

@@ -7,12 +7,12 @@ cyst=musl
 description='A portable foreign-function interface library'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -25,11 +25,11 @@ configure() {
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

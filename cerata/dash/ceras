@@ -8,12 +8,12 @@ description='The Debian Almquist shell is a POSIX-compliant shell derived from t
 cluster=core
 licenses='BSDv3 GPLv2+ PD'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -27,7 +27,7 @@ build(){
   make
 }
 
-install() {
+install_system() {
   install -dv $SCER/$name/sac/usr/bin
   make \
     DESTDIR=$SCER/$name/sac \

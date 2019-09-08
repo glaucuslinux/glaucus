@@ -66,7 +66,8 @@ build() {
 }
 
 install() {
-  make DESTDIR=$SCER/$name/sac \
+  make \
+    DESTDIR=$SCER/$name/sac \
     install-strip
 }
 EOF
@@ -98,6 +99,9 @@ $3
 ## License
 
 
+EOF
+
+  cat > README.md << 'EOF'
 ## Prepare
 ```shell
 ```

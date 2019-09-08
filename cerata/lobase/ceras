@@ -8,12 +8,12 @@ description='A port of the OpenBSD userland to Linux'
 cluster=core
 licenses='ISC PD'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   autoreconf -vfi
   ./configure \
     --prefix=/usr \
@@ -22,7 +22,7 @@ configure() {
     --target=$TUPL
 }
 
-build() {
+build_system() {
   for dir in lib/libopenbsd lib/liboutil bin/ls bin/pax bin/stty usr.bin/diff \
     usr.bin/fmt usr.bin/patch usr.bin/sort; do
     cd $dir
@@ -33,7 +33,7 @@ build() {
   done
 }
 
-install() {
+install_system() {
   for dir in bin/ls bin/stty usr.bin/diff usr.bin/fmt usr.bin/patch \
     usr.bin/sort; do
     cd $dir

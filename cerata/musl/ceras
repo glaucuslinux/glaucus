@@ -76,12 +76,12 @@ install_toolchain() {
     install
 }
 
-prepare() {
+prepare_system() {
   mkdir -v $SBLD/$name
   cd $SBLD/$name
 }
 
-configure() {
+configure_system() {
   # CFLAGS are passed to configure and not as an environment variable.
   #
   # musl doesn't build with LTO enabled, which is shocking but true.
@@ -115,11 +115,11 @@ configure() {
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-libs

@@ -8,12 +8,12 @@ description='Xlib-based client library for the Composite extension to the X11
 protocol'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/libxcomposite/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./autogen.sh \
@@ -25,11 +25,11 @@ configure() {
     --without-xmlto
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

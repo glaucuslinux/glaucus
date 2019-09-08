@@ -7,12 +7,12 @@ cysts='musl util-macros'
 description='X miscellaneous utility routines library'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/libxmu/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ACLOCAL_PATH=$GLAD/usr/share/aclocal \
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   ./autogen.sh \
@@ -28,11 +28,11 @@ configure() {
     --without-xsltproc
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

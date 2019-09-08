@@ -8,13 +8,13 @@ description='A free version of the TLS/crypto stack forked from OpenSSL with a
 modern codebase and improved security'
 licenses='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/portable/ $SSRC/$name --delete
   rsync -vah $CERD/$name/openbsd $SSRC/$name --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   ./autogen.sh
 
   sed -e "s/USER_CFLAGS=.*/USER_CFLAGS=\"$CFLAGS\"/" \
@@ -34,11 +34,11 @@ configure() {
     -i Makefile
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

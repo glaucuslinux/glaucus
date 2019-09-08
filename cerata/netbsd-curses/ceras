@@ -8,12 +8,12 @@ description="A port of NetBSD's curses library for usage on Linux systems"
 cluster=core
 licenses='BSDv2 BSDv3'
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   cat > config.mak << EOF
 PREFIX = /usr
 AR = $AR
@@ -24,24 +24,22 @@ CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
 
+  # Prevent NetBSD clear from overwriting ubase's clear
   sed -e '/$(BINDIR)\/clear/ s/$/.sh/' \
     -e 's/-O0 //' \
     -i GNUmakefile
 }
 
-build() {
+build_system() {
   make \
     all-dynamic
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-dynamic
 
-  $STRIP -v $SCER/$name/sac/usr/lib/libcurses.so \
-    $SCER/$name/sac/usr/lib/libform.so \
-    $SCER/$name/sac/usr/lib/libmenu.so \
-    $SCER/$name/sac/usr/lib/libpanel.so \
-    $SCER/$name/sac/usr/lib/libterminfo.so
+  cd $SCER/$name/sac/usr/lib
+  $STRIP -v libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
 }

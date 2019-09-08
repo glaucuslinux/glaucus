@@ -7,7 +7,7 @@ cyst=musl
 description='Fast streaming XML parser written in C'
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/lib$name/$name $SSRC --delete
   cd $SSRC/$name
 
@@ -17,7 +17,7 @@ prepare() {
   cd $SBLD/$name
 }
 
-configure() {
+configure_system() {
   $SSRC/$name/configure \
     --prefix=/usr \
     --build=$TUPL \
@@ -29,11 +29,11 @@ configure() {
     --without-tests
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip

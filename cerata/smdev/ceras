@@ -8,7 +8,7 @@ description='Suckless mdev'
 cluster=core
 license=MIT
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   rsync -vah $CERD/$name/config.h $SSRC --delete
   cd $SSRC/$name
@@ -19,7 +19,7 @@ prepare() {
   patch -Np1 -i $CERD/$name/patches/$name.patch
 }
 
-configure() {
+configure_system() {
   sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
     -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
     -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
@@ -27,11 +27,11 @@ configure() {
     -i config.mk
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install

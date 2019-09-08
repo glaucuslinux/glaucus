@@ -9,12 +9,12 @@ ELF binary files, find and handle DWARF debug data, symbols, thread state and
 stacktraces for processes and core files on GNU/Linux'
 license=GPLv3+
 
-prepare() {
+prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
-configure() {
+configure_system() {
   autoreconf -vfi
   ./configure \
     --prefix=/usr \
@@ -27,11 +27,11 @@ configure() {
     --disable-nls
 }
 
-build() {
+build_system() {
   make
 }
 
-install() {
+install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
