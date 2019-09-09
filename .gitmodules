@@ -220,6 +220,9 @@
 [submodule "cerata/libxtrans/libxtrans"]
 	path = cerata/libxtrans/libxtrans
 	url = https://gitlab.freedesktop.org/xorg/lib/libxtrans
+[submodule "cerata/libz/libz"]
+	path = cerata/libz/libz
+	url = https://gitlab.com/sortix/libz
 [submodule "cerata/linux/linux"]
 	path = cerata/linux/linux
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux

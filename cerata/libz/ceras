@@ -1,0 +1,32 @@
+name=libz
+version=git
+release=1
+arch=x86_64
+url=https://gitlab.com/sortix/$name
+cyst=musl
+description='Sortix libz is a general purpose data compression library'
+license=zlib
+
+prepare() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
+
+configure() {
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build() {
+  make
+}
+
+install() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
+}
