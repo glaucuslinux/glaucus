@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=gnulib
+version=git
+release=1
+arch=x86_64
+url=https://$version.savannah.gnu.org/$version/$name
+cyst=musl
+description='A central location for common GNU code, intended to be shared among
+GNU packages'
+license='GPLv2+ GPLv3+ LGPLv2.1+'

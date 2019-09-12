@@ -6,9 +6,9 @@
 CERD=/home/glaucus/cerata
 
 if [ ! -d $CERD/$1 ]; then
-  mkdir -v $CERD/cerata/$1 && cd $CERD/cerata/$1
+  mkdir -pv $CERD/$1/ceras
+  cd $CERD/$1/ceras
 
-  mkdir -v ceras && cd ceras
   cat > ceras << EOF
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
@@ -24,39 +24,7 @@ cyst=musl
 description=''
 license=
 EOF
-
-  case $2 in
-    git)
-      case $4 in
-        yes) torify git clone $3 ;;
-        no) git clone $3 ;;
-      esac
-      git submodule add $3
-      ;;
-    hg)
-      case $4 in
-        yes) torify hg clone $3 ;;
-        no) hg clone $3 ;;
-      esac
-      ;;
-    svn)
-      case $4 in
-        yes) torify svn co $3 ;;
-        no) svn co $3 ;;
-      esac
-      ;;
-    *)
-      case $4 in
-        yes) torify curl $3 -o $(basename $3) ;;
-        no) curl $3 -o $(basename $3) ;;
-      esac
-
-      sed "/^url=.*/a checksum=$(echo $(sha512sum $(basename $3)) | awk \
-        '{print $1}')" \
-        -i ceras
-      ;;
-  esac
-
+  
   cat > system.ceras << 'EOF'
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
@@ -106,12 +74,42 @@ $3
 
 ## Description
 
-
 ## License
-
 
 EOF
 
+  cd $CERD/$1
+  case $2 in
+    git)
+      case $4 in
+        yes) torify git clone $3 ;;
+        no) git clone $3 ;;
+      esac
+      git submodule add $3
+      ;;
+    hg)
+      case $4 in
+        yes) torify hg clone $3 ;;
+        no) hg clone $3 ;;
+      esac
+      ;;
+    svn)
+      case $4 in
+        yes) torify svn co $3 ;;
+        no) svn co $3 ;;
+      esac
+      ;;
+    *)
+      case $4 in
+        yes) torify curl $3 -o $(basename $3) ;;
+        no) curl $3 -o $(basename $3) ;;
+      esac
+
+      sed "/^url=.*/a checksum=$(echo $(sha512sum $(basename $3)) | awk \
+        '{print $1}')" \
+        -i ceras
+      ;;
+  esac
 else
   echo ceras $1 already exists!
 fi

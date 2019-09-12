@@ -52,6 +52,9 @@
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib
+[submodule "cerata/gnulib/gnulib"]
+	path = cerata/gnulib/gnulib
+	url = https://git.savannah.gnu.org/git/gnulib
 [submodule "cerata/harfbuzz/harfbuzz"]
 	path = cerata/harfbuzz/harfbuzz
 	url = https://github.com/harfbuzz/harfbuzz
