@@ -232,6 +232,9 @@
 [submodule "cerata/loksh/loksh"]
 	path = cerata/loksh/loksh
 	url = https://github.com/dimkr/loksh
+[submodule "cerata/make/make"]
+	path = cerata/make/make
+	url = https://git.savannah.gnu.org/git/make
 [submodule "cerata/mawk/mawk-snapshots"]
 	path = cerata/mawk/mawk-snapshots
 	url = https://github.com/ThomasDickey/mawk-snapshots

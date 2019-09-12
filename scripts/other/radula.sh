@@ -1,9 +1,20 @@
 #!/usr/bin/dash -ex
-if [ ! -d /home/glaucus/cerata/$1 ]; then
-  mkdir -v /home/glaucus/cerata/$1
-  cd /home/glaucus/cerata/$1
 
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+CERD=/home/glaucus/cerata
+
+if [ ! -d $CERD/$1 ]; then
+  mkdir -v $CERD/cerata/$1 && cd $CERD/cerata/$1
+
+  mkdir -v ceras && cd ceras
   cat > ceras << EOF
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
 name=$1
 version=$2
 release=1
@@ -46,30 +57,30 @@ EOF
       ;;
   esac
 
-  cat >> ceras << 'EOF'
+  cat > system.ceras << 'EOF'
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
 
-prepare() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
-}
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-configure() {
-  ./configure \
-    --prefix=/usr \
-    --build=$TUPL \
-    --host=$TUPL \
-    --target=$TUPL
-}
+# prepare
+rsync -vah $CERD/$name/$name $SSRC --delete
+cd $SSRC/$name
 
-build() {
-  make
-}
+# configure
+./configure \
+  --prefix=/usr \
+  --build=$TUPL \
+  --host=$TUPL \
+  --target=$TUPL
 
-install() {
-  make \
-    DESTDIR=$SCER/$name/sac \
-    install-strip
-}
+# build
+make
+
+# install
+make \
+  DESTDIR=$SCER/$name/sac \
+  install-strip
 EOF
 
   cat > README.md << EOF
@@ -99,24 +110,6 @@ $3
 ## License
 
 
-EOF
-
-  cat > README.md << 'EOF'
-## Prepare
-```shell
-```
-
-## Configure
-```shell
-```
-
-## Build
-```shell
-```
-
-## Install
-```shell
-```
 EOF
 
 else

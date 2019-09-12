@@ -10,21 +10,10 @@ licenses='BSDv0 BSDv2 BSDv3 BSDv4 ISC'
 prepare_system() {
   rsync -vah $CERD/$name/m4/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  # Fixes the following errors:
-  #   error: expected ';' before 'void'
-  #   error: expected ';' before 'typedef'
-  sed '/DECLS/s/^/#define /' \
-    -i ohash.h
-
-  # Fixes the wrong manual provided in Makefile install
-  sed 's/om4.1/m4.1/' \
-    -i configure
 }
 
 configure_system() {
   # need to specify mandir because apparently it doesn't honor the given prefix
-  PROG=om4 \
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man

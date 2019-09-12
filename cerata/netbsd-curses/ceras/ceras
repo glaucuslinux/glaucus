@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=netbsd-curses
+version=git
+release=1
+arch=x86-64
+url=https://github.com/sabotage-linux/$name
+cyst=musl
+description="A port of NetBSD's curses library for usage on Linux systems"
+cluster=core
+licenses='BSDv2 BSDv3'

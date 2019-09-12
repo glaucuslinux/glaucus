@@ -1,3 +1,8 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
 name=byacc
 version=20190617
 release=1
@@ -9,30 +14,3 @@ description='Berkeley Yacc LALR parser generator is the best variant of the Unix
 Yacc LALR parser generator'
 cluster=core
 license=PD
-
-prepare_system() {
-  mkdir -v $SBLD/$name
-  cd $SBLD/$name
-}
-
-configure_system() {
-  $CERD/$name/$name/configure \
-    --prefix=/usr \
-    --program-prefix=b \
-    --build=$TUPL \
-    --host=$TUPL \
-    --target=$TUPL
-}
-
-build_system() {
-  make
-}
-
-install_system() {
-  make \
-    DESTDIR=$SCER/$name/sac \
-    install
-
-  cd $SCER/$name/sac/usr/bin
-  ln -fsv $name yacc
-}

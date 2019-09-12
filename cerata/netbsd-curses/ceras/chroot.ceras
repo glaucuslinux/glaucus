@@ -1,0 +1,33 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $CSRC --delete
+cd $CSRC/$name
+
+# configure
+cat > config.mak << EOF
+PREFIX = $GLCD
+AR = $AR
+AWK = $AWK
+CC = $CC
+RANLIB = $RANLIB
+CFLAGS = $CFLAGS
+LDFLAGS = $LDFLAGS
+EOF
+
+sed 's/-O0 //' \
+  -i GNUmakefile
+
+# build
+make \
+  all-dynamic
+
+# install
+make \
+  install-dynamic
+
+cd $GLCD/lib
+$STRIP -v libcurses.so libform.so libmenu.so libpanel.so libterminfo.so

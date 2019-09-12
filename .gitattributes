@@ -4,5 +4,13 @@
 # relative path specified.
 
 cerata/*/ceras linguist-language=Shell
+cerata/*/ceras/ceras linguist-language=Shell
+cerata/*/ceras/chroot.ceras linguist-language=Shell
+cerata/*/ceras/system.ceras linguist-language=Shell
+cerata/*/ceras/toolchain.ceras linguist-language=Shell
+
 cerata/smdev/config.h linguist-language=C
-scripts/variables linguist-language=Shell
+
+scripts/chroot/variables linguist-language=Shell
+scripts/system/variables linguist-language=Shell
+scripts/toolchain/variables linguist-language=Shell

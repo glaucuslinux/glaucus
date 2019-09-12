@@ -1,0 +1,27 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $CSRC --delete
+cd $CSRC/$name
+
+# configure
+./autogen.sh
+./configure \
+  --prefix=$GLCD \
+  --build=$TUPL \
+  --host=$TUPL \
+  --target=$TUPL \
+  --disable-static
+
+# build
+make
+
+# install
+make \
+  install-strip
+
+cd $GLCD/bin
+ln -fsv $name sh

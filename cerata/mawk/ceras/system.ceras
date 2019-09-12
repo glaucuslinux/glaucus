@@ -1,0 +1,41 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+mkdir -v $SBLD/$ceras
+cd $SBLD/$ceras
+
+# configure
+case $ceras in
+  mawk_1)
+    AWK=mawk \
+    CFLAGS="$CFLAGSNOOPENMP" \
+    $CERD/$name/$name-snapshots/configure \
+      --prefix=/usr \
+      --build=$TUPL \
+      --host=$TUPL \
+      --target=$TUPL
+    ;;
+  mawk_2)
+    CFLAGS="$CFLAGSNOOPENMP" \
+    $CERD/$name/$name-snapshots/configure \
+      --prefix=/usr \
+      --build=$TUPL \
+      --host=$TUPL \
+      --target=$TUPL
+    ;;
+esac
+
+# build
+make
+
+# install
+rsync -vah $CERD/$name/$name-snapshots/man . --delete
+make \
+  DESTDIR=$SCER/$ceras/sac \
+  install
+
+cd $SCER/$ceras/sac/usr/bin
+ln -fsv $name awk

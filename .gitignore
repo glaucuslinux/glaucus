@@ -9,6 +9,7 @@
 .vim/
 .viminfo
 .wget-hsts
+
 cerata/argp-standalone/argp-standalone/
 cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
 cerata/bin86/bin86/
@@ -30,11 +31,15 @@ cerata/pcre2/trunk/
 cerata/pypy/pypy/
 cerata/qm4/m4-2
 cerata/qm4/m4-2.tar.bz2
+
 glaucus.img
+
+chroot/
 logs/
 play/
 system/
 temporary/
 toolchain/
+
 !scripts/system/
 !scripts/toolchain/

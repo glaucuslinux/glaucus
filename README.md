@@ -150,6 +150,8 @@ glaucus is heavily inspired by the following projects:
 
 * [bleeding-edge-toolchain](https://github.com/FreddieChopin/bleeding-edge-toolchain)
 
+* [Bleeding Linux From Scratch](https://islief.com/wiki/index.php/Bleeding_Linux_From_Scratch)
+
 * [B/LFS-s6](https://www.linuxquestions.org/questions/linux-from-scratch-13/%5Bannoucement%5D-b-lfs-s6-project-4175510228/)
 
 * [Bluedragon](https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon)
@@ -279,9 +281,9 @@ glaucus is heavily inspired by the following projects:
 * [ZYDUX](https://github.com/rom1nux/zydux-forge)
 
 
-## Author
+## Voyager
 
-Firas Khalil Khana (firasuke@gmail.com)
+Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 
 ## License

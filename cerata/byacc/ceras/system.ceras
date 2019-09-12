@@ -1,0 +1,27 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+mkdir -v $SBLD/$name
+cd $SBLD/$name
+
+# configure
+$CERD/$name/$name/configure \
+  --prefix=/usr \
+  --program-prefix=b \
+  --build=$TUPL \
+  --host=$TUPL \
+  --target=$TUPL
+
+# build
+make
+
+# install
+make \
+  DESTDIR=$SCER/$name/sac \
+  install
+
+cd $SCER/$name/sac/usr/bin
+ln -fsv $name yacc

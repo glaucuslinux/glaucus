@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=lobase
+version=git
+release=1
+arch=x86-64
+url=https://$version.duncano.de/$name
+cysts='musl mawk'
+description='A port of the OpenBSD userland to Linux'
+cluster=core
+licenses='ISC PD'

@@ -20,42 +20,40 @@ envenomate() {
   done
 }
 
-# Indentations were removed since we're assigning multiple line strings to these
-# variables
-core='musl
-mawk_1 byacc mawk_2
-skalibs execline s6 utmps
-sbase ubase lobase
-smdev nldev nlmon
-netbsd-curses procps dash loksh
-e2fsprogs
-linux
-s6-linux-init s6-rc glaucus-s6-boot-scripts'
+# core
+#
+# It's easier and quicker to edit separate calls of envenomate that to edit a
+# variable holding its arguments or split the arguments into multiple lines
+envenomate musl
+envenomate mawk_1 byacc mawk_2
+envenomate skalibs execline s6 utmps
+envenomate sbase ubase lobase
+envenomate smdev nldev nlmon
+envenomate netbsd-curses procps dash loksh
+envenomate e2fsprogs
+envenomate linux
+envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
 
+# extra
+#
 # s6-linux-utils needs to be built before nsss or it'll error out with undefined
 # references to `nsss_all_getgrgid` and `nsss_all_getpwuid`
-extra='re2c
-sinit svc
-sdhcp
-bzip2 xz zlib libarchive
-pcre2 less mandoc vim
-file iproute2 opendoas libressl
-expat libffi wayland wayland-protocols
-jemalloc
-bin86 lilo
-s6-linux-utils s6-portable-utils nsss'
+#envenomate re2c
+#envenomate sinit svc
+#envenomate sdhcp
+#envenomate bzip2 xz zlib libarchive
+#envenomate pcre2 less mandoc vim
+#envenomate file iproute2 opendoas libressl
+#envenomate expat libffi wayland wayland-protocols
+#envenomate jemalloc
+#envenomate bin86 lilo
+#envenomate s6-linux-utils s6-portable-utils nsss
 
-xorg='bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
-util-macros
-xorgproto libXau libXdmcp xcbproto libxcb
-libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
-libxcb-util libxcb-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
-pixman cairo
-fribidi libdatrie libthai pango'
-
-#envenomate $core
-#envenomate $extra
-#envenomate $xorg
-
-envenomate musl
-envenomate om4 qm4
+# xorg
+#envenomate bzip2 zlib libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 expat json-c fontconfig
+#envenomate util-macros
+#envenomate xorgproto libXau libXdmcp xcbproto libxcb
+#envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
+#envenomate libxcb-util libxcb-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
+#envenomate pixman cairo
+#envenomate fribidi libdatrie libthai pango

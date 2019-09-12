@@ -1,0 +1,47 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $SSRC --delete
+cd $SSRC/$name
+
+# configure
+autoreconf -vfi
+./configure \
+  --prefix=/usr \
+  --build=$TUPL \
+  --host=$TUPL \
+  --target=$TUPL
+
+# build
+for dir in lib/libopenbsd lib/liboutil bin/ls bin/pax bin/stty usr.bin/diff \
+  usr.bin/fmt usr.bin/patch usr.bin/sort; do
+  cd $dir
+
+  make
+
+  cd ../..
+done
+
+# install
+for dir in bin/ls bin/stty usr.bin/diff usr.bin/fmt usr.bin/patch \
+  usr.bin/sort; do
+  cd $dir
+
+  make \
+    BINDIR=/usr/bin \
+    DESTDIR=$SCER/$name/sac \
+    install
+
+  cd ../..
+done
+
+install -v bin/pax/pax $SCER/$name/sac/usr/bin
+install -m 444 -Dv bin/pax/cpio.1 bin/pax/pax.1 bin/pax/tar.1 -t \
+  $SCER/$name/sac/usr/share/man/man1
+
+cd $SCER/$name/sac/usr/bin
+ln -fsv pax cpio
+ln -fsv pax tar

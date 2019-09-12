@@ -1,0 +1,28 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $CSRC --delete
+cd $CSRC/$name
+
+# configure
+sed -e "s/CC ?= cc/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/chroot/" \
+  -e "s/CFLAGS ?= -O2/CFLAGS = $CFLAGS -I\/home\/glaucus\/chroot\/include/" \
+  -e "s/LDFLAGS ?=/LDFLAGS = $LDFLAGS -L\/home\/glaucus\/chroot\/lib/" \
+  -e 's/DESTDIR ?= \//DESTDIR = \/home\/glaucus\/chroot/' \
+  -e 's/BIN_NAME ?= ksh/BIN_NAME = loksh/' \
+  -e 's/?//' \
+  -e '28s/$/-lterminfo/' \
+  -i Makefile
+
+# build
+make
+
+# install
+make \
+  install
+
+cd $GLCD/bin
+ln -fsv $name ksh
