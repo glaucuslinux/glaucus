@@ -8,6 +8,7 @@ version=git
 release=1
 arch=x86_64
 url=https://$version.savannah.gnu.org/$version/$name
-cyst=musl
-description=''
-license=
+cysts='musl gnulib'
+description="A tool which controls the generation of executables and other
+non-source files of a program from the program's source files"
+license=GPLv2+

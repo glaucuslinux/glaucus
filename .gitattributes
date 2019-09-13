@@ -1,13 +1,13 @@
 # Adding these rules to .git/info/attributes has no effect.
-#
+
 # Relying on filenames only also has no effect, as each file must have its
 # relative path specified.
 
+# Only filetypes can be written without their relative path.
+
+*.ceras linguist-language=Shell
 cerata/*/ceras linguist-language=Shell
 cerata/*/ceras/ceras linguist-language=Shell
-cerata/*/ceras/chroot.ceras linguist-language=Shell
-cerata/*/ceras/system.ceras linguist-language=Shell
-cerata/*/ceras/toolchain.ceras linguist-language=Shell
 
 cerata/smdev/config.h linguist-language=C
 

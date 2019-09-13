@@ -4,21 +4,23 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
+rsync -vah $CERD/$name/$name $CSRC --delete
+cd $CSRC/$name
 
 # configure
 ./boostrap
 ./configure \
-  --prefix=/usr \
+  --prefix=$GLCD \
   --build=$TUPL \
   --host=$TUPL \
-  --target=$TUPL
+  --target=$TUPL \
+  --disable-nls \
+  --without-guile \
+  --without-dmalloc
 
 # build
 make
 
 # install
 make \
-  DESTDIR=$SCER/$name/sac \
   install-strip
