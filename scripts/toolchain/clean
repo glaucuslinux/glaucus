@@ -1,0 +1,10 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+sudo rm -frv $TBLD $TOOL /home/glaucus/toolchain
+mkdir -v $TBLD /home/glaucus/toolchain
+
+# Creates the system wide symlink to toolchain which currently does nothing
+# except shorten the path needed to point to the toolchain. This might change
+# when chroot is done.
+sudo ln -fsv /home/glaucus/toolchain $TOOL

@@ -1,0 +1,30 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+mkdir -v $TBLD/$name
+cd $CERD/$name/$name
+
+make \
+  mrproper
+
+make \
+  O=$TBLD/$name \
+  ARCH=$ARCH \
+  headers_check
+
+# install
+
+# this only works if linux was first (in construct) as this command will erase
+# all previously installed headers in the INSTALL_HDR_PATH destination which
+# would then require manually copying the header files to their destination
+make \
+  O=$TBLD/$name \
+  ARCH=$ARCH \
+  INSTALL_HDR_PATH=$TOOL/$TUPL \
+  headers_install
+
+# Removes unnecessary files that take about 200KB of precious disk space
+find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete

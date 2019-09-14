@@ -20,11 +20,8 @@ export CERD=/home/glaucus/cerata
 export LOGD=/home/glaucus/logs
 export TMPD=/home/glaucus/temporary
 
-# The system wide symlink to the toolchain for chroot purposes
-export TOOL=/toolchain
-
 # Resolves the pod2man related error until perl is added
-export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
+export PATH=/usr/bin:/usr/bin/core_perl
 
 # It's highly recommended that MAKEFLAGS value stays at -j1 for now as any
 # higher value might cause weird problems (segfaults included). 

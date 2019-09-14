@@ -4,11 +4,20 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
+
+# needs gnulib because:
+#   1- autoreconf -vfi gives an error about missing lib/Makefile.in
+#   2- to shorten build time since ./bootstrap will clone gnulib every build
 rsync -vah $CERD/$name/$name $CSRC --delete
+rsync -vah $CERD/gnulib/gnulib $CSRC/$name --delete
 cd $CSRC/$name
 
+# A fix for find_in_given_path() until it's fixed by upstream
+sed 's/find_in_given_path .*/find_in_given_path (argv[0], p, 1);/' \
+  -i src/job.c
+
 # configure
-./boostrap
+./bootstrap
 ./configure \
   --prefix=$GLCD \
   --build=$TUPL \
@@ -17,6 +26,10 @@ cd $CSRC/$name
   --disable-nls \
   --without-guile \
   --without-dmalloc
+
+# Don't treat all warnings as errors
+sed 's/-Werror //' \
+  -i Makefile
 
 # build
 make

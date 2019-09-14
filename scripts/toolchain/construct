@@ -1,10 +1,10 @@
-#!/usr/bin/dash -ex
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
 
 construct() {
   for ceras in $@; do
-    . $CERD/$(echo $ceras | sed s/_.//)/ceras
-    prepare_toolchain && configure_toolchain && build_toolchain && \
-      install_toolchain
+    . $CERD/$(echo $ceras | sed s/_.//)/ceras/ceras
+    . $CERD/$(echo $ceras | sed s/_.//)/ceras/toolchain.ceras
   done
 }
 
@@ -13,15 +13,17 @@ construct() {
 # either build linux first and install its headers, which is the preferred
 # method as there's no good reason not to, or build it after musl and manually
 # copying the header files to their destination instead of running make install.
-#
-# musl, isl and zstd should only be built with the static gcc_1
-toolchain='linux
-binutils
-gmp mpfr mpc
-gcc_1
-musl
-isl
-zstd
-gcc_2'
 
-construct $toolchain
+# musl, isl and zstd should only be built with the static gcc_1
+
+# libstdc++ will find its way here in the near future
+construct linux
+construct binutils_1
+construct gmp mpfr mpc
+construct gcc_1
+construct musl
+construct libstdc++
+construct binutils_2
+construct isl
+construct zstd
+construct gcc_2

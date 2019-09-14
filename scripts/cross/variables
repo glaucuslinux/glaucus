@@ -1,0 +1,18 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Since we're building a cross compiler, this will be used for --build and
+# --host in supported cerata
+export XGNU=$ARCH-pc-linux-gnu
+
+# The system wide symlink to the cross-compilation toolchain
+export CRSS=/cross
+
+# $CRSS should be searched first
+export PATH=$CRSS/bin:$PATH
+
+# Cross-compilation only related variables, these will only be called when
+# constructing the cross-compilation toolchain
+export XLOG=$LOGD/cross
+export XBLD=$TMPD/cross/builds
+export XSRC=$TMPD/cross/sources

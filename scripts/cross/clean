@@ -1,0 +1,10 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+sudo rm -frv $XBLD $CRSS /home/glaucus/cross
+mkdir -v $XBLD /home/glaucus/cross
+
+# Creates the system wide symlink to the cross-compilation toolchain which
+# currently does nothing except shorten the path to the cross-compilation
+# toolchain. This might change when chroot is done.
+sudo ln -fsv /home/glaucus/cross $CRSS

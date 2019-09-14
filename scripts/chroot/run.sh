@@ -18,5 +18,5 @@ while true; do
 done
 
 mkdir -v $CLOG/$file
-(. $GSCR/chroot/construct | tee $CLOG/$file/stdout.log) 3>&1 1>&2 2>&3 | tee \
-  $CLOG/$file/stderr.log
+(. $GSCR/chroot/construct | tee $CLOG/$file/out.log) 3>&1 1>&2 2>&3 | tee \
+  $CLOG/$file/err.log

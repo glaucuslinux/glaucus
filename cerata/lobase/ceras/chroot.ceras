@@ -10,7 +10,7 @@ cd $CSRC/$name
 # configure
 autoreconf -vfi
 ./configure \
-  --prefix=$GLCD \
+  --prefix=/ \
   --build=$TUPL \
   --host=$TUPL \
   --target=$TUPL

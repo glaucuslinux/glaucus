@@ -145,7 +145,7 @@ assign_system_variables() {
   export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
   export CPPFLAGS=-I$GLAD/usr/include
   export CXXFLAGS="$CFLAGS"
-  export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
+  export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"
 }
 
 assign_xorg_variables() {

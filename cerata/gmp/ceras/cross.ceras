@@ -1,0 +1,37 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $XSRC --delete --exclude=.$version
+cd $XSRC/$name
+
+# configure
+
+# mini-gmp has less memory footprint and is smaller than GMP but is slower (up
+# to 10 times slower in some cases). You should never install mini-gmp as
+# applications can either include `mini-gmp.c` or compile it and use the
+# declarations in `mini-gmp.h`
+
+# gmp's configure script is stupid and won't accept target alone if we're
+# cross-compiling; hence, both host needs to be added, and be given the same
+# value of target which is $TUPL, and build which is given the value of $XGNU to
+# indicate that we're cross-compiling. (The easiest solution would be to remove
+# build/host/target alltogether, but meh...)
+./.bootstrap
+./configure \
+  --prefix=$CRSS \
+  --build=$XGNU \
+  --host=$TUPL \
+  --target=$TUPL \
+  --enable-cxx \
+  --disable-static \
+  --with-sysroot=$CRSS/$TUPL
+
+# build
+make
+
+# install
+make \
+  install-strip

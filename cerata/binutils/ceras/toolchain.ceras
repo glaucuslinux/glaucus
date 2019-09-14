@@ -1,0 +1,37 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
+mkdir -v $TBLD/$name
+cd $TBLD/$name
+
+# configure
+
+# Added --with-lib-path from LFS for better separation from the host
+
+# GNU's gold linker doesn't like musl, as it refuses to build without
+# enabling PIE support, and bloats things up after enabling PIE support
+# and yet manages to still fail:
+# https://github.com/NixOS/nixpkgs/issues/49071
+$TSRC/$name/configure \
+  --prefix=$TOOL \
+  --target=$TUPL \
+  --enable-lto \
+  --disable-nls \
+  --with-sysroot=$TOOL/$TUPL \
+  --with-lib-path=$TOOL/lib \
+  --disable-multilib \
+  --disable-gdb
+
+make \
+  configure-host
+
+# build
+make
+
+# install
+make \
+  install-strip

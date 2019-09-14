@@ -1,0 +1,27 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $XSRC --delete --exclude=.$version
+cd $XSRC/$name
+
+# configure and build
+
+# double check if gmp was built correctly before starting to build the second
+# stage of GCC, as it would report missing header files like string.h, which
+# can be solved by adding CPPFLAGS/LDFLAGS but isn't the case here (not the
+# real problem).
+make \
+  HAVE_THREAD=1 \
+  ZSTD_LEGACY_SUPPORT=0 \
+  HAVE_ZLIB=0 \
+  HAVE_LZMA=0 \
+  HAVE_LZ4=0 \
+  BACKTRACE=0
+
+# install
+make \
+  PREFIX=$CRSS \
+  install

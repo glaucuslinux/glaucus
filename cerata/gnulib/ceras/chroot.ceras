@@ -3,5 +3,9 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $CSRC/make --delete
+# This file intentionally left blank to know that gnulib is part of chroot even
+# though it's not explicitly defined in scripts/chroot/construct, as cerata that
+# require gnulib simply rsync it to their $CSRC/$name.
+
+# These cerata include:
+#   1- make

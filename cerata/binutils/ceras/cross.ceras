@@ -1,0 +1,67 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name-gdb/ $XSRC/$name --delete --exclude=.$version
+
+mkdir -v $XBLD/$name && cd $XBLD/$name
+
+# configure
+
+# no need for --build and --host (set to gnu) as the configure script is smart
+# enough to detect them
+
+# Added --with-lib-path from LFS for better separation from the host
+
+# GNU's gold linker doesn't like musl, as it refuses to build without
+# enabling PIE support, and bloats things up after enabling PIE support
+# and yet manages to still fail:
+# https://github.com/NixOS/nixpkgs/issues/49071
+
+# `--enable-lto` is enabled by default
+
+# `--disable-gold` is the default option, only ld is built
+
+# `--enable-plugins` is on by default as it's needed for largefile? (it's also
+# needed when building gold)
+
+# `--enable-64-bit-bfd` is enabled by default for 64 bit targets?
+# `--enable-64-bit-archive` is enabled by default for 64 bit targets?
+
+# `--with-system-zlib` to use host's zlib instead of bundled zlib
+
+# `--enable-deterministic-archives` because:
+# https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities
+$XSRC/$name/configure \
+  --prefix=$CRSS \
+  --target=$TUPL \
+  --disable-static \
+  --enable-deterministic-archives \
+  --disable-compressed-debug-sections \
+  --enable-64-bit-bfd \
+  --enable-64-bit-archive \
+  --disable-nls \
+  --with-lib-path=$CRSS/lib \
+  --with-sysroot=$CRSS/$TUPL \
+  --with-system-zlib \
+  --disable-multilib \
+  --disable-gdb
+
+make \
+  configure-host
+
+# build
+make
+
+# install
+
+# to ensure the sanity of the toolchain on x86-64 hosts
+cd $CRSS
+install -dv lib && ln -fsv lib lib64
+
+# install-strip doesn't work with readline
+cd $XBLD/$name
+make \
+  install

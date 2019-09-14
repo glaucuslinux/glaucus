@@ -13,4 +13,4 @@ construct mawk_1 byacc mawk_2
 construct sbase lobase
 construct dash
 construct netbsd-curses loksh
-construct qm4
+construct qm4 make

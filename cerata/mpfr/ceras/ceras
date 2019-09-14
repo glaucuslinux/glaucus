@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=mpfr
+version=svn
+release=1
+arch=x86-64
+url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
+cyst=gmp
+description='A portable library written in C for arbitrary precision arithmetic
+on floating-point numbers'
+licenses='LGPLv2.1+ LGPLv3.0+ PD'

@@ -295,6 +295,9 @@
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
+[submodule "cerata/rsync/rsync"]
+	path = cerata/rsync/rsync
+	url = https://git.samba.org/rsync.git
 [submodule "cerata/s6/s6"]
 	path = cerata/s6/s6
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6

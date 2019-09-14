@@ -1,0 +1,26 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
+cd $TSRC/$name
+
+# configure
+
+# LTO couldn't be enabled on the shared version of mpfr, as it would result
+# in the following error when running configure:
+# error: --enable-lto can only work in static mode (--disable-shared)
+./autogen.sh
+./configure \
+  --prefix=$TOOL \
+  --disable-static \
+  --with-gmp=$TOOL
+
+# build
+make
+
+# install
+make \
+  install-strip

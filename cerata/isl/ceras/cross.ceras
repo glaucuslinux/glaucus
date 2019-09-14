@@ -1,0 +1,29 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+# prepare
+rsync -vah $CERD/$name/$name $XSRC --delete --exclude=.$version
+cd $XSRC/$name
+
+# configure
+
+# no need for --build and --host (set to gnu) as the configure script is smart
+# enough to detect them
+
+# `--with-gmp` doesn't take $CRSS as a value, only system (default) and build.
+./autogen.sh
+./configure \
+  --prefix=$CRSS \
+  --target=$TUPL \
+  --disable-static \
+  --with-sysroot=$CRSS/$TUPL \
+  --with-gmp-prefix=$CRSS
+
+# build
+make
+
+# install
+make \
+  install-strip
