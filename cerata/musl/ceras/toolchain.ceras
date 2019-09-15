@@ -4,8 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $TBLD/$name
-cd $TBLD/$name
+mkdir -v $TBLD/$name && cd $TBLD/$name
 
 # configure
 #

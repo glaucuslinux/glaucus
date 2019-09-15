@@ -14,7 +14,9 @@ cd $XSRC/$name
 
 # `--with-sysroot=$CRSS/$TUPL` can't be used here as it'll prevent libtool from
 # finding libmpfr and libgmp in $CRSS/lib (it'll look in $CRSS/$TUPL/$CRSS/lib
-# which is wrong)
+# which is wrong). It seems that `--with-mpfr` and `--with-gmp` don't override
+# the value of sysroot when searching for their relative paths, instead their
+# values are appended which isn't desirable.
 autoreconf -vfi
 ./configure \
   --prefix=$CRSS \

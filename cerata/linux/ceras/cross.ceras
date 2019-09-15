@@ -6,11 +6,16 @@
 # prepare
 mkdir -v $XBLD/$name
 
+# Yes we're going into the original upstream cerata repo for Linux, but we're
+# not going to modify anything, and it won't hurt to run `make mrproper` to be
+# safe just in case.
 cd $CERD/$name/$name
 
 make \
   mrproper
 
+# We then utilize the `O` option to point it to the out of tree (remote) build
+# path (we're not building anything though, just checking and then installing)
 make \
   O=$XBLD/$name \
   ARCH=$ARCH \

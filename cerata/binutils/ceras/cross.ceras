@@ -34,6 +34,8 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 
 # `--enable-deterministic-archives` because:
 # https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities
+
+# `--disable-werror` is on by default so no need to add it
 $XSRC/$name/configure \
   --prefix=$CRSS \
   --target=$TUPL \
@@ -49,6 +51,9 @@ $XSRC/$name/configure \
   --disable-multilib \
   --disable-gdb
 
+# This forces all subdirectories to be configured immediately and it notifies
+# them about our build/host (which is $XGNU). This may also be used when in
+# static linking.
 make \
   configure-host
 

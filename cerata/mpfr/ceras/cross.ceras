@@ -24,6 +24,8 @@ cd $XSRC/$name
 # --with-gnu-ld since we're using GNU binutils ld bfd (and not gold as it 
 # doesn't build with musl without PIE)
 
+# Passing `--with-sysroot` alone (without `--with-gmp`) will cause mpfr to look
+# for libgmp.so in $CRSS/$TUPL instead of $CRSS.
 ./autogen.sh
 ./configure \
   --prefix=$CRSS \

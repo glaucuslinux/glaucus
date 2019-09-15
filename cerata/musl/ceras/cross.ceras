@@ -7,16 +7,16 @@
 mkdir -v $XBLD/$name && cd $XBLD/$name
 
 # configure
-#
+
 # Tread with care as the destination directories for some of these options
 # are tricky.
-#
+
 # Specifying --prefix alone will install everything into that directory and
 # will attempt to link the libc.so installed there to a system wide linker in
 # /lib.
 # So (prefix alone | installs/libc.so in $PREFIX | linker (to OUR $PREFIX
 # libc.so) in host's /lib and needs sudo because of that)
-#
+
 # Specifying $DESTDIR with make install, and --prefix here (don't forget
 # the trailing slash if you intend to use both of them) will install
 # everything into $DESTDIR$PREFIX (yup, there exists no forward slash between
@@ -25,7 +25,7 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # So (prefix + destdir | installs/libc in $DESTDIR$PREFIX | linker (to OUR 
 # $PREFIX libc.so even though the relative path is wrong) in DESTDIR) so no
 # sudo required
-#
+
 # Specifying --prefix and --syslibdir, will get musl installed (+ libc.so) in
 # --prefix as intended and will get the tricky linker installed in the host's
 # /usr/lib (which is why make install requires sudo). This is easier to
@@ -35,6 +35,10 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # Although this makes it easier to build without chrooting, chrooting is still
 # required, and this whole approach might be changed, as the graphics stack
 # is very picky about its libdirs.
+
+# wrongly passing `--prefix` as `--prefix=$CRSS` will cause problems such as
+# isl not finding libgmp.so and zstd complaining of missing header files such
+# as `string.h`...
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
   --prefix=$CRSS/$TUPL \

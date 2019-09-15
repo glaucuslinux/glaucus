@@ -19,6 +19,9 @@ cd $XSRC/$name
 # value of target which is $TUPL, and build which is given the value of $XGNU to
 # indicate that we're cross-compiling. (The easiest solution would be to remove
 # build/host/target alltogether, but meh...)
+
+# `--with-sysroot=$CRSS/$TUPL` was added to get the same effect when passing
+# sysroot to GCC's configure script while using the in tree gmp.
 ./.bootstrap
 ./configure \
   --prefix=$CRSS \

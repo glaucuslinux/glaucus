@@ -13,6 +13,9 @@ cd $XSRC/$name
 # stage of GCC, as it would report missing header files like string.h, which
 # can be solved by adding CPPFLAGS/LDFLAGS but isn't the case here (not the
 # real problem).
+
+# we also need to find a way to disable the static version of the library
+# without relying on cmake...
 make \
   HAVE_THREAD=1 \
   ZSTD_LEGACY_SUPPORT=0 \

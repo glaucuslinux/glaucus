@@ -5,6 +5,7 @@
 
 # prepare
 mkdir -v $TBLD/$name
+
 cd $CERD/$name/$name
 
 make \
