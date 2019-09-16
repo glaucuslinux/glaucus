@@ -7,16 +7,16 @@
 mkdir -v $TBLD/$name && cd $TBLD/$name
 
 # configure
-#
+
 # Tread with care as the destination directories for some of these options
 # are tricky.
-#
+
 # Specifying --prefix alone will install everything into that directory and
 # will attempt to link the libc.so installed there to a system wide linker in
 # /lib.
 # So (prefix alone | installs/libc.so in $PREFIX | linker (to OUR $PREFIX
 # libc.so) in host's /lib and needs sudo because of that)
-#
+
 # Specifying $DESTDIR with make install, and --prefix here (don't forget
 # the trailing slash if you intend to use both of them) will install
 # everything into $DESTDIR$PREFIX (yup, there exists no forward slash between
@@ -25,7 +25,7 @@ mkdir -v $TBLD/$name && cd $TBLD/$name
 # So (prefix + destdir | installs/libc in $DESTDIR$PREFIX | linker (to OUR 
 # $PREFIX libc.so even though the relative path is wrong) in DESTDIR) so no
 # sudo required
-#
+
 # Specifying --prefix and --syslibdir, will get musl installed (+ libc.so) in
 # --prefix as intended and will get the tricky linker installed in the host's
 # /usr/lib (which is why make install requires sudo). This is easier to
@@ -38,7 +38,7 @@ mkdir -v $TBLD/$name && cd $TBLD/$name
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
   --prefix=$TOOL/$TUPL \
-  --syslibdir=/usr/lib \
+  --syslibdir=$TOOL/$TUPL/lib \
   --target=$TUPL \
   --disable-wrapper \
   --disable-static
@@ -47,16 +47,16 @@ $CERD/$name/$name/configure \
 # dynamic linker (this is dangerous if you're already running a musl based
 # distribution as it's assumed that the host is using glibc, so this shouldn't
 # exist in the first place).
-#
+
 # We then copy the original makefile, and prefix the command responsible
 # for creating the dyanmic linker with sudo so that it installs in /usr/lib
 # (this is the intended behaviour since our host uses glibc so it won't
 # overwrite any existing musl dynamic linker, and it makes it possible to
 # build without chrooting, so this will changed later as glaucus' graphics
 # stack requires a separate chroot)
-sudo rm -fv Makefile /usr/lib/ld-$name-$ARCH.so.1
-cp -av $CERD/$name/$name/Makefile .
-sed 's/$(INSTALL) -D -l/sudo &/' \
+rm -fv Makefile && cp -av $CERD/$name/$name/Makefile .
+
+sed 's/ $(libdir)\/libc.so/ libc.so/' \
   -i Makefile
 
 # build

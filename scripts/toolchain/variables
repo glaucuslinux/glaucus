@@ -1,6 +1,10 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+# Since we're building the toolchain, this will be used only for --build in
+# supported cerata
+export TGNU=$ARCH-pc-linux-gnu
+
 # The system wide symlink to the toolchain
 export TOOL=/toolchain
 
@@ -15,21 +19,22 @@ export TSRC=$TMPD/toolchain/sources
 
 # Variables pointing to executables are sorted alphabetically
 # Also, notice how AR, NM and RANLIB here aren't using LTO (the -gcc- wrappers)
-export AR=$TUPL-ar
+export AR=$TUPL-gcc-ar
 export AS=$TUPL-as
 
-# The basic four all pointing to the sysroot of the cross-compilation toolchain
-# the sysroot here should be honored and should remove the need for
-# explicitly specifying sysroot whenever compiling a ceras
+# The basic four all pointing to the sysroot of the toolchain. The sysroot here
+# should be honored and should remove the need for explicitly specifying sysroot
+# whenever compiling a ceras.
 export CC="$TUPL-gcc --sysroot=$TOOL/$TUPL"
 export CPP="$TUPL-gcc --sysroot=$TOOL/$TUPL -E"
 export CXX="$TUPL-g++ --sysroot=$TOOL/$TUPL"
 export LD="$TUPL-ld --sysroot=$TOOL/$TUPL"
 
-export NM=$TUPL-nm
+# The rest of the variables
+export NM=$TUPL-gcc-nm
 export OBJCOPY=$TUPL-objcopy
 export OBJDUMP=$TUPL-objdump
-export RANLIB=$TUPL-ranlib
+export RANLIB=$TUPL-gcc-ranlib
 export READELF=$TUPL-readelf
 export SIZE=$TUPL-size
 export STRINGS=$TUPL-strings

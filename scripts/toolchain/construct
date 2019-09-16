@@ -18,12 +18,10 @@ construct() {
 
 # libstdc++ will find its way here in the near future
 construct linux
+construct musl
 construct binutils_1
 construct gmp mpfr mpc
 construct gcc_1
-construct musl
-construct libstdc++
 construct binutils_2
-construct isl
-construct zstd
+construct isl zstd
 construct gcc_2
