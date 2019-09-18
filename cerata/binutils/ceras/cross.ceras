@@ -52,7 +52,7 @@ $XSRC/$name/configure \
   --disable-gdb
 
 # This forces all subdirectories to be configured immediately and it notifies
-# them about our build/host (which is $XGNU). This may also be used when in
+# them about our build/host (which is $GUPL). This may also be used when in
 # static linking.
 make \
   configure-host
@@ -62,7 +62,7 @@ make
 
 # install
 
-# to ensure the sanity of the toolchain on x86-64 hosts
+# to ensure the sanity of the toolchain on x86-64 hosts before installation
 cd $CRSS
 install -dv lib && ln -fsv lib lib64
 

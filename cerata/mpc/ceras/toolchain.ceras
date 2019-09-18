@@ -8,9 +8,10 @@ rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
 cd $TSRC/$name
 
 # configure
-autoreconf -vi
+autoreconf -vfi
 ./configure \
   --prefix=$TOOL \
+  --target=$TUPL \
   --disable-static \
   --with-mpfr=$TOOL \
   --with-gmp=$TOOL

@@ -154,6 +154,9 @@ case $ceras in
 
     # Specifying `LD_LIBRARY_PATH` or `LDFLAGS` alone doesn't work as gcc still
     # fails to detect libisl.so
+
+    # `LDFLAGS=-L$CRSS/lib` doesn't work regardless if LD_LIBRARY_PATH is
+    # specified or not.
     LD_LIBRARY_PATH=$CRSS/lib \
     LDFLAGS="-Wl,-rpath,$CRSS/lib" \
     $XSRC/$name/configure \

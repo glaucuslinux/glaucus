@@ -8,20 +8,30 @@ construct() {
   done
 }
 
+# `--build` here is equal to `x86_64-pc-linux-gnu`
+# `--host` and `--target` are equal to `x86_64-pc-linux-musl`
+
 # Order is honored, as linux should come first because installing kernel headers
 # after musl is installed will just clear the entire headers directory. So
 # either build linux first and install its headers, which is the preferred
 # method as there's no good reason not to, or build it after musl and manually
 # copying the header files to their destination instead of running make install.
-
-# musl, isl and zstd should only be built with the static gcc_1
-
-# libstdc++ will find its way here in the near future
 construct linux
+
+# musl should only be built with the static gcc_1
 construct musl
+
+# zlib is needed for binutils
+construct zlib
+
 construct binutils_1
-construct gmp mpfr mpc
-construct gcc_1
-construct binutils_2
-construct isl zstd
-construct gcc_2
+construct gmp #mpfr mpc
+#construct gcc_1
+
+## Rebuild musl and binutils with
+#construct musl
+#construct binutils_2
+
+## We then resume the regular stuff of the toolchain
+#construct isl zstd
+#construct gcc_2

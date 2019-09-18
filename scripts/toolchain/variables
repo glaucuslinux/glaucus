@@ -1,15 +1,14 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-# Since we're building the toolchain, this will be used only for --build in
-# supported cerata
-export TGNU=$ARCH-pc-linux-gnu
-
 # The system wide symlink to the toolchain
 export TOOL=/toolchain
 
+# Don't forget the system wide symlink to the cross-compilation toolchain
+export CRSS=/cross
+
 # $TOOL should be searched first
-export PATH=$TOOL/bin:$PATH
+export PATH=$TOOL/bin:$CRSS/bin:$PATH
 
 # Toolchain-only related variables, these will only be called when constructing
 # the toolchain

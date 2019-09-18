@@ -16,7 +16,7 @@ cd $XSRC/$name
 
 # gmp's configure script is stupid and won't accept target alone if we're
 # cross-compiling; hence, both host needs to be added, and be given the same
-# value of target which is $TUPL, and build which is given the value of $XGNU to
+# value of target which is $TUPL, and build which is given the value of $GUPL to
 # indicate that we're cross-compiling. (The easiest solution would be to remove
 # build/host/target alltogether, but meh...)
 
@@ -25,7 +25,7 @@ cd $XSRC/$name
 ./.bootstrap
 ./configure \
   --prefix=$CRSS \
-  --build=$XGNU \
+  --build=$GUPL \
   --host=$TUPL \
   --target=$TUPL \
   --enable-cxx \

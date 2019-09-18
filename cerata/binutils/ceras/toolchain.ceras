@@ -6,7 +6,7 @@
 # prepare
 rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
 
-mkdir -v $TBLD/$name && cd $TBLD/$name
+mkdir -v $TBLD/$ceras && cd $TBLD/$ceras
 
 # configure
 
@@ -16,16 +16,35 @@ mkdir -v $TBLD/$name && cd $TBLD/$name
 # enabling PIE support, and bloats things up after enabling PIE support
 # and yet manages to still fail:
 # https://github.com/NixOS/nixpkgs/issues/49071
+
+# No need to specify `--build` as binutils configure script is smart enough to
+# correctly detect it as $GUPL
+
+# CPPFLAGS isn't honored!
+
+# CFLAGS and LDFLAGS were added to point the configure script to our custom zlib
+CFLAGS=-I$TOOL/include \
+LDFLAGS=-L$TOOL/lib \
 $TSRC/$name/configure \
   --prefix=$TOOL \
+  --host=$TUPL \
   --target=$TUPL \
-  --enable-lto \
+  --disable-static \
+  --enable-deterministic-archives \
+  --disable-compressed-debug-sections \
+  --enable-64-bit-bfd \
+  --enable-64-bit-archive \
+  --disable-werror \
   --disable-nls \
-  --with-sysroot=$TOOL/$TUPL \
   --with-lib-path=$TOOL/lib \
+  --with-sysroot=$TOOL/$TUPL \
+  --with-system-zlib \
   --disable-multilib \
   --disable-gdb
 
+# This forces all subdirectories to be configured immediately and it notifies
+# them about our build/host (which is $TGNU). This may also be used when in
+# static linking.
 make \
   configure-host
 
@@ -33,5 +52,28 @@ make \
 make
 
 # install
+
+# to ensure the sanity of the toolchain on x86-64 hosts before installation
+case $ceras in
+  binutils_1)
+    cd $TOOL
+
+    install -dv lib && ln -fsv lib lib64
+    ;;
+esac
+
+cd $TBLD/$ceras
 make \
-  install-strip
+  install
+
+case $ceras in
+  binutils_2)
+    make \
+      -C ld clean
+    make \
+      LIB_PATH=/usr/lib \
+      -C ld
+    
+    cp -av ld/ld-new $TOOL/bin
+    ;;
+esac

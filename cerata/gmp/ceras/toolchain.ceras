@@ -8,11 +8,18 @@ rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
 cd $TSRC/$name
 
 # configure
+
+# No need to specify `--build` as its smart enough to detect it
+
+# For now it builds fine without `--enable-cxx` as it errors about not being
+# able to detect our $TUPL-g++ compiler which is weird
 ./.bootstrap
 ./configure \
   --prefix=$TOOL \
+  --host=$TUPL \
+  --target=$TUPL \
   --disable-static \
-  --enable-cxx
+  --with-sysroot=$TOOL/$TUPL
 
 # build
 make
