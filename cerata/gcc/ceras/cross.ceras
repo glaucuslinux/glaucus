@@ -96,6 +96,9 @@ case $ceras in
     # for everything else is being disabled. Optimizations will also be 
     # disabled in the near future (-O0 and -g0) to further speed up the build
     # process.
+
+    # `--disable-compressed-debug-sections` in GCC's configure script isn't for
+    # GCC but for binutils gas and ld
     $XSRC/$name/configure \
       --prefix=$CRSS \
       --target=$TUPL \
@@ -118,7 +121,9 @@ case $ceras in
       --with-mpfr=$CRSS \
       --with-mpc=$CRSS \
       --without-isl \
+      --without-zstd \
       --with-sysroot=$CRSS/$TUPL \
+      --with-system-zlib \
       --without-headers \
       --with-newlib \
       --disable-symvers \
@@ -180,6 +185,7 @@ case $ceras in
       --with-isl=$CRSS \
       --with-zstd=$CRSS \
       --with-sysroot=$CRSS/$TUPL \
+      --with-system-zlib \
       --with-linker-hash-style=gnu \
       --disable-symvers \
       --disable-libatomic \

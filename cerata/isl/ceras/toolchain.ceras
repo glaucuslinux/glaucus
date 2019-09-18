@@ -11,8 +11,10 @@ cd $TSRC/$name
 ./autogen.sh
 ./configure \
   --prefix=$TOOL \
+  --target=$TUPL \
   --disable-static \
-  --with-gmp=$TOOL
+  --with-sysroot=$TOOL/$TUPL \
+  --with-gmp-prefix=$TOOL
 
 # build
 make

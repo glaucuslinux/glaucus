@@ -23,14 +23,34 @@ cd $XSRC/$name
 # `--with-sysroot=$CRSS/$TUPL` was added to get the same effect when passing
 # sysroot to GCC's configure script while using the in tree gmp.
 ./.bootstrap
-./configure \
-  --prefix=$CRSS \
-  --build=$GUPL \
-  --host=$TUPL \
-  --target=$TUPL \
-  --enable-cxx \
-  --disable-static \
-  --with-sysroot=$CRSS/$TUPL
+
+# gmp_1 doesn't have cxx support since it's used for the static stage 1 GCC, and
+# gmp_2 needs `CC=gcc` to be passed as it'll build with the static stage 1 GCC
+# without it, which is not what we want (this would cause problems regarding
+# libc.so not being found, and not being able to ldd all GCC's prerequisites
+# and lots of build errors involving /usr/lib/libc.so.6 no being found).
+case $ceras in
+  gmp_1)
+    ./configure \
+      --prefix=$CRSS \
+      --build=$GUPL \
+      --host=$TUPL \
+      --target=$TUPL \
+      --disable-static \
+      --with-sysroot=$CRSS/$TUPL
+    ;;
+  gmp_2)
+    CC=gcc \
+    ./configure \
+      --prefix=$CRSS \
+      --build=$GUPL \
+      --host=$TUPL \
+      --target=$TUPL \
+      --enable-cxx \
+      --disable-static \
+      --with-sysroot=$CRSS/$TUPL
+    ;;
+esac
 
 # build
 make

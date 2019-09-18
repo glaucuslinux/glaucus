@@ -6,3 +6,10 @@
 export XLOG=$LOGD/cross
 export XBLD=$TMPD/cross/builds
 export XSRC=$TMPD/cross/sources
+
+# Do not define the following environment variables as they are not needed and
+# will cause build errors
+#export CC="gcc --sysroot=$CRSS/$TUPL"
+#export CPP="gcc --sysroot=$CRSS/$TUPL -E"
+#export CXX="g++ --sysroot=$CRSS/$TUPL"
+#export LD="ld --sysroot=$CRSS/$TUPL"

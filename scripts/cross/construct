@@ -50,7 +50,7 @@ construct binutils
 # The above errors would also occur if gmp wasn't built and installed correctly,
 # so make sure gmp is perfectly fine before attempting anything. (GCC refers to
 # gmp/mpfr/mpc collectively as gmplibs).
-construct gmp mpfr mpc
+construct gmp_1 mpfr mpc
 
 # libstdc++ is within gcc, and it takes configuration options passed to gcc's
 # configure script so there's no need to build it separately like LFS
@@ -65,7 +65,9 @@ construct musl
 # Now we continue with what's left of GCC's prerequisites as isl and zstd are
 # only required by the second stage of GCC, and they help indicate that both
 # gcc_1 and musl built perfectly fine.
-construct isl zstd
+
+# gmp_2 has cxx support, and mpfr/mpc need to be rebuilt with the new gmp
+construct gmp_2 mpfr mpc isl zstd
 
 # And finally, we build the second stage of GCC. If everything is done correctly
 # then there's no need to pass `LDFLAGS="-Wl,-rpath,$CRSS/lib"`, and you should
