@@ -25,11 +25,11 @@ construct musl
 construct zlib
 
 construct binutils_1
-construct gmp_1 #mpfr mpc
-#construct gcc_1
+construct gmp_1 mpfr mpc
+construct gcc_1
 
 ## Rebuild musl and binutils with
-#construct musl
+construct musl
 #construct binutils_2
 
 ## We then resume the regular stuff of the toolchain

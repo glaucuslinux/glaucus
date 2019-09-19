@@ -11,6 +11,7 @@ cd $TSRC/$name
 ./autogen.sh
 ./configure \
   --prefix=$TOOL \
+  --host=$TUPL \
   --target=$TUPL \
   --disable-static \
   --with-sysroot=$TOOL/$TUPL \

@@ -11,6 +11,7 @@ cd $TSRC/$name
 autoreconf -vfi
 ./configure \
   --prefix=$TOOL \
+  --host=$TUPL \
   --target=$TUPL \
   --disable-static \
   --with-mpfr=$TOOL \

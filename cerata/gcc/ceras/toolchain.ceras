@@ -4,12 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
+rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude=.$version
 cd $TSRC/$name/$name/config
 
 # Curated and cleaned modifications to GCC's source that are still relevant
+
+# This should point to the linker
 for file in i386/linux.h i386/linux64.h linux.h; do
-  sed 's/\/lib/\/usr&/' \
+  sed "s/\/lib/\\$TOOL\/$TUPL&/" \
     -i $file
 
   echo "
@@ -25,7 +27,7 @@ sed '/m64/s/lib64/lib/' \
   -i i386/t-linux64
 
 # Further optimizing the linker's path
-sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
+sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/$TUPL\/lib\/ld-musl-$ARCH.so.1/" \
   -i linux.h
 
 mkdir -v $TBLD/$ceras
@@ -88,6 +90,7 @@ case $ceras in
     # process.
     $TSRC/$name/configure \
       --prefix=$TOOL \
+      --host=$TUPL \
       --target=$TUPL \
       --with-local-prefix=$TOOL \
       --with-native-system-header-dir=/include \
@@ -108,9 +111,12 @@ case $ceras in
       --with-mpfr=$TOOL \
       --with-mpc=$TOOL \
       --without-isl \
+      --without-zstd \
       --with-sysroot=$TOOL/$TUPL \
+      --with-system-zlib \
       --without-headers \
       --with-newlib \
+      --disable-symvers \
       --disable-libatomic \
       --disable-libitm \
       --disable-libstdcxx
@@ -126,9 +132,11 @@ case $ceras in
     # space, so it's being disabled
     #
     # Still thinking about separately building libstdcxx-v3, but we'll see.
+    LD_LIBRARY_PATH=$TOOL/lib \
     LDFLAGS="-Wl,-rpath,$TOOL/lib" \
     $TSRC/$name/configure \
       --prefix=$TOOL \
+      --host=$TUPL \
       --target=$TUPL \
       --with-local-prefix=$TOOL \
       --with-native-system-header-dir=/include \
@@ -148,10 +156,13 @@ case $ceras in
       --with-isl=$TOOL \
       --with-zstd=$TOOL \
       --with-sysroot=$TOOL/$TUPL \
+      --with-system-zlib \
       --with-linker-hash-style=gnu \
       --disable-symvers \
       --disable-libatomic \
-      --disable-libstdcxx-pch
+      --disable-libstdcxx-pch \
+      --disable-libstdcxx-threads \
+      --with-gxx-include-dir=$TOOL/$TUPL/include/c++/10.0.0
     ;;
 esac
 

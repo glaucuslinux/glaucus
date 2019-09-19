@@ -217,5 +217,10 @@ case $ceras in
   gcc_2)
     make \
       install-strip
+
+    # Just to further ensure that toolchain will be built while relying only on
+    # cross's toolchain
+    cd $CRSS/bin
+    ln -fsv $TUPL-gcc cc
     ;;
 esac

@@ -39,6 +39,7 @@ $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
   --prefix=$TOOL/$TUPL \
   --syslibdir=$TOOL/$TUPL/lib \
+  --host=$TUPL \
   --target=$TUPL \
   --disable-wrapper \
   --disable-static
