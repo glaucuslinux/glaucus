@@ -18,12 +18,15 @@ construct() {
 # copying the header files to their destination instead of running make install.
 construct linux
 
+# musl is needed before first pass of gcc
+construct musl
+
 # zlib is needed for binutils
 construct zlib
 
 construct binutils_1
-construct gmp_1 mpfr mpc
-construct gcc_1
+#construct gmp_1 mpfr mpc
+#construct gcc_1
 
 ## Rebuild musl and binutils with
 #construct musl

@@ -1,7 +1,7 @@
 # glaucus
 
-glaucus is a highly optimized and extremely lightweight Linux distribution built
-from scratch.
+glaucus is a highly optimized and extremely lightweight suckless Linux
+distribution built from scratch.
 
 It was previously known as snail, and has been under development for 2 years
 now. It was initially intended for educational purposes, but it soon grew into

@@ -8,11 +8,8 @@ CROSS_COMPILE=$TUPL-
 # The system wide symlink to the toolchain
 export TOOL=/toolchain
 
-# Don't forget the system wide symlink to the cross-compilation toolchain
-export CRSS=/cross
-
 # $TOOL should be searched first
-export PATH=$TOOL/bin:$CRSS/bin:$PATH
+export PATH=$TOOL/bin:$PATH
 
 # Toolchain-only related variables, these will only be called when constructing
 # the toolchain

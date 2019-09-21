@@ -98,7 +98,7 @@ case $ceras in
       --disable-multilib \
       --disable-threads \
       --with-arch=x86-64 \
-      --enable-languages=c \
+      --enable-languages=c,c++ \
       --disable-libada \
       --disable-libsanitizer \
       --disable-libssp \
