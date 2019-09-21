@@ -18,9 +18,6 @@ construct() {
 # copying the header files to their destination instead of running make install.
 construct linux
 
-# musl should only be built with the static gcc_1
-construct musl
-
 # zlib is needed for binutils
 construct zlib
 
@@ -29,7 +26,7 @@ construct gmp_1 mpfr mpc
 construct gcc_1
 
 ## Rebuild musl and binutils with
-construct musl
+#construct musl
 #construct binutils_2
 
 ## We then resume the regular stuff of the toolchain

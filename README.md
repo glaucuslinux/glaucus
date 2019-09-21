@@ -4,7 +4,8 @@ glaucus is a highly optimized and extremely lightweight Linux distribution built
 from scratch.
 
 It was previously known as snail, and has been under development for 2 years
-now.
+now. It was initially intended for educational purposes, but it soon grew into
+a project many would find interesting.
 
 While it may seem as an embedded Linux distribution at first sight, it's
 actually intended for regular `x86-64` desktop machines.
@@ -130,11 +131,15 @@ glaucus is heavily inspired by the following projects:
 
 * [android-toolchain-build](https://github.com/redstar3894/android-toolchain-build)
 
+* [apathy](https://github.com/mssx86/apathy)
+
 * [Arch Linux](https://www.archlinux.org)
 
 * [ARM Cross Linux From Scratch (arm-clfs)](https://github.com/predominant/arm-clfs)
 
 * [Artix Linux](https://artixlinux.org)
+
+* [Ataraxia Linux](https://ataraxialinux.github.io)
 
 * [Automated Linux From Scratch (ALFS)](http://linuxfromscratch.org/alfs/)
 

@@ -54,26 +54,23 @@ make
 # install
 
 # to ensure the sanity of the toolchain on x86-64 hosts before installation
-case $ceras in
-  binutils_1)
-    cd $TOOL
+if [ $ceras == binutils_1 ]; then
+  cd $TOOL
 
-    install -dv lib && ln -fsv lib lib64
-    ;;
-esac
+  install -dv lib && ln -fsv lib lib64
+fi
 
 cd $TBLD/$ceras
 make \
   install
 
-case $ceras in
-  binutils_2)
-    make \
-      -C ld clean
-    make \
-      LIB_PATH=/usr/lib \
-      -C ld
-    
-    cp -av ld/ld-new $TOOL/bin
-    ;;
-esac
+if [ $ceras == binutils_2 ]; then
+  make \
+    -C ld clean
+
+  make \
+    LIB_PATH=/usr/lib \
+    -C ld
+
+  cp -av ld/ld-new $TOOL/bin
+fi

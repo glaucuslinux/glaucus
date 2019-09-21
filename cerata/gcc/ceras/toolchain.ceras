@@ -31,17 +31,17 @@ sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/$TUPL\/lib\/ld-musl-$ARCH.so.
   -i linux.h
 
 mkdir -v $TBLD/$ceras
-case $ceras in
-  gcc_2)
-    cd ..
 
-    # This (and a similar command `touch $TOOL/include/limits.h`) will cause
-    # the first pass of GCC to not detect the custom installed prerequisites;
-    # hence, adding a limits.h is only done for the second pass of GCC.
-    cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
-      -print-libgcc-file-name))/include-fixed/limits.h
-    ;;
-esac
+if [ $ceras == gcc_2 ]; then
+  cd ..
+
+  # This (and a similar command `touch $TOOL/include/limits.h`) will cause
+  # the first pass of GCC to not detect the custom installed prerequisites;
+  # hence, adding a limits.h is only done for the second pass of GCC.
+  cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
+    -print-libgcc-file-name))/include-fixed/limits.h
+fi
+
 cd $TBLD/$ceras
 
 # configure
@@ -167,29 +167,13 @@ case $ceras in
 esac
 
 # build
-case $ceras in
-  gcc_1)
-    make \
-      all-gcc \
-      all-target-libgcc
-    ;;
-  gcc_2)
-    make
-    ;;
-esac
+make
 
 # install
-case $ceras in
-  gcc_1)
-    make \
-      install-gcc \
-      install-target-libgcc
-    ;;
-  gcc_2)
-    make \
-      install-strip
+make \
+  install-strip
 
-    cd $TOOL/bin
-    ln -fsv $TUPL-gcc cc
-    ;;
-esac
+if [ $ceras == gcc_2 ]; then
+  cd $TOOL/bin
+  ln -fsv $TUPL-gcc cc
+fi
