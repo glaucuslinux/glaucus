@@ -21,7 +21,7 @@ mkdir -pv \
   temporary/chroot/builds \
   temporary/chroot/sources \
   temporary/cross/builds \
-  temporary/cross/sources
+  temporary/cross/sources \
   temporary/system/builds \
   temporary/system/cerata \
   temporary/system/sources \
