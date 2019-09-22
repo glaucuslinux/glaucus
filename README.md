@@ -95,6 +95,13 @@ without having at least 33MB of RAM, even though it uses less than 6MB of RAM
 when idle.
 
 
+## For Awesome Voyagers
+
+Voyagers that are interested in testing glaucus and maintaining its cerata
+should read the [For Awesome Voyagers](https://github.com/firasuke/glaucus/wiki/For-Awesome-Voyagers)
+wiki page to get started.
+
+
 ## Wiki
 
 Kindly refer to the [wiki](https://github.com/firasuke/glaucus/wiki) for more
