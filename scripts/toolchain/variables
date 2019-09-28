@@ -3,13 +3,13 @@
 
 # We can now safely specify CROSS_COMPILE unlike in cross. Don't forget to
 # remove it from musl's toolchain.ceras now that it's here.
-CROSS_COMPILE=$TUPL-
+#CROSS_COMPILE=$TUPL-
 
 # The system wide symlink to the toolchain
 export TOOL=/toolchain
 
 # $TOOL should be searched first
-export PATH=$TOOL/bin:$PATH
+export PATH=$CRSS/bin:$TOOL/bin:$PATH
 
 # Toolchain-only related variables, these will only be called when constructing
 # the toolchain
@@ -19,23 +19,16 @@ export TSRC=$TMPD/toolchain/sources
 
 # Variables pointing to executables are sorted alphabetically
 # Also, notice how AR, NM and RANLIB here aren't using LTO (the -gcc- wrappers)
-export AR=$TUPL-gcc-ar
+export AR=$TUPL-ar
 export AS=$TUPL-as
 
 # The basic four all pointing to the sysroot of the toolchain. The sysroot here
 # should be honored and should remove the need for explicitly specifying sysroot
 # whenever compiling a ceras.
-export CC="$TUPL-gcc --sysroot=$TOOL/$TUPL"
-export CPP="$TUPL-gcc --sysroot=$TOOL/$TUPL -E"
-export CXX="$TUPL-g++ --sysroot=$TOOL/$TUPL"
-export LD="$TUPL-ld --sysroot=$TOOL/$TUPL"
+export CC=$TUPL-gcc
+export CXX=$TUPL-g++
+export LD=$TUPL-ld
 
 # The rest of the variables
-export NM=$TUPL-gcc-nm
-export OBJCOPY=$TUPL-objcopy
-export OBJDUMP=$TUPL-objdump
-export RANLIB=$TUPL-gcc-ranlib
-export READELF=$TUPL-readelf
-export SIZE=$TUPL-size
-export STRINGS=$TUPL-strings
-export STRIP="$TUPL-strip -sv"
+export RANLIB=$TUPL-ranlib
+export STRIP=$TUPL-strip

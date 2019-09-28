@@ -29,28 +29,17 @@ cd $XSRC/$name
 # without it, which is not what we want (this would cause problems regarding
 # libc.so not being found, and not being able to ldd all GCC's prerequisites
 # and lots of build errors involving /usr/lib/libc.so.6 no being found).
-case $ceras in
-  gmp_1)
-    ./configure \
-      --prefix=$CRSS \
-      --build=$GUPL \
-      --host=$TUPL \
-      --target=$TUPL \
-      --disable-static \
-      --with-sysroot=$CRSS/$TUPL
-    ;;
-  gmp_2)
-    CC=gcc \
-    ./configure \
-      --prefix=$CRSS \
-      --build=$GUPL \
-      --host=$TUPL \
-      --target=$TUPL \
-      --enable-cxx \
-      --disable-static \
-      --with-sysroot=$CRSS/$TUPL
-    ;;
-esac
+
+# Again this was shortened to a single stage build even though we don't need
+# C++ support in GMP for the first build of GCC, but it's better than GMP
+# being built (without noticing) by the first stage of GCC instead of the host's
+# GCC (the first stage of gcc is only for musl).
+./configure \
+  --prefix=$CRSS \
+  --host=$TUPL \
+  --target=$TUPL \
+  --enable-cxx \
+  --with-sysroot=$CRSS/$TUPL
 
 # build
 make

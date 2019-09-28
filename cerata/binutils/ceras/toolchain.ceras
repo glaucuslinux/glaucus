@@ -23,44 +23,24 @@ mkdir -v $TBLD/$ceras && cd $TBLD/$ceras
 # CPPFLAGS isn't honored!
 
 # CFLAGS and LDFLAGS were added to point the configure script to our custom zlib
-CFLAGS=-I$TOOL/include \
-LDFLAGS=-L$TOOL/lib \
 $TSRC/$name/configure \
   --prefix=$TOOL \
+  --build=$TUPL \
   --host=$TUPL \
   --target=$TUPL \
-  --disable-static \
-  --enable-deterministic-archives \
-  --disable-compressed-debug-sections \
-  --enable-64-bit-bfd \
-  --enable-64-bit-archive \
   --disable-werror \
   --disable-nls \
   --with-lib-path=$TOOL/lib \
   --with-sysroot=$TOOL/$TUPL \
-  --with-system-zlib \
+  --enable-install-libiberty \
   --disable-multilib \
   --disable-gdb
-
-# This forces all subdirectories to be configured immediately and it notifies
-# them about our build/host (which is $TGNU). This may also be used when in
-# static linking.
-make \
-  configure-host
 
 # build
 make
 
 # install
 
-# to ensure the sanity of the toolchain on x86-64 hosts before installation
-if [ $ceras == binutils_1 ]; then
-  cd $TOOL
-
-  install -dv lib && ln -fsv lib lib64
-fi
-
-cd $TBLD/$ceras
 make \
   install
 

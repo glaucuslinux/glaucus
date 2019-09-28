@@ -1,0 +1,12 @@
+cd $TOOL
+install -dv lib $TUPL/lib
+
+# to ensure the sanity of the toolchain on x86-64 hosts before installation
+ln -fsv lib lib64
+
+#cd $TUPL/lib
+#install -Dv $CRSS/$TUPL/lib/libgcc_s.so.1 $CRSS/$TUPL/lib/libstdc++.so.6.0.28 \
+  #-t .
+
+#$STRIP libgcc_s.so.1 libstdc++.so.6.0.28
+#ln -fsv libstdc++.so.6.0.28 libstdc++.so.6

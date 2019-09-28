@@ -24,10 +24,19 @@ cd $XSRC/$name
 # --with-gnu-ld since we're using GNU binutils ld bfd (and not gold as it 
 # doesn't build with musl without PIE)
 
+# Don't use `--with-gmp` flag, even if it correctly detects libgmp in the first
+# stage of mpfr as `/home/glaucus/cross/lib/libgmp.so.10` as this isn't 100%
+# correct, as it should show `/cross/lib/libgmp.so.10` and it will cause build
+# failures in the second stage of building mpfr such as detecting that the C
+# compiler doesn't work, or not finding the correct libgmp.so to link to.
+# Instead stick with what's recommended, and that's using LDFLAGs rpath.
+
 # Passing `--with-sysroot` alone (without `--with-gmp`) will cause mpfr to look
 # for libgmp.so in $CRSS/$TUPL instead of $CRSS.
 ./autogen.sh
+
 ./configure \
+LDFLAGS="-Wl,-rpath,$CRSS/lib" \
   --prefix=$CRSS \
   --target=$TUPL \
   --disable-static \

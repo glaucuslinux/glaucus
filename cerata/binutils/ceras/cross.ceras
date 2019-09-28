@@ -13,22 +13,23 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # no need for --build and --host (set to gnu) as the configure script is smart
 # enough to detect them
 
-# Added --with-lib-path from LFS for better separation from the host
-
 # GNU's gold linker doesn't like musl, as it refuses to build without
 # enabling PIE support, and bloats things up after enabling PIE support
 # and yet manages to still fail:
 # https://github.com/NixOS/nixpkgs/issues/49071
 
-# `--enable-lto` is enabled by default
-
 # `--disable-gold` is the default option, only ld is built
+
+# `--enable-lto` is enabled by default
 
 # `--enable-plugins` is on by default as it's needed for largefile? (it's also
 # needed when building gold)
 
-# `--enable-64-bit-bfd` is enabled by default for 64 bit targets?
-# `--enable-64-bit-archive` is enabled by default for 64 bit targets?
+# `--enable-64-bit-bfd` is enabled by default for 64 bit targets, as it's only
+# intended for enabling 64-bit support on 32-bit (and smaller) hosts
+
+# `--enable-64-bit-archive` is enabled by default for 64 bit targets as it's
+# only intended for enabling 64-bit support on 32-bit (and smaller) hosts
 
 # `--with-system-zlib` to use host's zlib instead of bundled zlib
 
@@ -36,14 +37,14 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities
 
 # `--disable-werror` is on by default so no need to add it
+
+# Added --with-lib-path from LFS for better separation from the host
 $XSRC/$name/configure \
   --prefix=$CRSS \
   --target=$TUPL \
-  --disable-static \
   --enable-deterministic-archives \
   --disable-compressed-debug-sections \
-  --enable-64-bit-bfd \
-  --enable-64-bit-archive \
+  --disable-werror \
   --disable-nls \
   --with-lib-path=$CRSS/lib \
   --with-sysroot=$CRSS/$TUPL \
@@ -62,11 +63,7 @@ make
 
 # install
 
-# to ensure the sanity of the toolchain on x86-64 hosts before installation
-cd $CRSS
-install -dv lib && ln -fsv lib lib64
-
 # install-strip doesn't work with readline
-cd $XBLD/$name
+#cd $XBLD/$name
 make \
   install

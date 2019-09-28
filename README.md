@@ -122,7 +122,7 @@ Kindly refer to the
 for screenshots of glaucus in action.
 
 
-## Inspired from
+## Inspiration
 
 glaucus is heavily inspired by the following projects:
 

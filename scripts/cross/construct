@@ -15,12 +15,13 @@ construct() {
 # --target will be $TUPL since we're using this cross-compilation toolchain to
 # build the native toolchain of the chroot (which has --host and --target set to
 # $TUPL).
-#
+
 # Order is honored, as linux should come first because installing kernel headers
 # after musl is installed will just clear the entire headers directory. So
 # either build linux first and install its headers, which is the preferred
 # method as there's no good reason not to, or build it after musl and manually
-# copying the header files to their destination instead of running make install.
+# copying the header files to their destination instead of running make install,
+# which is what most LFS inspired distributions do (which is weird).
 construct linux
 
 # A single stage binutils build is used in cross
@@ -50,7 +51,12 @@ construct binutils
 # The above errors would also occur if gmp wasn't built and installed correctly,
 # so make sure gmp is perfectly fine before attempting anything. (GCC refers to
 # gmp/mpfr/mpc collectively as gmplibs).
-construct gmp_1 mpfr mpc
+
+# Here we're building all of GCC's stages 1 & 2 prerequisites to ensure that
+# they're built with the host's gcc and not the first stage of GCC which is
+# supposed to only build musl (mainly talking about isl and zstd as they're
+# not required for stage 1).
+construct gmp mpfr mpc isl zstd
 
 # libstdc++ is within gcc, and it takes configuration options passed to gcc's
 # configure script so there's no need to build it separately like LFS
@@ -67,7 +73,7 @@ construct musl
 # gcc_1 and musl built perfectly fine.
 
 # gmp_2 has cxx support, and mpfr/mpc need to be rebuilt with the new gmp
-construct gmp_2 mpfr mpc isl zstd
+#construct isl zstd
 
 # And finally, we build the second stage of GCC. If everything is done correctly
 # then there's no need to pass `LDFLAGS="-Wl,-rpath,$CRSS/lib"`, and you should

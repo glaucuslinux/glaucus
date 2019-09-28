@@ -1,14 +1,20 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+export PATH=$CRSS/bin:$PATH
+
 # Cross-compilation only related variables, these will only be called when
 # constructing the cross-compilation toolchain
 export XLOG=$LOGD/cross
 export XBLD=$TMPD/cross/builds
 export XSRC=$TMPD/cross/sources
 
+# Since we're building GCC the hard dynamic way
+export LDFLAGS=-Wl,-rpath,$CRSS/lib
+export LD_LIBRARY_PATH=$CRSS/lib
+
 # Do not define the following environment variables as they are not needed and
-# will cause build errors
+# will cause build errors:
 #export CC="gcc --sysroot=$CRSS/$TUPL"
 #export CPP="gcc --sysroot=$CRSS/$TUPL -E"
 #export CXX="g++ --sysroot=$CRSS/$TUPL"

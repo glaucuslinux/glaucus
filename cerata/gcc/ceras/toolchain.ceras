@@ -11,7 +11,7 @@ cd $TSRC/$name/$name/config
 
 # This should point to the linker
 for file in i386/linux.h i386/linux64.h linux.h; do
-  sed "s/\/lib/\\$TOOL\/$TUPL&/" \
+  sed "s/\/lib/\\$TOOL&/" \
     -i $file
 
   echo "
@@ -27,8 +27,11 @@ sed '/m64/s/lib64/lib/' \
   -i i386/t-linux64
 
 # Further optimizing the linker's path
-sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/$TUPL\/lib\/ld-musl-$ARCH.so.1/" \
+sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
   -i linux.h
+
+sed 's/\.\/fixinc\.sh/-c true/' \
+  -i ../Makefile.in
 
 mkdir -v $TBLD/$ceras
 
@@ -88,24 +91,29 @@ case $ceras in
     # for everything else is being disabled. Optimizations will also be 
     # disabled in the near future (-O0 and -g0) to further speed up the build
     # process.
+    CFLAGS='-O0 -g0' \
+    CXXFLAGS='-O0 -g0' \
     $TSRC/$name/configure \
       --prefix=$TOOL \
+      --build=$TUPL \
       --host=$TUPL \
       --target=$TUPL \
-      --with-local-prefix=$TOOL \
+      --with-local-prefix=$CRSS \
       --with-native-system-header-dir=/include \
       --disable-shared \
       --disable-multilib \
-      --disable-threads \
+      --enable-threads=single \
       --with-arch=x86-64 \
+      --disable-bootstrap \
       --enable-languages=c,c++ \
-      --disable-libada \
       --disable-libsanitizer \
       --disable-libssp \
       --disable-libquadmath \
       --disable-libgomp \
+      --disable-bootstrap \
       --disable-libvtv \
       --disable-nls \
+      --disable-werror \
       --disable-decimal-float \
       --with-gmp=$TOOL \
       --with-mpfr=$TOOL \
@@ -113,9 +121,8 @@ case $ceras in
       --without-isl \
       --without-zstd \
       --with-sysroot=$TOOL/$TUPL \
-      --with-system-zlib \
-      --without-headers \
       --with-newlib \
+      --disable-gnu-unique-object \
       --disable-symvers \
       --disable-libatomic \
       --disable-libitm \

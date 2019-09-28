@@ -13,7 +13,12 @@ cd $XSRC/$name
 # enough to detect them
 
 # `--with-gmp` doesn't take $CRSS as a value, only system (default) and build.
+
+# Again, `--with-gmp-prefix` doesn't detect our custom libgmp, so use LDFLAGS
+# rpath instead.
 ./autogen.sh
+
+LDFLAGS="-Wl,-rpath,$CRSS/lib" \
 ./configure \
   --prefix=$CRSS \
   --target=$TUPL \

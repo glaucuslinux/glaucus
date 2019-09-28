@@ -16,22 +16,22 @@ construct() {
 # either build linux first and install its headers, which is the preferred
 # method as there's no good reason not to, or build it after musl and manually
 # copying the header files to their destination instead of running make install.
-construct linux
+#construct linux
 
 # musl is needed before first pass of gcc
 construct musl
 
 # zlib is needed for binutils
-construct zlib
+#construct zlib
 
 construct binutils_1
-#construct gmp_1 mpfr mpc
-#construct gcc_1
+construct gmp_1 mpfr mpc isl zstd
+construct gcc_1
 
 ## Rebuild musl and binutils with
 #construct musl
 #construct binutils_2
 
 ## We then resume the regular stuff of the toolchain
-#construct gmp_2 isl zstd
+#construct isl zstd
 #construct gcc_2

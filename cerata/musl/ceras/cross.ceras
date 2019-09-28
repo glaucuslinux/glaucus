@@ -39,6 +39,9 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # wrongly passing `--prefix` as `--prefix=$CRSS` will cause problems such as
 # isl not finding libgmp.so and zstd complaining of missing header files such
 # as `string.h`...
+
+# CROSS_COMPILE can be removed if --host is detected correctly as $TUPL,
+# otherwise leave it here.
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
   --prefix=$CRSS/$TUPL \
@@ -51,7 +54,7 @@ $CERD/$name/$name/configure \
 # dynamic linker (this is dangerous if you're already running a musl based
 # distribution as it's assumed that the host is using glibc, so this shouldn't
 # exist in the first place).
-#
+
 # We then copy the original makefile, and prefix the command responsible
 # for creating the dyanmic linker with sudo so that it installs in /usr/lib
 # (this is the intended behaviour since our host uses glibc so it won't

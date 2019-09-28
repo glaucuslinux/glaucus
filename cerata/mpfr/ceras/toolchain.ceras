@@ -13,11 +13,12 @@ cd $TSRC/$name
 # in the following error when running configure:
 # error: --enable-lto can only work in static mode (--disable-shared)
 ./autogen.sh
+
 ./configure \
   --prefix=$TOOL \
+  --build=$TUPL \
   --host=$TUPL \
   --target=$TUPL \
-  --disable-static \
   --with-gmp=$TOOL \
   --with-sysroot=$TOOL/$TUPL
 

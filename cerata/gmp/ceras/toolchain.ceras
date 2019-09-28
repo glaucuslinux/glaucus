@@ -15,24 +15,24 @@ cd $TSRC/$name
 # able to detect our $TUPL-g++ compiler which is weird
 ./.bootstrap
 
-# gmp_1 doesn't have cxx support since it's used for the static stage 1 GCC.
+# gmp_1 doesn't have cxx support since it's used for the static stage 1 GCC
 case $ceras in
   gmp_1)
     ./configure \
       --prefix=$TOOL \
+      --build=$TUPL \
       --host=$TUPL \
       --target=$TUPL \
-      --disable-static \
       --with-sysroot=$TOOL/$TUPL
     ;;
   gmp_2)
     ./configure \
       --prefix=$TOOL \
+      --build=$TUPL \
       --host=$TUPL \
       --target=$TUPL \
       --enable-cxx \
-      --disable-static \
-      --with-sysroot=$TOOL/$TUPL
+      --with-sysroot=/home/glaucus
     ;;
 esac
 

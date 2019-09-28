@@ -11,10 +11,11 @@ cd $TSRC/$name
 ./autogen.sh
 ./configure \
   --prefix=$TOOL \
+  --build=$TUPL \
   --host=$TUPL \
   --target=$TUPL \
   --disable-static \
-  --with-sysroot=$TOOL/$TUPL \
+  --with-sysroot=/home/glaucus \
   --with-gmp-prefix=$TOOL
 
 # build

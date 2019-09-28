@@ -24,8 +24,8 @@ make \
 make \
   O=$TBLD/$name \
   ARCH=$ARCH \
-  INSTALL_HDR_PATH=$TOOL/$TUPL \
+  INSTALL_HDR_PATH=$TOOL \
   headers_install
 
 # Removes unnecessary files that take about 200KB of precious disk space
-find $TOOL/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
+find $TOOL/include \( -name ..install.cmd -o -name .install \) -delete

@@ -33,7 +33,7 @@ export CRSS=/cross
 
 # $CRSS should be searched first
 # `/usr/bin/core_perl` resolves the pod2man related error until perl is added
-export PATH=$CRSS/bin:/usr/bin:/usr/bin/core_perl
+export PATH=/usr/bin:/usr/bin/core_perl
 
 # It's highly recommended that MAKEFLAGS value stays at -j1 for now as any
 # higher value might cause weird problems (segfaults included). 

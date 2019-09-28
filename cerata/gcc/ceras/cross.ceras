@@ -7,7 +7,9 @@
 rsync -vah $CERD/$name/trunk/ $XSRC/$name --delete --exclude=.$version
 cd $XSRC/$name/$name/config
 
-# Curated and cleaned modifications to GCC's source that are still relevant
+# Curated and cleaned modifications to GCC's source that are up to date and
+# still relevant. Using these modifications will remove the need to adjust the
+# cross-compilation toolchain's compiler specs file.
 
 # This should point to the linker
 for file in i386/linux.h i386/linux64.h linux.h; do
@@ -33,27 +35,55 @@ sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$CRSS\/$TUPL\/lib\/ld-musl-$ARCH.so.
   -i linux.h
 
 mkdir -v $XBLD/$ceras
-case $ceras in
-  gcc_2)
-    cd ..
+if [ "$ceras" == gcc_2 ]; then
+  cd ..
 
-    # This (and a similar command `touch $CRSS/include/limits.h`) will cause
-    # the first pass of GCC to not detect the custom installed prerequisites;
-    # hence, adding a limits.h is only done for the second pass of GCC.
-    cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
-      -print-libgcc-file-name))/include-fixed/limits.h
-    ;;
-esac
+  # This (and a similar command `touch $TOOL/include/limits.h`) will cause
+  # the first pass of GCC to not detect the custom installed prerequisites;
+  # hence, adding a limits.h is only done for the second pass of GCC. Perhaps
+  # it interferes with the limits.h provided by the libc?
+  cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
+    -print-libgcc-file-name))/include-fixed/limits.h
+fi
 cd $XBLD/$ceras
 
 # configure
+
+# According to the GCC wiki, this is the 'difficult way' and is 'not 
+# recommended'; however, it's the only way to get the latest GCC to build
+# with the latest upstream prerequisites:
+
+# https://gcc.gnu.org/wiki/InstallingGCC
+
+# Since we're using the latest upstream repository, it's common to find some
+# options in some configure scripts that do nothing or have been removed. The
+# latest updated reference for GCC configuration options is the following link:
+
+# https://gcc.gnu.org/install/configure.html
+
+# A list of supported options follows; `configure --help` may list other
+# options, but those not listed in the link above, may not work and should not
+# normally be used.
+
+# The configuration options below are ordered in the same order as they appear
+# in the link above.
 case $ceras in
   gcc_1)
-    # no need for --build and --host (set to gnu) as the configure script is smart
-    # enough to detect them. I also believe that the common consumption of GCC's
-    # configure script being stupid for not correctly detecting build/host stems
-    # from the fact that some of its prerequisites have funky host/build
-    # detection (yes, I'm looking at you gmp and mpc...).
+    # Since the first pass of GCC will only be used to build musl, support
+    # for everything else is being disabled. Optimizations will also be 
+    # disabled in the near future (-g0 and -O0) to further speed up the build
+    # process.
+
+    # `LDFLAGS="-Wl,-rpath,$CRSS/lib"` is needed as we're building GCC the
+    # 'difficult way' according to:
+
+    # https://gcc.gnu.org/wiki/InstallingGCC
+
+    # No need for --build and --host (set to gnu) as the configure script is
+    # smart enough to detect them. I also believe that the common consumption of
+    # GCC's configure script being stupid for not correctly detecting build/host
+    # stems from the fact that some of its prerequisites and subdirs have funky
+    # host/build detection (yes, I'm looking at you gmp, mpc and libiberty...).
 
     # --with-local-prefix helps further move away from the host
 
@@ -67,6 +97,16 @@ case $ceras in
     # will most likely result in the following error:
     # cc1: error: no include path in which to search for stdc-predef.h
 
+    # It's better to use `--enable-threads=single` in place of
+    # `--disable-threads` as the latter is just an alias for the former.
+
+    # It's better to use `--enable-tls=no` in place of `--disable-tls` as the
+    # latter is just an alias for the former.
+    
+    # `--disable-bootstrap` as this is known to work.
+
+    # There's no need to add support for the C++ language here.
+
     # --disable-libmpx isn't relevant as MPX support was removed from GCC
     # starting from GCC 9:
     # https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html
@@ -74,11 +114,6 @@ case $ceras in
     # --disable-libmudflap is also not relevant as the mudflap run time
     # checker was removed starting from GCC 4.9:
     # https://gcc.gnu.org/gcc-4.9/changes.html
-
-    # According to the GCC wiki, this is the 'difficult way' and is 'not 
-    # recommended'; however, it's the only way to get the latest GCC to build
-    # with the latest upstream prerequisites:
-    # https://gcc.gnu.org/wiki/InstallingGCC
 
     # The first pass of GCC can be built easily without isl (isl isn't
     # required to build GCC, simply pass --without-isl to get rid of the
@@ -92,22 +127,22 @@ case $ceras in
     # and yet manages to still fail:
     # https://github.com/NixOS/nixpkgs/issues/49071
 
-    # Since the first pass of GCC will only be used to build musl, support
-    # for everything else is being disabled. Optimizations will also be 
-    # disabled in the near future (-O0 and -g0) to further speed up the build
-    # process.
-
     # `--disable-compressed-debug-sections` in GCC's configure script isn't for
     # GCC but for binutils gas and ld
+    CFLAGS='-g0 -O0' \
+    CXXFLAGS='-g0 -O0' \
+    LDFLAGS="-Wl,-rpath,$CRSS/lib" \
     $XSRC/$name/configure \
-      --prefix=$CRSS \
       --target=$TUPL \
+      --prefix=$CRSS \
       --with-local-prefix=$CRSS \
       --with-native-system-header-dir=/include \
       --disable-shared \
       --disable-multilib \
-      --disable-threads \
+      --enable-threads=single \
+      --enable-tls=no \
       --with-arch=x86-64 \
+      --disable-bootstrap \
       --enable-languages=c \
       --disable-libada \
       --disable-libsanitizer \
@@ -115,6 +150,7 @@ case $ceras in
       --disable-libquadmath \
       --disable-libgomp \
       --disable-libvtv \
+      --disable-werror \
       --disable-nls \
       --disable-decimal-float \
       --with-gmp=$CRSS \
@@ -122,6 +158,9 @@ case $ceras in
       --with-mpc=$CRSS \
       --without-isl \
       --without-zstd \
+      --with-linker-hash-style=gnu \
+      --disable-gnu-unique-object \
+      --disable-lto \
       --with-sysroot=$CRSS/$TUPL \
       --with-system-zlib \
       --without-headers \
@@ -162,33 +201,39 @@ case $ceras in
 
     # `LDFLAGS=-L$CRSS/lib` doesn't work regardless if LD_LIBRARY_PATH is
     # specified or not.
-    LD_LIBRARY_PATH=$CRSS/lib \
+    AR=ar \
     LDFLAGS="-Wl,-rpath,$CRSS/lib" \
     $XSRC/$name/configure \
-      --prefix=$CRSS \
       --target=$TUPL \
+      --prefix=$CRSS \
       --with-local-prefix=$CRSS \
       --with-native-system-header-dir=/include \
       --disable-static \
       --disable-multilib \
+      --enable-threads=posix \
+      --enable-tls=no \
       --with-arch=x86-64 \
       --disable-bootstrap \
       --enable-languages=c,c++ \
+      --disable-libada \
       --disable-libsanitizer \
       --disable-libssp \
       --disable-libquadmath \
       --disable-libvtv \
       --disable-nls \
+      --disable-decimal-float \
       --with-gmp=$CRSS \
       --with-mpfr=$CRSS \
       --with-mpc=$CRSS \
       --with-isl=$CRSS \
       --with-zstd=$CRSS \
+      --with-linker-hash-style=gnu \
+      --disable-gnu-unique-object \
       --with-sysroot=$CRSS/$TUPL \
       --with-system-zlib \
-      --with-linker-hash-style=gnu \
       --disable-symvers \
       --disable-libatomic \
+      --disable-libitm \
       --disable-libstdcxx-pch \
       --disable-libstdcxx-threads \
       --with-gxx-include-dir=$CRSS/$TUPL/include/c++/10.0.0
@@ -203,7 +248,9 @@ case $ceras in
       all-target-libgcc
     ;;
   gcc_2)
-    make
+    make \
+      AS_FOR_TARGET=$TUPL-as \
+      LD_FOR_TARGET=$TUPL-ld
     ;;
 esac
 

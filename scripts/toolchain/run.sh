@@ -9,6 +9,7 @@ GSCR=/home/glaucus/scripts
 . $GSCR/toolchain/variables
 
 . $GSCR/toolchain/clean
+. $GSCR/toolchain/prepare
 
 count=1
 while true; do

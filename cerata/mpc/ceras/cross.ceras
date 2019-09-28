@@ -17,7 +17,12 @@ cd $XSRC/$name
 # which is wrong). It seems that `--with-mpfr` and `--with-gmp` don't override
 # the value of sysroot when searching for their relative paths, instead their
 # values are appended which isn't desirable.
+
+# Again don't use `--with-gmp` and `--with-mpfr` here as it'll wrongly detect
+# or even not detect at all libgmp and libmpfr. So use LDFLAGS rpath instead.
 autoreconf -vfi
+
+LDFLAGS="-Wl,-rpath,$CRSS/lib" \
 ./configure \
   --prefix=$CRSS \
   --target=$TUPL \
