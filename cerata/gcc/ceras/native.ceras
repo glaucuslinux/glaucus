@@ -4,19 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude=.$version
-cd $TSRC/$name/$name/config
+rsync -vah $CERD/$name/trunk/ $NSRC/$name --delete --exclude=.$version
+cd $NSRC/$name/$name/config
 
 # Curated and cleaned modifications to GCC's source that are still relevant
 
 # This should point to the linker
 for file in i386/linux.h i386/linux64.h linux.h; do
-  sed "s/\/lib/\\$TOOL&/" \
+  sed "s/\/lib/\\$NATV\/$TUPL&/" \
     -i $file
 
   echo "
 #undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
+#define STANDARD_STARTFILE_PREFIX_1 \"$NATV/lib/\"
 
 #undef STANDARD_STARTFILE_PREFIX_2
 #define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
@@ -27,15 +27,11 @@ sed '/m64/s/lib64/lib/' \
   -i i386/t-linux64
 
 # Further optimizing the linker's path
-sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
+sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$NATV\/$TUPL\/lib\/ld-musl-$ARCH.so.1/" \
   -i linux.h
 
-sed 's/\.\/fixinc\.sh/-c true/' \
-  -i ../Makefile.in
-
-mkdir -v $TBLD/$ceras
-
-if [ $ceras == gcc_2 ]; then
+mkdir -v $NBLD/$ceras
+if [ $ceras = gcc_2 ]; then
   cd ..
 
   # This (and a similar command `touch $TOOL/include/limits.h`) will cause
@@ -44,8 +40,7 @@ if [ $ceras == gcc_2 ]; then
   cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
     -print-libgcc-file-name))/include-fixed/limits.h
 fi
-
-cd $TBLD/$ceras
+cd $NBLD/$ceras
 
 # configure
 case $ceras in
@@ -91,38 +86,43 @@ case $ceras in
     # for everything else is being disabled. Optimizations will also be 
     # disabled in the near future (-O0 and -g0) to further speed up the build
     # process.
-    CFLAGS='-O0 -g0' \
-    CXXFLAGS='-O0 -g0' \
-    $TSRC/$name/configure \
-      --prefix=$TOOL \
+    CFLAGS='-g0 -O0' \
+    CXXFLAGS='-g0 -O0' \
+    LDFLAGS="-Wl,-rpath,$NATV/lib" \
+    $NSRC/$name/configure \
+      --prefix=$NATV \
       --build=$TUPL \
       --host=$TUPL \
       --target=$TUPL \
-      --with-local-prefix=$CRSS \
+      --with-local-prefix=$NATV \
       --with-native-system-header-dir=/include \
       --disable-shared \
       --disable-multilib \
       --enable-threads=single \
+      --enable-tls=no \
       --with-arch=x86-64 \
       --disable-bootstrap \
-      --enable-languages=c,c++ \
+      --enable-languages=c \
+      --disable-libada \
       --disable-libsanitizer \
       --disable-libssp \
       --disable-libquadmath \
       --disable-libgomp \
-      --disable-bootstrap \
       --disable-libvtv \
-      --disable-nls \
       --disable-werror \
+      --disable-nls \
       --disable-decimal-float \
-      --with-gmp=$TOOL \
-      --with-mpfr=$TOOL \
-      --with-mpc=$TOOL \
+      --with-gmp=$NATV \
+      --with-mpfr=$NATV \
+      --with-mpc=$NATV \
       --without-isl \
       --without-zstd \
-      --with-sysroot=$TOOL/$TUPL \
-      --with-newlib \
+      --with-linker-hash-style=gnu \
       --disable-gnu-unique-object \
+      --disable-lto \
+      --with-sysroot=$NATV/$TUPL \
+      --without-headers \
+      --with-newlib \
       --disable-symvers \
       --disable-libatomic \
       --disable-libitm \
@@ -139,13 +139,13 @@ case $ceras in
     # space, so it's being disabled
     #
     # Still thinking about separately building libstdcxx-v3, but we'll see.
-    LD_LIBRARY_PATH=$TOOL/lib \
-    LDFLAGS="-Wl,-rpath,$TOOL/lib" \
-    $TSRC/$name/configure \
-      --prefix=$TOOL \
+    LD_LIBRARY_PATH=$NATV/lib \
+    LDFLAGS="-Wl,-rpath,$NATV/lib" \
+    $NSRC/$name/configure \
+      --prefix=$NATV \
       --host=$TUPL \
       --target=$TUPL \
-      --with-local-prefix=$TOOL \
+      --with-local-prefix=$NATV \
       --with-native-system-header-dir=/include \
       --disable-static \
       --disable-multilib \
@@ -157,19 +157,18 @@ case $ceras in
       --disable-libquadmath \
       --disable-libvtv \
       --disable-nls \
-      --with-gmp=$TOOL \
-      --with-mpfr=$TOOL \
-      --with-mpc=$TOOL \
-      --with-isl=$TOOL \
-      --with-zstd=$TOOL \
-      --with-sysroot=$TOOL/$TUPL \
-      --with-system-zlib \
+      --with-gmp=$NATV \
+      --with-mpfr=$NATV \
+      --with-mpc=$NATV \
+      --with-isl=$NATV \
+      --with-zstd=$NATV \
+      --with-sysroot=$NATV/$TUPL \
       --with-linker-hash-style=gnu \
       --disable-symvers \
       --disable-libatomic \
       --disable-libstdcxx-pch \
       --disable-libstdcxx-threads \
-      --with-gxx-include-dir=$TOOL/$TUPL/include/c++/10.0.0
+      --with-gxx-include-dir=$NATV/$TUPL/include/c++/10.0.0
     ;;
 esac
 
@@ -180,7 +179,7 @@ make
 make \
   install-strip
 
-if [ $ceras == gcc_2 ]; then
-  cd $TOOL/bin
+if [ $ceras = gcc_2 ]; then
+  cd $NATV/bin
   ln -fsv $TUPL-gcc cc
 fi

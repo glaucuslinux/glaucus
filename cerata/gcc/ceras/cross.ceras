@@ -208,7 +208,6 @@ case $ceras in
       --prefix=$CRSS \
       --with-local-prefix=$CRSS \
       --with-native-system-header-dir=/include \
-      --disable-static \
       --disable-multilib \
       --enable-threads=posix \
       --enable-tls=no \
@@ -219,6 +218,7 @@ case $ceras in
       --disable-libsanitizer \
       --disable-libssp \
       --disable-libquadmath \
+      --disable-libgomp \
       --disable-libvtv \
       --disable-nls \
       --disable-decimal-float \
@@ -235,8 +235,7 @@ case $ceras in
       --disable-libatomic \
       --disable-libitm \
       --disable-libstdcxx-pch \
-      --disable-libstdcxx-threads \
-      --with-gxx-include-dir=$CRSS/$TUPL/include/c++/10.0.0
+      --disable-libstdcxx-threads
     ;;
 esac
 
@@ -267,7 +266,9 @@ case $ceras in
 
     # Just to further ensure that toolchain will be built while relying only on
     # cross's toolchain
-    cd $CRSS/bin
-    ln -fsv $TUPL-gcc cc
+    ln -fsv $TUPL-gcc $CRSS/bin/cc
+
+    # Some configure scripts check for $TUPL-cc as well (e.g. binutils)
+    ln -fsv $TUPL-gcc $CRSS/bin/$TUPL-cc
     ;;
 esac

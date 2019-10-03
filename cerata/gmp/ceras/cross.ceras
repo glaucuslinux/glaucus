@@ -39,6 +39,7 @@ cd $XSRC/$name
   --host=$TUPL \
   --target=$TUPL \
   --enable-cxx \
+  --disable-static \
   --with-sysroot=$CRSS/$TUPL
 
 # build

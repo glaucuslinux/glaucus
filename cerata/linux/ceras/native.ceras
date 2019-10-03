@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $TBLD/$name
+mkdir -v $NBLD/$name
 
 cd $CERD/$name/$name
 
@@ -12,7 +12,7 @@ make \
   mrproper
 
 make \
-  O=$TBLD/$name \
+  O=$NBLD/$name \
   ARCH=$ARCH \
   headers_check
 
@@ -22,10 +22,10 @@ make \
 # all previously installed headers in the INSTALL_HDR_PATH destination which
 # would then require manually copying the header files to their destination
 make \
-  O=$TBLD/$name \
+  O=$NBLD/$name \
   ARCH=$ARCH \
-  INSTALL_HDR_PATH=$TOOL \
+  INSTALL_HDR_PATH=$NATV/$TUPL \
   headers_install
 
 # Removes unnecessary files that take about 200KB of precious disk space
-find $TOOL/include \( -name ..install.cmd -o -name .install \) -delete
+find $NATV/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete

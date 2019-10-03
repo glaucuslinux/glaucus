@@ -64,6 +64,5 @@ make
 # install
 
 # install-strip doesn't work with readline
-#cd $XBLD/$name
 make \
   install

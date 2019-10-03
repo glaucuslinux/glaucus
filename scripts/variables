@@ -37,4 +37,4 @@ export PATH=/usr/bin:/usr/bin/core_perl
 
 # It's highly recommended that MAKEFLAGS value stays at -j1 for now as any
 # higher value might cause weird problems (segfaults included). 
-export MAKEFLAGS=-j1
+export MAKEFLAGS=-j9

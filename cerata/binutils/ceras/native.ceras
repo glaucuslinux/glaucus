@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
+rsync -vah $CERD/$name/$name-gdb/ $NSRC/$name --delete --exclude=.$version
 
-mkdir -v $TBLD/$ceras && cd $TBLD/$ceras
+mkdir -v $NBLD/$ceras && cd $NBLD/$ceras
 
 # configure
 
@@ -23,28 +23,31 @@ mkdir -v $TBLD/$ceras && cd $TBLD/$ceras
 # CPPFLAGS isn't honored!
 
 # CFLAGS and LDFLAGS were added to point the configure script to our custom zlib
-$TSRC/$name/configure \
-  --prefix=$TOOL \
-  --build=$TUPL \
+$NSRC/$name/configure \
+  --prefix=$NATV \
   --host=$TUPL \
   --target=$TUPL \
+  --enable-deterministic-archives \
+  --disable-compressed-debug-sections \
   --disable-werror \
   --disable-nls \
-  --with-lib-path=$TOOL/lib \
-  --with-sysroot=$TOOL/$TUPL \
-  --enable-install-libiberty \
+  --with-lib-path=$NATV/lib \
+  --with-sysroot=$NATV/$TUPL \
   --disable-multilib \
   --disable-gdb
+
+# build
+make \
+  configure-host
 
 # build
 make
 
 # install
-
 make \
   install
 
-if [ $ceras == binutils_2 ]; then
+if [ $ceras = binutils_2 ]; then
   make \
     -C ld clean
 
@@ -52,5 +55,5 @@ if [ $ceras == binutils_2 ]; then
     LIB_PATH=/usr/lib \
     -C ld
 
-  cp -av ld/ld-new $TOOL/bin
+  cp -av ld/ld-new $NATV/bin
 fi

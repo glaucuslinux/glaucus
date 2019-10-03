@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $TBLD/$name && cd $TBLD/$name
+mkdir -v $NBLD/$name && cd $NBLD/$name
 
 # configure
 
@@ -37,9 +37,13 @@ mkdir -v $TBLD/$name && cd $TBLD/$name
 # is very picky about its libdirs.
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
-  --prefix=/ \
+  --prefix=$NATV/$TUPL \
+  --syslibdir=$NATV/$TUPL/lib \
   --target=$TUPL \
-  --host=$TUPL
+  --build=$TUPL \
+  --host=$TUPL \
+  --disable-wrapper \
+  --disable-static
 
 # Remove both the symlink to the original Makefile and the system's musl
 # dynamic linker (this is dangerous if you're already running a musl based
@@ -62,5 +66,4 @@ make
 
 # install
 make \
-  DESTDIR=$TOOL \
-  install-libs
+  install

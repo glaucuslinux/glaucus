@@ -61,15 +61,15 @@ glaucus.img
 chroot/
 cross/
 logs/
+native/
 play/
 system/
 temporary/
-toolchain/
 
 
 # to ensure that subdirectories that share the same name with the excluded root
 # directories above aren't excluded as well
 !scripts/chroot/
 !scripts/cross/
+!scripts/native/
 !scripts/system/
-!scripts/toolchain/

@@ -4,19 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
-cd $TSRC/$name
+rsync -vah $CERD/$name/$name $NSRC --delete --exclude=.$version
+cd $NSRC/$name
 
 # configure
 ./autogen.sh
 ./configure \
-  --prefix=$TOOL \
+  --prefix=$NATV \
   --build=$TUPL \
   --host=$TUPL \
   --target=$TUPL \
   --disable-static \
-  --with-sysroot=/home/glaucus \
-  --with-gmp-prefix=$TOOL
+  --with-sysroot=$NATV/$TUPL \
+  --with-gmp-prefix=$NATV
 
 # build
 make

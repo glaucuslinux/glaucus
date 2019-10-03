@@ -6,29 +6,40 @@
 #CROSS_COMPILE=$TUPL-
 
 # The system wide symlink to the toolchain
-export TOOL=/toolchain
+export NATV=/native
 
 # $TOOL should be searched first
-export PATH=$CRSS/bin:$TOOL/bin:$PATH
+export PATH=$CRSS/bin:$NATV/bin:$PATH
 
 # Toolchain-only related variables, these will only be called when constructing
 # the toolchain
-export TLOG=$LOGD/toolchain
-export TBLD=$TMPD/toolchain/builds
-export TSRC=$TMPD/toolchain/sources
+export NLOG=$LOGD/native
+export NBLD=$TMPD/native/builds
+export NSRC=$TMPD/native/sources
 
 # Variables pointing to executables are sorted alphabetically
 # Also, notice how AR, NM and RANLIB here aren't using LTO (the -gcc- wrappers)
-export AR=$TUPL-ar
+export AR=$TUPL-gcc-ar
 export AS=$TUPL-as
+#export AWK=$NATV/usr/bin/mawk
 
 # The basic four all pointing to the sysroot of the toolchain. The sysroot here
 # should be honored and should remove the need for explicitly specifying sysroot
 # whenever compiling a ceras.
-export CC=$TUPL-gcc
-export CXX=$TUPL-g++
-export LD=$TUPL-ld
+export CC="$TUPL-gcc --sysroot=$NATV/$TUPL"
+export CPP="$TUPL-gcc --sysroot=$NATV/$TUPL -E"
+export CXX="$TUPL-g++ --sysroot=$NATV/$TUPL"
+export LD="$TUPL-ld --sysroot=$NATV/$TUPL"
 
-# The rest of the variables
-export RANLIB=$TUPL-ranlib
+export NM=$TUPL-gcc-nm
+export OBJCOPY=$TUPL-objcopy
+export OBJDUMP=$TUPL-objdump
+export RANLIB=$TUPL-gcc-ranlib
+export READELF=$TUPL-readelf
+export SIZE=$TUPL-size
+export STRINGS=$TUPL-strings
 export STRIP=$TUPL-strip
+
+# The resulting byacc is being used as it's lighter and more minimal
+# yacc is just a symlink to byacc intended for compatibility purposes
+#export YACC=$GLAD/usr/bin/yacc

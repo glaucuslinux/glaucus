@@ -4,34 +4,35 @@
 construct() {
   for ceras in $@; do
     . $CERD/$(echo $ceras | sed s/_.//)/ceras/ceras
-    . $CERD/$(echo $ceras | sed s/_.//)/ceras/toolchain.ceras
+    . $CERD/$(echo $ceras | sed s/_.//)/ceras/native.ceras
   done
 }
 
-# `--build` here is equal to `x86_64-pc-linux-gnu`
-# `--host` and `--target` are equal to `x86_64-pc-linux-musl`
+# `--build`, `--host` and `--target` are all equal to `x86_64-pc-linux-musl`,
+# since this we're constructing a native toolchain.
 
 # Order is honored, as linux should come first because installing kernel headers
 # after musl is installed will just clear the entire headers directory. So
 # either build linux first and install its headers, which is the preferred
 # method as there's no good reason not to, or build it after musl and manually
 # copying the header files to their destination instead of running make install.
-#construct linux
 
-# musl is needed before first pass of gcc
 construct musl
 
-# zlib is needed for binutils
+# zlib is needed for both binutils and GCC (check `--with-system-zlib`)
 #construct zlib
 
-construct binutils_1
-construct gmp_1 mpfr mpc isl zstd
+# build linux before musl
+#construct linux
+
+# build binutils
+construct binutils
+
+# build GCC's prerequisites
+construct gmp mpfr mpc isl zstd
+
+# build GCC
 construct gcc_1
 
-## Rebuild musl and binutils with
+# musl is needed before first pass of gcc
 #construct musl
-#construct binutils_2
-
-## We then resume the regular stuff of the toolchain
-#construct isl zstd
-#construct gcc_2

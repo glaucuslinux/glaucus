@@ -6,24 +6,24 @@
 cd /home/glaucus
 
 mkdir -pv \
-  logs/chroot \
-  logs/cross \
-  logs/system \
-  logs/toolchain
-
-mkdir -pv \
   chroot \
   cross \
-  system \
-  toolchain
+  native \
+  system
+
+mkdir -pv \
+  logs/chroot \
+  logs/cross \
+  logs/native \
+  logs/system
 
 mkdir -pv \
   temporary/chroot/builds \
   temporary/chroot/sources \
   temporary/cross/builds \
   temporary/cross/sources \
+  temporary/native/builds \
+  temporary/native/sources \
   temporary/system/builds \
   temporary/system/cerata \
-  temporary/system/sources \
-  temporary/toolchain/builds \
-  temporary/toolchain/sources
+  temporary/system/sources
