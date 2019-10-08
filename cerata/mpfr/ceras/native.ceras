@@ -4,23 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/trunk/ $NSRC/$name --delete --exclude=.$version
-cd $NSRC/$name
+rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude=.$version
+cd $TSRC/$name
 
 # configure
 
 # LTO couldn't be enabled on the shared version of mpfr, as it would result
 # in the following error when running configure:
 # error: --enable-lto can only work in static mode (--disable-shared)
-./autogen.sh
-
-./configure \
-  --prefix=$NATV \
-  --build=$TUPL \
+./autogen.sh && ./configure \
+  --prefix=$TOOL \
   --host=$TUPL \
   --target=$TUPL \
-  --with-gmp=$NATV \
-  --with-sysroot=$NATV/$TUPL
+  --with-gmp=$TOOL
 
 # build
 make

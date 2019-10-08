@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $XSRC --delete --exclude=.$version
-cd $XSRC/$name
+rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+cd $TSRC/$name
 
 # configure
 
@@ -21,14 +21,12 @@ cd $XSRC/$name
 # Again don't use `--with-gmp` and `--with-mpfr` here as it'll wrongly detect
 # or even not detect at all libgmp and libmpfr. So use LDFLAGS rpath instead.
 autoreconf -vfi
-
-LDFLAGS="-Wl,-rpath,$CRSS/lib" \
 ./configure \
-  --prefix=$CRSS \
+  --prefix=$TOOL \
   --target=$TUPL \
   --disable-static \
-  --with-mpfr=$CRSS \
-  --with-gmp=$CRSS
+  --with-mpfr=$TOOL \
+  --with-gmp=$TOOL
 
 # build
 make

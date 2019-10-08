@@ -4,19 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $NSRC --delete --exclude=.$version
-cd $NSRC/$name
+rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+cd $TSRC/$name
 
 # configure
-autoreconf -vfi
-
-./configure \
-  --prefix=$NATV \
-  --build=$TUPL \
+autoreconf -vfi && ./configure \
+  --prefix=$TOOL \
   --host=$TUPL \
   --target=$TUPL \
-  --with-mpfr=$NATV \
-  --with-gmp=$NATV
+  --with-mpfr=$TOOL \
+  --with-gmp=$TOOL
 
 # build
 make

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name-gdb/ $XSRC/$name --delete --exclude=.$version
+rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
 
 mkdir -v $XBLD/$name && cd $XBLD/$name
 
@@ -31,38 +31,30 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # `--enable-64-bit-archive` is enabled by default for 64 bit targets as it's
 # only intended for enabling 64-bit support on 32-bit (and smaller) hosts
 
-# `--with-system-zlib` to use host's zlib instead of bundled zlib
-
 # `--enable-deterministic-archives` because:
 # https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities
 
 # `--disable-werror` is on by default so no need to add it
 
 # Added --with-lib-path from LFS for better separation from the host
-$XSRC/$name/configure \
-  --prefix=$CRSS \
+$TSRC/$name/configure \
+  --prefix=$TOOL \
   --target=$TUPL \
   --enable-deterministic-archives \
   --disable-compressed-debug-sections \
   --disable-werror \
   --disable-nls \
-  --with-lib-path=$CRSS/lib \
-  --with-sysroot=$CRSS/$TUPL \
-  --with-system-zlib \
+  --with-lib-path=$TOOL/lib \
+  --with-sysroot=$GLAD \
   --disable-multilib \
   --disable-gdb
-
-# This forces all subdirectories to be configured immediately and it notifies
-# them about our build/host (which is $GUPL). This may also be used when in
-# static linking.
-make \
-  configure-host
 
 # build
 make
 
 # install
 
-# install-strip doesn't work with readline
+# The symlink from lib64 to lib has already been created in prepare, also
+# install-strip doesn't work with readline.
 make \
   install

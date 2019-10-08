@@ -44,8 +44,8 @@ mkdir -v $XBLD/$name && cd $XBLD/$name
 # otherwise leave it here.
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
-  --prefix=$CRSS/$TUPL \
-  --syslibdir=$CRSS/$TUPL/lib \
+  --prefix=$NATV \
+  --syslibdir=$NATV/lib \
   --target=$TUPL \
   --disable-wrapper \
   --disable-static

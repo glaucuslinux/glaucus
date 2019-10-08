@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name-gdb/ $NSRC/$name --delete --exclude=.$version
+rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
 
-mkdir -v $NBLD/$ceras && cd $NBLD/$ceras
+mkdir -v $NBLD/$name && cd $NBLD/$name
 
 # configure
 
@@ -17,28 +17,19 @@ mkdir -v $NBLD/$ceras && cd $NBLD/$ceras
 # and yet manages to still fail:
 # https://github.com/NixOS/nixpkgs/issues/49071
 
-# No need to specify `--build` as binutils configure script is smart enough to
-# correctly detect it as $GUPL
-
-# CPPFLAGS isn't honored!
-
-# CFLAGS and LDFLAGS were added to point the configure script to our custom zlib
-$NSRC/$name/configure \
-  --prefix=$NATV \
+# Be careful as CPPFLAGS isn't honored, but CFLAGS is!
+$TSRC/$name/configure \
+  --prefix=$TOOL \
   --host=$TUPL \
   --target=$TUPL \
   --enable-deterministic-archives \
   --disable-compressed-debug-sections \
   --disable-werror \
   --disable-nls \
-  --with-lib-path=$NATV/lib \
-  --with-sysroot=$NATV/$TUPL \
+  --with-lib-path=$TOOL/lib \
+  --with-sysroot \
   --disable-multilib \
   --disable-gdb
-
-# build
-make \
-  configure-host
 
 # build
 make
@@ -47,13 +38,11 @@ make
 make \
   install
 
-if [ $ceras = binutils_2 ]; then
-  make \
-    -C ld clean
+make \
+  -C ld clean
 
-  make \
-    LIB_PATH=/usr/lib \
-    -C ld
+make \
+  LIB_PATH=/usr/lib \
+  -C ld
 
-  cp -av ld/ld-new $NATV/bin
-fi
+cp -av ld/ld-new $NATV/bin

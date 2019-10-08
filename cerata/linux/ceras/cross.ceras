@@ -28,12 +28,13 @@ make \
 # INSTALL_HDR_PATH destination which would then require manually copying the
 # header files to their destination
 
-# this also requires rsync as of 5.3.x
+# this also requires rsync as of 5.3.x, if rsync isn't installed then replace
+# `headers_install` with `headers`
 make \
   O=$XBLD/$name \
   ARCH=$ARCH \
-  INSTALL_HDR_PATH=$CRSS/$TUPL \
+  INSTALL_HDR_PATH=$CRSS \
   headers_install
 
 # Removes unnecessary files that take about 200KB of precious disk space
-find $CRSS/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
+find $CRSS/include \( -name ..install.cmd -o -name .install \) -delete

@@ -7,23 +7,21 @@ cd /home/glaucus
 
 mkdir -pv \
   chroot \
-  cross \
-  native \
-  system
+  system \
+  toolchain
 
 mkdir -pv \
   logs/chroot \
-  logs/cross \
-  logs/native \
-  logs/system
+  logs/system \
+  logs/toolchain/cross \
+  logs/toolchain/native
 
 mkdir -pv \
   temporary/chroot/builds \
   temporary/chroot/sources \
-  temporary/cross/builds \
-  temporary/cross/sources \
-  temporary/native/builds \
-  temporary/native/sources \
   temporary/system/builds \
   temporary/system/cerata \
-  temporary/system/sources
+  temporary/system/sources \
+  temporary/toolchain/sources \
+  temporary/toolchain/cross/builds \
+  temporary/toolchain/native/builds

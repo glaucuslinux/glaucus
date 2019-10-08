@@ -1,0 +1,12 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=libstdc++-v3
+version=svn
+release=1
+arch=x86-64
+url=https://gcc.gnu.org/$version/gcc/trunk/$name
+description='The GNU Standard C++ Library v3'
+licenses='FDLv1.3+ GPLv3+'

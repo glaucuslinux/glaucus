@@ -37,13 +37,9 @@ mkdir -v $NBLD/$name && cd $NBLD/$name
 # is very picky about its libdirs.
 $CERD/$name/$name/configure \
   CROSS_COMPILE=$TUPL- \
-  --prefix=$NATV/$TUPL \
-  --syslibdir=$NATV/$TUPL/lib \
-  --target=$TUPL \
-  --build=$TUPL \
-  --host=$TUPL \
-  --disable-wrapper \
-  --disable-static
+  --prefix=$TOOL \
+  --syslibdir=$TOOL/lib \
+  --target=$TUPL
 
 # Remove both the symlink to the original Makefile and the system's musl
 # dynamic linker (this is dangerous if you're already running a musl based

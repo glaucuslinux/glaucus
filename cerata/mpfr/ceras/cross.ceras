@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/trunk/ $XSRC/$name --delete --exclude=.$version
-cd $XSRC/$name
+rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude=.$version
+cd $TSRC/$name
 
 # configure
 
@@ -33,15 +33,12 @@ cd $XSRC/$name
 
 # Passing `--with-sysroot` alone (without `--with-gmp`) will cause mpfr to look
 # for libgmp.so in $CRSS/$TUPL instead of $CRSS.
-./autogen.sh
 
-./configure \
-LDFLAGS="-Wl,-rpath,$CRSS/lib" \
-  --prefix=$CRSS \
-  --target=$TUPL \
+# Still needs to get rid of the long path in `ldd libmpfr.so`
+./autogen.sh && ./configure \
+  --prefix=$TOOL \
   --disable-static \
-  --with-gmp=$CRSS \
-  --with-sysroot=$CRSS/$TUPL
+  --with-gmp=$TOOL
 
 # build
 make

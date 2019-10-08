@@ -6,6 +6,9 @@
 # prepare
 mkdir -v $NBLD/$name
 
+# Yes we're going into the original upstream cerata repo for Linux, but we're
+# not going to modify anything, and it won't hurt to run `make mrproper` to be
+# safe just in case.
 cd $CERD/$name/$name
 
 make \
@@ -21,11 +24,15 @@ make \
 # this only works if linux was first (in construct) as this command will erase
 # all previously installed headers in the INSTALL_HDR_PATH destination which
 # would then require manually copying the header files to their destination
+
+# this also requires rsync as of 5.3.x, if rsync isn't installed then replace
+# `headers_install` with `headers` then remove `INSTALL_HDR_PATH=$TOOL` and
+# manually copy the headers in `$NBLD/$name/usr/include` to `$TOOL/include`.
 make \
   O=$NBLD/$name \
   ARCH=$ARCH \
-  INSTALL_HDR_PATH=$NATV/$TUPL \
+  INSTALL_HDR_PATH=$TOOL \
   headers_install
 
 # Removes unnecessary files that take about 200KB of precious disk space
-find $NATV/$TUPL/include \( -name ..install.cmd -o -name .install \) -delete
+find $TOOL/include \( -name ..install.cmd -o -name .install \) -delete

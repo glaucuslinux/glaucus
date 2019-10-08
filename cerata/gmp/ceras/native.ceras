@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $NSRC --delete --exclude=.$version
-cd $NSRC/$name
+rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+cd $TSRC/$name
 
 # configure
 
@@ -14,16 +14,12 @@ cd $NSRC/$name
 # For now it builds fine without `--enable-cxx` as it errors about not being
 # able to detect our $TUPL-g++ compiler which is weird
 ./.bootstrap
-
-LD_LIBRARY_PATH=$NATV/$TUPL/lib \
+LD_LIBRARY_PATH="$TOOL/lib" \
 ./configure \
-  --prefix=$NATV \
-  --build=$TUPL \
+  --prefix=$TOOL \
   --host=$TUPL \
   --target=$TUPL \
-  --enable-cxx \
-  --disable-static \
-  --with-sysroot=$NATV/$TUPL
+  --enable-cxx
 
 # build
 make

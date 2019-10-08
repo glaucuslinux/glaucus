@@ -28,6 +28,8 @@ export CPP="$TUPL-gcc --sysroot=$GLCD -E"
 export CXX="$TUPL-g++ --sysroot=$GLCD"
 export LD="$TUPL-ld --sysroot=$GLCD"
 
+export M4=$GLCD/bin/om4
+
 export NM=$TUPL-gcc-nm
 export OBJCOPY=$TUPL-objcopy
 export OBJDUMP=$TUPL-objdump

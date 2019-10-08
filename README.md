@@ -29,22 +29,49 @@ RAM
 * bleeding edge as it fetches the latest sources available from upstream
 repositories for all cerata
 
-* the building process (for both glaucus and its toolchain) is entirely
-automated
+* the building process (for glaucus and its toolchains) is entirely automated
 
 * musl libc
 
-* skarnet's s6 small supervision suite
+* skarnet's latest s6 small supervision suite
 
-* skarnet's s6-linux-init tools for a Linux init system (version 1.0.3)
+* skarnet's latest s6-linux-init tools for a Linux init system
 
-* skarnet's s6-rc service manager for s6
+* skarnet's latest s6-rc service manager for s6 [(glaucus-s6-boot-scripts)](
+https://github.com/firasuke/glaucus-s6-boot-scripts)
 
 * replaced GNU Core Utilities with:
   1. suckless base (sbase)
   2. unportable base (ubase)
   3. OpenBSD `ls`, `pax`, `stty`, `diff`, `fmt`, `patch` and `sort` from
 OpenBSD's userland port to Linux (lobase)
+
+* OpenBSD's `ksh` ported to Linux (`loksh`) as the main user shell (much lighter
+and faster (around 2.5x) than `bash`, and still manages to support
+auto-completion and command history).
+
+* `dash` for running scripts (all system scripts are written in POSIX `dash`,
+which is only 1.8x faster than loksh) (you can even replace run dash alone if
+you're an adventurer, but glaucus tries to stay convenient while being extremely
+lightweight)
+
+* NetBSD's curses, with `less`, `mandoc` and `vim` all built against it
+
+* LibreSSL
+
+* And many more lightweight and suckless software (`mawk`, `byacc`, `re2c`,
+nnn...)
+
+* Adheres to the latest FHS standards, with a minimal and clean root filesystem
+
+* The kernel uses the bare minimum configuration needed to get a bootable system
+(from DOTSLASHLINUX's extremely lightweight kernel configuration guides)
+
+* doesn't require a separate partition to build and install into (unlike LFS)
+
+
+The `core` image builds (along with 130+ cerata) with really extreme
+optimization flags such as:
 
 * OpenMP
 
@@ -71,21 +98,11 @@ zlib set as a fallback method)
 
 * Extra performance related optimizations
 
-* 130+ packages building successfully
-
-* doesn't require a separate partition to build and install into
-
-* doesn't require a chroot to build correctly (unfortunately this will change,
-as the graphics stack is really picky when it comes to libdirs)
-
 
 ## Supported Architectures
 
-Currently only `x86_64-pc-linux-musl` is supported with no plans in the near
-future to support any other architecture.
-
-ARM, Raspberry Pi and RISC-V support might be added in the distant future
-though.
+Currently only `x86_64-pc-linux-musl` is supported with plans in the near future
+to support other architectures like x86, ARM, Raspberry PI, RISC-V and PowerPC.
 
 
 ## Minimum Requirements
@@ -98,8 +115,9 @@ when idle.
 ## For Awesome Voyagers
 
 Voyagers that are interested in testing glaucus and maintaining its cerata
-should read the [For Awesome Voyagers](https://github.com/firasuke/glaucus/wiki/For-Awesome-Voyagers)
-wiki page to get started.
+should read the [For Awesome Voyagers](
+https://github.com/firasuke/glaucus/wiki/For-Awesome-Voyagers) wiki page to get
+started.
 
 
 ## Wiki
@@ -136,13 +154,15 @@ glaucus is heavily inspired by the following projects:
 
 * [Alpine-S6](https://github.com/woahbase/alpine-s6)
 
-* [android-toolchain-build](https://github.com/redstar3894/android-toolchain-build)
+* [android-toolchain-build](
+https://github.com/redstar3894/android-toolchain-build)
 
 * [apathy](https://github.com/mssx86/apathy)
 
 * [Arch Linux](https://www.archlinux.org)
 
-* [ARM Cross Linux From Scratch (arm-clfs)](https://github.com/predominant/arm-clfs)
+* [ARM Cross Linux From Scratch (arm-clfs)](
+https://github.com/predominant/arm-clfs)
 
 * [Artix Linux](https://artixlinux.org)
 
@@ -160,11 +180,14 @@ glaucus is heavily inspired by the following projects:
 
 * [Beyond Musl Linux From Scratch (BMLFS)](https://github.com/dslm4515/BMLFS)
 
-* [bleeding-edge-toolchain](https://github.com/FreddieChopin/bleeding-edge-toolchain)
+* [bleeding-edge-toolchain](
+https://github.com/FreddieChopin/bleeding-edge-toolchain)
 
-* [Bleeding Linux From Scratch](https://islief.com/wiki/index.php/Bleeding_Linux_From_Scratch)
+* [Bleeding Linux From Scratch](
+https://islief.com/wiki/index.php/Bleeding_Linux_From_Scratch)
 
-* [B/LFS-s6](https://www.linuxquestions.org/questions/linux-from-scratch-13/%5Bannoucement%5D-b-lfs-s6-project-4175510228/)
+* [B/LFS-s6](
+https://www.linuxquestions.org/questions/linux-from-scratch-13/%5Bannoucement%5D-b-lfs-s6-project-4175510228/)
 
 * [Bluedragon](https://wiki.gentoo.org/wiki/Project:Hardened_musl/Bluedragon)
 
@@ -212,7 +235,8 @@ glaucus is heavily inspired by the following projects:
 
 * [lh-bootstrap](https://skarnet.org/software/lh-bootstrap)
 
-* [lightcube-bootstrap-musl](https://github.com/jhuntwork/lightcube-bootstrap-musl)
+* [lightcube-bootstrap-musl](
+https://github.com/jhuntwork/lightcube-bootstrap-musl)
 
 * [Linaro](https://www.linaro.org)
 
