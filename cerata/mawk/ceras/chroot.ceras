@@ -4,8 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $CBLD/$ceras
-cd $CBLD/$ceras
+install -dv $CBLD/$ceras && cd $CBLD/$ceras
 
 # configure
 case $ceras in
@@ -36,5 +35,5 @@ rsync -vah $CERD/$name/$name-snapshots/man . --delete
 make \
   install
 
-cd $GLCD/bin
-ln -fsv $name awk
+# for compatibility reasons
+ln -fsv $name $GLCD/bin/awk

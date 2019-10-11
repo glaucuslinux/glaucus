@@ -6,7 +6,7 @@
 # prepare
 rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
 
-mkdir -v $XBLD/$name && cd $XBLD/$name
+install -dv $XBLD/$name && cd $XBLD/$name
 
 # configure
 

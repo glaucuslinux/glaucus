@@ -42,6 +42,5 @@ install -v bin/pax/pax $GLCD/bin
 install -m 444 -Dv bin/pax/cpio.1 bin/pax/pax.1 bin/pax/tar.1 -t \
   $GLCD/share/man/man1
 
-cd $GLCD/bin
-ln -fsv pax cpio
-ln -fsv pax tar
+ln -fsv pax $GLCD/bin/cpio
+ln -fsv pax $GLCD/bin/tar

@@ -6,7 +6,7 @@
 # prepare
 rsync -vah $CERD/gcc/trunk/ $TSRC/gcc --delete --exclude=.$version
 
-mkdir -v $NBLD/$name && cd $NBLD/$name
+install -dv $NBLD/$name && cd $NBLD/$name
 
 # configure
 # libstdc++-v3 is inside gcc's tree and is being built by default after

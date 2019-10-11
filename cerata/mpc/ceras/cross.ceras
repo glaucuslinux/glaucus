@@ -20,10 +20,8 @@ cd $TSRC/$name
 
 # Again don't use `--with-gmp` and `--with-mpfr` here as it'll wrongly detect
 # or even not detect at all libgmp and libmpfr. So use LDFLAGS rpath instead.
-autoreconf -vfi
-./configure \
+autoreconf -vfi && ./configure \
   --prefix=$TOOL \
-  --target=$TUPL \
   --disable-static \
   --with-mpfr=$TOOL \
   --with-gmp=$TOOL

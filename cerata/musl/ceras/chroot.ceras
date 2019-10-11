@@ -4,8 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $CBLD/$name
-cd $CBLD/$name
+install -dv $CBLD/$name && cd $CBLD/$name
 
 # configure
 #
@@ -36,8 +35,7 @@ $CERD/$name/$name/configure \
 # for wrongly linking the resulting dynamic linker with the wrong libc.so, so
 # that the dynamic linker it links to the resulting libc.so is located in the
 # exact same location of the libc.so
-rm -fv Makefile
-cp -av $CERD/$name/$name/Makefile .
+rm -fv Makefile && cp -av $CERD/$name/$name/Makefile .
 sed 's/ $(libdir)\/libc.so/ libc.so/' \
   -i Makefile
 

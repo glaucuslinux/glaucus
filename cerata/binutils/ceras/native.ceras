@@ -6,7 +6,7 @@
 # prepare
 rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
 
-mkdir -v $NBLD/$name && cd $NBLD/$name
+install -dv $NBLD/$name && cd $NBLD/$name
 
 # configure
 
@@ -45,4 +45,4 @@ make \
   LIB_PATH=/usr/lib \
   -C ld
 
-cp -av ld/ld-new $NATV/bin
+cp -av ld/ld-new $TOOL/bin

@@ -1,16 +1,16 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-construct() {
+build() {
   for ceras in $@; do
     . $CERD/$(echo $ceras | sed s/_.//)/ceras/ceras
     . $CERD/$(echo $ceras | sed s/_.//)/ceras/chroot.ceras
   done
 }
 
-construct musl
-construct mawk_1 byacc mawk_2
-construct sbase lobase
-construct dash
-construct netbsd-curses loksh
-construct qm4 make
+build musl
+build mawk_1 byacc mawk_2
+build sbase lobase
+build dash
+build netbsd-curses loksh
+build qm4 make

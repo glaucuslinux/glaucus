@@ -1,5 +1,0 @@
-# Copyright (c) 2019, Firas Khalil Khana
-# Distributed under the terms of the ISC License
-
-sudo rm -frv $CBLD
-mkdir -v $CBLD

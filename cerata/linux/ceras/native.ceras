@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $NBLD/$name
+install -dv $NBLD/$name
 
 # Yes we're going into the original upstream cerata repo for Linux, but we're
 # not going to modify anything, and it won't hurt to run `make mrproper` to be

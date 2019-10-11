@@ -37,7 +37,7 @@ sed '/m64/s/lib64/lib/' \
 sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
   -i linux.h
 
-mkdir -v $XBLD/$name && cd $XBLD/$name
+install -dv $XBLD/$name && cd $XBLD/$name
 
 # configure
 
@@ -133,7 +133,6 @@ $TSRC/$name/configure \
   --disable-multilib \
   --enable-threads=single \
   --with-arch=x86-64 \
-  --disable-bootstrap \
   --enable-languages=c,c++ \
   --disable-libssp \
   --disable-libquadmath \
@@ -147,7 +146,6 @@ $TSRC/$name/configure \
   --with-mpc=$TOOL \
   --without-isl \
   --without-zstd \
-  --with-linker-hash-style=gnu \
   --with-sysroot=$GLAD \
   --without-headers \
   --with-newlib \
@@ -155,7 +153,16 @@ $TSRC/$name/configure \
   --disable-libstdcxx
 
 # build
-make
+make \
+  AR_FOR_TARGET=$TUPL-ar \
+  AS_FOR_TARGET=$TUPL-as \
+  LD_FOR_TARGET=$TUPL-ld \
+  NM_FOR_TARGET=$TUPL-nm \
+  OBJCOPY_FOR_TARGET=$TUPL-objcopy \
+  OBJDUMP_FOR_TARGET=$TUPL-objdump \
+  RANLIB_FOR_TARGET=$TUPL-ranlib \
+  READELF_FOR_TARGET=$TUPL-readelf \
+  STRIP_FOR_TARGET=$TUPL-strip
 
 # install
 

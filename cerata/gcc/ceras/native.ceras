@@ -37,7 +37,7 @@ sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
 cd .. && cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
   -print-libgcc-file-name))/include-fixed/limits.h
 
-mkdir -v $NBLD/$name && cd $NBLD/$name
+install -dv $NBLD/$name && cd $NBLD/$name
 
 # configure
 # --with-local-prefix helps further move away from the host
@@ -110,6 +110,7 @@ $TSRC/$name/configure \
   --disable-bootstrap \
   --enable-languages=c,c++ \
   --disable-libsanitizer \
+  --disable-libssp \
   --disable-werror \
   --disable-nls \
   --with-gmp=$TOOL \
