@@ -1,0 +1,9 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+find $TOOL -name \*.la -delete
+
+/usr/bin/strip --strip-unneeded $TOOL/bin/*
+$STRIP --strip-debug $TOOL/lib/*
+
+rm -frv $TOOL/share/doc $TOOL/share/info $TOOL/share/man

@@ -1,0 +1,40 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+export ARCH=x86_64
+export TUPL=$ARCH-pc-linux-musl
+
+export GLAD=/home/glaucus
+export CERD=$GLAD/cerata
+
+export CLOG=$GLAD/logs/chroot
+export CSCR=$GLAD/scripts/chroot
+export CTMP=$GLAD/temporary/chroot
+export CBLD=$CTMP/builds
+export CSRC=$CTMP/sources
+
+export AR=gcc-ar
+export NM=gcc-nm
+export RANLIB=gcc-ranlib
+
+export AWK=mawk
+export YACC=byacc
+
+export GCSE='-fgcse-sm -fgcse-las'
+export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
+export MARCH='-march=x86-64'
+export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
+export PGO='-ftracer -funroll-loops'
+export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
+
+export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
+export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+export CPPFLAGS="-I$TOOL/include"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
+
+export TOOL=/toolchain
+export PATH=$TOOL/bin:/usr/bin
+
+export MAKEFLAGS=-j1
