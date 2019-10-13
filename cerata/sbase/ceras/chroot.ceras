@@ -12,12 +12,12 @@ sed -e '/types/,+1d' \
   -i ls.c tar.c
 
 # configure
-sed -e 's/^PREFIX = .*/PREFIX = \/home\/glaucus\/chroot/' \
+sed -e "s/^PREFIX = .*/PREFIX = \\$TOOL/" \
   -e "s/AR = .*/AR = $AR/" \
-  -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/chroot/" \
+  -e "s/CC = .*/CC = $TUPL-gcc/" \
   -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
   -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \
-  -e '/CPPFLAGS/ s/$/ -I\/home\/glaucus\/system\/usr\/include/' \
+  -e "/CPPFLAGS/ s/$/ -I\\$TOOL\/usr\/include/" \
   -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
   -i config.mk
 

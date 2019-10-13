@@ -3,33 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
-cd $TSRC/$name
+prepare_cross() {
+  rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+  cd $TSRC/$name
+}
 
-# configure
+configure_cross() {
+  ./.bootstrap
+  
+  ./configure \
+    --prefix=$TOOL \
+    --enable-cxx \
+    --disable-static
+}
 
-# mini-gmp has less memory footprint and is smaller than GMP but is slower (up
-# to 10 times slower in some cases). You should never install mini-gmp as
-# applications can either include `mini-gmp.c` or compile it and use the
-# declarations in `mini-gmp.h`
+build_cross() {
+  make
+}
 
-# gmp's configure script is stupid and won't accept target alone if we're
-# cross-compiling; hence, both host needs to be added, and be given the same
-# value of target which is $TUPL, and build which is given the value of $GUPL to
-# indicate that we're cross-compiling. (The easiest solution would be to remove
-# build/host/target alltogether, but meh...)
-
-# `--with-sysroot=$GLAD` was added to get the same effect when passing sysroot
-# to GCC's configure script while using the in tree gmp.
-./.bootstrap && ./configure \
-  --prefix=$TOOL \
-  --enable-cxx \
-  --disable-static
-
-# build
-make
-
-# install
-make \
-  install-strip
+install_cross() {
+  make \
+    install-strip
+}

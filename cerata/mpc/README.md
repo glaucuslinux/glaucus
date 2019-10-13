@@ -28,30 +28,3 @@ precision and correct rounding of the result
 * LGPLv2.1+
 * LGPLv3.0+
 * PD
-
-## Prepare Toolchain
-```shell
-rsync -vah $CERD/$name/$name/ $TSRC/$name --delete
-cd $TSRC/$name
-```
-
-## Configure Toolchain
-```shell
-autoreconf -vi
-./configure \
-  --prefix=$TOOL \
-  --disable-static \
-  --with-mpfr=$TOOL \
-  --with-gmp=$TOOL
-```
-
-## Build Toolchain
-```shell
-make
-```
-
-## Install Toolchain
-```shell
-make \
-  install-strip
-```

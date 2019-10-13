@@ -3,32 +3,27 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
-cd $TSRC/$name
+prepare_native() {
+  rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+  cd $TSRC/$name
+}
 
-# configure
+configure_native() {
+  ./.bootstrap
+  
+  LD_LIBRARY_PATH=$TOOL/lib \
+  ./configure \
+    --prefix=$TOOL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --enable-cxx
+}
 
-# No need to specify `--build` as its smart enough to detect it
+build_native() {
+  make
+}
 
-# For now it builds fine without `--enable-cxx` as it errors about not being
-# able to detect our $TUPL-g++ compiler which is weird
-./.bootstrap
-
-# Adding LD_LIBRARY_PATH is necessary if we intend to include cxx support for
-# gmp when building GCC, which is still questionable as to why cxx support is
-# needed for gmp when being used in a toolchain. Note that LDFLAGS -L and rpath
-# won't work here. This is done to fix Error Relocating libgcc_s.so and stdcxx.
-LD_LIBRARY_PATH=$TOOL/lib \
-./configure \
-  --prefix=$TOOL \
-  --host=$TUPL \
-  --target=$TUPL \
-  --enable-cxx
-
-# build
-make
-
-# install
-make \
-  install-strip
+install_native() {
+  make \
+    install-strip
+}

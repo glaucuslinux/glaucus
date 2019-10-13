@@ -20,9 +20,8 @@ make
 
 # install
 make \
-  PREFIX=$GLCD \
+  PREFIX=$TOOL \
   install
 
 # beware as this would conflict both GNU M4 and OpenBSD M4
-cd $GLCD/bin
-ln -fsv $name m4
+ln -fsv $name $TOOL/bin/m4

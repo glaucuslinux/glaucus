@@ -26,29 +26,3 @@ floating-point numbers
 * LGPLv2.1+
 * LGPLv3.0+
 * PD
-
-## Prepare Toolchain
-```shell
-rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
-cd $TSRC/$name
-```
-
-## Configure Toolchain
-```shell
-./autogen.sh
-./configure \
-  --prefix=$TOOL \
-  --disable-static \
-  --with-gmp=$TOOL
-```
-
-## Build
-```shell
-make
-```
-
-## Install
-```shell
-make \
-  install-strip
-```

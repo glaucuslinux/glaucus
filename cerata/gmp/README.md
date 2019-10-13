@@ -25,29 +25,3 @@ integers, rational numbers, and floating-point numbers
 * GPLv2+
 * LGPLv3+
 * PD
-
-## Prepare Toolchain
-```shell
-rsync -vah $CERD/$name/$name $TSRC --delete
-cd $TSRC/$name
-```
-
-## Configure Toolchain
-```shell
-./.bootstrap
-./configure \
-  --prefix=$TOOL \
-  --disable-static \
-  --enable-cxx
-```
-
-## Build Toolchain
-```shell
-make
-```
-
-## Install Toolchain
-```shell
-make \
-  install-strip
-```

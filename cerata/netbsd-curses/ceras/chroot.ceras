@@ -9,10 +9,10 @@ cd $CSRC/$name
 
 # configure
 cat > config.mak << EOF
-PREFIX = $GLCD
+PREFIX = $TOOL
 AR = $AR
 AWK = $AWK
-CC = $CC
+CC = cc
 RANLIB = $RANLIB
 CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
@@ -29,5 +29,5 @@ make \
 make \
   install-dynamic
 
-cd $GLCD/lib
+cd $TOOL/lib
 $STRIP -v libcurses.so libform.so libmenu.so libpanel.so libterminfo.so

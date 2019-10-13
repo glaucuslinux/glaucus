@@ -6,7 +6,6 @@
 cd /home/glaucus
 
 mkdir -pv \
-  chroot \
   system \
   toolchain
 

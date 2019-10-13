@@ -8,11 +8,9 @@ install -dv $CBLD/$name && cd $CBLD/$name
 
 # configure
 $CERD/$name/$name/configure \
-  --prefix=$GLCD \
+  --prefix=$TOOL \
   --program-prefix=b \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL
+  --host=$TUPL
 
 # build
 make
@@ -22,4 +20,4 @@ make \
   install
 
 # for compatibility purposes
-ln -fsv $name $GLCD/bin/yacc
+ln -fsv $name $TOOL/bin/yacc

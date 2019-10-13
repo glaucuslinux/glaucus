@@ -6,11 +6,28 @@
 # Only filetypes can be written without their relative path.
 
 *.ceras linguist-language=Shell
+
 cerata/*/ceras linguist-language=Shell
 cerata/*/ceras/ceras linguist-language=Shell
 
 cerata/smdev/config.h linguist-language=C
 
+scripts/chroot/prepare linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
+
 scripts/system/variables linguist-language=Shell
+
+scripts/toolchain/prepare linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
+
+scripts/toolchain/cross/construct linguist-language=Shell
+scripts/toolchain/cross/log linguist-language=Shell
+scripts/toolchain/cross/prepare linguist-language=Shell
+scripts/toolchain/cross/run linguist-language=Shell
+scripts/toolchain/cross/variables linguist-language=Shell
+
+scripts/toolchain/native/construct linguist-language=Shell
+scripts/toolchain/native/log linguist-language=Shell
+scripts/toolchain/native/prepare linguist-language=Shell
+scripts/toolchain/native/run linguist-language=Shell
+scripts/toolchain/native/variables linguist-language=Shell

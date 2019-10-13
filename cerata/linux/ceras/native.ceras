@@ -14,6 +14,7 @@ cd $CERD/$name/$name
 make \
   mrproper
 
+# This could be disabled but is not recommended as it sanitizes headers
 make \
   O=$NBLD/$name \
   ARCH=$ARCH \

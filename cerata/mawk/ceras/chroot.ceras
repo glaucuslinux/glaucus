@@ -7,33 +7,19 @@
 install -dv $CBLD/$ceras && cd $CBLD/$ceras
 
 # configure
-case $ceras in
-  mawk_1)
-    AWK=mawk \
-    CFLAGS="$CFLAGSNOOPENMP" \
-    $CERD/$name/$name-snapshots/configure \
-      --prefix=$GLCD \
-      --build=$TUPL \
-      --host=$TUPL \
-      --target=$TUPL
-    ;;
-  mawk_2)
-    CFLAGS="$CFLAGSNOOPENMP" \
-    $CERD/$name/$name-snapshots/configure \
-      --prefix=$GLCD \
-      --build=$TUPL \
-      --host=$TUPL \
-      --target=$TUPL
-    ;;
-esac
+CFLAGS="$CFLAGSNOOPENMP" \
+$CERD/$name/$name-snapshots/configure \
+  --prefix=$TOOL \
+  --host=$TUPL
 
 # build
 make
 
 # install
 rsync -vah $CERD/$name/$name-snapshots/man . --delete
+
 make \
   install
 
 # for compatibility reasons
-ln -fsv $name $GLCD/bin/awk
+ln -fsv $name $TOOL/bin/awk

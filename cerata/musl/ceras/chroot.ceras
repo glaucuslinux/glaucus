@@ -48,8 +48,7 @@ make \
 
 # we then create a symlink to the dyanimc linker called ldd (list dynamic
 # dependencies)
-cd $GLCD/bin
-ln -fsv ../lib/ld-$name-$ARCH.so.1 ldd
+ln -fsv ../lib/ld-$name-$ARCH.so.1 $GLCD/bin/ldd
 
 # and finish it off with stripping some resulting unstripped files
 # we can also further remove all resulting *.a files, but those were left

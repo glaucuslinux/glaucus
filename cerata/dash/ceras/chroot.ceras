@@ -10,10 +10,8 @@ cd $CSRC/$name
 # configure
 ./autogen.sh
 ./configure \
-  --prefix=$GLCD \
-  --build=$TUPL \
+  --prefix=$TOOL \
   --host=$TUPL \
-  --target=$TUPL \
   --disable-static
 
 # build
@@ -23,5 +21,4 @@ make
 make \
   install-strip
 
-cd $GLCD/bin
-ln -fsv $name sh
+ln -fsv $name $TOOL/bin/sh

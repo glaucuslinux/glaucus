@@ -8,11 +8,13 @@ rsync -vah $CERD/$name/$name $CSRC --delete
 cd $CSRC/$name
 
 # configure
-sed -e "s/CC ?= .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/chroot/" \
-  -e 's/PREFIX ?= .*/PREFIX = \/home\/glaucus\/chroot/' \
+sed -e "s/CC ?= .*/CC = $TUPL-gcc/" \
+  -e '/DESTDIR ?= .*/d' \
+  -e 's/PREFIX ?= .*/PREFIX = \/home\/glaucus\/toolchain/' \
   -e 's/BIN_NAME ?= .*/BIN_NAME = loksh/' \
-  -e 's/NCURSES_CFLAGS = .*/NCURSES_CFLAGS = -I\/home\/glaucus\/chroot\/include/' \
-  -e 's/NCURSES_LDFLAGS = .*/NCURSES_LDFLAGS = -L\/home\/glaucus\/chroot\/lib -lterminfo/' \
+  -e 's/NCURSES_CFLAGS = .*/NCURSES_CFLAGS = -I\/home\/glaucus\/toolchain\/include/' \
+  -e 's/NCURSES_LDFLAGS = .*/NCURSES_LDFLAGS = -L\/home\/glaucus\/toolchain\/lib -lterminfo/' \
+  -e 's/$(DESTDIR)\///' \
   -i Makefile
 
 # build
@@ -22,5 +24,4 @@ make
 make \
   install
 
-cd $GLCD/bin
-ln -fsv $name ksh
+ln -fsv $name $TOOL/bin/ksh

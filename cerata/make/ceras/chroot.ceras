@@ -19,10 +19,8 @@ sed 's/find_in_given_path .*/find_in_given_path (argv[0], p, 1);/' \
 # configure
 ./bootstrap
 ./configure \
-  --prefix=$GLCD \
-  --build=$TUPL \
+  --prefix=$TOOL \
   --host=$TUPL \
-  --target=$TUPL \
   --disable-nls \
   --without-guile \
   --without-dmalloc
