@@ -3,23 +3,27 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-install -dv $CBLD/$ceras && cd $CBLD/$ceras
+prepare_chroot() {
+  install -dv $CBLD/$ceras
+  cd $CBLD/$ceras
+}
 
-# configure
-CFLAGS="$CFLAGSNOOPENMP" \
-$CERD/$name/$name-snapshots/configure \
-  --prefix=$TOOL \
-  --host=$TUPL
+configure_chroot() {
+  CFLAGS="$CFLAGSNOOPENMP" \
+  $CERD/$name/$name-snapshots/configure \
+    --prefix=$TOOL \
+    --host=$TUPL
+}
 
-# build
-make
+build_chroot() {
+  make
+}
 
-# install
-rsync -vah $CERD/$name/$name-snapshots/man . --delete
+install_chroot() {
+  rsync -vah $CERD/$name/$name-snapshots/man . --delete
+  
+  make \
+    install
 
-make \
-  install
-
-# for compatibility reasons
-ln -fsv $name $TOOL/bin/awk
+  ln -fsv $name $TOOL/bin/awk
+}

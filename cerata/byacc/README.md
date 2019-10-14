@@ -26,36 +26,3 @@ Berkeley Yacc LALR parser generator is the best variant of the Unix
 
 ## License
 * PD
-
-## Prepare
-```shell
-mkdir -v $SBLD/$name
-cd $SBLD/$name
-```
-
-## Configure
-```shell
-$CERD/$name/$name/configure \
-  --prefix=/usr \
-  --program-prefix=b \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL
-```
-
-## Build
-```shell
-make
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
-```
-
-```shell
-cd $SCER/$name/sac/usr/bin
-ln -fsv $name yacc
-```

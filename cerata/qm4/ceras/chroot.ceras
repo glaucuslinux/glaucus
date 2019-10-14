@@ -3,25 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/m4-2/ $CSRC/$name --delete
-cd $CSRC/$name
+prepare_chroot() {
+  rsync -vah $CERD/$name/m4-2/ $CSRC/$name --delete
+  cd $CSRC/$name
+}
 
-# configure
+configure_chroot() {
+  sed -e "s/(BINDIR)\/m4/(BINDIR)\/$name/" \
+    -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$name.1/" \
+    -i Makefile
+}
 
-# this should fix the process of copying both the M4 binary and manual page,
-# and would prevent the need for specifying $PROG
-sed -e "s/(BINDIR)\/m4/(BINDIR)\/$name/" \
-  -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$name.1/" \
-  -i Makefile
+build_chroot() {
+  make
+}
 
-# build
-make
+install_chroot() {
+  make \
+    PREFIX=$TOOL \
+    install
 
-# install
-make \
-  PREFIX=$TOOL \
-  install
-
-# beware as this would conflict both GNU M4 and OpenBSD M4
-ln -fsv $name $TOOL/bin/m4
+  ln -fsv $name $TOOL/bin/m4
+}

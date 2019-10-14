@@ -3,22 +3,27 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $CSRC --delete
-cd $CSRC/$name
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $CSRC --delete
+  cd $CSRC/$name
+}
 
-# configure
-./autogen.sh
-./configure \
-  --prefix=$TOOL \
-  --host=$TUPL \
-  --disable-static
+configure_chroot() {
+  ./autogen.sh
 
-# build
-make
+  ./configure \
+    --prefix=$TOOL \
+    --host=$TUPL \
+    --disable-static
+}
 
-# install
-make \
-  install-strip
+build_chroot() {
+  make
+}
 
-ln -fsv $name $TOOL/bin/sh
+install_chroot() {
+  make \
+    install-strip
+
+  ln -fsv $name $TOOL/bin/sh
+}

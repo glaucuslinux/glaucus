@@ -3,20 +3,23 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
-cd $TSRC/$name
+prepare_native() {
+  rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+  cd $TSRC/$name
+}
 
-# configure and build
-make \
-  HAVE_THREAD=1 \
-  ZSTD_LEGACY_SUPPORT=0 \
-  HAVE_ZLIB=0 \
-  HAVE_LZMA=0 \
-  HAVE_LZ4=0 \
-  BACKTRACE=0
+build_native() {
+  make \
+    HAVE_THREAD=1 \
+    ZSTD_LEGACY_SUPPORT=0 \
+    HAVE_ZLIB=0 \
+    HAVE_LZMA=0 \
+    HAVE_LZ4=0 \
+    BACKTRACE=0
+}
 
-# install
-make \
-  PREFIX=$TOOL \
-  install
+install_native() {
+  make \
+    PREFIX=$TOOL \
+    install
+}

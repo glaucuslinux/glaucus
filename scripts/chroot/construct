@@ -5,6 +5,11 @@ construct() {
   for ceras in $@; do
     . $CERD/$(echo $ceras | sed s/_.//)/ceras/ceras
     . $CERD/$(echo $ceras | sed s/_.//)/ceras/chroot.ceras
+
+    prepare_chroot || { echo chroot $ceras prepare failed; exit $?; }
+    configure_chroot || { echo chroot $ceras configure failed; exit $?; }
+    build_chroot || { echo chroot $ceras build failed; exit $?; }
+    install_chroot || { echo chroot $ceras install failed; exit $?; }
   done
 }
 

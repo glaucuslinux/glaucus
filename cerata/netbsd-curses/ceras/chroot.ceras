@@ -3,12 +3,13 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $CSRC --delete
-cd $CSRC/$name
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $CSRC --delete
+  cd $CSRC/$name
+}
 
-# configure
-cat > config.mak << EOF
+configure_chroot() {
+  cat > config.mak << EOF
 PREFIX = $TOOL
 AR = $AR
 AWK = $AWK
@@ -18,16 +19,19 @@ CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
 
-sed 's/-O0 //' \
-  -i GNUmakefile
+  sed 's/-O0 //' \
+    -i GNUmakefile
+}
 
-# build
-make \
-  all-dynamic
+build_chroot() {
+  make \
+    all-dynamic
+}
 
-# install
-make \
-  install-dynamic
+install_chroot() {
+  make \
+    install-dynamic
 
-cd $TOOL/lib
-$STRIP -v libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
+  cd $TOOL/lib
+  $STRIP -v libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
+}

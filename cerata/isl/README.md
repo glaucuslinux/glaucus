@@ -23,29 +23,3 @@ linear constraints
 
 ## License
 * MIT
-
-## Prepare Toolchain
-```shell
-rsync -vah $CERD/$name/$name $TSRC --delete
-cd $TSRC/$name
-```
-
-## Configure Toolchain
-```shell
-./autogen.sh
-./configure \
-  --prefix=$TOOL \
-  --disable-static \
-  --with-gmp=$TOOL
-```
-
-## Build Toolchain
-```shell
-make
-```
-
-## Install Toolchain
-```shell
-make \
-  install-strip
-```

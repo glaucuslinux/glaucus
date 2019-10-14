@@ -3,27 +3,31 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $CSRC --delete
-cd $CSRC/$name
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $CSRC --delete
+  cd $CSRC/$name
 
-sed -e '/types/,+1d' \
-  -e '/endif/d' \
-  -i ls.c tar.c
+  sed -e '/types/,+1d' \
+    -e '/endif/d' \
+    -i ls.c tar.c
+}
 
-# configure
-sed -e "s/^PREFIX = .*/PREFIX = \\$TOOL/" \
-  -e "s/AR = .*/AR = $AR/" \
-  -e "s/CC = .*/CC = $TUPL-gcc/" \
-  -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
-  -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \
-  -e "/CPPFLAGS/ s/$/ -I\\$TOOL\/usr\/include/" \
-  -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
-  -i config.mk
+configure_chroot() {
+  sed -e "s/^PREFIX = .*/PREFIX = \\$TOOL/" \
+    -e "s/AR = .*/AR = $AR/" \
+    -e "s/CC = .*/CC = $TUPL-gcc/" \
+    -e "s/RANLIB = .*/RANLIB = $RANLIB/" \
+    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic/" \
+    -e "/CPPFLAGS/ s/$/ -I\\$TOOL\/usr\/include/" \
+    -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
+    -i config.mk
+}
 
-# build
-make
+build_chroot() {
+  make
+}
 
-# install
-make \
-  install
+install_chroot() {
+  make \
+    install
+}

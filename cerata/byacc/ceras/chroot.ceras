@@ -3,21 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-install -dv $CBLD/$name && cd $CBLD/$name
+prepare_chroot() {
+  install -dv $CBLD/$name
+  cd $CBLD/$name
+}
 
-# configure
-$CERD/$name/$name/configure \
-  --prefix=$TOOL \
-  --program-prefix=b \
-  --host=$TUPL
+configure_chroot() {
+  $CERD/$name/$name/configure \
+    --prefix=$TOOL \
+    --program-prefix=b \
+    --host=$TUPL
+}
 
-# build
-make
+build_chroot() {
+  make
+}
 
-# install
-make \
-  install
+install_chroot() {
+  make \
+    install
 
-# for compatibility purposes
-ln -fsv $name $TOOL/bin/yacc
+  ln -fsv $name $TOOL/bin/yacc
+}

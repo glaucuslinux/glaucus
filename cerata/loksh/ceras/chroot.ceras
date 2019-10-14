@@ -3,25 +3,29 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $CSRC --delete
-cd $CSRC/$name
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $CSRC --delete
+  cd $CSRC/$name
+}
 
-# configure
-sed -e "s/CC ?= .*/CC = $TUPL-gcc/" \
-  -e '/DESTDIR ?= .*/d' \
-  -e 's/PREFIX ?= .*/PREFIX = \/home\/glaucus\/toolchain/' \
-  -e 's/BIN_NAME ?= .*/BIN_NAME = loksh/' \
-  -e 's/NCURSES_CFLAGS = .*/NCURSES_CFLAGS = -I\/home\/glaucus\/toolchain\/include/' \
-  -e 's/NCURSES_LDFLAGS = .*/NCURSES_LDFLAGS = -L\/home\/glaucus\/toolchain\/lib -lterminfo/' \
-  -e 's/$(DESTDIR)\///' \
-  -i Makefile
+configure_chroot() {
+  sed -e "s/CC ?= .*/CC = $TUPL-gcc/" \
+    -e '/DESTDIR ?= .*/d' \
+    -e 's/PREFIX ?= .*/PREFIX = \/home\/glaucus\/toolchain/' \
+    -e 's/BIN_NAME ?= .*/BIN_NAME = loksh/' \
+    -e 's/NCURSES_CFLAGS = .*/NCURSES_CFLAGS = -I\/home\/glaucus\/toolchain\/include/' \
+    -e 's/NCURSES_LDFLAGS = .*/NCURSES_LDFLAGS = -L\/home\/glaucus\/toolchain\/lib -lterminfo/' \
+    -e 's/$(DESTDIR)\///' \
+    -i Makefile
+}
 
-# build
-make
+build_chroot() {
+  make
+}
 
-# install
-make \
-  install
+install_chroot() {
+  make \
+    install
 
-ln -fsv $name $TOOL/bin/ksh
+  ln -fsv $name $TOOL/bin/ksh
+}
