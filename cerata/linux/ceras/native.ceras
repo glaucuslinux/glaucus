@@ -18,11 +18,11 @@ prepare_native() {
 }
 
 configure_native() {
-  ;
+  :
 }
 
 build_native() {
-  ;
+  :
 }
 
 install_native() {
