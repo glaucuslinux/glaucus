@@ -17,6 +17,14 @@ prepare_native() {
     headers_check
 }
 
+configure_native() {
+  ;
+}
+
+build_native() {
+  ;
+}
+
 install_native() {
   make \
     O=$NBLD/$name \

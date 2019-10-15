@@ -8,6 +8,10 @@ prepare_native() {
   cd $TSRC/$name
 }
 
+configure_native() {
+  ;
+}
+
 build_native() {
   make \
     HAVE_THREAD=1 \
