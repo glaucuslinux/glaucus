@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-mkdir -v $SBLD/$name
-rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config --delete
+install -dv $SBLD/$name
+install -v $CERD/$name/glaucus.config $SBLD/$name/.config --delete
 
 cd $CERD/$name/$name
 

@@ -13,8 +13,12 @@ construct() {
   done
 }
 
-construct mawk byacc
-construct dash
+construct qm4 #om4
 construct netbsd-curses loksh
-construct qm4 make
-construct sbase lobase
+construct dash
+construct byacc
+construct toybox
+construct file
+construct mawk
+construct gettext-tiny
+construct make

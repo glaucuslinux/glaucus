@@ -1,0 +1,13 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=toybox
+version=git
+release=1
+arch=x86_64
+url=https://github.com/landley/$name
+cyst=musl
+description='All-in-one Linux command line'
+license=BSDv2

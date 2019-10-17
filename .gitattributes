@@ -12,7 +12,12 @@ cerata/*/ceras/ceras linguist-language=Shell
 
 cerata/smdev/config.h linguist-language=C
 
+scripts/chroot/backup linguist-language=Shell
+scripts/chroot/clean linguist-language=Shell
+scripts/chroot/construct linguist-language=Shell
+scripts/chroot/log linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
+scripts/chroot/root linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
 
 scripts/system/variables linguist-language=Shell

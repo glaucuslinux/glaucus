@@ -1,4 +1,4 @@
-# bin86
+# binutils
 
 ## Name
 binutils
@@ -19,7 +19,8 @@ https://sourceware.org/git/binutils-gdb.git
 * musl
 
 ## Description
-The GNU assembler, linker and binary utilities necessary to assemble and manipulate binary and object files
+The GNU assembler, linker and binary utilities necessary to assemble and
+manipulate binary and object files
 
 ## Licenses
 * FDLv1.3+

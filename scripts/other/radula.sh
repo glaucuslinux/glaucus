@@ -6,7 +6,7 @@
 CERD=/home/glaucus/cerata
 
 if [ ! -d $CERD/$1 ]; then
-  mkdir -pv $CERD/$1/ceras
+  install -dv $CERD/$1/ceras
   cd $CERD/$1/ceras
 
   cat > ceras << EOF
@@ -31,27 +31,31 @@ EOF
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
+prepare_system() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
+}
 
-# configure
-./configure \
-  --prefix=/usr \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL
+configure_system() {
+  ./configure \
+    --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL
+}
 
-# build
-make
+build_system() {
+  make
+}
 
-# install
-make \
-  DESTDIR=$SCER/$name/sac \
-  install-strip
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
+}
 EOF
 
-  cat > README.md << EOF
+  cat > ../README.md << EOF
 # $1
 
 ## Name

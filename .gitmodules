@@ -340,6 +340,9 @@
 [submodule "cerata/swaybg/swaybg"]
 	path = cerata/swaybg/swaybg
 	url = https://github.com/swaywm/swaybg
+[submodule "cerata/toybox/toybox"]
+	path = cerata/toybox/toybox
+	url = https://github.com/landley/toybox
 [submodule "cerata/ubase/ubase"]
 	path = cerata/ubase/ubase
 	url = https://git.suckless.org/ubase
