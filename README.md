@@ -40,11 +40,7 @@ repositories for all cerata
 * skarnet's latest s6-rc service manager for s6 [(glaucus-s6-boot-scripts)](
 https://github.com/firasuke/glaucus-s6-boot-scripts)
 
-* replaced GNU Core Utilities with:
-  1. suckless base (sbase)
-  2. unportable base (ubase)
-  3. OpenBSD `ls`, `pax`, `stty`, `diff`, `fmt`, `patch` and `sort` from
-OpenBSD's userland port to Linux (lobase)
+* toybox
 
 * OpenBSD's `ksh` ported to Linux (`loksh`) as the main user shell (much lighter
 and faster (around 2.5x) than `bash`, and still manages to support
@@ -60,7 +56,7 @@ lightweight)
 * LibreSSL
 
 * And many more lightweight and suckless software (`mawk`, `byacc`, `re2c`,
-nnn...)
+`nnn`...)
 
 * Adheres to the latest FHS standards, with a minimal and clean root filesystem
 
@@ -303,6 +299,8 @@ https://github.com/jhuntwork/lightcube-bootstrap-musl)
 * [Spark](https://fleshless.org/pages/spark.html)
 
 * [static linux (stali)](http://sta.li)
+
+* [T2](https://t2sde.org)
 
 * [tomsrtbt](http://www.toms.net/rb/)
 

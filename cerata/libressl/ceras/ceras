@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=libressl
+version=git
+release=1
+arch=x86-64
+url=https://github.com/$name-portable/portable
+cysts='musl mawk'
+description='A free version of the TLS/crypto stack forked from OpenSSL with a
+modern codebase and improved security'
+licenses='Apachev1.0 BSDv4 GPLv2+ GPLv3+ ISC OpenSSL PD SSLeay'

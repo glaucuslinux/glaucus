@@ -5,25 +5,17 @@
 
 prepare_chroot() {
   rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
-  rsync -vah $CERD/gnulib/gnulib $CSRC/$name --delete --exclude=.$version
   cd $CSRC/$name
-
-  sed 's/find_in_given_path .*/find_in_given_path (argv[0], p, 1);/' \
-    -i src/job.c
 }
 
 configure_chroot() {
-  ./bootstrap
+  autoreconf -vfi
 
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
-
-  sed 's/-Werror //' \
-    -i Makefile
+    --disable-libseccomp \
+    --enable-fsect-man5
 }
 
 build_chroot() {

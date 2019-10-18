@@ -4,29 +4,26 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  cd $SSRC/$name
 }
 
 configure_chroot() {
   cat > config.mak << EOF
-PREFIX = $TOOL
-AR = $AR
-RANLIB = $RANLIB
-CFLAGS = $CFLAGS
-LDFLAGS = $LDFLAGS
+prefix=$TOOL
+LIBINTL=MUSL
+AR=$AR
+RANLIB=$RANLIB
+CFLAGS=$CFLAGS
+LDFLAGS=$LDFLAGS
 EOF
-
-  sed 's/-O0 //' \
-    -i GNUmakefile
 }
 
 build_chroot() {
-  make \
-    all-dynamic
+  make
 }
 
 install_chroot() {
   make \
-    install-dynamic
+    install
 }

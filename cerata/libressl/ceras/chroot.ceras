@@ -1,0 +1,37 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_chroot() {
+  rsync -vah $CERD/$name/portable/ $CSRC/$name --delete --exclude=.$version
+  rsync -vah $CERD/$name/openbsd $CSRC/$name --delete --exclude=.$version
+  cd $CSRC/$name
+}
+
+configure_chroot() {
+  ./autogen.sh
+
+  sed -e "s/USER_CFLAGS=.*/USER_CFLAGS=\"$CFLAGS\"/" \
+    -e "s/CFLAGS=\"-g\"/CFLAGS=\"$CFLAGS\"/" \
+    -e "s/CFLAGS=\"-g -O2\"/CFLAGS=\"$CFLAGS\"/" \
+    -e "s/CFLAGS=\"-O2\"/CFLAGS=\"$CFLAGS\"/" \
+    -i configure
+
+  ./configure \
+    --prefix=$TOOL \
+    --host=$TUPL \
+    --disable-static
+
+  sed 's/tests //' \
+    -i Makefile
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  make \
+    install-strip
+}
