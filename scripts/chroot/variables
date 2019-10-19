@@ -31,6 +31,8 @@ export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
 
 export TOOL=/toolchain
-export PATH=$TOOL/bin:/usr/bin
+
+export PATH=$TOOL/bin:$TOOL/usr/bin:/usr/bin
+export LD_LIBRARY_PATH=$TOOL/lib
 
 export MAKEFLAGS=-j1

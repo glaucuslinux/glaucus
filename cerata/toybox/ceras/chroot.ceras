@@ -19,7 +19,6 @@ build_chroot() {
 }
 
 install_chroot() {
-  LD_LIBRARY_PATH=$TOOL/lib \
   make \
     PREFIX=$TOOL \
     install
