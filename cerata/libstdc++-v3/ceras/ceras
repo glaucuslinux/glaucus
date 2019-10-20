@@ -9,4 +9,4 @@ release=1
 arch=x86-64
 url=https://gcc.gnu.org/$version/gcc/trunk/$name
 description='The GNU Standard C++ Library v3'
-licenses='FDLv1.3+ GPLv3+'
+licenses='GPL-3.0-only GPL-3.0-with-GCC-exception'

@@ -26,4 +26,4 @@ A port of the OpenBSD ksh to Linux
 core
 
 ## License
-* PD
+* CC-PDDC

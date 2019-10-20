@@ -10,4 +10,4 @@ arch=x86-64
 url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name
 description='The Linux kernel and modules'
 cluster=core
-license=GPLv2
+license=GPL-2.0-only

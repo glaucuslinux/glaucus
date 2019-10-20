@@ -12,4 +12,4 @@ description='An implementation of the standard library functionality described
 in the ISO C and POSIX standards, plus common extensions, intended for use on
 Linux-based systems'
 cluster=core
-licenses='BSDv2 LGPLv2.1+ MIT PD'
+license=MIT

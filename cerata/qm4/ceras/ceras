@@ -10,5 +10,6 @@ arch=x86_64
 url=http://haddonthethird.net/m4/m4-2.tar.bz2
 checksum=25c9e82c39f6af528459bcf3ae29775dce12bdfecc98280c8461cf47f89cacd09d04ade09001048b21fbf09fba7988a9b183f40a60c2abdb6c38655f7d5a0868
 cyst=musl
-description='Quasar M4 is an attempt to provide a drop-in replacement for the GNU implementation of the M4 macro language'
-license='BSDv0 BSDv2 BSDv3 BSDv4'
+description='Quasar M4 is an attempt to provide a drop-in replacement for the
+GNU implementation of the M4 macro language'
+licenses='0BSD BSD-2-Clause BSD-3-Clause BSD-4-Clause'

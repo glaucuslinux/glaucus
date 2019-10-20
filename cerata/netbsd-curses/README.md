@@ -21,6 +21,6 @@ https://github.com/sabotage-linux/netbsd-curses
 ## Description
 A port of NetBSD's curses library for usage on Linux systems
 
-## License
-* BSDv2
-* BSDv3
+## Licenses
+* BSD-2-Clause
+* BSD-3-Clause

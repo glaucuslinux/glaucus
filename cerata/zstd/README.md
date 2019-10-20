@@ -22,5 +22,5 @@ https://github.com/facebook/zstd
 Zstandard - Fast real-time compression algorithm
 
 ## Licenses
-* BSDv3
-* GPLv2+
+* BSD-3-Clause
+* GPL-2.0-only

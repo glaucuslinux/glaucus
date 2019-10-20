@@ -13,4 +13,4 @@ cyst=musl
 description='Berkeley Yacc LALR parser generator is the best variant of the Unix
 Yacc LALR parser generator'
 cluster=core
-license=PD
+license=Unlicense

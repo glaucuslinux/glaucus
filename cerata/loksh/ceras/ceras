@@ -11,4 +11,4 @@ url=https://github.com/dimkr/$name
 cysts='musl netbsd-curses'
 description='A port of the OpenBSD ksh to Linux'
 cluster=core
-license=PD
+license=CC-PDDC

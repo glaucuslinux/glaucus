@@ -22,6 +22,5 @@ A free library for arbitrary multiprecision arithmetic, operating on signed
 integers, rational numbers, and floating-point numbers
 
 ## Licenses
-* GPLv2+
-* LGPLv3+
-* PD
+* GPL-3.0-only
+* LGPL-3.0-only

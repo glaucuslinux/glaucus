@@ -10,4 +10,4 @@ arch=x86-64
 url=https://gmplib.org/repo/$name
 description='A free library for arbitrary multiprecision arithmetic, operating
 on signed integers, rational numbers, and floating-point numbers'
-licenses='GPLv2+ LGPLv3+ PD'
+licenses='GPL-3.0-only LGPL-3.0-only'

@@ -23,9 +23,10 @@ The GNU assembler, linker and binary utilities necessary to assemble and
 manipulate binary and object files
 
 ## Licenses
-* FDLv1.3+
-* GPLv2+
-* GPLv3+
-* LGPLv2.1+
-* LGPLv3+
-* PD
+* BSL-1.0
+* GPL-2.0-only
+* GPL-3.0-only
+* GPL-3.0-or-later
+* LGPL-2.0-only
+* LGPL-2.1-only
+* LGPL-3.0-only

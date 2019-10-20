@@ -3,11 +3,11 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libarchive
+name=re2c
 version=git
 release=1
 arch=x86-64
-url=https://github.com/$name/$name
-cysts='musl mawk'
-description='Multi-format archive and compression library'
-license=BSD-2-Clause
+url=https://github.com/skvadrik/$name
+cyst='musl mawk'
+description='Free and open-source lexer generator for C and C++'
+license=Unlicense

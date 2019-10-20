@@ -21,4 +21,4 @@ https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 The Linux kernel and modules
 
 ## License
-* GPLv2
+* GPL-2.0-only

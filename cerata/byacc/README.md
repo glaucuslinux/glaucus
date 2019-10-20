@@ -25,4 +25,4 @@ ftp://ftp.invisible-island.net/byacc/byacc-20190617.tgz
 Berkeley Yacc LALR parser generator is the best variant of the Unix
 
 ## License
-* PD
+* Unlicense

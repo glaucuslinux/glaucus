@@ -23,6 +23,7 @@ A portable library written in C for arbitrary precision arithmetic on
 floating-point numbers
 
 ## Licenses
-* LGPLv2.1+
-* LGPLv3.0+
-* PD
+* GPL-3.0-only
+* GPL-3.0-or-later
+* LGPL-3.0-only
+* LGPL-3.0-or-later

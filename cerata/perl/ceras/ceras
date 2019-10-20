@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=perl
+version=git
+release=1
+arch=x86_64
+url=https://perl5.$version.$name.org/$name
+cyst=musl
+description='A highly capable, feature-rich programming language'
+licenses='Artistic-1.0-Perl Artistic-2.0 BSD-3-Clause GPL-1.0-only
+GPL-1.0-or-later GPL-2.0-only GPL-2.0-or-later MIT bzip2-1.0.6'

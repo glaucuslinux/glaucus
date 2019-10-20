@@ -22,8 +22,5 @@ An implementation of the standard library functionality described in the ISO C
 and POSIX standards, plus common extensions, intended for use on Linux-based
 systems
 
-## Licenses
-* BSDv2
-* LGPLv2.1+
+## License
 * MIT
-* PD

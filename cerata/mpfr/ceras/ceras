@@ -11,4 +11,4 @@ url=https://scm.gforge.inria.fr/anonscm/$version/$name/trunk
 cyst=gmp
 description='A portable library written in C for arbitrary precision arithmetic
 on floating-point numbers'
-licenses='LGPLv2.1+ LGPLv3.0+ PD'
+licenses='GPL-3.0-only GPL-3.0-or-later LGPL-3.0-only LGPL-3.0-or-later'

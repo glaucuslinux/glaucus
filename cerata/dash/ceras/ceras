@@ -11,4 +11,4 @@ url=https://$version.kernel.org/pub/scm/utils/$name/$name
 cysts='musl mawk'
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 cluster=core
-licenses='BSDv3 GPLv2+ PD'
+licenses='BSD-3-Clause CC-PDDC GPL-2.0-only'

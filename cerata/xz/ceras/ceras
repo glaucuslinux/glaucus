@@ -11,4 +11,4 @@ url=https://$version.tukaani.org/$name.$version
 cysts='musl mawk'
 description='A free general-purpose data compression software with a high
 compression ratio'
-licenses='GPLv2+ GPLv3+ LGPLv2.1+ PD'
+licenses='CC-PDDC GPL-2.0-only GPL-3.0-only LGPL-2.1-only'

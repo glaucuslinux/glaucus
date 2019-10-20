@@ -24,6 +24,6 @@ The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD
 Almquist shell
 
 ## Licenses
-* BSDv3
-* GPLv2+
-* PD
+* BSD-3-Clause
+* CC-PDDC
+* GPL-2.0-only

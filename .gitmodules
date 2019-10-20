@@ -55,6 +55,9 @@
 [submodule "cerata/gnulib/gnulib"]
 	path = cerata/gnulib/gnulib
 	url = https://git.savannah.gnu.org/git/gnulib
+[submodule "cerata/gzip/gzip"]
+	path = cerata/gzip/gzip
+	url = https://git.savannah.gnu.org/git/gzip
 [submodule "cerata/harfbuzz/harfbuzz"]
 	path = cerata/harfbuzz/harfbuzz
 	url = https://github.com/harfbuzz/harfbuzz
@@ -382,3 +385,6 @@
 [submodule "cerata/zstd/zstd"]
 	path = cerata/zstd/zstd
 	url = https://github.com/facebook/zstd
+[submodule "cerata/perl/perl"]
+	path = cerata/perl/perl
+	url = https://perl5.git.perl.org/perl

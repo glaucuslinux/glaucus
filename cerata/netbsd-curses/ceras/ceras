@@ -11,4 +11,4 @@ url=https://github.com/sabotage-linux/$name
 cyst=musl
 description="A port of NetBSD's curses library for usage on Linux systems"
 cluster=core
-licenses='BSDv2 BSDv3'
+licenses='BSD-2-Clause BSD-3-Clause'

@@ -3,11 +3,11 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libarchive
+name=python
 version=git
 release=1
 arch=x86-64
-url=https://github.com/$name/$name
-cysts='musl mawk'
-description='Multi-format archive and compression library'
-license=BSD-2-Clause
+url=https://github.com/$name/c$name
+cysts='musl expat libffi'
+description='The Python programming language'
+license=Python-2.0

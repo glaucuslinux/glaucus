@@ -10,4 +10,4 @@ arch=x86-64
 url=https://github.com/$name/$name
 cysts='musl mawk'
 description='File type guesser that uses "magic" numbers to scan binary data for patterns'
-licenses='Apachev2.0 BSDv2 BSDv3 GPLv2+ GPLv3+'
+license=BSD-2-Clause

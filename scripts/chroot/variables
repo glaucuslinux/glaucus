@@ -13,6 +13,13 @@ export CTMP=$GLAD/temporary/chroot
 export CBLD=$CTMP/builds
 export CSRC=$CTMP/sources
 
+export TOOL=/toolchain
+
+export PATH=$TOOL/bin:$TOOL/usr/bin:/usr/bin
+export LD_LIBRARY_PATH=$TOOL/lib
+
+export MAKEFLAGS=-j1
+
 export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
@@ -29,10 +36,3 @@ export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta
 export CPPFLAGS="-I$TOOL/include"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
-
-export TOOL=/toolchain
-
-export PATH=$TOOL/bin:$TOOL/usr/bin:/usr/bin
-export LD_LIBRARY_PATH=$TOOL/lib
-
-export MAKEFLAGS=-j1

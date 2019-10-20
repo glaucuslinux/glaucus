@@ -1,3 +1,8 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
 name=zstd
 version=git
 release=1
@@ -5,4 +10,4 @@ arch=x86-64
 url=https://github.com/facebook/$name
 cyst=musl
 description='Zstandard - Fast real-time compression algorithm'
-licenses='BSDv3 GPLv2+'
+licenses='BSD-3-Clause GPL-2.0-only'

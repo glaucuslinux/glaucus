@@ -24,7 +24,5 @@ A C library for the arithmetic of complex numbers with arbitrarily high
 precision and correct rounding of the result
 
 ## Licenses
-* GFDLv1.3+
-* LGPLv2.1+
-* LGPLv3.0+
-* PD
+* LGPL-3.0-only
+* LGPL-3.0-or-later
