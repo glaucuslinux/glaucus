@@ -1,11 +1,7 @@
-name=bzip2
-version=git
-release=1
-arch=x86-64
-url=$version://sourceware.org/$version/$name
-cyst=musl
-description='A freely available, patent free, high-quality data compressor'
-license=BSDv3
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
@@ -19,7 +15,6 @@ configure_system() {
 
 build_system() {
   make \
-    CC="$CC" \
     CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
     -f Makefile-libbz2_so
 
@@ -27,16 +22,16 @@ build_system() {
     clean
 
   make \
-    AR=$AR \
-    CC="$CC" \
+    AR="$AR" \
     RANLIB=$RANLIB \
     CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
     LDFLAGS="$LDFLAGS"
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/share/man/man1
+  install -dv /usr/share/man/man1
+  
   make \
-    PREFIX=$SCER/$name/sac/usr \
+    PREFIX=/usr \
     install
 }

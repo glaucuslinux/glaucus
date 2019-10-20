@@ -1,0 +1,13 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=libarchive
+version=git
+release=1
+arch=x86-64
+url=https://github.com/$name/$name
+cysts='musl mawk'
+description='Multi-format archive and compression library'
+license=BSDv3

@@ -1,0 +1,20 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+export NLOG=$TLOG/native
+export NBLD=$TTMP/native/builds
+
+export AR=$TUPL-ar
+export AS=$TUPL-as
+export CC=$TUPL-gcc
+export CPP="$TUPL-gcc -E"
+export CXX=$TUPL-g++
+export LD=$TUPL-ld
+export NM=$TUPL-nm
+export OBJCOPY=$TUPL-objcopy
+export OBJDUMP=$TUPL-objdump
+export RANLIB=$TUPL-ranlib
+export READELF=$TUPL-readelf
+export SIZE=$TUPL-size
+export STRINGS=$TUPL-strings
+export STRIP=$TUPL-strip

@@ -17,9 +17,12 @@ construct qm4 #om4
 construct netbsd-curses loksh
 construct dash
 construct byacc
+construct bzip2
 construct libressl
 construct toybox
 construct file
 construct mawk
 construct gettext-tiny
 construct make
+construct libarchive
+construct xz

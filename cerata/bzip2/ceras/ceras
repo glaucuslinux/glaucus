@@ -1,0 +1,13 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=bzip2
+version=git
+release=1
+arch=x86-64
+url=$version://sourceware.org/$version/$name
+cyst=musl
+description='A freely available, patent free, high-quality data compressor'
+license=BSDv3

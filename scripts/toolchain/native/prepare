@@ -1,0 +1,5 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+rm -frv $NBLD
+install -dv $NBLD

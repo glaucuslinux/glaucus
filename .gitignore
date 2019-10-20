@@ -72,5 +72,6 @@ toolchain/
 # directories above aren't excluded as well
 !scripts/chroot/
 !scripts/system/
+!scripts/toolchain/
 !scripts/toolchain/cross/
 !scripts/toolchain/native/

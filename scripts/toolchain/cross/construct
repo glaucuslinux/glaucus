@@ -1,0 +1,18 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+construct() {
+  for ceras in $@; do
+    . $CERD/$ceras/ceras/ceras
+    . $CERD/$ceras/ceras/cross.ceras
+    
+    prepare_cross || { echo cross $ceras prepare failed; exit $?; }
+    configure_cross || { echo cross $ceras configure failed; exit $?; }
+    build_cross || { echo cross $ceras build failed; exit $?; }
+    install_cross || { echo cross $ceras install failed; exit $?; }
+  done
+}
+
+construct binutils
+construct gmp mpfr mpc
+construct gcc

@@ -1,0 +1,8 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+sudo /usr/bin/rm -frv $TOOL $GLAT
+install -dv $GLAT
+sudo ln -fsv $GLAT $TOOL
+
+ln -fsv lib $TOOL/lib64

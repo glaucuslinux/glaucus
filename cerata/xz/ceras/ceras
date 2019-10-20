@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=xz
+version=git
+release=1
+arch=x86-64
+url=https://$version.tukaani.org/$name.$version
+cysts='musl mawk'
+description='A free general-purpose data compression software with a high
+compression ratio'
+licenses='GPLv2+ GPLv3+ LGPLv2.1+ PD'

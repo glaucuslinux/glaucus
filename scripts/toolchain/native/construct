@@ -1,0 +1,21 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+construct() {
+  for ceras in $@; do
+    . $CERD/$ceras/ceras/ceras
+    . $CERD/$ceras/ceras/native.ceras
+    
+    prepare_native || { echo native $ceras prepare failed; exit $?; }
+    configure_native || { echo native $ceras configure failed; exit $?; }
+    build_native || { echo native $ceras build failed; exit $?; }
+    install_native || { echo native $ceras install failed; exit $?; }
+  done
+}
+
+construct linux
+construct musl
+construct libstdc++-v3
+construct binutils
+construct gmp mpfr mpc isl zstd
+construct gcc
