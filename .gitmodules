@@ -280,6 +280,9 @@
 [submodule "cerata/pango/pango"]
 	path = cerata/pango/pango
 	url = https://gitlab.gnome.org/GNOME/pango
+[submodule "cerata/perl/perl"]
+	path = cerata/perl/perl
+	url = https://perl5.git.perl.org/perl
 [submodule "cerata/pixman/pixman"]
 	path = cerata/pixman/pixman
 	url = https://anongit.freedesktop.org/git/pixman
@@ -385,6 +388,3 @@
 [submodule "cerata/zstd/zstd"]
 	path = cerata/zstd/zstd
 	url = https://github.com/facebook/zstd
-[submodule "cerata/perl/perl"]
-	path = cerata/perl/perl
-	url = https://perl5.git.perl.org/perl

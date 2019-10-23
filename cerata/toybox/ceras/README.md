@@ -20,15 +20,21 @@ When compared to other tools, toybox lacks the following:
 2. Unportable Base (ubase): `mesg` (not `dmesg`), `blkdiscard`, `ctrlaltdel`,
 `lastlog`, `nologin`, `pagesize`, `respawn`, `swaplabel` and `vtallow`
 
-3. GNU Coreutils: `dir`, `dircolors`, `vdir`, `b2sum`, `base32`, `csplit`,
+3. Heirloom Base (hbase): `banner`, `bdiff`, `bfs`, `build`, `calendar`, `col`,
+`copy`, `csplit`, `dc`, `deroff`, `diff3`, `dircmp`, `ed`, `fmtmsg`, `getopt`,
+`hd`, `listusers`, `mesg`, `nawk`, `news`, `oawk`, `pg`, `pr`, `priocntl`,
+`psrinfo`, `random`, `sdiff`, `setpgrp`, `shl`, `spell`, `sum`, `tabs`,
+`tapecntl`, `tcopy`, `tsort`, `ul`, `units`, `users`, `what` and `whodo`
+
+4. GNU Coreutils: `dir`, `dircolors`, `vdir`, `b2sum`, `base32`, `csplit`,
 `join`, `numfmt`, `ptx`, `pr`, `shuf`, `tsort`, `unexpand`, `pathchk`, `pinky`,
 `stdbuf`, `users` and `[`
 
-4. Diffutils: `diff3` and `sdiff`
+5. Diffutils: `diff3` and `sdiff`
 
-5. Findutils: `locate` and `updatedb`
+6. Findutils: `locate` and `updatedb`
 
-6. Util-Linux: `addpart`, `agetty`, `blkdiscard`, `blkzone`, `cfdisk`, `chcpu`,
+7. Util-Linux: `addpart`, `agetty`, `blkdiscard`, `blkzone`, `cfdisk`, `chcpu`,
 `chfn`, `chmem`, `choom`, `chsh`, `col`, `colcrt`, `colrm`, `column`,
 `ctrlaltdel`, `delpart`, `fdformat`, `findfs`, `findmnt`, `fsck.cramfs`,
 `fsck.minix`, `fstrim`, `getopt`, `hardlink`, `hexdump`, `ipcmk`, `isosize`,
@@ -40,16 +46,20 @@ When compared to other tools, toybox lacks the following:
 toybox), `utmpdump`, `uuidd`, `uuidgen`, `uuidparse`, `vipw`, `wall`, `wdctl`,
 `whereis`, `wipefs`, `write` and `zramctl`
 
-It also has the following turned off by default:
+8. Utilities Chest (UtilChest): `pathchk`
+
+It also has the following turned off by default (mostly pending):
 
 1. Suckless Base (sbase): `cron`, `expr`, `fold`, `libcrypto` (shasums), `tftp`
 and `tr`
 
 2. Unportable Base (ubase): `last`, `getty` and `dd`
 
-3. GNU Coreutils: `chcon` (SELinux), `fold`, `tr`, `hostid` (example command),
+3. Heirloom Base (hbase): `bc`
+
+4. GNU Coreutils: `chcon` (SELinux), `fold`, `tr`, `hostid` (example command),
 `runcon` (SELinux) and `stty`
 
-4. Diffutils: `diff`
+5. Diffutils: `diff`
 
-5. Util-Linux: `fdisk`, `fsck`, `ipcrm`, `ipcs`, `last`, `more` and `sulogin`
+6. Util-Linux: `fdisk`, `fsck`, `ipcrm`, `ipcs`, `last`, `more` and `sulogin`
