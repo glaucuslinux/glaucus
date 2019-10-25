@@ -13,7 +13,10 @@ git
 x86-64
 
 ## URL
-https://perl5.git.perl.org/perl
+https://www.cpan.org/src/5.0/perl-5.30.0.tar.xz
+
+## Checksum
+68a295eccd64debd9d6a10f0d5577f872a19ad8c2d702798f6b0f45b8c3af6ab3230768056e2131e9e2e2506d1035b27cfd627c845e32263fe448649c4b98ae9
 
 ## Cyst
 * musl

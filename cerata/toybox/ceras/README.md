@@ -4,13 +4,16 @@ toybox replaces the following:
 1. GNU Coreutils
 2. Suckless Base (sbase)
 3. Unportable Base (ubase)
-4. OpenBSD userland port to Linux (lobase)
-5. Util-Linux
-6. Diffutils
-7. Findutils
-8. Grep
-9. Sed
-10. Patch
+4. Heirloom Base (hbase)
+5. OpenBSD userland port to Linux (lobase)
+6. Util-Linux
+7. Utilities Chest (UtilChest)
+8. Diffutils
+9. File
+10. Findutils
+11. Grep
+12. Sed
+13. Patch
 
 When compared to other tools, toybox lacks the following:
 

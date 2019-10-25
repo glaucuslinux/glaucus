@@ -3,12 +3,11 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=rsync
+name=texinfo
 version=git
 release=1
 arch=x86_64
-url=https://$version.samba.org/$name.$version
+url=https://$version.savannah.gnu.org/$version/$name
 cyst=musl
-description='An open source utility that provides fast incremental file
-transfer'
-licenses='GPL-3.0-only GPL-3.0-or-later X11'
+description='The official documentation format of the GNU project'
+licenses='GPL-3.0-only GPL-3.0-or-later LGPL-2.1-only MIT'

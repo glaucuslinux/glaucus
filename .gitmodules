@@ -280,9 +280,9 @@
 [submodule "cerata/pango/pango"]
 	path = cerata/pango/pango
 	url = https://gitlab.gnome.org/GNOME/pango
-[submodule "cerata/perl/perl"]
-	path = cerata/perl/perl
-	url = https://perl5.git.perl.org/perl
+[submodule "cerata/perl-cross/perl-cross"]
+	path = cerata/perl-cross/perl-cross
+	url = https://github.com/arsv/perl-cross
 [submodule "cerata/pixman/pixman"]
 	path = cerata/pixman/pixman
 	url = https://anongit.freedesktop.org/git/pixman
@@ -346,6 +346,9 @@
 [submodule "cerata/swaybg/swaybg"]
 	path = cerata/swaybg/swaybg
 	url = https://github.com/swaywm/swaybg
+[submodule "cerata/texinfo/texinfo"]
+	path = cerata/texinfo/texinfo
+	url = https://git.savannah.gnu.org/git/texinfo
 [submodule "cerata/toybox/toybox"]
 	path = cerata/toybox/toybox
 	url = https://github.com/landley/toybox

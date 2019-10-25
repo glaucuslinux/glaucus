@@ -9,7 +9,7 @@ description='A simple complete cross-development C assembler and linker which ca
 license=GPLv2+
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 
   patch -p0 -i $CERD/$name/patches/$name.patch

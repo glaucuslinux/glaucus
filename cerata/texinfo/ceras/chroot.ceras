@@ -4,15 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  install -dv $CBLD/$name
-  cd $CBLD/$name
+  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
+  cd $CSRC/$name
 }
 
 configure_chroot() {
-  $CERD/$name/$name-$version/configure \
+  ./autogen.sh
+
+  ./configure \
     --prefix=$TOOL \
-    --program-prefix=b \
-    --host=$TUPL
+    --host=$TUPL \
+    --disable-nls
 }
 
 build_chroot() {
@@ -21,7 +23,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
-
-  ln -fsv $name $TOOL/bin/yacc
+    install-strip
 }

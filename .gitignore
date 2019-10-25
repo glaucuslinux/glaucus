@@ -17,26 +17,26 @@
 
 
 # cerata that can't be added as git submodules
-cerata/argp-standalone/argp-standalone/
+cerata/argp-standalone/argp-standalone-1.4-test2/
 cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
 
-cerata/bin86/bin86/
+cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
-cerata/byacc/byacc/
+cerata/byacc/byacc-20190617/
 cerata/byacc/byacc-20190617.tgz
 
 cerata/gcc/trunk/
 
 cerata/gmp/gmp/
 
-cerata/less/less/
+cerata/less/less-551/
 cerata/less/less-551.tar.gz
 
-cerata/lilo/lilo/
+cerata/lilo/lilo-24.2/
 cerata/lilo/lilo-24.2.tar.gz
 
-cerata/mandoc/mandoc/
+cerata/mandoc/mandoc-1.14.5/
 cerata/mandoc/mandoc-1.14.5.tar.gz
 
 cerata/minised/trunk/
@@ -47,9 +47,12 @@ cerata/pcre/trunk/
 
 cerata/pcre2/trunk/
 
+cerata/perl/perl-5.30.0/
+cerata/perl/perl-5.30.0.tar.xz
+
 cerata/pypy/pypy/
 
-cerata/qm4/m4-2
+cerata/qm4/m4-2/
 cerata/qm4/m4-2.tar.bz2
 
 

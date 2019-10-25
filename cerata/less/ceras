@@ -9,7 +9,7 @@ description='A free, open-source and text-based terminal file pager'
 licenses='BSDv2 GPLv3+'
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 

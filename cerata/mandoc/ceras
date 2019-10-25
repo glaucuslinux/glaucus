@@ -8,7 +8,7 @@ cysts='musl zlib'
 description='A suite of tools compiling mdoc for BSD manual pages and man for UNIX manuals'
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
         cd $SSRC/$name
 cat > configure.local << EOF
 HAVE_WCHAR=1

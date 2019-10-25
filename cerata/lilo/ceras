@@ -9,7 +9,7 @@ description='Standard LInux boot LOader'
 licenses='BSDv3 GPLv2+ LGPLv2.1+'
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
   
   patch -p1 -i $CERD/$name/patches/$name.patch
