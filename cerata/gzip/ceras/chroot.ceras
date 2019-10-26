@@ -15,6 +15,9 @@ configure_chroot() {
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL
+
+  sed 's/-Werror//' \
+    -i config.status
 }
 
 build_chroot() {
