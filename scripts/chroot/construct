@@ -21,11 +21,11 @@ construct() {
 #construct libressl
 #construct toybox
 #construct mawk
-#construct gzip
-#construct gettext-tiny #gettext-tiny
+construct gettext-tiny
+construct gzip
 #construct make
 #construct perl
-construct python #pypy
+#construct python #pypy
 #construct libarchive
 #construct texinfo
 #construct xz
