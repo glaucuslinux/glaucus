@@ -42,12 +42,12 @@ https://github.com/firasuke/glaucus-s6-boot-scripts)
 
 * toybox
 
-* OpenBSD's `ksh` ported to Linux (`loksh`) as the main user shell (much lighter
-and faster (around 2.5x) than `bash`, and still manages to support
-auto-completion and command history).
+* Portable OpenBSD `ksh` (`oksh`) as the main user shell (much lighter and
+faster (around 2.5x) than `bash`, and still manages to support auto-completion
+and command history).
 
 * `dash` for running scripts (all system scripts are written in POSIX `dash`,
-which is only 1.8x faster than loksh) (you can even replace run dash alone if
+which is only 1.8x faster than `oksh`) (you can even replace run dash alone if
 you're an adventurer, but glaucus tries to stay convenient while being extremely
 lightweight)
 

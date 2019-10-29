@@ -4,14 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
+  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
   cd $CSRC/$name
 }
 
 configure_chroot() {
   ./configure \
     --prefix=$TOOL \
-    --host=$TUPL
+    --mandir=$TOOL/share/man \
+    --enable-curses \
+    --enable-ksh
+
+  sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
+    -i Makefile
 }
 
 build_chroot() {
@@ -20,5 +25,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install-strip
+    install
 }

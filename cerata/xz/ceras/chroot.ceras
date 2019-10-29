@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $CSRC --delete
   cd $CSRC/$name
 
   install -dv $CBLD/$name
@@ -30,4 +30,4 @@ build_chroot() {
 install_chroot() {
   make \
     install-strip
-  }
+}

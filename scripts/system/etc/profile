@@ -1,4 +1,4 @@
 export PS1="[\033[0;44m\u@\h\033[0m:\033[1m\w\033[0m]$ "
-export HISTFILE=$HOME.loksh_history
+export HISTFILE=$HOME.ksh_history
 export PAGER=/usr/bin/less
 alias ls='ls -F'

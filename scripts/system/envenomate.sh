@@ -29,7 +29,7 @@ envenomate mawk_1 byacc mawk_2
 envenomate skalibs execline s6 utmps
 envenomate sbase ubase lobase
 envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash loksh
+envenomate netbsd-curses procps dash oksh
 envenomate e2fsprogs
 envenomate linux
 envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts

@@ -13,3 +13,4 @@
 #. $CSCR/clean
 #. $CSCR/root
 #. $CSCR/backup
+#. $CSCR/vkfs

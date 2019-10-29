@@ -235,9 +235,6 @@
 [submodule "cerata/lobase/lobase"]
 	path = cerata/lobase/lobase
 	url = https://git.duncano.de/lobase
-[submodule "cerata/loksh/loksh"]
-	path = cerata/loksh/loksh
-	url = https://github.com/dimkr/loksh
 [submodule "cerata/make/make"]
 	path = cerata/make/make
 	url = https://git.savannah.gnu.org/git/make
@@ -268,6 +265,9 @@
 [submodule "cerata/nsss/nsss"]
 	path = cerata/nsss/nsss
 	url = https://skarnet.org/cgi-bin/cgit.cgi/nsss
+[submodule "cerata/oksh/oksh"]
+	path = cerata/oksh/oksh
+	url = https://github.com/ibara/oksh
 [submodule "cerata/om4/m4"]
 	path = cerata/om4/m4
 	url = https://github.com/ibara/m4
@@ -346,9 +346,6 @@
 [submodule "cerata/swaybg/swaybg"]
 	path = cerata/swaybg/swaybg
 	url = https://github.com/swaywm/swaybg
-[submodule "cerata/texinfo/texinfo"]
-	path = cerata/texinfo/texinfo
-	url = https://git.savannah.gnu.org/git/texinfo
 [submodule "cerata/toybox/toybox"]
 	path = cerata/toybox/toybox
 	url = https://github.com/landley/toybox

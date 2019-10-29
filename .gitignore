@@ -28,6 +28,9 @@ cerata/byacc/byacc-20190617.tgz
 
 cerata/gcc/trunk/
 
+cerata/gettext/gettext-0.20.1/
+cerata/gettext/gettext-0.20.1.tar.xz
+
 cerata/gmp/gmp/
 
 cerata/less/less-551/
@@ -54,6 +57,9 @@ cerata/pypy/pypy/
 
 cerata/qm4/m4-2/
 cerata/qm4/m4-2.tar.bz2
+
+cerata/texinfo/texinfo-6.7/
+cerata/texinfo/texinfo-6.7.tar.xz
 
 
 # the image resulting from the build process of system

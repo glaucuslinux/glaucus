@@ -14,19 +14,19 @@ construct() {
 }
 
 #construct qm4
-#construct netbsd-curses loksh
+#construct netbsd-curses oksh
 #construct dash
 #construct byacc
 #construct bzip2
 #construct libressl
 #construct toybox
 #construct mawk
-#construct gettext-tiny
 #construct gzip
+#construct gettext-tiny #gettext-tiny
 #construct make
 #construct perl
-#construct python #pypy
+construct python #pypy
 #construct libarchive
-construct texinfo
+#construct texinfo
 #construct xz
 #construct rsync

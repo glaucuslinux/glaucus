@@ -11,6 +11,8 @@ prepare_chroot() {
 
 configure_chroot() {
   ./bootstrap
+  
+  find . -name mdate-sh -type f -exec sed -i 's/ls -/\/usr\/bin\/ls -/' {} +
 
   ./configure \
     --prefix=$TOOL \

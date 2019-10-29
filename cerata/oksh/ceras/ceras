@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=loksh
+name=oksh
 version=git
 release=1
-arch=x86-64
-url=https://github.com/dimkr/$name
+arch=x86_64
+url=https://github.com/ibara/
 cysts='musl netbsd-curses'
-description='A port of the OpenBSD ksh to Linux'
-cluster=core
-license=CC-PDDC
+description='Portable OpenBSD ksh, based on the Public Domain Korn Shell
+(pdksh)'
+license=Unlicense
