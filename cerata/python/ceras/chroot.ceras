@@ -9,13 +9,18 @@ prepare_chroot() {
 }
 
 configure_chroot() {
+  sed '/def add_multiarch_paths/a \        return' \
+    -i setup.py
+
+  ax_cv_c_float_words_bigendian=no \
   ./configure \
     --prefix=$TOOL \
     --build=$TUPL \
     --host=$TUPL \
     --enable-optimizations \
     --disable-ipv6 \
-    --with-lto
+    --with-lto \
+    --without-ensurepip
 }
 
 build_chroot() {

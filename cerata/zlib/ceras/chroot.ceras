@@ -9,10 +9,8 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  CFLAGS="$CFLAGSNOOPENMP" \
-  $CERD/$name/$name-snapshots/configure \
-    --prefix=$TOOL \
-    --host=$TUPL
+  $CERD/$name/$name/configure \
+    --prefix=$TOOL
 }
 
 build_chroot() {
@@ -20,10 +18,6 @@ build_chroot() {
 }
 
 install_chroot() {
-  rsync -vah $CERD/$name/$name-snapshots/man . --delete
-  
   make \
     install
-
-  ln -fsv $name $TOOL/bin/awk
 }
