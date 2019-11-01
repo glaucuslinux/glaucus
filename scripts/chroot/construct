@@ -3,8 +3,8 @@
 
 construct() {
   for ceras in $@; do
-    . $CERD/$(echo $ceras | sed s/_.//)/ceras/ceras
-    . $CERD/$(echo $ceras | sed s/_.//)/ceras/chroot.ceras
+    . $CERD/$ceras/ceras/ceras
+    . $CERD/$ceras/ceras/chroot.ceras
 
     prepare_chroot || { echo chroot $ceras prepare failed; exit $?; }
     configure_chroot || { echo chroot $ceras configure failed; exit $?; }

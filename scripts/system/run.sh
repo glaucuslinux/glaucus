@@ -1,21 +1,14 @@
 #!/usr/bin/dash -ex
-. /home/glaucus/scripts/variables
-assign_basic_variables
-assign_system_variables
-. /home/glaucus/scripts/system/clean.sh
-. /home/glaucus/scripts/system/prepare.sh
-count=1
-while true
-do
-        file=$count
-        if [ -d $SLOG/$file ]
-        then
-                count=$(($count + 1))
-        else
-                break
-        fi
-done
-mkdir -v $SLOG/$file
-(dash /home/glaucus/scripts/system/envenomate.sh | tee $SLOG/$file/stdout.log) 3>&1 1>&2 2>&3 | tee $SLOG/$file/stderr.log
-. /home/glaucus/scripts/system/configure.sh
-sudo dash /home/glaucus/scripts/system/img.sh /home/glaucus/glaucus.img 256M
+
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+. /home/glaucus/scripts/system/variables
+. $SSCR/prepare
+. $SSCR/log
+
+(. $SSCR/envenomate | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
+  $SLOG/$log/err.log
+
+. $SSCR/configure
+. $SSCR/img $GLAD/glaucus.img 256M

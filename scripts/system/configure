@@ -1,0 +1,8 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+cd $SSCR/etc
+install -vm 644 fstab group hosts passwd profile shells -t /etc
+
+cd /etc/s6/run-image/service
+mkfifo -m 0600 s6-linux-init-shutdownd/fifo s6-svscan-log/fifo

@@ -1,0 +1,11 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+sudo rm -frv $SBLD $SCER /boot /etc /usr /var
+install -dv $SBLD $SCER /boot /etc /usr/bin /usr/cerata /usr/include /usr/lib \
+  /usr/share /var /var/lib /var/lib/urandom /var/log
+install -dvm 0750 /root
+
+install -Dv $TOOL/lib/libgcc_s.so.1 $TOOL/lib/libstdc++.so.6.0.28 -t /usr/lib
+strip -sv /usr/lib/libgcc_s.so.1 /usr/lib/libstdc++.so.6.0.28
+ln -fsv libstdc++.so.6.0.28 /usr/lib/libstdc++.so.6
