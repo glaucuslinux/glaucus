@@ -11,4 +11,5 @@
   $SLOG/$log/err.log
 
 . $SSCR/configure
+. $SSCR/clean
 . $SSCR/img $GLAD/glaucus.img 256M

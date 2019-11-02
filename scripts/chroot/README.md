@@ -55,3 +55,8 @@ since some packages have troubles with these two enabled
 Everything is stripped and all symbols are being removed
 
 Notice how LDFLAGS uses CFLAGS as well since we have LTO enabled
+
+## Root
+
+Adding a trailing slash `/` to the path `$TOOL` is essential for recursive to
+work, otherwise only the link's permissions will change.

@@ -3,28 +3,29 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-install -dv $SBLD/$name
-install -v $CERD/$name/glaucus.config $SBLD/$name/.config --delete
+prepare_system() {
+  install -dv $SBLD/$name
 
-cd $CERD/$name/$name
+  cd $CERD/$name/$name
 
-make \
-  mrproper
+  make \
+    mrproper
+}
 
-# configure
-make \
-  O=$SBLD/$name \
-  oldconfig
+configure_system() {
+  :
+}
 
-make \
-  O=$SBLD/$name \
-  prepare
+build_system() {
+  :
+}
 
-# build
-make \
-  O=$SBLD/$name
+install_system() {
+  make \
+    O=$SBLD/$name \
+    ARCH=$ARCH \
+    INSTALL_HDR_PATH=/usr \
+    headers_install
 
-# install
-install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
-install -v $SBLD/$name/System.map $SCER/$name/sac/boot
+  find /usr/include \( -name ..install.cmd -o -name .install \) -delete
+}

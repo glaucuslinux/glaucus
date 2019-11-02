@@ -89,3 +89,36 @@ for creating the dyanmic linker with sudo so that it installs in /usr/lib
 overwrite any existing musl dynamic linker, and it makes it possible to
 build without chrooting, so this will changed later as glaucus' graphics
 stack requires a separate chroot)
+
+## System
+
+### Configure
+
+CFLAGS are passed to configure and not as an environment variable.
+
+musl doesn't build with LTO enabled, which is shocking but true.
+
+here --prefix and --syslibdir are both given, since DESTDIR is also given
+this will produce the intended effect of being installed similary to all
+other cerata, however the resulting dynamic linker will be messed up and
+probably will point to the wrong path, but this is easily fixable.
+
+Remove both the symlink to the original Makefile and the system's musl
+dynamic linker (this is dangerous if you're already running a musl based
+distribution as it's assumed that the host is using glibc, so this shouldn't
+exist in the first place).
+
+We then copy the original makefile, and modify the command responsible
+for wrongly linking the resulting dynamic linker with the wrong libc.so, so
+that the dynamic linker it links to the resulting libc.so is located in the
+exact same location of the libc.so
+
+### install
+
+we then create a symlink to the dyanimc linker called ldd (list dynamic
+dependencies)
+
+and finish it off with stripping some resulting unstripped files
+we can also further remove all resulting `*.a` files, but those were left
+for compatibility purposes, and hopefully will soon be removed if everything
+builds fine without them

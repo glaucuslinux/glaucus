@@ -1,4 +1,6 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-sudo chown -R root:root $GLAT
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  chown -Rv root:root $TOOL/

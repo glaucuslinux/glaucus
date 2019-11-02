@@ -21,6 +21,7 @@ envenomate() {
   done
 }
 
+envenomate linux
 envenomate musl
 envenomate skalibs execline s6 utmps
 envenomate toybox

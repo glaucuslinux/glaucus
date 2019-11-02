@@ -3,7 +3,7 @@
 
 find $TOOL -name \*.la -delete
 
-/usr/bin/strip --strip-unneeded $TOOL/bin/*
 strip --strip-debug $TOOL/lib/*
+/usr/bin/strip --strip-unneeded $TOOL/bin/* $TOOL/sbin/*
 
 rm -frv $TOOL/share/doc $TOOL/share/info $TOOL/share/man

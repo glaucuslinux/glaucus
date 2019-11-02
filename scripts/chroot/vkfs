@@ -1,15 +1,30 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/run/shm $GLAD/sys
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys
 
-sudo mknod -m 600 $GLAD/dev/console c 5 1
-sudo mknod -m 666 $GLAD/dev/null c 1 3
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mknod -m 600 $GLAD/dev/console c 5 1
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mknod -m 666 $GLAD/dev/null c 1 3
 
-sudo mount -v --bind /dev $GLAD/dev
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mount -v --bind /dev $GLAD/dev
 
-sudo mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts
-sudo mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc
-sudo mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys
-sudo mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run
-sudo mount -vt tmpfs -o noatime,nodev,noexec,nosuid shm $GLAD/run/shm
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run
