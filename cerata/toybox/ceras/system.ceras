@@ -3,25 +3,23 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
+  
+  install -v $CERD/$name/glaucus.config .config
 }
 
-configure_system() {
-  ./configure \
-    --prefix=/usr \
-    --build=$TUPL \
-    --host=$TUPL \
-    --target=$TUPL
+configure_chroot() {
+  scripts/genconfig.sh
 }
 
-build_system() {
+build_chroot() {
   make
 }
 
-install_system() {
+install_chroot() {
   make \
-    DESTDIR=$SCER/$name/sac \
-    install-strip
+    PREFIX=$SCER/$name/sac \
+    install
 }

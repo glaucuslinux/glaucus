@@ -1,0 +1,37 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  cd $SSRC/$name
+}
+
+configure_system() {
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/libexec \
+    --with-sysdeps=/usr/lib/skalibs/sysdeps \
+    --with-include=/usr/include \
+    --with-dynlib=/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e 's/-Wl,--hash-style=both //' \
+    -i config.mak
+}
+
+build_system() {
+  make \
+    strip
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
+}

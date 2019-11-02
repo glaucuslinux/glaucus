@@ -3,12 +3,13 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
+name=skalibs
 version=git
 release=1
-arch=x86_64
-url=https://github.com/landley/$name
+arch=x86-64
+url=https://skarnet.org/cgi-bin/c$version.cgi/$name
 cyst=musl
-description='All-in-one Linux command line'
+description="skarnet's general purpose C libraries for system programming and
+small and secure C development"
 cluster=core
-license=BSDv2
+license=ISC

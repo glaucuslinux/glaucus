@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
+name=utmps
 version=git
 release=1
-arch=x86_64
-url=https://github.com/landley/$name
-cyst=musl
-description='All-in-one Linux command line'
+arch=x86-64
+url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+cysts='skalibs s6'
+description='A secure utmp/wtmp implementation'
 cluster=core
-license=BSDv2
+license=ISC

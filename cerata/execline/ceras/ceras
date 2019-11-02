@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=execline
+version=git
+release=1
+arch=x86-64
+url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+cysts='musl skalibs'
+description='A small and non-interactive scripting language, like sh; but with
+different syntax'
+cluster=core
+license=ISC

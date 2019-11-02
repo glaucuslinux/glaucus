@@ -1,24 +1,15 @@
-name=skalibs
-version=git
-release=1
-arch=x86-64
-url=https://skarnet.org/cgi-bin/c$version.cgi/$name
-cyst=musl
-description="skarnet's general purpose C libraries for system programming and
-small and secure C development"
-cluster=core
-license=ISC
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
 }
 
 configure_system() {
   ./configure \
-    --target=$TUPL \
-    --host=$TUPL \
-    --build=$TUPL \
     --prefix=/usr \
     --disable-static \
     --disable-all-pic \

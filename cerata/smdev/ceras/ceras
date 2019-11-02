@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
+name=smdev
 version=git
 release=1
-arch=x86_64
-url=https://github.com/landley/$name
+arch=x86-64
+url=https://$version.suckless.org/$name
 cyst=musl
-description='All-in-one Linux command line'
+description='Suckless mdev'
 cluster=core
-license=BSDv2
+license=MIT

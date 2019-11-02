@@ -1,0 +1,28 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  cd $SSRC/$name
+}
+
+configure_system() {
+  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/usr\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/usr\/lib/" \
+    -i config.mk
+
+  sed 's/busybox ash/sh/' \
+    -i nltrigger run_nldev
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
+}

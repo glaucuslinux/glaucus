@@ -16,8 +16,8 @@ envenomate() {
     
     sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed \
       -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
-    tar xvf $SCER/$ceras/venom/$name-$version-$release-$arch.tar.xz -C $GLAD
-    rsync -vah $SCER/$ceras/venom $GLAD/usr/cerata/$name --delete
+    tar xvf $SCER/$ceras/venom/$name-$version-$release-$arch.tar.xz -C /
+    rsync -vah $SCER/$ceras/venom /usr/cerata/$name --delete
   done
 }
 

@@ -1,28 +1,20 @@
-name=utmps
-version=git
-release=1
-arch=x86-64
-url=https://skarnet.org/cgi-bin/c$version.cgi/$name
-cysts='skalibs s6'
-description='A secure utmp/wtmp implementation'
-cluster=core
-license=ISC
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
 }
 
 configure_system() {
   ./configure \
-    --target=$TUPL \
-    --host=$TUPL \
-    --build=$TUPL \
     --prefix=/usr \
     --libexecdir=/usr/lib/libexec \
-    --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-    --with-include=$GLAD/usr/include \
-    --with-dynlib=$GLAD/usr/lib \
+    --with-sysdeps=/usr/lib/skalibs/sysdeps \
+    --with-include=/usr/include \
+    --with-dynlib=/usr/lib \
     --enable-shared \
     --disable-static \
     --disable-allstatic \

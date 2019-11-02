@@ -14,3 +14,4 @@
 . $CSCR/root
 . $CSCR/backup
 . $CSCR/vkfs
+. $CSCR/chroot

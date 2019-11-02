@@ -2,7 +2,7 @@
 # Distributed under the terms of the ISC License
 
 qemu-img create -f raw $1 $2
-dd if=/usr/lib/syslinux/bios/mbr.bin of=$1 conv=notrunc bs=440 count=1
+dd if=/scripts/other/mbr.bin of=$1 conv=notrunc bs=440 count=1
 
 parted -s $1 mklabel msdos
 parted -s -a none $1 mkpart primary ext4 0 $2
@@ -14,8 +14,8 @@ mkfs.ext4 $(losetup -f)p1
 mount $(losetup -f)p1 /mnt/loop
 
 install -dv /mnt/loop/dev /mnt/loop/proc /mnt/loop/run /mnt/loop/sys
-rsync -vah $GLAD/boot $GLAD/etc $GLAD/usr $GLAD/var /mnt/loop --delete
-install -Dv /home/glaucus/scripts/extlinux.conf -t /mnt/loop/boot/extlinux
+rsync -vah /boot /etc /usr /var /mnt/loop --delete
+install -Dv /scripts/other/extlinux.conf -t /mnt/loop/boot/extlinux
 extlinux --install /mnt/loop/boot/extlinux
 
 umount /mnt/loop
