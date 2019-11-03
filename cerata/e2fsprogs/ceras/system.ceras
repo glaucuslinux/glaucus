@@ -1,28 +1,18 @@
-name=e2fsprogs
-version=git
-release=1
-arch=x86-64
-url=https://$version.kernel.org/pub/scm/fs/ext2/$name
-cysts='musl mawk'
-description='The standard utilities for ext2/ext3/ext4 filesystems'
-cluster=core
-licenses='BSDv3 GPLv2+ LGPLv2+ MIT'
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
 
   patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
-  CFLAGS="$CFLAGS -I$GLAD/usr/include" \
-  LIBS=-L$GLAD/usr/lib \
   ./configure \
     --prefix=/usr \
-    --build=$TUPL \
-    --host=$TUPL \
-    --target=$TUPL \
     --enable-symlink-install \
     --enable-elf-shlibs \
     --disable-bsd-shlibs \
@@ -57,13 +47,13 @@ install_system() {
 
   install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr \
     misc/mke2fs misc/tune2fs -t $SCER/$name/sac/usr/bin
-  cd $SCER/$name/sac/usr/bin
-  ln -fsv e2fsck fsck.ext4
-  ln -fsv mke2fs mkfs.ext4
+  
+  ln -fsv e2fsck $SCER/$name/sac/usr/bin/fsck.ext4
+  ln -fsv mke2fs $SCER/$name/sac/usr/bin/mkfs.ext4
 
   sed 's/\/home\/glaucus\/system//' \
     -i compile_et
 
-  cd ../lib
+  cd $SCER/$name/sac/usr/lib
   rm -fv libblkid.a libcom_err.a libe2p.a libext2fs.a libuuid.a
 }

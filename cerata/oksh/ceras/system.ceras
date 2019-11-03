@@ -9,29 +9,22 @@ prepare_system() {
 }
 
 configure_system() {
-  cat > config.mak << EOF
-PREFIX = /usr
-AR = $AR
-RANLIB = $RANLIB
-CFLAGS = $CFLAGS
-LDFLAGS = $LDFLAGS
-EOF
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --enable-curses \
+    --enable-ksh
 
-  sed -e '/$(BINDIR)\/clear/ s/$/.sh/' \
-    -e 's/-O0 //' \
-    -i GNUmakefile
+  sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
+    -i Makefile
 }
 
 build_system() {
-  make \
-    all-dynamic
+  make
 }
 
 install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
-    install-dynamic
-
-  cd $SCER/$name/sac/usr/lib
-  strip -sv libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
+    install
 }

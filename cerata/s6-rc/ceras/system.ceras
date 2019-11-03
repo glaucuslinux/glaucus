@@ -9,23 +9,28 @@ prepare_system() {
 }
 
 configure_system() {
-  ./autogen.sh
-
   ./configure \
     --prefix=/usr \
-    --disable-static
+    --libexecdir=/usr/lib/libexec \
+    --with-sysdeps=/usr/lib/skalibs/sysdeps \
+    --with-include=/usr/include \
+    --with-dynlib=/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -i config.mak
 }
 
 build_system() {
-  make
+  make \
+    strip
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin
-
   make \
     DESTDIR=$SCER/$name/sac \
-    install-strip
-
-  ln -fsv $name $SCER/$name/sac/usr/bin/sh
+    install
 }

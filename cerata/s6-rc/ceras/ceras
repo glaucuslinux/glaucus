@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=s6-rc
+version=git
+release=1
+arch=x86-64
+url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+cysts='skalibs execline s6'
+description="skarnet's service manager for s6-based systems"
+cluster=core
+license=ISC

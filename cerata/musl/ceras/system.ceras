@@ -29,11 +29,12 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
     install-libs
 
-  install -dv $SCER/$name/sac/usr/bin
-  ln -fsv ../lib/ld-$name-$ARCH.so.1 $SCER/$name/sac/usr/bin/ldd
+  ln -fsv ../lib/ld-$name-$ARCH.so.1 /usr/bin/ldd
+
+  strip -sv /usr/lib/Scrt1.o /usr/lib/crt1.o /usr/lib/crti.o /usr/lib/crtn.o \
+    /usr/lib/rcrt1.o
 
   echo /usr/lib > $SCER/$name/sac/etc/ld-$name-$ARCH.path
 }

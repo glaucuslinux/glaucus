@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=procps
+version=git
+release=1
+arch=x86-64
+url=https://gitlab.com/$name-ng/$name
+cysts='musl netbsd-curses skalibs execline s6 utmps'
+description='Command line and full screen utilities for browsing procfs'
+cluster=core
+licenses='GPL-2.0-only GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-only
+LGPL-2.0-or-later'

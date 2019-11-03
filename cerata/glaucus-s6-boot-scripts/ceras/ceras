@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=glaucus-s6-boot-scripts
+version=git
+release=1
+arch=x86-64
+url=https://github.com/firasuke/$name
+cysts='musl skalibs execline s6 utmps s6-linux-init s6-rc'
+description='s6 boot scripts for glaucus'
+cluster=core
+license=ISC

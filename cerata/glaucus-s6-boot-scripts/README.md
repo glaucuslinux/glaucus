@@ -27,5 +27,8 @@ https://github.com/firasuke/glaucus-s6-boot-scripts
 ## Description
 s6 boot scripts for glaucus
 
+## Cluster
+* core
+
 ## License
 * ISC

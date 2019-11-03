@@ -1,0 +1,17 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+construct() {
+  for ceras in $@; do
+    . $CERD/$ceras/ceras/ceras
+    . $CERD/$ceras/ceras/system.ceras
+    
+    prepare_system || { echo system $ceras prepare failed; exit $?;  }
+    configure_system || { echo system $ceras configure failed; exit $?; }
+    build_system || { echo system $ceras build failed; exit $?; }
+    install_system || { echo system $ceras install failed; exit $?; }
+  done
+}
+
+construct linux
+construct musl

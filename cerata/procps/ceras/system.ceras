@@ -6,32 +6,26 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
+
+  patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
-  cat > config.mak << EOF
-PREFIX = /usr
-AR = $AR
-RANLIB = $RANLIB
-CFLAGS = $CFLAGS
-LDFLAGS = $LDFLAGS
-EOF
-
-  sed -e '/$(BINDIR)\/clear/ s/$/.sh/' \
-    -e 's/-O0 //' \
-    -i GNUmakefile
+  ./autogen.sh
+  
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --disable-static \
+    --disable-nls
 }
 
 build_system() {
-  make \
-    all-dynamic
+  make
 }
 
 install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
-    install-dynamic
-
-  cd $SCER/$name/sac/usr/lib
-  strip -sv libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
+    install-strip
 }

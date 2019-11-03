@@ -6,6 +6,7 @@ envenomate() {
     install -dv $SCER/$ceras/sac $SCER/$ceras/venom
 
     . $CERD/$ceras/ceras/ceras
+    . $CERD/$ceras/ceras/system.ceras
     
     prepare_system || { echo system $ceras prepare failed; exit $?;  }
     configure_system || { echo system $ceras configure failed; exit $?; }
@@ -21,8 +22,6 @@ envenomate() {
   done
 }
 
-envenomate linux
-envenomate musl
 envenomate skalibs execline s6 utmps
 envenomate toybox
 envenomate smdev nldev nlmon
