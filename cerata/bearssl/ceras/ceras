@@ -3,12 +3,11 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
+name=bearssl
 version=git
 release=1
 arch=x86_64
-url=https://github.com/landley/$name
-cysts='musl libressl'
-description='All-in-one Linux command line'
-cluster=core
-license=BSDv2
+url=https://www.$name.org/$version/BearSSL
+cyst=musl
+description='An implementation of the SSL/TLS protocol (RFC 5246) written in C'
+license=MIT

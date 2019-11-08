@@ -6,12 +6,13 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
   cd $SSRC/$name
-  
-  cp -av $CERD/$name/glaucus.config .config
 }
 
 configure_system() {
-  scripts/genconfig.sh
+  autoreconf -vfi
+
+  ./configure \
+    --prefix=/usr
 }
 
 build_system() {
@@ -20,6 +21,6 @@ build_system() {
 
 install_system() {
   make \
-    PREFIX=$SCER/$name/sac \
-    install
+    DESTDIR=$SCER/$name/sac \
+    install-strip
 }

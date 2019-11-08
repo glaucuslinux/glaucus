@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  install -dv $GLAD/bin
+
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  ln -fsv $TOOL/bin/dash $GLAD/bin/sh
+
+sudo \
+  LD_LIBRARY_PATH=$TOOL/lib \
+  ln -fsv $TOOL/bin/bash $GLAD/bin/bash

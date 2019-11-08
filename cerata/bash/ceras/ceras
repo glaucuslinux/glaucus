@@ -3,12 +3,11 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
+name=bash
 version=git
 release=1
 arch=x86_64
-url=https://github.com/landley/$name
-cysts='musl libressl'
-description='All-in-one Linux command line'
-cluster=core
-license=BSDv2
+url=https://$version.savannah.gnu.org/$version/$name
+cyst=musl
+description="The GNU Project's Bourne Again SHell"
+licenses='GPL-3.0-only GPL-3.0-or-later'

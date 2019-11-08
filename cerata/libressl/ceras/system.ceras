@@ -1,0 +1,34 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/portable/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/openbsd $SSRC/$name --delete
+  cd $SSRC/$name
+
+  sed '6,19d' \
+    -i update.sh
+}
+
+configure_system() {
+  ./autogen.sh
+
+  ./configure \
+    --prefix=/usr \
+    --disable-static
+
+  sed 's/tests //' \
+    -i Makefile
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
+}

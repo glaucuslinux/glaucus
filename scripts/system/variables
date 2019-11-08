@@ -9,9 +9,9 @@ export CERD=/cerata
 export SLOG=/logs/system
 export SSCR=/scripts/system
 export STMP=/temporary/system
-export SBLD=$STMP/system/builds
-export SCER=$STMP/system/cerata
-export SSRC=$TMPD/system/sources
+export SBLD=$STMP/builds
+export SCER=$STMP/cerata
+export SSRC=$STMP/sources
 
 export TOOL=/toolchain
 

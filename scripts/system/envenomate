@@ -22,13 +22,14 @@ envenomate() {
   done
 }
 
-envenomate skalibs execline s6 utmps
+#envenomate skalibs execline s6 utmps
+#envenomate libressl
 envenomate toybox
-envenomate smdev nldev nlmon
-envenomate netbsd-curses procps dash oksh
-envenomate e2fsprogs
-envenomate linux
-envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
+#envenomate smdev nldev nlmon
+#envenomate netbsd-curses procps dash oksh
+#envenomate e2fsprogs
+#envenomate linux
+#envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
 
 #envenomate re2c
 #envenomate sinit svc

@@ -14,8 +14,10 @@ construct() {
 }
 
 construct qm4
-construct netbsd-curses oksh
+construct netbsd-curses
+construct oksh
 construct dash
+construct bash
 construct byacc
 construct bzip2
 construct libressl
@@ -29,3 +31,4 @@ construct libarchive
 construct texinfo
 construct xz
 construct rsync
+construct autoconf

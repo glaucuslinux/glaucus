@@ -1,4 +1,4 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-rsync -vah $TOOL/ $GLAD/play/chroot_backup --delete
+rsync -vah $TOOL/ $GLAD/backup/chroot --delete

@@ -1,3 +1,15 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+mv -v $TOOL/bin/ld $TOOL/bin/ld-old
+mv -v $TOOL/$TUPL/bin/ld $TOOL/$TUPL/bin/ld-old
+
+mv -v $TOOL/bin/ld-new $TOOL/bin/ld
+ln -fsv $TOOL/bin/ld $TOOL/$TUPL/bin/ld
+
+gcc -dumpspecs > $(dirname $(gcc --print-libgcc-file-name))/specs
+
+sed -e "s/\\$TOOL/\/usr/g" \
+  -e '/\*startfile_prefix_spec:/{n;s/.*/\/usr\/lib\/ /}' \
+  -e '/\*cpp:/{n;s/$/ -isystem \/usr\/include/}' \
+  -i $(dirname $(gcc --print-libgcc-file-name))/specs

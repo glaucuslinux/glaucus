@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-snapshots/ $CSRC/$name --delete \
-    --exclude=.$version
+  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  CFLAGS="$CFLAGSNOOPENMP" \
+  autoreconf -vfi
+
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL
@@ -22,7 +22,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
-
-  ln -fsv $name $TOOL/bin/awk
+    install-strip
 }

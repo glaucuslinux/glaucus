@@ -3,7 +3,7 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-. /home/glaucus/scripts/system/variables
+. /scripts/system/variables
 . $SSCR/prepare
 . $SSCR/log
 
