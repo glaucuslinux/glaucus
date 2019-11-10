@@ -7,11 +7,6 @@ prepare_chroot() {
   rsync -vah $CERD/$name/$name $CSRC --delete
   rsync -vah $CERD/gnulib/gnulib $CSRC/$name --delete
   cd $CSRC/$name
-
-  find . -name mdate-sh -type f -exec sed -i 's/ls -/\/usr\/bin\/ls -/' {} +
-
-  sed 's/find_in_given_path .*/find_in_given_path (argv[0], p, 1);/' \
-    -i src/job.c
 }
 
 configure_chroot() {
@@ -20,12 +15,7 @@ configure_chroot() {
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
-
-  sed 's/-Werror //' \
-    -i Makefile
+    --disable-static
 }
 
 build_chroot() {

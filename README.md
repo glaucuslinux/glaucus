@@ -56,7 +56,7 @@ lightweight)
 * LibreSSL
 
 * And many more lightweight and suckless software (`mawk`, `byacc`, `re2c`,
-`nnn`...)
+`gettext-tiny`, `nnn`...)
 
 * Adheres to the latest FHS standards, with a minimal and clean root filesystem
 

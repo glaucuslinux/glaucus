@@ -10,6 +10,9 @@ install -dvm 0750 /root
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib
 ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib
+
 ln -fsv $TOOL/lib/libcrypto.so /usr/lib
+ln -fsv $TOOL/lib/libgomp.so /usr/lib
+ln -fsv $TOOL/lib/libgomp.spec /usr/lib
 
 strip -sv $TOOL/lib/libgcc_s.so.1

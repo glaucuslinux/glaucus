@@ -14,6 +14,10 @@ construct() {
 }
 
 construct qm4
+construct flex
+construct autoconf
+construct automake
+construct libtool
 construct netbsd-curses
 construct oksh
 construct dash
@@ -31,4 +35,3 @@ construct libarchive
 construct texinfo
 construct xz
 construct rsync
-construct autoconf

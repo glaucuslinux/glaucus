@@ -4,15 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
+  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  autoreconf -vfi
-  
-  sed 's/ls -/\/usr\/bin\/ls -/' \
-    -i build-aux/mdate-sh
+  ./bootstrap
 
   ./configure \
     --prefix=$TOOL \

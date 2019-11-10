@@ -1,6 +1,9 @@
 [submodule "cerata/autoconf/autoconf"]
 	path = cerata/autoconf/autoconf
 	url = https://git.savannah.gnu.org/git/autoconf
+[submodule "cerata/automake/automake"]
+	path = cerata/automake/automake
+	url = https://git.savannah.gnu.org/git/automake
 [submodule "cerata/bash/bash"]
 	path = cerata/bash/bash
 	url = https://git.savannah.gnu.org/git/bash
@@ -43,6 +46,9 @@
 [submodule "cerata/file/file"]
 	path = cerata/file/file
 	url = https://github.com/file/file
+[submodule "cerata/flex/flex"]
+	path = cerata/flex/flex
+	url = https://github.com/westes/flex
 [submodule "cerata/fontconfig/fontconfig"]
 	path = cerata/fontconfig/fontconfig
 	url = https://gitlab.freedesktop.org/fontconfig/fontconfig
@@ -205,6 +211,9 @@
 [submodule "cerata/libthai/libthai"]
 	path = cerata/libthai/libthai
 	url = https://github.com/tlwg/libthai
+[submodule "cerata/libtool/libtool"]
+	path = cerata/libtool/libtool
+	url = https://git.savannah.gnu.org/git/libtool
 [submodule "cerata/libxcb/libxcb"]
 	path = cerata/libxcb/libxcb
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcb

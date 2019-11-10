@@ -15,19 +15,18 @@ envenomate() {
 
     cd $SCER/$ceras/sac
     
-    sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . | sed \
+    sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | sed \
       -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
-    tar xvf $SCER/$ceras/venom/$name-$version-$release-$arch.tar.xz -C /
-    rsync -vah $SCER/$ceras/venom /usr/cerata/$name --delete
+    tar xvf ../venom/$name-$version-$release-$arch.tar.xz -C /
+    rsync -vah ../venom /usr/cerata/$name --delete
   done
 }
 
 #envenomate skalibs execline s6 utmps
-#envenomate libressl
-envenomate toybox
+#envenomate toybox
 #envenomate smdev nldev nlmon
 #envenomate netbsd-curses procps dash oksh
-#envenomate e2fsprogs
+envenomate e2fsprogs
 #envenomate linux
 #envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
 
