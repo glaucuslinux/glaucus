@@ -8,8 +8,6 @@ prepare_chroot() {
   rsync -vah $CERD/gnulib/gnulib $CSRC/$name --delete
   cd $CSRC/$name
 
-  find . -name mdate-sh -type f -exec sed -i 's/ls -/\/usr\/bin\/ls -/' {} +
-
   sed 's/find_in_given_path .*/find_in_given_path (argv[0], p, 1);/' \
     -i src/job.c
 }

@@ -1,6 +1,7 @@
 # make
 
 ## Chroot
+Needs host `automake` to build properly
 
 ### Prepare
 needs gnulib because:

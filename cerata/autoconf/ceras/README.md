@@ -7,3 +7,5 @@ Requires help2man
 ### Configure
 
 requires host's coreutils ls as it can't use toybox ls
+
+mdate-sh is generated after running `autoreconf`

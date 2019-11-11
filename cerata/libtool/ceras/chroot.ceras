@@ -10,7 +10,10 @@ prepare_chroot() {
 }
 
 configure_chroot() {
+  PATH=/usr/bin \
   ./bootstrap
+  
+  find . -name mdate-sh -type f -exec sed 's/ls -/\/usr\/bin\/ls -/' -i {} +
 
   ./configure \
     --prefix=$TOOL \
