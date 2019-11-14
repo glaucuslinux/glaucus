@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/m4/ $CSRC/$name --delete --exclude=.$version
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  install -v $CERD/$name/glaucus.config .config
-
-  scripts/genconfig.sh
+  ./configure \
+    --prefix=$TOOL \
+    --mandir=$TOOL/share/man
 }
 
 build_chroot() {
@@ -20,6 +20,8 @@ build_chroot() {
 
 install_chroot() {
   make \
-    PREFIX=$TOOL \
     install
+
+  cd $TOOL/bin
+  ln -fsv $name m4
 }

@@ -4,18 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
-
-  install -dv $CBLD/$name
 }
 
 configure_chroot() {
-  ./autogen.sh
-
-  cd $CBLD/$name
-
-  $CSRC/$name/configure \
+  ./configure \
     --prefix=$TOOL \
     --host=$TUPL \
     --disable-doc \

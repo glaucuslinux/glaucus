@@ -4,10 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
-  patch -p1 -i $CERD/$name/patches/$name.patch
+  #patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
@@ -46,13 +46,10 @@ install_system() {
   done
 
   install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr \
-    misc/mke2fs misc/tune2fs -t $SCER/$name/sac/usr/bin
+    misc/mke2fs misc/tune2fs $SCER/$name/sac/usr/bin
   
   ln -fsv e2fsck $SCER/$name/sac/usr/bin/fsck.ext4
   ln -fsv mke2fs $SCER/$name/sac/usr/bin/mkfs.ext4
-
-  sed 's/\/home\/glaucus\/system//' \
-    -i compile_et
 
   cd $SCER/$name/sac/usr/lib
   rm -fv libblkid.a libcom_err.a libe2p.a libext2fs.a libuuid.a

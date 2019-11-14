@@ -7,6 +7,7 @@ rm -frv $SBLD $SCER /boot /etc /usr /var
 install -dv $SBLD $SCER /boot /etc /usr/bin /usr/cerata /usr/include /usr/lib \
   /usr/share /var /var/lib /var/lib/urandom /var/log
 install -dvm 0750 /root
+install -dvm 1777 /tmp
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib
 ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib
@@ -16,3 +17,11 @@ ln -fsv $TOOL/lib/libgomp.so /usr/lib
 ln -fsv $TOOL/lib/libgomp.spec /usr/lib
 
 strip -sv $TOOL/lib/libgcc_s.so.1
+
+#ln -fsv $TOOL/bin/perl /usr/bin
+#ln -fsv $TOOL/bin/grep /usr/bin
+#ln -fsv $TOOL/bin/bison /usr/bin
+#ln -fsv $TOOL/bin/m4 /usr/bin
+#ln -fsv $TOOL/bin/bc /usr/bin
+#ln -fsv $TOOL/lib/libm4.a $TOOL/lib/libm4.la $TOOL/lib/libm4.so $TOOL/lib/libm4.so.0 \
+  #$TOOL/lib/libm4.so.0.0.0 /usr/lib

@@ -1,9 +1,6 @@
 [submodule "cerata/autoconf/autoconf"]
 	path = cerata/autoconf/autoconf
 	url = https://git.savannah.gnu.org/git/autoconf
-[submodule "cerata/automake/automake"]
-	path = cerata/automake/automake
-	url = https://git.savannah.gnu.org/git/automake
 [submodule "cerata/bash/bash"]
 	path = cerata/bash/bash
 	url = https://git.savannah.gnu.org/git/bash
@@ -247,15 +244,15 @@
 [submodule "cerata/libz/libz"]
 	path = cerata/libz/libz
 	url = https://gitlab.com/sortix/libz
+[submodule "cerata/linenoise/linenoise"]
+	path = cerata/linenoise/linenoise
+	url = https://github.com/antirez/linenoise
 [submodule "cerata/linux/linux"]
 	path = cerata/linux/linux
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 [submodule "cerata/lobase/lobase"]
 	path = cerata/lobase/lobase
 	url = https://git.duncano.de/lobase
-[submodule "cerata/make/make"]
-	path = cerata/make/make
-	url = https://git.savannah.gnu.org/git/make
 [submodule "cerata/mawk/mawk-snapshots"]
 	path = cerata/mawk/mawk-snapshots
 	url = https://github.com/ThomasDickey/mawk-snapshots
@@ -310,9 +307,6 @@
 [submodule "cerata/pkgconf/pkgconf"]
 	path = cerata/pkgconf/pkgconf
 	url = https://github.com/pkgconf/pkgconf
-[submodule "cerata/procps/procps"]
-	path = cerata/procps/procps
-	url = https://gitlab.com/procps-ng/procps
 [submodule "cerata/python/cpython"]
 	path = cerata/python/cpython
 	url = https://github.com/python/cpython
@@ -397,9 +391,6 @@
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
-[submodule "cerata/xz/xz"]
-	path = cerata/xz/xz
-	url = https://git.tukaani.org/xz.git
 [submodule "cerata/zlib/zlib"]
 	path = cerata/zlib/zlib
 	url = https://github.com/madler/zlib

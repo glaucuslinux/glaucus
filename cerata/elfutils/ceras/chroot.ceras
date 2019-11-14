@@ -9,9 +9,16 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  install -v $CERD/$name/glaucus.config .config
+  autoreconf -vfi
 
-  scripts/genconfig.sh
+  ./configure \
+    --prefix=$TOOL \
+    --program-prefix=eu- \
+    --host=$TUPL \
+    --enable-maintainer-mode \
+    --enable-deterministic-archives \
+    --disable-symbol-versioning \
+    --disable-nls
 }
 
 build_chroot() {
@@ -20,6 +27,6 @@ build_chroot() {
 
 install_chroot() {
   make \
-    PREFIX=$TOOL \
-    install
+    -C libelf \
+    install-strip
 }

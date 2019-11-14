@@ -4,22 +4,28 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
-  cd $SSRC/$name
+  install -dv $SBLD/$name
+
+  cd $CERD/linux/linux
+
+  make \
+    mrproper
 }
 
 configure_system() {
-  install -v $CERD/$name/glaucus.config .config
-
-  scripts/genconfig.sh
+  :
 }
 
 build_system() {
-  make
+  :
 }
 
 install_system() {
   make \
-    PREFIX=$SCER/$name/sac \
-    install
+    O=$SBLD/$name \
+    ARCH=$ARCH \
+    INSTALL_HDR_PATH=/usr \
+    headers_install
+
+  find /usr/include \( -name ..install.cmd -o -name .install \) -delete
 }

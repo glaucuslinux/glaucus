@@ -20,11 +20,17 @@
 cerata/argp-standalone/argp-standalone-1.4-test2/
 cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
 
+cerata/automake/automake-1.16.1/
+cerata/automake/automake-1.16.1.tar.xz
+
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
-cerata/byacc/byacc-20190617/
-cerata/byacc/byacc-20190617.tgz
+cerata/bison/bison-3.4.2/
+cerata/bison/bison-3.4.2.tar.xz
+
+cerata/byacc/byacc-20191103/
+cerata/byacc/byacc-20191103.tgz
 
 cerata/gcc/trunk/
 
@@ -38,6 +44,12 @@ cerata/less/less-551.tar.gz
 
 cerata/lilo/lilo-24.2/
 cerata/lilo/lilo-24.2.tar.gz
+
+cerata/m4/m4-1.4.18/
+cerata/m4/m4-1.4.18.tar.xz
+
+cerata/make/make-4.2.1/
+cerata/make/make-4.2.1.tar.bz2
 
 cerata/mandoc/mandoc-1.14.5/
 cerata/mandoc/mandoc-1.14.5.tar.gz
@@ -53,6 +65,9 @@ cerata/pcre2/trunk/
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz
 
+cerata/procps/procps-ng-3.3.15/
+cerata/procps/procps-ng-3.3.15.tar.xz
+
 cerata/pypy/pypy/
 
 cerata/qm4/m4-2/
@@ -60,6 +75,9 @@ cerata/qm4/m4-2.tar.bz2
 
 cerata/texinfo/texinfo-6.7/
 cerata/texinfo/texinfo-6.7.tar.xz
+
+cerata/xz/xz-5.2.4/
+cerata/xz/xz-5.2.4.tar.xz
 
 
 # the image resulting from the build process of system
@@ -93,6 +111,7 @@ root/
 sbin/
 usr/
 var/
+tmp/
 
 
 # to ensure that subdirectories that share the same name with the excluded root

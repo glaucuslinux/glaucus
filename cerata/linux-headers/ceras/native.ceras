@@ -6,15 +6,10 @@
 prepare_native() {
   install -dv $NBLD/$name
 
-  cd $CERD/$name/$name
+  cd $CERD/linux/linux
 
   make \
     mrproper
-
-  make \
-    O=$NBLD/$name \
-    ARCH=$ARCH \
-    headers_check
 }
 
 configure_native() {

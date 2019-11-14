@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=automake
-version=git
+version=1.16.1
 release=1
 arch=x86_64
-url=https://$version.savannah.gnu.org/$version/$name
+url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
+checksum=4013bd31f4903b10875caa7d6ac16a14623a4eb91aa758924dee5b990e234fb50848d131e2dbdbbbc32f89c41a14f9c52a0064c37aa6760c524d607b354b13c3
 cyst=musl
 description='A tool for automatically generating Makefile.in files compliant
 with the GNU Coding Standards'

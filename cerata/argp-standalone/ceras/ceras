@@ -1,0 +1,10 @@
+name=argp-standalone
+version=1.4-test2
+release=1
+arch=x86-64
+url=http://www.lysator.liu.se/~nisse/misc/$name-$version.tar.gz
+checksum=ea8f9823e62530c941702b4310a727abe234476d17b921bc0eef79fbc067995f4132a9309391ae412ecfc6d370437ffd3990bd8dac1d00ee5ff6a1588f32afd1
+cyst=musl
+description='Standalone version of arguments parsing functions from GLIBC for
+use with musl'
+licenses='GPL-2.0-or-later GPL-3.0-or-later Unlicense XC'

@@ -13,7 +13,7 @@ construct() {
   done
 }
 
-construct linux
+construct linux-headers
 construct musl
 construct libstdc++-v3
 construct binutils

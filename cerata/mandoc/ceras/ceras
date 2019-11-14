@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=mandoc
+version=1.14.5
+release=1
+arch=x86-64
+url=https://$name.bsd.lv/snapshots/$name-$version.tar.gz
+checksum=848f290847f3095757f25647e6d73eb7044018b145bf6f9dc8b5db164b1421911efdc5b3b9022ec3a2c5af9687a84d5acedee810f2bd2f7caaa9242dadb2cc52
+cysts='musl zlib'
+description='A suite of tools compiling mdoc for BSD manual pages and man for
+UNIX manuals'
+license=ISC

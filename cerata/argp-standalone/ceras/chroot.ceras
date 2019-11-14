@@ -6,15 +6,17 @@
 prepare_chroot() {
   rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
+  
+  patch -p1 -i $CERD/$name/patches/$name.patch
+  
+  sed 's/#ifdef __OPTIMIZE__/#if 0/g' \
+    -i argp-fmtstream.h
 }
 
 configure_chroot() {
   ./configure \
     --prefix=$TOOL \
-    --host=$TUPL \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+    --host=$TUPL
 }
 
 build_chroot() {
@@ -24,4 +26,7 @@ build_chroot() {
 install_chroot() {
   make \
     install-strip
+
+  install -v argp.h $TOOL/include
+  install -v libargp.a $TOOL/lib
 }

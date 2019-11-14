@@ -4,7 +4,7 @@
 procps
 
 ## Version
-git
+3.3.15
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://gitlab.com/procps-ng/procps
+https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.15.tar.xz
+
+## Checksum
+bc83ccc1941e7be8266588fdfbba17e2424b30163a215873ee6dee96215d66249f5d5e46fec2278d030b42bd7599861c4878360042dacec4c221ce411453747c
 
 ## Cysts
 * musl

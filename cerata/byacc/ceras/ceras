@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=byacc
-version=20190617
+version=20191103
 release=1
 arch=x86-64
 url=ftp://ftp.invisible-island.net/$name/$name-$version.tgz

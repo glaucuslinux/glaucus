@@ -4,14 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
-  cd $SSRC/$name
+  install -dv $SBLD/$name
+  cd $SBLD/$name
 }
 
 configure_system() {
-  install -v $CERD/$name/glaucus.config .config
-
-  scripts/genconfig.sh
+  $CERD/$name/$name/configure \
+    --prefix=$TOOL
 }
 
 build_system() {
@@ -20,6 +19,5 @@ build_system() {
 
 install_system() {
   make \
-    PREFIX=$SCER/$name/sac \
     install
 }

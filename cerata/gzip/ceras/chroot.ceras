@@ -10,7 +10,6 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  AUTOPOINT=/usr/bin/autopoint \
   ./bootstrap
   
   find . -name mdate-sh -type f -exec sed 's/ls -/\/usr\/bin\/ls -/' -i {} +

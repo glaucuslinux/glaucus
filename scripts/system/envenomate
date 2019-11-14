@@ -22,13 +22,45 @@ envenomate() {
   done
 }
 
-#envenomate skalibs execline s6 utmps
+#envenomate zlib
+#envenomate readline
+#envenomate m4
+#envenomate binutils
+#envenomate gmp
+#envenomate mpfr
+#envenomate mpc
+#envenomate gcc
+#envenomate bzip2
+#envenomate netbsd-curses
+#envenomate bison
+#envenomate flex
+#envenomate oksh
+#envenomate dash
+#envenomate perl
+#envenomate autoconf
+#envenomate automake
+#envenomate xz
+#envenomate gettext-tiny
+#envenomate elfutils
+#envenomate libressl
 #envenomate toybox
+#envenomate mawk
+#envenomate less
+#envenomate gzip
+#envenomate make
+#envenomate mandoc
+#envenomate libarchive
+#envenomate vim
+#envenomate procps
+#envenomate e2fsprogs
+
+envenomate skalibs execline s6 utmps
+envenomate toybox
 #envenomate smdev nldev nlmon
-#envenomate netbsd-curses procps dash oksh
-envenomate e2fsprogs
-#envenomate linux
-#envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
+envenomate netbsd-curses oksh
+#envenomate e2fsprogs
+envenomate linux
+envenomate s6-linux-init s6-rc glaucus-s6-boot-scripts
 
 #envenomate re2c
 #envenomate sinit svc

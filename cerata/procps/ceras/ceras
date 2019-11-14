@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=procps
-version=git
+version=3.3.15
 release=1
 arch=x86-64
-url=https://gitlab.com/$name-ng/$name
+url=https://downloads.sourceforge.net/project/$name-ng/Production/$name-ng-$version.tar.xz
+checksum=bc83ccc1941e7be8266588fdfbba17e2424b30163a215873ee6dee96215d66249f5d5e46fec2278d030b42bd7599861c4878360042dacec4c221ce411453747c
 cysts='musl netbsd-curses skalibs execline s6 utmps'
 description='Command line and full screen utilities for browsing procfs'
 cluster=core

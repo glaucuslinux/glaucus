@@ -13,5 +13,5 @@ construct() {
   done
 }
 
-construct linux
+construct linux-headers
 construct musl

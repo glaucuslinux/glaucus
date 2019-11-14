@@ -13,24 +13,17 @@ construct() {
   done
 }
 
-construct gettext-tiny
+construct qm4
 construct netbsd-curses
 construct oksh
 construct dash
 construct bash
-construct make
 construct byacc
-construct flex
-construct qm4
 construct libressl
 construct toybox
-construct gzip
-construct bzip2
-construct libarchive
-construct mawk
-construct autoconf
-construct automake
-construct libtool
-construct xz
-construct perl
 construct rsync
+construct mawk
+construct gettext-tiny
+construct make
+construct perl
+construct xz

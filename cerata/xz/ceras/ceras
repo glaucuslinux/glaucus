@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=xz
-version=git
+version=5.2.4
 release=1
 arch=x86-64
-url=https://$version.tukaani.org/$name.$version
+url=https://tukaani.org/$name/$name-$version.tar.xz
+checksum=00db7dd31a61541b1ce6946e0f21106f418dd1ac3f27cdb8682979cbc3bd777cd6dd1f04f9ba257a0a7e24041e15ca40d0dd5c130380dce62280af67a0beb97f
 cysts='musl mawk'
 description='A free general-purpose data compression software with a high
 compression ratio'

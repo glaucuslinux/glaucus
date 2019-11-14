@@ -4,13 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  install -dv $CBLD/$name
-  cd $CBLD/$name
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
+  cd $CSRC/$name
 }
 
 configure_chroot() {
-  $CERD/$name/$name/configure \
-    --prefix=$TOOL
+  ./configure \
+    --prefix=$TOOL \
+    --host=$TUPL
 }
 
 build_chroot() {
@@ -19,5 +20,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
+    install-strip
 }
