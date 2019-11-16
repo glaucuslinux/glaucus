@@ -4,13 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
 configure_system() {
+  autoreconf -vfi
+
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-static
 }
 
 build_system() {

@@ -31,7 +31,4 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-dynamic
-
-  cd $SCER/$name/sac/usr/lib
-  strip -sv libcurses.so libform.so libmenu.so libpanel.so libterminfo.so
 }

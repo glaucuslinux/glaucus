@@ -1,14 +1,16 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-strip --strip-unneeded /usr/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
-  /usr/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.28
+strip --strip-unneeded -v /usr/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
+  /usr/lib/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.28
+
+exec $TOOL/bin/ksh
+
+$TOOL/bin/find /lib /usr -type f -name \*.a -exec strip -gv {} ';'
+$TOOL/bin/find /lib /usr -type f \( -name \*.so* -a ! -name \*dbg \) -exec strip \
+  --strip-unneeded -v {} ';'
+$TOOL/bin/find /bin /sbin /usr -type f -exec strip -sv {} ';'
+
+rm -frv /tmp/*
 
 find /usr -name \*.la -delete
-
-exec ksh
-
-find /lib /usr -type f -name \*.a -exec strip --strip-debug {} ';'
-find /lib /usr -type f \( -name \*.so* -a ! -name \*dbg \) -exec strip \
-  --strip-unneeded {} ';'
-find /bin /sbin /usr -type f -exec strip --strip-all {} ';'

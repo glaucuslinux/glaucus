@@ -9,6 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
+  LDFLAGS="-L$TOOL/lib" \
   ./configure \
     --prefix=/usr \
     --disable-static \
@@ -23,4 +24,13 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
+
+  ln -fsv libedit.so $SCER/$name/sac/usr/lib/libreadline.so
+ 
+  install -dv $SCER/$name/sac/usr/include/readline
+  
+  touch $SCER/$name/sac/usr/include/readline/history.h
+  touch $SCER/$name/sac/usr/include/readline/tilde.h
+
+  ln -fsv ../editline/readline.h $SCER/$name/sac/usr/include/readline/readline.h
 }

@@ -14,7 +14,7 @@ sudo \
 
 sudo \
   LD_LIBRARY_PATH=$TOOL/lib \
-  mount -v --bind /dev $GLAD/dev
+  mount -v /dev $GLAD/dev
 
 sudo \
   LD_LIBRARY_PATH=$TOOL/lib \

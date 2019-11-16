@@ -1,0 +1,13 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=pkgconf
+version=git
+release=1
+arch=x86-64
+url=https://github.com/$name/$name
+cyst=musl
+description='A package compiler and linker metadata toolkit'
+license=ISC

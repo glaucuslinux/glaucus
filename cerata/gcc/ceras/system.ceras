@@ -1,0 +1,43 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/trunk/ $SSRC/$name --delete
+
+  sed '/m64/s/lib64/lib/' \
+    -i $SSRC/$name/$name/config/i386/t-linux64
+
+  install -dv $SBLD/$name
+  cd $SBLD/$name
+}
+
+configure_system() {
+  $SSRC/$name/configure \
+    --prefix=$TOOL \
+    --disable-multilib \
+    --enable-threads=posix \
+    --with-arch=x86-64 \
+    --disable-bootstrap \
+    --enable-languages=c,c++ \
+    --disable-libsanitizer \
+    --disable-libssp \
+    --disable-werror \
+    --disable-nls \
+    --with-isl=$TOOL \
+    --with-zstd=$TOOL \
+    --with-linker-hash-style=gnu
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    install-strip
+
+  ln -fsv $TUPL-gcc $TOOL/bin/cc
+  ln -fsv $TUPL-gcc $TOOL/bin/$TUPL-cc
+}

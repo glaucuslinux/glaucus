@@ -18,15 +18,18 @@ configure_system() {
     --disable-compressed-debug-sections \
     --disable-werror \
     --disable-nls \
+    --with-system-zlib \
     --disable-multilib \
     --disable-gdb
 }
 
 build_system() {
-  make
+  make \
+    tooldir=/usr
 }
 
 install_system() {
   make \
-    install-strip
+    tooldir=/usr \
+    install
 }

@@ -4,21 +4,26 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
 configure_system() {
-  ./configure \
-    --prefix=/usr
+  :
 }
 
 build_system() {
-  make
+  make \
+    HAVE_THREAD=1 \
+    ZSTD_LEGACY_SUPPORT=0 \
+    HAVE_ZLIB=0 \
+    HAVE_LZMA=0 \
+    HAVE_LZ4=0 \
+    BACKTRACE=0
 }
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
-    install-strip
+    PREFIX=$SCER/$name/sac/usr \
+    install
 }

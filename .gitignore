@@ -143,8 +143,11 @@ run/
 bin/
 boot/
 etc/
+include/
+lib/
 root/
 sbin/
+share/
 usr/
 var/
 tmp/
