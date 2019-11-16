@@ -20,8 +20,14 @@
 cerata/argp-standalone/argp-standalone-1.4-test2/
 cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
 
+cerata/autoconf/autoconf-2.69/
+cerata/autoconf/autoconf-2.69.tar.xz
+
 cerata/automake/automake-1.16.1/
 cerata/automake/automake-1.16.1.tar.xz
+
+cerata/bash/bash-5.0/
+cerata/bash/bash-5.0.tar.gz
 
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
@@ -32,6 +38,18 @@ cerata/bison/bison-3.4.2.tar.xz
 cerata/byacc/byacc-20191103/
 cerata/byacc/byacc-20191103.tgz
 
+cerata/dash/dash-0.5.10.2/
+cerata/dash/dash-0.5.10.2.tar.gz
+
+cerata/diffutils/diffutils-3.7/
+cerata/diffutils/diffutils-3.7.tar.xz
+
+cerata/elfutils-libelf/elfutils-0.177/
+cerata/elfutils-libelf/elfutils-0.177.tar.bz2
+
+cerata/flex/flex-2.6.4/
+cerata/flex/flex-2.6.4.tar.lz
+
 cerata/gcc/trunk/
 
 cerata/gettext/gettext-0.20.1/
@@ -39,11 +57,29 @@ cerata/gettext/gettext-0.20.1.tar.xz
 
 cerata/gmp/gmp/
 
+cerata/gzip/gzip-1.10/
+cerata/gzip/gzip-1.10.tar.xz
+
 cerata/less/less-551/
 cerata/less/less-551.tar.gz
 
+cerata/libedit/libedit-20191025-3.1/
+cerata/libedit/libedit-20191025-3.1.tar.gz
+
+cerata/libelf/libelf-0.8.13/
+cerata/libelf/libelf-0.8.13.tar.gz
+
+cerata/libtool/libtool-2.4.6/
+cerata/libtool/libtool-2.4.6.tar.xz
+
 cerata/lilo/lilo-24.2/
 cerata/lilo/lilo-24.2.tar.gz
+
+cerata/linux/linux-5.3.11/
+cerata/linux/linux-5.3.11.tar.xz
+
+cerata/lz4/lz4-1.9.2/
+cerata/lz4/v1.9.2.tar.gz
 
 cerata/m4/m4-1.4.18/
 cerata/m4/m4-1.4.18.tar.xz

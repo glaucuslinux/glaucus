@@ -4,13 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  ./autogen.sh
-
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL \

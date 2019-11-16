@@ -9,10 +9,10 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  PERL=/usr/bin/perl \
   ./configure \
     --prefix=$TOOL \
-    --host=$TUPL
+    --host=$TUPL \
+    --disable-nls
 }
 
 build_chroot() {

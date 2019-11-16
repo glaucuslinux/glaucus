@@ -6,7 +6,7 @@
 prepare_system() {
   install -dv $SBLD/$name
 
-  cd $CERD/linux/linux
+  cd $CERD/linux/linux-$version
 
   make \
     mrproper

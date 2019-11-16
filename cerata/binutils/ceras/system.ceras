@@ -1,0 +1,32 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name-gdb/ $SSRC/$name --delete
+
+  install -dv $SBLD/$name
+  cd $SBLD/$name
+}
+
+configure_system() {
+  $SSRC/$name/configure \
+    --prefix=/usr \
+    --enable-plugins \
+    --enable-deterministic-archives \
+    --disable-compressed-debug-sections \
+    --disable-werror \
+    --disable-nls \
+    --disable-multilib \
+    --disable-gdb
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    install-strip
+}

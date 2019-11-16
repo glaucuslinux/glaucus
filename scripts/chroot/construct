@@ -26,4 +26,5 @@ construct mawk
 construct gettext-tiny
 construct make
 construct perl
+construct texinfo
 construct xz

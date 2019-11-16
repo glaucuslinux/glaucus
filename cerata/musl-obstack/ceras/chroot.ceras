@@ -6,17 +6,15 @@
 prepare_chroot() {
   rsync -vah $CERD/$name/$name $CSRC --delete
   cd $CSRC/$name
-  
-  sed 's/ls -/\/usr\/bin\/ls -/' \
-    -i lib/mdate-sh
 }
 
 configure_chroot() {
-  ./bootstrap
+  ./bootstrap.sh
 
   ./configure \
     --prefix=$TOOL \
-    --host=$TUPL
+    --host=$TUPL \
+    --disable-static
 }
 
 build_chroot() {

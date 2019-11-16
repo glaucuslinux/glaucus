@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
   
   install -dv $XBLD/$name
   cd $XBLD/$name

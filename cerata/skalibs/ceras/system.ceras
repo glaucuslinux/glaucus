@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
@@ -13,8 +13,7 @@ configure_system() {
     --prefix=/usr \
     --disable-static \
     --disable-all-pic \
-    --disable-ipv6 \
-    --enable-clock
+    --disable-ipv6
 
   sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -e 's/-Wl,--hash-style=both //' \

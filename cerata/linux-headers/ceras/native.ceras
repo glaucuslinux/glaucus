@@ -6,7 +6,7 @@
 prepare_native() {
   install -dv $NBLD/$name
 
-  cd $CERD/linux/linux
+  cd $CERD/linux/linux-$version
 
   make \
     mrproper

@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=bash
-version=git
+version=5.0
 release=1
 arch=x86_64
-url=https://$version.savannah.gnu.org/$version/$name
+url=https://ftpmirror.gnu.org/$name/$name-$version.tar.gz
+checksum=bb4519f06e278f271d08722b531e49d2e842cc3e0b02a6b3eee422e2efcb5b6226111af43f5e5eae56beb85ac8bfebcd6a4aacbabb8f609e529aa4d571890864
 cyst=musl
 description="The GNU Project's Bourne Again SHell"
 licenses='GPL-3.0-only GPL-3.0-or-later'

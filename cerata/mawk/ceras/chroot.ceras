@@ -4,8 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-snapshots/ $CSRC/$name --delete \
-    --exclude=.$version
+  rsync -vah $CERD/$name/$name-snapshots/ $CSRC/$name --delete
   cd $CSRC/$name
 }
 

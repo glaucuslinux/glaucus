@@ -4,14 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
-  rsync -vah $CERD/gnulib/gnulib $CSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  ./bootstrap
-  
   find . -name mdate-sh -type f -exec sed 's/ls -/\/usr\/bin\/ls -/' -i {} +
 
   ./configure \

@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=elfutils-libelf
+version=0.177
+release=1
+arch=x86_64
+url=https://sourceware.org/elfutils/ftp/0.177/elfutils-0.177.tar.bz2
+checksum=2779987463a22ed220759e25a09c9a1eb84c0f36db37675136e59aa55c7f8f90b7a7d34ffc4e6a4291d7fa73692a1bd1a303a74270b11d1623b4f9868d19498f
+cyst=musl
+description=''
+licenses='GPL-2.0-only GPL-2.0-or-later GPL-3.0-only GPL-3.0-or-later
+LGPL-3.0-only LGPL-3.0-or-later'

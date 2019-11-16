@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=diffutils
+version=3.7
+release=1
+arch=x86_64
+url=https://ftp.sotirov-bg.net/pub/mirrors/gnu/diffutils/diffutils-3.7.tar.xz
+checksum=7b12cf8aea1b9844773748f72272d9c6a38adae9c3c3a8c62048f91fb56c60b76035fa5f51665dceaf2cfbf1d1f4a3efdcc24bf47a5a16ff4350543314b12c9c
+cyst=musl
+description=''
+license=

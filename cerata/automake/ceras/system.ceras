@@ -3,27 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
-  cd $CSRC/$name
-}
-
-configure_chroot() {
-  autoreconf -vfi
+prepare_system() {
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
   
   sed 's/ls -/\/usr\/bin\/ls -/' \
-    -i build-aux/mdate-sh
-
-  ./configure \
-    --prefix=$TOOL \
-    --host=$TUPL
+    -i lib/mdate-sh
 }
 
-build_chroot() {
+configure_system() {
+  ./configure \
+    --prefix=/usr
+}
+
+build_system() {
   make
 }
 
-install_chroot() {
+install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     install-strip
 }

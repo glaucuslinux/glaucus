@@ -10,7 +10,7 @@ prepare_system() {
 
 configure_system() {
   $CERD/$name/$name/configure \
-    --prefix=$TOOL
+    --prefix=/usr
 }
 
 build_system() {
@@ -19,5 +19,6 @@ build_system() {
 
 install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     install
 }

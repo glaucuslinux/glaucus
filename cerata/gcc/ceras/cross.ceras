@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete --exclude=.$version
+  rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
   cd $TSRC/$name/$name/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do

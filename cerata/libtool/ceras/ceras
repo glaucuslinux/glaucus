@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=libtool
-version=git
+version=2.4.6
 release=1
 arch=x86_64
-url=https://$version.savannah.gnu.org/$version/$name
+url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
+checksum=a6eef35f3cbccf2c9e2667f44a476ebc80ab888725eb768e91a3a6c33b8c931afc46eb23efaee76c8696d3e4eed74ab1c71157bcb924f38ee912c8a90a6521a4
 cyst=musl
 description='A generic library support script'
 licenses='GFDL-1.3-or-later GPL-2.0-only GPL-2.0-or-later LGPL-2.0-or-later

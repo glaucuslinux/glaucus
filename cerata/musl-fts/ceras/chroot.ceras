@@ -4,21 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $CSRC --delete
   cd $CSRC/$name
 }
 
 configure_chroot() {
-  autoreconf -vfi
+  ./bootstrap.sh
 
   ./configure \
     --prefix=$TOOL \
-    --program-prefix=eu- \
     --host=$TUPL \
-    --enable-maintainer-mode \
-    --enable-deterministic-archives \
-    --disable-symbol-versioning \
-    --disable-nls
+    --disable-static
 }
 
 build_chroot() {
@@ -27,6 +23,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    -C libelf \
     install-strip
 }

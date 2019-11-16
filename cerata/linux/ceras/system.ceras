@@ -6,7 +6,7 @@
 prepare_system() {
   install -dv $SBLD/$name
 
-  cd $CERD/$name/$name
+  cd $CERD/$name/$name-$version
 
   make \
     mrproper
@@ -30,6 +30,6 @@ build_system() {
 }
 
 install_system() {
-  install -Dv $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
-  install -v $SBLD/$name/System.map $SCER/$name/sac/boot
+  rsync -vah $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
+  rsync -vah $SBLD/$name/System.map $SCER/$name/sac/boot
 }

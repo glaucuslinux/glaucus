@@ -45,6 +45,8 @@ install_system() {
     cd ../..
   done
 
+  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/lib
+
   install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr \
     misc/mke2fs misc/tune2fs $SCER/$name/sac/usr/bin
   

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/gcc/trunk/ $TSRC/gcc --delete --exclude=.$version
+  rsync -vah $CERD/gcc/trunk/ $TSRC/gcc --delete
 
   install -dv $NBLD/$name
   cd $NBLD/$name

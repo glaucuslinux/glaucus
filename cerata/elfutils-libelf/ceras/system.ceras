@@ -3,22 +3,22 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-prepare_chroot() {
-  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+prepare_system() {
+  rsync -vah $CERD/$name/$name $SSRC --delete
+  cd $SSRC/$name
 }
 
-configure_chroot() {
+configure_system() {
   ./configure \
-    --prefix=$TOOL \
-    --host=$TUPL
+    --prefix=/usr
 }
 
-build_chroot() {
+build_system() {
   make
 }
 
-install_chroot() {
+install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     install-strip
 }

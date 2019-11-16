@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=dash
-version=git
+version=0.5.10.2
 release=1
 arch=x86-64
-url=https://$version.kernel.org/pub/scm/utils/$name/$name
+url=http://gondor.apana.org.au/~herbert/$name/files/$name-$version.tar.gz
+checksum=0ae29be77794df0ba254967649b9728611a75fbb3acd32ab6634d76399d1ce97c7d12d31da465482a7e4f3207093415c496c39525cace9b78ab3cb9444dd7640
 cysts='musl mawk'
 description='The Debian Almquist shell is a POSIX-compliant shell derived from the NetBSD Almquist shell'
 cluster=core

@@ -1,12 +1,7 @@
-name=libelf-compat
-version=git
-release=1
-arch=x86-64
-url=https://github.com/sabotage-linux/$name
-cyst=musl
-description='libelf stripped off of elfutils 0.152 and cleaned up portability
-issues and autocrap'
-licenses='GPLv2+ GPLv3+ LGPLv3'
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
   rsync -vah $CERD/$name/$name $SSRC --delete
@@ -17,8 +12,7 @@ configure_system() {
   cat > config.mak << EOF
 prefix=/usr
 sysconfdir=/etc
-CFLAGS=$CFLAGS -std=gnu99 -D_GNU_SOURCE
-CC=$CC
+CFLAGS=$CFLAGS -D_GNU_SOURCE
 AR=$AR
 RANLIB=$RANLIB
 EOF

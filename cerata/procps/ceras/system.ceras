@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 
   patch -p1 -i $CERD/$name/patches/$name.patch

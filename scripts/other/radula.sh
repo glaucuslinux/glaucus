@@ -38,10 +38,7 @@ prepare_system() {
 
 configure_system() {
   ./configure \
-    --prefix=/usr \
-    --build=$TUPL \
-    --host=$TUPL \
-    --target=$TUPL
+    --prefix=/usr
 }
 
 build_system() {
@@ -105,13 +102,12 @@ EOF
       ;;
     *)
       case $4 in
-        yes) torify curl $3 -o $(basename $3) ;;
-        no) curl $3 -o $(basename $3) ;;
+        yes) torify wget $3 ;;
+        no) wget $3 ;;
       esac
 
       sed "/^url=.*/a checksum=$(echo $(sha512sum $(basename $3)) | awk \
-        '{print $1}')" \
-        -i ceras
+        '{print $1}')" -i ceras/ceras
       ;;
   esac
 else

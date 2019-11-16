@@ -4,9 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=linux-headers
-version=git
+version=5.3.11
 release=1
 arch=x86-64
-url=https://$version.kernel.org/pub/scm/$name/kernel/$version/stable/$name
+url=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$version.tar.xz
+checksum=24e167531014b637793aab5ce47e6e747f619e2a0e598c0db348ea9069fc3fd86c81d4ee63ae085d42aba260d702f5b797e550c7e22c3d5df4fe8d9c32f5b3d5
 description='The Linux kernel headers'
 license=GPL-2.0-only

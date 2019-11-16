@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name $TSRC --delete --exclude=.$version
+  rsync -vah $CERD/$name/$name $TSRC --delete
   cd $TSRC/$name
 }
 
