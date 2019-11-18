@@ -29,9 +29,9 @@ build_system() {
 }
 
 install_system() {
-  install -dv /usr/share/man/man1
+  install -dv $SCER/$name/sac/usr/share/man/man1
   
   make \
-    PREFIX=/usr \
+    PREFIX=$SCER/$name/sac/usr \
     install
 }

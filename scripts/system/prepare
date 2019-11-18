@@ -19,3 +19,5 @@ ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib
 
 ln -fsv $TOOL/lib/libcrypto.so /usr/lib
 ln -fsv $TOOL/lib/libgomp.so $TOOL/lib/libgomp.spec /usr/lib
+
+rsync -vah $SSCR/etc/passwd $SSCR/etc/group /etc

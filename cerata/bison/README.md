@@ -20,6 +20,7 @@ https://ftpmirror.gnu.org/bison/bison-3.4.2.tar.xz
 
 ## Cyst
 * musl
+* m4
 
 ## Description
 

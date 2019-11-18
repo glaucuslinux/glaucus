@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=libarchive
-version=git
+version=3.4.0
 release=1
 arch=x86-64
-url=https://github.com/$name/$name
+url=https://www.$name.org/downloads/$name-$version.tar.gz
+checksum=2f9e2a551a6bcab56fb1a030b5d656df7299a3d151465aa02f0420d344d2fada49dee4755b3abff9095f62519e14dc9af8afa1695ecc6d5fdb4f0b28e6ede852
 cysts='musl mawk'
 description='Multi-format archive and compression library'
 license=BSD-2-Clause

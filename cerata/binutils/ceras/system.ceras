@@ -30,6 +30,7 @@ build_system() {
 
 install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     tooldir=/usr \
     install
 }

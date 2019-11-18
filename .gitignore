@@ -63,11 +63,17 @@ cerata/gzip/gzip-1.10.tar.xz
 cerata/less/less-551/
 cerata/less/less-551.tar.gz
 
+cerata/libarchive/libarchive-3.4.0/
+cerata/libarchive/libarchive-3.4.0.tar.gz
+
 cerata/libedit/libedit-20191025-3.1/
 cerata/libedit/libedit-20191025-3.1.tar.gz
 
 cerata/libelf/libelf-0.8.13/
 cerata/libelf/libelf-0.8.13.tar.gz
+
+cerata/libressl/libressl-3.0.2/
+cerata/libressl/libressl-3.0.2.tar.gz
 
 cerata/libtool/libtool-2.4.6/
 cerata/libtool/libtool-2.4.6.tar.xz
@@ -96,7 +102,8 @@ cerata/mpfr/trunk/
 
 cerata/pcre/trunk/
 
-cerata/pcre2/trunk/
+cerata/pcre2/pcre2-10.33/
+cerata/pcre2/pcre2-10.33.tar.bz2
 
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz

@@ -3,25 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-# prepare
-mkdir -v $SBLD/$name
-cd $SBLD/$name
+prepare_system() {
+  install -dv $SBLD/$name
+  cd $SBLD/$name
+}
 
-# configure
-$CERD/$name/$name/configure \
-  --prefix=/usr \
-  --program-prefix=b \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL
+configure_system() {
+  $CERD/$name/$name-$version/configure \
+    --prefix=/usr \
+    --program-prefix=b
+}
 
-# build
-make
+build_system() {
+  make
+}
 
-# install
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install
 
-cd $SCER/$name/sac/usr/bin
-ln -fsv $name yacc
+  ln -fsv $name $SCER/$name/sac/usr/bin/yacc
+}

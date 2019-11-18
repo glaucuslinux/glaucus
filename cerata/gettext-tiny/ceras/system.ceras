@@ -4,16 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
 configure_system() {
-  ./configure \
-    --prefix=/usr \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+  cat > config.mak << EOF
+prefix=/usr
+LIBINTL=MUSL
+AR=$AR
+RANLIB=$RANLIB
+CFLAGS=$CFLAGS
+LDFLAGS=$LDFLAGS
+EOF
 }
 
 build_system() {
@@ -23,5 +26,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
-    install-strip
+    install
 }

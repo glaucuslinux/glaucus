@@ -10,10 +10,7 @@ prepare_system() {
 
 configure_system() {
   ./configure \
-    --prefix=/usr \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+    --prefix=/usr
 }
 
 build_system() {

@@ -22,26 +22,26 @@ envenomate() {
   done
 }
 
-envenomate zlib
-envenomate libedit
-envenomate m4
-envenomate flex
-envenomate binutils
-envenomate autoconf
-envenomate automake
-envenomate libtool
+#envenomate zlib
+#envenomate libedit
+#envenomate m4
+#envenomate flex
+#envenomate binutils
+#envenomate autoconf
+#envenomate automake
+#envenomate libtool
 #envenomate gmp
 #envenomate mpfr
 #envenomate mpc
 #envenomate isl
-envenomate zstd
+#envenomate zstd
 #envenomate gcc
-envenomate bzip2
-envenomate pkgconf
-envenomate netbsd-curses
-envenomate bison
-envenomate oksh
-envenomate dash
+#envenomate bzip2
+#envenomate pkgconf
+#envenomate netbsd-curses
+#envenomate byacc
+#envenomate oksh
+#envenomate dash
 #envenomate perl
 #envenomate xz
 #envenomate gettext-tiny
@@ -49,6 +49,7 @@ envenomate dash
 #envenomate libressl
 #envenomate toybox
 #envenomate mawk
+#envenomate pcre2
 #envenomate less
 #envenomate gzip
 #envenomate make

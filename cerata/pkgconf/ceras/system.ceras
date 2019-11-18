@@ -12,8 +12,7 @@ configure_system() {
   ./autogen.sh
 
   ./configure \
-    --prefix=/usr \
-    --disable-static
+    --prefix=/usr
 }
 
 build_system() {

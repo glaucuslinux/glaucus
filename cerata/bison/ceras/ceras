@@ -9,6 +9,6 @@ release=1
 arch=x86_64
 url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
 checksum=00d2b37187b93100ec4b220ce2752d12ccf68f9d0d39b380d375d36dd8a22aa1d6e60156918f95e4493f9531c5d42d8fad38fd807307b491c1ca7ca4177823d9
-cyst=musl
+cysts='musl m4'
 description='A general-purpose parser generator'
 licenses='GPL-3.0-only GPL-3.0-or-later'

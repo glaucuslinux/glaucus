@@ -151,9 +151,6 @@
 [submodule "cerata/libXxf86vm/libxxf86vm"]
 	path = cerata/libXxf86vm/libxxf86vm
 	url = https://gitlab.freedesktop.org/xorg/lib/libxxf86vm
-[submodule "cerata/libarchive/libarchive"]
-	path = cerata/libarchive/libarchive
-	url = https://github.com/libarchive/libarchive
 [submodule "cerata/libdatrie/libdatrie"]
 	path = cerata/libdatrie/libdatrie
 	url = https://github.com/tlwg/libdatrie
@@ -181,12 +178,6 @@
 [submodule "cerata/libpng/libpng"]
 	path = cerata/libpng/libpng
 	url = https://github.com/glennrp/libpng
-[submodule "cerata/libressl/openbsd"]
-	path = cerata/libressl/openbsd
-	url = https://github.com/libressl-portable/openbsd
-[submodule "cerata/libressl/portable"]
-	path = cerata/libressl/portable
-	url = https://github.com/libressl-portable/portable
 [submodule "cerata/libthai/libthai"]
 	path = cerata/libthai/libthai
 	url = https://github.com/tlwg/libthai

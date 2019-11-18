@@ -6,14 +6,23 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
+
+  rsync -vah $SSCR/etc/hosts /etc
 }
 
 configure_system() {
-  ./configure \
-    --prefix=/usr \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+  #CFLAGS="$CFLAGSNOLTO" \
+  BUILD_ZLIB=False \
+  BUILD_BZIP2=0 \
+  sh Configure \
+    -des \
+    -Dprefix=/usr \
+    -Dvendorprefix=/usr \
+    -Dman1dir=/usr/share/man/man1 \
+    -Dman3dir=/usr/share/man/man3 \
+    -Dpager='/usr/bin/less -isR' \
+    -Duseshrplib \
+    -Dusethreads
 }
 
 build_system() {
@@ -22,6 +31,5 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
-    install-strip
+    install
 }
