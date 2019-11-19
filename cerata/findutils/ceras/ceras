@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=findutils
+version=4.7.0
+release=1
+arch=x86_64
+url=https://ftpmirror.gnu.org/findutils/findutils-4.7.0.tar.xz
+checksum=650a24507f8f4ebff83ad28dd27daa4785b4038dcaadc4fe00823b976e848527074cce3f9ec34065b7f037436d2aa6e9ec099bc05d7472c29864ac2c69de7f2e
+cyst=musl
+description=''
+license=

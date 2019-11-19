@@ -23,6 +23,7 @@ envenomate() {
 }
 
 #envenomate zlib
+#envenomate file
 #envenomate libedit
 #envenomate m4
 #envenomate flex
@@ -39,24 +40,31 @@ envenomate() {
 #envenomate bzip2
 #envenomate pkgconf
 #envenomate netbsd-curses
+#envenomate sed
 #envenomate byacc
+#envenomate grep
 #envenomate oksh
 #envenomate dash
 #envenomate perl
 #envenomate xz
 #envenomate gettext-tiny
-#envenomate elfutils
+#envenomate libelf
 #envenomate libressl
+#envenomate python
 #envenomate toybox
+#envenomate diffutils
 #envenomate mawk
+#envenomate findutils
 #envenomate pcre2
 #envenomate less
 #envenomate gzip
 #envenomate make
+envenomate patch
 #envenomate mandoc
 #envenomate libarchive
 #envenomate vim
-#envenomate procps
+#envenomate procps-ng
+#envenomate util-linux
 #envenomate e2fsprogs
 
 #envenomate flex m4 bison

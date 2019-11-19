@@ -19,18 +19,12 @@
 [submodule "cerata/drm/drm"]
 	path = cerata/drm/drm
 	url = https://gitlab.freedesktop.org/mesa/drm
-[submodule "cerata/e2fsprogs/e2fsprogs"]
-	path = cerata/e2fsprogs/e2fsprogs
-	url = https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs
 [submodule "cerata/execline/execline"]
 	path = cerata/execline/execline
 	url = https://skarnet.org/cgi-bin/cgit.cgi/execline
 [submodule "cerata/expat/libexpat"]
 	path = cerata/expat/libexpat
 	url = https://github.com/libexpat/libexpat
-[submodule "cerata/file/file"]
-	path = cerata/file/file
-	url = https://github.com/file/file
 [submodule "cerata/fontconfig/fontconfig"]
 	path = cerata/fontconfig/fontconfig
 	url = https://gitlab.freedesktop.org/fontconfig/fontconfig

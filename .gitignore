@@ -44,8 +44,17 @@ cerata/dash/dash-0.5.10.2.tar.gz
 cerata/diffutils/diffutils-3.7/
 cerata/diffutils/diffutils-3.7.tar.xz
 
+cerata/e2fsprogs/e2fsprogs-1.45.4/
+cerata/e2fsprogs/e2fsprogs-1.45.4.tar.gz
+
 cerata/elfutils-libelf/elfutils-0.177/
 cerata/elfutils-libelf/elfutils-0.177.tar.bz2
+
+cerata/file/file-5.37/
+cerata/file/file-5.37.tar.gz
+
+cerata/findutils/findutils-4.7.0/
+cerata/findutils/findutils-4.7.0.tar.xz
 
 cerata/flex/flex-2.6.4/
 cerata/flex/flex-2.6.4.tar.lz
@@ -56,6 +65,9 @@ cerata/gettext/gettext-0.20.1/
 cerata/gettext/gettext-0.20.1.tar.xz
 
 cerata/gmp/gmp/
+
+cerata/grep/grep-3.3/
+cerata/grep/grep-3.3.tar.xz
 
 cerata/gzip/gzip-1.10/
 cerata/gzip/gzip-1.10.tar.xz
@@ -100,6 +112,9 @@ cerata/minised/trunk/
 
 cerata/mpfr/trunk/
 
+cerata/patch/patch-2.7.6/
+cerata/patch/patch-2.7.6.tar.xz
+
 cerata/pcre/trunk/
 
 cerata/pcre2/pcre2-10.33/
@@ -108,16 +123,22 @@ cerata/pcre2/pcre2-10.33.tar.bz2
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz
 
-cerata/procps/procps-ng-3.3.15/
-cerata/procps/procps-ng-3.3.15.tar.xz
+cerata/procps-ng/procps-ng-3.3.15/
+cerata/procps-ng/procps-ng-3.3.15.tar.xz
 
 cerata/pypy/pypy/
 
 cerata/qm4/m4-2/
 cerata/qm4/m4-2.tar.bz2
 
+cerata/sed/sed-4.7/
+cerata/sed/sed-4.7.tar.xz
+
 cerata/texinfo/texinfo-6.7/
 cerata/texinfo/texinfo-6.7.tar.xz
+
+cerata/util-linux/util-linux-2.34/
+cerata/util-linux/util-linux-2.34.tar.xz
 
 cerata/xz/xz-5.2.4/
 cerata/xz/xz-5.2.4.tar.xz

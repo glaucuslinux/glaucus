@@ -4,10 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  #patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
@@ -38,6 +36,7 @@ install_system() {
     cd $dir
     
     install -dv $SCER/$name/sac/usr/share/man/man3
+
     make \
       DESTDIR=$SCER/$name/sac \
       install-strip

@@ -3,26 +3,24 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
-  cd $CSRC/$name
+prepare_system() {
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
 }
 
-configure_chroot() {
-  autoreconf -vfi
-
+configure_system() {
   ./configure \
-    --prefix=$TOOL \
-    --host=$TUPL \
+    --prefix=/usr \
     --disable-libseccomp \
     --enable-fsect-man5
 }
 
-build_chroot() {
+build_system() {
   make
 }
 
-install_chroot() {
+install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     install-strip
 }

@@ -1,7 +1,7 @@
-# procps
+# procps-ng
 
 ## Name
-procps
+procps-ng
 
 ## Version
 3.3.15

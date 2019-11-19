@@ -1,0 +1,33 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
+
+  install -dv /var/lib/hwclock
+}
+
+configure_system() {
+  ADJTIME_PATH=/var/lib/hwclock/adjtime \
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --disable-symvers \
+    --disable-nls \
+    --disable-bash-completion \
+    --without-systemd \
+    --without-systemdsystemunitdir
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
+}
