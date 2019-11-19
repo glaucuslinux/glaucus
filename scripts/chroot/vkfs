@@ -2,29 +2,21 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys
+  /usr/bin/install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys
 
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mknod -m 600 $GLAD/dev/console c 5 1
+  /usr/bin/mknod -m 600 $GLAD/dev/console c 5 1
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mknod -m 666 $GLAD/dev/null c 1 3
+  /usr/bin/mknod -m 666 $GLAD/dev/null c 1 3
 
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mount -v /dev $GLAD/dev
+  /usr/bin/mount -v /dev $GLAD/dev
 
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts
+  /usr/bin/mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc
+  /usr/bin/mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys
+  /usr/bin/mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
-  mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run
+  /usr/bin/mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run

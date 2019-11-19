@@ -4,23 +4,24 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/Python-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$name/Python-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
 }
 
 configure_chroot() {
   #sed '/def add_multiarch_paths/a \        return' \
     #-i setup.py
 
-  ax_cv_c_float_words_bigendian=no \
+  #ax_cv_c_float_words_bigendian=no \
   ./configure \
-    --prefix=$TOOL \
+    --prefix=/usr \
     --build=$TUPL \
     --host=$TUPL \
     --enable-optimizations \
     --disable-ipv6 \
     --with-lto \
-    --without-ensurepip
+    --with-system-expat \
+    --with-system-ffi
 }
 
 build_chroot() {

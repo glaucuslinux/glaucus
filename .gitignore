@@ -38,6 +38,9 @@ cerata/bison/bison-3.4.2.tar.xz
 cerata/byacc/byacc-20191103/
 cerata/byacc/byacc-20191103.tgz
 
+cerata/bzip2/bzip2-1.0.6/
+cerata/bzip2/bzip2-1.0.6.tar.gz
+
 cerata/dash/dash-0.5.10.2/
 cerata/dash/dash-0.5.10.2.tar.gz
 
@@ -108,6 +111,9 @@ cerata/make/make-4.2.1.tar.bz2
 cerata/mandoc/mandoc-1.14.5/
 cerata/mandoc/mandoc-1.14.5.tar.gz
 
+cerata/mawk/mawk-1.3.4-20190203/
+cerata/mawk/mawk.tar.gz
+
 cerata/minised/trunk/
 
 cerata/mpfr/trunk/
@@ -128,14 +134,23 @@ cerata/procps-ng/procps-ng-3.3.15.tar.xz
 
 cerata/pypy/pypy/
 
+cerata/python/Python-3.8.0/
+cerata/python/Python-3.8.0.tar.xz
+
 cerata/qm4/m4-2/
 cerata/qm4/m4-2.tar.bz2
+
+cerata/rsync/rsync-3.1.3/
+cerata/rsync/rsync-3.1.3.tar.gz
 
 cerata/sed/sed-4.7/
 cerata/sed/sed-4.7.tar.xz
 
 cerata/texinfo/texinfo-6.7/
 cerata/texinfo/texinfo-6.7.tar.xz
+
+cerata/toybox/toybox-0.8.2/
+cerata/toybox/0.8.2.tar.gz
 
 cerata/util-linux/util-linux-2.34/
 cerata/util-linux/util-linux-2.34.tar.xz

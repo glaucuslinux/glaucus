@@ -13,12 +13,9 @@ configure_system() {
     --prefix=/usr \
     --disable-static \
     --disable-acl \
-    --without-zstd \
     --without-cng \
     --without-nettle \
-    --without-openssl \
-    --without-xml2 \
-    --without-expat
+    --without-xml2
 }
 
 build_system() {

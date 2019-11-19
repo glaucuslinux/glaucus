@@ -17,8 +17,7 @@ CFLAGS = $CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
 
-  sed -e '/$(BINDIR)\/clear/ s/$/.sh/' \
-    -e 's/-O0 //' \
+  sed -e 's/-O0 //' \
     -i GNUmakefile
 }
 

@@ -2,8 +2,7 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-LD_LIBRARY_PATH=/toolchain/lib \
-chroot $GLAD \
+/usr/bin/chroot $GLAD \
   $TOOL/usr/bin/env -i \
   HOME=/root \
   LD_LIBRARY_PATH=/toolchain/lib \

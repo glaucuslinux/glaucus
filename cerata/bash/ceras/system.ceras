@@ -4,14 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  install -dv $SBLD/$name
-  cd $SBLD/$name
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
 }
 
 configure_system() {
-  CFLAGS="$CFLAGSNOOPENMP" \
-  $CERD/$name/$name-$version/configure \
-    --prefix=/usr
+  CFLAGS="$CFLAGSNOLTO" \
+  ./configure \
+    --prefix=/usr \
+    --disable-nls \
+    --without-bash-malloc \
+    --with-installed-readline
 }
 
 build_system() {
@@ -19,11 +22,7 @@ build_system() {
 }
 
 install_system() {
-  rsync -vah $CERD/$name/$name-snapshots/man . --delete
-
   make \
     DESTDIR=$SCER/$name/sac \
-    install
-
-  ln -fsv $name $SCER/$name/sac/usr/bin/awk
+    install-strip
 }

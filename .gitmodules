@@ -4,9 +4,6 @@
 [submodule "cerata/binutils/binutils-gdb"]
 	path = cerata/binutils/binutils-gdb
 	url = https://sourceware.org/git/binutils-gdb.git
-[submodule "cerata/bzip2/bzip2"]
-	path = cerata/bzip2/bzip2
-	url = git://sourceware.org/git/bzip2
 [submodule "cerata/cairo/cairo"]
 	path = cerata/cairo/cairo
 	url = https://anongit.freedesktop.org/git/cairo
@@ -214,9 +211,6 @@
 [submodule "cerata/lobase/lobase"]
 	path = cerata/lobase/lobase
 	url = https://git.duncano.de/lobase
-[submodule "cerata/mawk/mawk-snapshots"]
-	path = cerata/mawk/mawk-snapshots
-	url = https://github.com/ThomasDickey/mawk-snapshots
 [submodule "cerata/mesa/mesa"]
 	path = cerata/mesa/mesa
 	url = https://gitlab.freedesktop.org/mesa/mesa
@@ -274,15 +268,9 @@
 [submodule "cerata/pkgconf/pkgconf"]
 	path = cerata/pkgconf/pkgconf
 	url = https://github.com/pkgconf/pkgconf
-[submodule "cerata/python/cpython"]
-	path = cerata/python/cpython
-	url = https://github.com/python/cpython
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
-[submodule "cerata/rsync/rsync"]
-	path = cerata/rsync/rsync
-	url = https://git.samba.org/rsync.git
 [submodule "cerata/s6/s6"]
 	path = cerata/s6/s6
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6
@@ -325,9 +313,6 @@
 [submodule "cerata/swaybg/swaybg"]
 	path = cerata/swaybg/swaybg
 	url = https://github.com/swaywm/swaybg
-[submodule "cerata/toybox/toybox"]
-	path = cerata/toybox/toybox
-	url = https://github.com/landley/toybox
 [submodule "cerata/ubase/ubase"]
 	path = cerata/ubase/ubase
 	url = https://git.suckless.org/ubase

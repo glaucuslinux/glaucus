@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=python
-version=git
+version=3.8.0
 release=1
 arch=x86-64
-url=https://github.com/$name/c$name
+url=https://www.$name.org/ftp/$name/$version/Python-$version.tar.xz
+checksum=5f9bfcb3acdf592770a9d5abd2c32c68c55a49b92f958ded069e3ef31cf2d415e67112b4f6738fab237dc29e5c622298719946d2e9471e7e78e3a6bdf2fac1d1
 cysts='musl expat libffi'
 description='The Python programming language'
 license=Python-2.0

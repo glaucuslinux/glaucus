@@ -9,16 +9,28 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  install -v $CERD/$name/glaucus.config .config
-
-  scripts/genconfig.sh
+  sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
+    -i Makefile
 }
 
 build_chroot() {
-  make
+  make \
+    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
+    -f Makefile-libbz2_so
+
+  make \
+    clean
+
+  make \
+    AR="$AR" \
+    RANLIB=$RANLIB \
+    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
+    LDFLAGS="$LDFLAGS"
 }
 
 install_chroot() {
+  #install -dv $TOOL/share/man/man1
+  
   make \
     PREFIX=$TOOL \
     install

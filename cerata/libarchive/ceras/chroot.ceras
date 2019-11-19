@@ -4,15 +4,20 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  install -dv $CBLD/$name
-  cd $CBLD/$name
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
+  cd $CSRC/$name
 }
 
 configure_chroot() {
-  CFLAGS="$CFLAGSNOOPENMP" \
-  $CERD/$name/$name-$version/configure \
+  ac_cv_header_linux_fiemap_h=no \
+  ./configure \
     --prefix=$TOOL \
-    --host=$TUPL
+    --host=$TUPL \
+    --disable-static \
+    --disable-acl \
+    --without-cng \
+    --without-nettle \
+    --without-xml2
 }
 
 build_chroot() {
@@ -21,7 +26,5 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
-
-  ln -fsv $name $TOOL/bin/awk
+    install-strip
 }

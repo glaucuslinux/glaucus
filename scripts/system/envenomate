@@ -45,6 +45,7 @@ envenomate() {
 #envenomate grep
 #envenomate oksh
 #envenomate dash
+#envenomate expat
 #envenomate perl
 #envenomate xz
 #envenomate gettext-tiny
@@ -59,9 +60,10 @@ envenomate() {
 #envenomate less
 #envenomate gzip
 #envenomate make
-envenomate patch
+#envenomate patch
 #envenomate mandoc
 #envenomate libarchive
+#envenomate texinfo
 #envenomate vim
 #envenomate procps-ng
 #envenomate util-linux

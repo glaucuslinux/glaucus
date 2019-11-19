@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=bzip2
-version=git
+version=1.0.6
 release=1
 arch=x86-64
-url=$version://sourceware.org/$version/$name
+url=https://prdownloads.sourceforge.net/$name/$name-$version.tar.gz
+checksum=00ace5438cfa0c577e5f578d8a808613187eff5217c35164ffe044fbafdfec9e98f4192c02a7d67e01e5a5ccced630583ad1003c37697219b0f147343a3fdd12
 cyst=musl
 description='A freely available, patent free, high-quality data compressor'
-license=bzip2-1.0.6
+license=$name-$version
