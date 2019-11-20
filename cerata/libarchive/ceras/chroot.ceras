@@ -9,7 +9,6 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  ac_cv_header_linux_fiemap_h=no \
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL \

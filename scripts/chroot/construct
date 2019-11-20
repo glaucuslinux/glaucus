@@ -19,9 +19,10 @@ construct() {
 #construct dash
 #construct bash
 #construct bison
-#construct bzip2
+construct bzip2
 #construct libressl
 #construct toybox
+#construct rsync
 #construct diffutils
 #construct file
 #construct findutils
@@ -32,9 +33,8 @@ construct() {
 #construct make
 #construct patch
 #construct perl
-#construct python
 #construct sed
+construct zlib
 construct libarchive
 #construct texinfo
 #construct xz
-#construct rsync

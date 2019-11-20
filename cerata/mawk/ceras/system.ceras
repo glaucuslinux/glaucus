@@ -19,7 +19,7 @@ build_system() {
 }
 
 install_system() {
-  rsync -vah $CERD/$name/$name-snapshots/man . --delete
+  rsync -vah $CERD/$name/$name-$version/man . --delete
 
   make \
     DESTDIR=$SCER/$name/sac \

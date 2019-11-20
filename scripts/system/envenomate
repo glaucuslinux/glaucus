@@ -37,7 +37,7 @@ envenomate() {
 #envenomate isl
 #envenomate zstd
 #envenomate gcc
-#envenomate bzip2
+envenomate bzip2
 #envenomate pkgconf
 #envenomate netbsd-curses
 #envenomate sed
@@ -62,7 +62,7 @@ envenomate() {
 #envenomate make
 #envenomate patch
 #envenomate mandoc
-#envenomate libarchive
+envenomate libarchive
 #envenomate texinfo
 #envenomate vim
 #envenomate procps-ng

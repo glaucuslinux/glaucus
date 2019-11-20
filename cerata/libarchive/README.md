@@ -20,7 +20,8 @@ https://www.libarchive.org/downloads/libarchive-3.4.0.tar.gz
 
 ## Cysts
 * musl
-* mawk
+* bzip2
+* zlib
 
 ## Description
 Multi-format archive and compression library

@@ -15,21 +15,13 @@ configure_chroot() {
 
 build_chroot() {
   make \
-    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
-    -f Makefile-libbz2_so
-
-  make \
-    clean
-
-  make \
     AR="$AR" \
     RANLIB=$RANLIB \
-    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
-    LDFLAGS="$LDFLAGS"
+    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64"
 }
 
 install_chroot() {
-  #install -dv $TOOL/share/man/man1
+  install -dv $TOOL/share/man/man1
   
   make \
     PREFIX=$TOOL \

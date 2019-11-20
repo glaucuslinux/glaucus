@@ -15,17 +15,12 @@ configure_system() {
 
 build_system() {
   make \
-    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
     -f Makefile-libbz2_so
 
   make \
     clean
 
-  make \
-    AR="$AR" \
-    RANLIB=$RANLIB \
-    CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64" \
-    LDFLAGS="$LDFLAGS"
+  make
 }
 
 install_system() {
@@ -34,4 +29,21 @@ install_system() {
   make \
     PREFIX=$SCER/$name/sac/usr \
     install
+
+  install -v bzip2-shared $SCER/$name/sac/usr/bin/bzip2
+  install -v libbz2.so.$version $SCER/$name/sac/usr/lib
+  
+  ln -fsv libbz2.so.1.0.6 $SCER/$name/sac/usr/lib/libbz2.so.1.0
+  ln -fsv libbz2.so.1.0 $SCER/$name/sac/usr/lib/libbz2.so
+
+  cd $SCER/$name/sac/usr/bin
+  
+  rm -fv bunzip2 bzcat bzcmp bzegrep bzfgrep bzless
+
+  ln -fsv bzip2 bunzip2
+  ln -fsv bzip2 bzcat
+  ln -fsv bzdiff bzcmp
+  ln -fsv bzgrep bzegrep
+  ln -fsv bzgrep bzfgrep
+  ln -fsv bzmore bzless
 }
