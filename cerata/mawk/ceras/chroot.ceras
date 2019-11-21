@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  install -dv $CBLD/$name
-  cd $CBLD/$name
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
+  cd $CSRC/$name
 }
 
 configure_chroot() {
   CFLAGS="$CFLAGSNOOPENMP" \
-  $CERD/$name/$name-$version/configure \
+  ./configure \
     --prefix=$TOOL \
     --host=$TUPL
 }
@@ -20,8 +20,6 @@ build_chroot() {
 }
 
 install_chroot() {
-  rsync -vah $CERD/$name/$name-$version/man . --delete
-  
   make \
     install
 

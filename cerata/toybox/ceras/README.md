@@ -66,3 +66,8 @@ and `tr`
 5. Diffutils: `diff`
 
 6. Util-Linux: `fdisk`, `fsck`, `ipcrm`, `ipcs`, `last`, `more` and `sulogin`
+
+## Configure
+toybox's `ls` outputs in the `long-iso` time style, which isn't compatible with
+some scripts like `build-aux/mdate-sh` which many packages (especially GNU ones
+use), therefore a `%b` was added prior to `%F` to fix this problem.

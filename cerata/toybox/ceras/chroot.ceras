@@ -6,6 +6,9 @@
 prepare_chroot() {
   rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
+
+  sed 's/%F/%b %F/' \
+    -i toys/posix/ls.c
 }
 
 configure_chroot() {
