@@ -6,7 +6,7 @@
 name=texinfo
 version=6.7
 release=1
-arch=x86_64
+arch=x86-64
 url=http://ftpmirror.gnu.org/$name/$name-$version.tar.xz
 checksum=da55a0d0a760914386393c5e8e864540265d8550dc576f784781a6d72501918e8afce716ff343e5c2a0ce09cf921bfaf0a48ecb49f6182a7d10e920ae3ea17e7
 cyst=musl

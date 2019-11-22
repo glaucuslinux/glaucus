@@ -6,7 +6,7 @@
 name=flex
 version=2.6.4
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/westes/$name/releases/download/v$version/$name-$version.tar.lz
 checksum=95173d8a979cc8109ec45b3a35130d5e57af6e43d5f11d5b989e5eab2f520b2bc910b83a92172878d6ffa84acefd62e8c252313741bcf16cb7e1ae0b211e1c85
 cyst=musl

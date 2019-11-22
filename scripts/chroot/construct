@@ -32,9 +32,9 @@ construct grep
 construct gzip
 construct make
 construct patch
-construct perl
+#construct perl
 construct sed
 construct zlib
+construct xz
 construct libarchive
 construct texinfo
-construct xz

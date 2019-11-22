@@ -6,7 +6,7 @@
 name=grep
 version=3.3
 release=1
-arch=x86_64
+arch=x86-64
 url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
 checksum=e4805dbddf7cd0f0faf412557d408509650c1ccf703bc450f10a3f727c690dbfaa1235aa81939a0e4b7ac6190f88c15ea1fcc562b343d4b4c7550f967aeb15db
 cyst=musl

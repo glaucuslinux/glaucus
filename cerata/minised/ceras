@@ -1,7 +1,7 @@
 name=minised
 version=svn
 release=1
-arch=x86_64
+arch=x86-64
 url=https://svn.exactcode.de/minised/trunk
 cyst=musl
 description=''

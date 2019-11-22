@@ -1,7 +1,7 @@
 name=samurai
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/michaelforney/samurai
 cyst=musl
 description=''

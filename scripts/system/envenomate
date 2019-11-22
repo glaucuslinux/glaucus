@@ -15,17 +15,17 @@ envenomate() {
 
     cd $SCER/$ceras/sac
     
-    sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | sed \
-      -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
+    sha512sum $(tar cJvvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | mawk -v OFS=' ' '{print $2, $10}' | sed '/^d/ d' | mawk '{print $2}' | sed 's/\.\///' | sort) > ../venom/checksum
     tar xvf ../venom/$name-$version-$release-$arch.tar.xz -C /
     rsync -vah ../venom /usr/cerata/$name --delete
   done
 }
 
-#envenomate zlib
-#envenomate file
-#envenomate libedit
-#envenomate m4
+envenomate zlib
+envenomate file
+envenomate libedit
+envenomate m4
+envenomate bc
 #envenomate flex
 #envenomate binutils
 #envenomate autoconf
@@ -37,7 +37,7 @@ envenomate() {
 #envenomate isl
 #envenomate zstd
 #envenomate gcc
-envenomate bzip2
+#envenomate bzip2
 #envenomate pkgconf
 #envenomate netbsd-curses
 #envenomate sed
@@ -62,7 +62,7 @@ envenomate bzip2
 #envenomate make
 #envenomate patch
 #envenomate mandoc
-envenomate libarchive
+#envenomate libarchive
 #envenomate texinfo
 #envenomate vim
 #envenomate procps-ng

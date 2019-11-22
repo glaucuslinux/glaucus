@@ -26,4 +26,7 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
+
+  ln -fsv bsdcpio $SCER/$name/sac/usr/bin/cpio
+  ln -fsv bsdtar $SCER/$name/sac/usr/bin/tar
 }

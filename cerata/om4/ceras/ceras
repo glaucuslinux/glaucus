@@ -6,7 +6,7 @@
 name=om4
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/ibara/m4
 cyst=musl
 description='A portable version of the OpenBSD m4 program'

@@ -29,6 +29,9 @@ cerata/automake/automake-1.16.1.tar.xz
 cerata/bash/bash-5.0/
 cerata/bash/bash-5.0.tar.gz
 
+cerata/bc/bc-2.3.0/
+cerata/bc/bc-2.3.0.tar.xz
+
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
@@ -157,6 +160,9 @@ cerata/util-linux/util-linux-2.34.tar.xz
 
 cerata/xz/xz-5.2.4/
 cerata/xz/xz-5.2.4.tar.xz
+
+cerata/zlib/zlib-1.2.11/
+cerata/zlib/zlib-1.2.11.tar.xz
 
 
 # the image resulting from the build process of system

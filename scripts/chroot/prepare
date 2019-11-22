@@ -1,5 +1,7 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+rsync -vah $GLAD/backup/toolchain/ $TOOL --delete
+
 /usr/bin/rm -frv $CBLD
 install -dv $CBLD

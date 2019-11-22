@@ -8,4 +8,5 @@
 
 . $TSCR/cross/run
 . $TSCR/native/run
-#. $TSCR/chroot/run
+
+. $TSCR/backup

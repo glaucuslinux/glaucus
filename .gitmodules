@@ -343,9 +343,6 @@
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
-[submodule "cerata/zlib/zlib"]
-	path = cerata/zlib/zlib
-	url = https://github.com/madler/zlib
 [submodule "cerata/zstd/zstd"]
 	path = cerata/zstd/zstd
 	url = https://github.com/facebook/zstd
