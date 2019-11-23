@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
 
   install -dv $NBLD/$name
   cd $NBLD/$name
@@ -32,7 +32,7 @@ build_native() {
 
 install_native() {
   make \
-    install
+    install-strip
 
   make \
     -C ld clean

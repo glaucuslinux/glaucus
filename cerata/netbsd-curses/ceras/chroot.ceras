@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
   cd $CSRC/$name
 }
 
@@ -13,8 +13,6 @@ configure_chroot() {
 PREFIX = $TOOL
 AR = $AR
 RANLIB = $RANLIB
-CFLAGS = $CFLAGS
-LDFLAGS = $LDFLAGS
 EOF
 
   sed 's/-O0 //' \

@@ -2,11 +2,9 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-LD_LIBRARY_PATH=/toolchain/lib \
 chroot $GLAD \
   $TOOL/usr/bin/env -i \
   HOME=/root \
-  LD_LIBRARY_PATH=/toolchain/lib \
   PATH=/bin:/sbin:/usr/bin:/usr/sbin:$TOOL/bin:$TOOL/sbin:$TOOL/usr/bin:$TOOL/usr/sbin \
   TERM=xterm-256color \
   PS1="[\033[0;44mglaucus\033[0m:\033[1m\w\033[0m]$ " \

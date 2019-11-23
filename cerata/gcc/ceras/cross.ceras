@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/trunk/ $TSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
   cd $TSRC/$name/$name/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
@@ -75,8 +75,6 @@ build_cross() {
 }
 
 install_cross() {
-  install -dv $TOOL/share/info/dir
-
   make \
     install-strip
 }

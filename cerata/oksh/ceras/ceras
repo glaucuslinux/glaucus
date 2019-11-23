@@ -6,7 +6,7 @@
 name=oksh
 version=git
 release=1
-arch=x86_64
+arch=x86-64
 url=https://github.com/ibara/
 cysts='musl netbsd-curses'
 description='Portable OpenBSD ksh, based on the Public Domain Korn Shell

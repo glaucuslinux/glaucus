@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
@@ -13,11 +13,9 @@ configure_system() {
 PREFIX = /usr
 AR = $AR
 RANLIB = $RANLIB
-CFLAGS = $CFLAGS
-LDFLAGS = $LDFLAGS
 EOF
 
-  sed -e 's/-O0 //' \
+  sed 's/-O0 //' \
     -i GNUmakefile
 }
 

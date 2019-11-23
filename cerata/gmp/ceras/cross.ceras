@@ -4,13 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name $TSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
   cd $TSRC/$name
 }
 
 configure_cross() {
-  ./.bootstrap
-  
   ./configure \
     --prefix=$TOOL \
     --enable-cxx \

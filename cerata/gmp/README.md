@@ -4,7 +4,7 @@
 gmp
 
 ## Version
-hg
+6.1.2
 
 ## Release
 1
@@ -13,7 +13,10 @@ hg
 * x86-64
 
 ## URL
-https://gmplib.org/repo/gmp
+https://gmplib.org/download/gmp/gmp-6.1.2.tar.xz
+
+## Checksum
+9f098281c0593b76ee174b722936952671fab1dae353ce3ed436a31fe2bc9d542eca752353f6645b7077c1f395ab4fdd355c58e08e2a801368f1375690eee2c6
 
 ## Cyst
 

@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $CERD/$name/$name/configure \
+  $CERD/$name/$name-$version/configure \
     --prefix=/usr
 }
 

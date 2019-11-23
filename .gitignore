@@ -29,8 +29,14 @@ cerata/automake/automake-1.16.1.tar.xz
 cerata/bash/bash-5.0/
 cerata/bash/bash-5.0.tar.gz
 
+cerata/bc/bc-2.3.0/
+cerata/bc/bc-2.3.0.tar.xz
+
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
+
+cerata/binutils/binutils-2.33.1/
+cerata/binutils/binutils-2.33.1.tar.xz
 
 cerata/bison/bison-3.4.2/
 cerata/bison/bison-3.4.2.tar.xz
@@ -62,18 +68,23 @@ cerata/findutils/findutils-4.7.0.tar.xz
 cerata/flex/flex-2.6.4/
 cerata/flex/flex-2.6.4.tar.lz
 
-cerata/gcc/trunk/
+cerata/gcc/gcc-9.2.0/
+cerata/gcc/gcc-9.2.0.tar.xz
 
 cerata/gettext/gettext-0.20.1/
 cerata/gettext/gettext-0.20.1.tar.xz
 
-cerata/gmp/gmp/
+cerata/gmp/gmp-6.1.2/
+cerata/gmp/gmp-6.1.2.tar.xz
 
 cerata/grep/grep-3.3/
 cerata/grep/grep-3.3.tar.xz
 
 cerata/gzip/gzip-1.10/
 cerata/gzip/gzip-1.10.tar.xz
+
+cerata/isl/isl-0.22/
+cerata/isl/isl-0.22.tar.xz
 
 cerata/less/less-551/
 cerata/less/less-551.tar.gz
@@ -116,7 +127,17 @@ cerata/mawk/mawk.tar.gz
 
 cerata/minised/trunk/
 
-cerata/mpfr/trunk/
+cerata/mpc/mpc-1.1.0/
+cerata/mpc/mpc-1.1.0.tar.gz
+
+cerata/mpfr/mpfr-4.0.2/
+cerata/mpfr/mpfr-4.0.2.tar.xz
+
+cerata/musl/musl-1.1.24/
+cerata/musl/musl-1.1.24.tar.gz
+
+cerata/netbsd-curses/netbsd-curses-0.3.1/
+cerata/netbsd-curses/v0.3.1.tar.gz
 
 cerata/patch/patch-2.7.6/
 cerata/patch/patch-2.7.6.tar.xz
@@ -128,6 +149,9 @@ cerata/pcre2/pcre2-10.33.tar.bz2
 
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz
+
+cerata/pkgconf/pkgconf-1.1.0/
+cerata/pkgconf/pkgconf-1.1.0.tar.xz
 
 cerata/procps-ng/procps-ng-3.3.15/
 cerata/procps-ng/procps-ng-3.3.15.tar.xz
@@ -158,6 +182,11 @@ cerata/util-linux/util-linux-2.34.tar.xz
 cerata/xz/xz-5.2.4/
 cerata/xz/xz-5.2.4.tar.xz
 
+cerata/zlib/zlib-1.2.11/
+cerata/zlib/zlib-1.2.11.tar.xz
+
+cerata/zstd/zstd-1.4.4/
+cerata/zstd/zstd-1.4.4.tar.gz
 
 # the image resulting from the build process of system
 glaucus.img

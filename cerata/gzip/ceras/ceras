@@ -6,7 +6,7 @@
 name=gzip
 version=1.10
 release=1
-arch=x86_64
+arch=x86-64
 url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
 checksum=e6ba9e3906cdb6a6235b213515093d02afa1722686f73eddacbacae628542b586b449829783b6a1701e9b9e0c4d4dfa6845904d3b6b010f5cf21aec4997c9299
 cyst=musl

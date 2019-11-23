@@ -12,7 +12,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  install -v $CERD/$name/glaucus.config .config
+  install -v $CERD/$name/chroot.config .config
 
   scripts/genconfig.sh
 }

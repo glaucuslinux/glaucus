@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/trunk/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
 
   sed '/m64/s/lib64/lib/' \
     -i $SSRC/$name/$name/config/i386/t-linux64
@@ -15,7 +15,7 @@ prepare_system() {
 
 configure_system() {
   $SSRC/$name/configure \
-    --prefix=$TOOL \
+    --prefix=/usr \
     --disable-multilib \
     --enable-threads=posix \
     --with-arch=x86-64 \
@@ -25,8 +25,8 @@ configure_system() {
     --disable-libssp \
     --disable-werror \
     --disable-nls \
-    --with-isl=$TOOL \
-    --with-zstd=$TOOL \
+    --with-isl=/usr \
+    --with-zstd=/usr \
     --with-linker-hash-style=gnu
 }
 
@@ -36,8 +36,9 @@ build_system() {
 
 install_system() {
   make \
+    DESTDIR=$SCER/$name/sac \
     install-strip
 
-  ln -fsv $TUPL-gcc $TOOL/bin/cc
-  ln -fsv $TUPL-gcc $TOOL/bin/$TUPL-cc
+  ln -fsv $TUPL-gcc $SCER/$name/sac/usr/bin/cc
+  ln -fsv $TUPL-gcc $SCER/$name/sac/usr/bin/$TUPL-cc
 }

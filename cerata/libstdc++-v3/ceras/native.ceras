@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/gcc/trunk/ $TSRC/gcc --delete
+  rsync -vah $CERD/gcc/gcc-$version/ $TSRC/gcc --delete
 
   install -dv $NBLD/$name
   cd $NBLD/$name
@@ -19,7 +19,7 @@ configure_native() {
     --disable-nls \
     --disable-libstdcxx-pch \
     --disable-libstdcxx-threads \
-    --with-gxx-include-dir=$TOOL/$TUPL/include/c++/10.0.0
+    --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$version
 }
 
 build_native() {

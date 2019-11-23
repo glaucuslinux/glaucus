@@ -15,6 +15,7 @@ configure_chroot() {
 
 build_chroot() {
   make \
+    LD_LIBRARY_PATH=$TOOL/lib \
     AR="$AR" \
     RANLIB=$RANLIB \
     CFLAGS="$CFLAGS -fpic -D_FILE_OFFSET_BITS=64"

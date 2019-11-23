@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=bc
+version=2.3.0
+release=1
+arch=x86-64
+url=https://github.com/gavinhoward/$name/releases/download/$version/$name-$version.tar.xz
+checksum=e57b429e3af2afc4e830e7689dfc036bf8f722dacfec34e22e33cae28db6696ff0a9e3245f743d08644324e2e566dd9795b72885b8b44c696e4d9632b4e0aacc
+cyst=musl
+description='An implementation of the POSIX bc calculator with GNU extensions
+and dc'
+license=BSD-2-Clause

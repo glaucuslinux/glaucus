@@ -4,7 +4,7 @@
 binutils
 
 ## Version
-git
+2.33.1
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://sourceware.org/git/binutils-gdb.git
+https://ftpmirror.gnu.org/binutils/binutils-2.33.1.tar.xz
+
+## Checksum
+b7a6767c6c7ca6b5cafa7080e6820b7bb3a53b7148348c438d99905defbdf0d30c9744a484ee01c9441a8153901808513366b15ba9533e20c9673c262ade36ac
 
 ## Cyst
 * musl

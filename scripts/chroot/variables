@@ -18,7 +18,6 @@ export GLAT=$GLAD/toolchain
 export TOOL=/toolchain
 
 export PATH=$TOOL/bin:$TOOL/usr/bin:/usr/bin:/usr/bin/core_perl
-export LD_LIBRARY_PATH=$TOOL/lib
 
 export MAKEFLAGS=-j1
 
@@ -28,14 +27,19 @@ export RANLIB=gcc-ranlib
 
 export GCSE='-fgcse-sm -fgcse-las'
 export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
+export IPA='-fipa-pta'
+export IRA='-fira-loop-pressure'
+export LTO='-flto'
 export MARCH='-march=x86-64'
+export OPENMP='-fopenmp'
+export OPT='-Ofast'
 export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
 export PGO='-ftracer -funroll-loops'
 export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
 
-export CFLAGS="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
-export CFLAGSNOLTO="-pipe -fopenmp -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER $PGO -s $MARCH"
-export CFLAGSNOOPENMP="-pipe -g0 -Ofast $SMS $GCSE -fira-loop-pressure -fipa-pta $GRAPHITE $OTHER -flto $PGO -s $MARCH"
+export CFLAGS="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
+export CFLAGSNOLTO="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
+export CFLAGSNOOPENMP="-pipe -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
 export CPPFLAGS="-I$TOOL/include"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"

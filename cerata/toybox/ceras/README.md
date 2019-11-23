@@ -71,3 +71,9 @@ and `tr`
 toybox's `ls` outputs in the `long-iso` time style, which isn't compatible with
 some scripts like `build-aux/mdate-sh` which many packages (especially GNU ones
 use), therefore a `%b` was added prior to `%F` to fix this problem.
+
+The difference between chroot toybox and system toybox is that chroot toybox
+uses the internally provided libz and libcrypto to prevent messing with the
+LD_LIBRARY_PATH variables when building chroot and system, while system toybox
+relies on the system installed zlib and libressl to provide better and faster
+support.

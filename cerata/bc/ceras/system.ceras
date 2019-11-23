@@ -1,0 +1,27 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure_system() {
+  CC='cc -std=c99' \
+  PREFIX=/usr \
+  DESTDIR=$SCER/$name/sac \
+  ./configure.sh \
+    -G \
+    -N
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    install
+}

@@ -9,7 +9,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  $CERD/$name/$name/configure \
+  $CERD/$name/$name-$version/configure \
     --prefix=$TOOL
 }
 

@@ -6,7 +6,7 @@
 name=qm4
 version=2
 release=1
-arch=x86_64
+arch=x86-64
 url=http://haddonthethird.net/m4/m4-$version.tar.bz2
 checksum=25c9e82c39f6af528459bcf3ae29775dce12bdfecc98280c8461cf47f89cacd09d04ade09001048b21fbf09fba7988a9b183f40a60c2abdb6c38655f7d5a0868
 cyst=musl

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/$name/$name $TSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
   cd $TSRC/$name
 }
 

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name-gdb/ $TSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
   
   install -dv $XBLD/$name
   cd $XBLD/$name
@@ -30,5 +30,5 @@ build_cross() {
 
 install_cross() {
   make \
-    install
+    install-strip
 }

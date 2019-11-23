@@ -6,10 +6,13 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
+  
+  sed 's/%F/%b %F/' \
+    -i toys/posix/ls.c
 }
 
 configure_system() {
-  install -v $CERD/$name/glaucus.config .config
+  install -v $CERD/$name/system.config .config
 
   scripts/genconfig.sh
 }

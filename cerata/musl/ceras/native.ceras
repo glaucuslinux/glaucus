@@ -10,13 +10,13 @@ prepare_native() {
 
 configure_native() {
   CROSS_COMPILE=$TUPL- \
-  $CERD/$name/$name/configure \
+  $CERD/$name/$name-$version/configure \
     --prefix=$TOOL \
     --syslibdir=$TOOL/lib \
     --target=$TUPL
 
   rm -fv Makefile
-  install -v $CERD/$name/$name/Makefile .
+  install -v $CERD/$name/$name-$version/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile

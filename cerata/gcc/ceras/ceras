@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=gcc
-version=svn
+version=9.2.0
 release=1
 arch=x86-64
-url=https://$name.gnu.org/$version/$name/trunk
+url=https://ftpmirror.gnu.org/$name/$name-$version/$name-$version.tar.xz
+checksum=a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040
 description='The GNU Compiler Collection'
 licenses='BSD-3-Clause BSL-1.0 GFDL-1.2-only GFDL-1.3-only GPL-2.0-only
 GPL-3.0-only LGPL-2.1-only LGPL-3.0-only MIT'

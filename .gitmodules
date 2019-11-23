@@ -1,9 +1,6 @@
 [submodule "cerata/bearssl/BearSSL"]
 	path = cerata/bearssl/BearSSL
 	url = https://www.bearssl.org/git/BearSSL
-[submodule "cerata/binutils/binutils-gdb"]
-	path = cerata/binutils/binutils-gdb
-	url = https://sourceware.org/git/binutils-gdb.git
 [submodule "cerata/cairo/cairo"]
 	path = cerata/cairo/cairo
 	url = https://anongit.freedesktop.org/git/cairo
@@ -49,9 +46,6 @@
 [submodule "cerata/iproute2/iproute2"]
 	path = cerata/iproute2/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
-[submodule "cerata/isl/isl"]
-	path = cerata/isl/isl
-	url = https://repo.or.cz/isl
 [submodule "cerata/jemalloc/jemalloc"]
 	path = cerata/jemalloc/jemalloc
 	url = https://github.com/jemalloc/jemalloc
@@ -214,21 +208,12 @@
 [submodule "cerata/mesa/mesa"]
 	path = cerata/mesa/mesa
 	url = https://gitlab.freedesktop.org/mesa/mesa
-[submodule "cerata/mpc/mpc"]
-	path = cerata/mpc/mpc
-	url = https://scm.gforge.inria.fr/anonscm/git/mpc/mpc
-[submodule "cerata/musl/musl"]
-	path = cerata/musl/musl
-	url = https://git.musl-libc.org/cgit/musl
 [submodule "cerata/musl-fts/musl-fts"]
 	path = cerata/musl-fts/musl-fts
 	url = https://github.com/void-linux/musl-fts
 [submodule "cerata/musl-obstack/musl-obstack"]
 	path = cerata/musl-obstack/musl-obstack
 	url = https://github.com/void-linux/musl-obstack
-[submodule "cerata/netbsd-curses/netbsd-curses"]
-	path = cerata/netbsd-curses/netbsd-curses
-	url = https://github.com/sabotage-linux/netbsd-curses
 [submodule "cerata/nldev/nldev"]
 	path = cerata/nldev/nldev
 	url = git://r-36.net/nldev
@@ -265,9 +250,6 @@
 [submodule "cerata/pkg-config/pkg-config"]
 	path = cerata/pkg-config/pkg-config
 	url = https://gitlab.freedesktop.org/pkg-config/pkg-config
-[submodule "cerata/pkgconf/pkgconf"]
-	path = cerata/pkgconf/pkgconf
-	url = https://github.com/pkgconf/pkgconf
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
@@ -343,9 +325,3 @@
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
-[submodule "cerata/zlib/zlib"]
-	path = cerata/zlib/zlib
-	url = https://github.com/madler/zlib
-[submodule "cerata/zstd/zstd"]
-	path = cerata/zstd/zstd
-	url = https://github.com/facebook/zstd

@@ -15,22 +15,18 @@ envenomate() {
 
     cd $SCER/$ceras/sac
     
-    sha512sum $(tar cJvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | sed \
-      -e 's/\.\///' -e '/\/$/d' | sort) > ../venom/checksum
-    tar xvf ../venom/$name-$version-$release-$arch.tar.xz -C /
+    sha1sum $(tar cJvvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | mawk -v OFS=' ' '{print $2, $10}' | sed '/^d/ d' | mawk '{print $2}' | sed 's/\.\///' | sort) > ../venom/checksum
+    tar xvf ../venom/$name-$version-$release-$arch.tar.xz -C / 2>&1
     rsync -vah ../venom /usr/cerata/$name --delete
   done
 }
 
-#envenomate zlib
-#envenomate file
-#envenomate libedit
-#envenomate m4
-#envenomate flex
+envenomate zlib
+envenomate file
+envenomate libedit
+envenomate m4
+envenomate bc
 #envenomate binutils
-#envenomate autoconf
-#envenomate automake
-#envenomate libtool
 #envenomate gmp
 #envenomate mpfr
 #envenomate mpc
@@ -38,18 +34,23 @@ envenomate() {
 #envenomate zstd
 #envenomate gcc
 envenomate bzip2
-#envenomate pkgconf
-#envenomate netbsd-curses
+envenomate pkgconf
+envenomate netbsd-curses
 #envenomate sed
-#envenomate byacc
+#envenomate bison
+#envenomate flex
 #envenomate grep
 #envenomate oksh
 #envenomate dash
+#envenomate bash
 #envenomate expat
 #envenomate perl
+#envenomate autoconf
+#envenomate automake
 #envenomate xz
 #envenomate gettext-tiny
 #envenomate libelf
+#envenomate libffi
 #envenomate libressl
 #envenomate python
 #envenomate toybox
@@ -62,7 +63,7 @@ envenomate bzip2
 #envenomate make
 #envenomate patch
 #envenomate mandoc
-envenomate libarchive
+#envenomate libarchive
 #envenomate texinfo
 #envenomate vim
 #envenomate procps-ng

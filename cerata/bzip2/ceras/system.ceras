@@ -9,6 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
+  patch -p1 -i $CERD/$name/patches/$name.patch
+
   sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
     -i Makefile
 }

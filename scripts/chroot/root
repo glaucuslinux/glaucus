@@ -2,5 +2,4 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  LD_LIBRARY_PATH=$TOOL/lib \
   chown -Rv root:root $TOOL/

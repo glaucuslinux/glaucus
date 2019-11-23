@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-gdb/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
 
   install -dv $SBLD/$name
   cd $SBLD/$name
@@ -32,5 +32,5 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     tooldir=/usr \
-    install
+    install-strip
 }

@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $CERD/$name/$name/configure \
+  $CERD/$name/$name-$version/configure \
     CFLAGS="$CFLAGSNOLTO" \
     --prefix=/usr \
     --syslibdir=/usr/lib \
@@ -17,7 +17,7 @@ configure_system() {
     --disable-static
 
   rm -fv Makefile
-  install -v $CERD/$name/$name/Makefile .
+  install -v $CERD/$name/$name-$version/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile

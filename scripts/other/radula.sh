@@ -3,6 +3,7 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+PATH=/usr/bin
 CERD=/home/glaucus/cerata
 
 if [ ! -d $CERD/$1 ]; then
@@ -18,7 +19,7 @@ if [ ! -d $CERD/$1 ]; then
 name=$1
 version=$2
 release=1
-arch=x86_64
+arch=x86-64
 url=$3
 cyst=musl
 description=''
@@ -32,7 +33,7 @@ EOF
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 

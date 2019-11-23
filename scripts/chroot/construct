@@ -20,7 +20,6 @@ construct dash
 construct bash
 construct bison
 construct bzip2
-construct libressl
 construct toybox
 construct rsync
 construct diffutils
@@ -35,6 +34,6 @@ construct patch
 construct perl
 construct sed
 construct zlib
+construct xz
 construct libarchive
 construct texinfo
-construct xz
