@@ -10,11 +10,7 @@ prepare_system() {
 
 configure_system() {
   ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --with-system-libdir=/usr/lib
+    --prefix=/usr
 }
 
 build_system() {

@@ -86,6 +86,9 @@ cerata/gzip/gzip-1.10.tar.xz
 cerata/isl/isl-0.22/
 cerata/isl/isl-0.22.tar.xz
 
+cerata/lbzip2/lbzip2-2.5/
+cerata/lbzip2/lbzip2-2.5.tar.xz
+
 cerata/less/less-551/
 cerata/less/less-551.tar.gz
 
@@ -150,6 +153,12 @@ cerata/pcre2/pcre2-10.33.tar.bz2
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz
 
+cerata/pigz/pigz-2.4/
+cerata/pigz/pigz-2.4.tar.gz
+
+cerata/pixz/pixz-1.0.6/
+cerata/pixz/pixz-1.0.6.tar.xz
+
 cerata/pkgconf/pkgconf-1.1.0/
 cerata/pkgconf/pkgconf-1.1.0.tar.xz
 
@@ -166,6 +175,9 @@ cerata/qm4/m4-2.tar.bz2
 
 cerata/rsync/rsync-3.1.3/
 cerata/rsync/rsync-3.1.3.tar.gz
+
+cerata/samurai/samurai-0.7/
+cerata/samurai/samurai-0.7.tar.gz
 
 cerata/sed/sed-4.7/
 cerata/sed/sed-4.7.tar.xz

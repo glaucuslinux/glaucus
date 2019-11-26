@@ -10,11 +10,7 @@ prepare_system() {
 
 configure_system() {
   ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --with-system-libdir=/usr/lib
+    --prefix=/usr
 }
 
 build_system() {
@@ -25,4 +21,8 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
+
+  ln -fsv lbzip2 $SCER/$name/sac/usr/bin/bzip2
+  ln -fsv lbzip2 $SCER/$name/sac/usr/bin/bunzip2
+  ln -fsv lbzip2 $SCER/$name/sac/usr/bin/bzcat
 }

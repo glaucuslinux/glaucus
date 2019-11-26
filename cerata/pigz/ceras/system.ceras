@@ -1,0 +1,33 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure_system() {
+  sed -e "s/CFLAGS=.*/CFLAGS=$CFLAGS/" \
+    -e "s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
+    -i Makefile
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
+
+  install -v pigz $SCER/$name/sac/usr/bin
+  install -v pigz.1 $SCER/$name/sac/usr/share/man/man1
+
+  ln -fsv pigz $SCER/$name/sac/usr/bin/unpigz
+  
+  ln -fsv pigz $SCER/$name/sac/usr/bin/gzip
+  ln -fsv pigz $SCER/$name/sac/usr/bin/gunzip
+  ln -fsv pigz $SCER/$name/sac/usr/bin/gzcat
+  ln -fsv pigz $SCER/$name/sac/usr/bin/zcat
+}

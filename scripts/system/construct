@@ -4,12 +4,12 @@
 construct() {
   for ceras in $@; do
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$ceras/ceras/system.ceras
+    . $CERD/$name/ceras/system.ceras
     
-    prepare_system || { echo system $ceras prepare failed; exit $?; }
-    configure_system || { echo system $ceras configure failed; exit $?; }
-    build_system || { echo system $ceras build failed; exit $?; }
-    install_system || { echo system $ceras install failed; exit $?; }
+    prepare_system || { echo system $name prepare failed; exit $?; }
+    configure_system || { echo system $name configure failed; exit $?; }
+    build_system || { echo system $name build failed; exit $?; }
+    install_system || { echo system $name install failed; exit $?; }
   done
 }
 

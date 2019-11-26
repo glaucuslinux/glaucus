@@ -268,9 +268,6 @@
 [submodule "cerata/s6-rc/s6-rc"]
 	path = cerata/s6-rc/s6-rc
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-rc
-[submodule "cerata/samurai/samurai"]
-	path = cerata/samurai/samurai
-	url = https://github.com/michaelforney/samurai
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase

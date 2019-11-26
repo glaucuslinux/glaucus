@@ -4,12 +4,12 @@
 construct() {
   for ceras in $@; do
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$ceras/ceras/chroot.ceras
+    . $CERD/$name/ceras/chroot.ceras
 
-    prepare_chroot || { echo chroot $ceras prepare failed; exit $?; }
-    configure_chroot || { echo chroot $ceras configure failed; exit $?; }
-    build_chroot || { echo chroot $ceras build failed; exit $?; }
-    install_chroot || { echo chroot $ceras install failed; exit $?; }
+    prepare_chroot || { echo chroot $name prepare failed; exit $?; }
+    configure_chroot || { echo chroot $name configure failed; exit $?; }
+    build_chroot || { echo chroot $name build failed; exit $?; }
+    install_chroot || { echo chroot $name install failed; exit $?; }
   done
 }
 
@@ -19,7 +19,7 @@ construct oksh
 construct dash
 construct bash
 construct bison
-construct bzip2
+construct lbzip2
 construct toybox
 construct rsync
 construct diffutils
@@ -28,12 +28,12 @@ construct findutils
 construct mawk
 construct gettext-tiny
 construct grep
-construct gzip
+construct zlib
+construct pigz
 construct make
 construct patch
-construct perl
+#construct perl
 construct sed
-construct zlib
 construct xz
 construct libarchive
-construct texinfo
+#construct texinfo

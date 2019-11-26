@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=pixz
+version=1.0.6
+release=1
+arch=x86-64
+url=https://github.com/vasi/$name/releases/download/v$version/$name-$version.tar.xz
+checksum=361a8d8b736c350e4e3fd19b5d36777129a087eb81439d05edc08f9378938583bef8fc70e440ffd22efb6dad1f6494c6c3e532d7dd1ab12c9350b6078aa993d7
+cyst=musl
+description='Parallel, indexed xz compressor'
+license=BSD-2-Clause
