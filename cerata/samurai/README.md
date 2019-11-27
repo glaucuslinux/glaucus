@@ -22,7 +22,8 @@ c47120a2b516c0d130c5a01d99972979c69103d1c6b110722c4c6fcac3147df25d60d9d19913d7c7
 * musl
 
 ## Description
-A ninja-compatible build tool written in C99 with a focus on simplicity, speed, and portability
+A ninja-compatible build tool written in C99 with a focus on simplicity, speed,
+and portability
 
 ## Licenses
 * Apache-2.0

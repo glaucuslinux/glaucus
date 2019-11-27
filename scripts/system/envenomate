@@ -23,11 +23,11 @@ envenomate() {
   done
 }
 
-envenomate zlib
-envenomate file
-envenomate libedit
-envenomate m4
-envenomate bc
+#envenomate zlib
+#envenomate file
+#envenomate libedit
+#envenomate m4
+#envenomate bc
 #envenomate binutils
 #envenomate gmp
 #envenomate mpfr
@@ -35,16 +35,19 @@ envenomate bc
 #envenomate isl
 #envenomate zstd
 #envenomate gcc
-envenomate lbzip2
-envenomate pkgconf
-envenomate netbsd-curses
+#envenomate lbzip2
+#envenomate pkgconf
+#envenomate netbsd-curses
+#envenomate libcap
 #envenomate sed
+#envenomate psmisc
 #envenomate bison
 #envenomate flex
 #envenomate grep
 #envenomate oksh
 #envenomate dash
 #envenomate bash
+#envenomate libtool
 #envenomate expat
 #envenomate perl
 #envenomate autoconf
@@ -60,7 +63,6 @@ envenomate netbsd-curses
 #envenomate toybox
 #envenomate diffutils
 #envenomate mawk
-#envenomate findutils
 #envenomate pcre2
 #envenomate less
 #envenomate pigz

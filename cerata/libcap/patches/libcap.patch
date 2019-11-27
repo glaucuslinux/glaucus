@@ -1,0 +1,47 @@
+diff -urNa libcap-2.27.orig/libcap/Makefile libcap-2.27/libcap/Makefile
+--- libcap-2.27.orig/libcap/Makefile	2018-09-11 06:02:10.000000000 +0300
++++ libcap-2.27/libcap/Makefile	2019-11-27 13:17:02.669580427 +0200
+@@ -7,7 +7,6 @@
+ # Library version
+ #
+ LIBNAME=$(LIBTITLE).so
+-STALIBNAME=$(LIBTITLE).a
+ #
+ 
+ FILES=cap_alloc cap_proc cap_extint cap_flag cap_text cap_file
+@@ -18,7 +17,7 @@
+ MINLIBNAME=$(MAJLIBNAME).$(MINOR)
+ GPERF_OUTPUT = _caps_output.gperf
+ 
+-all: $(MINLIBNAME) $(STALIBNAME) libcap.pc
++all: $(MINLIBNAME) libcap.pc
+ 
+ ifeq ($(BUILD_GPERF),yes)
+ USE_GPERF_OUTPUT = $(GPERF_OUTPUT)
+@@ -47,10 +46,6 @@
+ 	@echo "=> making $@ from $(KERNEL_HEADERS)/linux/capability.h"
+ 	perl -e 'while ($$l=<>) { if ($$l =~ /^\#define[ \t](CAP[_A-Z]+)[ \t]+([0-9]+)\s+$$/) { $$tok=$$1; $$val=$$2; $$tok =~ tr/A-Z/a-z/; print "{\"$$tok\",$$val},\n"; } }' $(KERNEL_HEADERS)/linux/capability.h | fgrep -v 0x > $@
+ 
+-$(STALIBNAME): $(OBJS)
+-	$(AR) rcs $@ $^
+-	$(RANLIB) $@
+-
+ $(MINLIBNAME): $(OBJS)
+ 	$(LD) $(CFLAGS) $(LDFLAGS) -Wl,-soname,$(MAJLIBNAME) -o $@ $^
+ 	ln -sf $(MINLIBNAME) $(MAJLIBNAME)
+@@ -66,7 +61,6 @@
+ 	mkdir -p -m 0755 $(FAKEROOT)$(INCDIR)/sys
+ 	install -m 0644 include/sys/capability.h $(FAKEROOT)$(INCDIR)/sys
+ 	mkdir -p -m 0755 $(FAKEROOT)$(LIBDIR)
+-	install -m 0644 $(STALIBNAME) $(FAKEROOT)$(LIBDIR)/$(STALIBNAME)
+ 	install -m 0644 $(MINLIBNAME) $(FAKEROOT)$(LIBDIR)/$(MINLIBNAME)
+ 	ln -sf $(MINLIBNAME) $(FAKEROOT)$(LIBDIR)/$(MAJLIBNAME)
+ 	ln -sf $(MAJLIBNAME) $(FAKEROOT)$(LIBDIR)/$(LIBNAME)
+@@ -78,6 +72,6 @@
+ 
+ clean:
+ 	$(LOCALCLEAN)
+-	rm -f $(OBJS) $(LIBNAME)* $(STALIBNAME) libcap.pc
++	rm -f $(OBJS) $(LIBNAME)* libcap.pc
+ 	rm -f cap_names.h cap_names.list.h _makenames $(GPERF_OUTPUT)
+ 	cd include/sys && $(LOCALCLEAN)

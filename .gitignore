@@ -95,6 +95,9 @@ cerata/less/less-551.tar.gz
 cerata/libarchive/libarchive-3.4.0/
 cerata/libarchive/libarchive-3.4.0.tar.gz
 
+cerata/libcap/libcap-2.27/
+cerata/libcap/libcap-2.27.tar.xz
+
 cerata/libedit/libedit-20191025-3.1/
 cerata/libedit/libedit-20191025-3.1.tar.gz
 
@@ -164,6 +167,9 @@ cerata/pkgconf/pkgconf-1.1.0.tar.xz
 
 cerata/procps-ng/procps-ng-3.3.15/
 cerata/procps-ng/procps-ng-3.3.15.tar.xz
+
+cerata/psmisc/psmisc-23.3/
+cerata/psmisc/psmisc-23.3.tar.xz
 
 cerata/pypy/pypy/
 

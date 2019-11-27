@@ -24,7 +24,6 @@ construct toybox
 construct rsync
 construct diffutils
 construct file
-construct findutils
 construct mawk
 construct gettext-tiny
 construct grep
@@ -32,7 +31,7 @@ construct zlib
 construct pigz
 construct make
 construct patch
-#construct perl
+construct perl
 construct sed
 construct xz
 construct libarchive

@@ -9,17 +9,18 @@ prepare_system() {
 }
 
 configure_system() {
-  :
+  ./configure \
+    --prefix=/usr \
+    --disable-ipv6 \
+    --disable-nls
 }
 
 build_system() {
-  make \
-    CC=cc
+  make
 }
 
 install_system() {
   make \
-    PREFIX=/usr \
     DESTDIR=$SCER/$name/sac \
-    install
+    install-strip
 }
