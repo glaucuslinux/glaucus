@@ -12,9 +12,10 @@ configure_system() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --with-system-libdir=/usr/lib
+    --disable-manpages \
+    --with-xz \
+    --with-zlib \
+    --without-bashcompletiondir
 }
 
 build_system() {
@@ -25,6 +26,4 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
-
-  ln -fsv pkgconf $SCER/$name/sac/usr/bin/pkg-config
 }

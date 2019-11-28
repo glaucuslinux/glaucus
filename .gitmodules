@@ -16,9 +16,6 @@
 [submodule "cerata/execline/execline"]
 	path = cerata/execline/execline
 	url = https://skarnet.org/cgi-bin/cgit.cgi/execline
-[submodule "cerata/expat/libexpat"]
-	path = cerata/expat/libexpat
-	url = https://github.com/libexpat/libexpat
 [submodule "cerata/fontconfig/fontconfig"]
 	path = cerata/fontconfig/fontconfig
 	url = https://gitlab.freedesktop.org/fontconfig/fontconfig

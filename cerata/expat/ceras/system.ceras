@@ -4,17 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  install -dv $SBLD/$name
+  cd $SBLD/$name
 }
 
 configure_system() {
-  ./configure \
+  $CERD/$name/$name-$version/configure \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
     --disable-static \
-    --with-system-libdir=/usr/lib
+    --without-xmlwf \
+    --without-examples \
+    --without-tests
 }
 
 build_system() {
@@ -25,6 +25,4 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
-
-  ln -fsv pkgconf $SCER/$name/sac/usr/bin/pkg-config
 }

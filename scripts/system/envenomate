@@ -23,8 +23,8 @@ envenomate() {
   done
 }
 
-#envenomate zlib
-#envenomate file
+envenomate zlib
+envenomate file
 #envenomate libedit
 #envenomate m4
 #envenomate bc
@@ -34,9 +34,11 @@ envenomate() {
 #envenomate mpc
 #envenomate isl
 #envenomate zstd
+#envenomate attr
+#envenomate acl
 #envenomate gcc
 #envenomate lbzip2
-#envenomate pkgconf
+envenomate pkgconf
 #envenomate netbsd-curses
 #envenomate libcap
 #envenomate sed
@@ -50,9 +52,11 @@ envenomate() {
 #envenomate libtool
 #envenomate expat
 #envenomate perl
+#envenomate perl-xml-parser
 #envenomate autoconf
 #envenomate automake
-#envenomate xz
+envenomate xz
+envenomate kmod
 #envenomate gettext-tiny
 #envenomate libelf
 #envenomate libffi

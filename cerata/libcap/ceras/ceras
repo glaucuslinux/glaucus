@@ -9,6 +9,6 @@ release=1
 arch=x86-64
 url=https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$name-$version.tar.xz
 checksum=e32335fd3e0d1564574acc73df7030b5b0fd98875217bffabd76f2765f1a7a6f1369f03df2ee22a1782776838784e342378c10613ea1163d53ae5055ab6a62b6
-cyst=musl
+cysts='musl perl binutils'
 description='An alternative to the superuser model of privilege under Linux'
 licenses='BSD-2-Clause GPL-2.0-only'

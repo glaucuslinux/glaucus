@@ -18,8 +18,10 @@ https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libc
 ## Checksum
 e32335fd3e0d1564574acc73df7030b5b0fd98875217bffabd76f2765f1a7a6f1369f03df2ee22a1782776838784e342378c10613ea1163d53ae5055ab6a62b6
 
-## Cyst
+## Cysts
 * musl
+* perl
+* binutils
 
 ## Description
 An alternative to the superuser model of privilege under Linux

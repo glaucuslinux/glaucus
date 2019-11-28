@@ -17,8 +17,14 @@
 
 
 # cerata that can't be added as git submodules
+cerata/acl/acl-2.2.53/
+cerata/acl/acl-2.2.53.tar.gz
+
 cerata/argp-standalone/argp-standalone-1.4-test2/
 cerata/argp-standalone/argp-standalone-1.4-test2.tar.gz
+
+cerata/attr/attr-2.4.48/
+cerata/attr/attr-2.4.48.tar.gz
 
 cerata/autoconf/autoconf-2.69/
 cerata/autoconf/autoconf-2.69.tar.xz
@@ -59,6 +65,9 @@ cerata/e2fsprogs/e2fsprogs-1.45.4.tar.gz
 cerata/elfutils-libelf/elfutils-0.177/
 cerata/elfutils-libelf/elfutils-0.177.tar.bz2
 
+cerata/expat/expat-2.2.9/
+cerata/expat/expat-2.2.9.tar.xz
+
 cerata/file/file-5.37/
 cerata/file/file-5.37.tar.gz
 
@@ -85,6 +94,9 @@ cerata/gzip/gzip-1.10.tar.xz
 
 cerata/isl/isl-0.22/
 cerata/isl/isl-0.22.tar.xz
+
+cerata/kmod/kmod-26/
+cerata/kmod/kmod-26.tar.xz
 
 cerata/lbzip2/lbzip2-2.5/
 cerata/lbzip2/lbzip2-2.5.tar.xz
@@ -155,6 +167,9 @@ cerata/pcre2/pcre2-10.33.tar.bz2
 
 cerata/perl/perl-5.30.0/
 cerata/perl/perl-5.30.0.tar.xz
+
+cerata/perl-xml-parser/XML-Parser-2.46/
+cerata/perl-xml-parser/XML-Parser-2.46.tar.gz
 
 cerata/pigz/pigz-2.4/
 cerata/pigz/pigz-2.4.tar.gz
