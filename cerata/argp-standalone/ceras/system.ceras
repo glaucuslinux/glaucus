@@ -6,14 +6,16 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
+  
+  patch -p1 -i $CERD/$name/patches/$name.patch
+  
+  sed 's/#ifdef __OPTIMIZE__/#if 0/g' \
+    -i argp-fmtstream.h
 }
 
 configure_system() {
-  ./bootstrap.sh
-
   ./configure \
-    --prefix=/usr \
-    --disable-static
+    --prefix=/usr
 }
 
 build_system() {
@@ -24,4 +26,10 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
+
+  install -dv $SCER/$name/sac/usr/include
+  install -dv $SCER/$name/sac/usr/lib
+
+  install -v argp.h $SCER/$name/sac/usr/include
+  install -v libargp.a $SCER/$name/sac/usr/lib
 }

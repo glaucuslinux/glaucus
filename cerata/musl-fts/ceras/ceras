@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=musl-fts
-version=git
+version=1.2.7
 release=1
 arch=x86-64
-url=https://github.com/void-linux/musl-fts
+url=https://github.com/void-linux/$name/archive/v$version.tar.gz
+checksum=949f73b9406b06bd8712c721b4ec89afcb37d4eaef5666cccf3712242d3a57fc0acf3ca994934e0f57c1e92f40521a9370132a21eb6d1957415a83c76bf20feb
 cyst=musl
-description=''
+description='Implementation of fts(3) for musl libc packages'
 license=

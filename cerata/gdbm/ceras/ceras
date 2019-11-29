@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=gdbm
+version=1.18.1
+release=1
+arch=x86-64
+url=https://ftpmirror.gnu.org/$name/$name-$version.tar.gz
+checksum=adf9d6c5bc843ff0d7f88c2a1667d509973b2d63378d0001d7e74cc10aee6ea498a4513cc88ddf78c32ba4db5cb040b2794f4f1b3338c65d9894058850e2f5ef
+cyst=musl
+description='A library of database functions that use extensible hashing and
+work similar to the standard UNIX dbm'
+licenses='GPL-3.0-only GPL-3.0-or-later'

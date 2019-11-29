@@ -9,11 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
-  ./bootstrap.sh
-
   ./configure \
-    --prefix=/usr \
-    --disable-static
+    --prefix=/usr
 }
 
 build_system() {
@@ -23,5 +20,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
-    install-strip
+    install
 }

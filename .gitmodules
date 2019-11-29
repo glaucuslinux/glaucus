@@ -142,9 +142,6 @@
 [submodule "cerata/libelf-compat/libelf-compat"]
 	path = cerata/libelf-compat/libelf-compat
 	url = https://github.com/sabotage-linux/libelf-compat
-[submodule "cerata/libffi/libffi"]
-	path = cerata/libffi/libffi
-	url = https://github.com/libffi/libffi
 [submodule "cerata/libfontenc/libfontenc"]
 	path = cerata/libfontenc/libfontenc
 	url = https://gitlab.freedesktop.org/xorg/lib/libfontenc
@@ -163,6 +160,9 @@
 [submodule "cerata/libthai/libthai"]
 	path = cerata/libthai/libthai
 	url = https://github.com/tlwg/libthai
+[submodule "cerata/libuargp/libuargp"]
+	path = cerata/libuargp/libuargp
+	url = https://github.com/xhebox/libuargp
 [submodule "cerata/libxcb/libxcb"]
 	path = cerata/libxcb/libxcb
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcb
@@ -205,12 +205,6 @@
 [submodule "cerata/mesa/mesa"]
 	path = cerata/mesa/mesa
 	url = https://gitlab.freedesktop.org/mesa/mesa
-[submodule "cerata/musl-fts/musl-fts"]
-	path = cerata/musl-fts/musl-fts
-	url = https://github.com/void-linux/musl-fts
-[submodule "cerata/musl-obstack/musl-obstack"]
-	path = cerata/musl-obstack/musl-obstack
-	url = https://github.com/void-linux/musl-obstack
 [submodule "cerata/nldev/nldev"]
 	path = cerata/nldev/nldev
 	url = git://r-36.net/nldev

@@ -17,5 +17,5 @@ construct linux-headers
 construct musl
 construct libstdc++-v3
 construct binutils
-construct gmp mpfr mpc isl zstd
+construct gmp mpfr mpc isl
 construct gcc

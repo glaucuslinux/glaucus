@@ -12,6 +12,7 @@ configure_system() {
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
+    --libdir=/usr/lib \
     --disable-static \
     --disable-nls
 }

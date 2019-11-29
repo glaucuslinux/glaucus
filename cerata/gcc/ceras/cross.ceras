@@ -49,11 +49,7 @@ configure_cross() {
     --disable-werror \
     --disable-nls \
     --disable-decimal-float \
-    --with-gmp=$TOOL \
-    --with-mpfr=$TOOL \
-    --with-mpc=$TOOL \
     --without-isl \
-    --without-zstd \
     --with-sysroot=$GLAD \
     --without-headers \
     --with-newlib \
@@ -65,6 +61,9 @@ build_cross() {
   make \
     AR_FOR_TARGET=$TUPL-ar \
     AS_FOR_TARGET=$TUPL-as \
+    CC_FOR_TARGET=$TUPL-gcc \
+    CXX_FOR_TARGET=$TUPL-g++ \
+    GCC_FOR_TARGET=$TUPL-gcc \
     LD_FOR_TARGET=$TUPL-ld \
     NM_FOR_TARGET=$TUPL-nm \
     OBJCOPY_FOR_TARGET=$TUPL-objcopy \

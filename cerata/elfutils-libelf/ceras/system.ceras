@@ -4,13 +4,23 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/elfutils-$version/ $SSRC/$name --delete
   cd $SSRC/$name
+
+  cp -av $CERD/$name/error.h lib
+  cp -av $CERD/$name/error.h src
+
+  patch -p0 -i $CERD/$name/patches/1.patch
 }
 
 configure_system() {
+  CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-nls \
+    --disable-debuginfod
 }
 
 build_system() {
@@ -19,6 +29,7 @@ build_system() {
 
 install_system() {
   make \
+    -C libelf \
     DESTDIR=$SCER/$name/sac \
-    install-strip
+    install
 }

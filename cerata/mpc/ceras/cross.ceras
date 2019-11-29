@@ -4,23 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
-  cd $TSRC/$name
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/gcc/$name --delete
 }
 
 configure_cross() {
-  ./configure \
-    --prefix=$TOOL \
-    --disable-static \
-    --with-mpfr=$TOOL \
-    --with-gmp=$TOOL
+  :
 }
 
 build_cross() {
-  make
+  :
 }
 
 install_cross() {
-  make \
-    install-strip
+  :
 }

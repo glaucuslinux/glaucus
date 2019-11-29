@@ -4,8 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
-  cd $TSRC/$name
+  rsync -vah $CERD/$name/$name-$version/ $TSRC/gcc/$name --delete
 }
 
 configure_native() {
@@ -13,17 +12,9 @@ configure_native() {
 }
 
 build_native() {
-  make \
-    HAVE_THREAD=1 \
-    ZSTD_LEGACY_SUPPORT=0 \
-    HAVE_ZLIB=0 \
-    HAVE_LZMA=0 \
-    HAVE_LZ4=0 \
-    BACKTRACE=0
+  :
 }
 
 install_native() {
-  make \
-    PREFIX=$TOOL \
-    install
+  :
 }

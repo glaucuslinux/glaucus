@@ -22,4 +22,6 @@ install_system() {
     PREFIX=/usr \
     DESTDIR=$SCER/$name/sac \
     install
+
+  ln -fsv samu $SCER/$name/sac/usr/bin/ninja
 }

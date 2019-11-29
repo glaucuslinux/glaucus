@@ -4,16 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name $SSRC --delete
   cd $SSRC/$name
 }
 
 configure_system() {
-  ./bootstrap.sh
-
-  ./configure \
-    --prefix=/usr \
-    --disable-static
+  :
 }
 
 build_system() {
@@ -22,6 +18,7 @@ build_system() {
 
 install_system() {
   make \
+    prefix=/usr \
     DESTDIR=$SCER/$name/sac \
-    install-strip
+    install
 }

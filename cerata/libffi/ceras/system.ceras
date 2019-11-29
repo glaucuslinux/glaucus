@@ -9,11 +9,11 @@ prepare_system() {
 }
 
 configure_system() {
-  ./bootstrap.sh
-
   ./configure \
     --prefix=/usr \
-    --disable-static
+    --disable-static \
+    --disable-symvers \
+    --with-gcc-arch=$arch
 }
 
 build_system() {

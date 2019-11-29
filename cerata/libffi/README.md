@@ -4,7 +4,7 @@
 libffi
 
 ## Version
-git
+3.3
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://github.com/libffi/libffi
+ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
+
+## Checksum
+61513801a156f11420f541d325de697131846487122d6bdcf5491b18b4da788589f5c0bb07e88e396495d3be5830d74e9135595e2b8ddbfe95c448d8597fbd6f
 
 ## Cyst
 * musl
@@ -23,37 +26,3 @@ A portable foreign-function interface library
 
 ## License
 * MIT
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./autogen.sh
-./configure \
-  --prefix=/usr \
-  --build=$TUPL \
-  --host=$TUPL \
-  --target=$TUPL \
-  --disable-static
-```
-
-```shell
-sed 's/\/\.\.\/lib64//' \
-  -i Makefile
-```
-
-## Build
-```shell
-make
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install-strip
-```

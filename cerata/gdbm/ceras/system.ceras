@@ -9,11 +9,10 @@ prepare_system() {
 }
 
 configure_system() {
-  ./bootstrap.sh
-
   ./configure \
     --prefix=/usr \
-    --disable-static
+    --disable-static \
+    --disable-nls
 }
 
 build_system() {

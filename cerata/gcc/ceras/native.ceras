@@ -25,8 +25,7 @@ prepare_native() {
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
-  cd ..
-  cat limitx.h glimits.h limity.h > $(dirname $($TUPL-gcc \
+  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-gcc \
     -print-libgcc-file-name))/include-fixed/limits.h
 
   install -dv $NBLD/$name
@@ -34,10 +33,8 @@ prepare_native() {
 }
 
 configure_native() {
-  LDFLAGS="-Wl,-rpath,$TOOL/lib" \
   $TSRC/$name/configure \
     --prefix=$TOOL \
-    --build=$TUPL \
     --host=$TUPL \
     --target=$TUPL \
     --with-local-prefix=$TOOL \
@@ -51,11 +48,6 @@ configure_native() {
     --disable-libssp \
     --disable-werror \
     --disable-nls \
-    --with-gmp=$TOOL \
-    --with-mpfr=$TOOL \
-    --with-mpc=$TOOL \
-    --with-isl=$TOOL \
-    --with-zstd=$TOOL \
     --with-linker-hash-style=gnu
 }
 
