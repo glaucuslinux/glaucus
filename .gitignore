@@ -62,8 +62,8 @@ cerata/diffutils/diffutils-3.7.tar.xz
 cerata/e2fsprogs/e2fsprogs-1.45.4/
 cerata/e2fsprogs/e2fsprogs-1.45.4.tar.gz
 
-cerata/elfutils-libelf/elfutils-0.178/
-cerata/elfutils-libelf/elfutils-0.178.tar.bz2
+cerata/elfutils/elfutils-0.178/
+cerata/elfutils/elfutils-0.178.tar.bz2
 
 cerata/expat/expat-2.2.9/
 cerata/expat/expat-2.2.9.tar.xz
@@ -180,8 +180,11 @@ cerata/pcre/trunk/
 cerata/pcre2/pcre2-10.33/
 cerata/pcre2/pcre2-10.33.tar.bz2
 
-cerata/perl/perl-5.30.0/
-cerata/perl/perl-5.30.0.tar.xz
+cerata/perl/perl-5.30.1/
+cerata/perl/perl-5.30.1.tar.xz
+
+cerata/perl-cross/perl-cross-1.3.1/
+cerata/perl-cross/perl-cross-1.3.1.tar.gz
 
 cerata/perl-xml-parser/XML-Parser-2.46/
 cerata/perl-xml-parser/XML-Parser-2.46.tar.gz

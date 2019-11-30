@@ -4,7 +4,7 @@
 perl
 
 ## Version
-git
+5.30.1
 
 ## Release
 1
@@ -13,10 +13,10 @@ git
 x86-64
 
 ## URL
-https://www.cpan.org/src/5.0/perl-5.30.0.tar.xz
+https://www.cpan.org/src/5.0/perl-5.30.1.tar.xz
 
 ## Checksum
-68a295eccd64debd9d6a10f0d5577f872a19ad8c2d702798f6b0f45b8c3af6ab3230768056e2131e9e2e2506d1035b27cfd627c845e32263fe448649c4b98ae9
+8f3339efdcd1bb58fa58a90042181bef86bb09e4598c737e446ed43b56d2ab23d67eced5e36fb08fc61e076acfdb572a12e46a1277f5299a3f412054df0b88bf
 
 ## Cyst
 * musl

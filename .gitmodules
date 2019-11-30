@@ -232,9 +232,6 @@
 [submodule "cerata/pango/pango"]
 	path = cerata/pango/pango
 	url = https://gitlab.gnome.org/GNOME/pango
-[submodule "cerata/perl-cross/perl-cross"]
-	path = cerata/perl-cross/perl-cross
-	url = https://github.com/arsv/perl-cross
 [submodule "cerata/pixman/pixman"]
 	path = cerata/pixman/pixman
 	url = https://anongit.freedesktop.org/git/pixman

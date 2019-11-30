@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=perl-cross
-version=git
+version=1.3.1
 release=1
 arch=x86-64
-url=https://github.com/arsv/$name
+url=https://github.com/arsv/$name/releases/download/$version/$name-$version.tar.gz
+checksum=4715c1f65e39a7d0c605558b345a0a037e61afa992b3f723d66277d5ff7f1c7368ff1dfdb726895d75c4afdb6f710743708fdd9e79569a7d14a2d7002cc9f3b2
 cyst=musl
 description='Provides alternative configure script, top-level Makefile as well
 as some auxilliary files for the standard perl distribution intended to allow

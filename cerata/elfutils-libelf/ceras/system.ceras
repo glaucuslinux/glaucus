@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/elfutils-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/elfutils/elfutils-$version/ $SSRC/elfutils --delete
+  cd $SSRC/elfutils
 
-  cp -av $CERD/$name/error.h lib
-  cp -av $CERD/$name/error.h src
+  install -v $CERD/elfutils/error.h lib
+  install -v $CERD/elfutils/error.h src
 
-  patch -p0 -i $CERD/$name/patches/1.patch
+  patch -p0 -i $CERD/elfutils/patches/2.patch
 }
 
 configure_system() {
@@ -19,12 +19,18 @@ configure_system() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
+    --enable-deterministic-archives \
+    --disable-symbol-versioning \
     --disable-nls \
     --disable-debuginfod
 }
 
 build_system() {
-  make
+  make \
+    -C lib
+
+  make \
+    -C libelf
 }
 
 install_system() {

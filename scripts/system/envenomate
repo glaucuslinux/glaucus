@@ -24,10 +24,10 @@ envenomate() {
 }
 
 envenomate zlib
-envenomate file
-envenomate libedit
-envenomate m4
-envenomate bc
+#envenomate file
+#envenomate libedit
+#envenomate m4
+#envenomate bc
 #envenomate binutils
 #envenomate gmp
 #envenomate mpfr
@@ -49,20 +49,20 @@ envenomate bc
 #envenomate oksh
 #envenomate dash
 #envenomate bash
-envenomate libtool
+#envenomate libtool
 #envenomate gdbm
 #envenomate gperf
 #envenomate expat
 #envenomate perl
 #envenomate perl-xml-parser
-envenomate autoconf
-envenomate automake
+#envenomate autoconf
+#envenomate automake
 #envenomate xz
 #envenomate kmod
 #envenomate gettext-tiny
 envenomate libuargp
-envenomate musl-fts
-envenomate musl-obstack
+#envenomate musl-fts
+#envenomate musl-obstack
 envenomate elfutils-libelf
 #envenomate libffi
 #envenomate libressl

@@ -5,7 +5,7 @@
 
 prepare_chroot() {
   rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
-  rsync -vah $CERD/$name-cross/$name-cross/ $CSRC/$name
+  rsync -vah $CERD/$name-cross/$name-cross-1.3.1/ $CSRC/$name
   cd $CSRC/$name
 }
 
