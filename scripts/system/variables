@@ -15,7 +15,7 @@ export SSRC=$STMP/sources
 
 export TOOL=/toolchain
 
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:$TOOL/bin:$TOOL/sbin:$TOOL/usr/bin:$TOOL/usr/sbin
+export PATH=/bin:/usr/bin:$TOOL/bin:$TOOL/usr/bin
 
 export MAKEFLAGS=-j1
 

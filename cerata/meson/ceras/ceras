@@ -1,0 +1,15 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=meson
+version=0.52.1
+release=1
+arch=x86-64
+url=https://github.com/mesonbuild/$name/releases/download/$version/$name-$version.tar.gz
+checksum=81e8c5897ba5311ccffc401fd514bd9a67d16caaea1f28a5c5432605766341ecd82b70c05661fbbe0c9a6006ff5ea892950bbaa548e70c3f87350438775ea6fd
+cyst=musl
+description='An open source build system meant to be both extremely fast, and,
+even more importantly, as user friendly as possible'
+license=Apache-2.0

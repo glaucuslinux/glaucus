@@ -22,7 +22,9 @@ build_system() {
 }
 
 install_system() {
-  make \
-    PREFIX=$SCER/$name/sac \
-    install
+  install -dv $SCER/$name/sac/usr/bin
+
+  install -v toybox $SCER/$name/sac/usr/bin
+
+  for i in $(./toybox); do ln -fsv toybox $SCER/$name/sac/usr/bin/$i; done
 }

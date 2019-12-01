@@ -6,29 +6,19 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  rsync -vah $SSCR/etc/hosts /etc
 }
 
 configure_system() {
-  BUILD_ZLIB=False \
-  BUILD_BZIP2=0 \
-  sh Configure \
-    -des \
-    -Dprefix=/usr \
-    -Dvendorprefix=/usr \
-    -Dman1dir=/usr/share/man/man1 \
-    -Dman3dir=/usr/share/man/man3 \
-    -Dpager='/usr/bin/less -isR' \
-    -Duseshrplib \
-    -Dusethreads
+  :
 }
 
 build_system() {
-  make
+  python3 setup.py \
+    build
 }
 
 install_system() {
-  make \
-    install
+  python3 setup.py \
+    install \
+    --root=$SCER/$name/sac/usr
 }

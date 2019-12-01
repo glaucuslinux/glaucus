@@ -15,16 +15,20 @@ configure_system() {
     --enable-elf-shlibs \
     --disable-bsd-shlibs \
     --disable-testio-debug \
+    --disable-libuuid \
+    --disable-libblkid \
     --disable-debugfs \
     --disable-imager \
     --disable-resizer \
     --disable-defrag \
-    --enable-fsck \
+    --disable-fsck \
+    --disable-e2initrd-helper \
     --disable-uuidd \
     --disable-mmp \
     --disable-tdb \
     --disable-nls \
-    --disable-fuse2fs
+    --disable-fuse2fs \
+    --enable-lto
 }
 
 build_system() {
@@ -32,26 +36,16 @@ build_system() {
 }
 
 install_system() {
-  for dir in lib/blkid lib/e2p lib/et lib/ext2fs lib/uuid; do
-    cd $dir
-    
-    install -dv $SCER/$name/sac/usr/share/man/man3
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-strip
+  
+  make \
+    DESTDIR=$SCER/$name/sac \
+    install-libs
 
-    make \
-      DESTDIR=$SCER/$name/sac \
-      install-strip
-
-    cd ../..
-  done
 
   install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/lib
 
-  install -Dv e2fsck/e2fsck misc/blkid misc/chattr misc/fsck misc/lsattr \
-    misc/mke2fs misc/tune2fs $SCER/$name/sac/usr/bin
-  
-  ln -fsv e2fsck $SCER/$name/sac/usr/bin/fsck.ext4
-  ln -fsv mke2fs $SCER/$name/sac/usr/bin/mkfs.ext4
-
-  cd $SCER/$name/sac/usr/lib
-  rm -fv libblkid.a libcom_err.a libe2p.a libext2fs.a libuuid.a
+  find $SCER/$name/sac/usr/lib -type f -name \*.a -exec chmod -v u+w {} ';'
 }

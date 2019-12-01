@@ -24,7 +24,7 @@ envenomate() {
 }
 
 envenomate zlib
-#envenomate file
+envenomate file
 #envenomate libedit
 #envenomate m4
 #envenomate bc
@@ -38,7 +38,7 @@ envenomate zlib
 #envenomate acl
 #envenomate gcc
 #envenomate lbzip2
-#envenomate pkgconf
+envenomate pkgconf
 #envenomate netbsd-curses
 #envenomate libcap
 #envenomate sed
@@ -60,16 +60,16 @@ envenomate zlib
 #envenomate xz
 #envenomate kmod
 #envenomate gettext-tiny
-envenomate libuargp
+#envenomate libuargp
 #envenomate musl-fts
 #envenomate musl-obstack
-envenomate elfutils-libelf
+#envenomate elfutils-libelf
 #envenomate libffi
-#envenomate libressl
+envenomate libressl
 #envenomate python
 #envenomate samurai
 #envenomate meson
-#envenomate toybox
+envenomate toybox
 #envenomate diffutils
 #envenomate mawk
 #envenomate pcre2

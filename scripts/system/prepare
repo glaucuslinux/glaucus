@@ -2,10 +2,10 @@
 # Distributed under the terms of the ISC License
 
 rsync -vah /backup/chroot/ $TOOL --delete
-rm -frv $SBLD $SCER /bin /boot /etc /root /sbin /tmp /usr /var
+rm -frv $SBLD $SCER /bin /boot /etc /root /tmp /usr /var
 
-install -dv $SBLD $SCER /bin /boot /etc /sbin /usr/bin /usr/cerata /usr/include \
-  /usr/lib /usr/sbin /usr/share /var /var/lib /var/lib/urandom /var/log
+install -dv $SBLD $SCER /bin /boot /etc /usr/bin /usr/cerata /usr/include \
+  /usr/lib /usr/share /var /var/lib /var/lib/urandom /var/log
 install -dvm 0750 /root
 install -dvm 1777 /tmp
 

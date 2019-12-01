@@ -22,7 +22,7 @@ build_chroot() {
 }
 
 install_chroot() {
-  make \
-    PREFIX=$TOOL \
-    install
+  install -v toybox $TOOL/bin
+
+  for i in $(./toybox); do ln -fsv toybox $TOOL/bin/$i; done
 }
