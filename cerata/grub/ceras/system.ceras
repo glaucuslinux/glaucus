@@ -6,17 +6,16 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  #patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --disable-static \
+    --sysconfdir=/etc \
     --disable-nls \
-    --disable-kill
+    --disable-efiemu \
+    --disable-werror
 }
 
 build_system() {
