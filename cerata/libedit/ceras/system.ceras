@@ -24,7 +24,7 @@ install_system() {
     DESTDIR=$SCER/$name/sac \
     install-strip
 
-  ln -fsv libedit.so $SCER/$name/sac/usr/lib/libreadline.so
+  ln -fsv $name.so $SCER/$name/sac/usr/lib/libreadline.so
  
   install -dv $SCER/$name/sac/usr/include/readline
   

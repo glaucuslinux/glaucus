@@ -32,7 +32,7 @@ install_system() {
     PREFIX=$SCER/$name/sac/usr \
     install
 
-  install -v bzip2-shared $SCER/$name/sac/usr/bin/bzip2
+  install -v $name-shared $SCER/$name/sac/usr/bin/$name
   install -v libbz2.so.$version $SCER/$name/sac/usr/lib
   
   ln -fsv libbz2.so.1.0.6 $SCER/$name/sac/usr/lib/libbz2.so.1.0
@@ -42,8 +42,8 @@ install_system() {
   
   rm -fv bunzip2 bzcat bzcmp bzegrep bzfgrep bzless
 
-  ln -fsv bzip2 bunzip2
-  ln -fsv bzip2 bzcat
+  ln -fsv $name bunzip2
+  ln -fsv $name bzcat
   ln -fsv bzdiff bzcmp
   ln -fsv bzgrep bzegrep
   ln -fsv bzgrep bzfgrep

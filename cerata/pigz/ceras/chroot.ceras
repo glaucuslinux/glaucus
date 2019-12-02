@@ -19,12 +19,12 @@ build_chroot() {
 }
 
 install_chroot() {
-  install -v pigz $TOOL/bin
+  install -v $name $TOOL/bin
 
-  ln -fsv pigz $TOOL/bin/unpigz
+  ln -fsv $name $TOOL/bin/un$name
   
-  ln -fsv pigz $TOOL/bin/gzip
-  ln -fsv pigz $TOOL/bin/gunzip
-  ln -fsv pigz $TOOL/bin/gzcat
-  ln -fsv pigz $TOOL/bin/zcat
+  ln -fsv $name $TOOL/bin/gzip
+  ln -fsv $name $TOOL/bin/gunzip
+  ln -fsv $name $TOOL/bin/gzcat
+  ln -fsv $name $TOOL/bin/zcat
 }

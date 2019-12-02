@@ -26,5 +26,5 @@ install_system() {
     DESTDIR=$SCER/$name/sac \
     install-strip
 
-  ln -fsv pkgconf $SCER/$name/sac/usr/bin/pkg-config
+  ln -fsv $name $SCER/$name/sac/usr/bin/pkg-config
 }

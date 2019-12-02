@@ -21,13 +21,13 @@ build_system() {
 install_system() {
   install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
 
-  install -v pigz $SCER/$name/sac/usr/bin
-  install -v pigz.1 $SCER/$name/sac/usr/share/man/man1
+  install -v $name $SCER/$name/sac/usr/bin
+  install -v $name.1 $SCER/$name/sac/usr/share/man/man1
 
-  ln -fsv pigz $SCER/$name/sac/usr/bin/unpigz
+  ln -fsv $name $SCER/$name/sac/usr/bin/un$name
   
-  ln -fsv pigz $SCER/$name/sac/usr/bin/gzip
-  ln -fsv pigz $SCER/$name/sac/usr/bin/gunzip
-  ln -fsv pigz $SCER/$name/sac/usr/bin/gzcat
-  ln -fsv pigz $SCER/$name/sac/usr/bin/zcat
+  ln -fsv $name $SCER/$name/sac/usr/bin/gzip
+  ln -fsv $name $SCER/$name/sac/usr/bin/gunzip
+  ln -fsv $name $SCER/$name/sac/usr/bin/gzcat
+  ln -fsv $name $SCER/$name/sac/usr/bin/zcat
 }

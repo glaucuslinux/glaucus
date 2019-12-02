@@ -4,20 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/Python-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
 configure_system() {
-  ax_cv_c_float_words_bigendian=no \
   ./configure \
-    --prefix=/usr \
-    --enable-optimizations \
-    --disable-ipv6 \
-    --with-lto \
-    --with-system-expat \
-    --with-system-ffi \
-    --with-pymalloc
+    --prefix=/usr
 }
 
 build_system() {
@@ -28,4 +21,6 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install
+
+  ln -fsv $name $SCER/$name/sac/usr/bin/vi
 }

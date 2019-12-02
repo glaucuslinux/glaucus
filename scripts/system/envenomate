@@ -23,7 +23,7 @@ envenomate() {
   done
 }
 
-#envenomate zlib
+envenomate zlib
 #envenomate file
 #envenomate libedit
 #envenomate m4
@@ -52,7 +52,7 @@ envenomate() {
 #envenomate libtool
 #envenomate gdbm
 #envenomate gperf
-#envenomate expat
+envenomate expat
 #envenomate perl
 #envenomate perl-xml-parser
 #envenomate autoconf
@@ -64,9 +64,9 @@ envenomate() {
 #envenomate musl-fts
 #envenomate musl-obstack
 #envenomate elfutils-libelf
-#envenomate libffi
+envenomate libffi
 #envenomate libressl
-#envenomate python
+envenomate python
 #envenomate samurai
 #envenomate meson
 #envenomate toybox

@@ -21,7 +21,7 @@ install_chroot() {
   make \
     install-strip
 
-  ln -fsv lbzip2 $TOOL/bin/bzip2
-  ln -fsv lbzip2 $TOOL/bin/bunzip2
-  ln -fsv lbzip2 $TOOL/bin/bzcat
+  ln -fsv $name $TOOL/bin/bzip2
+  ln -fsv $name $TOOL/bin/bunzip2
+  ln -fsv $name $TOOL/bin/bzcat
 }
