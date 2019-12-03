@@ -24,7 +24,7 @@ envenomate() {
 }
 
 envenomate zlib
-#envenomate file
+envenomate file
 #envenomate libedit
 #envenomate m4
 #envenomate bc
@@ -38,7 +38,7 @@ envenomate zlib
 #envenomate acl
 #envenomate gcc
 #envenomate lbzip2
-#envenomate pkgconf
+envenomate pkgconf
 #envenomate netbsd-curses
 #envenomate libcap
 #envenomate sed
@@ -52,9 +52,10 @@ envenomate zlib
 #envenomate libtool
 #envenomate gdbm
 #envenomate gperf
-envenomate expat
+#envenomate expat
 #envenomate perl
 #envenomate perl-xml-parser
+#envenomate intltool
 #envenomate autoconf
 #envenomate automake
 #envenomate xz
@@ -64,12 +65,12 @@ envenomate expat
 #envenomate musl-fts
 #envenomate musl-obstack
 #envenomate elfutils-libelf
-envenomate libffi
-#envenomate libressl
-envenomate python
+#envenomate libffi
+envenomate libressl
+#envenomate python
 #envenomate samurai
 #envenomate meson
-#envenomate toybox
+envenomate toybox
 #envenomate diffutils
 #envenomate mawk
 #envenomate grub
@@ -83,8 +84,8 @@ envenomate python
 #envenomate texinfo
 #envenomate vim
 #envenomate procps-ng
-#envenomate util-linux
-#envenomate e2fsprogs
+envenomate util-linux
+envenomate e2fsprogs
 
 #envenomate flex m4 bison
 #envenomate diffutils

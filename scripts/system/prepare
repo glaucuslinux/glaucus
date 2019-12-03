@@ -10,9 +10,10 @@ install -dvm 0750 /root
 install -dvm 1777 /tmp
 
 ln -fsv $TOOL/bin/bash /bin
-ln -fsv $TOOL/bin/dash /bin/sh
 
-ln -fsv $TOOL/usr/bin/bc $TOOL/usr/bin/file /usr/bin
+ln -fsv $TOOL/bin/file $TOOL/bin/pwd /usr/bin
+
+ln -fsv $TOOL/bin/dash /bin/sh
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib
 ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib

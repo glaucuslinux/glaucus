@@ -4,12 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/XML-Parser-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
 configure_system() {
-  perl Makefile.PL
+  ./configure \
+    --prefix=/usr
 }
 
 build_system() {
@@ -19,5 +20,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
-    install
+    install-strip
 }

@@ -20,7 +20,8 @@ https://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.45.4.tar.gz
 
 ## Cysts
 * musl
-* mawk
+* pkgconf
+* util-linux
 
 ## Description
 The standard utilities for ext2/ext3/ext4 filesystems

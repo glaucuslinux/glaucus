@@ -29,6 +29,9 @@ configure_system() {
     --disable-nls \
     --disable-fuse2fs \
     --enable-lto
+
+  sed 's/MKDIR_P =.*/MKDIR_P = \/usr\/bin\/mkdir -p/' \
+    -i MCONFIG Makefile
 }
 
 build_system() {
@@ -43,9 +46,6 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-libs
-
-
-  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/lib
 
   find $SCER/$name/sac/usr/lib -type f -name \*.a -exec chmod -v u+w {} ';'
 }
