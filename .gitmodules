@@ -289,6 +289,9 @@
 [submodule "cerata/utmps/utmps"]
 	path = cerata/utmps/utmps
 	url = https://skarnet.org/cgi-bin/cgit.cgi/utmps
+[submodule "cerata/vis/vis"]
+	path = cerata/vis/vis
+	url = https://github.com/martanne/vis
 [submodule "cerata/wayland/wayland"]
 	path = cerata/wayland/wayland
 	url = https://gitlab.freedesktop.org/wayland/wayland

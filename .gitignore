@@ -107,6 +107,9 @@ cerata/intltool/intltool-0.51.0.tar.gz
 cerata/isl/isl-0.22/
 cerata/isl/isl-0.22.tar.xz
 
+cerata/kbd/kbd-2.2.0/
+cerata/kbd/kbd-2.2.0.tar.xz
+
 cerata/kmod/kmod-26/
 cerata/kmod/kmod-26.tar.xz
 
@@ -133,6 +136,9 @@ cerata/libffi/libffi-3.3.tar.gz
 
 cerata/libressl/libressl-3.0.2/
 cerata/libressl/libressl-3.0.2.tar.gz
+
+cerata/libtermkey/libtermkey-0.22/
+cerata/libtermkey/libtermkey-0.22.tar.gz
 
 cerata/libtool/libtool-2.4.6/
 cerata/libtool/libtool-2.4.6.tar.xz
@@ -235,6 +241,9 @@ cerata/texinfo/texinfo-6.7.tar.xz
 
 cerata/toybox/toybox-0.8.2/
 cerata/toybox/0.8.2.tar.gz
+
+cerata/unibilium/unibilium-2.0.0/
+cerata/unibilium/v2.0.0.tar.gz
 
 cerata/util-linux/util-linux-2.34/
 cerata/util-linux/util-linux-2.34.tar.xz

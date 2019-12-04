@@ -8,17 +8,20 @@ prepare_system() {
   cd $SSRC/$name
 
   patch -p1 -i $CERD/$name/patches/$name.patch
+
+  sed 's/\(RESIZECONS_PROGS=\)yes/\1no/' \
+    -i configure
+  sed 's/resizecons.8 //' \
+    -i docs/man/man8/Makefile.in
 }
 
 configure_system() {
   ./configure \
     --prefix=/usr \
-    --sbindir=/usr/bin \
     --disable-static \
     --disable-nls \
-    --disable-kill \
-    --without-systemd \
-    --disable-modern-top
+    --disable-vlock \
+    --disable-tests
 }
 
 build_system() {

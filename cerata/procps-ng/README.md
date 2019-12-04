@@ -20,6 +20,7 @@ bc83ccc1941e7be8266588fdfbba17e2424b30163a215873ee6dee96215d66249f5d5e46fec2278d
 
 ## Cysts
 * musl
+* pkgconf
 * netbsd-curses
 * skalibs
 * execline
