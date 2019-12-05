@@ -1,0 +1,14 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=slibtool
+version=0.5.28
+release=1
+arch=x86-64
+url=https://git.foss21.org/$name/snapshot/$name-$version.tar.xz
+checksum=bfd9a39a60203606286af53ba9acc8d06490691cec7edae5ab6978b8547029412881b9895e8e0470c4f70bc9c349fdc6918200aaac810df99cf628e5848c6563
+cyst=musl
+description='A surrogate libtool implementation, written in C'
+license=MIT
