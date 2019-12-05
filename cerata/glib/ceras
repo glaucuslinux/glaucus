@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://gitlab.gnome.org/GNOME/$name
-cysts='musl mawk libelf-compat zlib pcre'
+cysts='musl mawk libelf-compat zlib-ng pcre'
 description='The low-level core library that forms the basis for projects such
 as GTK+ and GNOME'
 license=LGPLv2.1+

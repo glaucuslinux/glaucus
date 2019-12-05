@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://github.com/swaywm/sway
-cysts='musl zlib libpng pixman cairo pango json-c libelf-compat glib fribidi freetype harfbuzz fontconfig expat libffi wayland-protocols wayland wlroots'
+cysts='musl zlib-ng libpng pixman cairo pango json-c libelf-compat glib fribidi freetype harfbuzz fontconfig expat libffi wayland-protocols wayland wlroots'
 description='An i3-compatible Wayland compositor'
 license=MIT
 build(){

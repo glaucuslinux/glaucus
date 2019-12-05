@@ -11,7 +11,7 @@ install -dvm 1777 /tmp
 
 ln -fsv $TOOL/bin/bash /bin
 
-ln -fsv $TOOL/bin/file $TOOL/bin/pwd /usr/bin
+ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd /usr/bin
 
 ln -fsv $TOOL/bin/dash /bin/sh
 

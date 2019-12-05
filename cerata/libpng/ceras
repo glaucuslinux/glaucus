@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://github.com/glennrp/$name
-cysts='musl zlib'
+cysts='musl zlib-ng'
 description='The official PNG reference library'
 licenses='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
 

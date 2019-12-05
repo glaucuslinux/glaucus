@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://gitlab.freedesktop.org/xorg/lib/$name
-cysts='musl zlib util-macros'
+cysts='musl zlib-ng util-macros'
 description='X font encoding library'
 license=MIT
 

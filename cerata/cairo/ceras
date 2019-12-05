@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://anon$version.freedesktop.org/$version/$name
-cysts='musl zlib libpng pixman'
+cysts='musl zlib-ng libpng pixman'
 description='A 2D graphics library with support for multiple output devices'
 licenses='LGPLv2.1+ MPLv1.1'
 

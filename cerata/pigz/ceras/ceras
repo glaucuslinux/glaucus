@@ -9,7 +9,7 @@ release=1
 arch=x86-64
 url=https://zlib.net/$name/$name-$version.tar.gz
 checksum=79b2357176f93b9f3e2bc07fee393fc4d79b7bd0041808f8ddfd23eafccde72e60ca95e97595bb624a4f732fe3612bf46d57c44541c36ae62f9aa6336abe16ba
-cysts='musl zlib'
+cysts='musl zlib-ng'
 description='A parallel implementation of gzip for modern multi-processor,
 multi-core machines'
 licenses='Apache-2.0 Zlib'

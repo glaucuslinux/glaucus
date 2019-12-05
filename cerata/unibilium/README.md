@@ -21,7 +21,7 @@ e93f319b7a85a4441c7f4e30d12d906805f066b14bff03331e48b6257da893f6447e257c8ba73107
 ## Cysts
 * musl
 * zlib
-* libtool
+* slibtool
 
 ## Description
 A very basic terminfo parsing library

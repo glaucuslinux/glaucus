@@ -3,7 +3,7 @@ version=git
 release=1
 arch=x86-64
 url=https://github.com/swaywm/$name
-cysts='musl expat libffi wayland-protocols wayland zlib libpng'
+cysts='musl expat libffi wayland-protocols wayland zlib-ng libpng'
 description='A modular Wayland compositor library'
 license=MIT
 build(){

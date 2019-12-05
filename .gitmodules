@@ -310,3 +310,6 @@
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
+[submodule "cerata/zlib-ng/zlib-ng"]
+	path = cerata/zlib-ng/zlib-ng
+	url = https://github.com/zlib-ng/zlib-ng
