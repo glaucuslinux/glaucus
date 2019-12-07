@@ -5,6 +5,11 @@
 
 prepare_cross() {
   rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
+  
+  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$name/gmp --delete
+  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$name/mpfr --delete
+  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$name/mpc --delete
+  
   cd $TSRC/$name/$name/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
@@ -61,9 +66,6 @@ build_cross() {
   make \
     AR_FOR_TARGET=$TUPL-ar \
     AS_FOR_TARGET=$TUPL-as \
-    CC_FOR_TARGET=$TUPL-gcc \
-    CXX_FOR_TARGET=$TUPL-g++ \
-    GCC_FOR_TARGET=$TUPL-gcc \
     LD_FOR_TARGET=$TUPL-ld \
     NM_FOR_TARGET=$TUPL-nm \
     OBJCOPY_FOR_TARGET=$TUPL-objcopy \

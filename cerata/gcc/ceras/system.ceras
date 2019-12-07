@@ -5,9 +5,20 @@
 
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  cd $SSRC/$name
+
+  patch -p0 -i $CERD/$name/patches/1.patch
+  patch -p0 -i $CERD/$name/patches/2.patch
+  patch -p0 -i $CERD/$name/patches/3.patch
+  patch -p0 -i $CERD/$name/patches/4.patch
+  patch -p0 -i $CERD/$name/patches/5.patch
+  patch -p0 -i $CERD/$name/patches/6.patch
+  patch -p0 -i $CERD/$name/patches/7.patch
+  patch -p0 -i $CERD/$name/patches/8.patch
+  patch -p0 -i $CERD/$name/patches/9.patch
 
   sed '/m64/s/lib64/lib/' \
-    -i $SSRC/$name/$name/config/i386/t-linux64
+    -i $name/config/i386/t-linux64
 
   install -dv $SBLD/$name
   cd $SBLD/$name
@@ -16,18 +27,12 @@ prepare_system() {
 configure_system() {
   $SSRC/$name/configure \
     --prefix=/usr \
+    --build=$TUPL \
+    --host=$TUPL \
     --disable-multilib \
-    --enable-threads=posix \
-    --with-arch=x86-64 \
     --disable-bootstrap \
     --enable-languages=c,c++ \
-    --disable-libsanitizer \
-    --disable-libssp \
-    --disable-werror \
-    --disable-nls \
-    --with-isl=/usr \
-    --with-zstd=/usr \
-    --with-linker-hash-style=gnu
+    --with-system-zlib
 }
 
 build_system() {

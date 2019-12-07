@@ -22,8 +22,7 @@ configure_native() {
     --disable-nls \
     --with-lib-path=$TOOL/lib \
     --with-sysroot \
-    --disable-multilib \
-    --disable-gdb
+    --disable-multilib
 }
 
 build_native() {
@@ -41,5 +40,5 @@ install_native() {
     LIB_PATH=/usr/lib \
     -C ld
 
-  cp -av ld/ld-new $TOOL/bin
+  install -v ld/ld-new $TOOL/bin
 }

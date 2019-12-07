@@ -14,5 +14,4 @@ construct() {
 }
 
 construct binutils
-construct gmp mpfr mpc
 construct gcc

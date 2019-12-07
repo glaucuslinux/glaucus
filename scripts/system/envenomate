@@ -13,30 +13,23 @@ envenomate() {
     build_system || { echo system $name build failed; exit $?; }
     install_system || { echo system $name install failed; exit $?; }
 
-    #cd $SCER/$name/sac
-    
-    #tar cJvf ../venom/$name-$version-$release-$arch.tar.xz .
-    #sha1sum $(tar cJvvf ../venom/$name-$version-$release-$arch.tar.xz . 2>&1 | mawk -v OFS=' ' '{print $2, $10}' | sed '/^d/ d' | mawk '{print $2}' | sed 's/\.\///' | sort) > ../venom/checksum
-    #tar xvf ../venom/$name-$version-$release-$arch.tar.xz -C /
-    #rsync -vah ../venom /usr/cerata/$name --delete
     rsync -vah $SCER/$name/sac/ /
   done
 }
 
 envenomate zlib-ng
-#envenomate file
-#envenomate libedit
-#envenomate m4
-#envenomate bc
-#envenomate binutils
-#envenomate gmp
-#envenomate mpfr
-#envenomate mpc
-#envenomate isl
-#envenomate zstd
-#envenomate attr
-#envenomate acl
-#envenomate gcc
+envenomate file
+envenomate libedit
+envenomate m4
+envenomate bc
+envenomate binutils
+envenomate gmp
+envenomate mpfr
+envenomate mpc
+envenomate isl
+envenomate attr
+envenomate acl
+envenomate gcc
 #envenomate lbzip2
 #envenomate pkgconf
 #envenomate netbsd-curses
@@ -77,7 +70,7 @@ envenomate zlib-ng
 #envenomate pcre2
 #envenomate less
 #envenomate pigz
-envenomate kbd
+#envenomate kbd
 #envenomate make
 #envenomate patch
 #envenomate mandoc
@@ -87,6 +80,7 @@ envenomate kbd
 #envenomate procps-ng
 #envenomate util-linux
 #envenomate e2fsprogs
+#envenomate smdev
 #envenomate skalibs
 #envenomate execline
 #envenomate s6

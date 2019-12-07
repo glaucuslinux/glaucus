@@ -19,8 +19,7 @@ configure_system() {
     --disable-werror \
     --disable-nls \
     --with-system-zlib \
-    --disable-multilib \
-    --disable-gdb
+    --disable-multilib
 }
 
 build_system() {

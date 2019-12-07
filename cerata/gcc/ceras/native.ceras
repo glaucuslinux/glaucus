@@ -5,6 +5,12 @@
 
 prepare_native() {
   rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
+  
+  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$name/gmp --delete
+  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$name/mpfr --delete
+  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$name/mpc --delete
+  rsync -vah $CERD/isl/isl-0.22/ $TSRC/$name/isl --delete
+
   cd $TSRC/$name/$name/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
@@ -35,6 +41,7 @@ prepare_native() {
 configure_native() {
   $TSRC/$name/configure \
     --prefix=$TOOL \
+    --build=$TUPL \
     --host=$TUPL \
     --target=$TUPL \
     --with-local-prefix=$TOOL \

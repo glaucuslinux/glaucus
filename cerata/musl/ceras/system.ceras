@@ -29,7 +29,7 @@ build_system() {
 
 install_system() {
   make \
-    install-libs
+    install
 
   ln -fsv ../lib/ld-$name-$ARCH.so.1 /usr/bin/ldd
 
