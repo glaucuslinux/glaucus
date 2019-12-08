@@ -31,7 +31,7 @@ glaucus boasts the following features:
 space and requires 33MB of RAM to boot in QEMU and idles at just under 6MB of
 RAM
 
-![lightweight](
+  ![lightweight](
 https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
 
 * bleeding edge
