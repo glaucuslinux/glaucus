@@ -35,12 +35,8 @@ export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansio
 export PGO='-ftracer -funroll-loops'
 export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
 
-#export CFLAGS="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
-#export CFLAGSNOLTO="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
-#export CFLAGSNOOPENMP="-pipe -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
-export CFLAGS="-O2"
-export CFLAGSNOLTO="-O2"
-export CFLAGSNOOPENMP="-O2"
+export CFLAGS="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
+export CFLAGSNOLTO="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
+export CFLAGSNOOPENMP="-pipe -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
 export CXXFLAGS="$CFLAGS"
-#export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"
-export LDFLAGS="-Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"

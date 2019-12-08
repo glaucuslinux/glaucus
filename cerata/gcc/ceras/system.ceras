@@ -31,12 +31,14 @@ prepare_system() {
 }
 
 configure_system() {
+  CFLAGS="$CFLAGSNOLTO" \
   $SSRC/$name/configure \
     --prefix=/usr \
     --disable-multilib \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
+    --disable-nls \
     --with-system-zlib
 }
 

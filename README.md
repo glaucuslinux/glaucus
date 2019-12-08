@@ -1,5 +1,10 @@
 # glaucus
 
+![_glaucus logo_](
+https://github.com/firasuke/glaucus-artwork/blob/master/glaucus-logo.svg)
+
+"glaucus-logo.svg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
+
 glaucus is a highly optimized and extremely lightweight suckless Linux
 distribution built from scratch.
 
@@ -19,6 +24,9 @@ reading.
 
 
 ## Features
+
+![lightweight](
+https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
 
 glaucus boasts the following features:
 
@@ -65,6 +73,7 @@ lightweight)
 
 * doesn't require a separate partition to build and install into (unlike LFS)
 
+## Optimizations
 
 The `core` image builds (along with 130+ cerata) with really extreme
 optimization flags such as:
@@ -89,8 +98,8 @@ system previously installed on your machine...)
 
 * Graphite Loop Optimizations (ISL)
 
-* Link Time Optimization (LTO) (with zstd set as default compression method, and
-zlib set as a fallback method)
+* Link Time Optimization (LTO) (with working zstd support for future GCC
+releases)
 
 * Extra performance related optimizations
 
@@ -118,6 +127,11 @@ but that's just wishful thinking).
 
 
 ## Artwork and Screenshots
+
+![_Tux Puffy glaucus_](
+https://github.com/firasuke/glaucus-artwork/blob/master/Tux-Puffy-Glaucus.jpg)
+
+"Tux-Puffy-Glaucus.jpg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
 
 Kindly refer to [glaucus-artwork](https://github.com/firasuke/glaucus-artwork)
 and [glaucus-screenshots](https://github.com/firasuke/glaucus-screenshots) 
