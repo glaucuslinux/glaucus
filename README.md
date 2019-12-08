@@ -1,10 +1,5 @@
 # glaucus
 
-![_glaucus logo_](
-https://github.com/firasuke/glaucus-artwork/blob/master/glaucus-logo.svg)
-
-"glaucus-logo.svg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
-
 glaucus is a highly optimized and extremely lightweight suckless Linux
 distribution built from scratch.
 
@@ -14,6 +9,11 @@ a project many would find interesting.
 
 While it may seem as an embedded Linux distribution at first sight, it's
 actually intended for regular `x86-64` desktop machines.
+
+![_glaucus logo_](
+https://github.com/firasuke/glaucus-artwork/blob/master/glaucus-logo.svg)
+
+"glaucus-logo.svg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
 
 
 ## Naming Convention
@@ -25,17 +25,16 @@ reading.
 
 ## Features
 
-![lightweight](
-https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
-
 glaucus boasts the following features:
 
 * extremely lightweight, as the `core` installation only needs 25MB of disk
 space and requires 33MB of RAM to boot in QEMU and idles at just under 6MB of
 RAM
 
-* bleeding edge as it fetches the latest sources available from upstream
-repositories for all cerata
+![lightweight](
+https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
+
+* bleeding edge
 
 * the building process (for glaucus and its toolchains) is entirely automated
 
@@ -71,7 +70,8 @@ lightweight)
 * The kernel uses the bare minimum configuration needed to get a bootable system
 (from DOTSLASHLINUX's extremely lightweight kernel configuration guides)
 
-* doesn't require a separate partition to build and install into (unlike LFS)
+* Doesn't require a separate partition to build and install into
+
 
 ## Optimizations
 
@@ -128,14 +128,14 @@ but that's just wishful thinking).
 
 ## Artwork and Screenshots
 
+Kindly refer to [glaucus-artwork](https://github.com/firasuke/glaucus-artwork)
+and [glaucus-screenshots](https://github.com/firasuke/glaucus-screenshots) 
+respectively.
+
 ![_Tux Puffy glaucus_](
 https://github.com/firasuke/glaucus-artwork/blob/master/Tux-Puffy-Glaucus.jpg)
 
 "Tux-Puffy-Glaucus.jpg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
-
-Kindly refer to [glaucus-artwork](https://github.com/firasuke/glaucus-artwork)
-and [glaucus-screenshots](https://github.com/firasuke/glaucus-screenshots) 
-respectively.
 
 
 ## Voyager
