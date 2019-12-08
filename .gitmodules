@@ -13,9 +13,6 @@
 [submodule "cerata/drm/drm"]
 	path = cerata/drm/drm
 	url = https://gitlab.freedesktop.org/mesa/drm
-[submodule "cerata/execline/execline"]
-	path = cerata/execline/execline
-	url = https://skarnet.org/cgi-bin/cgit.cgi/execline
 [submodule "cerata/fontconfig/fontconfig"]
 	path = cerata/fontconfig/fontconfig
 	url = https://gitlab.freedesktop.org/fontconfig/fontconfig
@@ -241,21 +238,12 @@
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
-[submodule "cerata/s6/s6"]
-	path = cerata/s6/s6
-	url = https://skarnet.org/cgi-bin/cgit.cgi/s6
-[submodule "cerata/s6-linux-init/s6-linux-init"]
-	path = cerata/s6-linux-init/s6-linux-init
-	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-linux-init
 [submodule "cerata/s6-linux-utils/s6-linux-utils"]
 	path = cerata/s6-linux-utils/s6-linux-utils
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-linux-utils
 [submodule "cerata/s6-portable-utils/s6-portable-utils"]
 	path = cerata/s6-portable-utils/s6-portable-utils
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-portable-utils
-[submodule "cerata/s6-rc/s6-rc"]
-	path = cerata/s6-rc/s6-rc
-	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-rc
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase
@@ -265,9 +253,6 @@
 [submodule "cerata/sinit/sinit"]
 	path = cerata/sinit/sinit
 	url = https://git.suckless.org/sinit
-[submodule "cerata/skalibs/skalibs"]
-	path = cerata/skalibs/skalibs
-	url = https://skarnet.org/cgi-bin/cgit.cgi/skalibs
 [submodule "cerata/smdev/smdev"]
 	path = cerata/smdev/smdev
 	url = https://git.suckless.org/smdev
@@ -286,9 +271,6 @@
 [submodule "cerata/util-macros/macros"]
 	path = cerata/util-macros/macros
 	url = https://gitlab.freedesktop.org/xorg/util/macros
-[submodule "cerata/utmps/utmps"]
-	path = cerata/utmps/utmps
-	url = https://skarnet.org/cgi-bin/cgit.cgi/utmps
 [submodule "cerata/vis/vis"]
 	path = cerata/vis/vis
 	url = https://github.com/martanne/vis

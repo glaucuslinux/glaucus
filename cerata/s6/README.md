@@ -4,7 +4,7 @@
 s6
 
 ## Version
-git
+2.9.0.1
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://skarnet.org/cgi-bin/cgit.cgi/s6
+https://skarnet.org/software/s6/s6-2.9.0.1.tar.gz
+
+## Checksum
+5beb6170e4a457a0a307cbace67369cc35f6fd79d13ece2e82a3ebbdb4b032304eba8124be3e45b4db921863eaa02f51472c1365b0da000eef0868c11514dfff
 
 ## Cysts
 * skalibs
@@ -25,45 +28,3 @@ supervision
 
 ## License
 * ISC
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./configure \
-  --target=$TUPL \
-  --host=$TUPL \
-  --build=$TUPL \
-  --prefix=/usr \
-  --libexecdir=/usr/lib/libexec \
-  --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-  --with-include=$GLAD/usr/include \
-  --with-dynlib=$GLAD/usr/lib \
-  --enable-shared \
-  --disable-static \
-  --disable-allstatic \
-  --disable-all-pic
-```
-
-```shell
-sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-  -e 's/-Wl,--hash-style=both //' \
-  -i config.mak
-```
-
-## Build
-```shell
-make \
-  strip
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
-```

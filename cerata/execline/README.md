@@ -4,7 +4,7 @@
 execline
 
 ## Version
-git
+2.5.3.0
 
 ## Release
 1
@@ -13,55 +13,18 @@ git
 * x86-64
 
 ## URL
-https://skarnet.org/cgi-bin/cgit.cgi/execline
+https://skarnet.org/software/execline/execline-2.5.3.0.tar.gz
+
+## Checksum
+75b584e2365288bb1d05fd67e390fab1b6ccf48cb0a2ccbfb84a7d22ddf6957c9c591ab165542ed180b2ff1ef9ceb2a16cbae569e69c5dd5f20e52be092cff15
 
 ## Cysts
 * musl
 * skalibs
 
 ## Description
-A small and non-interactive scripting language, like sh; but with different syntax
+A small and non-interactive scripting language, like sh; but with different
+syntax
 
 ## License
 * ISC
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./configure \
-  --target=$TUPL \
-  --host=$TUPL \
-  --build=$TUPL \
-  --prefix=/usr \
-  --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-  --with-include=$GLAD/usr/include \
-  --with-dynlib=$GLAD/usr/lib \
-  --enable-shared \
-  --disable-static \
-  --disable-allstatic \
-  --disable-all-pic
-```
-
-```shell
-sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-  -e 's/-Wl,--hash-style=both //' \
-  -i config.mak
-```
-
-## Build
-```shell
-make \
-  strip
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
-```

@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 name=s6
-version=git
+version=2.9.0.1
 release=1
 arch=x86-64
-url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+url=https://skarnet.org/software/$name/$name-$version.tar.gz
+checksum=5beb6170e4a457a0a307cbace67369cc35f6fd79d13ece2e82a3ebbdb4b032304eba8124be3e45b4db921863eaa02f51472c1365b0da000eef0868c11514dfff
 cysts='skalibs execline'
 description="skarnet's small suite of programs for UNIX, designed to allow
 process supervision"

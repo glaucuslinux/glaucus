@@ -4,7 +4,7 @@
 s6-rc
 
 ## Version
-git
+0.5.1.1
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://skarnet.org/cgi-bin/cgit.cgi/s6-rc
+https://skarnet.org/software/s6-rc/s6-rc-0.5.1.1.tar.gz
+
+## Checksum
+88e6ad4f09501eda231e3bbac58e9dafc925ff4b2c2a845c9796f3c1519834901f0126d751705b00ecd71173e208085bd68c5ae221a7074da8254d2b71e8a772
 
 ## Cysts
 * skalibs
@@ -25,45 +28,3 @@ skarnet's service manager for s6-based systems
 
 ## License
 * ISC
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./configure \
-  --target=$TUPL \
-  --host=$TUPL \
-  --build=$TUPL \
-  --prefix=/usr \
-  --libexecdir=/usr/lib/libexec \
-  --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-  --with-include=$GLAD/usr/include \
-  --with-dynlib=$GLAD/usr/lib \
-  --enable-shared \
-  --disable-static \
-  --disable-allstatic \
-  --disable-all-pic
-```
-
-```shell
-sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-  -e "s/LDFLAGS := .*/LDFLAGS := $LDFLAGS -Wl,-rpath-link,\/home\/glaucus\/system\/usr\/lib/" \
-  -i config.mak
-```
-
-## Build
-```shell
-make \
-  strip
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
-```

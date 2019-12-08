@@ -4,7 +4,7 @@
 s6-linux-init
 
 ## Version
-git
+1.0.3.1
 
 ## Release
 1
@@ -13,7 +13,10 @@ git
 * x86-64
 
 ## URL
-https://skarnet.org/cgi-bin/cgit.cgi/s6-linux-init
+https://skarnet.org/software/s6-linux-init/s6-linux-init-1.0.3.1.tar.gz
+
+## Checksum
+71b380ff0eaa1d297bf6af5a1c979efdf34d10ec1e440fd1ee3fcab8ddf2c5d7c903d151986ecb5f01a9e0135bedc8021e5fbf82a3fd66abfebcb5e3cbf19242
 
 ## Cysts
 * skalibs
@@ -27,51 +30,3 @@ kernel
 
 ## License
 * ISC
-
-## Prepare
-```shell
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
-```
-
-## Configure
-```shell
-./configure \
-  --target=$TUPL \
-  --host=$TUPL \
-  --build=$TUPL \
-  --prefix=/usr \
-  --libexecdir=/usr/lib/libexec \
-  --skeldir=/etc/s6-linux-init/skel \
-  --with-sysdeps=$GLAD/usr/lib/skalibs/sysdeps \
-  --with-include=$GLAD/usr/include \
-  --with-dynlib=$GLAD/usr/lib \
-  --enable-shared \
-  --disable-static \
-  --disable-allstatic \
-  --disable-all-pic \
-  --enable-utmps
-```
-
-```shell
-sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-  -e 's/-Wl,--hash-style=both //' \
-  -i config.mak
-```
-
-## Build
-```shell
-make \
-  strip
-```
-
-## Install
-```shell
-make \
-  DESTDIR=$SCER/$name/sac \
-  install
-```
-
-```shell
-rm -frv $SCER/$name/sac/etc
-```

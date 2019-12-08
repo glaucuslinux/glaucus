@@ -4,13 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
+  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
 }
 
 configure_system() {
   ./configure \
     --prefix=/usr \
+    --datadir=/etc \
     --disable-static \
     --disable-all-pic \
     --disable-ipv6

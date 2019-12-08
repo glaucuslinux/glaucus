@@ -19,10 +19,10 @@ envenomate() {
 
 envenomate zlib-ng
 envenomate file
-envenomate libedit
-envenomate m4
-envenomate bc
-envenomate binutils
+#envenomate libedit
+#envenomate m4
+#envenomate bc
+#envenomate binutils
 #envenomate gmp
 #envenomate mpfr
 #envenomate mpc
@@ -45,9 +45,9 @@ envenomate binutils
 #envenomate slibtool
 #envenomate gdbm
 #envenomate gperf
-envenomate expat
-envenomate perl
-envenomate perl-xml-parser
+#envenomate expat
+#envenomate perl
+#envenomate perl-xml-parser
 #envenomate intltool
 #envenomate autoconf
 #envenomate automake
@@ -60,9 +60,9 @@ envenomate perl-xml-parser
 #envenomate elfutils-libelf
 #envenomate libffi
 #envenomate libressl
-envenomate python
-envenomate samurai
-envenomate meson
+#envenomate python
+#envenomate samurai
+#envenomate meson
 #envenomate toybox
 #envenomate diffutils
 #envenomate mawk
@@ -80,13 +80,13 @@ envenomate meson
 #envenomate procps-ng
 #envenomate util-linux
 #envenomate e2fsprogs
-#envenomate smdev
-#envenomate skalibs
-#envenomate execline
-#envenomate s6
-#envenomate utmps
-#envenomate s6-linux-init
-#envenomate s6-rc
+envenomate smdev
+envenomate skalibs
+envenomate execline
+envenomate s6
+envenomate utmps
+envenomate s6-linux-init
+envenomate s6-rc
 #envenomate glaucus-s6-boot-scripts
 
 #envenomate flex m4 bison
