@@ -126,6 +126,11 @@ Please keep in mind that the wiki is nowhere near finished (I'd say it's at 15%
 but that's just wishful thinking).
 
 
+## Download
+
+Kindly refer to [releases](https://github.com/firasuke/glaucus/releases).
+
+
 ## Artwork and Screenshots
 
 Kindly refer to [glaucus-artwork](https://github.com/firasuke/glaucus-artwork)
