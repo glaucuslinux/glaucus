@@ -6,10 +6,25 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
 
-  rsync -vah $CERD/isl/isl-0.22/ $SSRC/$name/isl --delete
+  cd $SSRC/$name/$name/config
+
+  for file in i386/linux.h i386/linux64.h linux.h; do
+    sed "s/\/lib/\/usr&/" \
+      -i $file
+
+    echo "
+#undef STANDARD_STARTFILE_PREFIX_1
+#define STANDARD_STARTFILE_PREFIX_1 \"/usr/lib/\"
+
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
+  done
 
   sed '/m64/s/lib64/lib/' \
-    -i $SSRC/$name/$name/config/i386/t-linux64
+    -i i386/t-linux64
+
+  sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
+    -i linux.h
 
   install -dv $SBLD/$name
   cd $SBLD/$name
@@ -21,11 +36,8 @@ configure_system() {
     --disable-multilib \
     --disable-bootstrap \
     --enable-languages=c,c++ \
-    --with-system-zlib \
-    --disable-libatomic \
-    --disable-libquadmath \
-    --disable-libssp \
-    --disable-libgomp
+    --disable-libsanitizer \
+    --with-system-zlib
 }
 
 build_system() {
@@ -37,6 +49,5 @@ install_system() {
     DESTDIR=$SCER/$name/sac \
     install-strip
 
-  ln -fsv $TUPL-gcc $SCER/$name/sac/usr/bin/cc
-  ln -fsv $TUPL-gcc $SCER/$name/sac/usr/bin/$TUPL-cc
+  ln -fsv gcc $SCER/$name/sac/usr/bin/cc
 }
