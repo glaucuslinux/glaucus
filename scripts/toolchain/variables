@@ -18,4 +18,4 @@ export TOOL=/toolchain
 
 export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
 
-export MAKEFLAGS=-j1
+export MAKEFLAGS=-j12

@@ -5,20 +5,11 @@
 
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
 
-  patch -p0 -i $CERD/$name/patches/1.patch
-  patch -p0 -i $CERD/$name/patches/2.patch
-  patch -p0 -i $CERD/$name/patches/3.patch
-  patch -p0 -i $CERD/$name/patches/4.patch
-  patch -p0 -i $CERD/$name/patches/5.patch
-  patch -p0 -i $CERD/$name/patches/6.patch
-  patch -p0 -i $CERD/$name/patches/7.patch
-  patch -p0 -i $CERD/$name/patches/8.patch
-  patch -p0 -i $CERD/$name/patches/9.patch
+  rsync -vah $CERD/isl/isl-0.22/ $SSRC/$name/isl --delete
 
   sed '/m64/s/lib64/lib/' \
-    -i $name/config/i386/t-linux64
+    -i $SSRC/$name/$name/config/i386/t-linux64
 
   install -dv $SBLD/$name
   cd $SBLD/$name
@@ -27,12 +18,14 @@ prepare_system() {
 configure_system() {
   $SSRC/$name/configure \
     --prefix=/usr \
-    --build=$TUPL \
-    --host=$TUPL \
     --disable-multilib \
     --disable-bootstrap \
     --enable-languages=c,c++ \
-    --with-system-zlib
+    --with-system-zlib \
+    --disable-libatomic \
+    --disable-libquadmath \
+    --disable-libssp \
+    --disable-libgomp
 }
 
 build_system() {

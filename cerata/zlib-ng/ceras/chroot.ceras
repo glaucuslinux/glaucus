@@ -1,0 +1,27 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_chroot() {
+  rsync -vah $CERD/$name/$name $CSRC --delete
+  cd $CSRC/$name
+}
+
+configure_chroot() {
+  sed 's/bash/dash/' \
+    -i configure
+
+  ./configure \
+    --prefix=$TOOL \
+    --zlib-compat
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  make \
+    install
+}

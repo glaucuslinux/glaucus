@@ -9,14 +9,23 @@ install -dv $SBLD $SCER /bin /boot /etc /usr/bin /usr/cerata /usr/include \
 install -dvm 0750 /root
 install -dvm 1777 /tmp
 
-ln -fsv $TOOL/bin/bash /bin
+ln -fsv $TOOL/bin/bash $TOOL/bin/ls /bin
+ln -fsv $TOOL/bin/cat /bin
+ln -fsv $TOOL/bin/chmod /bin
+ln -fsv $TOOL/bin/echo /bin
+ln -fsv $TOOL/bin/ln /bin
+ln -fsv $TOOL/bin/mkdir /bin
+ln -fsv $TOOL/bin/rm /bin
+ln -fsv $TOOL/bin/pwd /bin
+ln -fsv $TOOL/bin/touch /bin
 
 ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd /usr/bin
+ln -fsv $TOOL/bin/env $TOOL/bin/install $TOOL/bin/perl $TOOL/bin/printf /usr/bin
 
 ln -fsv $TOOL/bin/dash /bin/sh
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib
-ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib
+ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 $TOOL/lib/libstdc++.a /usr/lib
 
 ln -fsv $TOOL/lib/libgomp.so $TOOL/lib/libgomp.so.1 $TOOL/lib/libgomp.so.1.0.0 \
   $TOOL/lib/libgomp.spec /usr/lib

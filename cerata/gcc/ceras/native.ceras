@@ -5,7 +5,7 @@
 
 prepare_native() {
   rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
-  
+ 
   rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$name/gmp --delete
   rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$name/mpfr --delete
   rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$name/mpc --delete
@@ -40,10 +40,10 @@ prepare_native() {
 
 configure_native() {
   $TSRC/$name/configure \
-    --prefix=$TOOL \
     --build=$TUPL \
     --host=$TUPL \
     --target=$TUPL \
+    --prefix=$TOOL \
     --with-local-prefix=$TOOL \
     --with-native-system-header-dir=$TOOL/include \
     --disable-multilib \
