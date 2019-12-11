@@ -122,3 +122,6 @@ and finish it off with stripping some resulting unstripped files
 we can also further remove all resulting `*.a` files, but those were left
 for compatibility purposes, and hopefully will soon be removed if everything
 builds fine without them
+
+Don't symlink ldconfig to toybox's true as toybox won't recognize ldconfig,
+instead create an ldconfig script with true in it

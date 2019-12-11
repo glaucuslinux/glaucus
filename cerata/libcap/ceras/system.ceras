@@ -20,7 +20,7 @@ install_system() {
   make \
     RAISE_SETFCAP=no \
     PREFIX=/usr \
-    SBINDIR=/usr/sbin \
-    DESTDIR=$SCER/$name/sac \
+    SBINDIR=/usr/bin \
+    DESTDIR=$SCER/$name/sac/usr \
     install
 }

@@ -9,6 +9,9 @@ prepare_system() {
 }
 
 configure_system() {
+  sed '9327s/mv/cp/' \
+    -i Makefile.in
+
   ./configure \
     --prefix=/usr \
     --disable-nls

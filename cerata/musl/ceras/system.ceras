@@ -34,4 +34,7 @@ install_system() {
   ln -fsv ../lib/ld-$name-$ARCH.so.1 /usr/bin/ldd
 
   echo /usr/lib > /etc/ld-$name-$ARCH.path
+
+  echo '#!/usr/bin/true' > /usr/bin/ldconfig
+  chmod +x /usr/bin/ldconfig
 }
