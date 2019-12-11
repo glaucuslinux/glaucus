@@ -1,1 +1,1 @@
-#!/usr/bin/dash -ex
+#!/usr/bin/dash -e

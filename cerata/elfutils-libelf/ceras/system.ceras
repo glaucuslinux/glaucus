@@ -7,8 +7,8 @@ prepare_system() {
   rsync -vah $CERD/elfutils/elfutils-$version/ $SSRC/elfutils --delete
   cd $SSRC/elfutils
 
-  install -v $CERD/elfutils/error.h lib
-  install -v $CERD/elfutils/error.h src
+  rsync -vah $CERD/elfutils/error.h lib
+  rsync -vah $CERD/elfutils/error.h src
 
   patch -p0 -i $CERD/elfutils/patches/2.patch
 }

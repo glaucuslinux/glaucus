@@ -1,4 +1,4 @@
-#!/usr/bin/dash -ex
+#!/usr/bin/dash -e
 sudo mount /dev/sdc1 /mnt/USB1
 sudo rm -frv /mnt/USB1/* /mnt/USB1/.*
 sudo umount /dev/sdc1

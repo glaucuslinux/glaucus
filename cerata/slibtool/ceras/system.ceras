@@ -24,7 +24,4 @@ install_system() {
     install
 
   ln -fsv $name $SCER/$name/sac/usr/bin/libtool
-  
-  echo "#!/usr/bin/true" > $SCER/$name/sac/usr/bin/libtoolize
-  chmod +x $SCER/$name/sac/usr/bin/libtoolize
 }
