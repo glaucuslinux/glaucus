@@ -20,5 +20,5 @@ build_system() {
 install_system() {
   python3 setup.py \
     install \
-    --root=$SCER/$name/sac/usr
+    --root=$SCER/$name/sac
 }

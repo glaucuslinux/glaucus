@@ -6,21 +6,12 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  #patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
-  LIBS='-lutmps -lskarnet' \
   ./configure \
     --prefix=/usr \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --disable-static \
-    --disable-nls \
-    --disable-kill \
-    --without-systemd \
-    --disable-modern-top
+    --disable-static
 }
 
 build_system() {

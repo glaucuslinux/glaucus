@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=glaucus-s6-boot-scripts
+name=s6-boot-scripts
 version=git
 release=1
 arch=x86-64
-url=https://github.com/firasuke/$name
+url=https://github.com/glaucuslinux/$name
 cysts='musl skalibs execline s6 utmps s6-linux-init s6-rc'
-description='s6 boot scripts for glaucus'
+description="glaucus's s6 boot scripts"
 cluster=core
 license=ISC

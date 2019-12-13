@@ -4,7 +4,7 @@
 linux
 
 ## Version
-5.3.11
+5.4.3
 
 ## Release
 1
@@ -16,7 +16,7 @@ linux
 https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.11.tar.xz
 
 ## Checksum
-24e167531014b637793aab5ce47e6e747f619e2a0e598c0db348ea9069fc3fd86c81d4ee63ae085d42aba260d702f5b797e550c7e22c3d5df4fe8d9c32f5b3d5
+bbdf4179c5263f313aac56a75ebe14da6d05128b27b3d84305743605745bb0ffa872dc6fd349a9f066676ab39ed395e512bb1b27fec47a99d6f002cd25f64ed5
 
 ## Cyst
 

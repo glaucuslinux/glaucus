@@ -18,9 +18,10 @@ build_system() {
 
 install_system() {
   make \
-    RAISE_SETFCAP=no \
-    PREFIX=/usr \
+    DESTDIR=$SCER/$name/sac \
+    prefix=/usr \
     SBINDIR=/usr/bin \
-    DESTDIR=$SCER/$name/sac/usr \
+    LIBDIR=/usr/lib \
+    RAISE_SETFCAP=no \
     install
 }

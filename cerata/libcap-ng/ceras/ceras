@@ -1,0 +1,16 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+name=libcap-ng
+version=0.7.10
+release=1
+arch=x86-64
+url=https://people.redhat.com/sgrubb/$name/$name-$version.tar.gz
+checksum=1b93c7f5c20ae5cc705fe5244af3e299454e988388cda95f006e248d97c0713e77da2a81c67ecf15755f3958df373fc6d1ca14197d6357ab1f2d8c3a0fd12def
+cyst=musl
+description='Intended to make programming with posix capabilities much easier
+than the traditional libcap'
+licenses='GPL-2.0-only GPL-2.0-or-later LGPL-2.0-or-later LGPL-2.1-only
+LGPL-2.1-or-later'

@@ -128,6 +128,9 @@ cerata/libarchive/libarchive-3.4.0.tar.gz
 cerata/libcap/libcap-2.27/
 cerata/libcap/libcap-2.27.tar.xz
 
+cerata/libcap-ng/libcap-ng-0.7.10/
+cerata/libcap-ng/libcap-ng-0.7.10.tar.gz
+
 cerata/libedit/libedit-20191025-3.1/
 cerata/libedit/libedit-20191025-3.1.tar.gz
 
@@ -149,8 +152,8 @@ cerata/libtool/libtool-2.4.6.tar.xz
 cerata/lilo/lilo-24.2/
 cerata/lilo/lilo-24.2.tar.gz
 
-cerata/linux/linux-5.3.11/
-cerata/linux/linux-5.3.11.tar.xz
+cerata/linux/linux-5.4.3/
+cerata/linux/linux-5.4.3.tar.xz
 
 cerata/lz4/lz4-1.9.2/
 cerata/lz4/v1.9.2.tar.gz

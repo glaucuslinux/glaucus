@@ -25,9 +25,6 @@
 [submodule "cerata/gettext-tiny/gettext-tiny"]
 	path = cerata/gettext-tiny/gettext-tiny
 	url = https://github.com/sabotage-linux/gettext-tiny
-[submodule "cerata/glaucus-s6-boot-scripts/glaucus-s6-boot-scripts"]
-	path = cerata/glaucus-s6-boot-scripts/glaucus-s6-boot-scripts
-	url = https://github.com/firasuke/glaucus-s6-boot-scripts
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib
@@ -238,6 +235,9 @@
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
+[submodule "cerata/s6-boot-scripts/s6-boot-scripts"]
+	path = cerata/s6-boot-scripts/s6-boot-scripts
+	url = https://github.com/glaucuslinux/s6-boot-scripts
 [submodule "cerata/s6-linux-utils/s6-linux-utils"]
 	path = cerata/s6-linux-utils/s6-linux-utils
 	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-linux-utils

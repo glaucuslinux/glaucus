@@ -11,7 +11,7 @@ While it may seem as an embedded Linux distribution at first sight, it's
 actually intended for regular `x86-64` desktop machines.
 
 ![_glaucus logo_](
-https://github.com/firasuke/glaucus-artwork/blob/master/glaucus-logo.svg)
+https://github.com/glaucuslinux/artwork/blob/master/glaucus-logo.svg)
 
 "glaucus-logo.svg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
 
@@ -19,7 +19,7 @@ https://github.com/firasuke/glaucus-artwork/blob/master/glaucus-logo.svg)
 ## Naming Convention
 
 It's highly recommended that you refer to the [Naming Convention page on the
-wiki](https://github.com/firasuke/glaucus/wiki/Naming-Convention) before further
+wiki](https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) before further
 reading.
 
 
@@ -32,7 +32,7 @@ space and requires 33MB of RAM to boot in QEMU and idles at just under 6MB of
 RAM
 
   ![lightweight](
-https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
+https://github.com/glaucuslinux/screenshots/raw/master/lightweight.png)
 
 * bleeding edge
 
@@ -45,7 +45,7 @@ https://github.com/firasuke/glaucus-screenshots/raw/master/lightweight.png)
 * skarnet's latest s6-linux-init tools for a Linux init system
 
 * skarnet's latest s6-rc service manager for s6 [(glaucus-s6-boot-scripts)](
-https://github.com/firasuke/glaucus-s6-boot-scripts)
+https://github.com/glaucuslinux/s6-boot-scripts)
 
 * toybox
 
@@ -119,7 +119,7 @@ when idle.
 
 ## Wiki
 
-Kindly refer to the [wiki](https://github.com/firasuke/glaucus/wiki) for more
+Kindly refer to the [wiki](https://github.com/glaucuslinux/glaucus/wiki) for more
 information regarding glaucus.
 
 Please keep in mind that the wiki is nowhere near finished (I'd say it's at 15%
@@ -128,17 +128,17 @@ but that's just wishful thinking).
 
 ## Download
 
-Kindly refer to [releases](https://github.com/firasuke/glaucus/releases).
+Kindly refer to [releases](https://github.com/glaucuslinux/glaucus/releases).
 
 
 ## Artwork and Screenshots
 
-Kindly refer to [glaucus-artwork](https://github.com/firasuke/glaucus-artwork)
-and [glaucus-screenshots](https://github.com/firasuke/glaucus-screenshots) 
+Kindly refer to [glaucus-artwork](https://github.com/glaucuslinux/glaucus-artwork)
+and [glaucus-screenshots](https://github.com/glaucuslinux/glaucus-screenshots) 
 respectively.
 
 ![_Tux Puffy glaucus_](
-https://github.com/firasuke/glaucus-artwork/blob/master/Tux-Puffy-Glaucus.jpg)
+https://github.com/glaucuslinux/glaucus-artwork/blob/master/Tux-Puffy-Glaucus.jpg)
 
 "Tux-Puffy-Glaucus.jpg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
 
