@@ -11,7 +11,8 @@ prepare_system() {
 configure_system() {
   ./configure \
     --prefix=/usr \
-    --disable-static
+    --disable-static \
+    --without-python
 }
 
 build_system() {
