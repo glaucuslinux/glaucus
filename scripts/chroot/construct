@@ -32,7 +32,6 @@ construct pigz
 construct make
 construct patch
 construct perl
-#construct python
 construct sed
 construct xz
 construct libarchive

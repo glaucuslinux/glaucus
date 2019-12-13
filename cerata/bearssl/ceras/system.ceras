@@ -1,0 +1,24 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $CERD/$name/BearSSL/ $SSRC/$name --delete
+  cd $SSRC/$name
+}
+
+configure_system() {
+  :
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/lib
+
+  rsync -vah build/brssl $SCER/$name/sac/usr/bin
+  rsync -vah build/libbearssl.so $SCER/$name/sac/usr/lib
+}

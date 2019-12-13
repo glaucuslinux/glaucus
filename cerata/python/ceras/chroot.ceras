@@ -9,8 +9,8 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  #sed '/def add_multiarch_paths/a \        return' \
-    #-i setup.py
+  sed '/def add_multiarch_paths/a \        return' \
+    -i setup.py
 
   ax_cv_c_float_words_bigendian=no \
   ./configure \
