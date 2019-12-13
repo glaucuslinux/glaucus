@@ -216,8 +216,8 @@ cerata/pixz/pixz-1.0.6.tar.xz
 cerata/pkgconf/pkgconf-1.1.0/
 cerata/pkgconf/pkgconf-1.1.0.tar.xz
 
-cerata/procps-ng/procps-ng-3.3.15/
-cerata/procps-ng/procps-ng-3.3.15.tar.xz
+cerata/procps-ng/procps-ng-3.3.16/
+cerata/procps-ng/procps-ng-3.3.16.tar.xz
 
 cerata/psmisc/psmisc-23.3/
 cerata/psmisc/psmisc-23.3.tar.xz
@@ -229,6 +229,9 @@ cerata/python/Python-3.8.0.tar.xz
 
 cerata/qm4/m4-2/
 cerata/qm4/m4-2.tar.bz2
+
+cerata/readline/readline-8.0/
+cerata/readline/readline-8.0.tar.gz
 
 cerata/rsync/rsync-3.1.3/
 cerata/rsync/rsync-3.1.3.tar.gz
@@ -247,6 +250,9 @@ cerata/samurai/samurai-0.7.tar.gz
 
 cerata/sed/sed-4.7/
 cerata/sed/sed-4.7.tar.xz
+
+cerata/shadow/shadow-4.8/
+cerata/shadow/shadow-4.8.tar.xz
 
 cerata/skalibs/skalibs-2.9.1.0/
 cerata/skalibs/skalibs-2.9.1.0.tar.gz

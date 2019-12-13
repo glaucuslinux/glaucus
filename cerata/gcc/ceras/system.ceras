@@ -51,5 +51,5 @@ install_system() {
     DESTDIR=$SCER/$name/sac \
     install-strip
 
-  ln -fsv gcc $SCER/$name/sac/usr/bin/cc
+  ln -fsv $name $SCER/$name/sac/usr/bin/cc
 }

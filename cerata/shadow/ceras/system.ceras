@@ -6,21 +6,31 @@
 prepare_system() {
   rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
   cd $SSRC/$name
-
-  patch -p1 -i $CERD/$name/patches/$name.patch
 }
 
 configure_system() {
-  LIBS='-lutmps -lskarnet' \
+  sed 's/groups$(EXEEXT) //' \
+    -i src/Makefile.in
+
+  find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;
+
+  sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
+    -e 's@/var/spool/mail@/var/mail@' \
+    -i etc/login.defs
+
+  sed 's/1000/999/' \
+    etc/useradd
+
   ./configure \
     --prefix=/usr \
+    --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
+    --enable-shared \
     --disable-static \
+    --enable-utmpx \
     --disable-nls \
-    --disable-kill \
-    --without-systemd \
-    --disable-modern-top
+    --with-group-name-max-length=32
 }
 
 build_system() {
@@ -31,4 +41,7 @@ install_system() {
   make \
     DESTDIR=$SCER/$name/sac \
     install-strip
+
+  sed 's/yes/no/' \
+    -i $SCER/$name/sac/etc/default/useradd
 }

@@ -11,15 +11,32 @@ prepare_system() {
 }
 
 configure_system() {
+  LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
   ./configure \
     --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --localstatedir=/var \
+    --libdir=/usr/lib \
     --disable-static \
     --disable-symvers \
     --disable-nls \
+    --disable-setpriv \
+    --disable-nologin \
+    --disable-sulogin \
+    --disable-su \
+    --disable-runuser \
+    --disable-more \
     --disable-bash-completion \
+    --disable-pylibmount \
+    --enable-usrdir-path \
     --without-systemd \
-    --without-systemdsystemunitdir
+    --without-systemdsystemunitdir \
+    --without-python
+
+  sed 's/${exec_prefix}\/sbin/\/usr\/bin/' \
+    -i Makefile
 }
 
 build_system() {

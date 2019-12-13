@@ -11,6 +11,8 @@ prepare_system() {
 configure_system() {
   ./configure \
     --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
     --enable-symlink-install \
     --enable-elf-shlibs \
     --disable-bsd-shlibs \

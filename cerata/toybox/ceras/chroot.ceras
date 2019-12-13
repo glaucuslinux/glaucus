@@ -22,7 +22,7 @@ build_chroot() {
 }
 
 install_chroot() {
-  install -v toybox $TOOL/bin
+  install -v $name $TOOL/bin
 
-  for i in $(./toybox); do ln -fsv toybox $TOOL/bin/$i; done
+  for i in $(./$name); do ln -fsv $name $TOOL/bin/$i; done
 }

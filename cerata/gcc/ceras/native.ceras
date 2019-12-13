@@ -31,7 +31,7 @@ prepare_native() {
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
-  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-gcc \
+  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-$name \
     -print-libgcc-file-name))/include-fixed/limits.h
 
   install -dv $NBLD/$name
@@ -66,6 +66,6 @@ install_native() {
   make \
     install-strip
 
-  ln -fsv $TUPL-gcc $TOOL/bin/cc
-  ln -fsv $TUPL-gcc $TOOL/bin/$TUPL-cc
+  ln -fsv $TUPL-$name $TOOL/bin/cc
+  ln -fsv $TUPL-$name $TOOL/bin/$TUPL-cc
 }

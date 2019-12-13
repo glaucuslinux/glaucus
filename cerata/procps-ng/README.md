@@ -4,7 +4,7 @@
 procps-ng
 
 ## Version
-3.3.15
+3.3.16
 
 ## Release
 1
@@ -13,10 +13,10 @@ procps-ng
 * x86-64
 
 ## URL
-https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.15.tar.xz
+https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.16.tar.xz
 
 ## Checksum
-bc83ccc1941e7be8266588fdfbba17e2424b30163a215873ee6dee96215d66249f5d5e46fec2278d030b42bd7599861c4878360042dacec4c221ce411453747c
+d83da472df256b188c32082632202e7f8ebd1b161082387760876ae34d50221b3682299a2816a7d6a29afb40322743c31b87d92ca299c2944a6b55e50736d367
 
 ## Cysts
 * musl

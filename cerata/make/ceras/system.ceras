@@ -11,9 +11,7 @@ prepare_system() {
 configure_system() {
   ./configure \
     --prefix=/usr \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+    --disable-nls
 }
 
 build_system() {

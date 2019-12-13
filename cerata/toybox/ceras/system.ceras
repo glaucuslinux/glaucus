@@ -24,7 +24,7 @@ build_system() {
 install_system() {
   install -dv $SCER/$name/sac/usr/bin
 
-  install -v toybox $SCER/$name/sac/usr/bin
+  install -v $name $SCER/$name/sac/usr/bin
 
-  for i in $(./toybox); do ln -fsv toybox $SCER/$name/sac/usr/bin/$i; done
+  for i in $(./$name); do ln -fsv $name $SCER/$name/sac/usr/bin/$i; done
 }

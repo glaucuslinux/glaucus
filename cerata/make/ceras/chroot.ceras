@@ -12,9 +12,7 @@ configure_chroot() {
   ./configure \
     --prefix=$TOOL \
     --host=$TUPL \
-    --disable-nls \
-    --without-guile \
-    --without-dmalloc
+    --disable-nls
 }
 
 build_chroot() {
