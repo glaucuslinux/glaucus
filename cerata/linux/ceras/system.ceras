@@ -13,7 +13,7 @@ prepare_system() {
 }
 
 configure_system() {
-  install -v $CERD/$name/glaucus.config $SBLD/$name/.config
+  rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config
 
   make \
     O=$SBLD/$name \
@@ -30,6 +30,8 @@ build_system() {
 }
 
 install_system() {
+  install -dv $SCER/$name/sac/boot
+
   rsync -vah $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
   rsync -vah $SBLD/$name/System.map $SCER/$name/sac/boot
 }
