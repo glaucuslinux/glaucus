@@ -1,13 +1,14 @@
 name=s6-portable-utils
-version=git
+version=2.2.2.1
 release=1
 arch=x86-64
-url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+url=https://skarnet.org/software/$name/$name-$version.tar.gz
+checksum=2e74befec59ae6d3f27cb5f2bb92db23af484043e4d5e53e4816d75927059af6698614a4c3ce7ed7e380a88d5bbe88e41dcbc97eb607a10d7a3e46b8a36744ed
 cyst=skalibs
 description="skarnet's set of tiny general Unix utilities optimized for simplicity and small size"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
         cd $SSRC/$name
         ./configure \
                 --target=$TUPL \

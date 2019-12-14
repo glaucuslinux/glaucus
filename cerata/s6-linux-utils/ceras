@@ -1,13 +1,14 @@
 name=s6-linux-utils
-version=git
+version=2.5.1.1
 release=1
 arch=x86-64
-url=https://skarnet.org/cgi-bin/c$version.cgi/$name
+url=https://skarnet.org/software/$name/$name-$version.tar.gz
+checksum=59c58c4d8e13b7a6e0215f21978f8ac2ac54fc3685884204ea1f011f2a882b9381a9686cbb24c9e566e322c14174dda40368c308e37e9c44f6a1687231d108a2
 cyst=skalibs
 description="skarnet's set of minimalistic Linux-specific system utilities"
 license=ISC
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
+        rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
         cd $SSRC/$name
         ./configure \
                 --target=$TUPL \

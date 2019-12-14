@@ -208,9 +208,6 @@
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
 	url = https://github.com/jarun/nnn
-[submodule "cerata/nsss/nsss"]
-	path = cerata/nsss/nsss
-	url = https://skarnet.org/cgi-bin/cgit.cgi/nsss
 [submodule "cerata/oksh/oksh"]
 	path = cerata/oksh/oksh
 	url = https://github.com/ibara/oksh
@@ -238,12 +235,6 @@
 [submodule "cerata/s6-boot-scripts/s6-boot-scripts"]
 	path = cerata/s6-boot-scripts/s6-boot-scripts
 	url = https://github.com/glaucuslinux/s6-boot-scripts
-[submodule "cerata/s6-linux-utils/s6-linux-utils"]
-	path = cerata/s6-linux-utils/s6-linux-utils
-	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-linux-utils
-[submodule "cerata/s6-portable-utils/s6-portable-utils"]
-	path = cerata/s6-portable-utils/s6-portable-utils
-	url = https://skarnet.org/cgi-bin/cgit.cgi/s6-portable-utils
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase

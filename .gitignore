@@ -193,6 +193,9 @@ cerata/musl-obstack/v1.1.tar.gz
 cerata/netbsd-curses/netbsd-curses-0.3.1/
 cerata/netbsd-curses/v0.3.1.tar.gz
 
+cerata/nsss/nsss-0.0.2.1/
+cerata/nsss/nsss-0.0.2.1.tar.gz
+
 cerata/patch/patch-2.7.6/
 cerata/patch/patch-2.7.6.tar.xz
 
@@ -244,6 +247,12 @@ cerata/s6/s6-2.9.0.1.tar.gz
 
 cerata/s6-linux-init/s6-linux-init-1.0.3.1/
 cerata/s6-linux-init/s6-linux-init-1.0.3.1.tar.gz
+
+cerata/s6-linux-utils/s6-linux-utils-2.5.1.1/
+cerata/s6-linux-utils/s6-linux-utils-2.5.1.1.tar.gz
+
+cerata/s6-portable-utils/s6-portable-utils-2.2.2.1/
+cerata/s6-portable-utils/s6-portable-utils-2.2.2.1.tar.gz
 
 cerata/s6-rc/s6-rc-0.5.1.1/
 cerata/s6-rc/s6-rc-0.5.1.1.tar.gz

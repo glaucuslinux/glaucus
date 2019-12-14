@@ -1,4 +1,4 @@
 #!/usr/bin/dash -e
-git submodule foreach git pull
-find /home/glaucus/cerata -name .hg -execdir hg pull -u \;
-find /home/glaucus/cerata -name .svn -execdir svn update \;
+/usr/bin/git submodule foreach git pull
+find /home/glaucus/cerata -name .hg -execdir /usr/bin/hg pull -u \;
+find /home/glaucus/cerata -name .svn -execdir /usr/bin/svn update \;
