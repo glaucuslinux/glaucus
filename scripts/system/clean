@@ -1,7 +1,7 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-strip --strip-unneeded -v /usr/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
+strip --strip-unneeded -v /usr/lib/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
   /usr/lib/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.27
 
 exec $TOOL/bin/ksh
