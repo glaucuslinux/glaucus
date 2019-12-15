@@ -44,7 +44,7 @@ https://github.com/glaucuslinux/screenshots/raw/master/lightweight.png)
 
 * skarnet's latest s6-linux-init tools for a Linux init system
 
-* skarnet's latest s6-rc service manager for s6 [(glaucus-s6-boot-scripts)](
+* skarnet's latest s6-rc service manager for s6 [(s6-boot-scripts)](
 https://github.com/glaucuslinux/s6-boot-scripts)
 
 * toybox
@@ -133,12 +133,12 @@ Kindly refer to [releases](https://github.com/glaucuslinux/glaucus/releases).
 
 ## Artwork and Screenshots
 
-Kindly refer to [glaucus-artwork](https://github.com/glaucuslinux/glaucus-artwork)
-and [glaucus-screenshots](https://github.com/glaucuslinux/glaucus-screenshots) 
+Kindly refer to [artwork](https://github.com/glaucuslinux/artwork)
+and [screenshots](https://github.com/glaucuslinux/screenshots) 
 respectively.
 
 ![_Tux Puffy glaucus_](
-https://github.com/glaucuslinux/glaucus-artwork/blob/master/Tux-Puffy-Glaucus.jpg)
+https://github.com/glaucuslinux/artwork/raw/master/Tux-Puffy-Glaucus.jpg)
 
 "Tux-Puffy-Glaucus.jpg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
 
