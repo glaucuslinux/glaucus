@@ -1,5 +1,6 @@
 # glaucus
-<img src=https://github.com/glaucuslinux/artwork/blob/master/glaucus-logo.svg
+<img
+src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
 align=right height=256 width=256>
 
 glaucus is an independent, open-source, general-purpose, rolling-release Linux
