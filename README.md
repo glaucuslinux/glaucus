@@ -61,8 +61,8 @@ repository to see glaucus in action.
 src=https://github.com/glaucuslinux/artwork/raw/master/Tux-Puffy-Glaucus.jpg
 align=right height=256 width=256>
 
-Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) for glaucus
-related artwork.
+Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
+for glaucus related artwork.
 
 ## Voyager
 Firas Khalil Khana (firasuke) <firasuke@gmail.com>
