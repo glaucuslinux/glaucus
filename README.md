@@ -1,176 +1,88 @@
 # glaucus
+<img src=https://github.com/glaucuslinux/artwork/blob/master/glaucus-logo.svg
+align=right height=256 width=256>
 
-glaucus is a highly optimized and extremely lightweight suckless Linux
-distribution built from scratch.
+glaucus is an independent, open-source, general-purpose, rolling-release Linux
+distribution built from scratch around the suckless philosophy without
+sacrificing convenience.
 
-It was previously known as snail, and has been under development for 2 years
-now. It was initially intended for educational purposes, but it soon grew into
-a project many would find interesting.
+## Philosophy
+Optimized for performance and size, glaucus strives to be as fast and minimal as
+possible while remaining simple and most importantly convenient.
 
-While it may seem as an embedded Linux distribution at first sight, it's
-actually intended for regular `x86-64` desktop machines.
+## History
+glaucus initially started out as an educational project called snail, and has
+thus been under development for 2 years now.
 
-![_glaucus logo_](
-https://github.com/glaucuslinux/artwork/blob/master/glaucus-logo.svg)
+For more information on glaucus's history, kindly refer to the [History](
+https://github.com/glaucuslinux/glaucus/wiki/History) page in the wiki.
 
-"glaucus-logo.svg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
-
+## Inspiration
+glaucus drew most of its inspiration from the Linux From Scratch (LFS) project
+and several other [awesome projects](https://github.com/firasuke/awesome).
 
 ## Naming Convention
-
-It's highly recommended that you refer to the [Naming Convention page on the
-wiki](https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) before further
-reading.
-
+glaucus follows a strict naming convention so it's highly recommended that you
+refer to the [Naming Convention](
+https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) page in the wiki
+before further reading.
 
 ## Features
+* Fast
+* Minimal
+* Clean
+* Simple
+* Convenient
+* Bleeding edge
+* Rolling release
 
-glaucus boasts the following features:
+## Architectures
+* x86-64
 
-* extremely lightweight, as the `core` installation only needs 25MB of disk
-space and requires 33MB of RAM to boot in QEMU and idles at just under 6MB of
-RAM
+## Install
+Kindly refer to the [Install](
+https://github.com/glaucuslinux/glaucus/wiki/install) page in the wiki.
 
-  ![lightweight](
-https://github.com/glaucuslinux/screenshots/raw/master/lightweight.png)
-
-* bleeding edge
-
-* the building process (for glaucus and its toolchains) is entirely automated
-
-* musl libc
-
-* skarnet's latest s6 small supervision suite
-
-* skarnet's latest s6-linux-init tools for a Linux init system
-
-* skarnet's latest s6-rc service manager for s6 [(s6-boot-scripts)](
-https://github.com/glaucuslinux/s6-boot-scripts)
-
-* toybox
-
-* Portable OpenBSD `ksh` (`oksh`) as the main user shell (much lighter and
-faster (around 2.5x) than `bash`, and still manages to support auto-completion
-and command history).
-
-* `dash` for running scripts (all system scripts are written in POSIX `dash`,
-which is only 1.8x faster than `oksh`) (you can even replace run dash alone if
-you're an adventurer, but glaucus tries to stay convenient while being extremely
-lightweight)
-
-* NetBSD's curses, with `less`, `mandoc` and `vim` all built against it
-
-* LibreSSL
-
-* And many more lightweight and suckless software (`mawk`, `byacc`, `re2c`,
-`gettext-tiny`, `nnn`...)
-
-* Adheres to the latest FHS standards, with a minimal and clean root filesystem
-
-* The kernel uses the bare minimum configuration needed to get a bootable system
-(from DOTSLASHLINUX's extremely lightweight kernel configuration guides)
-
-* Doesn't require a separate partition to build and install into
-
-
-## Optimizations
-
-The `core` image builds (along with 130+ cerata) with really extreme
-optimization flags such as:
-
-* OpenMP
-
-* `Ofast` (this is only listed for bragging rights and to show that glaucus is
-capable of building with `Ofast`; however, it's highly recommended that you
-stick to `O2`, `Os` or even `O3` as executables behave weirdly and unexpectedly
-with `Ofast`. How dangerous you might ask? Imagine starting your machine, and
-seeing your trustworthy bootloader, the one that was always working until you
-recently decided to compile it with `Ofast`, failing to recognize any operating
-system previously installed on your machine...)
-
-* Swing Modulo Scheduling (SMS)
-
-* Global Common Subexpression Elimination (GCSE)
-
-* Integrated Register Allocation (IRA)
-
-* Interprocedural Pointer Analysis (IPA)
-
-* Graphite Loop Optimizations (ISL)
-
-* Link Time Optimization (LTO) (with working zstd support for future GCC
-releases)
-
-* Extra performance related optimizations
-
-
-## Supported Architectures
-
-Currently only `x86_64-pc-linux-musl` is supported with plans in the near future
-to support other architectures like x86, ARM, Raspberry PI, RISC-V and PowerPC.
-
-
-## Minimum Requirements
-
-Based on initial observations with QEMU, it seems that glaucus won't boot
-without having at least 33MB of RAM, even though it uses less than 6MB of RAM
-when idle.
-
+## Releases
+Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
+page.
 
 ## Wiki
+Kindly refer to the [Wiki](https://github.com/glaucuslinux/glaucus/wiki) for
+more information regarding glaucus.
 
-Kindly refer to the [wiki](https://github.com/glaucuslinux/glaucus/wiki) for more
-information regarding glaucus.
+## Screenshots
+Kindly refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
+repository to see glaucus in action.
 
-Please keep in mind that the wiki is nowhere near finished (I'd say it's at 15%
-but that's just wishful thinking).
+## Artwork
+<img
+src=https://github.com/glaucuslinux/artwork/raw/master/Tux-Puffy-Glaucus.jpg
+align=right height=256 width=256>
 
-
-## Download
-
-Kindly refer to [releases](https://github.com/glaucuslinux/glaucus/releases).
-
-
-## Artwork and Screenshots
-
-Kindly refer to [artwork](https://github.com/glaucuslinux/artwork)
-and [screenshots](https://github.com/glaucuslinux/screenshots) 
-respectively.
-
-![_Tux Puffy glaucus_](
-https://github.com/glaucuslinux/artwork/raw/master/Tux-Puffy-Glaucus.jpg)
-
-"Tux-Puffy-Glaucus.jpg" by Andy Cuccaro is licensed under CC-BY-SA-4.0
-
+Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) for glaucus
+related artwork.
 
 ## Voyager
-
 Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-
 ## License
-
 glaucus is licensed under the Internet Systems Consortium (ISC) license.
-See LICENSE.
-
 
 ## Dedication
-
 This project is dedicated to my lovely parents.
 
-
-## Donations
-
-If you like glaucus and want to support its development, then kindly donate to:
-
+## Donate
 * [Patreon](https://www.patreon.com/firasuke)
-
 * [Liberapay](https://liberapay.com/firasuke)
-
 * [Ko-fi](https://ko-fi.com/firasuke)
-
 * [Flattr](https://flattr.com/@firasuke)
-
 * PayPal: firasuke@gmail.com
 
-Hardware donations are also accepted.
+## Mirrors
+* [GitHub](https://github.com/glaucuslinux/glaucus)
+* [GitLab](https://gitlab.com/glaucuslinux/glaucus)
+* [NotABug](https://notabug.org/glaucuslinux/glaucus)
+* [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
+* [Framagit](https://framagit.org/glaucuslinux/glaucus)
+* [SourceForge](https://git.code.sf.net/p/glaucuslinux/glaucus)

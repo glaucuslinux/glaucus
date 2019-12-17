@@ -25,8 +25,10 @@ mkfs.ext4 $(echo $LOOP)p1
 umount /mnt/loop
 mount $(echo $LOOP)p1 /mnt/loop
 
+rm -frv /mnt/loop/lost+found
+
 install -dv /mnt/loop/dev /mnt/loop/proc /mnt/loop/run /mnt/loop/sys
-rsync -vah boot etc usr var /mnt/loop --delete
+rsync -vah bin boot etc root usr var /mnt/loop --delete
 
 install -dv /mnt/loop/boot/extlinux
 rsync -vah scripts/other/extlinux.conf /mnt/loop/boot/extlinux
