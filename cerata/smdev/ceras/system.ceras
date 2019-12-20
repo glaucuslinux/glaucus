@@ -30,11 +30,11 @@ install_system() {
     DESTDIR=$SCER/$name/sac \
     install
 
-  #cd $CERD/$name
+  cd $CERD/$name
   
-  #install -m 644 -Dv 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
-    #$SCER/$name/sac/etc/$name/add
+  install -m 644 -Dv 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
+    $SCER/$name/sac/etc/$name/add
   
-  #install -m 744 -v proceeddev $SCER/$name/sac/etc/$name/proceeddev
-  #install -m 644 -v 99-remove_links $SCER/$name/sac/etc/$name/remove
+  install -m 744 -v proceeddev $SCER/$name/sac/etc/$name/proceeddev
+  install -m 644 -v 99-remove_links $SCER/$name/sac/etc/$name/remove
 }

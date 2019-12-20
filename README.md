@@ -1,7 +1,6 @@
-# glaucus
-<img
+<p align=center><img
 src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
-align=right height=256 width=256>
+align=right height=256 width=256></p>
 
 glaucus is an independent, open-source, general-purpose, rolling-release Linux
 distribution built from scratch around the suckless philosophy without
@@ -12,8 +11,8 @@ Optimized for performance and size, glaucus strives to be as fast and minimal as
 possible while remaining simple and most importantly convenient.
 
 ## History
-glaucus initially started out as an educational project called snail, and has
-thus been under development for 2 years now.
+glaucus initially started out as a hobby project called snail, and has thus been
+under development for 2 years now.
 
 For more information on glaucus's history, kindly refer to the [History](
 https://github.com/glaucuslinux/glaucus/wiki/History) page in the wiki.
