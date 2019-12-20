@@ -1,6 +1,6 @@
 <p align=center><img
 src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
-align=right height=256 width=256></p>
+height=256 width=256></p>
 
 glaucus is an independent, open-source, general-purpose, rolling-release Linux
 distribution built from scratch around the suckless philosophy without
