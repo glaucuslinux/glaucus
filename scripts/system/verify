@@ -1,0 +1,59 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+verify() {
+  for ceras in $@; do
+    . $CERD/$ceras/ceras/ceras
+}
+
+verify libedit
+verify bc
+verify gmp
+verify mpfr
+verify mpc
+verify isl
+verify attr
+verify acl
+verify shadow
+verify pkgconf
+verify libcap-ng
+verify psmisc
+verify flex
+verify slibtool
+verify libtool
+verify gdbm
+verify gperf
+verify expat
+verify perl-xml-parser
+verify intltool
+verify autoconf
+verify automake
+verify kmod
+verify libuargp
+verify musl-fts
+verify musl-obstack
+verify elfutils-libelf
+verify libffi
+verify libressl
+verify python
+verify samurai
+verify meson
+verify grub
+verify pcre2
+verify less
+verify kbd
+verify mandoc
+verify vim
+verify skalibs
+verify execline
+verify s6
+verify utmps
+verify procps-ng
+verify util-linux
+verify e2fsprogs
+verify s6-linux-init
+verify s6-rc
+verify smdev
+verify nldev
+verify nlmon
+verify s6-boot-scripts

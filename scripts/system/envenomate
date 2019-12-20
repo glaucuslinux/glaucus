@@ -89,27 +89,14 @@ envenomate e2fsprogs
 envenomate s6-linux-init
 envenomate s6-rc
 envenomate smdev
+envenomate nldev
+envenomate nlmon
 envenomate s6-boot-scripts
 envenomate linux
-
-#envenomate flex m4 bison
-#envenomate diffutils
-#envenomate libelf
-#envenomate lz4
-#envenomate linux
-
-#envenomate skalibs execline s6 utmps
-#envenomate toybox
-#envenomate smdev nldev nlmon
-#envenomate netbsd-curses oksh
-#envenomate e2fsprogs
-#envenomate s6-linux-init s6-rc s6-boot-scripts
 
 #envenomate re2c
 #envenomate sinit svc
 #envenomate sdhcp
-#envenomate bzip2 xz zlib libarchive
-#envenomate pcre2 less mandoc vim
 #envenomate file iproute2 opendoas libressl
 #envenomate expat libffi wayland wayland-protocols
 #envenomate jemalloc

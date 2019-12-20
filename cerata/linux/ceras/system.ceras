@@ -4,12 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
+  rsync -vah $CERD/$name/$name-$version $SSRC/$name --delete
+
   install -dv $SBLD/$name
 
-  cd $CERD/$name/$name-$version
+  cd $SSRC/$name
 
   make \
     mrproper
+
+  patch -p1 -i $CERD/$name/patches/uksm-5.4.patch
 }
 
 configure_system() {

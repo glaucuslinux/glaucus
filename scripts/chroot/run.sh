@@ -7,6 +7,9 @@
 . $CSCR/prepare
 . $CSCR/log
 
+. $CSCR/fetch
+. $CSCR/verify
+
 (. $CSCR/construct | tee $CLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $CLOG/$log/err.log
 

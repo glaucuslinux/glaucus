@@ -31,10 +31,12 @@ install_system() {
     install
 
   cd $CERD/$name
+
+  install -dv $SCER/$name/sac/etc/$name/add
+  install -dv $SCER/$name/sac/etc/$name/remove
   
-  install -m 644 -Dv 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
+  install -m 644 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
     $SCER/$name/sac/etc/$name/add
-  
-  install -m 744 -v proceeddev $SCER/$name/sac/etc/$name/proceeddev
-  install -m 644 -v 99-remove_links $SCER/$name/sac/etc/$name/remove
+  install -m 644 99-remove_links $SCER/$name/sac/etc/$name/remove
+  install -m 744 proceeddev $SCER/$name/sac/etc/$name
 }

@@ -12,6 +12,9 @@
 
 . $SSCR/adjust
 
+. $SSCR/fetch
+. $SSCR/verify
+
 (. $SSCR/envenomate | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $SLOG/$log/err.log
 

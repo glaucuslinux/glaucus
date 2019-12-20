@@ -9,11 +9,11 @@ prepare_system() {
 }
 
 configure_system() {
-  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -I\/usr\/include -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
-    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS -L\/usr\/lib/" \
+  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
 
-  sed 's/busybox ash/sh/' \
+  sed 's/\/bin\/busybox ash/\/usr\/bin\/dash/' \
     -i nltrigger run_nldev
 }
 
