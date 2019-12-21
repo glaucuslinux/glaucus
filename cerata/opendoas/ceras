@@ -1,14 +1,10 @@
-name=opendoas
-version=git
-release=1
-arch=x86-64
-url=https://$version.duncano.de/$name
-cyst='musl byacc'
-description='A portable version of the OpenBSD $(doas) command'
-licenses='BSDv2 ISC'
+nom=opendoas
+ver=git
+url=https://$ver.duncano.de/$nom
+lic='BSDv2 ISC'
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         sed -e 's/root/glaucus/' \
                 -i Makefile
         ./configure \
@@ -18,6 +14,6 @@ build(){
                 --without-pam \
                 --with-timestamp
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install
 }

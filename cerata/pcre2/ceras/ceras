@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=pcre2
-version=10.33
-release=1
-arch=x86-64
-url=https://ftp.pcre.org/pub/pcre/$name-$version.tar.bz2
-checksum=c6aa52cdbb0c906b02e9a9f255697a1b9b99d9c7dccdaa484ffdb04fe3582d232ba3cb3c421d6df589a387b415dedb0817f58ec5391488b25b4e7bd9da6bab8f
-cysts='musl netbsd-curses'
-description='The 2nd version of the Perl 5 Compatible Regular Expressions library'
-license=BSD-3-Clause
+nom=pcre2
+ver=10.33
+url=https://ftp.pcre.org/pub/pcre/$nom-$ver.tar.bz2
+sum=c6aa52cdbb0c906b02e9a9f255697a1b9b99d9c7dccdaa484ffdb04fe3582d232ba3cb3c421d6df589a387b415dedb0817f58ec5391488b25b4e7bd9da6bab8f
+lic=BSD-3-Clause

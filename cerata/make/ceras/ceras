@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=make
-version=4.2.1
-release=1
-arch=x86-64
-url=https://ftpmirror.gnu.org/$name/$name-$version.tar.bz2
-checksum=9cf00869a2f938492554f71d8cb288b5b009b3bd0489ef164f2c8f6532fc37db5c7e20af1dea288536e7c9710ee0bc6e1ddcdfc4928a8540e6e43661741825b8
-cyst=musl
-description="A tool which controls the generation of executables and other
-non-source files of a program from the program's source files"
-licenses='GPL-3.0-only GPL-3.0-or-later LGPL-2.0-only'
+nom=make
+ver=4.2.1
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.bz2
+sum=9cf00869a2f938492554f71d8cb288b5b009b3bd0489ef164f2c8f6532fc37db5c7e20af1dea288536e7c9710ee0bc6e1ddcdfc4928a8540e6e43661741825b8
+lic='GPL-3.0-only GPL-3.0-or-later LGPL-2.0-only'

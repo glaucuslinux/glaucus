@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=pkgconf
-version=1.1.0
-release=1
-arch=x86-64
-url=https://distfiles.dereferenced.org/$name/$name-$version.tar.xz
-checksum=2d54b14b9fb830a3d30e8812f6079a95cf1e1e77fd42d1eac7a6041347094ff88b79146be93c56625c44e2dcf38af725cbbdfdda09b457b921a9a17b97a23d15
-cyst=musl
-description='A package compiler and linker metadata toolkit'
-license=ISC
+nom=pkgconf
+ver=1.1.0
+url=https://distfiles.dereferenced.org/$nom/$nom-$ver.tar.xz
+sum=2d54b14b9fb830a3d30e8812f6079a95cf1e1e77fd42d1eac7a6041347094ff88b79146be93c56625c44e2dcf38af725cbbdfdda09b457b921a9a17b97a23d15
+lic=ISC

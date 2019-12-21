@@ -4,21 +4,21 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 
-  cp -av $CERD/$name/error.h lib
-  cp -av $CERD/$name/error.h src
+  cp -av $CERD/$nom/error.h lib
+  cp -av $CERD/$nom/error.h src
 
-  patch -p0 -i $CERD/$name/patches/1.patch
-  patch -p0 -i $CERD/$name/patches/2.patch
-  patch -p0 -i $CERD/$name/patches/3.patch
-  patch -p1 -i $CERD/$name/patches/4.patch
-  patch -p0 -i $CERD/$name/patches/5.patch
-  patch -p0 -i $CERD/$name/patches/6.patch
-  patch -p0 -i $CERD/$name/patches/7.patch
-  patch -p0 -i $CERD/$name/patches/8.patch
-  patch -p0 -i $CERD/$name/patches/9.patch
+  patch -p0 -i $CERD/$nom/patches/1.patch
+  patch -p0 -i $CERD/$nom/patches/2.patch
+  patch -p0 -i $CERD/$nom/patches/3.patch
+  patch -p1 -i $CERD/$nom/patches/4.patch
+  patch -p0 -i $CERD/$nom/patches/5.patch
+  patch -p0 -i $CERD/$nom/patches/6.patch
+  patch -p0 -i $CERD/$nom/patches/7.patch
+  patch -p0 -i $CERD/$nom/patches/8.patch
+  patch -p0 -i $CERD/$nom/patches/9.patch
 }
 
 configure_system() {
@@ -39,6 +39,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 }

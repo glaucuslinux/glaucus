@@ -1,11 +1,7 @@
-name=pypy
-version=hg
-release=1
-arch=x86-64
-url=https://bitbucket.org/$name/$name
-cyst=musl
-description='A very fast and compliant implementation of the Python language'
-licenses='Apachev2.0 MIT Pythonv2.0 TCL'
+nom=pypy
+ver=hg
+url=https://bitbucket.org/$nom/$nom
+lic='Apachev2.0 MIT Pythonv2.0 TCL'
 build(){
         :
 }

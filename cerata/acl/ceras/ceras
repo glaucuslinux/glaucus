@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=acl
-version=2.2.53
-release=1
-arch=x86-64
-url=https://download.savannah.nongnu.org/releases/$name/$name-$version.tar.gz
-checksum=176b7957fe0e7618e0b7bf2ac5071f7fa29417df718cce977661a576fa184e4af9d303b591c9d556b6ba8923e799457343afa401f5a9f7ecd9022185a4e06716
-cyst=musl
-description='Commands for Manipulating POSIX Access Control Lists'
-licenses='GPL-2.0-or-later LGPL-2.1-only'
+nom=acl
+ver=2.2.53
+url=https://download.savannah.nongnu.org/releases/$nom/$nom-$ver.tar.gz
+sum=176b7957fe0e7618e0b7bf2ac5071f7fa29417df718cce977661a576fa184e4af9d303b591c9d556b6ba8923e799457343afa401f5a9f7ecd9022185a4e06716
+lic='GPL-2.0-or-later LGPL-2.1-only'

@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
+  rsync -vah $CERD/$nom/$nom-$ver/ $TSRC/$nom --delete
   
-  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$name/gmp --delete
-  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$name/mpfr --delete
-  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$name/mpc --delete
+  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete
+  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete
+  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete
   
-  cd $TSRC/$name/$name/config
+  cd $TSRC/$nom/$nom/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
     sed "s/\/lib/\\$TOOL&/" \
@@ -30,14 +30,14 @@ prepare_cross() {
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
-  install -dv $XBLD/$name
-  cd $XBLD/$name
+  install -dv $XBLD/$nom
+  cd $XBLD/$nom
 }
 
 configure_cross() {
   CFLAGS='-g0 -O0' \
   CXXFLAGS='-g0 -O0' \
-  $TSRC/$name/configure \
+  $TSRC/$nom/configure \
     --target=$TUPL \
     --prefix=$TOOL \
     --with-local-prefix=$TOOL \

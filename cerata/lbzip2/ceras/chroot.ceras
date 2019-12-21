@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
@@ -21,7 +21,7 @@ install_chroot() {
   make \
     install-strip
 
-  ln -fsv $name $TOOL/bin/bzip2
-  ln -fsv $name $TOOL/bin/bunzip2
-  ln -fsv $name $TOOL/bin/bzcat
+  ln -fsv $nom $TOOL/bin/bzip2
+  ln -fsv $nom $TOOL/bin/bunzip2
+  ln -fsv $nom $TOOL/bin/bzcat
 }

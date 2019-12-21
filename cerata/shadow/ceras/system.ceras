@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -39,9 +39,9 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 
   sed 's/yes/no/' \
-    -i $SCER/$name/sac/etc/default/useradd
+    -i $SCER/$nom/sac/etc/default/useradd
 }

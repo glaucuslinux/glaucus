@@ -21,6 +21,6 @@ header files to their destination
 
 this also requires rsync as of 5.3.x, if rsync isn't installed then replace
 `headers_install` with `headers` then remove `INSTALL_HDR_PATH=$TOOL` and
-manually copy the headers in `$NBLD/$name/usr/include` to `$TOOL/include`.
+manually copy the headers in `$NBLD/$nom/usr/include` to `$TOOL/include`.
 
 Removes unnecessary files that take about 200KB of precious disk space

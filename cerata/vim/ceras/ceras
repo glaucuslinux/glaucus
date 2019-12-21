@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=vim
-version=8.1.2380
-release=1
-arch=x86-64
-url=https://github.com/$name/$name/archive/v$version.tar.gz
-checksum=8147094342be795f62c837d17ea67363a39e2fc7cda84ee6c1060e35a4343515d959c62186744df77feb649af6b423ed6612d80b450d30243bcae63f4505c78a
-cyst=musl
-description='A highly configurable ubiquitous text editor for efficiently
-creating and changing any kind of text'
-licenses='LGPL-2.1-only MIT Vim'
+nom=vim
+ver=8.1.2380
+url=https://github.com/$nom/$nom/archive/v$ver.tar.gz
+sum=8147094342be795f62c837d17ea67363a39e2fc7cda84ee6c1060e35a4343515d959c62186744df77feb649af6b423ed6612d80b450d30243bcae63f4505c78a
+lic='LGPL-2.1-only MIT Vim'

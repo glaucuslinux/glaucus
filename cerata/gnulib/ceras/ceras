@@ -3,12 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=gnulib
-version=git
-release=1
-arch=x86-64
-url=https://$version.savannah.gnu.org/$version/$name
-cyst=musl
-description='A central location for common GNU code, intended to be shared among
-GNU packages'
-license='GPLv2+ GPLv3+ LGPLv2.1+'
+nom=gnulib
+ver=git
+url=https://$ver.savannah.gnu.org/$ver/$nom
+lic='GPLv2+ GPLv3+ LGPLv2.1+'

@@ -1,15 +1,11 @@
-name=libXv
-version=git
-release=1
-arch=x86-64
+nom=libXv
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxv
-cysts='musl util-macros'
-description='Xlib-based library for the X Video (Xv) extension to the X Window System'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxv/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxv/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

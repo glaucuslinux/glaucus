@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -19,11 +19,11 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin
+  install -dv $SCER/$nom/sac/usr/bin
 
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 
-  ln -fsv $name $SCER/$name/sac/usr/bin/sh
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/sh
 }

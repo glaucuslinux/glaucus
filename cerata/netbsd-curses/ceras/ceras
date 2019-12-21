@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=netbsd-curses
-version=0.3.1
-release=1
-arch=x86-64
-url=https://github.com/sabotage-linux/$name/archive/v$version.tar.gz
-checksum=bde5b08b8e7aad7b1d16bf154606e5c5b267e9e19ac1f13f28ba9d01de86d1dfe2e7fc87be28ff64e7d650c7881f35120834016c2b2563c0f69c8b7e7ea583d9
-cyst=musl
-description="A port of NetBSD's curses library for usage on Linux systems"
-cluster=core
-licenses='BSD-2-Clause BSD-3-Clause'
+nom=netbsd-curses
+ver=0.3.1
+url=https://github.com/sabotage-linux/$nom/archive/v$ver.tar.gz
+sum=bde5b08b8e7aad7b1d16bf154606e5c5b267e9e19ac1f13f28ba9d01de86d1dfe2e7fc87be28ff64e7d650c7881f35120834016c2b2563c0f69c8b7e7ea583d9
+lic='BSD-2-Clause BSD-3-Clause'

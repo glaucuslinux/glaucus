@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -19,15 +19,15 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
+  install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1
 
-  install -v $name $SCER/$name/sac/usr/bin
-  install -v $name.1 $SCER/$name/sac/usr/share/man/man1
+  install -v $nom $SCER/$nom/sac/usr/bin
+  install -v $nom.1 $SCER/$nom/sac/usr/share/man/man1
 
-  ln -fsv $name $SCER/$name/sac/usr/bin/un$name
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/un$nom
   
-  ln -fsv $name $SCER/$name/sac/usr/bin/gzip
-  ln -fsv $name $SCER/$name/sac/usr/bin/gunzip
-  ln -fsv $name $SCER/$name/sac/usr/bin/gzcat
-  ln -fsv $name $SCER/$name/sac/usr/bin/zcat
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/gzip
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/gunzip
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/gzcat
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/zcat
 }

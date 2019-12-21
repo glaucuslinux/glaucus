@@ -7,6 +7,8 @@
 . $CSCR/prepare
 . $CSCR/log
 
+. $CSCR/check
+
 . $CSCR/fetch
 . $CSCR/verify
 

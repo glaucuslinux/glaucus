@@ -1,20 +1,16 @@
-name=sinit
-version=git
-release=1
-arch=x86-64
-url=https://$version.suckless.org/$name
-cyst=musl
-description='Suckless init'
-license=MIT
+nom=sinit
+ver=git
+url=https://$ver.suckless.org/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         sed -e 's/^PREFIX = .*/PREFIX =\/usr/' \
                 -e "s/CC = .*/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
                 -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -Wall -Wextra/" \
                 -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
                 -i config.mk
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install
 }

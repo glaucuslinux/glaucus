@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 
   sed 's/%F/%b %F/' \
     -i toys/posix/ls.c
 }
 
 configure_chroot() {
-  install -v $CERD/$name/chroot.config .config
+  install -v $CERD/$nom/chroot.config .config
 
   scripts/genconfig.sh
 }
@@ -22,7 +22,7 @@ build_chroot() {
 }
 
 install_chroot() {
-  install -v $name $TOOL/bin
+  install -v $nom $TOOL/bin
 
-  for i in $(./$name); do ln -fsv $name $TOOL/bin/$i; done
+  for i in $(./$nom); do ln -fsv $nom $TOOL/bin/$i; done
 }

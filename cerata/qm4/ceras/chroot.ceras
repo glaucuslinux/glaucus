@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/m4-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/m4-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
-  sed -e "s/(BINDIR)\/m4/(BINDIR)\/$name/" \
-    -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$name.1/" \
+  sed -e "s/(BINDIR)\/m4/(BINDIR)\/$nom/" \
+    -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$nom.1/" \
     -i Makefile
 }
 
@@ -23,5 +23,5 @@ install_chroot() {
     PREFIX=$TOOL \
     install
 
-  ln -fsv $name $TOOL/bin/m4
+  ln -fsv $nom $TOOL/bin/m4
 }

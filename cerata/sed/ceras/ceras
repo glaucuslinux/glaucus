@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=sed
-version=4.7
-release=1
-arch=x86-64
-url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
-checksum=e0be5db4cdf8226b34aaa9071bc5ae0eafde1c52227cee3512eea7fe2520d6c5cebf15266aa5c4adffbb51bf125c140a15644e28d57759893c12823ea9bbf4fb
-cyst=musl
-description='A non-interactive command-line text editor'
-licenses='GPL-3.0-only GPL-3.0-or-later'
+nom=sed
+ver=4.7
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
+sum=e0be5db4cdf8226b34aaa9071bc5ae0eafde1c52227cee3512eea7fe2520d6c5cebf15266aa5c4adffbb51bf125c140a15644e28d57759893c12823ea9bbf4fb
+lic='GPL-3.0-only GPL-3.0-or-later'

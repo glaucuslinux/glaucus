@@ -1,15 +1,11 @@
-name=libXxf86vm
-version=git
-release=1
-arch=x86-64
+nom=libXxf86vm
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxxf86vm
-cysts='musl util-macros'
-description='Xlib-based library for the XFree86-VidMode X extension'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxxf86vm/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxxf86vm/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

@@ -4,12 +4,12 @@
 construct() {
   for ceras in $@; do
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$name/ceras/native.ceras
+    . $CERD/$nom/ceras/native.ceras
     
-    prepare_native || { echo native $name prepare failed; exit $?; }
-    configure_native || { echo native $name configure failed; exit $?; }
-    build_native || { echo native $name build failed; exit $?; }
-    install_native || { echo native $name install failed; exit $?; }
+    prepare_native || { echo native $nom prepare failed; exit $?; }
+    configure_native || { echo native $nom configure failed; exit $?; }
+    build_native || { echo native $nom build failed; exit $?; }
+    install_native || { echo native $nom install failed; exit $?; }
   done
 }
 

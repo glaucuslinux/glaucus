@@ -3,14 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=execline
-version=2.5.3.0
-release=1
-arch=x86-64
-url=https://skarnet.org/software/$name/$name-$version.tar.gz
-checksum=75b584e2365288bb1d05fd67e390fab1b6ccf48cb0a2ccbfb84a7d22ddf6957c9c591ab165542ed180b2ff1ef9ceb2a16cbae569e69c5dd5f20e52be092cff15
-cysts='musl skalibs'
-description='A small and non-interactive scripting language, like sh; but with
-different syntax'
-cluster=core
-license=ISC
+nom=execline
+ver=2.5.3.0
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=75b584e2365288bb1d05fd67e390fab1b6ccf48cb0a2ccbfb84a7d22ddf6957c9c591ab165542ed180b2ff1ef9ceb2a16cbae569e69c5dd5f20e52be092cff15
+lic=ISC

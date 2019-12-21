@@ -3,11 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=vis
-version=git
-release=1
-arch=x86-64
-url=https://github.com/martanne/$name
-cysts='musl unibilium libtermkey netbsd-curses'
-description="A vi-like editor based on Plan 9's structural regular expressions"
-license=ISC
+nom=vis
+ver=git
+url=https://github.com/martanne/$nom
+lic=ISC

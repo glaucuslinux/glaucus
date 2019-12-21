@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -21,15 +21,15 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 
-  ln -fsv $name.so $SCER/$name/sac/usr/lib/libreadline.so
+  ln -fsv $nom.so $SCER/$nom/sac/usr/lib/libreadline.so
  
-  install -dv $SCER/$name/sac/usr/include/readline
+  install -dv $SCER/$nom/sac/usr/include/readline
   
-  touch $SCER/$name/sac/usr/include/readline/history.h
-  touch $SCER/$name/sac/usr/include/readline/tilde.h
+  touch $SCER/$nom/sac/usr/include/readline/history.h
+  touch $SCER/$nom/sac/usr/include/readline/tilde.h
 
-  ln -fsv ../editline/readline.h $SCER/$name/sac/usr/include/readline/readline.h
+  ln -fsv ../editline/readline.h $SCER/$nom/sac/usr/include/readline/readline.h
 }

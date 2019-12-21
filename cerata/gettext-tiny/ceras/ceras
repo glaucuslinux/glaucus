@@ -3,11 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=gettext-tiny
-version=git
-release=1
-arch=x86-64
-url=https://github.com/sabotage-linux/$name
-cyst=musl
-description='Lightweight replacements for tools typically used from the GNU gettext suite'
-license=MIT
+nom=gettext-tiny
+ver=git
+url=https://github.com/sabotage-linux/$nom
+lic=MIT

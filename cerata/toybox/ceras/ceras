@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=toybox
-version=0.8.2
-release=1
-arch=x86-64
+nom=toybox
+ver=0.8.2
 url=https://github.com/landley/toybox/archive/0.8.2.tar.gz
-checksum=508a1e179834139c62a61cb80f773ad7d6c6d8410491e65bacbd02d12b6bcce65c4f39978ed9f747204f1215870ac9c2997fbc9d64d240c2a96cc4c126fa28d4
-cysts='musl bash libressl'
-description='All-in-one Linux command line'
-cluster=core
-license=BSD-2-Clause
+sum=508a1e179834139c62a61cb80f773ad7d6c6d8410491e65bacbd02d12b6bcce65c4f39978ed9f747204f1215870ac9c2997fbc9d64d240c2a96cc4c126fa28d4
+lic=BSD-2-Clause

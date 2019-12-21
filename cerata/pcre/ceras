@@ -1,14 +1,10 @@
-name=pcre
-version=svn
-release=1
-arch=x86-64
-url=$version://vcs.exim.org/$name/code/trunk
-cyst=musl
-description='A set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5'
-license=BSDv3
+nom=pcre
+ver=svn
+url=$ver://vcs.exim.org/$nom/code/trunk
+lic=BSDv3
 build(){
-        rsync -vah $CERD/$name/trunk/ $SSRC/$name --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/trunk/ $SSRC/$nom --delete
+        cd $SSRC/$nom
         ./autogen.sh
         ./configure \
                 --prefix=/usr \
@@ -18,6 +14,6 @@ build(){
                 --disable-static \
                 --enable-jit
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

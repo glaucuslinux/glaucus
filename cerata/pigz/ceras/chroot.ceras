@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name-$version/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
@@ -19,12 +19,12 @@ build_chroot() {
 }
 
 install_chroot() {
-  install -v $name $TOOL/bin
+  install -v $nom $TOOL/bin
 
-  ln -fsv $name $TOOL/bin/un$name
+  ln -fsv $nom $TOOL/bin/un$nom
   
-  ln -fsv $name $TOOL/bin/gzip
-  ln -fsv $name $TOOL/bin/gunzip
-  ln -fsv $name $TOOL/bin/gzcat
-  ln -fsv $name $TOOL/bin/zcat
+  ln -fsv $nom $TOOL/bin/gzip
+  ln -fsv $nom $TOOL/bin/gunzip
+  ln -fsv $nom $TOOL/bin/gzcat
+  ln -fsv $nom $TOOL/bin/zcat
 }

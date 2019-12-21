@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
+rsync -vah $CERD/$nom/$nom $SSRC --delete
+cd $SSRC/$nom
 
 # configure
 ./configure \
@@ -19,5 +19,5 @@ make
 
 # install
 make \
-  DESTDIR=$SCER/$name/sac \
+  DESTDIR=$SCER/$nom/sac \
   install-strip

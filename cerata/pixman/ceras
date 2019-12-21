@@ -1,14 +1,10 @@
-name=pixman
-version=git
-release=1
-arch=x86-64
-url=https://anon$version.freedesktop.org/$version/$name
-cysts='musl zlib-ng libpng'
-description='A low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization'
-license=MIT
+nom=pixman
+ver=git
+url=https://anon$ver.freedesktop.org/$ver/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         PNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
         PNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \
         ./autogen.sh \
@@ -27,6 +23,6 @@ build(){
                 --enable-libpng \
                 --with-sysroot=$GLAD
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

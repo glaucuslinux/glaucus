@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libffi
-version=3.3
-release=1
-arch=x86-64
-url=ftp://sourceware.org/pub/$name/$name-$version.tar.gz
-checksum=61513801a156f11420f541d325de697131846487122d6bdcf5491b18b4da788589f5c0bb07e88e396495d3be5830d74e9135595e2b8ddbfe95c448d8597fbd6f
-cyst=musl
-description='A portable foreign-function interface library'
-license=MIT
+nom=libffi
+ver=3.3
+url=ftp://sourceware.org/pub/$nom/$nom-$ver.tar.gz
+sum=61513801a156f11420f541d325de697131846487122d6bdcf5491b18b4da788589f5c0bb07e88e396495d3be5830d74e9135595e2b8ddbfe95c448d8597fbd6f
+lic=MIT

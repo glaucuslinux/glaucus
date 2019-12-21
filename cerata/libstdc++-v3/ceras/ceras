@@ -3,11 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libstdc++-v3
-version=9.2.0
-release=1
-arch=x86-64
-url=https://ftpmirror.gnu.org/gcc/gcc-$version/gcc-$version.tar.xz
-checksum=a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040
-description='The GNU Standard C++ Library v3'
-licenses='GPL-3.0-only GPL-3.0-with-GCC-exception'
+nom=libstdc++-v3
+ver=9.2.0
+url=https://ftpmirror.gnu.org/gcc/gcc-$ver/gcc-$ver.tar.xz
+sum=a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040
+lic='GPL-3.0-only GPL-3.0-with-GCC-exception'

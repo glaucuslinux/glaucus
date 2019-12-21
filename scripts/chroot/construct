@@ -4,12 +4,12 @@
 construct() {
   for ceras in $@; do
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$name/ceras/chroot.ceras
+    . $CERD/$nom/ceras/chroot.ceras
 
-    prepare_chroot || { echo chroot $name prepare failed; exit $?; }
-    configure_chroot || { echo chroot $name configure failed; exit $?; }
-    build_chroot || { echo chroot $name build failed; exit $?; }
-    install_chroot || { echo chroot $name install failed; exit $?; }
+    prepare_chroot || { echo chroot $nom prepare failed; exit $?; }
+    configure_chroot || { echo chroot $nom configure failed; exit $?; }
+    build_chroot || { echo chroot $nom build failed; exit $?; }
+    install_chroot || { echo chroot $nom install failed; exit $?; }
   done
 }
 

@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/m4-2/ $SSRC/$name --delete
-cd $SSRC/$name
+rsync -vah $CERD/$nom/m4-2/ $SSRC/$nom --delete
+cd $SSRC/$nom
 
 # configure
 
 # this should fix the process of copying both the M4 binary and manual page,
 # and would prevent the need for specifying $PROG
-sed -e "s/(BINDIR)\/m4/(BINDIR)\/$name/" \
-  -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$name.1/" \
+sed -e "s/(BINDIR)\/m4/(BINDIR)\/$nom/" \
+  -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$nom.1/" \
   -i Makefile
 
 # build
@@ -20,10 +20,10 @@ make
 
 # install
 make \
-  DESTDIR=$SCER/$name/sac \
+  DESTDIR=$SCER/$nom/sac \
   PREFIX=/usr \
   install
 
 # beware as this would conflict both GNU M4 and OpenBSD M4
-cd $SCER/$name/sac/usr/bin
-ln -fsv $name m4
+cd $SCER/$nom/sac/usr/bin
+ln -fsv $nom m4

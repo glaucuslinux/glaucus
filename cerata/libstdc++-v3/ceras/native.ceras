@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/gcc/gcc-$version/ $TSRC/gcc --delete
+  rsync -vah $CERD/gcc/gcc-$ver/ $TSRC/gcc --delete
 
-  install -dv $NBLD/$name
-  cd $NBLD/$name
+  install -dv $NBLD/$nom
+  cd $NBLD/$nom
 }
 
 configure_native() {
-  $TSRC/gcc/$name/configure \
+  $TSRC/gcc/$nom/configure \
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
@@ -19,7 +19,7 @@ configure_native() {
     --disable-nls \
     --disable-libstdcxx-pch \
     --disable-libstdcxx-threads \
-    --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$version
+    --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$ver
 }
 
 build_native() {

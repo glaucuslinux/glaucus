@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=kbd
-version=2.2.0
-release=1
-arch=x86-64
-url=https://mirrors.edge.kernel.org/pub/linux/utils/$name/$name-$version.tar.xz
-checksum=5f407c20739487e423e8390e429d30838a1a69a0a50db083803ce56da919e25ce480b63fd1bcfac9eb362095f17e575783b09eaa55e26b442bfa3ed838e04f13
-cysts='musl zlib-ng'
-description='Contains tools for managing Linux console'
-license=GPL-2.0-only
+nom=kbd
+ver=2.2.0
+url=https://mirrors.edge.kernel.org/pub/linux/utils/$nom/$nom-$ver.tar.xz
+sum=5f407c20739487e423e8390e429d30838a1a69a0a50db083803ce56da919e25ce480b63fd1bcfac9eb362095f17e575783b09eaa55e26b442bfa3ed838e04f13
+lic=GPL-2.0-only

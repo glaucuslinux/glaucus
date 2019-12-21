@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
   
   sed 's/%F/%b %F/' \
     -i toys/posix/ls.c
 }
 
 configure_system() {
-  install -v $CERD/$name/system.config .config
+  install -v $CERD/$nom/system.config .config
 
   scripts/genconfig.sh
 }
@@ -22,9 +22,9 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin
+  install -dv $SCER/$nom/sac/usr/bin
 
-  install -v $name $SCER/$name/sac/usr/bin
+  install -v $nom $SCER/$nom/sac/usr/bin
 
-  for i in $(./$name); do ln -fsv $name $SCER/$name/sac/usr/bin/$i; done
+  for i in $(./$nom); do ln -fsv $nom $SCER/$nom/sac/usr/bin/$i; done
 }

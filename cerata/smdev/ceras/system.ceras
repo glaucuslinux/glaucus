@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  rsync -vah $CERD/$name/config.h $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  rsync -vah $CERD/$nom/config.h $SSRC/$nom --delete
+  cd $SSRC/$nom
 
   sed -e '/types/a #include <sys/sysmacros.h>' \
     -i smdev.c
 
-  patch -p1 -i $CERD/$name/patches/$name.patch
+  patch -p1 -i $CERD/$nom/patches/$nom.patch
 }
 
 configure_system() {
@@ -27,16 +27,16 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 
-  cd $CERD/$name
+  cd $CERD/$nom
 
-  install -dv $SCER/$name/sac/etc/$name/add
-  install -dv $SCER/$name/sac/etc/$name/remove
+  install -dv $SCER/$nom/sac/etc/$nom/add
+  install -dv $SCER/$nom/sac/etc/$nom/remove
   
   install -m 644 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
-    $SCER/$name/sac/etc/$name/add
-  install -m 644 99-remove_links $SCER/$name/sac/etc/$name/remove
-  install -m 744 proceeddev $SCER/$name/sac/etc/$name
+    $SCER/$nom/sac/etc/$nom/add
+  install -m 644 99-remove_links $SCER/$nom/sac/etc/$nom/remove
+  install -m 744 proceeddev $SCER/$nom/sac/etc/$nom
 }

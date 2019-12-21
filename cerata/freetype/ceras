@@ -1,15 +1,11 @@
-name=freetype
-version=git
-release=1
-arch=x86-64
-url=https://$version.sv.nongnu.org/r/$name/freetype2
-cysts='musl zlib-ng libpng'
-description='A freely available software library to render fonts'
-licenses='FTL GPLv2+ MIT zlib'
+nom=freetype
+ver=git
+url=https://$ver.sv.nongnu.org/r/$nom/freetype2
+lic='FTL GPLv2+ MIT zlib'
 
 prepare_system() {
-  rsync -vah $CERD/$name/freetype2/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/freetype2/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {

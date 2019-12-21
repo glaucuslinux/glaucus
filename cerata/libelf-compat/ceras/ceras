@@ -3,12 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libelf-compat
-version=git
-release=1
-arch=x86-64
-url=https://github.com/sabotage-linux/$name
-cyst=musl
-description='libelf stripped off of elfutils 0.152 and cleaned up portability
-issues and autocrap'
-licenses='GPL-2.0-or-later GPL-3.0-or-later LGPL-3.0-only'
+nom=libelf-compat
+ver=git
+url=https://github.com/sabotage-linux/$nom
+lic='GPL-2.0-or-later GPL-3.0-or-later LGPL-3.0-only'

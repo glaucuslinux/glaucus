@@ -1,20 +1,16 @@
-name=swaybg
-version=git
-release=1
-arch=x86-64
+nom=swaybg
+ver=git
 url=https://github.com/swaywm/swaybg
-cysts='musl zlib-ng libpng pixman cairo expat libffi wayland-protocols wayland'
-description='A wallpaper utility for Wayland compositors'
-license=MIT
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

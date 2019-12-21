@@ -1,15 +1,11 @@
-name=drm
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/mesa/$name
-cyst=musl
-description='libdrm Direct Rendering Manager library and headers'
-license=
+nom=drm
+ver=git
+url=https://gitlab.freedesktop.org/mesa/$nom
+lic=
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -26,6 +22,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

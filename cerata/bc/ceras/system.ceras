@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
   CC='cc -std=c99' \
   PREFIX=/usr \
-  DESTDIR=$SCER/$name/sac \
+  DESTDIR=$SCER/$nom/sac \
   ./configure.sh \
     -G \
     -N

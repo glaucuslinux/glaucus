@@ -4,10 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
   
-  patch -p1 -i $CERD/$name/patches/$name.patch
+  patch -p1 -i $CERD/$nom/patches/$nom.patch
   
   sed 's/#ifdef __OPTIMIZE__/#if 0/g' \
     -i argp-fmtstream.h
@@ -24,12 +24,12 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 
-  install -dv $SCER/$name/sac/usr/include
-  install -dv $SCER/$name/sac/usr/lib
+  install -dv $SCER/$nom/sac/usr/include
+  install -dv $SCER/$nom/sac/usr/lib
 
-  install -v argp.h $SCER/$name/sac/usr/include
-  install -v libargp.a $SCER/$name/sac/usr/lib
+  install -v argp.h $SCER/$nom/sac/usr/include
+  install -v libargp.a $SCER/$nom/sac/usr/lib
 }

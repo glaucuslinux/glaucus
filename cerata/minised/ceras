@@ -1,15 +1,11 @@
-name=minised
-version=svn
-release=1
-arch=x86-64
+nom=minised
+ver=svn
 url=https://svn.exactcode.de/minised/trunk
-cyst=musl
-description=''
-license=
+lic=
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -25,6 +21,6 @@ build_system() {
 }
 
 install_system() {
-  make DESTDIR=$SCER/$name/sac \
+  make DESTDIR=$SCER/$nom/sac \
     install-strip
 }

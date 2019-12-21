@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/$name $CSRC --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/$nom $CSRC --delete
+  cd $CSRC/$nom
 
   sed -e '/types/,+1d' \
     -e '/endif/d' \

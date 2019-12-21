@@ -1,16 +1,11 @@
-name=nsss
-version=0.0.2.1
-release=1
-arch=x86-64
-url=https://skarnet.org/software/$name/$name-$version.tar.gz
-checksum=fb96459b70738a15f196f33d77316c858c7b4930f7a72f6b608b435d945df888304b221ce73b43a1095b670f63f5eefbd44a1afe4b02462048a1e62b05194226
-cysts='skalibs s6'
-description='A statically linkable NSS-like getpwnam() implementation'
-cluster=core
-license=ISC
+nom=nsss
+ver=0.0.2.1
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=fb96459b70738a15f196f33d77316c858c7b4930f7a72f6b608b435d945df888304b221ce73b43a1095b670f63f5eefbd44a1afe4b02462048a1e62b05194226
+lic=ISC
 build(){
-        rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+        cd $SSRC/$nom
         ./configure \
                 --target=$TUPL \
                 --host=$TUPL \
@@ -28,6 +23,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make strip
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install
 }

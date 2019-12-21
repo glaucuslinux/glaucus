@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
 
-  cd $SSRC/$name/$name/config
+  cd $SSRC/$nom/$nom/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
     sed "s/\/lib/\/usr&/" \
@@ -26,13 +26,13 @@ prepare_system() {
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\/usr\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
-  install -dv $SBLD/$name
-  cd $SBLD/$name
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
 }
 
 configure_system() {
   CFLAGS="$CFLAGSNOLTO" \
-  $SSRC/$name/configure \
+  $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-multilib \
     --disable-bootstrap \
@@ -48,8 +48,8 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 
-  ln -fsv $name $SCER/$name/sac/usr/bin/cc
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc
 }

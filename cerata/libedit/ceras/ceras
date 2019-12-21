@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libedit
-version=20191025-3.1
-release=1
-arch=x86-64
-url=http://thrysoee.dk/editline/libedit-20191025-3.1.tar.gz
-checksum=9f475249b984e02ece0af3a0efe353233fef644ecf37482e28597a3ce552ca5a07678939b2c4ecbe3d2b14761fa67f23d2e839a322b94c0feeeba9e403b2be00
-cysts='musl netbsd-curses'
-description='An autotool- and libtoolized port of the NetBSD Editline library
-(libedit)'
-license=
+nom=libedit
+ver=20191025-3.1
+url=http://thrysoee.dk/editline/$nom-$ver.tar.gz
+sum=9f475249b984e02ece0af3a0efe353233fef644ecf37482e28597a3ce552ca5a07678939b2c4ecbe3d2b14761fa67f23d2e839a322b94c0feeeba9e403b2be00
+lic='BSD-3-Clause BSD-4-Clause-UC'

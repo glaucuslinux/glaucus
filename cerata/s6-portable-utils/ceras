@@ -1,15 +1,11 @@
-name=s6-portable-utils
-version=2.2.2.1
-release=1
-arch=x86-64
-url=https://skarnet.org/software/$name/$name-$version.tar.gz
-checksum=2e74befec59ae6d3f27cb5f2bb92db23af484043e4d5e53e4816d75927059af6698614a4c3ce7ed7e380a88d5bbe88e41dcbc97eb607a10d7a3e46b8a36744ed
-cyst=skalibs
-description="skarnet's set of tiny general Unix utilities optimized for simplicity and small size"
-license=ISC
+nom=s6-portable-utils
+ver=2.2.2.1
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=2e74befec59ae6d3f27cb5f2bb92db23af484043e4d5e53e4816d75927059af6698614a4c3ce7ed7e380a88d5bbe88e41dcbc97eb607a10d7a3e46b8a36744ed
+lic=ISC
 build(){
-        rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+        cd $SSRC/$nom
         ./configure \
                 --target=$TUPL \
                 --host=$TUPL \
@@ -27,6 +23,6 @@ build(){
                 -e 's/-Wl,--hash-style=both //' \
                 -i config.mak
         make strip
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install
 }

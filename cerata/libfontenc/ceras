@@ -1,15 +1,11 @@
-name=libfontenc
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/xorg/lib/$name
-cysts='musl zlib-ng util-macros'
-description='X font encoding library'
-license=MIT
+nom=libfontenc
+ver=git
+url=https://gitlab.freedesktop.org/xorg/lib/$nom
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

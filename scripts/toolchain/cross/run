@@ -5,6 +5,8 @@
 . $TSCR/cross/prepare
 . $TSCR/cross/log
 
+. $TSCR/cross/check
+
 . $TSCR/cross/fetch
 . $TSCR/cross/verify
 

@@ -3,13 +3,9 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=perl
-version=5.30.1
-release=1
-arch=x86-64
-url=https://www.cpan.org/src/5.0/$name-$version.tar.xz
-checksum=8f3339efdcd1bb58fa58a90042181bef86bb09e4598c737e446ed43b56d2ab23d67eced5e36fb08fc61e076acfdb572a12e46a1277f5299a3f412054df0b88bf
-cyst=musl
-description='A highly capable, feature-rich programming language'
-licenses='Artistic-1.0-Perl Artistic-2.0 BSD-3-Clause GPL-1.0-only
+nom=perl
+ver=5.30.1
+url=https://www.cpan.org/src/5.0/$nom-$ver.tar.xz
+sum=8f3339efdcd1bb58fa58a90042181bef86bb09e4598c737e446ed43b56d2ab23d67eced5e36fb08fc61e076acfdb572a12e46a1277f5299a3f412054df0b88bf
+lic='Artistic-1.0-Perl Artistic-2.0 BSD-3-Clause GPL-1.0-only
 GPL-1.0-or-later GPL-2.0-only GPL-2.0-or-later MIT bzip2-1.0.6'

@@ -3,14 +3,9 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=procps-ng
-version=3.3.16
-release=1
-arch=x86-64
-url=https://prdownloads.sourceforge.net/$name/$name-$version.tar.xz
-checksum=d83da472df256b188c32082632202e7f8ebd1b161082387760876ae34d50221b3682299a2816a7d6a29afb40322743c31b87d92ca299c2944a6b55e50736d367
-cysts='musl pkgconf netbsd-curses skalibs execline s6 utmps'
-description='Command line and full screen utilities for browsing procfs'
-cluster=core
-licenses='GPL-2.0-only GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-only
+nom=procps-ng
+ver=3.3.16
+url=https://prdownloads.sourceforge.net/$nom/$nom-$ver.tar.xz
+sum=d83da472df256b188c32082632202e7f8ebd1b161082387760876ae34d50221b3682299a2816a7d6a29afb40322743c31b87d92ca299c2944a6b55e50736d367
+lic='GPL-2.0-only GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-only
 LGPL-2.0-or-later'

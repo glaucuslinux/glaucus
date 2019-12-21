@@ -1,15 +1,11 @@
-name=harfbuzz
-version=git
-release=1
-arch=x86-64
-url=https://github.com/$name/$name
-cysts='musl freetype'
-description='A text shaping engine'
-licenses='Apachev2.0 GPLv2+ GPLv3+ ICU ISC MIT OFLv1.1'
+nom=harfbuzz
+ver=git
+url=https://github.com/$nom/$nom
+lic='Apachev2.0 GPLv2+ GPLv3+ ICU ISC MIT OFLv1.1'
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -37,6 +33,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

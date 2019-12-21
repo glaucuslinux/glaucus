@@ -1,15 +1,11 @@
-name=libXRes
-version=git
-release=1
-arch=x86-64
+nom=libXRes
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxres
-cysts='musl util-macros'
-description='Xlib-based X-Resource extension client library'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxres/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxres/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

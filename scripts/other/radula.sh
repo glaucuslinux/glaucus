@@ -16,14 +16,10 @@ if [ ! -d $CERD/$1 ]; then
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=$1
-version=$2
-release=1
-arch=x86-64
+nom=$1
+ver=$2
 url=$3
-cyst=musl
-description=''
-license=
+lic=
 EOF
   
   cat > system.ceras << 'EOF'
@@ -33,8 +29,8 @@ EOF
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -48,36 +44,9 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }
-EOF
-
-  cat > ../README.md << EOF
-# $1
-
-## Name
-$1
-
-## Version
-$2
-
-## Release
-1
-
-## Architecture
-x86-64
-
-## URL
-$3
-
-## Cyst
-* musl
-
-## Description
-
-## License
-
 EOF
 
   cd $CERD/$1
@@ -107,7 +76,7 @@ EOF
         no) wget $3 ;;
       esac
 
-      sed "/^url=.*/a checksum=$(echo $(sha512sum $(basename $3)) | awk \
+      sed "/^url=.*/a sum=$(echo $(sha512sum $(basename $3)) | awk \
         '{print $1}')" -i ceras/ceras
       ;;
   esac

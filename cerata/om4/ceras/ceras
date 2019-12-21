@@ -3,11 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=om4
-version=git
-release=1
-arch=x86-64
+nom=om4
+ver=git
 url=https://github.com/ibara/m4
-cyst=musl
-description='A portable version of the OpenBSD m4 program'
-licenses='0BSD BSD-2-Clause BSD-3-Clause BSD-4-Clause ISC'
+lic='0BSD BSD-2-Clause BSD-3-Clause BSD-4-Clause ISC'

@@ -1,16 +1,11 @@
-name=libXaw
-version=git
-release=1
-arch=x86-64
+nom=libXaw
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxaw
-cysts='musl util-macros'
-description='X Athena Widget Set, based on the X Toolkit Intrinsics (Xt)
-Library'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxaw/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxaw/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -34,8 +29,8 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/lib
+  install -dv $SCER/$nom/sac/usr/lib
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

@@ -1,18 +1,14 @@
-name=bin86
-version=0.16.21
-release=1
-arch=x86-64
-url=https://v3.sk/~lkundrak/dev86/$name-$version.tar.gz
-checksum=e80e06965fbdcf13100aae4690071d01a6efe74aed7ff8f14e5892c6803393a1b5acda1296e0f0e1837dfb73e0edd02e9cccfeabbeabe1b68fa6b6b85ced1f56
-cyst=musl
-description='A simple complete cross-development C assembler and linker which can generate 16 or 32-bit code for the production of 8086 - 80386 executables'
-license=GPLv2+
+nom=bin86
+ver=0.16.21
+url=https://v3.sk/~lkundrak/dev86/$nom-$ver.tar.gz
+sum=e80e06965fbdcf13100aae4690071d01a6efe74aed7ff8f14e5892c6803393a1b5acda1296e0f0e1837dfb73e0edd02e9cccfeabbeabe1b68fa6b6b85ced1f56
+lic=GPLv2+
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 
-  patch -p0 -i $CERD/$name/patches/$name.patch
+  patch -p0 -i $CERD/$nom/patches/$nom.patch
 }
 
 configure_system() {
@@ -27,8 +23,8 @@ build(){
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/share/man/man1
+  install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1
   make \
-    PREFIX=$SCER/$name/sac/usr \
+    PREFIX=$SCER/$nom/sac/usr \
     install
 }

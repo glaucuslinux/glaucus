@@ -1,14 +1,10 @@
-name=sdhcp
-version=git
-release=1
-arch=x86-64
-url=$version://$version.2f30.org/$name
-cyst=musl
-description='Simple DHCP client'
-license=MIT
+nom=sdhcp
+ver=git
+url=$ver://$ver.2f30.org/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         sed -e 's/PREFIX    = .*/PREFIX    =\/usr/' \
                 -e 's/DESTDIR   =/DESTDIR   = \/home\/glaucus\/system/' \
                 -e "s/CC        = .*/CC        = $TUPL-gcc --sysroot=\/home\/glaucus\/system/" \
@@ -18,6 +14,6 @@ build(){
         sed -e 's/sbin/bin/g' \
                 -i Makefile
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install
 }

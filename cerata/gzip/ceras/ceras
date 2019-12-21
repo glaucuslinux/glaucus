@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=gzip
-version=1.10
-release=1
-arch=x86-64
-url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
-checksum=e6ba9e3906cdb6a6235b213515093d02afa1722686f73eddacbacae628542b586b449829783b6a1701e9b9e0c4d4dfa6845904d3b6b010f5cf21aec4997c9299
-cyst=musl
-description='A single-file/stream lossless data compression utility'
-licenses='GFDL-1.3-or-later GPL-3.0-only GPL-3.0-or-later'
+nom=gzip
+ver=1.10
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
+sum=e6ba9e3906cdb6a6235b213515093d02afa1722686f73eddacbacae628542b586b449829783b6a1701e9b9e0c4d4dfa6845904d3b6b010f5cf21aec4997c9299
+lic='GFDL-1.3-or-later GPL-3.0-only GPL-3.0-or-later'

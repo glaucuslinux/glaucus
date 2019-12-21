@@ -4,10 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 
-  install -dv $SBLD/$name
+  install -dv $SBLD/$nom
 }
 
 configure_system() {
@@ -16,9 +16,9 @@ configure_system() {
   sed -e 's/-O2//' \
     -i configure
   
-  cd $SBLD/$name
+  cd $SBLD/$nom
 
-  $SSRC/$name/configure \
+  $SSRC/$nom/configure \
     --prefix=$TOOL \
     --build=$TUPL \
     --host=$TUPL \

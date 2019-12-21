@@ -3,14 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=skalibs
-version=2.9.1.0
-release=1
-arch=x86-64
-url=https://skarnet.org/software/$name/$name-$version.tar.gz
-checksum=a85a9397cdb10cbc42fd7ef4984a77802cf8c42abeabc8ff18de6d2e11ff97d950418aeda5f2dd66a04bd30004a5c4608e7cc6f4c7e23b91f56ef1ff59f4b6d5
-cyst=musl
-description="skarnet's general purpose C libraries for system programming and
-small and secure C development"
-cluster=core
-license=ISC
+nom=skalibs
+ver=2.9.1.0
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=a85a9397cdb10cbc42fd7ef4984a77802cf8c42abeabc8ff18de6d2e11ff97d950418aeda5f2dd66a04bd30004a5c4608e7cc6f4c7e23b91f56ef1ff59f4b6d5
+lic=ISC

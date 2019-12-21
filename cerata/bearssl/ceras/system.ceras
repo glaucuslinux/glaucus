@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/BearSSL/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/BearSSL/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -17,8 +17,8 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/bin $SCER/$name/sac/usr/lib
+  install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/lib
 
-  rsync -vah build/brssl $SCER/$name/sac/usr/bin
-  rsync -vah build/libbearssl.so $SCER/$name/sac/usr/lib
+  rsync -vah build/brssl $SCER/$nom/sac/usr/bin
+  rsync -vah build/libbearssl.so $SCER/$nom/sac/usr/lib
 }

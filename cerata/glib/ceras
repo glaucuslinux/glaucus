@@ -1,18 +1,13 @@
-name=glib
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.gnome.org/GNOME/$name
-cysts='musl mawk libelf-compat zlib-ng pcre'
-description='The low-level core library that forms the basis for projects such
-as GTK+ and GNOME'
-license=LGPLv2.1+
+nom=glib
+ver=git
+url=https://gitlab.gnome.org/GNOME/$nom
+lic=LGPLv2.1+
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
   
-  mkdir -v $SBLD/$name
+  mkdir -v $SBLD/$nom
 }
 
 configure_system() {
@@ -22,18 +17,18 @@ configure_system() {
   meson \
     --prefix=/usr \
     -Dlibmount=false \
-    $SBLD/$name
+    $SBLD/$nom
 }
 
 build_system() {
   LD_LIBRARY_PATH=$GLAD/usr/lib \
   ninja \
-    -C $SBLD/$name
+    -C $SBLD/$nom
 }
 
 install_system() {
-  DESTDIR=$SCER/$name/sac \
+  DESTDIR=$SCER/$nom/sac \
   ninja \
-    -C $SBLD/$name \
+    -C $SBLD/$nom \
     install
 }

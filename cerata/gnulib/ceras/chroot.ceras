@@ -5,7 +5,7 @@
 
 # This file intentionally left blank to know that gnulib is part of chroot even
 # though it's not explicitly defined in scripts/chroot/construct, as cerata that
-# require gnulib simply rsync it to their $CSRC/$name.
+# require gnulib simply rsync it to their $CSRC/$nom.
 
 # These cerata include:
 #   1- make

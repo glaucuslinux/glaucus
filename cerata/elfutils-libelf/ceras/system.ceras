@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/elfutils/elfutils-$version/ $SSRC/elfutils --delete
+  rsync -vah $CERD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete
   cd $SSRC/elfutils
 
   rsync -vah $CERD/elfutils/error.h lib
@@ -36,6 +36,6 @@ build_system() {
 install_system() {
   make \
     -C libelf \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 }

@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=samurai
-version=0.7
-release=1
-arch=x86-64
-url=https://github.com/michaelforney/$name/releases/download/$version/$name-$version.tar.gz
-checksum=c47120a2b516c0d130c5a01d99972979c69103d1c6b110722c4c6fcac3147df25d60d9d19913d7c78902c257800d6a5e1bcbb775618058ebfe6db29098dc4001
-cyst=musl
-description='A ninja-compatible build tool written in C99 with a focus on
-simplicity, speed, and portability'
-licenses='Apache-2.0 ISC MIT'
+nom=samurai
+ver=0.7
+url=https://github.com/michaelforney/$nom/releases/download/$ver/$nom-$ver.tar.gz
+sum=c47120a2b516c0d130c5a01d99972979c69103d1c6b110722c4c6fcac3147df25d60d9d19913d7c78902c257800d6a5e1bcbb775618058ebfe6db29098dc4001
+lic='Apache-2.0 ISC MIT'

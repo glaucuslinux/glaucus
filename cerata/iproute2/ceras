@@ -1,16 +1,11 @@
-name=iproute2
-version=git
-release=1
-arch=x86-64
-url=https://$version.kernel.org/pub/scm/network/$name/$name
-cyst=musl
-description='A collection of utilities for controlling TCP/IP networking and
-traffic in Linux'
-license=GPLv2+
+nom=iproute2
+ver=git
+url=https://$ver.kernel.org/pub/scm/network/$nom/$nom
+lic=GPLv2+
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 
   rm -frv include/ip6tables.h include/iptables include/iptables.h \
     include/libiptc include/netinet man/man8/arpd.8
@@ -51,6 +46,6 @@ build_system() {
 }
 
 install_system() {
-  install -Dv ip/ip $SCER/$name/sac/usr/bin/ip
-  install -Dv man/man8/ip.8 $SCER/$name/sac/usr/share/man/man8/ip.8
+  install -Dv ip/ip $SCER/$nom/sac/usr/bin/ip
+  install -Dv man/man8/ip.8 $SCER/$nom/sac/usr/share/man/man8/ip.8
 }

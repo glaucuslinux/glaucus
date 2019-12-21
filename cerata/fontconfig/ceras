@@ -1,15 +1,11 @@
-name=fontconfig
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/$name/$name
-cysts='musl expat json-c freetype'
-description='Font configuration and customization library'
-licenses='GPLv3+ HPND MIT'
+nom=fontconfig
+ver=git
+url=https://gitlab.freedesktop.org/$nom/$nom
+lic='GPLv3+ HPND MIT'
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -37,6 +33,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

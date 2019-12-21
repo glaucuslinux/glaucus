@@ -3,12 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=lobase
-version=git
-release=1
-arch=x86-64
-url=https://$version.duncano.de/$name
-cysts='musl mawk'
-description='A port of the OpenBSD userland to Linux'
-cluster=core
-licenses='ISC PD'
+nom=lobase
+ver=git
+url=https://$ver.duncano.de/$nom
+lic='ISC PD'

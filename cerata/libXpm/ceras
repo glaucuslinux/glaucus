@@ -1,15 +1,11 @@
-name=libXpm
-version=git
-release=1
-arch=x86-64
+nom=libXpm
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxpm
-cysts='musl util-macros'
-description='X Pixmap (XPM) image file format library'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxpm/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxpm/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

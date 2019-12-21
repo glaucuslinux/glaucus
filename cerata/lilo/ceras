@@ -1,18 +1,14 @@
-name=lilo
-version=24.2
-release=1
-arch=x86-64
-url=https://alioth-archive.debian.org/releases/$name/Lilo/$version/$name-$version.tar.gz
-checksum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
-cysts='musl bin86'
-description='Standard LInux boot LOader'
-licenses='BSDv3 GPLv2+ LGPLv2.1+'
+nom=lilo
+ver=24.2
+url=https://alioth-archive.debian.org/releases/$nom/Lilo/$ver/$nom-$ver.tar.gz
+sum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c05f1d101682c5d442cdc9561fae8074f61f5537dde0413204c54
+lic='BSDv3 GPLv2+ LGPLv2.1+'
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
   
-  patch -p1 -i $CERD/$name/patches/$name.patch
+  patch -p1 -i $CERD/$nom/patches/$nom.patch
 }
 
 configure_system() {  
@@ -37,6 +33,6 @@ build_system() {
 }
 
 install_system() {
-  install -Dv src/$name $SCER/$name/sac/usr/bin/$name
-  install -Dv $CERD/$name/$name.conf $SCER/$name/sac/etc/$name.conf
+  install -Dv src/$nom $SCER/$nom/sac/usr/bin/$nom
+  install -Dv $CERD/$nom/$nom.conf $SCER/$nom/sac/etc/$nom.conf
 }

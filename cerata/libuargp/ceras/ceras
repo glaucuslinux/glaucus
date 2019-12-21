@@ -3,11 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libuargp
-version=git
-release=1
-arch=x86-64
-url=https://github.com/xhebox/$name
-cyst=musl
-description=''
-license=
+nom=libuargp
+ver=git
+url=https://github.com/xhebox/$nom
+lic=

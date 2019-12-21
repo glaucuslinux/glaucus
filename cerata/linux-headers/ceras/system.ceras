@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  install -dv $SBLD/$name
+  install -dv $SBLD/$nom
 
-  cd $CERD/linux/linux-$version
+  cd $CERD/linux/linux-$ver
 
   make \
     mrproper
@@ -22,7 +22,7 @@ build_system() {
 
 install_system() {
   make \
-    O=$SBLD/$name \
+    O=$SBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=/usr \
     headers_install

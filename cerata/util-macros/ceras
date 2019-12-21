@@ -1,14 +1,10 @@
-name=util-macros
-version=git
-release=1
-arch=x86-64
+nom=util-macros
+ver=git
 url=https://gitlab.freedesktop.org/xorg/util/macros
-cyst=musl
-description='GNU autoconf macros shared across X.Org projects'
-license=MIT
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/macros/ $SSRC/$name --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/macros/ $SSRC/$nom --delete
+        cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \
                 --sysconfdir=/etc \
@@ -17,6 +13,6 @@ build(){
                 --host=$TUPL \
                 --target=$TUPL
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

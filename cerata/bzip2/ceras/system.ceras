@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
-  patch -p1 -i $CERD/$name/patches/$name.patch
+  patch -p1 -i $CERD/$nom/patches/$nom.patch
 
   sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
     -i Makefile
@@ -26,24 +26,24 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/usr/share/man/man1
+  install -dv $SCER/$nom/sac/usr/share/man/man1
   
   make \
-    PREFIX=$SCER/$name/sac/usr \
+    PREFIX=$SCER/$nom/sac/usr \
     install
 
-  install -v $name-shared $SCER/$name/sac/usr/bin/$name
-  install -v libbz2.so.$version $SCER/$name/sac/usr/lib
+  install -v $nom-shared $SCER/$nom/sac/usr/bin/$nom
+  install -v libbz2.so.$ver $SCER/$nom/sac/usr/lib
   
-  ln -fsv libbz2.so.1.0.6 $SCER/$name/sac/usr/lib/libbz2.so.1.0
-  ln -fsv libbz2.so.1.0 $SCER/$name/sac/usr/lib/libbz2.so
+  ln -fsv libbz2.so.1.0.6 $SCER/$nom/sac/usr/lib/libbz2.so.1.0
+  ln -fsv libbz2.so.1.0 $SCER/$nom/sac/usr/lib/libbz2.so
 
-  cd $SCER/$name/sac/usr/bin
+  cd $SCER/$nom/sac/usr/bin
   
   rm -fv bunzip2 bzcat bzcmp bzegrep bzfgrep bzless
 
-  ln -fsv $name bunzip2
-  ln -fsv $name bzcat
+  ln -fsv $nom bunzip2
+  ln -fsv $nom bzcat
   ln -fsv bzdiff bzcmp
   ln -fsv bzgrep bzegrep
   ln -fsv bzgrep bzfgrep

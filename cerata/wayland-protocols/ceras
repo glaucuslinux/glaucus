@@ -1,17 +1,13 @@
-name=wayland-protocols
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/wayland/$name
-cyst=musl
-description='Wayland protocols that add functionality not available in the Wayland core protocol'
-license=MIT
+nom=wayland-protocols
+ver=git
+url=https://gitlab.freedesktop.org/wayland/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        mkdir -v $SBLD/$name
-        cd $SBLD/$name
-        $SSRC/$name/autogen.sh \
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        mkdir -v $SBLD/$nom
+        cd $SBLD/$nom
+        $SSRC/$nom/autogen.sh \
                 --prefix=/usr
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

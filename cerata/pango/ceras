@@ -1,15 +1,11 @@
-name=pango
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.gnome.org/GNOME/$name
-cysts='musl libdatrie libthai fribidi glib zlib-ng libpng pixman cairo'
-description='A library for layout and rendering of text, with an emphasis on internationalization'
-license=LGPLv2+
+nom=pango
+ver=git
+url=https://gitlab.gnome.org/GNOME/$nom
+lic=LGPLv2+
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
-        mkdir -v $SBLD/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
+        mkdir -v $SBLD/$nom
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \
         LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
         LD_LIBRARY_PATH=$GLAD/usr/lib \
@@ -18,11 +14,11 @@ build(){
                 -Dgtk_doc=false \
                 -Dintrospection=false \
                 -Dinstall-tests=false \
-                $SBLD/$name
+                $SBLD/$nom
         LD_LIBRARY_PATH=$GLAD/usr/lib \
         ninja \
-                -C $SBLD/$name
-        DESTDIR=$SCER/$name/sac \
+                -C $SBLD/$nom
+        DESTDIR=$SCER/$nom/sac \
         ninja \
-                -C $SBLD/$name install
+                -C $SBLD/$nom install
 }

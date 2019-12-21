@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  install -dv $SBLD/$name
-  cd $SBLD/$name
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  $CERD/$name/$name-$version/configure \
+  $CERD/$nom/$nom-$ver/configure \
     CFLAGS="$CFLAGSNOLTO" \
     --prefix=/usr \
     --syslibdir=/usr/lib \
@@ -17,7 +17,7 @@ configure_system() {
     --disable-static
 
   rm -fv Makefile
-  install -v $CERD/$name/$name-$version/Makefile .
+  install -v $CERD/$nom/$nom-$ver/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile
@@ -31,9 +31,9 @@ install_system() {
   make \
     install
 
-  ln -fsv ../lib/ld-$name-$ARCH.so.1 /usr/bin/ldd
+  ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd
 
-  echo /usr/lib > /etc/ld-$name-$ARCH.path
+  echo /usr/lib > /etc/ld-$nom-$ARCH.path
 
   echo '#!/usr/bin/true' > /usr/bin/ldconfig
   chmod +x /usr/bin/ldconfig

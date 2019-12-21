@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=kmod
-version=26
-release=1
-arch=x86-64
-url=https://cdn.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz
-checksum=3ca276c6fc13c2dd2220ec528b8dc4ab4edee5d2b22e16b6f945c552e51f74342c01c33a53740e6af8c893d42bd4d6f629cd8fa6e15ef8bd8da30cb003ef0865
-cyst=musl
-description='A set of tools to handle common tasks with Linux kernel modules'
-licenses='GPL-2.0-only GPL-2.0-or-later LGPL-2.1-only'
+nom=kmod
+ver=26
+url=https://cdn.kernel.org/pub/linux/utils/kernel/$nom/$nom-$ver.tar.xz
+sum=3ca276c6fc13c2dd2220ec528b8dc4ab4edee5d2b22e16b6f945c552e51f74342c01c33a53740e6af8c893d42bd4d6f629cd8fa6e15ef8bd8da30cb003ef0865
+lic='GPL-2.0-only GPL-2.0-or-later LGPL-2.1-only'

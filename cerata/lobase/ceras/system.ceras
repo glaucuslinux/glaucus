@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 # prepare
-rsync -vah $CERD/$name/$name $SSRC --delete
-cd $SSRC/$name
+rsync -vah $CERD/$nom/$nom $SSRC --delete
+cd $SSRC/$nom
 
 # configure
 autoreconf -vfi
@@ -32,16 +32,16 @@ for dir in bin/ls bin/stty usr.bin/diff usr.bin/fmt usr.bin/patch \
 
   make \
     BINDIR=/usr/bin \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 
   cd ../..
 done
 
-install -v bin/pax/pax $SCER/$name/sac/usr/bin
+install -v bin/pax/pax $SCER/$nom/sac/usr/bin
 install -m 444 -Dv bin/pax/cpio.1 bin/pax/pax.1 bin/pax/tar.1 -t \
-  $SCER/$name/sac/usr/share/man/man1
+  $SCER/$nom/sac/usr/share/man/man1
 
-cd $SCER/$name/sac/usr/bin
+cd $SCER/$nom/sac/usr/bin
 ln -fsv pax cpio
 ln -fsv pax tar

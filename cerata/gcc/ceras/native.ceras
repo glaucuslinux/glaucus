@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
+  rsync -vah $CERD/$nom/$nom-$ver/ $TSRC/$nom --delete
  
-  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$name/gmp --delete
-  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$name/mpfr --delete
-  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$name/mpc --delete
-  rsync -vah $CERD/isl/isl-0.22/ $TSRC/$name/isl --delete
+  rsync -vah $CERD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete
+  rsync -vah $CERD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete
+  rsync -vah $CERD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete
+  rsync -vah $CERD/isl/isl-0.22/ $TSRC/$nom/isl --delete
 
-  cd $TSRC/$name/$name/config
+  cd $TSRC/$nom/$nom/config
 
   for file in i386/linux.h i386/linux64.h linux.h; do
     sed "s/\/lib/\\$TOOL&/" \
@@ -31,15 +31,15 @@ prepare_native() {
   sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
     -i linux.h
 
-  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-$name \
+  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-$nom \
     -print-libgcc-file-name))/include-fixed/limits.h
 
-  install -dv $NBLD/$name
-  cd $NBLD/$name
+  install -dv $NBLD/$nom
+  cd $NBLD/$nom
 }
 
 configure_native() {
-  $TSRC/$name/configure \
+  $TSRC/$nom/configure \
     --build=$TUPL \
     --host=$TUPL \
     --target=$TUPL \
@@ -66,6 +66,6 @@ install_native() {
   make \
     install-strip
 
-  ln -fsv $TUPL-$name $TOOL/bin/cc
-  ln -fsv $TUPL-$name $TOOL/bin/$TUPL-cc
+  ln -fsv $TUPL-$nom $TOOL/bin/cc
+  ln -fsv $TUPL-$nom $TOOL/bin/$TUPL-cc
 }

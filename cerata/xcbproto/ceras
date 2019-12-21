@@ -1,20 +1,16 @@
-name=xcbproto
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/xorg/proto/$name
-cyst=musl
-description='XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions'
-license=MIT
+nom=xcbproto
+ver=git
+url=https://gitlab.freedesktop.org/xorg/proto/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

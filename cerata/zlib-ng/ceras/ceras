@@ -3,11 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=zlib-ng
-version=git
-release=1
-arch=x86-64
-url=https://github.com/$name/$name
-cyst=musl
-description='zlib replacement with optimizations for "next generation" systems'
-license=Zlib
+nom=zlib-ng
+ver=git
+url=https://github.com/$nom/$nom
+lic=Zlib

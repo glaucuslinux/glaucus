@@ -1,19 +1,15 @@
-name=libpng
-version=git
-release=1
-arch=x86-64
-url=https://github.com/glennrp/$name
-cysts='musl zlib-ng'
-description='The official PNG reference library'
-licenses='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
+nom=libpng
+ver=git
+url=https://github.com/glennrp/$nom
+lic='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
 
 prepare_system() {
-  mkdir -v $SBLD/$name
-  cd $SBLD/$name
+  mkdir -v $SBLD/$nom
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  $CERD/$name/$name/configure \
+  $CERD/$nom/$nom/configure \
     --prefix=/usr \
     --build=$TUPL \
     --host=$TUPL \
@@ -30,6 +26,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

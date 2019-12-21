@@ -1,15 +1,11 @@
-name=libXau
-version=git
-release=1
-arch=x86-64
+nom=libXau
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxau
-cysts='musl util-macros xorgproto'
-description='Functions for handling Xauthority files and entries'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxau/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxau/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

@@ -1,15 +1,11 @@
-name=libXinerama
-version=git
-release=1
-arch=x86-64
+nom=libXinerama
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libxinerama
-cysts='musl util-macros'
-description='Xlib API for Xinerama extension to X11 Protocol'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libxinerama/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libxinerama/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +25,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

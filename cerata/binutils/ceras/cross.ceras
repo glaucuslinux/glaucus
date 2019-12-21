@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_cross() {
-  rsync -vah $CERD/$name/$name-$version/ $TSRC/$name --delete
+  rsync -vah $CERD/$nom/$nom-$ver/ $TSRC/$nom --delete
   
-  install -dv $XBLD/$name
-  cd $XBLD/$name
+  install -dv $XBLD/$nom
+  cd $XBLD/$nom
 }
 
 configure_cross() {
-  $TSRC/$name/configure \
+  $TSRC/$nom/configure \
     --prefix=$TOOL \
     --target=$TUPL \
     --enable-deterministic-archives \

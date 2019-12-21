@@ -3,12 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=linenoise
-version=git
-release=1
-arch=x86-64
-url=https://github.com/antirez/$name
-cyst=musl
-description='A minimal, zero-config, BSD licensed, readline replacement used in
-Redis, MongoDB, and Android'
-license=BSD-2-Clause
+nom=linenoise
+ver=git
+url=https://github.com/antirez/$nom
+lic=BSD-2-Clause

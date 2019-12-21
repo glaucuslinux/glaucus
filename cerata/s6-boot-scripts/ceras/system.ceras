@@ -16,9 +16,9 @@ build_system() {
 }
 
 install_system() {
-  rsync -vah $CERD/$name/$name/etc $SCER/$name/sac --delete
-  rsync -vah $CERD/$name/$name/usr $SCER/$name/sac --delete
+  rsync -vah $CERD/$nom/$nom/etc $SCER/$nom/sac --delete
+  rsync -vah $CERD/$nom/$nom/usr $SCER/$nom/sac --delete
 
-  s6-rc-compile $SCER/$name/sac/etc/s6/compiled \
-    $SCER/$name/sac/etc/s6/source
+  s6-rc-compile $SCER/$nom/sac/etc/s6/compiled \
+    $SCER/$nom/sac/etc/s6/source
 }

@@ -1,15 +1,11 @@
-name=libSM
-version=git
-release=1
-arch=x86-64
+nom=libSM
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libsm
-cysts='musl util-macros libxtrans libICE'
-description='X Session Management Library'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libsm/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libsm/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -35,6 +31,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=linux
-version=5.4.3
-release=1
-arch=x86-64
-url=https://cdn.kernel.org/pub/$name/kernel/v5.x/$name-$version.tar.xz
-checksum=bbdf4179c5263f313aac56a75ebe14da6d05128b27b3d84305743605745bb0ffa872dc6fd349a9f066676ab39ed395e512bb1b27fec47a99d6f002cd25f64ed5
-description='The Linux kernel and modules'
-cluster=core
-license=GPL-2.0-only
+nom=linux
+ver=5.4.3
+url=https://cdn.kernel.org/pub/$nom/kernel/v5.x/$nom-$ver.tar.xz
+sum=bbdf4179c5263f313aac56a75ebe14da6d05128b27b3d84305743605745bb0ffa872dc6fd349a9f066676ab39ed395e512bb1b27fec47a99d6f002cd25f64ed5
+lic=GPL-2.0-only

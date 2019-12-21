@@ -1,14 +1,10 @@
-name=pkg-config
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/$name/$name
-cyst=musl
-description='A script to make putting together all the build flags when compiling/linking a lot easier'
-licenses='GPLv2+ ISC LGPLv2.0+ LGPLv2.1+'
+nom=pkg-config
+ver=git
+url=https://gitlab.freedesktop.org/$nom/$nom
+lic='GPLv2+ ISC LGPLv2.0+ LGPLv2.1+'
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \
                 --build=$TUPL \
@@ -16,6 +12,6 @@ build(){
                 --target=$TUPL \
                 --disable-static
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

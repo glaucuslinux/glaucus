@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=autoconf
-version=2.69
-release=1
-arch=x86-64
-url=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
-checksum=995d3e5a8eb1eb37e2b7fae53c6ec7a9b4df997286b7d643344818f94636756b1bf5ff5ea9155e755cb9461149a853dfbf2886fc6bd7132e5afa9c168e306e9b
-cyst=musl
-description='An extensible package of M4 macros that produce shell scripts to
-automatically configure software source code packages'
-licenses='GFDL-1.3-only GPL-2.0-only GPL-3.0-only'
+nom=autoconf
+ver=2.69
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
+sum=995d3e5a8eb1eb37e2b7fae53c6ec7a9b4df997286b7d643344818f94636756b1bf5ff5ea9155e755cb9461149a853dfbf2886fc6bd7132e5afa9c168e306e9b
+lic='GFDL-1.3-only GPL-2.0-only GPL-3.0-only'

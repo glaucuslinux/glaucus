@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=attr
-version=2.4.48
-release=1
-arch=x86-64
-url=https://download.savannah.nongnu.org/releases/$name/$name-$version.tar.gz
-checksum=75f870a0e6e19b8975f3fdceee786fbaff3eadaa9ab9af01996ffa8e50fe5b2bba6e4c22c44a6722d11b55feb9e89895d0151d6811c1d2b475ef4ed145f0c923
-cyst=musl
-description='Commands for Manipulating Filesystem Extended Attributes'
-licenses='GPL-2.0-only GPL-2.0-or-later LGPL-2.1-only'
+nom=attr
+ver=2.4.48
+url=https://download.savannah.nongnu.org/releases/$nom/$nom-$ver.tar.gz
+sum=75f870a0e6e19b8975f3fdceee786fbaff3eadaa9ab9af01996ffa8e50fe5b2bba6e4c22c44a6722d11b55feb9e89895d0151d6811c1d2b475ef4ed145f0c923
+lic='GPL-2.0-only GPL-2.0-or-later LGPL-2.1-only'

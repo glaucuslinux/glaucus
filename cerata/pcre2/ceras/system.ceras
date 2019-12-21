@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  install -dv $SBLD/$name
-  cd $SBLD/$name
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  $CERD/$name/$name-$version/configure \
+  $CERD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
     --enable-jit
@@ -21,6 +21,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

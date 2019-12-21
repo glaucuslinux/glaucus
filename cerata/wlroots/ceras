@@ -1,20 +1,16 @@
-name=wlroots
-version=git
-release=1
-arch=x86-64
-url=https://github.com/swaywm/$name
-cysts='musl expat libffi wayland-protocols wayland zlib-ng libpng'
-description='A modular Wayland compositor library'
-license=MIT
+nom=wlroots
+ver=git
+url=https://github.com/swaywm/$nom
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

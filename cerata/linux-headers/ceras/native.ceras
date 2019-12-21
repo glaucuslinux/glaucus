@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  install -dv $NBLD/$name
+  install -dv $NBLD/$nom
 
-  cd $CERD/linux/linux-$version
+  cd $CERD/linux/linux-$ver
 
   make \
     mrproper
@@ -22,7 +22,7 @@ build_native() {
 
 install_native() {
   make \
-    O=$NBLD/$name \
+    O=$NBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=$TOOL \
     headers_install

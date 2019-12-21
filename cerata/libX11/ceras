@@ -1,15 +1,11 @@
-name=libX11
-version=git
-release=1
-arch=x86-64
+nom=libX11
+ver=git
 url=https://gitlab.freedesktop.org/xorg/lib/libx11
-cysts='musl util-macros libxtrans'
-description='Core X11 protocol client library (aka "Xlib")'
-license=MIT
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/libx11/ $SSRC/$name --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/libx11/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -36,6 +32,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

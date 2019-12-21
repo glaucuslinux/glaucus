@@ -3,12 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=shadow
-version=4.8
-release=1
-arch=x86-64
-url=https://github.com/$name-maint/$name/releases/download/$version/$name-$version.tar.xz
-checksum=1c607aec541400fc179d6cbbac7511289c618ab2ce6ee9d7c18a8bfda00421c62d4b9e58aff52b5f82d485468e7db955c186ea0faad9a08003ffc01bdf2ccece
-cyst=musl
-description='Utilities to manage logins, passwords and user accounts'
-licenses='Artistic-1.0 BSD-3-Clause'
+nom=shadow
+ver=4.8
+url=https://github.com/$nom-maint/$nom/releases/download/$ver/$nom-$ver.tar.xz
+sum=1c607aec541400fc179d6cbbac7511289c618ab2ce6ee9d7c18a8bfda00421c62d4b9e58aff52b5f82d485468e7db955c186ea0faad9a08003ffc01bdf2ccece
+lic='Artistic-1.0 BSD-3-Clause'

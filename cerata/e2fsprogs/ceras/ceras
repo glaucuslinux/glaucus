@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=e2fsprogs
-version=1.45.4
-release=1
-arch=x86-64
-url=https://prdownloads.sourceforge.net/$name/$name-$version.tar.gz
-checksum=460be0ff3bae0fefaa123677cd3f550639f087bb5a7bbd6aded2437cfa5d71bdaec9b5f0634fac4337658255b9021e7c01313f25ee19f48b0fb835c3bd8a8e48
-cysts='musl pkgconf util-linux'
-description='The standard utilities for ext2/ext3/ext4 filesystems'
-cluster=core
-licenses='BSD-3-Clause BSD-3-Clause-Clear GPL-2.0-only LGPL-2.1-only'
+nom=e2fsprogs
+ver=1.45.4
+url=https://prdownloads.sourceforge.net/$nom/$nom-$ver.tar.gz
+sum=460be0ff3bae0fefaa123677cd3f550639f087bb5a7bbd6aded2437cfa5d71bdaec9b5f0634fac4337658255b9021e7c01313f25ee19f48b0fb835c3bd8a8e48
+lic='BSD-3-Clause BSD-3-Clause-Clear GPL-2.0-only LGPL-2.1-only'

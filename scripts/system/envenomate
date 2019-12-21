@@ -6,14 +6,14 @@ envenomate() {
     install -dv $SCER/$ceras/sac $SCER/$ceras/venom
 
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$name/ceras/system.ceras
+    . $CERD/$nom/ceras/system.ceras
     
-    prepare_system || { echo system $name prepare failed; exit $?;  }
-    configure_system || { echo system $name configure failed; exit $?; }
-    build_system || { echo system $name build failed; exit $?; }
-    install_system || { echo system $name install failed; exit $?; }
+    prepare_system || { echo system $nom prepare failed; exit $?;  }
+    configure_system || { echo system $nom configure failed; exit $?; }
+    build_system || { echo system $nom build failed; exit $?; }
+    install_system || { echo system $nom install failed; exit $?; }
 
-    rsync -vah $SCER/$name/sac/ /
+    rsync -vah $SCER/$nom/sac/ /
   done
 }
 

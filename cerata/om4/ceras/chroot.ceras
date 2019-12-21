@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $CERD/$name/m4/ $CSRC/$name --delete
-  cd $CSRC/$name
+  rsync -vah $CERD/$nom/m4/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
@@ -23,5 +23,5 @@ install_chroot() {
     install
 
   cd $TOOL/bin
-  ln -fsv $name m4
+  ln -fsv $nom m4
 }

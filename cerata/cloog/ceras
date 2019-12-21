@@ -1,11 +1,7 @@
-name=cloog
-version=git
-release=1
-arch=x86-64
-url=https://repo.or.cz/$name
-cyst=musl
-description='A software which generates loops for scanning Z-polyhedra'
-licenses='GPLv3+ LGPLv2.1+'
+nom=cloog
+ver=git
+url=https://repo.or.cz/$nom
+lic='GPLv3+ LGPLv2.1+'
 
 prepare_system() {
   :

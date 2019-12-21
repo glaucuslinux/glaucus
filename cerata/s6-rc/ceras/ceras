@@ -3,13 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=s6-rc
-version=0.5.1.1
-release=1
-arch=x86-64
-url=https://skarnet.org/software/$name/$name-$version.tar.gz
-checksum=88e6ad4f09501eda231e3bbac58e9dafc925ff4b2c2a845c9796f3c1519834901f0126d751705b00ecd71173e208085bd68c5ae221a7074da8254d2b71e8a772
-cysts='skalibs execline s6'
-description="skarnet's service manager for s6-based systems"
-cluster=core
-license=ISC
+nom=s6-rc
+ver=0.5.1.1
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=88e6ad4f09501eda231e3bbac58e9dafc925ff4b2c2a845c9796f3c1519834901f0126d751705b00ecd71173e208085bd68c5ae221a7074da8254d2b71e8a772
+lic=ISC

@@ -14,6 +14,7 @@ cerata/elfutils/error.h linguist-language=C
 cerata/smdev/config.h linguist-language=C
 
 scripts/chroot/backup linguist-language=Shell
+scripts/chroot/check linguist-language=Shell
 scripts/chroot/chroot linguist-language=Shell
 scripts/chroot/clean linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
@@ -40,6 +41,7 @@ scripts/toolchain/backup linguist-language=Shell
 scripts/toolchain/prepare linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
 
+scripts/toolchain/cross/check linguist-language=Shell
 scripts/toolchain/cross/construct linguist-language=Shell
 scripts/toolchain/cross/fetch linguist-language=Shell
 scripts/toolchain/cross/log linguist-language=Shell
@@ -48,6 +50,7 @@ scripts/toolchain/cross/run linguist-language=Shell
 scripts/toolchain/cross/variables linguist-language=Shell
 scripts/toolchain/cross/verify linguist-language=Shell
 
+scripts/toolchain/native/check linguist-language=Shell
 scripts/toolchain/native/construct linguist-language=Shell
 scripts/toolchain/native/fetch linguist-language=Shell
 scripts/toolchain/native/log linguist-language=Shell

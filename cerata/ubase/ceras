@@ -1,16 +1,11 @@
-name=ubase
-version=git
-release=1
-arch=x86-64
-url=https://$version.suckless.org/$name
-cyst=musl
-description='Suckless Linux base utils'
-cluster=core
-license=MIT
+nom=ubase
+ver=git
+url=https://$ver.suckless.org/$nom
+lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 
   sed 's/\/var\/run/\/run/' \
     -i config.def.h
@@ -48,6 +43,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 }

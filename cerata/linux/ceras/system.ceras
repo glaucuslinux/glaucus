@@ -4,38 +4,38 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name-$version $SSRC/$name --delete
+  rsync -vah $CERD/$nom/$nom-$ver $SSRC/$nom --delete
 
-  install -dv $SBLD/$name
+  install -dv $SBLD/$nom
 
-  cd $SSRC/$name
+  cd $SSRC/$nom
 
   make \
     mrproper
 
-  patch -p1 -i $CERD/$name/patches/uksm-5.4.patch
+  patch -p1 -i $CERD/$nom/patches/uksm-5.4.patch
 }
 
 configure_system() {
-  rsync -vah $CERD/$name/glaucus.config $SBLD/$name/.config
+  rsync -vah $CERD/$nom/glaucus.config $SBLD/$nom/.config
 
   make \
-    O=$SBLD/$name \
+    O=$SBLD/$nom \
     oldconfig
 
   make \
-    O=$SBLD/$name \
+    O=$SBLD/$nom \
     prepare
 }
 
 build_system() {
   make \
-    O=$SBLD/$name
+    O=$SBLD/$nom
 }
 
 install_system() {
-  install -dv $SCER/$name/sac/boot
+  install -dv $SCER/$nom/sac/boot
 
-  rsync -vah $SBLD/$name/arch/x86/boot/bzImage $SCER/$name/sac/boot/vmlinuz
-  rsync -vah $SBLD/$name/System.map $SCER/$name/sac/boot
+  rsync -vah $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz
+  rsync -vah $SBLD/$nom/System.map $SCER/$nom/sac/boot
 }

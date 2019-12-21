@@ -4,12 +4,12 @@
 construct() {
   for ceras in $@; do
     . $CERD/$ceras/ceras/ceras
-    . $CERD/$name/ceras/cross.ceras
+    . $CERD/$nom/ceras/cross.ceras
     
-    prepare_cross || { echo cross $name prepare failed; exit $?; }
-    configure_cross || { echo cross $name configure failed; exit $?; }
-    build_cross || { echo cross $name build failed; exit $?; }
-    install_cross || { echo cross $name install failed; exit $?; }
+    prepare_cross || { echo cross $nom prepare failed; exit $?; }
+    configure_cross || { echo cross $nom configure failed; exit $?; }
+    build_cross || { echo cross $nom build failed; exit $?; }
+    install_cross || { echo cross $nom install failed; exit $?; }
   done
 }
 

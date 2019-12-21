@@ -1,16 +1,11 @@
-name=jemalloc
-version=git
-release=1
-arch=x86-64
-url=https://github.com/$name/$name
-cyst=musl
-description='A general purpose malloc(3) implementation that emphasizes
-fragmentation avoidance and scalable concurrency support'
-license=BSDv2
+nom=jemalloc
+ver=git
+url=https://github.com/$nom/$nom
+lic=BSDv2
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -28,6 +23,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install
 }

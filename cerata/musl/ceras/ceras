@@ -3,14 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=musl
-version=1.1.24
-release=1
-arch=x86-64
-url=https://www.$name-libc.org/releases/$name-$version.tar.gz
-checksum=8987f1e194ea616f34f4f21fe9def28fb7f81d7060e38619206c6349f79db3bbb76bae8b711f5f9b8ed038799c9aea1a4cbec69e0bc4131e246203e133149e77
-description='An implementation of the standard library functionality described
-in the ISO C and POSIX standards, plus common extensions, intended for use on
-Linux-based systems'
-cluster=core
-license=MIT
+nom=musl
+ver=1.1.24
+url=https://www.$nom-libc.org/releases/$nom-$ver.tar.gz
+sum=8987f1e194ea616f34f4f21fe9def28fb7f81d7060e38619206c6349f79db3bbb76bae8b711f5f9b8ed038799c9aea1a4cbec69e0bc4131e246203e133149e77
+lic=MIT

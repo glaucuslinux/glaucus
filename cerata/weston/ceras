@@ -1,11 +1,7 @@
-name=weston
-version=git
-release=1
-arch=x86-64
-url=https://gitlab.freedesktop.org/wayland/$name
-cysts='musl wayland wayland-protocols'
-description='A lightweight and functional Wayland compositor'
-licenses='CC-BY-SA-3.0 MIT'
+nom=weston
+ver=git
+url=https://gitlab.freedesktop.org/wayland/$nom
+lic='CC-BY-SA-3.0 MIT'
 build(){
         :
 }

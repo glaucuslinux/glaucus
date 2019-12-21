@@ -1,16 +1,11 @@
-name=libdatrie
-version=git
-release=1
-arch=x86-64
-url=https://github.com/tlwg/$name
-cyst=musl
-description='An implementation of double-array structure for representing trie,
-as proposed by Junichi Aoe'
-license=LGPLv2.1+
+nom=libdatrie
+ver=git
+url=https://github.com/tlwg/$nom
+lic=LGPLv2.1+
 
 prepare_system() {
-  rsync -vah $CERD/$name/$name $SSRC --delete
-  cd $SSRC/$name
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -29,6 +24,6 @@ build_system() {
 
 install_system() {
   make \
-    DESTDIR=$SCER/$name/sac \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }

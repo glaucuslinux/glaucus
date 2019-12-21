@@ -1,20 +1,16 @@
-name=sway
-version=git
-release=1
-arch=x86-64
+nom=sway
+ver=git
 url=https://github.com/swaywm/sway
-cysts='musl zlib-ng libpng pixman cairo pango json-c libelf-compat glib fribidi freetype harfbuzz fontconfig expat libffi wayland-protocols wayland wlroots'
-description='An i3-compatible Wayland compositor'
-license=MIT
+lic=MIT
 build(){
-        rsync -vah $CERD/$name/$name $SSRC --delete
-        cd $SSRC/$name
+        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        cd $SSRC/$nom
         ./configure \
                 --prefix=/usr \
                 --build=$TUPL \
                 --host=$TUPL \
                 --target=$TUPL
         make
-        make DESTDIR=$SCER/$name/sac \
+        make DESTDIR=$SCER/$nom/sac \
                 install-strip
 }

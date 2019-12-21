@@ -3,14 +3,9 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
-name=libressl
-version=3.0.2
-release=1
-arch=x86-64
-url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/$name-$version.tar.gz
-checksum=19226da3bc9776e1da40b8e94dfa53564d5e6acc80edee539ba12d7a75c1bb8c0603e7633f26a6ef8b12adc56bb677ccda448575aa6be2ad3df5447465a4b080
-cysts='musl mawk'
-description='A free version of the TLS/crypto stack forked from OpenSSL with a
-modern codebase and improved security'
-licenses='Apachev1.0 BSD-4-Clause GPL-2.0-or-later GPL-3.0-or-later ISC OpenSSL
+nom=libressl
+ver=3.0.2
+url=https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/$nom-$ver.tar.gz
+sum=19226da3bc9776e1da40b8e94dfa53564d5e6acc80edee539ba12d7a75c1bb8c0603e7633f26a6ef8b12adc56bb677ccda448575aa6be2ad3df5447465a4b080
+lic='Apachev1.0 BSD-4-Clause GPL-2.0-or-later GPL-3.0-or-later ISC OpenSSL
 PD SSLeay'
