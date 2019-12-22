@@ -1,0 +1,30 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_chroot() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
+}
+
+configure_chroot() {
+  sed -e "s/CFLAGS=.*/CFLAGS=$CFLAGS/" \
+    -e "s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
+    -i Makefile
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  rsync -vah $nom $TOOL/bin
+
+  ln -fsv $nom $TOOL/bin/un$nom
+  
+  ln -fsv $nom $TOOL/bin/gzip
+  ln -fsv $nom $TOOL/bin/gunzip
+  ln -fsv $nom $TOOL/bin/gzcat
+  ln -fsv $nom $TOOL/bin/zcat
+}

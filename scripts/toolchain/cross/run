@@ -2,13 +2,10 @@
 # Distributed under the terms of the ISC License
 
 . $TSCR/cross/variables
-. $TSCR/cross/prepare
-. $TSCR/cross/log
-
 . $TSCR/cross/check
+. $TSCR/cross/prepare
 
-. $TSCR/cross/fetch
-. $TSCR/cross/verify
+. $SCRD/log $XLOG
 
 (. $TSCR/cross/construct | tee $XLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $XLOG/$log/err.log

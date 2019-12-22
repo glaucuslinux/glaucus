@@ -1,0 +1,9 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+nom=oksh
+ver=git
+url=https://github.com/ibara/$nom
+lic=Unlicense

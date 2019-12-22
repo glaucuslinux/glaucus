@@ -3,8 +3,8 @@
 
 construct() {
   for ceras in $@; do
-    . $CERD/$ceras/ceras/ceras
-    . $CERD/$nom/ceras/cross.ceras
+    . $CERD/$ceras/ceras
+    . $CERD/$nom/cross.ceras
     
     prepare_cross || { echo cross $nom prepare failed; exit $?; }
     configure_cross || { echo cross $nom configure failed; exit $?; }

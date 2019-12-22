@@ -5,15 +5,13 @@
 
 . /scripts/system/variables
 . $SSCR/prepare
-. $SSCR/log
+
+. $SCRD/log
 
 (. $SSCR/construct | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $SLOG/$log/err.log
 
 . $SSCR/adjust
-
-. $SSCR/fetch
-. $SSCR/verify
 
 (. $SSCR/envenomate | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $SLOG/$log/err.log

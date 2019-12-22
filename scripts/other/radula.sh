@@ -7,8 +7,7 @@ PATH=/usr/bin
 CERD=/home/glaucus/cerata
 
 if [ ! -d $CERD/$1 ]; then
-  install -dv $CERD/$1/ceras
-  cd $CERD/$1/ceras
+  cd $CERD/$1
 
   cat > ceras << EOF
 # Copyright (c) 2019, Firas Khalil Khana
@@ -49,14 +48,15 @@ install_system() {
 }
 EOF
 
-  cd $CERD/$1
+  install -dv /home/glaucus/sources/$1
+  cd /home/glaucus/sources/$1
+
   case $2 in
     git)
       case $4 in
-        yes) torify git clone $3 ;;
-        no) git clone $3 ;;
+        yes) torify git clone $3 . ;;
+        no) git clone $3 . ;;
       esac
-      git submodule add $3
       ;;
     *)
       case $4 in
@@ -65,7 +65,7 @@ EOF
       esac
 
       sed "/^url=.*/a sum=$(echo $(sha512sum $(basename $3)) | awk \
-        '{print $1}')" -i ceras/ceras
+        '{print $1}')" -i $CERD/$1/ceras
       ;;
   esac
 else

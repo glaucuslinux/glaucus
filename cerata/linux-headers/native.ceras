@@ -1,0 +1,31 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_native() {
+  install -dv $NBLD/$nom
+
+  cd $SRCD/linux/linux-$ver
+
+  make \
+    mrproper
+}
+
+configure_native() {
+  :
+}
+
+build_native() {
+  :
+}
+
+install_native() {
+  make \
+    O=$NBLD/$nom \
+    ARCH=$ARCH \
+    INSTALL_HDR_PATH=$TOOL \
+    headers_install
+
+  find $TOOL/include \( -name ..install.cmd -o -name .install \) -delete
+}

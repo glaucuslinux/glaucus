@@ -1,9 +1,0 @@
-# Copyright (c) 2019, Firas Khalil Khana
-# Distributed under the terms of the ISC License
-
-count=1
-while true; do
-  log=$count
-  if [ -d $XLOG/$log ]; then count=$(($count + 1)); else break; fi
-done
-install -dv $XLOG/$log

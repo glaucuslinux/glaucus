@@ -4,13 +4,10 @@
 # Distributed under the terms of the ISC License
 
 . /home/glaucus/scripts/chroot/variables
-. $CSCR/prepare
-. $CSCR/log
-
 . $CSCR/check
+. $CSCR/prepare
 
-. $CSCR/fetch
-. $CSCR/verify
+. $SCRD/log $CLOG
 
 (. $CSCR/construct | tee $CLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $CLOG/$log/err.log
@@ -19,4 +16,7 @@
 . $CSCR/root
 . $CSCR/backup
 . $CSCR/vkfs
+
+. $SCRD/system/check
+
 . $CSCR/chroot

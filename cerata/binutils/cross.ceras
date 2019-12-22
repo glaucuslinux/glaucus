@@ -1,0 +1,33 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_cross() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete
+  
+  install -dv $XBLD/$nom
+  cd $XBLD/$nom
+}
+
+configure_cross() {
+  $TSRC/$nom/configure \
+    --prefix=$TOOL \
+    --target=$TUPL \
+    --enable-deterministic-archives \
+    --disable-compressed-debug-sections \
+    --disable-werror \
+    --disable-nls \
+    --with-lib-path=$TOOL/lib \
+    --with-sysroot=$GLAD \
+    --disable-multilib
+}
+
+build_cross() {
+  make
+}
+
+install_cross() {
+  make \
+    install-strip
+}

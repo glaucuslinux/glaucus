@@ -1,0 +1,32 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
+  
+  sed 's/%F/%b %F/' \
+    -i toys/posix/ls.c
+}
+
+configure_system() {
+  rsync -vah $CERD/$nom/system.config .config
+
+  scripts/genconfig.sh
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  install -dv $SCER/$nom/sac/usr/bin
+
+  rsync -vah $nom $SCER/$nom/sac/usr/bin
+
+  for i in $(./$nom); do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+  done
+}

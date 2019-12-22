@@ -1,0 +1,40 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
+}
+
+configure_system() {
+  $SRCD/$nom/$nom-$ver/configure \
+    CFLAGS="$CFLAGSNOLTO" \
+    --prefix=/usr \
+    --syslibdir=/usr/lib \
+    --disable-wrapper \
+    --disable-static
+
+  rm -fv Makefile
+  rsync -vah $SRCD/$nom/$nom-$ver/Makefile .
+
+  sed 's/ $(libdir)\/libc.so/ libc.so/' \
+    -i Makefile
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    install
+
+  ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd
+
+  echo /usr/lib > /etc/ld-$nom-$ARCH.path
+
+  echo '#!/usr/bin/true' > /usr/bin/ldconfig
+  chmod +x /usr/bin/ldconfig
+}

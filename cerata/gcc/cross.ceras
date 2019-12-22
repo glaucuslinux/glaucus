@@ -1,0 +1,81 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_cross() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete
+  
+  rsync -vah $SRCD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete
+  rsync -vah $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete
+  rsync -vah $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete
+  
+  cd $TSRC/$nom/$nom/config
+
+  for file in i386/linux.h i386/linux64.h linux.h; do
+    sed "s/\/lib/\\$TOOL&/" \
+      -i $file
+
+    echo "
+#undef STANDARD_STARTFILE_PREFIX_1
+#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
+
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
+  done
+
+  sed '/m64/s/lib64/lib/' \
+    -i i386/t-linux64
+
+  sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
+    -i linux.h
+
+  install -dv $XBLD/$nom
+  cd $XBLD/$nom
+}
+
+configure_cross() {
+  CFLAGS='-g0 -O0' \
+  CXXFLAGS='-g0 -O0' \
+  $TSRC/$nom/configure \
+    --target=$TUPL \
+    --prefix=$TOOL \
+    --with-local-prefix=$TOOL \
+    --with-native-system-header-dir=$TOOL/include \
+    --disable-shared \
+    --disable-multilib \
+    --enable-threads=single \
+    --with-arch=x86-64 \
+    --enable-languages=c,c++ \
+    --disable-libssp \
+    --disable-libquadmath \
+    --disable-libgomp \
+    --disable-libvtv \
+    --disable-werror \
+    --disable-nls \
+    --disable-decimal-float \
+    --without-isl \
+    --with-sysroot=$GLAD \
+    --without-headers \
+    --with-newlib \
+    --disable-libatomic \
+    --disable-libstdcxx
+}
+
+build_cross() {
+  make \
+    AR_FOR_TARGET=$TUPL-ar \
+    AS_FOR_TARGET=$TUPL-as \
+    LD_FOR_TARGET=$TUPL-ld \
+    NM_FOR_TARGET=$TUPL-nm \
+    OBJCOPY_FOR_TARGET=$TUPL-objcopy \
+    OBJDUMP_FOR_TARGET=$TUPL-objdump \
+    RANLIB_FOR_TARGET=$TUPL-ranlib \
+    READELF_FOR_TARGET=$TUPL-readelf \
+    STRIP_FOR_TARGET=$TUPL-strip
+}
+
+install_cross() {
+  make \
+    install-strip
+}

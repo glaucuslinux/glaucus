@@ -1,0 +1,31 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
+}
+
+configure_system() {
+  cat > config.mak << EOF
+PREFIX = /usr
+AR = $AR
+RANLIB = $RANLIB
+EOF
+
+  sed 's/-O0 //' \
+    -i GNUmakefile
+}
+
+build_system() {
+  make \
+    all-dynamic
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$nom/sac \
+    install-dynamic
+}

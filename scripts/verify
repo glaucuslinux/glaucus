@@ -1,0 +1,6 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+if [ $ver != git ]; then
+  [ $sum = $(echo $(sha512sum $SRCD/$nom/$(basename $url)) | cut -d' ' -f1) ]
+fi

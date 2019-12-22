@@ -5,7 +5,7 @@
 
 cd /home/glaucus
 
-install -dv backup system toolchain
+install -dv backup sources system toolchain
 
 install -dv logs/chroot logs/system logs/toolchain/cross logs/toolchain/native
 

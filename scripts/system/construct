@@ -3,8 +3,8 @@
 
 construct() {
   for ceras in $@; do
-    . $CERD/$ceras/ceras/ceras
-    . $CERD/$nom/ceras/system.ceras
+    . $CERD/$ceras/ceras
+    . $CERD/$nom/system.ceras
     
     prepare_system || { echo system $nom prepare failed; exit $?; }
     configure_system || { echo system $nom configure failed; exit $?; }

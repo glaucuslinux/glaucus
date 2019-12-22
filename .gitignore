@@ -32,32 +32,17 @@ cerata/autoconf/autoconf-2.69.tar.xz
 cerata/automake/automake-1.16.1/
 cerata/automake/automake-1.16.1.tar.xz
 
-cerata/bash/bash-5.0/
-cerata/bash/bash-5.0.tar.gz
-
 cerata/bc/bc-2.3.0/
 cerata/bc/bc-2.3.0.tar.xz
 
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
-cerata/binutils/binutils-2.33.1/
-cerata/binutils/binutils-2.33.1.tar.xz
-
-cerata/bison/bison-3.4.2/
-cerata/bison/bison-3.4.2.tar.xz
-
 cerata/byacc/byacc-20191103/
 cerata/byacc/byacc-20191103.tgz
 
 cerata/bzip2/bzip2-1.0.6/
 cerata/bzip2/bzip2-1.0.6.tar.gz
-
-cerata/dash/dash-0.5.10.2/
-cerata/dash/dash-0.5.10.2.tar.gz
-
-cerata/diffutils/diffutils-3.7/
-cerata/diffutils/diffutils-3.7.tar.xz
 
 cerata/e2fsprogs/e2fsprogs-1.45.4/
 cerata/e2fsprogs/e2fsprogs-1.45.4.tar.gz
@@ -71,17 +56,11 @@ cerata/execline/execline-2.5.3.0.tar.gz
 cerata/expat/expat-2.2.9/
 cerata/expat/expat-2.2.9.tar.xz
 
-cerata/file/file-5.37/
-cerata/file/file-5.37.tar.gz
-
 cerata/findutils/findutils-4.7.0/
 cerata/findutils/findutils-4.7.0.tar.xz
 
 cerata/flex/flex-2.6.4/
 cerata/flex/flex-2.6.4.tar.lz
-
-cerata/gcc/gcc-9.2.0/
-cerata/gcc/gcc-9.2.0.tar.xz
 
 cerata/gdbm/gdbm-1.18.1/
 cerata/gdbm/gdbm-1.18.1.tar.gz
@@ -94,9 +73,6 @@ cerata/gmp/gmp-6.1.2.tar.xz
 
 cerata/gperf/gperf-3.1/
 cerata/gperf/gperf-3.1.tar.gz
-
-cerata/grep/grep-3.3/
-cerata/grep/grep-3.3.tar.xz
 
 cerata/grub/grub-2.04/
 cerata/grub/grub-2.04.tar.xz
@@ -116,14 +92,8 @@ cerata/kbd/kbd-2.2.0.tar.xz
 cerata/kmod/kmod-26/
 cerata/kmod/kmod-26.tar.xz
 
-cerata/lbzip2/lbzip2-2.5/
-cerata/lbzip2/lbzip2-2.5.tar.xz
-
 cerata/less/less-551/
 cerata/less/less-551.tar.gz
-
-cerata/libarchive/libarchive-3.4.0/
-cerata/libarchive/libarchive-3.4.0.tar.gz
 
 cerata/libcap/libcap-2.27/
 cerata/libcap/libcap-2.27.tar.xz
@@ -152,23 +122,11 @@ cerata/libtool/libtool-2.4.6.tar.xz
 cerata/lilo/lilo-24.2/
 cerata/lilo/lilo-24.2.tar.gz
 
-cerata/linux/linux-5.4.3/
-cerata/linux/linux-5.4.3.tar.xz
-
 cerata/lz4/lz4-1.9.2/
 cerata/lz4/v1.9.2.tar.gz
 
-cerata/m4/m4-1.4.18/
-cerata/m4/m4-1.4.18.tar.xz
-
-cerata/make/make-4.2.1/
-cerata/make/make-4.2.1.tar.bz2
-
 cerata/mandoc/mandoc-1.14.5/
 cerata/mandoc/mandoc-1.14.5.tar.gz
-
-cerata/mawk/mawk-1.3.4-20190203/
-cerata/mawk/mawk.tar.gz
 
 cerata/meson/meson-0.52.1/
 cerata/meson/meson-0.52.1.tar.gz
@@ -182,23 +140,14 @@ cerata/mpc/mpc-1.1.0.tar.gz
 cerata/mpfr/mpfr-4.0.2/
 cerata/mpfr/mpfr-4.0.2.tar.xz
 
-cerata/musl/musl-1.1.24/
-cerata/musl/musl-1.1.24.tar.gz
-
 cerata/musl-fts/musl-fts-1.2.7/
 cerata/musl-fts/v1.2.7.tar.gz
 
 cerata/musl-obstack/musl-obstack-1.1/
 cerata/musl-obstack/v1.1.tar.gz
 
-cerata/netbsd-curses/netbsd-curses-0.3.1/
-cerata/netbsd-curses/v0.3.1.tar.gz
-
 cerata/nsss/nsss-0.0.2.1/
 cerata/nsss/nsss-0.0.2.1.tar.gz
-
-cerata/patch/patch-2.7.6/
-cerata/patch/patch-2.7.6.tar.xz
 
 cerata/pcre/pcre-8.43/
 cerata/pcre/pcre-8.43.tar.bz2
@@ -206,17 +155,8 @@ cerata/pcre/pcre-8.43.tar.bz2
 cerata/pcre2/pcre2-10.33/
 cerata/pcre2/pcre2-10.33.tar.bz2
 
-cerata/perl/perl-5.30.1/
-cerata/perl/perl-5.30.1.tar.xz
-
-cerata/perl-cross/perl-cross-1.3.1/
-cerata/perl-cross/perl-cross-1.3.1.tar.gz
-
 cerata/perl-xml-parser/XML-Parser-2.46/
 cerata/perl-xml-parser/XML-Parser-2.46.tar.gz
-
-cerata/pigz/pigz-2.4/
-cerata/pigz/pigz-2.4.tar.gz
 
 cerata/pixz/pixz-1.0.6/
 cerata/pixz/pixz-1.0.6.tar.xz
@@ -242,9 +182,6 @@ cerata/qm4/m4-2.tar.bz2
 cerata/readline/readline-8.0/
 cerata/readline/readline-8.0.tar.gz
 
-cerata/rsync/rsync-3.1.3/
-cerata/rsync/rsync-3.1.3.tar.gz
-
 cerata/s6/s6-2.9.0.1/
 cerata/s6/s6-2.9.0.1.tar.gz
 
@@ -263,9 +200,6 @@ cerata/s6-rc/s6-rc-0.5.1.1.tar.gz
 cerata/samurai/samurai-0.7/
 cerata/samurai/samurai-0.7.tar.gz
 
-cerata/sed/sed-4.7/
-cerata/sed/sed-4.7.tar.xz
-
 cerata/shadow/shadow-4.8/
 cerata/shadow/shadow-4.8.tar.xz
 
@@ -274,12 +208,6 @@ cerata/skalibs/skalibs-2.9.1.0.tar.gz
 
 cerata/slibtool/slibtool-0.5.28/
 cerata/slibtool/slibtool-0.5.28.tar.xz
-
-cerata/texinfo/texinfo-6.7/
-cerata/texinfo/texinfo-6.7.tar.xz
-
-cerata/toybox/toybox-0.8.2/
-cerata/toybox/0.8.2.tar.gz
 
 cerata/unibilium/unibilium-2.0.0/
 cerata/unibilium/v2.0.0.tar.gz
@@ -292,9 +220,6 @@ cerata/utmps/utmps-0.0.3.1.tar.gz
 
 cerata/vim/vim-8.1.2380/
 cerata/vim/v8.1.2380.tar.gz
-
-cerata/xz/xz-5.2.4/
-cerata/xz/xz-5.2.4.tar.xz
 
 cerata/zlib/zlib-1.2.11/
 cerata/zlib/zlib-1.2.11.tar.xz
@@ -313,6 +238,7 @@ cross/
 logs/
 native/
 play/
+sources/
 system/
 temporary/
 toolchain/

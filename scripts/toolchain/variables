@@ -6,6 +6,8 @@ export TUPL=$ARCH-pc-linux-musl
 
 export GLAD=/home/glaucus
 export CERD=$GLAD/cerata
+export SCRD=$GLAD/scripts
+export SRCD=$GLAD/sources
 
 export TLOG=$GLAD/logs/toolchain
 export TSCR=$GLAD/scripts/toolchain

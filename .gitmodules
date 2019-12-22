@@ -22,9 +22,6 @@
 [submodule "cerata/fribidi/fribidi"]
 	path = cerata/fribidi/fribidi
 	url = https://github.com/fribidi/fribidi
-[submodule "cerata/gettext-tiny/gettext-tiny"]
-	path = cerata/gettext-tiny/gettext-tiny
-	url = https://github.com/sabotage-linux/gettext-tiny
 [submodule "cerata/glib/glib"]
 	path = cerata/glib/glib
 	url = https://gitlab.gnome.org/GNOME/glib
@@ -208,9 +205,6 @@
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
 	url = https://github.com/jarun/nnn
-[submodule "cerata/oksh/oksh"]
-	path = cerata/oksh/oksh
-	url = https://github.com/ibara/oksh
 [submodule "cerata/om4/m4"]
 	path = cerata/om4/m4
 	url = https://github.com/ibara/m4
@@ -283,6 +277,3 @@
 [submodule "cerata/xorgproto/xorgproto"]
 	path = cerata/xorgproto/xorgproto
 	url = https://gitlab.freedesktop.org/xorg/proto/xorgproto
-[submodule "cerata/zlib-ng/zlib-ng"]
-	path = cerata/zlib-ng/zlib-ng
-	url = https://github.com/zlib-ng/zlib-ng

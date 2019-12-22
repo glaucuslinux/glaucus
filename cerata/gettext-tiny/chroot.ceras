@@ -1,0 +1,29 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_chroot() {
+  rsync -vah $SRCD/$nom $CSRC --delete
+  cd $CSRC/$nom
+}
+
+configure_chroot() {
+  cat > config.mak << EOF
+prefix=$TOOL
+LIBINTL=MUSL
+AR=$AR
+RANLIB=$RANLIB
+CFLAGS=$CFLAGS
+LDFLAGS=$LDFLAGS
+EOF
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  make \
+    install
+}

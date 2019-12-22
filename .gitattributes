@@ -21,6 +21,7 @@ scripts/chroot/construct linguist-language=Shell
 scripts/chroot/fetch linguist-language=Shell
 scripts/chroot/log linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
+scripts/chroot/require linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
 scripts/chroot/verify linguist-language=Shell
@@ -39,6 +40,7 @@ scripts/system/verify linguist-language=Shell
 
 scripts/toolchain/backup linguist-language=Shell
 scripts/toolchain/prepare linguist-language=Shell
+scripts/toolchain/require linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
 
 scripts/toolchain/cross/check linguist-language=Shell

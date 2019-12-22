@@ -1,0 +1,32 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_native() {
+  install -dv $NBLD/$nom
+  cd $NBLD/$nom
+}
+
+configure_native() {
+  CROSS_COMPILE=$TUPL- \
+  $SRCD/$nom/$nom-$ver/configure \
+    --prefix=$TOOL \
+    --syslibdir=$TOOL/lib \
+    --target=$TUPL
+
+  rm -fv Makefile
+  rsync -vah $SRCD/$nom/$nom-$ver/Makefile .
+
+  sed 's/ $(libdir)\/libc.so/ libc.so/' \
+    -i Makefile
+}
+
+build_native() {
+  make
+}
+
+install_native() {
+  make \
+    install
+}

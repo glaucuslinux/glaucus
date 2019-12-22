@@ -1,0 +1,28 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_chroot() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  rsync -vah $SRCD/$nom-cross/$nom-cross-1.3.1/ $CSRC/$nom
+  cd $CSRC/$nom
+}
+
+configure_chroot() {
+  CFLAGS="$CFLAGSNOLTO" \
+  ./configure \
+    --prefix=$TOOL \
+    --target=$TUPL
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  rsync -vah $nom cpan/podlators/scripts/pod2man $TOOL/bin
+
+  install -dv $TOOL/lib/perl5/$ver
+  rsync -vah lib/ $TOOL/lib/perl5/$ver
+}

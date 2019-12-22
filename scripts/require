@@ -1,0 +1,77 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+printf 'bash version is:      '
+bash --version | head -n1 | cut -d' ' -f4
+
+printf 'binutils version is:  '
+ld --version | head -n1 | cut -d' ' -f5-
+
+printf 'bison version is:     '
+bison --version | head -n1 | cut -d' ' -f4
+
+printf 'bzip2 version is:     '
+bzip2 --version 2>&1 < /dev/null | head -n1 | cut -d' ' -f8-
+
+printf 'coreutils version is: '
+ls --version | head -n1 | cut -d' ' -f4
+
+
+diff --version | head -n1
+
+find --version | head -n1
+
+gawk --version | head -n1
+if [ -e /usr/bin/awk ]; then
+  echo "/usr/bin/awk -> $(readlink -f /usr/bin/awk)"
+else
+  echo "awk not found"
+fi
+
+gcc --version | head -n1
+
+/lib/libc.so.6 | head -n1 | cut -d',' -f1
+
+grep --version | head -n1
+
+gzip --version | head -n1
+
+cat /proc/version
+
+m4 --version | head -n1
+
+make --version | head -n1
+
+patch --version | head -n1
+
+echo Perl $(perl -V:version)
+
+sed --version | head -n1
+
+rsync --version | head -n1
+
+tar --version | head -n1
+
+echo "Texinfo: $(makeinfo --version | head -n1)"
+
+xz --version | head -n1
+
+#echo 'main(){}' > dummy.c && gcc -o dummy dummy.c
+#if [ -x dummy ]; then
+  #echo "Compilation OK"
+#else
+  #echo "Compilation failed"
+#fi
+#rm -f dummy.c dummy
+
+printf '/bin/sh -> $(readlink -f /bin/sh)'
+
+if [ -e /usr/bin/yacc ]; then
+  echo "/usr/bin/yacc -> $(readlink -f /usr/bin/yacc)"
+else
+  echo "yacc not found"
+fi
+
+if [ -e /usr/bin/dash ]; then 
+  printf 'dash exists!\n'
+fi
