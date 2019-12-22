@@ -1,6 +1,6 @@
 nom=pcre
-ver=svn
-url=$ver://vcs.exim.org/$nom/code/trunk
+ver=8.43
+url=https://ftp.$nom.org/pub/$nom/$nom-$ver.tar.bz2
 lic=BSDv3
 build(){
         rsync -vah $CERD/$nom/trunk/ $SSRC/$nom --delete

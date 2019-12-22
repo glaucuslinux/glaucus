@@ -1,6 +1,7 @@
 nom=minised
-ver=svn
-url=https://svn.exactcode.de/minised/trunk
+ver=1.15
+url=http://dl.exactcode.de/oss/$nom/$nom-$ver.tar.gz
+sum=82ebe5c70f24adebd5f1c37422bac543c06684bff40d1d1fab473abc248d4c5f93e7a4969204877170fed1f2616f6fb666bd485183115cc996ba691c7bb88a71
 lic=
 
 prepare_system() {

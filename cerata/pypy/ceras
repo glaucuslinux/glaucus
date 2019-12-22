@@ -1,7 +1,0 @@
-nom=pypy
-ver=hg
-url=https://bitbucket.org/$nom/$nom
-lic='Apachev2.0 MIT Pythonv2.0 TCL'
-build(){
-        :
-}

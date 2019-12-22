@@ -58,18 +58,6 @@ EOF
       esac
       git submodule add $3
       ;;
-    hg)
-      case $4 in
-        yes) torify hg clone $3 ;;
-        no) hg clone $3 ;;
-      esac
-      ;;
-    svn)
-      case $4 in
-        yes) torify svn co $3 ;;
-        no) svn co $3 ;;
-      esac
-      ;;
     *)
       case $4 in
         yes) torify wget $3 ;;

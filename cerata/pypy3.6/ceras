@@ -1,0 +1,8 @@
+nom=pypy3.6
+ver=7.2.0
+url=https://bitbucket.org/pypy/pypy/downloads/$nom-v$ver-src.tar.bz2
+sum=bcbb53062a473d504bcc082cf6286f6169c83d1f38d22c4d7c4e46ddc32bca9d91e71194637e6650db5bec02b29fe262b22fe236d627b6bc3e6e0c59c66c07cc
+lic='Apachev2.0 MIT Pythonv2.0 TCL'
+build(){
+        :
+}
