@@ -32,9 +32,6 @@ cerata/autoconf/autoconf-2.69.tar.xz
 cerata/automake/automake-1.16.1/
 cerata/automake/automake-1.16.1.tar.xz
 
-cerata/bc/bc-2.3.0/
-cerata/bc/bc-2.3.0.tar.xz
-
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
@@ -68,9 +65,6 @@ cerata/gdbm/gdbm-1.18.1.tar.gz
 cerata/gettext/gettext-0.20.1/
 cerata/gettext/gettext-0.20.1.tar.xz
 
-cerata/gmp/gmp-6.1.2/
-cerata/gmp/gmp-6.1.2.tar.xz
-
 cerata/gperf/gperf-3.1/
 cerata/gperf/gperf-3.1.tar.gz
 
@@ -100,9 +94,6 @@ cerata/libcap/libcap-2.27.tar.xz
 
 cerata/libcap-ng/libcap-ng-0.7.10/
 cerata/libcap-ng/libcap-ng-0.7.10.tar.gz
-
-cerata/libedit/libedit-20191025-3.1/
-cerata/libedit/libedit-20191025-3.1.tar.gz
 
 cerata/libelf/libelf-0.8.13/
 cerata/libelf/libelf-0.8.13.tar.gz

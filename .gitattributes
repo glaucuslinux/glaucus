@@ -13,50 +13,44 @@ cerata/*/ceras/ceras linguist-language=Shell
 cerata/elfutils/error.h linguist-language=C
 cerata/smdev/config.h linguist-language=C
 
+scripts/check linguist-language=Shell
+scripts/fetch linguist-language=Shell
+scripts/log linguist-language=Shell
+scripts/require linguist-language=Shell
+scripts/verify linguist-language=Shell
+
 scripts/chroot/backup linguist-language=Shell
 scripts/chroot/check linguist-language=Shell
 scripts/chroot/chroot linguist-language=Shell
 scripts/chroot/clean linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
-scripts/chroot/fetch linguist-language=Shell
-scripts/chroot/log linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
 scripts/chroot/require linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
-scripts/chroot/verify linguist-language=Shell
 scripts/chroot/vkfs linguist-language=Shell
 
 scripts/system/adjust linguist-language=Shell
+scripts/system/check linguist-language=Shell
 scripts/system/clean linguist-language=Shell
 scripts/system/configure linguist-language=Shell
 scripts/system/construct linguist-language=Shell
 scripts/system/envenomate linguist-language=Shell
-scripts/system/fetch linguist-language=Shell
-scripts/system/log linguist-language=Shell
 scripts/system/prepare linguist-language=Shell
 scripts/system/variables linguist-language=Shell
-scripts/system/verify linguist-language=Shell
 
 scripts/toolchain/backup linguist-language=Shell
 scripts/toolchain/prepare linguist-language=Shell
-scripts/toolchain/require linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
 
 scripts/toolchain/cross/check linguist-language=Shell
 scripts/toolchain/cross/construct linguist-language=Shell
-scripts/toolchain/cross/fetch linguist-language=Shell
-scripts/toolchain/cross/log linguist-language=Shell
 scripts/toolchain/cross/prepare linguist-language=Shell
 scripts/toolchain/cross/run linguist-language=Shell
 scripts/toolchain/cross/variables linguist-language=Shell
-scripts/toolchain/cross/verify linguist-language=Shell
 
 scripts/toolchain/native/check linguist-language=Shell
 scripts/toolchain/native/construct linguist-language=Shell
-scripts/toolchain/native/fetch linguist-language=Shell
-scripts/toolchain/native/log linguist-language=Shell
 scripts/toolchain/native/prepare linguist-language=Shell
 scripts/toolchain/native/run linguist-language=Shell
 scripts/toolchain/native/variables linguist-language=Shell
-scripts/toolchain/native/verify linguist-language=Shell
