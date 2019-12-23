@@ -1,0 +1,47 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
+}
+
+configure_system() {
+  sed 's/groups$(EXEEXT) //' \
+    -i src/Makefile.in
+
+  find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;
+
+  sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
+    -e 's@/var/spool/mail@/var/mail@' \
+    -i etc/login.defs
+
+  sed 's/1000/999/' \
+    -i etc/useradd
+
+  ./configure \
+    --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --enable-shared \
+    --disable-static \
+    --enable-utmpx \
+    --disable-nls \
+    --with-group-name-max-length=32
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$nom/sac \
+    install-strip
+
+  sed 's/yes/no/' \
+    -i $SCER/$nom/sac/etc/default/useradd
+}

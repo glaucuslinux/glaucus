@@ -151,9 +151,6 @@
 [submodule "cerata/libthai/libthai"]
 	path = cerata/libthai/libthai
 	url = https://github.com/tlwg/libthai
-[submodule "cerata/libuargp/libuargp"]
-	path = cerata/libuargp/libuargp
-	url = https://github.com/xhebox/libuargp
 [submodule "cerata/libxcb/libxcb"]
 	path = cerata/libxcb/libxcb
 	url = https://gitlab.freedesktop.org/xorg/lib/libxcb

@@ -1,0 +1,41 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+prepare_system() {
+  rsync -vah $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete
+  cd $SSRC/elfutils
+
+  rsync -vah $CERD/elfutils/error.h lib
+  rsync -vah $CERD/elfutils/error.h src
+
+  patch -p0 -i $CERD/elfutils/patches/2.patch
+}
+
+configure_system() {
+  CFLAGS="$CFLAGS -Wno-error" \
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-deterministic-archives \
+    --disable-symbol-versioning \
+    --disable-nls \
+    --disable-debuginfod
+}
+
+build_system() {
+  make \
+    -C lib
+
+  make \
+    -C libelf
+}
+
+install_system() {
+  make \
+    -C libelf \
+    DESTDIR=$SCER/$nom/sac \
+    install
+}

@@ -8,6 +8,6 @@
 . $TSCR/prepare
 
 . $TSCR/cross/run
-#. $TSCR/native/run
+. $TSCR/native/run
 
-#. $TSCR/backup
+. $TSCR/backup

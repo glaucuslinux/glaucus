@@ -5,7 +5,7 @@
 . $TSCR/native/check
 . $TSCR/native/prepare
 
-. $SCRD/log $NLOG
+$SCRD/log $NLOG
 
 (. $TSCR/native/construct | tee $NLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
   $NLOG/$log/err.log
