@@ -4,7 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  :
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -12,13 +13,15 @@ configure_system() {
 }
 
 build_system() {
-  :
+  make \
+    CC=cc
 }
 
 install_system() {
-  rsync -vah $CERD/$nom/$nom/etc $SCER/$nom/sac --delete
-  rsync -vah $CERD/$nom/$nom/usr $SCER/$nom/sac --delete
+  make \
+    PREFIX=/usr \
+    DESTDIR=$SCER/$nom/sac \
+    install
 
-  s6-rc-compile $SCER/$nom/sac/etc/s6/compiled \
-    $SCER/$nom/sac/etc/s6/source
+  ln -fsv samu $SCER/$nom/sac/usr/bin/ninja
 }

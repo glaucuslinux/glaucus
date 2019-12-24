@@ -4,13 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
   ./configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib/libexec \
     --with-sysdeps=/usr/lib/skalibs/sysdeps \
     --with-include=/usr/include \
     --with-dynlib=/usr/lib \
@@ -19,7 +20,7 @@ configure_system() {
     --disable-allstatic \
     --disable-all-pic
 
-  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGSNOLTO -fno-stack-protector/" \
     -e 's/-Wl,--hash-style=both //' \
     -i config.mak
 }

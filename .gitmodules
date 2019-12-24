@@ -193,12 +193,6 @@
 [submodule "cerata/mesa/mesa"]
 	path = cerata/mesa/mesa
 	url = https://gitlab.freedesktop.org/mesa/mesa
-[submodule "cerata/nldev/nldev"]
-	path = cerata/nldev/nldev
-	url = git://r-36.net/nldev
-[submodule "cerata/nlmon/nlmon"]
-	path = cerata/nlmon/nlmon
-	url = git://r-36.net/nlmon
 [submodule "cerata/nnn/nnn"]
 	path = cerata/nnn/nnn
 	url = https://github.com/jarun/nnn
@@ -223,9 +217,6 @@
 [submodule "cerata/re2c/re2c"]
 	path = cerata/re2c/re2c
 	url = https://github.com/skvadrik/re2c
-[submodule "cerata/s6-boot-scripts/s6-boot-scripts"]
-	path = cerata/s6-boot-scripts/s6-boot-scripts
-	url = https://github.com/glaucuslinux/s6-boot-scripts
 [submodule "cerata/sbase/sbase"]
 	path = cerata/sbase/sbase
 	url = https://git.suckless.org/sbase
@@ -235,9 +226,6 @@
 [submodule "cerata/sinit/sinit"]
 	path = cerata/sinit/sinit
 	url = https://git.suckless.org/sinit
-[submodule "cerata/smdev/smdev"]
-	path = cerata/smdev/smdev
-	url = https://git.suckless.org/smdev
 [submodule "cerata/svc/svc"]
 	path = cerata/svc/svc
 	url = git://r-36.net/svc

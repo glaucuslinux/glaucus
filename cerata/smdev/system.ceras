@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  rsync -vah $SRCD/$nom $SSRC --delete
   rsync -vah $CERD/$nom/config.h $SSRC/$nom --delete
   cd $SSRC/$nom
 
   sed -e '/types/a #include <sys/sysmacros.h>' \
-    -i smdev.c
+    -i $nom.c
 
   patch -p1 -i $CERD/$nom/patches/$nom.patch
 }
@@ -31,12 +31,14 @@ install_system() {
     install
 
   cd $CERD/$nom
+  
+  rsync -vah proceeddev $SCER/$nom/sac/etc/$nom
+  chmod 744 $SCER/$nom/sac/etc/$nom/proceeddev
 
   install -dv $SCER/$nom/sac/etc/$nom/add
   install -dv $SCER/$nom/sac/etc/$nom/remove
   
-  install -m 644 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
+  rsync -vah 00-modprobe 01-uuid 10-cdrom 20-pci 20-platform \
     $SCER/$nom/sac/etc/$nom/add
-  install -m 644 99-remove_links $SCER/$nom/sac/etc/$nom/remove
-  install -m 744 proceeddev $SCER/$nom/sac/etc/$nom
+  rsync -vah 99-remove_links $SCER/$nom/sac/etc/$nom/remove
 }

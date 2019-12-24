@@ -4,23 +4,24 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  #patch -p1 -i $CERD/$nom/patches/$nom.patch
+  patch -p1 -i $CERD/$nom/patches/$nom.patch
 }
 
 configure_system() {
-  LIBS='-lutmps -lskarnet' \
+  sed 's/\(RESIZECONS_PROGS=\)yes/\1no/' \
+    -i configure
+  sed 's/resizecons.8 //' \
+    -i docs/man/man8/Makefile.in
+
   ./configure \
     --prefix=/usr \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
     --disable-static \
     --disable-nls \
-    --disable-kill \
-    --without-systemd \
-    --disable-modern-top
+    --disable-vlock \
+    --disable-tests
 }
 
 build_system() {

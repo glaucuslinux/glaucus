@@ -4,15 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
   ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-regex=pcre2
+    --prefix=/usr
 }
 
 build_system() {
@@ -22,5 +20,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install
+
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/vi
 }

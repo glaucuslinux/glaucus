@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $CERD/$nom/$nom-$ver/configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
     --enable-jit

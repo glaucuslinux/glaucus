@@ -4,22 +4,21 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3/" \
-    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
-    -i config.mk
+  :
 }
 
 build_system() {
-  make
+  python3 setup.py \
+    build
 }
 
 install_system() {
-  make \
-    DESTDIR=$SCER/$nom/sac \
-    install
+  python3 setup.py \
+    install \
+    --root=$SCER/$nom/sac
 }

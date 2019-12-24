@@ -4,17 +4,21 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
   ./configure \
     --prefix=/usr \
-    --datadir=/etc \
+    --libexecdir=/usr/lib/libexec \
+    --with-sysdeps=/usr/lib/skalibs/sysdeps \
+    --with-include=/usr/include \
+    --with-dynlib=/usr/lib \
+    --enable-shared \
     --disable-static \
-    --disable-all-pic \
-    --disable-ipv6
+    --disable-allstatic \
+    --disable-all-pic
 
   sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -e 's/-Wl,--hash-style=both //' \

@@ -4,23 +4,21 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  :
 }
 
 configure_system() {
-  ./configure \
-    --prefix=/usr
+  :
 }
 
 build_system() {
-  make
+  :
 }
 
 install_system() {
-  make \
-    DESTDIR=$SCER/$nom/sac \
-    install
+  rsync -vah $SRCD/$nom/etc $SCER/$nom/sac --delete
+  rsync -vah $SRCD/$nom/usr $SCER/$nom/sac --delete
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/vi
+  s6-rc-compile $SCER/$nom/sac/etc/s6/compiled \
+    $SCER/$nom/sac/etc/s6/source
 }

@@ -4,24 +4,25 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  :
+  sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
+    -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
+    -i config.mk
+
+  sed 's/\/bin\/busybox ash/\/usr\/bin\/dash/' \
+    -i nltrigger run_$nom
 }
 
 build_system() {
-  make \
-    CC=cc
+  make
 }
 
 install_system() {
   make \
-    PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
     install
-
-  ln -fsv samu $SCER/$nom/sac/usr/bin/ninja
 }
