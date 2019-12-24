@@ -4,14 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete
-
   install -dv $NBLD/$nom
   cd $NBLD/$nom
 }
 
 configure_native() {
-  $TSRC/$nom/configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \
     --target=$TUPL \

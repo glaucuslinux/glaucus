@@ -4,17 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
-  cd $CSRC/$nom
+  install -dv $CBLD/$nom
+  cd $CBLD/$nom
 }
 
 configure_chroot() {
   CFLAGS="$CFLAGSNOLTO" \
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \
     --disable-nls \
-    --without-bash-malloc \
+    --without-$nom-malloc \
     --with-installed-readline
 }
 

@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
-  cd $CSRC/$nom
+  install -dv $CBLD/$nom
+  cd $CBLD/$nom
 }
 
 configure_chroot() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \
     --disable-static \

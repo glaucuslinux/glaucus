@@ -5,6 +5,6 @@
 
 nom=gmp
 ver=6.1.2
-url=https://gmplib.org/download/$nom/$nom-$ver.tar.xz
-sum=9f098281c0593b76ee174b722936952671fab1dae353ce3ed436a31fe2bc9d542eca752353f6645b7077c1f395ab4fdd355c58e08e2a801368f1375690eee2c6
+url=https://gmplib.org/download/$nom/$nom-$ver.tar.lz
+sum=8aea94f867174eacac44f395ceb9212530c208e8de69d0bb53056f52360317230fc84ac177fd3ffc9fdb19a07c7549305dcc34c83c34821ccfab9dc63a16e67e
 lic='GPL-3.0-only LGPL-3.0-only'

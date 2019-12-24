@@ -24,7 +24,5 @@ build_chroot() {
 install_chroot() {
   rsync -vah $nom $TOOL/bin
 
-  for i in $(./$nom); do
-    ln -fsv $nom $TOOL/bin/$i
-  done
+  for i in $(./$nom); do ln -fsv $nom $TOOL/bin/$i; done
 }
