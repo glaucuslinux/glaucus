@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  install -dv $SBLD/$nom
-  cd $SBLD/$nom
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  cd $SSRC/$nom
 }
 
 configure_system() {
-  #sed 's/bash/dash/' \
-    #-i configure
+  sed 's/bash/dash/' \
+    -i configure
 
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --zlib-compat
 }

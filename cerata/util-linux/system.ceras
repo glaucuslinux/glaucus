@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
 
   install -dv /var/lib/hwclock
 }
@@ -13,7 +13,7 @@ prepare_system() {
 configure_system() {
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \

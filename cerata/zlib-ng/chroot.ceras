@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  install -dv $CBLD/$nom
-  cd $CBLD/$nom
+  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
-  #sed 's/bash/dash/' \
-    #-i configure
+  sed 's/bash/dash/' \
+    -i configure
 
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=$TOOL \
     --zlib-compat
 }

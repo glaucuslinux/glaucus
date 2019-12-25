@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/Python-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  install -dv $SBLD/$nom
+  cd $SBLD/$nom
 }
 
 configure_system() {
   ax_cv_c_float_words_bigendian=no \
-  ./configure \
+  $SRCD/$nom/Python-$ver/configure \
     --prefix=/usr \
     --enable-optimizations \
     --disable-ipv6 \
@@ -29,5 +29,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install
 
-  ln -fsv python3 $SCER/$nom/sac/usr/bin/python
+  ln -fsv python3 $SCER/$nom/sac/usr/bin/$nom
 }
