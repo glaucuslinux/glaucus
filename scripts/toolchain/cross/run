@@ -5,7 +5,4 @@
 . $TSCR/cross/check
 . $TSCR/cross/prepare
 
-$SCRD/log $XLOG
-
-(. $TSCR/cross/construct | tee $XLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
-  $XLOG/$log/err.log
+$SCRD/log $XLOG $TSCR/cross/construct

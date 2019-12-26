@@ -1,9 +1,5 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-count=1
-while true; do
-  log=$count
-  if [ -d $1/$log ]; then count=$(($count + 1)); else break; fi
-done
-install -dv $1/$log
+install -dv $1
+(. $2 | tee $1/out.log) 3>&1 1>&2 2>&3 | tee $1/err.log

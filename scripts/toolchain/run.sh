@@ -4,7 +4,6 @@
 # Distributed under the terms of the ISC License
 
 . /home/glaucus/scripts/toolchain/variables
-. $SCRD/require
 . $TSCR/prepare
 
 . $TSCR/cross/run

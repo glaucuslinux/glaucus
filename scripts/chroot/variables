@@ -9,7 +9,7 @@ export CERD=$GLAD/cerata
 export SCRD=$GLAD/scripts
 export SRCD=$GLAD/sources
 
-export CLOG=$GLAD/logs/chroot
+export CLOG=$GLAD/logs/chroot/$(ls -l $GLAD/logs/chroot | wc -l)
 export CSCR=$GLAD/scripts/chroot
 export CTMP=$GLAD/temporary/chroot
 export CBLD=$CTMP/builds

@@ -6,15 +6,11 @@
 . /scripts/system/variables
 . $SSCR/prepare
 
-. $SCRD/log
-
-(. $SSCR/construct | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
-  $SLOG/$log/err.log
+$SCRD/log $SLOG $SSCR/construct
 
 . $SSCR/adjust
 
-(. $SSCR/envenomate | tee $SLOG/$log/out.log) 3>&1 1>&2 2>&3 | tee \
-  $SLOG/$log/err.log
+$SCRD/log $SLOG $SSCR/envenomate
 
 . $SSCR/configure
 . $SSCR/clean

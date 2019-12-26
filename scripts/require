@@ -1,77 +1,71 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-printf 'bash version is:      '
-bash --version | head -n1 | cut -d' ' -f4
+printf 'awk:       '
+awk --version | sed 1q | cut -d' ' -f3 | sed s/,//
 
-printf 'binutils version is:  '
-ld --version | head -n1 | cut -d' ' -f5-
+printf 'bash:      '
+bash --version | sed 1q | cut -d' ' -f4
 
-printf 'bison version is:     '
-bison --version | head -n1 | cut -d' ' -f4
+printf 'binutils:  '
+ld --version | sed 1q | cut -d' ' -f5-
 
-printf 'bzip2 version is:     '
-bzip2 --version 2>&1 < /dev/null | head -n1 | cut -d' ' -f8-
+printf 'bison:     '
+bison --version | sed 1q | cut -d' ' -f4
 
-printf 'coreutils version is: '
-ls --version | head -n1 | cut -d' ' -f4
+printf 'bzip2:     '
+bzip2 --version 2>&1 < /dev/null | sed 1q | cut -d' ' -f8 | sed s/,//
 
+printf 'coreutils: '
+ls --version | sed 1q | cut -d' ' -f4
 
-diff --version | head -n1
+printf 'diffutils: '
+diff --version | sed 1q | cut -d' ' -f4
 
-find --version | head -n1
+printf 'findutils: '
+find --version | sed 1q | cut -d' ' -f4
 
-gawk --version | head -n1
-if [ -e /usr/bin/awk ]; then
-  echo "/usr/bin/awk -> $(readlink -f /usr/bin/awk)"
-else
-  echo "awk not found"
-fi
+printf 'gcc:       '
+gcc --version | sed 1q | cut -d' ' -f3
 
-gcc --version | head -n1
+printf 'git:       '
+git --version | cut -d' ' -f3
 
-/lib/libc.so.6 | head -n1 | cut -d',' -f1
+printf 'glibc:     '
+/lib/libc.so.6 | sed 1q | cut -d' ' -f9 | sed s/\.$//
 
-grep --version | head -n1
+printf 'grep:      '
+grep --version | sed 1q | cut -d' ' -f4
 
-gzip --version | head -n1
+printf 'gzip:      '
+gzip --version | sed 1q | cut -d' ' -f2
 
-cat /proc/version
+printf 'linux:     '
+uname -r
 
-m4 --version | head -n1
+printf 'm4:        '
+m4 --version | sed 1q | cut -d' ' -f4
 
-make --version | head -n1
+printf 'make:      '
+make --version | sed 1q | cut -d' ' -f3
 
-patch --version | head -n1
+printf 'patch:     '
+patch --version | sed 1q | cut -d' ' -f3
 
-echo Perl $(perl -V:version)
+printf 'perl:      '
+perl -V:version | cut -d"'" -f2
 
-sed --version | head -n1
+printf 'rsync:     '
+rsync --version | sed 1q | cut -d' ' -f4
 
-rsync --version | head -n1
+printf 'sed:       '
+sed --version | sed 1q | cut -d' ' -f4
 
-tar --version | head -n1
+printf 'tar:       '
+tar --version | sed 1q | cut -d' ' -f4
 
-echo "Texinfo: $(makeinfo --version | head -n1)"
+printf 'texinfo:   '
+makeinfo --version | sed 1q | cut -d' ' -f4
 
-xz --version | head -n1
-
-#echo 'main(){}' > dummy.c && gcc -o dummy dummy.c
-#if [ -x dummy ]; then
-  #echo "Compilation OK"
-#else
-  #echo "Compilation failed"
-#fi
-#rm -f dummy.c dummy
-
-printf '/bin/sh -> $(readlink -f /bin/sh)'
-
-if [ -e /usr/bin/yacc ]; then
-  echo "/usr/bin/yacc -> $(readlink -f /usr/bin/yacc)"
-else
-  echo "yacc not found"
-fi
-
-if [ -e /usr/bin/dash ]; then 
-  printf 'dash exists!\n'
-fi
+printf 'xz:        '
+xz --version | sed 1q | cut -d' ' -f4

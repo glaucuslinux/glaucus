@@ -6,6 +6,8 @@
 prepare_system() {
   install -dv $SBLD/$nom
   cd $SBLD/$nom
+  
+  rsync -vah $SRCD/$nom/$nom-$ver/man . --delete
 }
 
 configure_system() {

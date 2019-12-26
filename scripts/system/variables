@@ -5,9 +5,10 @@ export ARCH=x86_64
 export TUPL=$ARCH-pc-linux-musl
 
 export CERD=/cerata
+export SCRD=/scripts
 export SRCD=/sources
 
-export SLOG=/logs/system
+export SLOG=/logs/system/$(ls -l /logs/system | wc -l)
 export SSCR=/scripts/system
 export STMP=/temporary/system
 export SBLD=$STMP/builds

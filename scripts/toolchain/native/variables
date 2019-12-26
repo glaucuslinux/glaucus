@@ -1,7 +1,7 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export NLOG=$TLOG/native
+export NLOG=$TLOG/native/$(ls -l $TLOG/native | wc -l)
 export NBLD=$TTMP/native/builds
 
 export AR=$TUPL-ar

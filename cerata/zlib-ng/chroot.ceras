@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  rsync -vah $SRCD/$nom $CSRC --delete
   cd $CSRC/$nom
 }
 
