@@ -66,6 +66,7 @@ envenomate python
 envenomate samurai
 envenomate meson
 envenomate toybox
+envenomate rsync
 envenomate diffutils
 envenomate mawk
 envenomate grub

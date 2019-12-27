@@ -2,4 +2,7 @@
 # Distributed under the terms of the ISC License
 
 $SCRD/check binutils
+$SCRD/check gmp
+$SCRD/check mpfr
+$SCRD/check mpc
 $SCRD/check gcc

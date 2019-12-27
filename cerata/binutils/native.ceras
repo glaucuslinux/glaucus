@@ -13,7 +13,6 @@ configure_native() {
     --prefix=$TOOL \
     --host=$TUPL \
     --target=$TUPL \
-    --enable-plugins \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --disable-werror \

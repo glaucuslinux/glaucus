@@ -17,7 +17,7 @@ prepare_native() {
     sed "s/\/lib/\\$TOOL&/" \
       -i $file
 
-    echo "
+    printf "
 #undef STANDARD_STARTFILE_PREFIX_1
 #define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
 
@@ -32,7 +32,7 @@ prepare_native() {
     -i linux.h
 
   cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-$nom \
-    -print-libgcc-file-name))/include-fixed/limits.h
+    -print-lib$nom-file-name))/include-fixed/limits.h
 
   install -dv $NBLD/$nom
   cd $NBLD/$nom

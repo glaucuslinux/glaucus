@@ -6,10 +6,10 @@ construct() {
     . $CERD/$ceras/ceras
     . $CERD/$nom/native.ceras
     
-    prepare_native || { echo native $nom prepare failed; exit $?; }
-    configure_native || { echo native $nom configure failed; exit $?; }
-    build_native || { echo native $nom build failed; exit $?; }
-    install_native || { echo native $nom install failed; exit $?; }
+    prepare_native || { printf native $nom prepare failed; exit $?; }
+    configure_native || { printf native $nom configure failed; exit $?; }
+    build_native || { printf native $nom build failed; exit $?; }
+    install_native || { printf native $nom install failed; exit $?; }
   done
 }
 

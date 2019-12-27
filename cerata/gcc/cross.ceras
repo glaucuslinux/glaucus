@@ -16,7 +16,7 @@ prepare_cross() {
     sed "s/\/lib/\\$TOOL&/" \
       -i $file
 
-    echo "
+    printf "
 #undef STANDARD_STARTFILE_PREFIX_1
 #define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
 

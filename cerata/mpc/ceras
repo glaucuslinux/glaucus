@@ -5,6 +5,6 @@
 
 nom=mpc
 ver=1.1.0
-url=https://ftp.gnu.org/gnu/$nom/$nom-$ver.tar.gz
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.gz
 sum=72d657958b07c7812dc9c7cbae093118ce0e454c68a585bfb0e2fa559f1bf7c5f49b93906f580ab3f1073e5b595d23c6494d4d76b765d16dde857a18dd239628
 lic='LGPL-3.0-only LGPL-3.0-or-later'

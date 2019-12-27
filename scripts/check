@@ -3,9 +3,9 @@
 
 . $CERD/$1/ceras
 
-if [ ! -d $SRCD/$nom ] ; then
+if [ ! -d $SRCD/$nom ]; then
  install -dv $SRCD/$nom
- . $SCRD/fetch || { echo cross $nom fetch failed; exit $?; }
+ . $SCRD/fetch || { printf cross $nom fetch failed; exit $?; }
 else
- . $SCRD/verify || { echo cross $nom verify failed; exit $?; }
+ . $SCRD/verify
 fi

@@ -3,3 +3,4 @@
 
 $SCRD/check linux
 $SCRD/check musl
+$SCRD/check isl

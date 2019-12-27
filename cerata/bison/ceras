@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=bison
-ver=3.4.2
+ver=3.5
 url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
-sum=00d2b37187b93100ec4b220ce2752d12ccf68f9d0d39b380d375d36dd8a22aa1d6e60156918f95e4493f9531c5d42d8fad38fd807307b491c1ca7ca4177823d9
+sum=309ba77cfbf5d5ca697f522ac18ca9b55a1ec4e690b87220c97ffb1137b8bd8b22aa14c111166f0f4bf001e88f4bcbfd0583bc09810c246f0dc60fd6e8478950
 lic='GPL-3.0-only GPL-3.0-or-later'

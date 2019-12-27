@@ -9,7 +9,7 @@ install -dv $SBLD $SCER /bin /boot /etc /usr/bin /usr/cerata /usr/include \
 install -dvm 0750 /root
 install -dvm 1777 /tmp
 
-ln -fsv $TOOL/bin/bash $TOOL/bin/ls /bin
+ln -fsv $TOOL/bin/bash $TOOL/bin/echo $TOOL/bin/ls /bin
 
 ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd $TOOL/bin/true /usr/bin
 

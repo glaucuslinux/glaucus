@@ -30,8 +30,10 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install
 
-  cd $SRCD/$nom
-  
+  cd $CERD/$nom
+ 
+  install -dv $SCER/$nom/sac/etc/$nom
+
   rsync -vah proceeddev $SCER/$nom/sac/etc/$nom
   chmod 744 $SCER/$nom/sac/etc/$nom/proceeddev
 

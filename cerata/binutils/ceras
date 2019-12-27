@@ -5,7 +5,7 @@
 
 nom=binutils
 ver=2.33.1
-url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
-sum=b7a6767c6c7ca6b5cafa7080e6820b7bb3a53b7148348c438d99905defbdf0d30c9744a484ee01c9441a8153901808513366b15ba9533e20c9673c262ade36ac
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.lz
+sum=c5b36e2c082cdb42a6a9061fede3458a050733a8824d2d4c40f99261a3aa40cbeadc9589cac0ac91627aad252ef3aead682bd24bd78a5116db04b14b9bccd7b4
 lic='BSL-1.0 GPL-2.0-only GPL-3.0-only GPL-3.0-or-later LGPL-2.0-only
 LGPL-2.1-only LGPL-3.0-only'

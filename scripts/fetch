@@ -5,6 +5,6 @@ if [ $ver = git ]; then
   git clone $url $SRCD/$nom
 else
   curl -Lo $SRCD/$nom/$(basename $url) $url
-  . $SCRD/verify || { echo cross $nom verify failed; exit $?; }
+  . $SCRD/verify
   tar xvf $SRCD/$nom/$(basename $url) -C $SRCD/$nom
 fi
