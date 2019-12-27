@@ -4,6 +4,6 @@
 find $TOOL -name \*.la -delete
 
 strip -gv $TOOL/lib/*
-/usr/bin/strip --strip-unneeded -v $TOOL/bin/* $TOOL/usr/bin/*
+/usr/bin/strip --strip-unneeded -v $TOOL/bin/*
 
 rm -frv $TOOL/share/doc $TOOL/share/info $TOOL/share/man

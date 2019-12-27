@@ -73,6 +73,8 @@ envenomate grub
 envenomate pcre2
 envenomate less
 envenomate pigz
+envenomate iputils
+envenomate iproute2
 envenomate kbd
 envenomate make
 envenomate patch

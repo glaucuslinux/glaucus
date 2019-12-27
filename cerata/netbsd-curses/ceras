@@ -5,6 +5,6 @@
 
 nom=netbsd-curses
 ver=0.3.1
-url=https://github.com/sabotage-linux/$nom/archive/v$ver.tar.gz
-sum=bde5b08b8e7aad7b1d16bf154606e5c5b267e9e19ac1f13f28ba9d01de86d1dfe2e7fc87be28ff64e7d650c7881f35120834016c2b2563c0f69c8b7e7ea583d9
+url=http://ftp.barfooze.de/pub/sabotage/tarballs/$nom-$ver.tar.xz
+sum=bd65358b59299de6b9879022842c7cd4fcdc1449b6bf7db5870a5fe0ffcc873f68da2bcf6b27bc231a956797377d66f56177178dad14304f332aaf924482ca90
 lic='BSD-2-Clause BSD-3-Clause'

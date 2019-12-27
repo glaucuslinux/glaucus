@@ -9,11 +9,9 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  cat > config.mak << EOF
-PREFIX = $TOOL
+  printf 'PREFIX = $TOOL
 AR = $AR
-RANLIB = $RANLIB
-EOF
+RANLIB = $RANLIB' > config.mak
 
   sed 's/-O0 //' \
     -i GNUmakefile

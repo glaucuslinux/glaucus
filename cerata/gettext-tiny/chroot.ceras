@@ -4,19 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $SRCD/$nom $CSRC --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
   cd $CSRC/$nom
 }
 
 configure_chroot() {
-  cat > config.mak << EOF
-prefix=$TOOL
+  printf 'prefix=$TOOL
 LIBINTL=MUSL
 AR=$AR
 RANLIB=$RANLIB
 CFLAGS=$CFLAGS
-LDFLAGS=$LDFLAGS
-EOF
+LDFLAGS=$LDFLAGS' > config.mak
 }
 
 build_chroot() {

@@ -36,6 +36,8 @@ $SCRD/check meson
 $SCRD/check grub
 $SCRD/check pcre2
 $SCRD/check less
+$SCRD/check iputils
+$SCRD/check iproute2
 $SCRD/check kbd
 $SCRD/check mandoc
 $SCRD/check vim

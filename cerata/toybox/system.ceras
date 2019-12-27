@@ -26,5 +26,7 @@ install_system() {
 
   rsync -vah $nom $SCER/$nom/sac/usr/bin
 
-  for i in $(./$nom); do ln -fsv $nom $SCER/$nom/sac/usr/bin/$i; done
+  for u in $(./$nom); do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$u
+  done
 }

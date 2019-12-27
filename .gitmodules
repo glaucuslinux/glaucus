@@ -31,9 +31,6 @@
 [submodule "cerata/harfbuzz/harfbuzz"]
 	path = cerata/harfbuzz/harfbuzz
 	url = https://github.com/harfbuzz/harfbuzz
-[submodule "cerata/iproute2/iproute2"]
-	path = cerata/iproute2/iproute2
-	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2
 [submodule "cerata/jemalloc/jemalloc"]
 	path = cerata/jemalloc/jemalloc
 	url = https://github.com/jemalloc/jemalloc

@@ -21,7 +21,7 @@ prepare_cross() {
 #define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
 
 #undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"" >> $file
+#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> $file
   done
 
   sed '/m64/s/lib64/lib/' \

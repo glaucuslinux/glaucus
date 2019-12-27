@@ -19,6 +19,7 @@ $SCRD/check zlib-ng
 $SCRD/check pigz
 $SCRD/check make
 $SCRD/check patch
+$SCRD/check perl-cross
 $SCRD/check perl
 $SCRD/check sed
 $SCRD/check xz

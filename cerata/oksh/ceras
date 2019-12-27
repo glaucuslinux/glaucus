@@ -4,6 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=oksh
-ver=git
-url=https://github.com/ibara/$nom
+ver=6.6
+url=https://github.com/ibara/$nom/releases/download/$nom-$ver/$nom-$ver.tar.gz
+sum=9a7582cb8ecbb4821ae46526666ceee1dd17522a86f74bc1dd8846f4684db0a256d87f1bd92b79c3e8c5b320c621307f493bcbabe03beae63499e92097404759
 lic=Unlicense

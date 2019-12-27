@@ -9,11 +9,9 @@ prepare_system() {
 }
 
 configure_system() {
-  cat > config.mak << EOF
-PREFIX = /usr
+  printf 'PREFIX = /usr
 AR = $AR
-RANLIB = $RANLIB
-EOF
+RANLIB = $RANLIB' > config.mak
 
   sed 's/-O0 //' \
     -i GNUmakefile

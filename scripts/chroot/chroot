@@ -5,7 +5,7 @@ sudo \
 chroot $GLAD \
   $TOOL/bin/env -i \
   HOME=/root \
-  PATH=/bin:/usr/bin:$TOOL/bin:$TOOL/usr/bin \
+  PATH=/bin:/usr/bin:$TOOL/bin \
   TERM=xterm-256color \
   PS1="[\033[0;44mglaucus\033[0m:\033[1m\w\033[0m]$ " \
   ksh
