@@ -4,22 +4,27 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
+
+  install -dv $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  meson \
     --prefix=/usr \
-    --disable-nls
+    --sbindir=/usr/bin \
+    --buildtype=release \
+    $SBLD/$nom
 }
 
 build_system() {
-  make
+  samu \
+    -C $SBLD/$nom
 }
 
 install_system() {
-  make \
-    DESTDIR=$SCER/$nom/sac \
-    install-strip
+  samu \
+    -C $SBLD/$nom \
+    install
 }

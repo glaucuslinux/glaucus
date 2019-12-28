@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxxf86vm
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxxf86vm/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxxf86vm/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

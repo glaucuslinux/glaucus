@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
   
   sed 's/%F/%b %F/' \
@@ -12,7 +12,7 @@ prepare_system() {
 }
 
 configure_system() {
-  rsync -vah $CERD/$nom/system.config .config
+  $RSYNC $CERD/$nom/system.config .config
 
   scripts/genconfig.sh
 }
@@ -24,7 +24,7 @@ build_system() {
 install_system() {
   install -dv $SCER/$nom/sac/usr/bin
 
-  rsync -vah $nom $SCER/$nom/sac/usr/bin
+  $RSYNC $nom $SCER/$nom/sac/usr/bin
 
   for u in $(./$nom); do
     ln -fsv $nom $SCER/$nom/sac/usr/bin/$u

@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxv
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxv/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxv/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

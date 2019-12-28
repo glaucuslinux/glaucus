@@ -4,11 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  rsync -vah $CERD/$nom/error.h lib
-  rsync -vah $CERD/$nom/error.h src
+  $RSYNC $CERD/$nom/error.h lib
+  $RSYNC $CERD/$nom/error.h src
 
   patch -p0 -i $CERD/$nom/patches/1.patch
   patch -p0 -i $CERD/$nom/patches/2.patch

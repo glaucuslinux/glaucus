@@ -4,41 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
-
-  rm -frv include/ip6tables.h include/iptables include/iptables.h \
-    include/libiptc include/netinet man/man8/arpd.8
 }
 
 configure_system() {
-  sed -e '/ARPD/d' \
-    -e "s/CC := gcc/CC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
-    -e "s/HOSTCC ?= .*/HOSTCC = $TUPL-gcc --sysroot=\/home\/glaucus\/system/"  \
-    -e "s/CCOPTS = -O2/CCOPTS = $CFLAGS/" \
-    -e 's/SUBDIRS=.*/SUBDIRS=lib ip/' \
-    -e '/genl/d' \
+  sed /ARPD/d \
     -i Makefile
 
-  sed 's/TCPI_OPT_ECN_SEEN/16/' \
-    -i misc/ss.c
+  rm -fv man/man8/arpd.8
 
   sed 's/.m_ipt.o//' \
     -i tc/Makefile
-
-  ./configure
-
-  sed -e '/IPSET/i TC_CONFIG_NO_XT:=y' \
-    -e 's/TC_CONFIG_IPSET:=y/TC_CONFIG_IPSET:=n/g' \
-    -e '/IPSET/{n;d}' \
-    -e 's/IP_CONFIG_SETNS:=y/IP_CONFIG_SETNS:=n/g' \
-    -e 's/HAVE_ELF:=y/HAVE_ELF:=n/g' \
-    -e '/HAVE_ELF/{n;N;d}' \
-    -e 's/HAVE_MNL:=y/HAVE_MNL:=n/g' \
-    -e '/HAVE_MNL/{n;N;d}' \
-    -e 's/HAVE_CAP:=y/HAVE_CAP:=n/g' \
-    -e '/HAVE_CAP/{n;N;d}' \
-    -i config.mk
 }
 
 build_system() {
@@ -46,6 +23,6 @@ build_system() {
 }
 
 install_system() {
-  install -Dv ip/ip $SCER/$nom/sac/usr/bin/ip
-  install -Dv man/man8/ip.8 $SCER/$nom/sac/usr/share/man/man8/ip.8
+  make \
+    install
 }

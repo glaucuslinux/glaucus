@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxrender
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxrender/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxrender/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

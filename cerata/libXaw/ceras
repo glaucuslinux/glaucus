@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxaw
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxaw/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxaw/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=bc
-ver=2.3.0
+ver=2.4.0
 url=https://github.com/gavinhoward/$nom/releases/download/$ver/$nom-$ver.tar.xz
-sum=e57b429e3af2afc4e830e7689dfc036bf8f722dacfec34e22e33cae28db6696ff0a9e3245f743d08644324e2e566dd9795b72885b8b44c696e4d9632b4e0aacc
+sum=43006a9f0b3acbc27fb3726536eb8723155521c3b29e187d54b350320f179454c526f5e5e66c0b3a1fca62003d1e830220d4753fd374efa3a0fa1f8a1d02e739
 lic=BSD-2-Clause

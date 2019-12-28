@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxinerama
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxinerama/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxinerama/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

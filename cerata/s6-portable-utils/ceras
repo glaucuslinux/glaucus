@@ -4,7 +4,7 @@ url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
 sum=2e74befec59ae6d3f27cb5f2bb92db23af484043e4d5e53e4816d75927059af6698614a4c3ce7ed7e380a88d5bbe88e41dcbc97eb607a10d7a3e46b8a36744ed
 lic=ISC
 build(){
-        rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+        $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
         cd $SSRC/$nom
         ./configure \
                 --target=$TUPL \

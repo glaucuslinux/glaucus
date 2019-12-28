@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/$nom
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 
   $ver submodule update --init

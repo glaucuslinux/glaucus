@@ -15,7 +15,7 @@ configure_native() {
     --syslibdir=$TOOL/lib \
     --target=$TUPL
 
-  rsync -vah $SRCD/$nom/$nom-$ver/Makefile .
+  $RSYNC $SRCD/$nom/$nom-$ver/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile

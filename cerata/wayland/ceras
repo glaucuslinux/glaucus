@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.freedesktop.org/$nom/$nom
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         mkdir -v $SBLD/$nom
         cd $SBLD/$nom
         EXPAT_CFLAGS=-I$GLAD/usr/include \

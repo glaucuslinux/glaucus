@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
 
   cd $SSRC/$nom/$nom/config
 
@@ -14,10 +14,10 @@ prepare_system() {
 
     printf '
 #undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"/usr/lib/\"
+#define STANDARD_STARTFILE_PREFIX_1 "/usr/lib/"
 
 #undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"\n' >> $file
+#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> $file
   done
 
   sed '/m64/s/lib64/lib/' \

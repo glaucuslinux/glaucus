@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxpm
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxpm/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxpm/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

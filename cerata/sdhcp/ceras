@@ -3,7 +3,7 @@ ver=git
 url=$ver://$ver.2f30.org/$nom
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         sed -e 's/PREFIX    = .*/PREFIX    =\/usr/' \
                 -e 's/DESTDIR   =/DESTDIR   = \/home\/glaucus\/system/' \

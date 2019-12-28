@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=pkgconf
-ver=1.1.0
+ver=1.6.3
 url=https://distfiles.dereferenced.org/$nom/$nom-$ver.tar.xz
-sum=2d54b14b9fb830a3d30e8812f6079a95cf1e1e77fd42d1eac7a6041347094ff88b79146be93c56625c44e2dcf38af725cbbdfdda09b457b921a9a17b97a23d15
+sum=437c5a5c9866e2047e62e0592639930b2420d4afd41d98cef51f3475165418a39e916477860025314828a6ee0a4eefc10fdf26bda66f80c291f324d9674fa5c1
 lic=ISC

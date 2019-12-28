@@ -3,7 +3,7 @@ ver=8.43
 url=https://ftp.$nom.org/pub/$nom/$nom-$ver.tar.bz2
 lic=BSDv3
 build(){
-        rsync -vah $CERD/$nom/trunk/ $SSRC/$nom --delete
+        $RSYNC $CERD/$nom/trunk/ $SSRC/$nom --delete
         cd $SSRC/$nom
         ./autogen.sh
         ./configure \

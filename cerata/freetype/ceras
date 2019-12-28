@@ -4,7 +4,7 @@ url=https://$ver.sv.nongnu.org/r/$nom/freetype2
 lic='FTL GPLv2+ MIT zlib'
 
 prepare_system() {
-  rsync -vah $CERD/$nom/freetype2/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/freetype2/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

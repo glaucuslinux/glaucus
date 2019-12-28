@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom $SSRC --delete
+  $RSYNC $SRCD/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

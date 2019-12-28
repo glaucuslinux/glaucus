@@ -5,7 +5,7 @@ sum=e80e06965fbdcf13100aae4690071d01a6efe74aed7ff8f14e5892c6803393a1b5acda1296e0
 lic=GPLv2+
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
   patch -p0 -i $CERD/$nom/patches/$nom.patch

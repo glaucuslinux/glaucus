@@ -4,18 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  cat > configure.local << EOF
-HAVE_WCHAR=1
+  printf "HAVE_WCHAR=1
 OSNAME=glaucus
 PREFIX=/usr
 AR=$AR
-CFLAGS="$CFLAGSNOOPENMP"
-EOF
+CFLAGS='$CFLAGSNOOPENMP'\n"> configure.local
 
   ./configure
   

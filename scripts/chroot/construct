@@ -6,10 +6,10 @@ construct() {
     . $CERD/$ceras/ceras
     . $CERD/$nom/chroot.ceras
 
-    prepare_chroot || { printf chroot $nom prepare failed; exit $?; }
-    configure_chroot || { printf chroot $nom configure failed; exit $?; }
-    build_chroot || { printf chroot $nom build failed; exit $?; }
-    install_chroot || { printf chroot $nom install failed; exit $?; }
+    prepare_chroot || { printf "chroot $nom prepare failed\n"; exit $?; }
+    configure_chroot || { printf "chroot $nom configure failed\n"; exit $?; }
+    build_chroot || { printf "chroot $nom build failed\n"; exit $?; }
+    install_chroot || { printf "chroot $nom install failed\n"; exit $?; }
   done
 }
 

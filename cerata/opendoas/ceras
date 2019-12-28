@@ -3,7 +3,7 @@ ver=git
 url=https://$ver.duncano.de/$nom
 lic='BSDv2 ISC'
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         sed -e 's/root/glaucus/' \
                 -i Makefile

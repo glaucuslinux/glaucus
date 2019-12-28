@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/mesa/$nom
 lic=
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

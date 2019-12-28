@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxcursor
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxcursor/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxcursor/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

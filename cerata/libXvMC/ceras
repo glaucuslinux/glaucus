@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxvmc
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxvmc/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxvmc/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

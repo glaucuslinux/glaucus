@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.freedesktop.org/xorg/util/macros
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/macros/ $SSRC/$nom --delete
+        $RSYNC $CERD/$nom/macros/ $SSRC/$nom --delete
         cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \

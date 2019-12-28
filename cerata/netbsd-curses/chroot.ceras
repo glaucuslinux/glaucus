@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_chroot() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
   cd $CSRC/$nom
 }
 
 configure_chroot() {
-  printf 'PREFIX = $TOOL
+  printf "PREFIX = $TOOL
 AR = $AR
-RANLIB = $RANLIB' > config.mak
+RANLIB = $RANLIB\n" > config.mak
 
   sed 's/-O0 //' \
     -i GNUmakefile

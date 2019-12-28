@@ -4,11 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete
+  $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete
   cd $SSRC/elfutils
 
-  rsync -vah $CERD/elfutils/error.h lib
-  rsync -vah $CERD/elfutils/error.h src
+  $RSYNC $CERD/elfutils/error.h lib
+  $RSYNC $CERD/elfutils/error.h src
 
   patch -p0 -i $CERD/elfutils/patches/2.patch
 }

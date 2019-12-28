@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxscrnsaver/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxscrnsaver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

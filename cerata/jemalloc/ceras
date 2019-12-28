@@ -4,7 +4,7 @@ url=https://github.com/$nom/$nom
 lic=BSDv2
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

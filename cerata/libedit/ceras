@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=libedit
-ver=20191025-3.1
-url=http://thrysoee.dk/editline/$nom-$ver.tar.gz
-sum=9f475249b984e02ece0af3a0efe353233fef644ecf37482e28597a3ce552ca5a07678939b2c4ecbe3d2b14761fa67f23d2e839a322b94c0feeeba9e403b2be00
+ver=20191211-3.1
+url=https://www.thrysoee.dk/editline/$nom-$ver.tar.gz
+sum=8393477a87e65d330b037494110501b5d6d2c1cbe80d82b9bc7a6315a21fd1327fe91354346966d30541015e2c277be2187fa4bb737b14f706957c70f4083547
 lic='BSD-3-Clause BSD-4-Clause-UC'

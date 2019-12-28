@@ -5,7 +5,7 @@ sum=4437cae21345f483194a5dc95f686f3f3cb2beec78faae3fba959db25eae29fe2c56732e055c
 lic='BSDv3 GPLv2+ LGPLv2.1+'
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
   
   patch -p1 -i $CERD/$nom/patches/$nom.patch

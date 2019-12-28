@@ -17,7 +17,7 @@ configure_system() {
     --disable-static
 
   rm -fv Makefile
-  rsync -vah $SRCD/$nom/$nom-$ver/Makefile .
+  $RSYNC $SRCD/$nom/$nom-$ver/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile

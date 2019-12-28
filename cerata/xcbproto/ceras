@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.freedesktop.org/xorg/proto/$nom
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \

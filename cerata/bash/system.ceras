@@ -7,7 +7,7 @@ prepare_system() {
   install -dv $SBLD/$nom
   cd $SBLD/$nom
   
-  rsync -vah $SRCD/$nom/$nom-$ver/y.tab.h .
+  $RSYNC $SRCD/$nom/$nom-$ver/y.tab.h .
 }
 
 configure_system() {

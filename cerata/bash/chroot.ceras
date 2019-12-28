@@ -7,7 +7,7 @@ prepare_chroot() {
   install -dv $CBLD/$nom
   cd $CBLD/$nom
 
-  rsync -vah $SRCD/$nom/$nom-$ver/y.tab.h .
+  $RSYNC $SRCD/$nom/$nom-$ver/y.tab.h .
 }
 
 configure_chroot() {

@@ -4,14 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  printf 'PREFIX = /usr
+  printf "PREFIX = /usr
 AR = $AR
-RANLIB = $RANLIB' > config.mak
+RANLIB = $RANLIB\n" > config.mak
 
   sed 's/-O0 //' \
     -i GNUmakefile

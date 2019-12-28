@@ -4,7 +4,7 @@ url=https://gitlab.com/sortix/$nom
 lic=zlib
 
 prepare() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

@@ -5,7 +5,7 @@ sum=82ebe5c70f24adebd5f1c37422bac543c06684bff40d1d1fab473abc248d4c5f93e7a4969204
 lic=
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

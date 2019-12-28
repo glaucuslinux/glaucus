@@ -3,7 +3,7 @@ ver=git
 url=https://anon$ver.freedesktop.org/$ver/$nom
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         PNG_CFLAGS=-I$GLAD/usr/include/libpng16 \
         PNG_LIBS="-L$GLAD/usr/lib -lpng16 -lz" \

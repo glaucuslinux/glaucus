@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libice
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libice/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libice/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

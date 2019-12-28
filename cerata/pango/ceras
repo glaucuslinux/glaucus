@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.gnome.org/GNOME/$nom
 lic=LGPLv2+
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         mkdir -v $SBLD/$nom
         CFLAGS="$CFLAGS -I$GLAD/usr/include" \

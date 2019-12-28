@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_native() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete
  
-  rsync -vah $SRCD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete
-  rsync -vah $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete
-  rsync -vah $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete
-  rsync -vah $SRCD/isl/isl-0.22/ $TSRC/$nom/isl --delete
+  $RSYNC $SRCD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete
+  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete
+  $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete
+  $RSYNC $SRCD/isl/isl-0.22/ $TSRC/$nom/isl --delete
 
   cd $TSRC/$nom/$nom/config
 

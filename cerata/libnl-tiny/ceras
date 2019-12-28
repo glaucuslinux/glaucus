@@ -4,22 +4,18 @@ url=https://github.com/sabotage-linux/$nom
 lic=LGPLv2.1
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  cat > config.mak << EOF
-prefix=/usr
+  printf "prefix=/usr
 AR=$AR
-CC=$CC
 RANLIB=$RANLIB
 CFLAGS=$CFLAGS
-CPPFLAGS=$CPPFLAGS
-LDFLAGS=$LDFLAGS
-EOF
+LDFLAGS=$LDFLAGS\n" > config.mak
 
-sed 's/ $(STATICLIB)//' \
+  sed 's/ $(STATICLIB)//' \
     -i Makefile
 }
 

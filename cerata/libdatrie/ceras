@@ -4,7 +4,7 @@ url=https://github.com/tlwg/$nom
 lic=LGPLv2.1+
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 

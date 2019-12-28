@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxfont
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxfont/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxfont/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxi
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxi/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxi/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

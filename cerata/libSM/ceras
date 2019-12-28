@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libsm
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libsm/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libsm/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
 
   install -dv $SBLD/$nom
 
@@ -17,7 +17,7 @@ prepare_system() {
 }
 
 configure_system() {
-  rsync -vah $CERD/$nom/glaucus.config $SBLD/$nom/.config
+  $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config
 
   make \
     O=$SBLD/$nom \
@@ -36,6 +36,6 @@ build_system() {
 install_system() {
   install -dv $SCER/$nom/sac/boot
 
-  rsync -vah $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz
-  rsync -vah $SBLD/$nom/System.map $SCER/$nom/sac/boot
+  $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz
+  $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot
 }

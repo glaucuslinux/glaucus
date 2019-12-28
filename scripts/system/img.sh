@@ -20,18 +20,18 @@ losetup -D
 losetup $LOOP $NAME
 
 partx -a $LOOP
-mkfs.ext4 $(echo $LOOP)p1
+mkfs.ext4 $(printf $LOOP)p1
 
 umount /mnt/loop
-mount $(echo $LOOP)p1 /mnt/loop
+mount $(printf $LOOP)p1 /mnt/loop
 
 rm -frv /mnt/loop/lost+found
 
 install -dv /mnt/loop/dev /mnt/loop/proc /mnt/loop/run /mnt/loop/sys
-rsync -vah bin boot etc root usr var /mnt/loop --delete
+$RSYNC bin boot etc root usr var /mnt/loop --delete
 
 install -dv /mnt/loop/boot/extlinux
-rsync -vah scripts/other/extlinux.conf /mnt/loop/boot/extlinux
+$RSYNC scripts/other/extlinux.conf /mnt/loop/boot/extlinux
 extlinux --install /mnt/loop/boot/extlinux
 
 umount /mnt/loop

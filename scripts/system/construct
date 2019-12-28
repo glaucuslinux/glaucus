@@ -6,10 +6,10 @@ construct() {
     . $CERD/$ceras/ceras
     . $CERD/$nom/system.ceras
     
-    prepare_system || { echo system $nom prepare failed; exit $?; }
-    configure_system || { echo system $nom configure failed; exit $?; }
-    build_system || { echo system $nom build failed; exit $?; }
-    install_system || { echo system $nom install failed; exit $?; }
+    prepare_system || { printf "system $nom prepare failed\n"; exit $?; }
+    configure_system || { printf "system $nom configure failed\n"; exit $?; }
+    build_system || { printf "system $nom build failed\n"; exit $?; }
+    install_system || { printf "system $nom install failed\n"; exit $?; }
   done
 }
 

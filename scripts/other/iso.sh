@@ -1,13 +1,13 @@
 #!/usr/bin/dash -e
-#rsync -vah /home/glaucus/system /home/glaucus/temporary/system/iso --delete
+#$RSYNC /home/glaucus/system /home/glaucus/temporary/system/iso --delete
 #mkdir -v \
 #        /home/glaucus/temporary/system/iso/isolinux \
 #        /home/glaucus/temporary/system/iso/images \
 #        /home/glaucus/temporary/system/iso/kernel
 #chown -Rv root:root /home/glaucus/temporary/system/iso
-#rsync -vah /usr/lib/syslinux/bios/isolinux.bin /home/glaucus/temporary/system/iso/isolinux --delete
-#rsync -vah /usr/lib/syslinux/bios/ldlinux.c32 /home/glaucus/temporary/system/iso/isolinux --delete
-#rsync -vah /usr/lib/syslinux/bios/memdisk /home/glaucus/temporary/system/iso/isolinux/kernel --delete
+#$RSYNC /usr/lib/syslinux/bios/isolinux.bin /home/glaucus/temporary/system/iso/isolinux --delete
+#$RSYNC /usr/lib/syslinux/bios/ldlinux.c32 /home/glaucus/temporary/system/iso/isolinux --delete
+#$RSYNC /usr/lib/syslinux/bios/memdisk /home/glaucus/temporary/system/iso/isolinux/kernel --delete
 #cat > /home/glaucus/temporary/system/iso/isolinux/isolinux.cfg << EOF
 #prompt 0
 #default glaucus

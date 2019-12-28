@@ -4,7 +4,7 @@ url=https://$ver.suckless.org/$nom
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  $RSYNC $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 
   sed 's/\/var\/run/\/run/' \

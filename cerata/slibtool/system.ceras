@@ -11,11 +11,13 @@ prepare_system() {
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --sbindir=/usr/bin
+    --sbindir=/usr/bin \
+    --enable-shared
 }
 
 build_system() {
-  make
+  make \
+    LIBTOOL=slibtool-shared
 }
 
 install_system() {

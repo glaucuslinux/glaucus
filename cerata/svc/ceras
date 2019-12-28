@@ -4,6 +4,6 @@ url=$ver://r-36.net/$nom
 lic=MIT
 build(){
         install -Dvm 755 $CERD/$nom/$nom/bin/$nom -t $SCER/$nom/sac/usr/bin
-        rsync -vah $CERD/$nom/$nom/$nom.d/ $SCER/$nom/sac/usr/bin/$nom.d/ --delete
+        $RSYNC $CERD/$nom/$nom/$nom.d/ $SCER/$nom/sac/usr/bin/$nom.d/ --delete
         install -dv $SCER/$nom/sac/usr/bin/$nom.d/run
 }

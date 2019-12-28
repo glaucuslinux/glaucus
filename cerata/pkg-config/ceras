@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.freedesktop.org/$nom/$nom
 lic='GPLv2+ ISC LGPLv2.0+ LGPLv2.1+'
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         ./autogen.sh \
                 --prefix=/usr \

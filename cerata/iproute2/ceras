@@ -4,6 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=iproute2
-ver=git
-url=https://$ver.kernel.org/pub/scm/network/$nom/$nom
-lic=GPLv2+
+ver=5.4.0
+url=https://cdn.kernel.org/pub/linux/utils/net/$nom/$nom-$ver.tar.xz
+sum=26d1230e10d9ba4466edd3fe95cb6f595df691eeb27b87ae845ceb9da09fe11c2e0daa8d67187121320413f9ee7131fd426182055eb285be7c4de558d9e47051
+lic=GPL-2.0-only

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
@@ -21,8 +21,8 @@ build_system() {
 install_system() {
   install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1
 
-  rsync -vah $nom $SCER/$nom/sac/usr/bin
-  rsync -vah $nom.1 $SCER/$nom/sac/usr/share/man/man1
+  $RSYNC $nom $SCER/$nom/sac/usr/bin
+  $RSYNC $nom.1 $SCER/$nom/sac/usr/share/man/man1
 
   ln -fsv $nom $SCER/$nom/sac/usr/bin/un$nom
   

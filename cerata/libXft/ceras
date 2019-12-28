@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxft
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxft/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxft/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

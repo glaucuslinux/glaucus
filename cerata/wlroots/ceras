@@ -3,7 +3,7 @@ ver=git
 url=https://github.com/swaywm/$nom
 lic=MIT
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         ./configure \
                 --prefix=/usr \

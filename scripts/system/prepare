@@ -1,11 +1,11 @@
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-rsync -vah /backup/chroot/ $TOOL --delete
-rm -frv $SBLD $SCER /bin /boot /etc /root /tmp /usr /var
+$RSYNC /backup/chroot/ $TOOL --delete
+rm -frv $SBLD $SCER /bin /boot /root /tmp /usr /var
 
-install -dv $SBLD $SCER /bin /boot /etc /usr/bin /usr/cerata /usr/include \
-  /usr/lib /usr/share /var /var/lib /var/lib/urandom /var/log
+install -dv $SBLD $SCER /bin /boot /usr/bin /usr/cerata /usr/include /usr/lib \
+  /usr/share /var /var/lib /var/lib/urandom /var/log
 install -dvm 0750 /root
 install -dvm 1777 /tmp
 
@@ -22,4 +22,4 @@ ln -fsv $TOOL/lib/libgomp.so $TOOL/lib/libgomp.so.1 $TOOL/lib/libgomp.so.1.0.0 \
   $TOOL/lib/libgomp.spec /usr/lib
 ln -fsv $TOOL/lib/libtermcap.so $TOOL/lib/libterminfo.so /usr/lib
 
-rsync -vah $SSCR/etc/passwd $SSCR/etc/group /etc
+$RSYNC $SSCR/etc/passwd $SSCR/etc/group /etc

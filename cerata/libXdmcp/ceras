@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxdmcp
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxdmcp/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxdmcp/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

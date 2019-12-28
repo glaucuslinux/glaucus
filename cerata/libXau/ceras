@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxau
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxau/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxau/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

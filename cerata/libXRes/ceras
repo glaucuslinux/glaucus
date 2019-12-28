@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxres
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxres/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxres/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

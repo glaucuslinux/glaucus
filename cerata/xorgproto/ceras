@@ -3,7 +3,7 @@ ver=git
 url=https://gitlab.freedesktop.org/xorg/proto/$nom
 lic='BSDv2 HPND ICU MIT SGI-Bv2.0 X11'
 build(){
-        rsync -vah $CERD/$nom/$nom $SSRC --delete
+        $RSYNC $CERD/$nom/$nom $SSRC --delete
         cd $SSRC/$nom
         ACLOCAL_PATH=$GLAD/usr/share/aclocal \
         ./autogen.sh \

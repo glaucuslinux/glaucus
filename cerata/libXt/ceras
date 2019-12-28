@@ -4,7 +4,7 @@ url=https://gitlab.freedesktop.org/xorg/lib/libxt
 lic=MIT
 
 prepare_system() {
-  rsync -vah $CERD/$nom/libxt/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/libxt/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 

@@ -4,10 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  rsync -vah $SSCR/etc/hosts /etc
+  $RSYNC $SSCR/etc/hosts /etc
 }
 
 configure_system() {
