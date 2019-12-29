@@ -2,15 +2,13 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  for ceras in $@; do
-    . $CERD/$ceras/ceras
-    . $CERD/$nom/cross.ceras
-    
-    prepare_cross || { printf "cross $nom prepare failed\n"; exit $?; }
-    configure_cross || { printf "cross $nom configure failed\n"; exit $?; }
-    build_cross || { printf "cross $nom build failed\n"; exit $?; }
-    install_cross || { printf "cross $nom install failed\n"; exit $?; }
-  done
+  . $CERD/$1/ceras
+  . $CERD/$nom/cross.ceras
+  
+  prepare_cross || { printf "cross $nom prepare failed\n"; exit $?; }
+  configure_cross || { printf "cross $nom configure failed\n"; exit $?; }
+  build_cross || { printf "cross $nom build failed\n"; exit $?; }
+  install_cross || { printf "cross $nom install failed\n"; exit $?; }
 }
 
 construct binutils

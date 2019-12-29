@@ -2,15 +2,13 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  for ceras in $@; do
-    . $CERD/$ceras/ceras
-    . $CERD/$nom/native.ceras
-    
-    prepare_native || { printf "native $nom prepare failed\n"; exit $?; }
-    configure_native || { printf "native $nom configure failed\n"; exit $?; }
-    build_native || { printf "native $nom build failed\n"; exit $?; }
-    install_native || { printf "native $nom install failed\n"; exit $?; }
-  done
+  . $CERD/$1/ceras
+  . $CERD/$nom/native.ceras
+  
+  prepare_native || { printf "native $nom prepare failed\n"; exit $?; }
+  configure_native || { printf "native $nom configure failed\n"; exit $?; }
+  build_native || { printf "native $nom build failed\n"; exit $?; }
+  install_native || { printf "native $nom install failed\n"; exit $?; }
 }
 
 construct linux-headers

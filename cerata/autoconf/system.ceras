@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  patch -p1 -i $CERD/$nom/patches/$nom.patch
+  patch -p1 -i $CERD/$nom/patches/alpine/$nom-$ver-fix-perl-regex.patch
 }
 
 configure_system() {

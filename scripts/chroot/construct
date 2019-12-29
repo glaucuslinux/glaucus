@@ -2,15 +2,13 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  for ceras in $@; do
-    . $CERD/$ceras/ceras
-    . $CERD/$nom/chroot.ceras
+  . $CERD/$1/ceras
+  . $CERD/$nom/chroot.ceras
 
-    prepare_chroot || { printf "chroot $nom prepare failed\n"; exit $?; }
-    configure_chroot || { printf "chroot $nom configure failed\n"; exit $?; }
-    build_chroot || { printf "chroot $nom build failed\n"; exit $?; }
-    install_chroot || { printf "chroot $nom install failed\n"; exit $?; }
-  done
+  prepare_chroot || { printf "chroot $nom prepare failed\n"; exit $?; }
+  configure_chroot || { printf "chroot $nom configure failed\n"; exit $?; }
+  build_chroot || { printf "chroot $nom build failed\n"; exit $?; }
+  install_chroot || { printf "chroot $nom install failed\n"; exit $?; }
 }
 
 construct m4

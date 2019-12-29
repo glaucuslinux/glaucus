@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=samurai
-ver=0.7
+ver=1.0
 url=https://github.com/michaelforney/$nom/releases/download/$ver/$nom-$ver.tar.gz
-sum=c47120a2b516c0d130c5a01d99972979c69103d1c6b110722c4c6fcac3147df25d60d9d19913d7c78902c257800d6a5e1bcbb775618058ebfe6db29098dc4001
+sum=87b2a11a39dc36f3582abdc7c9d358c8fce241fe4155b5177d3e8588d1c040a62eb9daafd2365febbfadd6fcc27a3ceacf6f29ca6f871c822aad6f4bad527a51
 lic='Apache-2.0 ISC MIT'

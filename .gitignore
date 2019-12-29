@@ -17,17 +17,11 @@
 
 
 # cerata that can't be added as git submodules
-cerata/argp-standalone/argp-standalone-1.3/
-cerata/argp-standalone/argp-standalone-1.3.tar.gz
-
 cerata/bin86/bin86-0.16.21/
 cerata/bin86/bin86-0.16.21.tar.gz
 
 cerata/byacc/byacc-20191103/
 cerata/byacc/byacc-20191103.tgz
-
-cerata/bzip2/bzip2-1.0.6/
-cerata/bzip2/bzip2-1.0.6.tar.gz
 
 cerata/findutils/findutils-4.7.0/
 cerata/findutils/findutils-4.7.0.tar.xz

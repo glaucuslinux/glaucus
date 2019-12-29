@@ -13,7 +13,7 @@ configure_system() {
 OSNAME=glaucus
 PREFIX=/usr
 AR=$AR
-CFLAGS='$CFLAGSNOOPENMP'\n"> configure.local
+CFLAGS='$CFLAGSNOOPENMP'\n" > configure.local
 
   ./configure
   

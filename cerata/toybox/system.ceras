@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
   
-  sed 's/%F/%b %F/' \
+  sed 's/%F/%b &/' \
     -i toys/posix/ls.c
 }
 

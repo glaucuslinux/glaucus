@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  patch -p1 -i $CERD/$nom/patches/$nom.patch
+  patch -p1 -i $CERD/$nom/patches/lfs/$nom-$ver-install_docs-1.patch
 
   sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
     -i Makefile

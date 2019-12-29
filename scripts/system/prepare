@@ -10,16 +10,20 @@ install -dvm 0750 /root
 install -dvm 1777 /tmp
 
 ln -fsv $TOOL/bin/bash $TOOL/bin/echo $TOOL/bin/ls /bin
-
 ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd $TOOL/bin/true /usr/bin
-
 ln -fsv $TOOL/bin/dash /bin/sh
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib
 ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib
-
 ln -fsv $TOOL/lib/libgomp.so $TOOL/lib/libgomp.so.1 $TOOL/lib/libgomp.so.1.0.0 \
   $TOOL/lib/libgomp.spec /usr/lib
 ln -fsv $TOOL/lib/libtermcap.so $TOOL/lib/libterminfo.so /usr/lib
 
-$RSYNC $SSCR/etc/passwd $SSCR/etc/group /etc
+printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd
+
+printf 'root:x:0:
+tty:x:1:
+disk:x:2:
+audio:x:3:
+video:x:4:
+utmp:x:5:\n' > /etc/group

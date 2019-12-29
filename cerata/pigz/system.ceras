@@ -10,7 +10,7 @@ prepare_system() {
 
 configure_system() {
   sed -e "s/CFLAGS=.*/CFLAGS=$CFLAGS/" \
-    -e "s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
+    -e "s/LDFLAGS=/&$LDFLAGS/" \
     -i Makefile
 }
 

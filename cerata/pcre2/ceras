@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=pcre2
-ver=10.33
+ver=10.34
 url=https://ftp.pcre.org/pub/pcre/$nom-$ver.tar.bz2
-sum=c6aa52cdbb0c906b02e9a9f255697a1b9b99d9c7dccdaa484ffdb04fe3582d232ba3cb3c421d6df589a387b415dedb0817f58ec5391488b25b4e7bd9da6bab8f
+sum=77ad75f8b0b8bbfc2f57932596151bca25b06bd621e0f047e476f38cd127f43e2052460b95c281a7e874aad2b7fd86c8f3413f4a323abb74b9440a42d0ee9524
 lic=BSD-3-Clause

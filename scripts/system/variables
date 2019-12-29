@@ -21,7 +21,7 @@ export PATH=/usr/bin:/bin:$TOOL/bin
 
 export MAKEFLAGS=-j1
 
-export RSYNC='rsync -vaHAXSxh'
+export RSYNC='rsync -vaHXSx'
 
 export AR=gcc-ar
 export NM=gcc-nm

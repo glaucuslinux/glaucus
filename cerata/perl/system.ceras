@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  $RSYNC $SSCR/etc/hosts /etc
+  printf '127.0.0.1 localhost sea\n' > /etc/hosts
 }
 
 configure_system() {

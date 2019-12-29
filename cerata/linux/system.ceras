@@ -13,7 +13,7 @@ prepare_system() {
   make \
     mrproper
 
-  patch -p1 -i $CERD/$nom/patches/uksm-5.4.patch
+  patch -p1 -i $CERD/$nom/patches/$nom-$ver-uksm-5.4.patch
 }
 
 configure_system() {

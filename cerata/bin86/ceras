@@ -13,7 +13,7 @@ prepare_system() {
 
 configure_system() {
   sed -e "2s/CFLAGS=.*/CFLAGS=$CFLAGS -D_POSIX_SOURCE/" \
-    -e "3s/LDFLAGS=/LDFLAGS=$LDFLAGS/" \
+    -e "3s/LDFLAGS=/&$LDFLAGS/" \
     -e '9d;11d;12d;13d' \
     -i Makefile
 }

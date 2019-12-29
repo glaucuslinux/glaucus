@@ -16,7 +16,6 @@ configure_system() {
     --disable-wrapper \
     --disable-static
 
-  rm -fv Makefile
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile .
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \

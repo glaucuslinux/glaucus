@@ -21,4 +21,4 @@ export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
 
 export MAKEFLAGS=-j1
 
-export RSYNC='rsync -vaHAXSxh'
+export RSYNC='/usr/bin/rsync -vaHAXSx'

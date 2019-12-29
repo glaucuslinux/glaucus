@@ -2,13 +2,7 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  rm -frv $GLAD/etc
-
-sudo \
   install -dv $GLAD/etc
-
-sudo \
-  rm -fv $GLAD/etc/resolv.conf
 
 sudo \
   $RSYNC /etc/resolv.conf $GLAD/etc

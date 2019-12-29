@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 nom=python
-ver=3.8.0
+ver=3.8.1
 url=https://www.$nom.org/ftp/$nom/$ver/Python-$ver.tar.xz
-sum=5f9bfcb3acdf592770a9d5abd2c32c68c55a49b92f958ded069e3ef31cf2d415e67112b4f6738fab237dc29e5c622298719946d2e9471e7e78e3a6bdf2fac1d1
+sum=d41381848cc1ec8009643b71875f395a9ac2c8e12a5b1efef33caf8a9e99a337c790d4354695c85352d11b62092ae372b5af62f78724363fcbf3504ff9a6ddca
 lic=Python-2.0

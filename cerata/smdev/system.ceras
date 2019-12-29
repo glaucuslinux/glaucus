@@ -11,7 +11,7 @@ prepare_system() {
   sed -e '/types/a #include <sys/sysmacros.h>' \
     -i $nom.c
 
-  patch -p1 -i $CERD/$nom/patches/$nom.patch
+  patch -p1 -i $CERD/$nom/patches/aur/scan_all.patch
 }
 
 configure_system() {
