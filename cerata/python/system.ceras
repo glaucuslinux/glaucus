@@ -12,6 +12,7 @@ configure_system() {
   ax_cv_c_float_words_bigendian=no \
   $SRCD/$nom/Python-$ver/configure \
     --prefix=/usr \
+    --enable-shared \
     --enable-optimizations \
     --disable-ipv6 \
     --with-lto \
@@ -31,4 +32,5 @@ install_system() {
     install
 
   ln -fsv python3 $SCER/$nom/sac/usr/bin/$nom
+  ln -fsv pip3.8 $SCER/$nom/sac/usr/bin/pip3
 }

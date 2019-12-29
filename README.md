@@ -73,9 +73,9 @@ glaucus is licensed under the Internet Systems Consortium (ISC) license.
 This project is dedicated to my lovely parents.
 
 ## Donate
-* [Patreon](https://www.patreon.com/firasuke)
-* [Liberapay](https://liberapay.com/firasuke)
-* [Ko-fi](https://ko-fi.com/firasuke)
+* [Patreon](https://www.patreon.com/glaucuslinux)
+* [Liberapay](https://liberapay.com/glaucuslinux)
+* [Ko-fi](https://ko-fi.com/glaucuslinux)
 * PayPal: firasuke@gmail.com
 
 ## Mirrors
