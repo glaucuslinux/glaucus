@@ -76,7 +76,6 @@ This project is dedicated to my lovely parents.
 * [Patreon](https://www.patreon.com/firasuke)
 * [Liberapay](https://liberapay.com/firasuke)
 * [Ko-fi](https://ko-fi.com/firasuke)
-* [Flattr](https://flattr.com/@firasuke)
 * PayPal: firasuke@gmail.com
 
 ## Mirrors
