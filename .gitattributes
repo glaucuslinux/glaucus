@@ -26,6 +26,7 @@ scripts/chroot/clean linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
 scripts/chroot/require linguist-language=Shell
+scripts/chroot/resolv linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
 scripts/chroot/vkfs linguist-language=Shell
