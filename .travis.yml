@@ -7,7 +7,7 @@ addons:
     packages:
     - rsync
 before_install:
-  - groupadd glaucus
+  - sudo groupadd glaucus
   - useradd -k /dev/null -ms /bin/bash glaucus
   - su - glaucus
   - cd /home/glaucus
