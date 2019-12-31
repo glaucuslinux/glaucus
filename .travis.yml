@@ -7,12 +7,20 @@ addons:
     packages:
     - rsync
 before_install:
-  - ls -lha
+  - groupadd glaucus
+  - useradd -k /dev/null -ms /bin/bash glaucus
+  - su - glaucus
+  - cd /home/glaucus
+  - git clone https://github.com/glaucuslinux/glaucus .
+  - exit
+  - su - glaucus
+  - cd /home/glaucus
   - dash scripts/initialize.sh
 install:
   - ls -lha
   - curl -Lo toolchain-27122019.tar.xz https://github.com/glaucuslinux/toolchain/releases/download/27122019/toolchain-27122019.tar.xz
   - printf '48163b8bdd63a160021b504287e3d4c7db19164dd53b2a3b3dd0a630f31249b2458b5c6782f605d0abdd846983d5a3e40c6954ad471b3ae88eeae76a7b0bd7d2  toolchain-27122019.tar.xz' | sha512sum -c
+  - rm -frv toolchain
   - tar xvf toolchain-27122019.tar.xz -C /home/glaucus
 script:
   - ls -lha
