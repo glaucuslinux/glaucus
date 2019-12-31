@@ -10,7 +10,6 @@ before_install:
   - sudo install -dv /home/glaucus
   - cd /home/glaucus
   - sudo git clone https://github.com/glaucuslinux/glaucus .
-  - . .bash_profile
   - . .bashrc
   - env
   - dash scripts/initialize.sh
