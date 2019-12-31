@@ -4,12 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
-  patch -p1 -i $CERD/$nom/patches/$nom.patch
+  sed 's/ --static//' \
+    -i tests/Makefile
 }
 
 build_system() {
@@ -22,6 +23,7 @@ install_system() {
     prefix=/usr \
     SBINDIR=/usr/bin \
     LIBDIR=/usr/lib \
-    RAISE_SETFCAP=no \
     install
+
+  chmod -v 755 $SCER/$nom/sac/usr/lib/$nom.so.$ver
 }

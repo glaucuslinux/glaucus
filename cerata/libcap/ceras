@@ -1,0 +1,10 @@
+# Copyright (c) 2019, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+
+nom=libcap
+ver=2.29
+url=https://cdn.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$nom-$ver.tar.xz
+sum=400a6883037bbc1f00847e2fcfb940d733784adec857969069972a3d5120dde6b554326ba6dd652670d854308433c66147944dda8b8b344ca249cef73ea866ef
+lic='BSD-2-Clause GPL-2.0-only'

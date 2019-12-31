@@ -15,6 +15,14 @@ configure_system() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --buildtype=release \
+    -DUSE_IDN=false \
+    -DBUILD_RARPD=true \
+    -DBUILD_TRACEROUTE6=true \
+    -DBUILD_NINFOD=false \
+    -DNINFOD_MESSAGES=false \
+    -DBUILD_MANS=false \
+    -DNO_SETCAP_OR_SUID=true \
+    -DUSE_GETTEXT=false \
     $SBLD/$nom
 }
 
@@ -24,6 +32,7 @@ build_system() {
 }
 
 install_system() {
+  DESTDIR=$SCER/$nom/sac \
   samu \
     -C $SBLD/$nom \
     install

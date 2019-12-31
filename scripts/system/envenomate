@@ -30,9 +30,9 @@ envenomate zlib-ng
 #envenomate shadow
 #envenomate gcc
 #envenomate lbzip2
-#envenomate pkgconf
+envenomate pkgconf
 #envenomate netbsd-curses
-#envenomate libcap-ng
+envenomate libcap
 #envenomate sed
 #envenomate psmisc
 #envenomate bison
@@ -51,7 +51,7 @@ envenomate expat
 #envenomate intltool
 #envenomate autoconf
 #envenomate automake
-#envenomate xz
+envenomate xz
 #envenomate kmod
 #envenomate gettext-tiny
 #envenomate libuargp
@@ -59,7 +59,7 @@ envenomate expat
 #envenomate musl-obstack
 #envenomate elfutils-libelf
 envenomate libffi
-#envenomate libressl
+envenomate libressl
 envenomate python
 envenomate samurai
 envenomate meson
