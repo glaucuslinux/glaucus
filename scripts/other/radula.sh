@@ -13,7 +13,7 @@ if [ ! -d $CERD/$1 ]; then
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=$1
 ver=$2
@@ -25,7 +25,7 @@ EOF
 # Copyright (c) 2019, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-# Voyager: Firas Khalil Khana (firasuke) <firasuke@gmail.com>
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
   $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
