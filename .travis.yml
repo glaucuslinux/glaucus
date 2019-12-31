@@ -7,18 +7,11 @@ addons:
     packages:
     - rsync
 before_install:
-  - sudo groupadd glaucus
-  - sudo useradd -g glaucus -k /dev/null -ms /bin/bash glaucus
-  - spawn /bin/passwd glaucus
-  - send 'glaucus\r'
-  - interact
-  - spawn /bin/su - glaucus
-  - send 'glaucus\r'
+  - sudo install -dv /home/glaucus
   - cd /home/glaucus
   - git clone https://github.com/glaucuslinux/glaucus .
-  - exit
-  - su - glaucus
-  - cd /home/glaucus
+  - . .bash_profile
+  - . .bashrc
   - dash scripts/initialize.sh
 install:
   - ls -lha
