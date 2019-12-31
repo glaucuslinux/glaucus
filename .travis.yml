@@ -9,7 +9,11 @@ addons:
 before_install:
   - sudo groupadd glaucus
   - sudo useradd -g glaucus -k /dev/null -ms /bin/bash glaucus
-  - su - glaucus
+  - spawn /bin/passwd glaucus
+  - send 'glaucus\r'
+  - interact
+  - spawn /bin/su - glaucus
+  - send 'glaucus\r'
   - cd /home/glaucus
   - git clone https://github.com/glaucuslinux/glaucus .
   - exit
