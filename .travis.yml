@@ -8,7 +8,7 @@ addons:
     - rsync
 before_install:
   - sudo groupadd glaucus
-  - sudo useradd -k /dev/null -ms /bin/bash glaucus
+  - useradd -g glaucus -k /dev/null -ms /bin/bash glaucus
   - su - glaucus
   - cd /home/glaucus
   - git clone https://github.com/glaucuslinux/glaucus .
