@@ -7,18 +7,14 @@ addons:
     packages:
     - rsync
 before_install:
-  - sudo install -dv /home/glaucus
-  - cd /home/glaucus
-  - sudo git clone https://github.com/glaucuslinux/glaucus .
-  - . .bashrc
-  - env
-  - dash scripts/initialize.sh
+  - install -dv backup sources system toolchain
+  - install -dv logs/chroot logs/system logs/toolchain/cross logs/toolchain/native
+  - install -dv temporary/chroot/builds temporary/chroot/sources temporary/system/builds temporary/system/cerata temporary/system/sources temporary/toolchain/sources temporary/toolchain/cross/builds temporary/toolchain/native/builds
 install:
-  - ls -lha
   - curl -Lo toolchain-27122019.tar.xz https://github.com/glaucuslinux/toolchain/releases/download/27122019/toolchain-27122019.tar.xz
   - printf '48163b8bdd63a160021b504287e3d4c7db19164dd53b2a3b3dd0a630f31249b2458b5c6782f605d0abdd846983d5a3e40c6954ad471b3ae88eeae76a7b0bd7d2  toolchain-27122019.tar.xz' | sha512sum -c
   - rm -frv toolchain
-  - tar xvf toolchain-27122019.tar.xz -C /home/glaucus
+  - tar xvf toolchain-27122019.tar.xz -C .
 script:
   - ls -lha
   - time dash scripts/chroot/run.sh
