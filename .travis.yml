@@ -9,9 +9,10 @@ addons:
 before_install:
   - sudo install -dv /home/glaucus
   - cd /home/glaucus
-  - git clone https://github.com/glaucuslinux/glaucus .
+  - sudo git clone https://github.com/glaucuslinux/glaucus .
   - . .bash_profile
   - . .bashrc
+  - env
   - dash scripts/initialize.sh
 install:
   - ls -lha
