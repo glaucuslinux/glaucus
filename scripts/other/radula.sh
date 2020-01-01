@@ -1,6 +1,6 @@
 #!/usr/bin/dash -e
 
-# Copyright (c) 2019, Firas Khalil Khana
+# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 PATH=/usr/bin
@@ -10,7 +10,7 @@ if [ ! -d $CERD/$1 ]; then
   cd $CERD/$1
 
   cat > ceras << EOF
-# Copyright (c) 2019, Firas Khalil Khana
+# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
@@ -22,7 +22,7 @@ lic=
 EOF
   
   cat > system.ceras << 'EOF'
-# Copyright (c) 2019, Firas Khalil Khana
+# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>

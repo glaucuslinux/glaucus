@@ -1,4 +1,4 @@
-# Copyright (c) 2019, Firas Khalil Khana
+# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
@@ -13,7 +13,7 @@ configure_system() {
 LIBINTL=MUSL
 AR=$AR
 RANLIB=$RANLIB
-CFLAGS=$CFLAGS
+CFLAGS=$CFLAGS -fPIC
 LDFLAGS=$LDFLAGS\n" > config.mak
 }
 
@@ -25,4 +25,6 @@ install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
+
+  $RSYNC $CERD/$nom/autopoint $SCER/$nom/sac/usr/bin/autopoint
 }

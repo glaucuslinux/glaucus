@@ -1,0 +1,82 @@
+#! /bin/sh -
+#
+# autopoint:  Copies standard gettext infrastructure (lightweight version).
+#
+# Alternative version for Dragora GNU/Linux-Libre.
+# Under the terms of the Apache License version 2.
+
+PROGRAM="${0##*/}"
+
+# A parser function to extract the value of 'AC_CONFIG_AUX_DIR'
+
+aparse()
+{
+    inside='.*'
+    search='AC_CONFIG_AUX_DIR'
+    pre='([' stu='])'
+
+    export inside search pre stu
+ 
+    awk '#!/usr/bin/awk -f
+BEGIN {
+ npre = length( pre = ENVIRON[ "search" ] ENVIRON[ "pre" ] )
+ nstu = length( stu = ENVIRON[ "stu" ] )
+}
+function g( s ) { gsub(/./, "[&]", s); return s }
+ 
+match( $0, g( pre ) ENVIRON["inside"]  g( stu ) ) {
+ print substr( $0, RSTART + npre, RLENGTH -npre -nstu )
+}' "$@"
+
+    unset inside search pre 
+}
+
+# Default directory for gettext infrastructure
+DATADIR="${DATADIR:-/usr/share/gettext-tiny}"
+
+# Sanity checks
+
+if test ! -d "$DATADIR"
+then
+    echo "${PROGRAM}: ${DATADIR}: Internal directory does not exist." 1>&2
+    exit 1
+fi
+if test "$PWD" = / || test "$PWD" = "$DATADIR"
+then
+    echo "${PROGRAM}: Current working directory is $PWD (forbidden)" 1>&2
+    exit 1
+fi
+if test ! -e configure.ac
+then
+    echo "${PROGRAM}: cannot access configure.ac: No such file or directory" 1>&2
+    exit 1
+fi
+
+# Remove write permission for group and other
+umask 022
+
+mkdir -p -- m4 intl po
+
+for file in "${DATADIR}/m4"/*.m4
+do
+    cp -f -- "$file" m4/
+done
+unset file
+
+dirprefix="$(aparse configure.ac)"
+
+mkdir -p -- "$dirprefix"
+touch "${dirprefix}/config.rpath" ABOUT-NLS
+
+unset dirprefix
+
+for file in intl/Makefile.in po/Makefile.in.in
+do
+    cp -f "${DATADIR}/data/autopoint_Makefile.in" -- "$file"
+    chmod 644 -- "$file"
+done
+unset file
+
+cp -f "${DATADIR}/data/Makevars.template" po/Makevars.template
+chmod 644 po/Makevars.template
+

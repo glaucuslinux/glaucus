@@ -1,4 +1,4 @@
-# Copyright (c) 2019, Firas Khalil Khana
+# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 strip --strip-unneeded -v /usr/lib/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
