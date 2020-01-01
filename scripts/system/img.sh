@@ -6,6 +6,7 @@
 NAME=glaucus.img
 SIZE=2G
 LOOP=$(losetup -f)
+RSYNC='/usr/bin/rsync -vaHAXSx'
 
 cd /home/glaucus
 
@@ -28,7 +29,7 @@ mount $(printf $LOOP)p1 /mnt/loop
 rm -frv /mnt/loop/lost+found
 
 install -dv /mnt/loop/dev /mnt/loop/proc /mnt/loop/run /mnt/loop/sys
-$RSYNC bin boot etc root usr var /mnt/loop --delete
+$RSYNC boot etc root usr var /mnt/loop --delete
 
 install -dv /mnt/loop/boot/extlinux
 $RSYNC scripts/other/extlinux.conf /mnt/loop/boot/extlinux
