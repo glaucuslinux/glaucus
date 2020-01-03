@@ -47,3 +47,6 @@ https://github.com/NixOS/nixpkgs/issues/49071
 
 Be careful as CPPFLAGS isn't honored, but CFLAGS is!
 
+## System
+### Configure
+binutils enables plugins support by default

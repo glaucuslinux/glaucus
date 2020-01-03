@@ -6,7 +6,7 @@
 NAME=glaucus.img
 SIZE=2G
 LOOP=$(losetup -f)
-RSYNC='/usr/bin/rsync -vaHAXSx'
+RSYNC='/usr/bin/rsync -vah'
 
 cd /home/glaucus
 

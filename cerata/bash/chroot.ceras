@@ -11,7 +11,6 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  CFLAGS="$CFLAGSNOLTO" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \

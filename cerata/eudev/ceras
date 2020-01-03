@@ -1,0 +1,9 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=eudev
+ver=3.2.9
+url=https://github.com/gentoo/$nom/archive/v$ver.tar.gz
+lic=GPL-2.0-only

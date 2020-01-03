@@ -28,21 +28,5 @@ export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
 
-export GCSE='-fgcse-sm -fgcse-las'
-export GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
-export IPA='-fipa-pta'
-export IRA='-fira-loop-pressure'
-export LTO='-flto'
-export MARCH='-march=x86-64'
-export OPENMP='-fopenmp'
-export OPT='-Ofast'
-export OTHER='-fmerge-all-constants -fdevirtualize-at-ltrans -fvariable-expansion-in-unroller'
-export PGO='-ftracer -funroll-loops'
-export SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
-
-export CFLAGS="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
-export CFLAGSNOLTO="-pipe $OPENMP -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $PGO -s $MARCH"
-export CFLAGSNOOPENMP="-pipe -g0 $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $OTHER $LTO $PGO -s $MARCH"
+. $SCRD/flags
 export CPPFLAGS="-I$TOOL/include"
-export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"

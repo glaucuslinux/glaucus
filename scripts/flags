@@ -1,0 +1,32 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+COMMON='-fno-common'
+DEBUG='-g0'
+DEVIRT='-fdevirtualize-at-ltrans'
+EXPAND='-fvariable-expansion-in-unroller'
+GCSE='-fgcse-sm -fgcse-las'
+GRAPHITE='-fgraphite-identity -floop-nest-optimize -floop-parallelize-all'
+IPA='-fipa-pta'
+IRA='-fira-loop-pressure'
+LTO='-flto'
+MARCH='-march=x86-64'
+MERGE='-fmerge-all-constants'
+OPENMP='-fopenmp'
+OPT='-Ofast'
+PGO='-ftracer -funroll-loops'
+PIPE='-pipe'
+PLT='-fno-plt'
+SEMANTIC='-fno-semantic-interposition'
+SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
+STRIP='-s'
+
+SHARED="$DEBUG $OPT $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND"
+
+export CFLAGS="$PIPE $OPENMP $SHARED $LTO $PGO $STRIP $COMMON $PLT $MARCH"
+export CFLAGSNOCOMMON="$PIPE $OPENMP $SHARED $LTO $PGO $STRIP $PLT $MARCH"
+export CFLAGSNOCOMMONNOLTO="$PIPE $OPENMP $SHARED $PGO $STRIP $PLT $MARCH"
+export CFLAGSNOLTO="$PIPE $OPENMP $SHARED $PGO $STRIP $COMMON $PLT $MARCH"
+export CFLAGSNOOPENMP="$PIPE $SHARED $LTO $PGO $STRIP $COMMON $PLT $MARCH"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"

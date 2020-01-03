@@ -4,15 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
-  cd $SBLD/$nom
-  
-  $RSYNC $SRCD/$nom/$nom-$ver/man . --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom
+  cd $SSRC/$nom
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
-    --prefix=/usr
+  ./autogen.sh
+
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --disable-static
 }
 
 build_system() {
@@ -22,7 +25,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
-
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/awk
+    install-strip
 }
