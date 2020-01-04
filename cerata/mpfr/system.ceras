@@ -9,6 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
+  CFLAGS="$CFLAGSFINITE" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static

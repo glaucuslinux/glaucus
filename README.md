@@ -2,13 +2,14 @@
 src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
 height=256 width=256></p>
 
-glaucus is an independent, open-source, general-purpose, rolling-release Linux
-distribution built from scratch around the suckless philosophy without
-sacrificing convenience.
+glaucus is an independent, open-source, general-purpose, bleeding-edge, 
+rolling-release, source-based Linux® distribution based on musl libc and toybox
+built from scratch around the suckless philosophy without sacrificing
+convenience.
 
 ## Philosophy
 Optimized for performance and size, glaucus strives to be as fast and minimal as
-possible while remaining simple and most importantly convenient.
+possible while remaining clean, simple and most importantly convenient.
 
 ## History
 glaucus initially started out as a hobby project called snail, and has thus been
@@ -29,13 +30,16 @@ before further reading.
 
 ## Features
 * Independent
+* Open source
+* General purpose
+* Bleeding edge
+* Rolling release
+* Source based
 * Fast
 * Minimal
 * Clean
 * Simple
 * Convenient
-* Bleeding edge
-* Rolling release
 
 ## Architectures
 * x86-64
@@ -71,12 +75,13 @@ Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 glaucus is licensed under the Internet Systems Consortium (ISC) license.
 
 ## Dedication
-This project is dedicated to my lovely parents.
+This project is dedicated to my lovely family.
 
 ## Donate
 * [Patreon](https://www.patreon.com/glaucuslinux)
 * [Liberapay](https://liberapay.com/glaucuslinux)
 * [Ko-fi](https://ko-fi.com/glaucuslinux)
+* [PayPal](https://www.paypal.me/glaucuslinux)
 
 ## Mirrors
 * [GitHub](https://github.com/glaucuslinux/glaucus)

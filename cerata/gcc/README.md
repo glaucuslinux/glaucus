@@ -201,6 +201,18 @@ make[1]: Leaving directory '/temporary/system/builds/gcc'
 make: *** [Makefile:955: all] Error 2
 ```
 
+Doesn't build with `-flto -ffat-lto-objects`:
+```C
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: error: /tmp/libgcc_s.so.1.tmp.aFcKhf.ltrans0.ltrans.o: size of section .ctors is not multiple of address size
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: final link failed: bad value
+collect2: error: ld returned 1 exit status
+make[2]: *** [Makefile:992: libgcc_s.so] Error 1
+make[2]: Leaving directory '/temporary/system/builds/gcc/x86_64-pc-linux-musl/libgcc'
+make[1]: *** [Makefile:12331: all-target-libgcc] Error 2
+make[1]: Leaving directory '/temporary/system/builds/gcc'
+make: *** [Makefile:955: all] Error 2
+```
+
 Shouldn't be built with `-Ofast` or `-O3` for MPFR and ISL (other cerata will
 fail with symbols not being found in libstdc++).
 

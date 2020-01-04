@@ -113,6 +113,46 @@ for wrongly linking the resulting dynamic linker with the wrong libc.so, so
 that the dynamic linker it links to the resulting libc.so is located in the
 exact same location of the libc.so
 
+### Build
+Doesn't build with `-flto`:
+```C
+/sources/musl/musl-1.1.24/src/thread/pthread_create.c:210:1: warning: type of '__pthread_tsd_main' does not match original declaration [-Wlto-type-mismatch]
+  210 | weak_alias(dummy_tsd, __pthread_tsd_main);
+      | ^
+/sources/musl/musl-1.1.24/src/thread/pthread_key_create.c:4:7: note: array types have different bounds
+    4 | void *__pthread_tsd_main[PTHREAD_KEYS_MAX] = { 0 };
+      |       ^
+/sources/musl/musl-1.1.24/src/thread/pthread_key_create.c:4:7: note: '__pthread_tsd_main' was previously declared here
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: /tmp/libc.so.CLKaIL.ltrans0.ltrans.o: in function `_dlstart':
+<artificial>:(.text+0x12): undefined reference to `_dlstart_c'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:160: lib/libc.so] Error 1
+```
+
+Doesn't build with `-flto -ffat-lto-objects`:
+```C
+/sources/musl/musl-1.1.24/src/thread/pthread_create.c:210:1: warning: type of '__pthread_tsd_main' does not match original declaration [-Wlto-type-mismatch]
+  210 | weak_alias(dummy_tsd, __pthread_tsd_main);
+      | ^
+/sources/musl/musl-1.1.24/src/thread/pthread_key_create.c:4:7: note: array types have different bounds
+    4 | void *__pthread_tsd_main[PTHREAD_KEYS_MAX] = { 0 };
+      |       ^
+/sources/musl/musl-1.1.24/src/thread/pthread_key_create.c:4:7: note: '__pthread_tsd_main' was previously declared here
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: /tmp/libc.so.deGbKp.ltrans0.ltrans.o: in function `_dlstart':
+<artificial>:(.text+0x12): undefined reference to `_dlstart_c'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:160: lib/libc.so] Error 1
+```
+
+Doesn't build with `-mfpmath=both`:
+```C
+generic -Iobj/src/internal -I/sources/musl/musl-1.1.24/src/include -I/sources/musl/musl-1.1.24/src/internal -Iobj/include -I/sources/musl/musl-1.1.24/include  -pipe -fno-unwind-tables -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith -pipe -fopenmp -g0 -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fgcse-sm -fgcse-las -fira-loop-pressure -fipa-pta -fgraphite-identity -floop-nest-optimize -fmerge-all-constants -fdevirtualize-at-ltrans -fno-semantic-interposition -fvariable-expansion-in-unroller -ftracer -funroll-loops -s -fno-common -fno-plt -march=x86-64 -mtls-dialect=gnu2 -mfpmath=both -malign-data=cacheline -fPIC -c -o obj/src/math/__rem_pio2.lo /sources/musl/musl-1.1.24/src/math/__rem_pio2.c
+/sources/musl/musl-1.1.24/src/math/__rem_pio2.c:38:15: error: 'EPS' undeclared here (not in a function)
+   38 | toint   = 1.5/EPS,
+      |               ^~~
+make: *** [Makefile:157: obj/src/math/__rem_pio2.lo] Error 1
+```
+
 ### install
 
 we then create a symlink to the dyanimc linker called ldd (list dynamic

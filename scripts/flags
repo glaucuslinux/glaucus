@@ -16,6 +16,7 @@ IRA='-fira-loop-pressure'
 LTO='-flto'
 MARCH='-march=x86-64'
 MERGE='-fmerge-all-constants'
+O2='-O2'
 O3='-O3'
 OPENMP='-fopenmp'
 OFAST='-Ofast'
@@ -27,21 +28,25 @@ SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
 STRIP='-s'
 TLS='-mtls-dialect=gnu2'
 
-CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN"
+export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN"
 
 export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")"
+export CFLAGSFATNOFPMATH="$(printf -- "$CFLAGS\n" | sed -e "s/$LTO/& $FAT/" -e "s/$FPMATH //")"
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")"
-export CFLAGSFINITENOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$OFAST/& $FINITE/" -e "s/$LTO //")"
+export CFLAGSFINITENOLTO="$(printf -- "$CFLAGSFINITE\n" | sed "s/$LTO //")"
+
+export CFLAGSNOIPANOLTONOOFASTNOTLS="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //" -e "s/$OFAST/$O3/" -e "s/$TLS //")"
 
 export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")"
-export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$COMMON //" -e "s/$LTO //")"
+export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGSNOCOMMON\n" | sed "s/$LTO //")"
 
 export CFLAGSNOFPMATH="$(printf -- "$CFLAGS\n" | sed "s/$FPMATH //")"
-export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$FPMATH //" -e "s/$LTO //")"
+export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGSNOFPMATH\n" | sed "s/$LTO //")"
 
 export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")"
-export CFLAGSNOLTONOOFAST="$(printf -- "$CFLAGS\n" | sed -e "s/$LTO //" -e "s/$OFAST/$O3/")"
+export CFLAGSNOLTONOOFAST="$(printf -- "$CFLAGSNOLTO\n" | sed "s/$OFAST/$O3/")"
+export CFLAGSNOLTONOOFASTNOTLS="$(printf -- "$CFLAGSNOLTONOOFAST\n" | sed "s/$TLS //")"
 
 export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")"
 
