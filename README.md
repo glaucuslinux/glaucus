@@ -28,6 +28,7 @@ https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) page in the wiki
 before further reading.
 
 ## Features
+* Independent
 * Fast
 * Minimal
 * Clean

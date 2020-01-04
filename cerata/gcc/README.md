@@ -200,3 +200,23 @@ make[1]: *** [Makefile:12331: all-target-libgcc] Error 2
 make[1]: Leaving directory '/temporary/system/builds/gcc'
 make: *** [Makefile:955: all] Error 2
 ```
+
+Shouldn't be built with `-Ofast` or `-O3` for MPFR and ISL (other cerata will
+fail with symbols not being found in libstdc++).
+
+For example, lbzip2 errors when built with OFast/O3-built GCC (contents of
+config.log):
+```C
+Error relocating /usr/lib/libstdc++.so.6: _ZNSi6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsIwEE6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSi6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsIwEE6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSi6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsIwEE6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSi6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsIwEE6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSi6ignoreEl: symbol not found
+Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsIwEE6ignoreEl: symbol not found
+configure:4712: error: in `/temporary/system/builds/lbzip2':
+configure:4714: error: C compiler cannot create executables
+```

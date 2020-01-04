@@ -36,3 +36,23 @@ Still needs to get rid of the long path in `ldd libmpfr.so`
 LTO couldn't be enabled on the shared version of mpfr, as it would result
 in the following error when running configure:
 error: --enable-lto can only work in static mode (--disable-shared)
+
+## System
+### Configure
+MPFR built with Ofast only (without `-fno-finite-math-only` causes problems with
+packages using GCC such as lbzip2 not being able to use the libstdcxx correctly
+due to missing symbols.
+
+From the system build log:
+```C
+configure: WARNING: The test NAN != NAN is false. The probable reason is that
+configure: WARNING: your compiler optimizes floating-point expressions in an
+configure: WARNING: unsafe way because some option, such as -ffast-math or
+configure: WARNING: -fast (depending on the compiler), has been used.  You
+configure: WARNING: should NOT use such an option, otherwise MPFR functions
+configure: WARNING: such as mpfr_get_d and mpfr_set_d may return incorrect
+configure: WARNING: results on special FP numbers (e.g. NaN or signed zeros).
+configure: WARNING: If you did not use such an option, please send us a bug
+configure: WARNING: report so that we can try to find a workaround for your
+configure: WARNING: platform and/or document the behavior.
+```

@@ -10,7 +10,6 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  CFLAGS="$CFLAGSNOLTO" \
   ./configure \
     --prefix=$TOOL \
     --target=$TUPL
