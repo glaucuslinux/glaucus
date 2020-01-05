@@ -3,7 +3,7 @@ src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
 height=256 width=256></p>
 
 glaucus is an independent, open-source, general-purpose, bleeding-edge, 
-rolling-release, source-based Linux® distribution based on musl libc and toybox
+rolling-release, source-based Linux® distribution based on musl libc and toybox,
 built from scratch around the suckless philosophy without sacrificing
 convenience.
 
