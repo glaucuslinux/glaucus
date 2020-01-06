@@ -588,3 +588,5 @@ cc -o mandoc  eqn_html.o html.o man_html.o mdoc_html.o roff_html.o tbl_html.o  e
 collect2: error: ld returned 1 exit status
 make: *** [Makefile:518: mandoc] Error 1
 ```
+
+But it builds fine with `-flto -ffat-lto-objects`.

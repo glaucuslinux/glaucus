@@ -29,12 +29,6 @@ https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) page in the wiki
 before further reading.
 
 ## Features
-* Independent
-* Open source
-* General purpose
-* Bleeding edge
-* Rolling release
-* Source based
 * Fast
 * Minimal
 * Clean

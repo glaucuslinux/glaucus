@@ -13,7 +13,7 @@ configure_system() {
 OSNAME=glaucus
 PREFIX=/usr
 AR=$AR
-CFLAGS='$CFLAGSNOCOMMONNOLTO'\n" > configure.local
+CFLAGS='$CFLAGSFATNOCOMMON'\n" > configure.local
 
   ./configure
   

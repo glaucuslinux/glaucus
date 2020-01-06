@@ -9,6 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
+  CFLAGS="$CFLAGSNOLTONOOPENMPNOPLT" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \

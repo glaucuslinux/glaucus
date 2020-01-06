@@ -18,8 +18,8 @@ MARCH='-march=x86-64'
 MERGE='-fmerge-all-constants'
 O2='-O2'
 O3='-O3'
-OPENMP='-fopenmp'
 OFAST='-Ofast'
+OPENMP='-fopenmp'
 PGO='-ftracer -funroll-loops'
 PIPE='-pipe'
 PLT='-fno-plt'
@@ -31,7 +31,7 @@ TLS='-mtls-dialect=gnu2'
 export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN"
 
 export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")"
-export CFLAGSFATNOFPMATH="$(printf -- "$CFLAGS\n" | sed -e "s/$LTO/& $FAT/" -e "s/$FPMATH //")"
+export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGS\n" | sed -e "s/$LTO/& $FAT/" -e "s/$COMMON //")"
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")"
 export CFLAGSFINITENOLTO="$(printf -- "$CFLAGSFINITE\n" | sed "s/$LTO //")"
@@ -47,6 +47,7 @@ export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGSNOFPMATH\n" | sed "s/$LTO //")"
 export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")"
 export CFLAGSNOLTONOOFAST="$(printf -- "$CFLAGSNOLTO\n" | sed "s/$OFAST/$O3/")"
 export CFLAGSNOLTONOOFASTNOTLS="$(printf -- "$CFLAGSNOLTONOOFAST\n" | sed "s/$TLS //")"
+export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")"
 
 export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")"
 
