@@ -54,3 +54,5 @@ export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")"
 export CXXFLAGS="$CFLAGS"
 
 export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"
+
+export LDFLAGSNOOPENMP="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGSNOOPENMP"
