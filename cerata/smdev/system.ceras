@@ -8,7 +8,7 @@ prepare_system() {
   $RSYNC $CERD/$nom/config.h $SSRC/$nom --delete
   cd $SSRC/$nom
 
-  sed -e '/types/a #include <sys/sysmacros.h>' \
+  sed '/types/a #include <sys/sysmacros.h>' \
     -i $nom.c
 
   patch -p1 -i $CERD/$nom/patches/aur/scan_all.patch
@@ -16,7 +16,7 @@ prepare_system() {
 
 configure_system() {
   sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
-    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGS -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
+    -e "s/CFLAGS   = .*/CFLAGS = $CFLAGSFAT -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
     -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
 }
