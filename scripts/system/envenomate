@@ -28,7 +28,7 @@ envenomate isl
 envenomate attr
 envenomate acl
 envenomate shadow
-#envenomate gcc
+envenomate gcc
 envenomate lbzip2
 envenomate pkgconf
 envenomate netbsd-curses

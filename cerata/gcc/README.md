@@ -203,6 +203,22 @@ make: *** [Makefile:955: all] Error 2
 
 Doesn't build with `-flto -ffat-lto-objects`:
 ```C
+{ /temporary/system/builds/gcc/./gcc/nm -pg  _muldi3_s.o _negdi2_s.o _lshrdi3_s.o _ashldi3_s.o _ashrdi3_s.o _cmpdi2_s.o _ucmpdi2_s.o _clear_cache_s.o _trampoline_s.o __main_s.o _absvsi2_s.o _absvdi2_s.o _addvsi3_s.o _addvdi3_s.o _subvsi3_s.o _subvdi3_s.o _mulvsi3_s.o _mulvdi3_s.o _negvsi2_s.o _negvdi2_s.o _ctors_s.o _ffssi2_s.o _ffsdi2_s.o _clz_s.o _clzsi2_s.o _clzdi2_s.o _ctzsi2_s.o _ctzdi2_s.o _popcount_tab_s.o _popcountsi2_s.o _popcountdi2_s.o _paritysi2_s.o _paritydi2_s.o _powisf2_s.o _powidf2_s.o _powixf2_s.o _mulhc3_s.o _mulsc3_s.o _muldc3_s.o _mulxc3_s.o _divhc3_s.o _divsc3_s.o _divdc3_s.o _divxc3_s.o _bswapsi2_s.o _bswapdi2_s.o _clrsbsi2_s.o _clrsbdi2_s.o _fixunssfsi_s.o _fixunsdfsi_s.o _fixunsxfsi_s.o _fixsfdi_s.o _fixdfdi_s.o _fixxfdi_s.o _fixunssfdi_s.o _fixunsdfdi_s.o _fixunsxfdi_s.o _floatdisf_s.o _floatdidf_s.o _floatdixf_s.o _floatundisf_s.o _floatundidf_s.o _floatundixf_s.o _divdi3_s.o _moddi3_s.o _divmoddi4_s.o _udivdi3_s.o _umoddi3_s.o _udivmoddi4_s.o _udiv_w_sdiv_s.o sfp-exceptions_s.o addtf3_s.o divtf3_s.o multf3_s.o negtf2_s.o subtf3_s.o unordtf2_s.o fixtfsi_s.o fixunstfsi_s.o floatsitf_s.o floatunsitf_s.o fixtfdi_s.o fixunstfdi_s.o floatditf_s.o floatunditf_s.o fixtfti_s.o fixunstfti_s.o floattitf_s.o floatuntitf_s.o extendsftf2_s.o extenddftf2_s.o extendxftf2_s.o trunctfsf2_s.o trunctfdf2_s.o trunctfxf2_s.o getf2_s.o letf2_s.o eqtf2_s.o _divtc3_s.o _multc3_s.o _powitf2_s.o enable-execute-stack_s.o unwind-dw2_s.o unwind-dw2-fde-dip_s.o unwind-sjlj_s.o unwind-c_s.o emutls_s.o emutls_s.o; echo %%; \
+  cat libgcc.map.in; \
+} | mawk -f /temporary/system/sources/gcc/libgcc/mkmap-symver.awk  > tmp-libgcc.map
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _clear_cache_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _trampoline_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: __main_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _ctors_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _mulhc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _mulsc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _muldc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _mulxc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _divhc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _divsc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _divdc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: _divxc3_s.o: no symbols
+/toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/nm: unwind-sjlj_s.o: no symbols
 /toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: error: /tmp/libgcc_s.so.1.tmp.aFcKhf.ltrans0.ltrans.o: size of section .ctors is not multiple of address size
 /toolchain/lib/gcc/x86_64-pc-linux-musl/9.2.0/../../../../x86_64-pc-linux-musl/bin/ld: final link failed: bad value
 collect2: error: ld returned 1 exit status
@@ -232,3 +248,39 @@ Error relocating /usr/lib/libstdc++.so.6: _ZNSt13basic_istreamIwSt11char_traitsI
 configure:4712: error: in `/temporary/system/builds/lbzip2':
 configure:4714: error: C compiler cannot create executables
 ```
+
+Doesn't build with ``:
+```C
+during RTL pass: sched2
+/temporary/system/sources/gcc/libgcc/libgcc2.c: In function '__lshrti3':
+/temporary/system/sources/gcc/libgcc/libgcc2.c:427:1: internal compiler error: Segmentation fault
+  427 | }
+      | ^
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <https://gcc.gnu.org/bugs/> for instructions.
+make[2]: *** [Makefile:498: _lshrdi3.o] Error 1
+make[2]: Leaving directory '/temporary/system/builds/gcc/x86_64-pc-linux-musl/libgcc'
+make[1]: *** [Makefile:12331: all-target-libgcc] Error 2
+make[1]: Leaving directory '/temporary/system/builds/gcc'
+make: *** [Makefile:955: all] Error 2
+```
+
+Doesn't build with `-flto`.
+Doesn't build with `-flto -ffat-lto-objects`
+Builds without `-flto` but is unable to build `lbzip2` due to missing symbols in libstdc++
+
+GCC builds with CFLAGS=$CFLAGSNOLTO and CXXFLAGS=$CFLAGSFAT, but it fails to build lbzip2
+when built like that
+
+GCC builds with CFLAGS=$CFLAGSNOLTO and CXXFLAGS=$CFLAGSFATNOOFAST but fails to build
+lbzip2
+
+GCC builds with CFLAGS and CXXFLAGS equal to $CFLAGSNOIPANOLTONOTLS and it builds lbzip2
+
+GCC builds with CFLAGS=$CFLAGSNOIPANOLTONOTLS and CXXFLAGS=$CFLAGSFATNOIPANOTLS but it
+doesn't build lbzip2
+
+GCC builds with CFLAGS=$CFLAGSNOIPANOLTO and CXXFLAGS=$CFLAGSNOIPANOLTO and builds lbzip2
+
+GCC buils with CFLAGS=$CFLAGSNOLTO and CXXFLAGS=$CFLAGSNOIPANOLTO and builds lbzip2 (best)

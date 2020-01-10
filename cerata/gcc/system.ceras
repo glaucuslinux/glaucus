@@ -31,8 +31,8 @@ prepare_system() {
 }
 
 configure_system() {
-  CFLAGS="$CFLAGSNOIPANOLTONOOFASTNOTLS" \
-  CXXFLAGS="$CFLAGSNOIPANOLTONOOFASTNOTLS" \
+  CFLAGS="$CFLAGSNOLTO" \
+  CXXFLAGS="$CFLAGSNOIPANOLTO" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-multilib \
