@@ -11,7 +11,7 @@ $SCRD/check attr
 $SCRD/check acl
 $SCRD/check shadow
 $SCRD/check pkgconf
-$SCRD/check libcap-ng
+$SCRD/check libcap
 $SCRD/check psmisc
 $SCRD/check flex
 $SCRD/check slibtool
@@ -50,7 +50,5 @@ $SCRD/check util-linux
 $SCRD/check e2fsprogs
 $SCRD/check s6-linux-init
 $SCRD/check s6-rc
-$SCRD/check smdev
-$SCRD/check nldev
-$SCRD/check nlmon
+$SCRD/check eudev
 $SCRD/check s6-boot-scripts

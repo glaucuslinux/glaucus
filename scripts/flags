@@ -31,27 +31,17 @@ TLS='-mtls-dialect=gnu2'
 export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN"
 
 export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")"
-export CFLAGSFATFINITE="$(printf -- "$CFLAGSFAT\n" | sed "s/$OFAST/& $FINITE/")"
 export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT\n" | sed "s/$COMMON //")"
-export CFLAGSFATNOOFAST="$(printf -- "$CFLAGSFAT\n" | sed "s/$OFAST/$O3/")"
-export CFLAGSFATNOIPANOTLS="$(printf -- "$CFLAGSFAT\n" | sed -e "s/$IPA //" -e "s/$TLS //")"
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")"
-export CFLAGSFINITENOLTO="$(printf -- "$CFLAGSFINITE\n" | sed "s/$LTO //")"
 
 export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //")"
-export CFLAGSNOIPANOLTONOTLS="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //" -e "s/$TLS //")"
-export CFLAGSNOIPANOLTONOOFASTNOTLS="$(printf -- "$CFLAGSNOIPANOLTONOTLS\n" | sed "s/$OFAST/$O3/")"
 
 export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")"
-export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGSNOCOMMON\n" | sed "s/$LTO //")"
 
-export CFLAGSNOFPMATH="$(printf -- "$CFLAGS\n" | sed "s/$FPMATH //")"
-export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGSNOFPMATH\n" | sed "s/$LTO //")"
+export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$FPMATH //" -e "s/$LTO //")"
 
 export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")"
-export CFLAGSNOLTONOOFAST="$(printf -- "$CFLAGSNOLTO\n" | sed "s/$OFAST/$O3/")"
-export CFLAGSNOLTONOOFASTNOTLS="$(printf -- "$CFLAGSNOLTONOOFAST\n" | sed "s/$TLS //")"
 export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")"
 
 export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")"

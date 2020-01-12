@@ -12,5 +12,5 @@ $SCRD/log $SLOG $SSCR/construct
 
 $SCRD/log $SLOG $SSCR/envenomate
 
-#. $SSCR/configure
+. $SSCR/configure
 #. $SSCR/clean

@@ -9,8 +9,6 @@ prepare_system() {
 }
 
 configure_system() {
-  ./autogen.sh
-
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
