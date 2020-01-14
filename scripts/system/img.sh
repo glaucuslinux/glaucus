@@ -4,9 +4,9 @@
 # Distributed under the terms of the ISC License
 
 NAME=glaucus.img
-SIZE=2G
+SIZE=1G
 LOOP=$(losetup -f)
-RSYNC='/usr/bin/rsync -vah'
+RSYNC='/usr/bin/rsync -vaHAXSx'
 
 cd /home/glaucus
 
