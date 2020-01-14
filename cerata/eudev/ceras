@@ -6,4 +6,5 @@
 nom=eudev
 ver=3.2.9
 url=https://dev.gentoo.org/~blueness/$nom/$nom-$ver.tar.gz
+sum=09e49fff9848e72507ef14b9d4cfab2d1443f16d5b3d54d2b0e4f6b04c471ca41f09200cb8772e9f850f0dc4a574a7ec7eede7ce11cbabda65e210a89287531f
 lic=GPL-2.0-only
