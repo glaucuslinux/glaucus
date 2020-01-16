@@ -38,7 +38,6 @@ prepare_system() {
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-mm-ksm-introduce-ksm_madvise_merge-helper.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0002-mm-ksm-introduce-ksm_madvise_unmerge-helper.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0003-mm-ksm-proc-introduce-remote-merge.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0009-x86-mce-Fix-possibly-incorrect-severity-calculation-.patch
 }
 
 configure_system() {
