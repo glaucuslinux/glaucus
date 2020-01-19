@@ -31,7 +31,7 @@ envenomate() {
 #envenomate gcc
 #envenomate lbzip2
 #envenomate pkgconf
-#envenomate netbsd-curses
+envenomate netbsd-curses
 #envenomate libcap
 #envenomate sed
 #envenomate psmisc
