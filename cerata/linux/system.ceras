@@ -30,6 +30,8 @@ prepare_system() {
   patch -p1 -i $CERD/$nom/patches/dolohow/uksm-5.4.patch
 
   patch -p1 -i $CERD/$nom/patches/graysky2/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch
+  
+  patch -p1 -i $CERD/$nom/patches/glaucus/0001-libarchive-bsdtar-compatibility.patch
 
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0003-block-set-rq_affinity-2-for-full-multithreading-I-O-.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-cpu-5.4-make-O3-always-available.patch
