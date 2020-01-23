@@ -8,6 +8,9 @@ built from scratch around the suckless philosophy without sacrificing
 convenience.
 
 ## Philosophy
+
+[![Join the chat at https://gitter.im/glaucuslinux/glaucus](https://badges.gitter.im/glaucuslinux/glaucus.svg)](https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Optimized for performance and size, glaucus strives to be as fast and minimal as
 possible while remaining clean, simple and most importantly convenient.
 
