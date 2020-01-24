@@ -26,7 +26,7 @@ prepare_system() {
   patch -p1 -i $CERD/$nom/patches/clear/0124-locking-rwsem-spin-faster.patch
   patch -p1 -i $CERD/$nom/patches/clear/0125-ata-libahci-ignore-staggered-spin-up.patch
   patch -p1 -i $CERD/$nom/patches/clear/0131-nvme-workaround.patch
-
+  
   patch -p1 -i $CERD/$nom/patches/dolohow/uksm-5.4.patch
 
   patch -p1 -i $CERD/$nom/patches/graysky2/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch
@@ -37,9 +37,6 @@ prepare_system() {
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-cpu-5.4-make-O3-always-available.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-futex-Add-support-for-multiple-keys-at-the-same-time.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-mm-ksm-introduce-ksm_madvise_merge-helper.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0002-mm-ksm-introduce-ksm_madvise_unmerge-helper.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0003-mm-ksm-proc-introduce-remote-merge.patch
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-net-sched-allow-configuring-cake-qdisc-as-default.patch
 }
 
