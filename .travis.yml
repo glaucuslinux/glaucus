@@ -21,7 +21,4 @@ script:
   - export CERD=cerata
   - export SCRD=scripts
   - export SRCD=sources
-  - sudo dash $SCRD/toolchain/cross/check
-  - sudo dash $SCRD/toolchain/native/check
   - sudo dash $SCRD/chroot/check
-  - sudo dash $SCRD/system/check
