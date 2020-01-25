@@ -4,22 +4,22 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
 configure_system() {
   sed 's/groups$(EXEEXT) //' \
-    -i src/Makefile.in
+    -i src/Makefile.in &&
 
-  find man -name Makefile.in -exec sed 's/groups\.1 / /' -i {} \;
+  find man -name Makefile.in -exec sed 's/groups\.1 / /' -i {} \; &&
 
   sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
     -e 's@/var/spool/mail@/var/mail@' \
-    -i etc/login.defs
+    -i etc/login.defs &&
 
   sed 's/1000/999/' \
-    -i etc/useradd
+    -i etc/useradd &&
 
   ./configure \
     --prefix=/usr \
@@ -40,7 +40,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
 
   sed 's/yes/no/' \
     -i $SCER/$nom/sac/etc/default/useradd

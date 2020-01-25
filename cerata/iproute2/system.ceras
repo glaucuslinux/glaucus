@@ -4,18 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
 configure_system() {
   sed /ARPD/d \
-    -i Makefile
+    -i Makefile &&
 
-  rm -fv man/man8/arpd.8
+  rm -fv man/man8/arpd.8 &&
 
   sed 's/\/usr\/sbin/\/usr\/bin/' \
-    -i misc/ss.c
+    -i misc/ss.c &&
 
   sed 's/.m_ipt.o//' \
     -i tc/Makefile

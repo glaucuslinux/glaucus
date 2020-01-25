@@ -1,25 +1,27 @@
 #!/usr/bin/dash -e
 
-DEST=temporary/system/iso
-RSYNC='/usr/bin/rsync -vaHAXSx'
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
 
-cd /home/glaucus
+DEST=temporary/system/iso &&
+RSYNC='/usr/bin/rsync -vaHAXSx' &&
 
-install -dv $DEST
+cd /home/glaucus &&
 
-$RSYNC boot etc root usr var $DEST --delete
+install -dv $DEST &&
 
-install -dv $DEST/images $DEST/isolinux $DEST/kernel
+$RSYNC boot etc root usr var $DEST --delete &&
+
+install -dv $DEST/images $DEST/isolinux $DEST/kernel &&
 
 $RSYNC /usr/lib/syslinux/bios/isolinux.bin /usr/lib/syslinux/bios/ldlinux.c32 \
-  $DEST/isolinux --delete
-$RSYNC /usr/lib/syslinux/bios/memdisk $DEST/isolinux/kernel --delete
+  $DEST/isolinux --delete &&
+$RSYNC /usr/lib/syslinux/bios/memdisk $DEST/isolinux/kernel --delete &&
 
-cat > $DEST/isolinux/isolinux.cfg << EOF
-prompt 0
+printf 'prompt 0
 default glaucus
 label glaucus
   kernel /boot/vmlinuz
-  append root=/dev/sr0 rootfstype=iso9660 init=/etc/s6/bin/init ro
-EOF
+  append root=/dev/sr0 rootfstype=iso9660 init=/etc/s6/bin/init ro' > $DEST/isolinux/isolinux.cfg &&
+
 mkisofs -o glaucus.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table $DEST

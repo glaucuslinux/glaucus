@@ -1,53 +1,53 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-ALIGN='-malign-data=cacheline'
-COMMON='-fno-common'
-DEBUG='-g0'
-DEVIRT='-fdevirtualize-at-ltrans'
-EXPAND='-fvariable-expansion-in-unroller'
-FAT='-ffat-lto-objects'
-FINITE='-fno-finite-math-only'
-FPMATH='-mfpmath=both'
-GCSE='-fgcse-sm -fgcse-las'
-GRAPHITE='-fgraphite-identity -floop-nest-optimize'
-IPA='-fipa-pta'
-IRA='-fira-loop-pressure'
-LTO='-flto'
-MARCH='-march=x86-64'
-MERGE='-fmerge-all-constants'
-O2='-O2'
-O3='-O3'
-OFAST='-Ofast'
-OPENMP='-fopenmp'
-PGO='-ftracer -funroll-loops'
-PIPE='-pipe'
-PLT='-fno-plt'
-SEMANTIC='-fno-semantic-interposition'
-SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves'
-STRIP='-s'
-TLS='-mtls-dialect=gnu2'
+ALIGN='-malign-data=cacheline' &&
+COMMON='-fno-common' &&
+DEBUG='-g0' &&
+DEVIRT='-fdevirtualize-at-ltrans' &&
+EXPAND='-fvariable-expansion-in-unroller' &&
+FAT='-ffat-lto-objects' &&
+FINITE='-fno-finite-math-only' &&
+FPMATH='-mfpmath=both' &&
+GCSE='-fgcse-sm -fgcse-las' &&
+GRAPHITE='-fgraphite-identity -floop-nest-optimize' &&
+IPA='-fipa-pta' &&
+IRA='-fira-loop-pressure' &&
+LTO='-flto' &&
+MARCH='-march=x86-64' &&
+MERGE='-fmerge-all-constants' &&
+O2='-O2' &&
+O3='-O3' &&
+OFAST='-Ofast' &&
+OPENMP='-fopenmp' &&
+PGO='-ftracer -funroll-loops' &&
+PIPE='-pipe' &&
+PLT='-fno-plt' &&
+SEMANTIC='-fno-semantic-interposition' &&
+SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves' &&
+STRIP='-s' &&
+TLS='-mtls-dialect=gnu2' &&
 
-export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN"
+export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN" &&
 
-export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")"
-export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT\n" | sed "s/$COMMON //")"
+export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")" &&
+export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT\n" | sed "s/$COMMON //")" &&
 
-export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")"
+export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")" &&
 
-export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //")"
+export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
 
-export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")"
+export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")" &&
 
-export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$FPMATH //" -e "s/$LTO //")"
+export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$FPMATH //" -e "s/$LTO //")" &&
 
-export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")"
-export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")"
+export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")" &&
+export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")" &&
 
-export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")"
+export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")" &&
 
-export CXXFLAGS="$CFLAGS"
+export CXXFLAGS="$CFLAGS" &&
 
-export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS"
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS" &&
 
 export LDFLAGSNOOPENMP="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGSNOOPENMP"

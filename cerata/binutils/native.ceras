@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_native() {
-  install -dv $NBLD/$nom
+  install -dv $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
@@ -28,14 +28,14 @@ build_native() {
 
 install_native() {
   make \
-    install-strip
+    install-strip &&
 
   make \
-    -C ld clean
+    -C ld clean &&
 
   make \
     LIB_PATH=/usr/lib \
-    -C ld
+    -C ld &&
 
   $RSYNC ld/ld-new $TOOL/bin
 }

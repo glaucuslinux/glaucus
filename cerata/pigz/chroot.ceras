@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
 }
 
@@ -19,12 +19,12 @@ build_chroot() {
 }
 
 install_chroot() {
-  $RSYNC $nom $TOOL/bin
+  $RSYNC $nom $TOOL/bin &&
 
-  ln -fsv $nom $TOOL/bin/un$nom
+  ln -fsv $nom $TOOL/bin/un$nom &&
   
-  ln -fsv $nom $TOOL/bin/gzip
-  ln -fsv $nom $TOOL/bin/gunzip
-  ln -fsv $nom $TOOL/bin/gzcat
+  ln -fsv $nom $TOOL/bin/gzip &&
+  ln -fsv $nom $TOOL/bin/gunzip &&
+  ln -fsv $nom $TOOL/bin/gzcat &&
   ln -fsv $nom $TOOL/bin/zcat
 }

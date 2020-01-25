@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
-  cd $SBLD/$nom
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom &&
 
   install -dv /var/lib/hwclock
 }
@@ -33,7 +33,7 @@ configure_system() {
     --enable-usrdir-path \
     --without-systemd \
     --without-systemdsystemunitdir \
-    --without-python
+    --without-python &&
 
   sed 's/${exec_prefix}\/sbin/\/usr\/bin/' \
     -i Makefile

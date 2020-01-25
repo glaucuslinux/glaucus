@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  install -dv $CBLD/$nom
-  cd $CBLD/$nom
+  install -dv $CBLD/$nom &&
+  cd $CBLD/$nom &&
   
   $RSYNC $SRCD/$nom/$nom-$ver/man . --delete
 }
@@ -22,7 +22,7 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
+    install &&
 
   ln -fsv $nom $TOOL/bin/awk
 }

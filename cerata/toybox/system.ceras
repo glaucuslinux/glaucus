@@ -4,15 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
   
   sed 's/%F/%b &/' \
     -i toys/posix/ls.c
 }
 
 configure_system() {
-  $RSYNC $CERD/$nom/system.config .config
+  $RSYNC $CERD/$nom/system.config .config &&
 
   scripts/genconfig.sh
 }
@@ -22,9 +22,9 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/usr/bin
+  install -dv $SCER/$nom/sac/usr/bin &&
 
-  $RSYNC $nom $SCER/$nom/sac/usr/bin
+  $RSYNC $nom $SCER/$nom/sac/usr/bin &&
 
   for u in $(./$nom); do
     ln -fsv $nom $SCER/$nom/sac/usr/bin/$u

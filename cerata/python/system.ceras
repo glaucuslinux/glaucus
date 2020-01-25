@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -29,8 +29,8 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
 
-  ln -fsv python3 $SCER/$nom/sac/usr/bin/$nom
+  ln -fsv python3 $SCER/$nom/sac/usr/bin/$nom &&
   ln -fsv pip3.8 $SCER/$nom/sac/usr/bin/pip3
 }

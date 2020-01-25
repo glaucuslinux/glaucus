@@ -2,21 +2,21 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys
+  install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys &&
 
 sudo \
-  mknod -m 600 $GLAD/dev/console c 5 1
+  mknod -m 600 $GLAD/dev/console c 5 1 &&
 sudo \
-  mknod -m 666 $GLAD/dev/null c 1 3
+  mknod -m 666 $GLAD/dev/null c 1 3 &&
 
 sudo \
-  mount -vB /dev $GLAD/dev
+  mount -vB /dev $GLAD/dev &&
 
 sudo \
-  mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts
+  mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts &&
 sudo \
-  mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc
+  mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc &&
 sudo \
-  mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys
+  mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys &&
 sudo \
   mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run

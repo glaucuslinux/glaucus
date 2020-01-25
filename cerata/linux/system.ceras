@@ -4,48 +4,48 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
 
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
 
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
 
   make \
-    mrproper
+    mrproper &&
 
-  patch -p1 -i $CERD/$nom/patches/clear/0104-pci-pme-wakeups.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0105-ksm-wakeups.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0106-intel_idle-tweak-cpuidle-cstates.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0108-smpboot-reuse-timer-calibration.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0110-Initialize-ata-before-graphics.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0111-give-rdrand-some-credit.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0113-kernel-time-reduce-ntp-wakeups.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0121-use-lfence-instead-of-rep-and-nop.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0122-do-accept-in-LIFO-order-for-cache-efficiency.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0124-locking-rwsem-spin-faster.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0125-ata-libahci-ignore-staggered-spin-up.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0131-nvme-workaround.patch
+  patch -p1 -i $CERD/$nom/patches/clear/0104-pci-pme-wakeups.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0105-ksm-wakeups.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0106-intel_idle-tweak-cpuidle-cstates.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0108-smpboot-reuse-timer-calibration.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0110-Initialize-ata-before-graphics.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0111-give-rdrand-some-credit.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0113-kernel-time-reduce-ntp-wakeups.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0121-use-lfence-instead-of-rep-and-nop.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0122-do-accept-in-LIFO-order-for-cache-efficiency.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0124-locking-rwsem-spin-faster.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0125-ata-libahci-ignore-staggered-spin-up.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0131-nvme-workaround.patch &&
   
-  patch -p1 -i $CERD/$nom/patches/dolohow/uksm-5.4.patch
+  patch -p1 -i $CERD/$nom/patches/dolohow/uksm-5.4.patch &&
 
-  patch -p1 -i $CERD/$nom/patches/graysky2/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch
+  patch -p1 -i $CERD/$nom/patches/graysky2/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch &&
   
-  patch -p1 -i $CERD/$nom/patches/glaucus/0001-libarchive-bsdtar-compatibility.patch
+  patch -p1 -i $CERD/$nom/patches/glaucus/0001-libarchive-bsdtar-compatibility.patch &&
 
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0003-block-set-rq_affinity-2-for-full-multithreading-I-O-.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-cpu-5.4-make-O3-always-available.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-futex-Add-support-for-multiple-keys-at-the-same-time.patch
-  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch
+  patch -p1 -i $CERD/$nom/patches/sirlucjan/0003-block-set-rq_affinity-2-for-full-multithreading-I-O-.patch &&
+  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-cpu-5.4-make-O3-always-available.patch &&
+  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-futex-Add-support-for-multiple-keys-at-the-same-time.patch &&
+  patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch &&
   patch -p1 -i $CERD/$nom/patches/sirlucjan/0001-net-sched-allow-configuring-cake-qdisc-as-default.patch
 }
 
 configure_system() {
-  $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config
+  $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
 
   make \
     O=$SBLD/$nom \
-    oldconfig
+    oldconfig &&
 
   make \
     O=$SBLD/$nom \
@@ -58,8 +58,8 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/boot
+  install -dv $SCER/$nom/sac/boot &&
 
-  $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz
+  $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz &&
   $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot
 }

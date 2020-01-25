@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
@@ -23,7 +23,7 @@ install_system() {
     prefix=/usr \
     SBINDIR=/usr/bin \
     LIBDIR=/usr/lib \
-    install
+    install &&
 
   chmod -v 755 $SCER/$nom/sac/usr/lib/$nom.so.$ver
 }

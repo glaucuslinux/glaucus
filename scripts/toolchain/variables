@@ -1,24 +1,24 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export ARCH=x86_64
-export TUPL=$ARCH-pc-linux-musl
+export ARCH='x86_64' &&
+export TUPL="$ARCH-pc-linux-musl" &&
 
-export GLAD=/home/glaucus
-export CERD=$GLAD/cerata
-export SCRD=$GLAD/scripts
-export SRCD=$GLAD/sources
+export GLAD='/home/glaucus' &&
+export CERD="$GLAD/cerata" &&
+export SCRD="$GLAD/scripts" &&
+export SRCD="$GLAD/sources" &&
 
-export TLOG=$GLAD/logs/toolchain
-export TSCR=$GLAD/scripts/toolchain
-export TTMP=$GLAD/temporary/toolchain
-export TSRC=$TTMP/sources
+export TLOG="$GLAD/logs/toolchain" &&
+export TSCR="$GLAD/scripts/toolchain" &&
+export TTMP="$GLAD/temporary/toolchain" &&
+export TSRC="$TTMP/sources" &&
 
-export GLAT=$GLAD/toolchain
-export TOOL=/toolchain
+export GLAT="$GLAD/toolchain" &&
+export TOOL='/toolchain' &&
 
-export PATH=$TOOL/bin:/usr/bin:/usr/bin/core_perl
+export PATH="$TOOL/bin:/usr/bin:/usr/bin/core_perl" &&
 
-export MAKEFLAGS=-j1
+export MAKEFLAGS='-j1' &&
 
 export RSYNC='/usr/bin/rsync -vaHAXSx'

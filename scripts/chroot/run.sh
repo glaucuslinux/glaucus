@@ -3,18 +3,18 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-. /home/glaucus/scripts/chroot/variables
-. $CSCR/check
-. $CSCR/prepare
+. /home/glaucus/scripts/chroot/variables &&
+. $CSCR/check &&
+. $CSCR/prepare &&
 
-$SCRD/log $CLOG $CSCR/construct
+$SCRD/log $CLOG $CSCR/construct &&
 
-#. $CSCR/clean
-#. $CSCR/root
-#. $CSCR/backup
-#. $CSCR/vkfs
-#. $CSCR/resolv
+. $CSCR/clean &&
+. $CSCR/root &&
+. $CSCR/backup &&
+. $CSCR/vkfs &&
+. $CSCR/resolv &&
 
-#. $SCRD/system/check
+. $SCRD/system/check &&
 
-#. $CSCR/chroot
+. $CSCR/chroot

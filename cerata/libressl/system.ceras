@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -13,7 +13,7 @@ configure_system() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --disable-static
+    --disable-static &&
 
   sed 's/tests //' \
     -i Makefile
@@ -26,7 +26,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
 
   chmod -v 755 $SCER/$nom/sac/usr/lib/libcrypto.so.45.0.5 \
     $SCER/$nom/sac/usr/lib/libssl.so.47.0.6 $SCER/$nom/sac/usr/lib/libtls.so.19.0.7

@@ -2,110 +2,93 @@
 # Distributed under the terms of the ISC License
 
 envenomate() {
-  install -dv $SCER/$1/sac $SCER/$1/venom
+  install -dv $SCER/$1/sac $SCER/$1/venom &&
 
-  . $CERD/$1/ceras
-  . $CERD/$nom/system.ceras
+  . $CERD/$1/ceras &&
+  . $CERD/$nom/system.ceras &&
   
-  prepare_system || { printf "system $nom prepare failed\n"; exit $?; }
-  configure_system || { printf "system $nom configure failed\n"; exit $?; }
-  build_system || { printf "system $nom build failed\n"; exit $?; }
-  install_system || { printf "system $nom install failed\n"; exit $?; }
+  prepare_system || $SCRD/exit system $nom prepare $? || return &&
+  configure_system || $SCRD/exit system $nom configure $? || return &&
+  build_system || $SCRD/exit system $nom build $? || return &&
+  install_system || $SCRD/exit system $nom install $? || return &&
 
   $RSYNC $SCER/$nom/sac/ /
 }
 
-envenomate zlib-ng
-envenomate file
-envenomate libedit
-envenomate m4
-envenomate bc
-#envenomate binutils
-#envenomate gmp
-#envenomate mpfr
-#envenomate mpc
-#envenomate isl
-#envenomate attr
-#envenomate acl
-#envenomate shadow
-#envenomate gcc
-envenomate lbzip2
-envenomate pkgconf
-envenomate netbsd-curses
-envenomate libcap
-envenomate sed
-envenomate psmisc
-envenomate bison
-envenomate flex
-envenomate grep
-envenomate oksh
-envenomate dash
-envenomate bash
-envenomate slibtool
-envenomate libtool
-envenomate gdbm
-envenomate gperf
-envenomate expat
-envenomate perl
-envenomate perl-xml-parser
-envenomate intltool
-envenomate autoconf
-envenomate automake
-envenomate xz
-envenomate kmod
-envenomate gettext-tiny
-envenomate libuargp
-envenomate musl-fts
-envenomate musl-obstack
-envenomate elfutils-libelf
-envenomate libffi
-envenomate libressl
-#envenomate python
-#envenomate samurai
-#envenomate meson
-envenomate toybox
-envenomate rsync
-envenomate diffutils
-envenomate mawk
-#envenomate grub
-envenomate pcre2
-#envenomate less
-envenomate pigz
-#envenomate iputils
-#envenomate iproute2
-envenomate kbd
-envenomate make
-envenomate patch
-#envenomate mandoc
-envenomate libarchive
-#envenomate texinfo
-#envenomate vim
-#envenomate skalibs
-#envenomate execline
-#envenomate s6
-#envenomate utmps
-#envenomate procps-ng
-#envenomate util-linux
-#envenomate e2fsprogs
-#envenomate s6-linux-init
-#envenomate s6-rc
-#envenomate eudev
-#envenomate s6-boot-scripts
+envenomate zlib-ng &&
+envenomate file &&
+envenomate libedit &&
+envenomate m4 &&
+envenomate bc &&
+#envenomate binutils &&
+#envenomate gmp &&
+#envenomate mpfr &&
+#envenomate mpc &&
+#envenomate isl &&
+#envenomate attr &&
+#envenomate acl &&
+#envenomate shadow &&
+#envenomate gcc &&
+envenomate lbzip2 &&
+envenomate pkgconf &&
+envenomate netbsd-curses &&
+envenomate libcap &&
+envenomate sed &&
+envenomate psmisc &&
+envenomate bison &&
+envenomate flex &&
+envenomate grep &&
+envenomate oksh &&
+envenomate dash &&
+envenomate bash &&
+envenomate slibtool &&
+envenomate libtool &&
+envenomate gdbm &&
+envenomate gperf &&
+envenomate expat &&
+envenomate perl &&
+envenomate perl-xml-parser &&
+envenomate intltool &&
+envenomate autoconf &&
+envenomate automake &&
+envenomate xz &&
+envenomate kmod &&
+envenomate gettext-tiny &&
+envenomate libuargp &&
+envenomate musl-fts &&
+envenomate musl-obstack &&
+envenomate elfutils-libelf &&
+envenomate libffi &&
+envenomate libressl &&
+#envenomate python &&
+#envenomate samurai &&
+#envenomate meson &&
+envenomate toybox &&
+envenomate rsync &&
+envenomate diffutils &&
+envenomate mawk &&
+#envenomate grub &&
+envenomate pcre2 &&
+#envenomate less &&
+envenomate pigz &&
+#envenomate iputils &&
+#envenomate iproute2 &&
+envenomate kbd &&
+envenomate make &&
+envenomate patch &&
+#envenomate mandoc &&
+envenomate libarchive &&
+#envenomate texinfo &&
+#envenomate vim &&
+#envenomate skalibs &&
+#envenomate execline &&
+#envenomate s6 &&
+#envenomate utmps &&
+#envenomate procps-ng &&
+#envenomate util-linux &&
+#envenomate e2fsprogs &&
+#envenomate s6-linux-init &&
+#envenomate s6-rc &&
+#envenomate eudev &&
+#envenomate s6-boot-scripts &&
 envenomate linux
-
-#envenomate re2c
-#envenomate sinit svc
-#envenomate sdhcp
-#envenomate opendoas
-#envenomate wayland wayland-protocols
-#envenomate jemalloc
-#envenomate bin86 lilo
-#envenomate s6-linux-utils s6-portable-utils nsss
-
-#envenomate libpng freetype_1 libelf-compat pcre glib harfbuzz freetype_2 json-c fontconfig
-#envenomate util-macros
-#envenomate xorgproto libXau libXdmcp xcbproto libxcb
-#envenomate libxtrans libX11 libXext libFS libICE libSM libXScrnSaver libXt libXmu libXpm libXaw libXfixes libXcomposite libXrender libXcursor libXdamage libfontenc libXfont libXft libXi libXinerama libXrandr libXRes libXtst libXv libXvMC libXxf86dga libXxf86vm libdmx libpciaccess libxkbfile libxshmfence
-#envenomate libxcb-util libxcb-image libxcb-keysyms libxcb-render-util libxcb-wm libxcb-cursor
-#envenomate pixman cairo
-#envenomate fribidi libdatrie libthai pango

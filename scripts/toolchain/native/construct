@@ -2,17 +2,17 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  . $CERD/$1/ceras
-  . $CERD/$nom/native.ceras
+  . $CERD/$1/ceras &&
+  . $CERD/$nom/native.ceras &&
   
-  prepare_native || { printf "native $nom prepare failed\n"; exit $?; }
-  configure_native || { printf "native $nom configure failed\n"; exit $?; }
-  build_native || { printf "native $nom build failed\n"; exit $?; }
-  install_native || { printf "native $nom install failed\n"; exit $?; }
+  prepare_native || $SCRD/exit native $nom prepare $? || return &&
+  configure_native || $SCRD/exit native $nom configure $? || return &&
+  build_native || $SCRD/exit native $nom build $? || return &&
+  install_native || $SCRD/exit native $nom install $? || return
 }
 
-construct linux-headers
-construct musl
-construct libstdc++-v3
-construct binutils
+construct linux-headers &&
+construct musl &&
+construct libstdc++-v3 &&
+construct binutils &&
 construct gcc

@@ -3,14 +3,13 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-PATH=/usr/bin
-CERD=/home/glaucus/cerata
+PATH=/usr/bin &&
+CERD=/home/glaucus/cerata &&
 
 if [ ! -d $CERD/$1 ]; then
-  cd $CERD/$1
+  cd $CERD/$1 &&
 
-  cat > ceras << EOF
-# Copyright (c) 2019-2020, Firas Khalil Khana
+printf '# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
@@ -18,11 +17,9 @@ if [ ! -d $CERD/$1 ]; then
 nom=$1
 ver=$2
 url=$3
-lic=
-EOF
+lic=' > ceras &&
   
-  cat > system.ceras << 'EOF'
-# Copyright (c) 2019-2020, Firas Khalil Khana
+printf '# Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
@@ -45,11 +42,10 @@ install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
-}
-EOF
+}' > system.ceras &&
 
-  install -dv /home/glaucus/sources/$1
-  cd /home/glaucus/sources/$1
+  install -dv /home/glaucus/sources/$1 &&
+  cd /home/glaucus/sources/$1 &&
 
   case $2 in
     git)
@@ -60,14 +56,14 @@ EOF
       ;;
     *)
       case $4 in
-        yes) torify wget $3 ;;
-        no) wget $3 ;;
+        yes) torify wget $3 && ;;
+        no) wget $3 && ;;
       esac
 
-      sed "/^url=.*/a sum=$(echo $(sha512sum $(basename $3)) | awk \
+      sed "/^url=.*/a sum=$(printf $(sha512sum $(basename $3)) | awk \
         '{print $1}')" -i $CERD/$1/ceras
       ;;
   esac
 else
-  echo ceras $1 already exists!
+  printf "ceras $1 already exists!\n"
 fi

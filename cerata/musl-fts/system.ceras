@@ -4,12 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
 configure_system() {
-  ./bootstrap.sh
+  ./bootstrap.sh &&
 
   ./configure \
     --prefix=/usr \

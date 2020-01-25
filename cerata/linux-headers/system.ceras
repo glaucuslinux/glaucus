@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
 
-  cd $SRCD/linux/linux-$ver
+  cd $SRCD/linux/linux-$ver &&
 
   make \
     mrproper
@@ -25,7 +25,7 @@ install_system() {
     O=$SBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=/usr \
-    headers_install
+    headers_install &&
 
   find /usr/include \( -name ..install.cmd -o -name .install \) -delete
 }

@@ -1,5 +1,6 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-install -dv $1
-(. $2 | tee $1/out.log) 3>&1 1>&2 2>&3 | tee $1/err.log
+install -dv $1 &&
+((. $2 || printf "$?\n" > $1/exit) | tee $1/out.log) 3>&1 1>&2 2>&3 | tee $1/err.log &&
+[ -e $1/exit ] && return $(cat $1/exit)

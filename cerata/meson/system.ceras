@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
 
   sed "s/isfile(a)/& and not a.startswith('\/dev')/" \
     -i mesonbuild/interpreter.py

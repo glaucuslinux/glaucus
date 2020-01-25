@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
@@ -20,7 +20,7 @@ configure_system() {
     --disable-static \
     --disable-allstatic \
     --disable-all-pic \
-    --enable-utmps
+    --enable-utmps &&
 
   sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGSFAT -fno-stack-protector/" \
     -e 's/-Wl,--hash-style=both //' \
@@ -35,7 +35,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
 
   rm -frv $SCER/$nom/sac/etc
 }

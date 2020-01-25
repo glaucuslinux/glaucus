@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
@@ -21,7 +21,7 @@ install_system() {
   make \
     PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
 
   ln -fsv samu $SCER/$nom/sac/usr/bin/ninja
 }

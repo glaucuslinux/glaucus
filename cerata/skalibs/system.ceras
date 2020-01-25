@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
@@ -14,7 +14,7 @@ configure_system() {
     --datadir=/etc \
     --disable-static \
     --disable-all-pic \
-    --disable-ipv6
+    --disable-ipv6 &&
 
   sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -e 's/-Wl,--hash-style=both //' \

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -14,9 +14,9 @@ configure_system() {
     --prefix=/usr \
     --syslibdir=/usr/lib \
     --disable-wrapper \
-    --disable-static
+    --disable-static &&
 
-  $RSYNC $SRCD/$nom/$nom-$ver/Makefile .
+  $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile
@@ -28,12 +28,12 @@ build_system() {
 
 install_system() {
   make \
-    install
+    install &&
 
-  ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd
+  ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
 
-  printf '/usr/lib\n' > /etc/ld-$nom-$ARCH.path
+  printf '/usr/lib\n' > /etc/ld-$nom-$ARCH.path &&
 
-  printf '#!/usr/bin/true\n' > /usr/bin/ldconfig
+  printf '#!/usr/bin/true\n' > /usr/bin/ldconfig &&
   chmod +x /usr/bin/ldconfig
 }

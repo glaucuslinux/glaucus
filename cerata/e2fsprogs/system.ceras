@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -30,7 +30,7 @@ configure_system() {
     --disable-tdb \
     --disable-nls \
     --disable-fuse2fs \
-    --enable-lto
+    --enable-lto &&
 
   sed 's/MKDIR_P =.*/MKDIR_P = \/usr\/bin\/mkdir -p/' \
     -i MCONFIG Makefile
@@ -43,11 +43,11 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
   
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-libs
+    install-libs &&
 
   find $SCER/$nom/sac/usr/lib -type f -name \*.a -exec chmod -v u+w {} \;
 }

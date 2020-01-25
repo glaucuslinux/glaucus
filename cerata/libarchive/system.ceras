@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom
+  install -dv $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -25,8 +25,8 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
 
-  ln -fsv bsdcpio $SCER/$nom/sac/usr/bin/cpio
+  ln -fsv bsdcpio $SCER/$nom/sac/usr/bin/cpio &&
   ln -fsv bsdtar $SCER/$nom/sac/usr/bin/tar
 }

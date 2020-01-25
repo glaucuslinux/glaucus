@@ -1,8 +1,8 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-. $TSCR/cross/variables
-. $TSCR/cross/check
-. $TSCR/cross/prepare
+. $TSCR/cross/variables &&
+. $TSCR/cross/check &&
+. $TSCR/cross/prepare &&
 
 $SCRD/log $XLOG $TSCR/cross/construct

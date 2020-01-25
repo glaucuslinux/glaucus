@@ -4,11 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete
-  cd $SSRC/elfutils
+  $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete &&
+  cd $SSRC/elfutils &&
 
-  $RSYNC $CERD/elfutils/error.h lib
-  $RSYNC $CERD/elfutils/error.h src
+  $RSYNC $CERD/elfutils/error.h lib &&
+  $RSYNC $CERD/elfutils/error.h src &&
 
   patch -p0 -i $CERD/elfutils/patches/2.patch
 }
@@ -27,7 +27,7 @@ configure_system() {
 
 build_system() {
   make \
-    -C lib
+    -C lib &&
 
   make \
     -C libelf

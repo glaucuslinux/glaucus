@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_native() {
-  install -dv $NBLD/$nom
+  install -dv $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
@@ -13,9 +13,9 @@ configure_native() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --syslibdir=$TOOL/lib \
-    --target=$TUPL
+    --target=$TUPL &&
 
-  $RSYNC $SRCD/$nom/$nom-$ver/Makefile .
+  $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
   sed 's/ $(libdir)\/libc.so/ libc.so/' \
     -i Makefile

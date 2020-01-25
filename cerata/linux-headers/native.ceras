@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_native() {
-  install -dv $NBLD/$nom
+  install -dv $NBLD/$nom &&
 
-  cd $SRCD/linux/linux-$ver
+  cd $SRCD/linux/linux-$ver &&
 
   make \
     mrproper
@@ -25,7 +25,7 @@ install_native() {
     O=$NBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=$TOOL \
-    headers_install
+    headers_install &&
 
   find $TOOL/include \( -name ..install.cmd -o -name .install \) -delete
 }

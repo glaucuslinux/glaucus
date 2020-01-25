@@ -4,9 +4,9 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_native() {
-  $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/gcc --delete
+  $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/gcc --delete &&
 
-  install -dv $NBLD/$nom
+  install -dv $NBLD/$nom &&
   cd $NBLD/$nom
 }
 

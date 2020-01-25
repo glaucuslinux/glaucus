@@ -2,14 +2,14 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  . $CERD/$1/ceras
-  . $CERD/$nom/cross.ceras
+  . $CERD/$1/ceras &&
+  . $CERD/$nom/cross.ceras &&
   
-  prepare_cross || { printf "cross $nom prepare failed\n"; exit $?; }
-  configure_cross || { printf "cross $nom configure failed\n"; exit $?; }
-  build_cross || { printf "cross $nom build failed\n"; exit $?; }
-  install_cross || { printf "cross $nom install failed\n"; exit $?; }
+  prepare_cross || $SCRD/exit cross $nom prepare $? || return &&
+  configure_cross || $SCRD/exit cross $nom configure $? || return &&
+  build_cross || $SCRD/exit cross $nom build $? || return &&
+  install_cross || $SCRD/exit cross $nom install $? || return
 }
 
-construct binutils
+construct binutils &&
 construct gcc

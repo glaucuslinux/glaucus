@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
 }
 
@@ -13,7 +13,7 @@ configure_chroot() {
     --prefix=$TOOL \
     --mandir=$TOOL/share/man \
     --enable-curses \
-    --enable-ksh
+    --enable-ksh &&
 
   sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
     -i Makefile

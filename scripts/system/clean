@@ -2,13 +2,13 @@
 # Distributed under the terms of the ISC License
 
 strip --strip-unneeded -v /usr/lib/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
-  /usr/lib/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.27
+  /usr/lib/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.27 &&
 
-$TOOL/bin/find /usr -type f -name \*.a -exec strip -gv {} \;
+$TOOL/bin/find /usr -type f -name \*.a -exec strip -gv {} \; &&
 $TOOL/bin/find /usr -type f \( -name \*.so* -a ! -name \*dbg \) -exec strip \
-  --strip-unneeded -v {} \;
-$TOOL/bin/find /bin /usr -type f -exec strip -sv {} \;
+  --strip-unneeded -v {} \; &&
+$TOOL/bin/find /bin /usr -type f -exec strip -sv {} \; &&
 
-rm -frv /tmp/*
+rm -frv /tmp/* &&
 
 find /usr -name \*.la -delete

@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  $RSYNC $SRCD/$nom $CSRC --delete
+  $RSYNC $SRCD/$nom $CSRC --delete &&
   cd $CSRC/$nom
 }
 
 configure_chroot() {
   sed s/bash/dash/ \
-    -i configure
+    -i configure &&
 
   ./configure \
     --prefix=$TOOL \

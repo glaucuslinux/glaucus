@@ -2,16 +2,14 @@
 # Distributed under the terms of the ISC License
 
 construct() {
-  for ceras in $@; do
-    . $CERD/$ceras/ceras
-    . $CERD/$nom/system.ceras
-    
-    prepare_system || { printf "system $nom prepare failed\n"; exit $?; }
-    configure_system || { printf "system $nom configure failed\n"; exit $?; }
-    build_system || { printf "system $nom build failed\n"; exit $?; }
-    install_system || { printf "system $nom install failed\n"; exit $?; }
-  done
+  . $CERD/$1/ceras &&
+  . $CERD/$nom/system.ceras &&
+  
+  prepare_system || $SCRD/exit system $nom prepare $? || return &&
+  configure_system || $SCRD/exit system $nom configure $? || return &&
+  build_system || $SCRD/exit system $nom build $? || return &&
+  install_system || $SCRD/exit system $nom install $? || return
 }
 
-construct linux-headers
+construct linux-headers &&
 construct musl
