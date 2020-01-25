@@ -21,8 +21,7 @@ script:
   - export CERD=/home/glaucus/cerata
   - export SCRD=/home/glaucus/scripts
   - export SRCD=/home/glaucus/sources
-  - ls
-  - . $SCRD/toolchain/cross/check
-  - . $SCRD/toolchain/native/check
-  - . $SCRD/chroot/check
-  - . $SCRD/system/check
+  - sudo . $SCRD/toolchain/cross/check
+  - sudo . $SCRD/toolchain/native/check
+  - sudo . $SCRD/chroot/check
+  - sudo . $SCRD/system/check
