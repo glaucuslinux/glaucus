@@ -3,4 +3,4 @@
 
 install -dv $1 &&
 ((. $2 || printf "$?\n" > $1/exit) | tee $1/out.log) 3>&1 1>&2 2>&3 | tee $1/err.log &&
-[ -e $1/exit ] && return $(cat $1/exit)
+[ -e $1/exit ] && return $(cat $1/exit) || return 0
