@@ -18,9 +18,6 @@ install:
   - sudo tar xvf toolchain-27122019.tar.xz -C .
 script:
   - sudo sed 's/tar/sudo tar/' -i scripts/fetch
-  - . scripts/toolchain/variables
-  - . $TSCR/cross/check
-  - . $TSCR/native/check
   - . scripts/chroot/variables
   - . $CSCR/check
   - . $SCRD/system/check
