@@ -5,7 +5,7 @@ git:
 addons:
   apt:
     packages:
-    - rsync
+    - lzip
 before_install:
   - sudo install -dv /home/glaucus
   - cd /home/glaucus
