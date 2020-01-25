@@ -18,10 +18,10 @@ install:
   - sudo tar xvf toolchain-27122019.tar.xz -C .
 script:
   - sudo sed 's/tar/sudo tar/' -i scripts/fetch
-  - export CERD=/home/glaucus/cerata
-  - export SCRD=/home/glaucus/scripts
-  - export SRCD=/home/glaucus/sources
-  - sudo . $SCRD/toolchain/cross/check
-  - sudo . $SCRD/toolchain/native/check
-  - sudo . $SCRD/chroot/check
-  - sudo . $SCRD/system/check
+  - export CERD=cerata
+  - export SCRD=scripts
+  - export SRCD=sources
+  - sudo dash $SCRD/toolchain/cross/check
+  - sudo dash $SCRD/toolchain/native/check
+  - sudo dash $SCRD/chroot/check
+  - sudo dash $SCRD/system/check
