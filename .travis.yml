@@ -22,3 +22,4 @@ script:
   - export SCRD=scripts
   - export SRCD=sources
   - sudo dash $SCRD/chroot/check
+  - sudo dash $SCRD/system/check
