@@ -17,7 +17,7 @@ install:
   - sudo rm -frv toolchain
   - sudo tar xvf toolchain-27122019.tar.xz -C .
 script:
-  - sudo sed 's/tar/sudo tar/' -i scripts/fetch
+  - sudo sed 's/tar xvf/sudo tar xf/' -i scripts/fetch
   - export CERD=cerata
   - export SCRD=scripts
   - export SRCD=sources
