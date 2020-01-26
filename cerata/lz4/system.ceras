@@ -4,10 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   patch -p1 -i $CERD/$nom/patches/clear/fix-make-install.patch
+  patch -p1 -i $CERD/$nom/patches/clear/0001-Makefile-propagate-CFLAGS.patch
 }
 
 configure_system() {
@@ -15,11 +16,13 @@ configure_system() {
 }
 
 build_system() {
-  make
+  make \
+    BUILD_STATIC=no
 }
 
 install_system() {
   make \
+    BUILD_STATIC=no \
     PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
     install
