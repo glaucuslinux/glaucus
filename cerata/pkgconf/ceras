@@ -5,6 +5,6 @@
 
 nom=pkgconf
 ver=1.6.3
-url=https://distfiles.dereferenced.org/$nom/$nom-$ver.tar.xz
+url=http://distfiles.dereferenced.org/$nom/$nom-$ver.tar.xz
 sum=437c5a5c9866e2047e62e0592639930b2420d4afd41d98cef51f3475165418a39e916477860025314828a6ee0a4eefc10fdf26bda66f80c291f324d9674fa5c1
 lic=ISC
