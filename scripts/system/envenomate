@@ -18,7 +18,7 @@ envenomate() {
 #envenomate zlib-ng &&
 #envenomate lbzip2 &&
 #envenomate xz &&
-envenomate lz4 &&
+#envenomate lz4 &&
 #envenomate file &&
 #envenomate libedit &&
 #envenomate m4 &&
