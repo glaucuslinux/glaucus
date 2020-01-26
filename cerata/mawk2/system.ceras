@@ -4,14 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
-  
-  $RSYNC $SRCD/$nom/$nom-$ver/man . --delete
+  $RSYNC $SRCD/$nom/mawk-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr
 }
 
@@ -20,9 +18,12 @@ build_system() {
 }
 
 install_system() {
-  make \
-    DESTDIR=$SCER/$nom/sac \
-    install &&
+  install -dv $SCER/$nom/sac/usr/bin &&
+  install -dv $SCER/$nom/sac/usr/share/man/man1 &&
+  
+  $RSYNC mawk $SCER/$nom/sac/usr/bin/$nom &&
+  chmod 0755 $SCER/$nom/sac/usr/bin/$nom &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/awk
+  $RSYNC man/mawk.1 $SCER/$nom/sac/usr/share/man/man1/mawk2.1 &&
+  chmod 0644 $SCER/$nom/sac/usr/share/man/man1/mawk2.1
 }

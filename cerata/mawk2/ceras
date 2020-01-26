@@ -6,5 +6,5 @@
 nom=mawk2
 ver=1.9.9.6
 url=https://github.com/mikebrennan000/mawk-2/blob/master/mawk-$ver.tar.gz
-sum=
-lic=GPL-2.0-or-later
+sum=e4cda02c9b91a63aed0ba0a470333997d066b27fa7b60411e3827019b2453975913759896d1206484afc39a39beda5eff59989479360f28379363487f4434cc9
+lic=GPL-3.0-only
