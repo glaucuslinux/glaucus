@@ -4,8 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  patch -p1 -i $CERD/$nom/patches/clear/0002-decode-ucode.patch
 }
 
 configure_system() {
