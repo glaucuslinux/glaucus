@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=linux-headers
-ver=5.4.13
+ver=5.4.15
 url=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$ver.tar.xz
-sum=e7aaa541ccf66ca8373fe53794786c8b819da824b17acc497d5080f4fff5bef90bab1da531fa8f62a013f40472f5c1dfafb4bd4f42ecc1bf851042d22e72c4a7
+sum=be890d2f893e4470bf51ea84e60088e33420083ffd39e50d204a063e8405176035f2364333657ebabdd68bd4635ae3ea535d0c939de6c88e3e118c3619be1866
 lic=GPL-2.0-only
