@@ -4,8 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  patch -p1 -i $CERD/$nom/patches/clear/fix-make-install.patch
 }
 
 configure_system() {
