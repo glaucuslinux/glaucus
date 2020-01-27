@@ -4,13 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  install -dv $CBLD/$nom &&
-  cd $CBLD/$nom
+  $RSYNC $SRCD/$nom $CSRC --delete &&
+  cd $CSRC/$nom
 }
 
 configure_chroot() {
+  sed s/bash/dash/ \
+    -i configure &&
+
   CFLAGS="$CFLAGSNOCOMMON" \
-  $SRCD/$nom/configure \
+  ./configure \
     --prefix=$TOOL \
     --zlib-compat
 }
