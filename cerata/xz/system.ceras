@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
 
   patch -p1 -i $CERD/$nom/patches/clear/default-threading.patch &&
   patch -p1 -i $CERD/$nom/patches/clear/io-size.patch &&
@@ -14,7 +14,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --disable-doc \
     --disable-static \
@@ -22,7 +22,8 @@ configure_system() {
 }
 
 build_system() {
-  make
+  make \
+    pgo-build
 }
 
 install_system() {
