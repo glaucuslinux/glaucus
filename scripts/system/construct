@@ -5,10 +5,10 @@ construct() {
   . $CERD/$1/ceras &&
   . $CERD/$nom/system.ceras &&
   
-  prepare_system || $SCRD/exit system $nom prepare $? || exit &&
-  configure_system || $SCRD/exit system $nom configure $? || exit &&
-  build_system || $SCRD/exit system $nom build $? || exit &&
-  install_system || $SCRD/exit system $nom install $? || exit
+  prepare_system || $SCRD/exit system $nom prepare $? || return &&
+  configure_system || $SCRD/exit system $nom configure $? || return &&
+  build_system || $SCRD/exit system $nom build $? || return &&
+  install_system || $SCRD/exit system $nom install $? || return
 }
 
 construct linux-headers &&

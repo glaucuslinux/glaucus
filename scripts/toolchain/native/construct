@@ -5,10 +5,10 @@ construct() {
   . $CERD/$1/ceras &&
   . $CERD/$nom/native.ceras &&
   
-  prepare_native || $SCRD/exit native $nom prepare $? || exit &&
-  configure_native || $SCRD/exit native $nom configure $? || exit &&
-  build_native || $SCRD/exit native $nom build $? || exit &&
-  install_native || $SCRD/exit native $nom install $? || exit
+  prepare_native || $SCRD/exit native $nom prepare $? || return &&
+  configure_native || $SCRD/exit native $nom configure $? || return &&
+  build_native || $SCRD/exit native $nom build $? || return &&
+  install_native || $SCRD/exit native $nom install $? || return
 }
 
 construct linux-headers &&

@@ -1,5 +1,8 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-[ $ver != git ] && printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c ||
-exit 0
+if [ $ver != git ]; then
+  printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c || $SCRD/exit ceras $nom verify $? || exit
+else
+  exit 0
+fi
