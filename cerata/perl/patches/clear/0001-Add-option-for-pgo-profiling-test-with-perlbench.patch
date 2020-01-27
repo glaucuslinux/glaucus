@@ -1,0 +1,36 @@
+From e14fdff05d34cf9213cd7c8c23eae77c1ae499a3 Mon Sep 17 00:00:00 2001
+From: Guobing Chen <guobing.chen@intel.com>
+Date: Tue, 2 Apr 2019 15:08:42 +0800
+Subject: [PATCH] Add option for pgo profiling test with perlbench
+
+Signed-off-by: Guobing Chen <guobing.chen@intel.com>
+---
+ Makefile.SH | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Makefile.SH b/Makefile.SH
+index 5197009..182f74d 100755
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -352,6 +352,7 @@ RUN_PERL = \$(LDLIBPTH) \$(RUN) $perl\$(EXE_EXT)
+ # Macros to invoke a copy of our fully operational perl during the build.
+ PERL_EXE = perl\$(EXE_EXT)
+ RUN_PERL = \$(LDLIBPTH) \$(RUN) ./perl\$(EXE_EXT) -Ilib -I.
++RUN_PERL_PGO = \$(LDLIBPTH) \$(RUN) ../$perl\$(EXE_EXT)
+ !GROK!THIS!
+ 	;;
+ esac
+@@ -1667,6 +1668,10 @@ test_reonly test-reonly: test_prep_reonly
+ test_porting test-porting: test_prep
+ 	cd t && $(RUN_PERL) harness porting/*.t ../lib/diagnostics.t
+ 
++# Test perlbench for pgo profiling
++test_pgo: $(PERL_EXE)
++	cd perlbench/ && $(RUN_PERL_PGO) perlbench-runtests
++
+ !NO!SUBS!
+ 
+ $spitshell>>$Makefile <<!GROK!THIS!
+-- 
+2.20.1
+

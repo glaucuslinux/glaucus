@@ -7,7 +7,10 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  printf '127.0.0.1 localhost sea\n' > /etc/hosts
+  printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
+
+  patch -p1 -i $CERD/$nom/patches/clear/0001-Add-option-for-pgo-profiling-test-with-perlbench.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/0001-Add-perlbench-for-pgo-optimization.patch
 }
 
 configure_system() {
