@@ -5,7 +5,12 @@
 
 prepare_system() {
   install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  cd $SBLD/$nom &&
+
+  patch -p1 -i $CERD/$nom/patches/clear/default-threading.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/io-size.patch &&
+  patch -p1 -i $CERD/$nom/patches/clear/speedup.patch &&
+  patch -p2 -i $CERD/$nom/patches/clear/add-pgo.patch
 }
 
 configure_system() {

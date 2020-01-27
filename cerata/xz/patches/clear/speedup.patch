@@ -1,0 +1,41 @@
+--- xz-5.1.2alpha/src/liblzma/lz/lz_encoder_mf.c.org	2012-11-13 22:50:25.529647420 -0800
++++ xz-5.1.2alpha/src/liblzma/lz/lz_encoder_mf.c	2012-11-13 22:55:31.567951801 -0800
+@@ -467,21 +467,22 @@
+ 
+ 	uint32_t len0 = 0;
+ 	uint32_t len1 = 0;
++	uint32_t len2 = 0;
+ 
+ 	while (true) {
+ 		const uint32_t delta = pos - cur_match;
++		uint32_t len = len2;
+ 		if (depth-- == 0 || delta >= cyclic_size) {
+ 			*ptr0 = EMPTY_HASH_VALUE;
+ 			*ptr1 = EMPTY_HASH_VALUE;
+ 			return matches;
+ 		}
+ 
++		const uint8_t *const pb = cur - delta;
+ 		uint32_t *const pair = son + ((cyclic_pos - delta
+ 				+ (delta > cyclic_pos ? cyclic_size : 0))
+ 				<< 1);
+ 
+-		const uint8_t *const pb = cur - delta;
+-		uint32_t len = my_min(len0, len1);
+ 
+ 		if (pb[len] == cur[len]) {
+ 			while (++len != len_limit)
+@@ -507,11 +508,13 @@
+ 			ptr1 = pair + 1;
+ 			cur_match = *ptr1;
+ 			len1 = len;
++			len2 = my_min(len0, len1);
+ 		} else {
+ 			*ptr0 = cur_match;
+ 			ptr0 = pair;
+ 			cur_match = *ptr0;
+ 			len0 = len;
++			len2 = my_min(len0, len1);
+ 		}
+ 	}
+ }

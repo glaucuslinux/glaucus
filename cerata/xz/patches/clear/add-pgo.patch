@@ -1,0 +1,17 @@
+--- /tmp/Makefile.am	2015-09-11 16:47:46.754937557 +0000
++++ Makefile.am	2015-09-11 17:39:11.778516887 +0000
+@@ -107,3 +107,14 @@ mydist:
+ 	fi; \
+ 	TAR_OPTIONS='--owner=0 --group=0 --numeric-owner --mode=u+rw,go+r-w' \
+ 		$(MAKE) VERSION="$$VERSION" dist-gzip
++
++PGO_DIR="pgo"
++PGO_GEN_CFLAGS=-fprofile-generate -fprofile-dir=`realpath ${PGO_DIR}`
++PGO_USE_CFLAGS=-fprofile-use -fprofile-dir=`realpath ${PGO_DIR}`
++pgo-build:
++	$(MKDIR_P) ${PGO_DIR}
++	$(MAKE) clean
++	$(MAKE) check CFLAGS="${CFLAGS} ${PGO_GEN_CFLAGS}" CXXFLAGS="${CXXFLAGS} ${PGO_GEN_CFLAGS}" LDFLAGS="${LDFLAGS} ${PGO_GEN_CFLAGS}"
++	$(MAKE) clean
++	$(MAKE) check CFLAGS="${CFLAGS} ${PGO_USE_CFLAGS}" CXXFLAGS="${CXXFLAGS} ${PGO_USE_CFLAGS}" LDFLAGS="${LDFLAGS} ${PGO_USE_CFLAGS}"
++	

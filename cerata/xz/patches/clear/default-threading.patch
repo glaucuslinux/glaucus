@@ -1,0 +1,11 @@
+--- xz-5.2.0/src/xz/args.c~	2014-12-21 13:49:36.000000000 -0500
++++ xz-5.2.0/src/xz/args.c	2015-01-08 19:00:14.122772405 -0500
+@@ -211,6 +211,8 @@
+ 	};
+ 
+ 	int c;
++	
++	hardware_threads_set(0);
+ 
+ 	while ((c = getopt_long(argc, argv, short_opts, long_opts, NULL))
+ 			!= -1) {
