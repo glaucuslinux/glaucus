@@ -10,7 +10,7 @@ prepare_chroot() {
 
 configure_chroot() {
   CFLAGS="$CFLAGSNOCOMMON" \
-  ./configure \
+  $SRCD/$nom/configure \
     --prefix=$TOOL \
     --zlib-compat
 }
