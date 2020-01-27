@@ -17,7 +17,6 @@ envenomate() {
 
 #envenomate zlib-ng &&
 #envenomate lbzip2 &&
-#envenomate xz &&
 #envenomate lz4 &&
 #envenomate file &&
 #envenomate libedit &&
@@ -54,6 +53,7 @@ envenomate() {
 #envenomate autoconf &&
 #envenomate automake &&
 #envenomate kmod &&
+#envenomate xz &&
 #envenomate gettext-tiny &&
 #envenomate libuargp &&
 #envenomate musl-fts &&
