@@ -1,0 +1,33 @@
+From f322a7e0e55924e043b2d9b0d9249b86fb7c271a Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Sat, 7 Apr 2018 12:39:03 +0200
+Subject: [PATCH 13/25] Request 'alloca' module from gnulib.
+
+* bootstrap.conf (gnulib_modules): Add 'alloca'.
+---
+ bootstrap.conf | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/bootstrap.conf b/bootstrap.conf
+index 7c49a98..68cddd7 100644
+--- a/bootstrap.conf
++++ b/bootstrap.conf
+@@ -1,6 +1,6 @@
+ # Bootstrap configuration.
+ 
+-# Copyright (C) 2006-2007, 2009-2012 Free Software Foundation, Inc.
++# Copyright (C) 2006-2007, 2009-2018 Free Software Foundation, Inc.
+ 
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -18,6 +18,7 @@
+ 
+ # gnulib modules used by this package.
+ gnulib_modules="
++alloca
+ argmatch
+ backupfile
+ clock-time
+-- 
+2.25.0
+

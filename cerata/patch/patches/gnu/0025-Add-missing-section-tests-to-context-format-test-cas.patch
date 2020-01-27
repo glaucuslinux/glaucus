@@ -1,0 +1,130 @@
+From 78ed9decdf54d6185d3d3d1ef8784f5978f81422 Mon Sep 17 00:00:00 2001
+From: Andreas Gruenbacher <agruen@gnu.org>
+Date: Tue, 30 Jul 2019 12:10:19 +0200
+Subject: [PATCH 25/25] Add missing-section tests to context-format test case
+
+* tests/context-format: Add tests with a missing pattern and a missing
+replacement section in a hunk.  Patch should fill in the missing
+sections from the existing sections.
+---
+ tests/context-format | 86 ++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 84 insertions(+), 2 deletions(-)
+
+diff --git a/tests/context-format b/tests/context-format
+index 8143448..b3276ff 100644
+--- a/tests/context-format
++++ b/tests/context-format
+@@ -11,6 +11,46 @@ use_tmpdir
+ 
+ # ==============================================================
+ 
++printf "%s\n" 1 2 4 5 > a
++cat > ab.diff <<EOF
++*** a
++--- b
++***************
++*** 1,4 ****
++--- 1,5 ----
++  1
++  2
+++ 3
++  4
++  5
++EOF
++
++check 'patch < ab.diff' <<EOF
++patching file a
++EOF
++
++printf "%s\n" 1 2 3 4 5 > a
++cat > ab.diff <<EOF
++*** a
++--- b
++***************
++*** 1,5 ****
++  1
++  2
++- 3
++  4
++  5
++--- 1,4 ----
++EOF
++
++check 'patch < ab.diff' <<EOF
++patching file a
++EOF
++
++# --------------------------------------------------------------
++
++printf "%s\n" a a a a a b a a a a a > a
++
+ cat > ab.diff <<EOF
+ *** a
+ --- b
+@@ -20,11 +60,33 @@ cat > ab.diff <<EOF
+ --- 5 ----
+ EOF
+ 
+-printf "%s\n" a a a a a b a a a a a > a
+ check 'patch < ab.diff' <<EOF
+ patching file a
+ EOF
+ 
++check 'echo `cat a`' <<EOF
++a a a a a a a a a a
++EOF
++
++cat > ba.diff <<EOF
++*** b
++--- a
++***************
++*** 5 ****
++--- 6 ----
+++ b
++EOF
++
++check 'patch < ba.diff' <<EOF
++patching file a
++EOF
++
++check 'echo `cat a`' <<EOF
++a a a a a b a a a a a
++EOF
++
++printf "%s\n" a a a a a a a a a a b > a
++
+ cat > ab.diff <<EOF
+ *** a
+ --- b
+@@ -34,7 +96,27 @@ cat > ab.diff <<EOF
+ --- 10 ----
+ EOF
+ 
+-printf "%s\n" a a a a a a a a a a b > a
+ check 'patch < ab.diff' <<EOF
+ patching file a
+ EOF
++
++check 'echo `cat a`' <<EOF
++a a a a a a a a a a
++EOF
++
++cat > ba.diff <<EOF
++*** b
++--- a
++***************
++*** 10 ****
++--- 11 ----
+++ b
++EOF
++
++check 'patch < ba.diff' <<EOF
++patching file a
++EOF
++
++check 'echo `cat a`' <<EOF
++a a a a a a a a a a b
++EOF
+-- 
+2.25.0
+

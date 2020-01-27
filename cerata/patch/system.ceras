@@ -5,7 +5,33 @@
 
 prepare_system() {
   install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  cd $SBLD/$nom &&
+
+  patch -p1 -i $CERD/$nom/patches/gnu/0001-Avoid-set_file_attributes-sign-conversion-warnings.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0002-Test-suite-compatibility-fixes.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0003-Test-suite-fix-Korn-shell-incompatibility.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0004-Fix-segfault-with-mangled-rename-patch.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0005-Allow-input-files-to-be-missing-for-ed-style-patches.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0006-Fix-arbitrary-command-execution-in-ed-style-patches-.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0007-Invoke-ed-directly-instead-of-using-the-shell.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0008-Use-gnulib-execute-module.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0009-Minor-cleanups-in-do_ed_script.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0010-maint-avoid-warnings-from-GCC8.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0011-Fix-check-of-return-value-of-fwrite.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0012-Fix-ed-style-test-failure.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0013-Request-alloca-module-from-gnulib.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0014-Don-t-leak-temporary-file-on-failed-ed-style-patch.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0015-Don-t-leak-temporary-file-on-failed-multi-file-ed-st.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0016-Make-the-debug-2-output-more-useful.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0017-Fix-swapping-fake-lines-in-pch_swap.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0018-Improve-support-for-memory-leak-detection.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0019-Skip-ed-test-when-the-ed-utility-is-not-installed.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0020-Abort-when-cleaning-up-fails.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0021-Don-t-crash-when-RLIMIT_NOFILE-is-set-to-RLIM_INFINI.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0022-Don-t-follow-symlinks-unless-follow-symlinks-is-give.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0023-Avoid-invalid-memory-access-in-context-format-diffs.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0024-Fix-failed-assertion-outstate-after_newline.patch &&
+  patch -p1 -i $CERD/$nom/patches/gnu/0025-Add-missing-section-tests-to-context-format-test-cas.patch
 }
 
 configure_system() {
