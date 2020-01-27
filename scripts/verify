@@ -2,4 +2,4 @@
 # Distributed under the terms of the ISC License
 
 [ $ver != git ] && printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c ||
-return 0
+exit 0

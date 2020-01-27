@@ -9,12 +9,12 @@
 
 $SCRD/log $CLOG $CSCR/construct &&
 
-. $CSCR/clean &&
-. $CSCR/root &&
-. $CSCR/backup &&
-. $CSCR/vkfs &&
-. $CSCR/resolv &&
+#. $CSCR/clean &&
+#. $CSCR/root &&
+#. $CSCR/backup &&
+#. $CSCR/vkfs &&
+#. $CSCR/resolv &&
 
-. $SCRD/system/check &&
+. $SCRD/system/check
 
-. $CSCR/chroot
+#. $CSCR/chroot

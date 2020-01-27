@@ -5,10 +5,10 @@ construct() {
   . $CERD/$1/ceras &&
   . $CERD/$nom/chroot.ceras &&
 
-  prepare_chroot || $SCRD/exit chroot $nom prepare $? || return &&
-  configure_chroot || $SCRD/exit chroot $nom configure $? || return &&
-  build_chroot || $SCRD/exit chroot $nom build $? || return &&
-  install_chroot || $SCRD/exit chroot $nom install $? || return
+  prepare_chroot || $SCRD/exit chroot $nom prepare $? || exit &&
+  configure_chroot || $SCRD/exit chroot $nom configure $? || exit &&
+  build_chroot || $SCRD/exit chroot $nom build $? || exit &&
+  install_chroot || $SCRD/exit chroot $nom install $? || exit
 }
 
 construct m4 &&

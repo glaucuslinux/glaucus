@@ -5,10 +5,10 @@ construct() {
   . $CERD/$1/ceras &&
   . $CERD/$nom/cross.ceras &&
   
-  prepare_cross || $SCRD/exit cross $nom prepare $? || return &&
-  configure_cross || $SCRD/exit cross $nom configure $? || return &&
-  build_cross || $SCRD/exit cross $nom build $? || return &&
-  install_cross || $SCRD/exit cross $nom install $? || return
+  prepare_cross || $SCRD/exit cross $nom prepare $? || exit &&
+  configure_cross || $SCRD/exit cross $nom configure $? || exit &&
+  build_cross || $SCRD/exit cross $nom build $? || exit &&
+  install_cross || $SCRD/exit cross $nom install $? || exit
 }
 
 construct binutils &&

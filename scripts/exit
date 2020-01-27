@@ -2,4 +2,4 @@
 # Distributed under the terms of the ISC License
 
 [ $4 ] && printf "\n\033[0;41m$1 $2 $3 exited with status $4\033[0m\n\n" &&
-return $4
+exit $4
