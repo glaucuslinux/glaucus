@@ -10,6 +10,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
+  CFLAGS="$CFLAGSFAT" \
   ./configure \
     --prefix=$TOOL \
     --target=$TUPL
