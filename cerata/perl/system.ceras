@@ -24,7 +24,10 @@ configure_system() {
     -Dman3dir=/usr/share/man/man3 \
     -Dpager='/usr/bin/less -isR' \
     -Duseshrplib \
-    -Dusethreads
+    -Dusethreads \
+    -Accflags="$CFLAGS" \
+    -Acppflags="$CFLAGS" \
+    -Aldflags="$LDFLAGS"
 }
 
 build_system() {
