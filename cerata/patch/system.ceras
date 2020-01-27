@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
 
   patch -p1 -i $CERD/$nom/patches/gnu/0001-Avoid-set_file_attributes-sign-conversion-warnings.patch &&
   patch -p1 -i $CERD/$nom/patches/gnu/0002-Test-suite-compatibility-fixes.patch &&
@@ -35,7 +35,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr
 }
 
