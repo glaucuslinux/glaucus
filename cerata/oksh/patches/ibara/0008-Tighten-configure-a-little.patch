@@ -1,0 +1,40 @@
+From 63c19f17bcd0c230389f856ee30c889c643916eb Mon Sep 17 00:00:00 2001
+From: Brian Callahan <ibara@users.noreply.github.com>
+Date: Tue, 31 Dec 2019 12:22:07 -0500
+Subject: [PATCH 8/9] Tighten configure a little
+
+Remove ETS line from produced Makefile (hasn't been used in years)
+Tighten some language in the help text
+---
+ configure | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/configure b/configure
+index 14ba3f1..2418104 100755
+--- a/configure
++++ b/configure
+@@ -532,9 +532,9 @@ do
+ 	printf "  --prefix=PREFIX         "
+ 	echo "Top level install directory is PREFIX [$prefix]"
+ 	printf "  --bindir=BINDIR         "
+-	echo "Install the executable to BINDIR [$bindir]"
++	echo "Install executable to BINDIR [$bindir]"
+ 	printf "  --mandir=MANDIR         "
+-	echo "Manual pages are installed to MANDIR [$mandir]"
++	echo "Install manual pages to MANDIR [$mandir]"
+ 	printf "  --enable-curses         "
+ 	echo "Use curses library for screen clear [default=yes]"
+ 	printf "  --enable-ksh            "
+@@ -880,9 +880,6 @@ OBJS =	alloc.o asprintf.o c_ksh.o c_sh.o c_test.o c_ulimit.o edit.o \\
+ 	version.o vi.o confstr.o reallocarray.o siglist.o signame.o \\
+ 	strlcat.o strlcpy.o strtonum.o unvis.o vis.o
+ 
+-ETS =	\`grep -w \${BINDIR}/\${PROG} /etc/shells > /dev/null; \\
+-	[ \$\$? -ne 0 ] && echo "\${BINDIR}/\${PROG}" >> /etc/shells\`
+-
+ all: \${PROG}
+ 
+ \${PROG}: \${OBJS}
+-- 
+2.25.0
+

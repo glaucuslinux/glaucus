@@ -1,0 +1,26 @@
+From e19363ec6c9c401aafaa7849593891698b8e86b9 Mon Sep 17 00:00:00 2001
+From: Brian Callahan <ibara@users.noreply.github.com>
+Date: Tue, 31 Dec 2019 12:04:01 -0500
+Subject: [PATCH 7/9] Add WSL and WSL2 to supported platforms
+
+kusuriya tells me that the existence of an Ubuntu PPA means it can be used in WSL and WSL2.
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index 344d74f..89760f9 100644
+--- a/README.md
++++ b/README.md
+@@ -24,6 +24,8 @@ Supported systems
+ * Solaris
+ * Illumos
+ * midipix
++* WSL
++* WSL2
+ 
+ Running on a system not listed here? Add it and send a pull request!
+ 
+-- 
+2.25.0
+

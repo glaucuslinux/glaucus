@@ -1,0 +1,24 @@
+From 6f587550a2f0c5250393590dd39d642369f9b697 Mon Sep 17 00:00:00 2001
+From: Brian Callahan <ibara@users.noreply.github.com>
+Date: Tue, 31 Dec 2019 11:01:21 -0500
+Subject: [PATCH 5/9] Add midipix to the list of supported systems.
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index e010975..344d74f 100644
+--- a/README.md
++++ b/README.md
+@@ -23,6 +23,7 @@ Supported systems
+ * IBM i PASE
+ * Solaris
+ * Illumos
++* midipix
+ 
+ Running on a system not listed here? Add it and send a pull request!
+ 
+-- 
+2.25.0
+
