@@ -4,14 +4,24 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
-  
-  $RSYNC $SRCD/$nom/$nom-$ver/y.tab.h .
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 0 $nom upstream bash50-001 &&
+  $SCRD/patch 0 $nom upstream bash50-002 &&
+  $SCRD/patch 0 $nom upstream bash50-003 &&
+  $SCRD/patch 0 $nom upstream bash50-004 &&
+  $SCRD/patch 0 $nom upstream bash50-005 &&
+  $SCRD/patch 0 $nom upstream bash50-006 &&
+  $SCRD/patch 0 $nom upstream bash50-007 &&
+  $SCRD/patch 0 $nom upstream bash50-008 &&
+  $SCRD/patch 0 $nom upstream bash50-009 &&
+  $SCRD/patch 0 $nom upstream bash50-010 &&
+  $SCRD/patch 0 $nom upstream bash50-011
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --disable-nls \
     --without-$nom-malloc \
