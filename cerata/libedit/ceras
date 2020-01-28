@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=libedit
-ver=20191211-3.1
+ver=20191231-3.1
 url=https://www.thrysoee.dk/editline/$nom-$ver.tar.gz
-sum=8393477a87e65d330b037494110501b5d6d2c1cbe80d82b9bc7a6315a21fd1327fe91354346966d30541015e2c277be2187fa4bb737b14f706957c70f4083547
+sum=1df2eced98e8db1bb0af940678c154d87e3b11dd21e65a903682367f5feace5112f9a543b8e0cb04bbfeaaf73729f808db2d9c302637fc063e81c0a37777ac2c
 lic='BSD-3-Clause BSD-4-Clause-UC'
