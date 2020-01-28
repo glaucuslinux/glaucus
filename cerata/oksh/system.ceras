@@ -7,15 +7,13 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/ibara/0001-Remove-clear-line-from-example-.profile.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0002-Update-to-latest-ksh-code-fixes-a-hard-failure-with-.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0003-Manual-page-updates.-While-here-I-noticed-AUR-has-a-.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0004-portable.h-midipix-port.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0005-Add-midipix-to-the-list-of-supported-systems.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0006-configure-Implement-bindir.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0007-Add-WSL-and-WSL2-to-supported-platforms.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0008-Tighten-configure-a-little.patch &&
-  patch -p1 -i $CERD/$nom/patches/ibara/0009-Add-SlackBuilds-link-to-README.md.patch
+  $SCRD/patch 1 $nom ibara 0001-Remove-clear-line-from-example-.profile.patch &&
+  $SCRD/patch 1 $nom ibara 0002-Update-to-latest-ksh-code-fixes-a-hard-failure-with-.patch &&
+  $SCRD/patch 1 $nom ibara 0003-Manual-page-updates.patch &&
+  $SCRD/patch 1 $nom ibara 0004-portable.h-midipix-port.patch &&
+  $SCRD/patch 1 $nom ibara 0005-Add-midipix-to-the-list-of-supported-systems.patch &&
+  $SCRD/patch 1 $nom ibara 0006-configure-Implement-bindir.patch &&
+  $SCRD/patch 1 $nom ibara 0008-Tighten-configure-a-little.patch
 }
 
 configure_system() {
