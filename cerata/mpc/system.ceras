@@ -7,9 +7,6 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom upstream 0001-doc-Update-the-copyright-date.patch &&
-  $SCRD/patch 1 $nom upstream 0002-Update-version-number-to-1.1.1dev.patch &&
-  $SCRD/patch 1 $nom upstream 0003-Remove-items-from-TODO.patch &&
   $SCRD/patch 1 $nom upstream 0005-added-mpc_sum-based-on-mpfr_sum.patch &&
   $SCRD/patch 1 $nom upstream 0006-check-return-value-of-malloc-is-not-NULL-in-mpc_sum.patch &&
   $SCRD/patch 1 $nom upstream 0007-mpc_sum-Cosmetic-changes.patch &&
