@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=bc
-ver=2.4.0
+ver=2.5.1
 url=https://github.com/gavinhoward/$nom/releases/download/$ver/$nom-$ver.tar.xz
-sum=43006a9f0b3acbc27fb3726536eb8723155521c3b29e187d54b350320f179454c526f5e5e66c0b3a1fca62003d1e830220d4753fd374efa3a0fa1f8a1d02e739
+sum=a2dec8f520a2c64df582a41bacb2f3ea275fbf01400668a7bcea1d3a90c0490516c20fd79932157ec0e313e845a34d100cf05985e8cdea456308c2aa8843bab4
 lic=BSD-2-Clause
