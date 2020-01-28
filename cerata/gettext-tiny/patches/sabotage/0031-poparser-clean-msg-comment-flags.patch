@@ -1,0 +1,25 @@
+From 5a06a817db832dfa82fc79715aecdfa783f29dc7 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Thu, 27 Dec 2018 20:36:57 +0800
+Subject: [PATCH 31/48] poparser: clean msg comment flags or the next msg will
+ ineherit flag like PO_FUZZY
+
+---
+ src/poparser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index d9fc187..7b58a1d 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -112,6 +112,7 @@ static inline enum po_error poparser_clean(struct po_parser *p, po_message_t msg
+ 		msg->ctxt_len = 0;
+ 		msg->id_len = 0;
+ 		msg->plural_len = 0;
++		msg->flags = 0;
+ 		p->strcnt = 0;
+ 	}
+ 
+-- 
+2.25.0
+

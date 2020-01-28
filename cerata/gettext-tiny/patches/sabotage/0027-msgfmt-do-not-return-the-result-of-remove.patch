@@ -1,0 +1,29 @@
+From 3338dee5f46e11936ebadcb41d87a1102ee06bb6 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Thu, 27 Dec 2018 19:08:55 +0800
+Subject: [PATCH 27/48] msgfmt: do not return the result of remove() what we
+ want to do is deleting wrong output files. but if remove() is successfully
+ executed, msgfmt will return 0 instead of ret. this badly damaged various
+ cases.
+
+---
+ src/msgfmt.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index b4c3633..b2dad1f 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -373,8 +373,6 @@ int main(int argc, char**argv) {
+ 	if(in != stdin) fclose(in);
+ 	if(out != stdout) fclose(out);
+ 
+-	if (ret < 0) {
+-		return remove(dest);
+-	}
++	if (ret < 0) remove(dest);
+ 	return ret;
+ }
+-- 
+2.25.0
+

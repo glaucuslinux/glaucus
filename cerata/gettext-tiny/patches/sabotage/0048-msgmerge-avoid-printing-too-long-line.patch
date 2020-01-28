@@ -1,0 +1,78 @@
+From 68f05b8ff273a449a49f3ed261af92b6d49d32f6 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Thu, 23 Jan 2020 00:02:36 +0800
+Subject: [PATCH 48/48] msgmerge: avoid printing too long line this is the
+ cause of #50.
+
+One line is generally short, and [8192] is big enough for our usage. But
+after cmake invokes msgmerge, lines are joined. So we printf some super
+long lines into po files.
+
+And again, cmake invokes msgfmt to use these updated po files. So we
+meet these super long lines.
+---
+ src/msgmerge.c | 27 +++++++++++++++++++++------
+ 1 file changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/src/msgmerge.c b/src/msgmerge.c
+index 26499c2..07bca3a 100644
+--- a/src/msgmerge.c
++++ b/src/msgmerge.c
+@@ -47,7 +47,7 @@ struct fiLes {
+  * i.e. there is no translation lookup at all */
+ int process_line_callback(po_message_t msg, void* user) {
+ 	struct fiLes* file = (struct fiLes*) user;
+-	int i;
++	int i, j, k;
+ 	switch (file->stage) {
+ 	case ps_size:
+ 		if (msg->ctxt_len > file->len)
+@@ -68,25 +68,40 @@ int process_line_callback(po_message_t msg, void* user) {
+ 	case ps_parse:
+ 		if (msg->ctxt_len) {
+ 			escape(msg->ctxt, file->buf, file->len);
+-			fprintf(file->out, "msgctxt \"%s\"\n", file->buf);
++			fprintf(file->out, "msgctxt \"%.1024s\"\n", file->buf);
++			k = strlen(file->buf);
++			for (j = 1024; j < k; j += 1024)
++				fprintf(file->out, "\"%.1024s\"\n", &file->buf[j]);
+ 		}
+ 
+ 		escape(msg->id, file->buf, file->len);
+-		fprintf(file->out, "msgid \"%s\"\n", file->buf);
++		fprintf(file->out, "msgid \"%.1024s\"\n", file->buf);
++		k = strlen(file->buf);
++		for (j = 1024; j < k; j += 1024)
++			fprintf(file->out, "\"%.1024s\"\n", &file->buf[j]);
+ 
+ 		if (msg->plural_len) {
+ 			escape(msg->plural, file->buf, file->len);
+-			fprintf(file->out, "msgid_plural \"%s\"\n", file->buf);
++			fprintf(file->out, "msgid_plural \"%.1024s\"\n", file->buf);
++			k = strlen(file->buf);
++			for (j = 1024; j < k; j += 1024)
++				fprintf(file->out, "\"%.1024s\"\n", &file->buf[j]);
+ 		}
+ 
+ 		if (msg->plural_len) {
+ 			for (i=0; i < MAX_NPLURALS && msg->strlen[i]; i++) {
+ 				escape(msg->str[i], file->buf, file->len);
+-				fprintf(file->out, "msgstr[%d] \"%s\"\n", i, file->buf);
++				fprintf(file->out, "msgstr[%d] \"%.1024s\"\n", i, file->buf);
++				k = strlen(file->buf);
++				for (j = 1024; j < k; j += 1024)
++					fprintf(file->out, "\"%.1024s\"\n", &file->buf[j]);
+ 			}
+ 		} else {
+ 			escape(msg->str[0], file->buf, file->len);
+-			fprintf(file->out, "msgstr \"%s\"\n", file->buf);
++			fprintf(file->out, "msgstr \"%.1024s\"\n", file->buf);
++			k = strlen(file->buf);
++			for (j = 1024; j < k; j += 1024)
++				fprintf(file->out, "\"%.1024s\"\n", &file->buf[j]);
+ 		}
+ 
+ 		fputc('\n', file->out);
+-- 
+2.25.0
+

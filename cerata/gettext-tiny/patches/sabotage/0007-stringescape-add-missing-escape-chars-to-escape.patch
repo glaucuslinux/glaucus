@@ -1,0 +1,60 @@
+From 5606beeb455961ca1ce5f89595cb738f71d4d253 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Tue, 4 Dec 2018 00:20:45 +0800
+Subject: [PATCH 07/48] stringescape: add missing escape chars to escape()
+ escape() should handle '\b' and '\a' as well. also, escape() execute some
+ wrong actions. like transform '\?' into '\\\?', which should be '\\?'.
+
+specially, we do not need to en/decode ['] into [\\\']. but for safety,
+still keep that in unescape().
+---
+ src/StringEscape.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/src/StringEscape.c b/src/StringEscape.c
+index 70d8040..aabf1af 100644
+--- a/src/StringEscape.c
++++ b/src/StringEscape.c
+@@ -36,17 +36,27 @@ size_t escape(char* in, char* out, size_t outsize) {
+ 			case '\v':
+ 				*out++ = '\\';
+ 				l++;
+-				*out = '\v';
++				*out = 'v';
+ 				break;
+ 			case '\?':
+ 				*out++ = '\\';
+ 				l++;
+-				*out = '\?';
++				*out = '?';
+ 				break;
+ 			case '\f':
+ 				*out++ = '\\';
+ 				l++;
+-				*out = '\f';
++				*out = 'f';
++				break;
++			case '\b':
++				*out++ = '\\';
++				l++;
++				*out = 'b';
++				break;
++			case '\a':
++				*out++ = '\\';
++				l++;
++				*out = 'a';
+ 				break;
+ 			default:
+ 				*out = *in;
+@@ -85,7 +95,7 @@ size_t unescape(char* in, char *out, size_t outsize) {
+ 					case 'v':
+ 						*out='\v';
+ 						break;
+-					case '\?':
++					case '?':
+ 						*out = '\?';
+ 						break;
+ 					case 'f':
+-- 
+2.25.0
+

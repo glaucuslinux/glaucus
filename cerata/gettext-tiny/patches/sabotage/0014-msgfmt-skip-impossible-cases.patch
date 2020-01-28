@@ -1,0 +1,30 @@
+From fbbf226f6f13bd983351608b5e3e9acae067e0e3 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 12:33:39 +0800
+Subject: [PATCH 14/48] msgfmt: skip impossible cases mentioned by rofl0r. it's
+ not possible to have a case where lu is both priu32 and 64. we skip the case
+ by adding one.
+
+---
+ src/msgfmt.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index 98a9b88..c32d075 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -148,6 +148,11 @@ int process_line_callback(po_message_t msg, void* user) {
+ 						continue;
+ 					}
+ 
++					if (cnt[0] == 1 && cnt[1] == 0) {
++						i--;
++						continue;
++					}
++
+ 					k = 1;
+ 					break;
+ 				}
+-- 
+2.25.0
+

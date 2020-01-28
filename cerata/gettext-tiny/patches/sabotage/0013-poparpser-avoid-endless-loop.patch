@@ -1,0 +1,41 @@
+From 852f7ea9b3d8e0a5bbc9df694bed5b9d74292c82 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 12:09:08 +0800
+Subject: [PATCH 13/48] poparpser: avoid endless loop when a string like 'xx
+ %8' appears, strchr will capture a '%'. but it's not a sysdep string, so
+ variable `x` is not changed. then strchr will repeat this process over and
+ over again.
+
+now, we first copy the content before '%'(including '%'), and refer x to
+the first character after '%'. then we match and replace sysdep strings.
+or just continue, since x is now behind '%', strchr wont repeat the
+process again.
+---
+ src/poparser.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index feeaca5..49ee0ee 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -361,13 +361,14 @@ size_t poparser_sysdep(const char *in, char *out, int cnt[]) {
+ 
+ 	while ((y = strchr(x, '%'))) {
+ 		y++;
++		if (outs)
++			memcpy(out, x, y-x);
++		out += y-x;
++		x = y;
+ 
+ 		for (n=0; n < st_max; n++) {
+ 			m = strlen(sysdep_str[n]);
+ 			if (!strncmp(y, sysdep_str[n], m)) {
+-				if (outs)
+-					memcpy(out, x, y-x);
+-				out += y-x;
+ 				x = y + m;
+ 
+ 				y = sysdep_repl[n][cnt[n]+1];
+-- 
+2.25.0
+

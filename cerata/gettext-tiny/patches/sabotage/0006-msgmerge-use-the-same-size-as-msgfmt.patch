@@ -1,0 +1,27 @@
+From fb2a6a3b113315b1917af91c99a39321c72c1857 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Mon, 3 Dec 2018 22:48:21 +0800
+Subject: [PATCH 06/48] msgmerge: use the same size as msgfmt as the bufer of
+ msgfmt was overflowed before, we better take a bigger buffer for msgmerge,
+ too.
+
+---
+ src/msgmerge.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/msgmerge.c b/src/msgmerge.c
+index fe6dfdb..e2be067 100644
+--- a/src/msgmerge.c
++++ b/src/msgmerge.c
+@@ -97,7 +97,7 @@ int process(struct fiLes *files, int update, int backup) {
+ 	(void) update; (void) backup;
+ 	enum po_error t;
+ 	struct po_parser pb, *p = &pb;
+-	char line[4096], conv[8192], *lb;
++	char line[8192], conv[32768], *lb;
+ 
+ 	files->stage = ps_size;
+ 	poparser_init(p, conv, sizeof(conv), process_line_callback, files);
+-- 
+2.25.0
+

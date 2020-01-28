@@ -1,0 +1,31 @@
+From 314acc1a126a120bc3a74d071015c393b9ae86b8 Mon Sep 17 00:00:00 2001
+From: rofl0r <retnyg@gmx.net>
+Date: Wed, 16 Jan 2019 02:37:45 +0000
+Subject: [PATCH 03/48] Revert "msgfmt: remove unused error() function"
+
+This reverts commit e4c92b4a48ad613abbd1075fb21f722d4f38b073.
+
+necessary to merge "newpoparser" branch.
+---
+ src/msgfmt.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index f9692ce..c5d43d7 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -198,6 +198,11 @@ static char** sysdep_transform(const char* text, unsigned textlen, unsigned *len
+ 	return out;
+ }
+ 
++static void error(const char* msg) {
++	fprintf(stderr, msg);
++	exit(1);
++}
++
+ static inline void writemsg(struct callbackdata *d) {
+ 	if(d->msgidbuf1_len != 0) {
+ 		if(!d->strlist[d->curr[pe_msgid]].str.off)
+-- 
+2.25.0
+

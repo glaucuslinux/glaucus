@@ -1,0 +1,48 @@
+From 225a2dc144174d14f9f653cb95d99207d1267352 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Sun, 16 Dec 2018 18:46:46 +0800
+Subject: [PATCH 24/48] poparser: set correct length after parsing codecs
+ retval of iconv is not length, we need to calc that length by pointers.
+
+---
+ src/poparser.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 874e835..190a8f2 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -162,12 +162,13 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 			line_len = len + 1;
+ 			x = p->buf;
+ 			len = p->bufsize;
+-			if ( (len = iconv(p->cd, &line, &line_len, &x, &len)) == (size_t)-1) 
++			if (iconv(p->cd, &line, &line_len, &x, &len) == (size_t)-1) 
+ 				return -po_failed_iconv;
+ 
+ 			if (line_len != 0)
+ 				return -po_failed_iconv;
+ 
++			len = x - p->buf; 
+ 			x = p->buf;
+ 		}
+ 
+@@ -225,12 +226,14 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 			line_len = len + 1;
+ 			x = p->buf;
+ 			len = p->bufsize;
+-			if ( (len = iconv(p->cd, &line, &line_len, &x, &len)) == (size_t)-1) 
++
++			if (iconv(p->cd, &line, &line_len, &x, &len) == (size_t)-1) 
+ 				return -po_failed_iconv;
+ 
+ 			if (line_len != 0)
+ 				return -po_failed_iconv;
+ 
++			len = x - p->buf; 
+ 			x = p->buf;
+ 		}
+ 
+-- 
+2.25.0
+

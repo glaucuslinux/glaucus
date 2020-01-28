@@ -1,0 +1,32 @@
+From c746a33521f7a8b0650235420f027940778b4058 Mon Sep 17 00:00:00 2001
+From: rofl0r <retnyg@gmx.net>
+Date: Sat, 15 Dec 2018 03:00:31 +0000
+Subject: [PATCH 02/48] autopoint: add sanity check for configure.ac
+
+a curious user might try to run the script from a random directory expecting
+to see help output. in such a case it's better to fail early with an error
+message instead of first creating directories and files the user would have
+to cleanup manually afterwards.
+---
+ src/autopoint.in | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/autopoint.in b/src/autopoint.in
+index 3d185e4..ce41116 100755
+--- a/src/autopoint.in
++++ b/src/autopoint.in
+@@ -1,6 +1,11 @@
+ #!/bin/sh
+ m4src=@datadir@/m4
+ 
++if ! test -e configure.ac ; then
++	echo "$0: error: configure.ac not found" >&2
++	exit 1
++fi
++
+ mkdir -p m4 intl po
+ for i in $m4src/*.m4 ; do
+ 	cp -f $i m4/
+-- 
+2.25.0
+

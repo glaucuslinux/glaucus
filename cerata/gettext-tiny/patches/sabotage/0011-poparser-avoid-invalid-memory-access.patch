@@ -1,0 +1,28 @@
+From 445d2550c74b1dea3f621e160d364484448da0bc Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 11:25:07 +0800
+Subject: [PATCH 11/48] poparser: avoid invalid memory access mentioned by
+ rofl0r.
+
+if y is shorter than strlen(sysdep_str[n]), it may corrupt the memory.
+we better use strncmp instead.
+---
+ src/poparser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 55f9c49..e4eff3c 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -362,7 +362,7 @@ size_t poparser_sysdep(const char *in, char *out, int cnt[]) {
+ 		y++;
+ 
+ 		for (n=0; n < st_max; n++) {
+-			if (!memcmp(y, sysdep_str[n], strlen(sysdep_str[n]))) {
++			if (!strncmp(y, sysdep_str[n], strlen(sysdep_str[n]))) {
+ 				if (outs)
+ 					memcpy(out, x, y-x);
+ 				out += y-x;
+-- 
+2.25.0
+

@@ -1,0 +1,26 @@
+From 57f5590bb624693a07bf50300b09e17af041c527 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Sun, 16 Dec 2018 15:07:20 +0800
+Subject: [PATCH 21/48] poparser: avoid memory corruption by terminator we did
+ not add NULL terminator into the length of strings.
+
+---
+ src/poparser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 75f2b0f..7f87776 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -56,7 +56,7 @@ static inline enum po_error poparser_feed_hdr(struct po_parser *p, po_message_t
+ 		if ((x = strstr(msg->str[0], "charset="))) {
+ 			for (y = x; *y && !isspace(*y); y++);
+ 
+-			if ((y-x-8) > sizeof(p->hdr.charset))
++			if ((unsigned)(y-x-7) > sizeof(p->hdr.charset))
+ 				return -po_unsupported_charset;
+ 
+ 			memcpy(p->hdr.charset, x+8, y-x-8);
+-- 
+2.25.0
+

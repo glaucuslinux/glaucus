@@ -1,0 +1,66 @@
+From d78b312d4857a915a622dc82148c80cc99747edb Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 28 Jun 2019 21:19:20 +0800
+Subject: [PATCH 44/48] autopoint: support dist target to release tarballs
+ follow https://github.com/sabotage-linux/gettext-tiny/issues/43.
+
+closed https://github.com/sabotage-linux/gettext-tiny/issues/43.
+
+though it's not our goal to support releasing, it's not so much code.
+---
+ data/autopoint_Makefile.in | 39 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/data/autopoint_Makefile.in b/data/autopoint_Makefile.in
+index 93d2254..82e0756 100644
+--- a/data/autopoint_Makefile.in
++++ b/data/autopoint_Makefile.in
+@@ -164,8 +164,43 @@ info dvi ps pdf html tags TAGS ctags CTAGS ID:
+ 
+ install-dvi install-ps install-pdf install-html:
+ 
+-mostlyclean:
+-clean:
++distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
++dist distdir: all
++	$(mkdir_p) $(distdir); \
++	dists="$(POFILES) $(GMOFILES)"; \
++	if test "$(PACKAGE)" = "gettext-tools"; then \
++		dists="$$dists Makevars.template"; \
++	fi; \
++	if test -f $(srcdir)/POTFILES.in; then \
++		dists="$$dists POTFILES.in"; \
++	fi; \
++	if test -f $(srcdir)/Makefile.in.in; then \
++		dists="$$dists Makefile.in.in"; \
++	fi; \
++	if test -f $(srcdir)/Makevars; then \
++		dists="$$dists Makevars"; \
++	fi; \
++	if test -f $(srcdir)/$(DOMAIN).pot; then \
++		dists="$$dists $(DOMAIN).pot"; \
++	fi; \
++	if test -f $(srcdir)/ChangeLog; then \
++		dists="$$dists ChangeLog"; \
++	fi; \
++	for i in 0 1 2 3 4 5 6 7 8 9; do \
++		if test -f $(srcdir)/ChangeLog.$$i; then \
++			dists="$$dists ChangeLog.$$i"; \
++		fi; \
++	done; \
++	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
++	for file in $$dists; do \
++		if test -f $$file; then \
++			cp -p $$file $(distdir) || exit 1; \
++		else \
++			cp -p $(srcdir)/$$file $(distdir) || exit 1; \
++		fi; \
++	done
++
++mostlyclean clean:
+ 	rm -f core core.* $(DOMAIN).po $(DOMAIN).1po $(DOMAIN).2po *.new.po
+ 	rm -fr *.o
+ 
+-- 
+2.25.0
+

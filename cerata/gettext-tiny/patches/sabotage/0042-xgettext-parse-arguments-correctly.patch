@@ -1,0 +1,38 @@
+From a597aaebd15ef73a65d67f0d6f746ca7ca812d51 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 5 Apr 2019 10:00:21 +0800
+Subject: [PATCH 42/48] xgettext: parse arguments correctly `*) break` will
+ stop parsing immediately after the first argument is parsed, leaving all
+ other arguments ignored.
+
+To prevent shifting arguments more than we have, we should check if
+there's any argument left. Otherwise, script will exit with `can not
+shift anymore`.
+---
+ src/xgettext.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/xgettext.sh b/src/xgettext.sh
+index 670b96d..fc38369 100755
+--- a/src/xgettext.sh
++++ b/src/xgettext.sh
+@@ -20,7 +20,7 @@ show_version() {
+ 	exit 0
+ }
+ 
+-while true ; do
++while [ $# -gt 0 ] ; do
+ 	case $1 in
+ 	#--files-from=*) readfile `spliteq "$1"`;;
+ 	#-f) expectfilefrom=1;;
+@@ -97,7 +97,6 @@ while true ; do
+ 	-M*) : ;;
+ 	--help) syntax ;;
+ 	-h) syntax ;;
+-	*) break ;;
+ 	esac
+ 	shift
+ done
+-- 
+2.25.0
+

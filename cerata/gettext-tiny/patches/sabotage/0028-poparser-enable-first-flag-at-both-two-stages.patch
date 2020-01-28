@@ -1,0 +1,25 @@
+From 949a6f2dc28f26d84b28a97f6405a7a23121a68e Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Thu, 27 Dec 2018 19:57:52 +0800
+Subject: [PATCH 28/48] poparser: enable 'first' flag at both two stages it
+ should be set to true at the beginning of each stage, or we may abort.
+
+---
+ src/poparser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 6254f7e..372f544 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -376,6 +376,7 @@ enum po_error poparser_finish(struct po_parser *p) {
+ 			msg->str[cnt] = msg->str[cnt-1] + p->max_strlen[cnt-1];
+ 
+ 		p->hdr.nplurals = 2;
++		p->first = true;
+ 	} else {
+ 		if ( (t = poparser_clean(p, msg)) != po_success)
+ 			return t;
+-- 
+2.25.0
+

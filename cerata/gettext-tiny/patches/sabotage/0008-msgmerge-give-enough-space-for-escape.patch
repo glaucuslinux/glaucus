@@ -1,0 +1,33 @@
+From 1274271a37914875fe4f4ca41d63ed17746c0adf Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Tue, 4 Dec 2018 00:26:01 +0800
+Subject: [PATCH 08/48] msgmerge: give enough space for escape() escape will
+ need up to two times larger space.
+
+---
+ src/msgmerge.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/msgmerge.c b/src/msgmerge.c
+index e2be067..39e3b88 100644
+--- a/src/msgmerge.c
++++ b/src/msgmerge.c
+@@ -100,6 +100,7 @@ int process(struct fiLes *files, int update, int backup) {
+ 	char line[8192], conv[32768], *lb;
+ 
+ 	files->stage = ps_size;
++	files->len = 0;
+ 	poparser_init(p, conv, sizeof(conv), process_line_callback, files);
+ 	while((lb = fgets(line, sizeof(line), files->po))) {
+ 		if ((t = poparser_feed_line(p, lb, strlen(line))) != po_success)
+@@ -109,6 +110,7 @@ int process(struct fiLes *files, int update, int backup) {
+ 		free(files->buf);
+ 
+ 	files->stage = ps_parse;
++	files->len *= 2;
+ 	files->buf = (char*)malloc(files->len);
+ 	fseek(files->po, 0, SEEK_SET);
+ 
+-- 
+2.25.0
+

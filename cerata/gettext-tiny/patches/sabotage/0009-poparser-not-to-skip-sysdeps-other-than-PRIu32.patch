@@ -1,0 +1,63 @@
+From 502b08abdfefe87bed3805dc5ca142165cdd5f72 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 10:51:18 +0800
+Subject: [PATCH 09/48] poparser: not to skip sysdeps other than %<PRIu32>
+ follow
+ https://github.com/sabotage-linux/gettext-tiny/issues/39#issuecomment-445036044.
+
+it's obvious that, strstr will search for `%<PRIu32>` first, if there's
+one, then we get there and skip all other sysdep strings before the first
+`%<PRIu32>`. but what we want is, to search the first sysdep string.
+
+so, our new stragegy is to search for `%` instead. such that, we will
+always match the first sysdep string.
+---
+ src/poparser.c | 32 ++++++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index dc4cf86..55f9c49 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -358,20 +358,24 @@ size_t poparser_sysdep(const char *in, char *out, int cnt[]) {
+ 	outs = out;
+ 	x = in;
+ 
+-	for (n=0; n < st_max;) {
+-		if ((y = strstr(x, sysdep_str[n])) && *(y-1) == '%') {
+-			if (outs)
+-				memcpy(out, x, y-x);
+-			out += y-x;
+-			x = y + strlen(sysdep_str[n]);
+-
+-			y = sysdep_repl[n][cnt[n]+1];
+-			if (outs)
+-				memcpy(out, y, strlen(y));
+-			out += strlen(y);
+-
+-			n = 0;
+-		} else n++;
++	while ((y = strchr(x, '%'))) {
++		y++;
++
++		for (n=0; n < st_max; n++) {
++			if (!memcmp(y, sysdep_str[n], strlen(sysdep_str[n]))) {
++				if (outs)
++					memcpy(out, x, y-x);
++				out += y-x;
++				x = y + strlen(sysdep_str[n]);
++
++				y = sysdep_repl[n][cnt[n]+1];
++				if (outs)
++					memcpy(out, y, strlen(y));
++				out += strlen(y);
++
++				break;
++			}
++		}
+ 	}
+ 
+ 	if (outs)
+-- 
+2.25.0
+

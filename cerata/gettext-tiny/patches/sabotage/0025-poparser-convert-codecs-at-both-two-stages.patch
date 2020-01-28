@@ -1,0 +1,36 @@
+From c71556cc2f9e11bfa17e4322c15f58a957e0205b Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Sun, 16 Dec 2018 18:49:02 +0800
+Subject: [PATCH 25/48] poparser: convert codecs at both two stages as iconv
+ may increase the length of strings, so we may have a larger length at the
+ parse stage than the first stage. that leads to a memory corruption.
+
+---
+ src/poparser.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 190a8f2..8cd1fe1 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -82,13 +82,13 @@ static inline enum po_error poparser_feed_hdr(struct po_parser *p, po_message_t
+ static inline enum po_error poparser_clean(struct po_parser *p, po_message_t msg) {
+ 	enum po_error t;
+ 
++	if ((t = poparser_feed_hdr(p, msg)) != po_success) {
++		return t;
++	}
++
+ 	if (p->strcnt) {
+ 		msg->strlen[p->strcnt] = 0;
+ 
+-		if ((t = poparser_feed_hdr(p, msg)) != po_success) {
+-			return t;
+-		}
+-
+ 		// PO_SYSDEP_PRIUMAX == 0, it has no effects to our codes
+ 		switch (msg->sysdep) {
+ 		case PO_SYSDEP_PRIU32:
+-- 
+2.25.0
+

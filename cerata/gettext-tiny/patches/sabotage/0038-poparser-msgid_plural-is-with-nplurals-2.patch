@@ -1,0 +1,26 @@
+From 8407f970300e7af6f090dc80c556f9b2fed12dba Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 28 Dec 2018 22:34:51 +0800
+Subject: [PATCH 38/48] poparser: msgid_plural is with nplurals > 2 i made a
+ exactly wrong check there
+
+---
+ src/poparser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index cf1c6b6..46aaa9f 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -289,7 +289,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 			if (!msg->id_len || p->strcnt)
+ 				return -po_invalid_entry;
+ 
+-			if (p->strict && p->hdr.nplurals > 1) {
++			if (p->strict && p->hdr.nplurals < 2) {
+ 				return -po_plurals_overflow;
+ 			}
+ 
+-- 
+2.25.0
+

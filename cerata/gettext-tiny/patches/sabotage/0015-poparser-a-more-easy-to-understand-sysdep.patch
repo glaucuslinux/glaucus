@@ -1,0 +1,265 @@
+From eaf42fc91d9d1753ad43c7d808358094765a90c0 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 18:42:45 +0800
+Subject: [PATCH 15/48] poparser: a more easy-to-understand sysdep() as rofl0r
+ said, maybe the previous sysdep(), is a bit confusing. so, i modified a new
+ version.
+
+this time, msg->sysdep[] became a bit flag msg->sysdep_flag. it can tell
+which kind of sysdep string occurs.
+
+using this infomation, you can tell the total num of cases on your own.
+assuming that num is X, you can use new sysdep() to deal with every case
+simply by invoking the function X times with a third argument from 0 to
+X-1. and you get X different expanded strings.
+---
+ src/msgfmt.c   | 70 ++++++++++++++++++++++----------------------------
+ src/poparser.c | 27 ++++++++++---------
+ src/poparser.h |  8 ++++--
+ 3 files changed, 52 insertions(+), 53 deletions(-)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index c32d075..58fd855 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -77,36 +77,48 @@ int process_line_callback(po_message_t msg, void* user) {
+ 	struct callbackdata *d = (struct callbackdata *) user;
+ 	struct strtbl *str, *trans;
+ 	size_t m;
+-	int cnt[st_max] = {0};
+-	int i, k;
++	int i, j, k;
+ 
+ 	if (msg->flags & PO_FUZZY) return 0;
+ 	if (msg->strlen[0] == 0) return 0;
+ 
+-	switch(d->stage) {
+-	case ps_size:
++	// PO_SYSDEP_PRIUMAX == 0, it has no effects to our codes
++	switch (msg->sysdep_flag) {
++	case PO_SYSDEP_PRIU32:
++	case PO_SYSDEP_PRIU64:
++		k = 2;
++		break;
++	case PO_SYSDEP_PRIU32|PO_SYSDEP_PRIU64:
++		k = 3;
++		break;
++	default:
+ 		k = 1;
+-		for (i=0; i < st_max; i++)
+-			if (msg->sysdep[i])
+-				k *= msg->sysdep[i];
++		break;
++	}
+ 
+-		d->len[0] += (msg->id_len + 1)*k;
++	switch(d->stage) {
++	case ps_size:
++		m = 0;
++		m += msg->id_len + 1;
+ 
+ 		if (msg->plural_len)
+-			d->len[0] += (msg->plural_len + 1)*k;
++			m = msg->plural_len + 1;
+ 
+ 		if (msg->ctxt_len)
+-			d->len[0] += (msg->ctxt_len + 1)*k;
++			m += msg->ctxt_len + 1;
+ 
+-		for (i=0; msg->strlen[i]; i++)
+-			d->len[1] += (msg->strlen[i] + 1)*k;
++		d->len[0] += m * k;
++
++		m = 0;
++		for (i=0; msg->strlen[i]; i++) {
++			m += msg->strlen[i] + 1;
++		}
++		d->len[1] += m * k;
+ 
+ 		d->cnt += k;
+ 		break;
+ 	case ps_parse:
+-		for (k=1; k; d->cnt++) {
+-			k = 0;
+-
++		for (j=0; j < k; j++) {
+ 			str = &d->list[d->cnt].str;
+ 			trans = &d->list[d->cnt].trans;
+ 
+@@ -114,18 +126,18 @@ int process_line_callback(po_message_t msg, void* user) {
+ 			str->len = 0;
+ 
+ 			if (msg->ctxt_len) {
+-				m = poparser_sysdep(msg->ctxt, &d->buf[0][d->len[0]], cnt);
++				m = poparser_sysdep(msg->ctxt, &d->buf[0][d->len[0]], j);
+ 				str->len += m;
+ 				d->buf[0][d->len[0]+m-1] = 0x4;
+ 				d->len[0] += m;
+ 			}
+ 
+-			m = poparser_sysdep(msg->id, &d->buf[0][d->len[0]], cnt);
++			m = poparser_sysdep(msg->id, &d->buf[0][d->len[0]], j);
+ 			str->len += m;
+ 			d->len[0] += m;
+ 
+ 			if (msg->plural_len) {
+-				m = poparser_sysdep(msg->plural, &d->buf[0][d->len[0]], cnt);
++				m = poparser_sysdep(msg->plural, &d->buf[0][d->len[0]], j);
+ 				str->len += m;
+ 				d->len[0] += m;
+ 			}
+@@ -133,30 +145,10 @@ int process_line_callback(po_message_t msg, void* user) {
+ 			trans->off = d->len[1];
+ 			trans->len = 0;
+ 			for (i=0; msg->strlen[i]; i++) {
+-				m = poparser_sysdep(msg->str[i], &d->buf[1][d->len[1]], cnt);
++				m = poparser_sysdep(msg->str[i], &d->buf[1][d->len[1]], j);
+ 				trans->len += m;
+ 				d->len[1] += m;
+ 			}
+-
+-			for (i=0; i < st_max; i++) {
+-				if (cnt[i] < msg->sysdep[i]) {
+-					cnt[i]++;
+-
+-					// we have a carry
+-					if (cnt[i] == msg->sysdep[i]) {
+-						cnt[i] = 0;
+-						continue;
+-					}
+-
+-					if (cnt[0] == 1 && cnt[1] == 0) {
+-						i--;
+-						continue;
+-					}
+-
+-					k = 1;
+-					break;
+-				}
+-			}
+ 		}
+ 
+ 		break;
+diff --git a/src/poparser.c b/src/poparser.c
+index 49ee0ee..484071e 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -14,9 +14,15 @@ static const char* sysdep_str[st_max]={
+ };
+ 
+ static const char* sysdep_repl[st_max][3]={
+-	[st_priu32]  = {"\x2", "u", "lu"},
+-	[st_priu64]  = {"\x2", "lu", "llu"},
+-	[st_priumax]  = {"\x1", "ju"},
++	[st_priu32]  = {"u", "lu", "u"},
++	[st_priu64]  = {"lu", "llu", "llu"},
++	[st_priumax]  = {"ju", "ju", "ju"},
++};
++
++static const int sysdep_flag[st_max]={
++	[st_priu32]  = PO_SYSDEP_PRIU32,
++	[st_priu64]  = PO_SYSDEP_PRIU64,
++	[st_priumax]  = PO_SYSDEP_PRIUMAX,
+ };
+ 
+ void poparser_init(struct po_parser *p, char* workbuf, size_t bufsize, poparser_callback cb, void* cbdata) {
+@@ -66,7 +72,6 @@ static inline enum po_error poparser_feed_hdr(struct po_parser *p, po_message_t
+ 
+ static inline enum po_error poparser_clean(struct po_parser *p, po_message_t msg) {
+ 	enum po_error t;
+-	int i;
+ 
+ 	if (p->strcnt) {
+ 		msg->strlen[p->strcnt] = 0;
+@@ -79,9 +84,7 @@ static inline enum po_error poparser_clean(struct po_parser *p, po_message_t msg
+ 		if (p->cb)
+ 			p->cb(msg, p->cbdata);
+ 
+-		for (i=0; i < st_max; i++)
+-			msg->sysdep[i] = 0;
+-
++		msg->sysdep_flag = 0;
+ 		msg->ctxt_len = 0;
+ 		msg->id_len = 0;
+ 		msg->plural_len = 0;
+@@ -144,7 +147,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 		for (cnt = 0; cnt < st_max; cnt++) {
+ 			if (strstr(x, sysdep_str[cnt])) {
+-				msg->sysdep[cnt] = sysdep_repl[cnt][0][0];
++				msg->sysdep_flag |= sysdep_flag[cnt];
+ 			}
+ 		}
+ 
+@@ -211,7 +214,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 			for (cnt = 0; cnt < st_max; cnt++) {
+ 				if (strstr(x, sysdep_str[cnt])) {
+-					msg->sysdep[cnt] = sysdep_repl[cnt][0][0];
++					msg->sysdep_flag |= sysdep_flag[cnt];
+ 				}
+ 			}
+ 
+@@ -234,7 +237,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 			for (cnt = 0; cnt < st_max; cnt++) {
+ 				if (strstr(x, sysdep_str[cnt])) {
+-					msg->sysdep[cnt] = sysdep_repl[cnt][0][0];
++					msg->sysdep_flag |= sysdep_flag[cnt];
+ 				}
+ 			}
+ 
+@@ -352,7 +355,7 @@ enum po_error poparser_finish(struct po_parser *p) {
+ 	return po_success;
+ }
+ 
+-size_t poparser_sysdep(const char *in, char *out, int cnt[]) {
++size_t poparser_sysdep(const char *in, char *out, int num) {
+ 	const char *x, *y, *outs;
+ 	size_t m;
+ 	int n;
+@@ -371,7 +374,7 @@ size_t poparser_sysdep(const char *in, char *out, int cnt[]) {
+ 			if (!strncmp(y, sysdep_str[n], m)) {
+ 				x = y + m;
+ 
+-				y = sysdep_repl[n][cnt[n]+1];
++				y = sysdep_repl[n][num];
+ 				m = strlen(y);
+ 				if (outs)
+ 					memcpy(out, y, m);
+diff --git a/src/poparser.h b/src/poparser.h
+index 1e4a589..79c3775 100644
+--- a/src/poparser.h
++++ b/src/poparser.h
+@@ -15,7 +15,7 @@ enum sysdep_types {
+ };
+ 
+ // make sure out has equal or more space than in
+-size_t poparser_sysdep(const char *in, char *out, int cnt[]);
++size_t poparser_sysdep(const char *in, char *out, int num);
+ 
+ struct po_header {
+ 	char charset[12];
+@@ -24,6 +24,10 @@ struct po_header {
+ };
+ 
+ #define PO_FUZZY 1u
++#define PO_SYSDEP_PRIU32 (1 << st_priu32)
++#define PO_SYSDEP_PRIU64 (1 << st_priu64)
++// for complement, no usage
++#define PO_SYSDEP_PRIUMAX 0
+ 
+ struct po_message {
+ 	char *ctxt;
+@@ -31,7 +35,7 @@ struct po_message {
+ 	char *plural;
+ 	char* str[MAX_NPLURALS];
+ 
+-	int sysdep[st_max];
++	int sysdep_flag;
+ 	size_t ctxt_len;
+ 	size_t id_len;
+ 	size_t plural_len;
+-- 
+2.25.0
+

@@ -1,0 +1,50 @@
+From 66742b0f2dd94aaa2698b864f7997ceb3c18c834 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 28 Dec 2018 07:57:40 +0800
+Subject: [PATCH 36/48] poparser: default to non-strict mode there're many po
+ files in invalid-form, which will not actually trigger segfault or what in
+ most cases. gnu msgfmt chose to ignore these issues without explicit option,
+ so do i.
+
+---
+ src/poparser.c | 4 ++--
+ src/poparser.h | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index e512db7..d7aafb1 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -63,7 +63,7 @@ static inline enum po_error poparser_feed_hdr(struct po_parser *p, char* msg) {
+ 			p->cd = iconv_open("UTF-8", p->hdr.charset);
+ 			if (p->cd == (iconv_t)-1) {
+ 				p->cd = 0;
+-				return -po_unsupported_charset;
++				if (p->strict) return -po_unsupported_charset;
+ 			}
+ 		}
+ 
+@@ -316,7 +316,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 				p->strcnt = (cnt = y[1] - '0') + 1;
+ 
+-				if (p->strcnt > p->hdr.nplurals) {
++				if (p->strict && p->strcnt > p->hdr.nplurals) {
+ 					return -po_plurals_overflow;
+ 				}
+ 			} else {
+diff --git a/src/poparser.h b/src/poparser.h
+index 814dfa3..3f7db7d 100644
+--- a/src/poparser.h
++++ b/src/poparser.h
+@@ -68,6 +68,7 @@ struct po_parser {
+ 
+ 	// private parts
+ 	bool first;
++	bool strict;
+ 	iconv_t cd;
+ 	enum po_entry previous;
+ 	unsigned strcnt;
+-- 
+2.25.0
+

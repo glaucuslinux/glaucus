@@ -1,0 +1,39 @@
+From 58187329ad9f00eb8c39379e7ee0b608dd14bab8 Mon Sep 17 00:00:00 2001
+From: rofl0r <retnyg@gmx.net>
+Date: Wed, 5 Dec 2018 01:55:53 +0000
+Subject: [PATCH 01/48] Revert "libintl.h: don't enable NOP macros by default"
+
+This reverts commit 117e8eb600aecb432050ceb96d10e7503c801cf7.
+
+The patch was based on a misunderstanding: libintl.h is only installed
+if the NOP libintl flavor is chosen, in which case one actually *wants*
+these macros to be active by default.
+---
+ include/libintl.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/libintl.h b/include/libintl.h
+index b1af2b4..154c532 100644
+--- a/include/libintl.h
++++ b/include/libintl.h
+@@ -21,14 +21,14 @@ char *bindtextdomain(const char *domainname, const char *dirname);
+ #undef gettext_noop
+ #define gettext_noop(X) X
+ 
+-#ifdef LIBINTL_NOP_MACROS
++#ifndef LIBINTL_NO_MACROS
+ /* if these macros are defined, configure checks will detect libintl as
+  * built into the libc because test programs will work without -lintl.
+  * for example:
+  * checking for ngettext in libc ... yes
+  * the consequence is that -lintl will not be added to the LDFLAGS.
+- * so if for some reason you do not want that libintl.a gets linked,
+- * add -DLIBINTL_NOP_MACROS=1 to your CPPFLAGS. */
++ * so if for some reason you want that libintl.a gets linked,
++ * add -DLIBINTL_NO_MACROS=1 to your CPPFLAGS. */
+ 
+ #define gettext(X) ((char*) (X))
+ #define dgettext(dom, X) ((void)(dom), (char*) (X))
+-- 
+2.25.0
+

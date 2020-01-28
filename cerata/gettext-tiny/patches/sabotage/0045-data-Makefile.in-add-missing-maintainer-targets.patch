@@ -1,0 +1,119 @@
+From a76f8ad7b1b65cbaeb88120bb15bb5d59e1db07b Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Sat, 29 Jun 2019 09:51:53 +0800
+Subject: [PATCH 45/48] data/Makefile.in: add missing maintainer targets follow
+ https://github.com/sabotage-linux/gettext-tiny/issues/44.
+
+Similiar to #43. I do think update-mo is good, though most targets
+@ismaell requested are just stubs. Since gettext-tiny is not for
+maintainer.
+---
+ data/autopoint_Makefile.in | 53 ++++++++++++++++++++++++++++++--------
+ 1 file changed, 42 insertions(+), 11 deletions(-)
+
+diff --git a/data/autopoint_Makefile.in b/data/autopoint_Makefile.in
+index 82e0756..3fb62bc 100644
+--- a/data/autopoint_Makefile.in
++++ b/data/autopoint_Makefile.in
+@@ -13,7 +13,6 @@ VERSION = @VERSION@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+ SED = @SED@
+ SHELL = /bin/sh
+-@SET_MAKE@
+ srcdir = @srcdir@
+ top_srcdir = @top_srcdir@
+ VPATH = @srcdir@
+@@ -41,6 +40,7 @@ MSGFMT = $(MSGFMT_$(USE_MSGCTXT))
+ 
+ POFILES = @POFILES@
+ GMOFILES = @GMOFILES@
++MOFILES = @MOFILES@
+ 
+ POTFILES = \
+ 
+@@ -50,6 +50,13 @@ CATALOGS = @CATALOGS@
+ 
+ .SUFFIXES:
+ .SUFFIXES: .po .gmo .mo
++.PHONY: all
++
++all: all-@USE_NLS@
++
++all-yes: update-po update-mo
++
++all-no:
+ 
+ .po.mo:
+ 	@echo "$(MSGFMT) -c -o $@ $<"; \
+@@ -57,14 +64,31 @@ CATALOGS = @CATALOGS@
+ 
+ .po.gmo:
+ 	@lang=`echo $* | sed -e 's,.*/,,'`; \
+-	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
+-	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics --verbose -o $${lang}.gmo $${lang}.po"; \
++	echo "cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics --verbose -o $${lang}.gmo $${lang}.po"; \
+ 	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics --verbose -o t-$${lang}.gmo $${lang}.po && mv t-$${lang}.gmo $${lang}.gmo
+ 
+-all: all-@USE_NLS@
+-all-yes: 
+-	test -z "$(GMOFILES)" || $(MAKE) $(GMOFILES)
+-all-no:
++$(srcdir)/$(DOMAIN).pot:
++	test -f $(srcdir)/$(DOMAIN).pot || touch $(srcdir)/$(DOMAIN).pot;
++
++.po: $(srcdir)/$(DOMAIN).pot
++	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
++	if test -f "$(srcdir)/$${lang}.po"; then \
++		echo "cd $(srcdir) && $(MSGMERGE_UPDATE) $(MSGMERGE_OPTIONS) --lang=$${lang} $${lang}.po $(DOMAIN).pot"; \
++		cd $(srcdir) && $(MSGMERGE_UPDATE) $(MSGMERGE_OPTIONS) --lang=$${lang} $${lang}.po $(DOMAIN).pot; \
++	else \
++		echo "po file does not exist"; \
++		exit 1; \
++	fi
++
++update-gmo update-mo:
++	if test -n "$(GMOFILES)"; then \
++		$(MAKE) $(GMOFILES); \
++	else \
++		test "$(MOFILES)" = "@MOFILES@" || $(MAKE) $(MOFILES); \
++	fi
++
++update-po:
++	test -z "$(POFILES)" || $(MAKE) $(POFILES)
+ 
+ install: install-@USE_NLS@
+ install-strip: install
+@@ -165,9 +189,13 @@ info dvi ps pdf html tags TAGS ctags CTAGS ID:
+ install-dvi install-ps install-pdf install-html:
+ 
+ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+-dist distdir: all
++dist distdir: update-po update-mo
+ 	$(mkdir_p) $(distdir); \
+-	dists="$(POFILES) $(GMOFILES)"; \
++	if test -n "$(GMOFILES)"; then \
++		dists="$(POFILES) $(GMOFILES)"; \
++	else \
++		dists="$(POFILES) $(MOFILES)"; \
++	fi; \
+ 	if test "$(PACKAGE)" = "gettext-tools"; then \
+ 		dists="$$dists Makevars.template"; \
+ 	fi; \
+@@ -200,9 +228,12 @@ dist distdir: all
+ 		fi; \
+ 	done
+ 
++Makefile: Makefile.in.in Makevars $(top_builddir)/config.status
++	cd $(top_builddir) && @SHELL@ ./config.status $(subdir)/$@.in po-directories;
++
+ mostlyclean clean:
+ 	rm -f core core.* $(DOMAIN).po $(DOMAIN).1po $(DOMAIN).2po *.new.po
+ 	rm -fr *.o
+ 
+-distclean: clean
+-	rm -f Makefile Makefile.in *.mo
++maintainer-clean distclean: clean
++	rm -f Makefile Makefile.in *.mo *.gmo
+-- 
+2.25.0
+

@@ -1,0 +1,152 @@
+From 21a9a23d690827af9ddf884cf739a1759317aedf Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Fri, 7 Dec 2018 18:58:41 +0800
+Subject: [PATCH 16/48] poparser: simplified sysdep() more this time,
+ msg->sysdep became a total num of cases simply. just invoke sysdep() X times
+ with a third argument from 0 to X-1, and you are done.
+
+in short, i move the code of transforming flags to the num of cases from
+msgfmt.c to poparser.c
+---
+ src/msgfmt.c   | 16 +---------------
+ src/poparser.c | 29 ++++++++++++++++++++++++-----
+ src/poparser.h |  6 +-----
+ 3 files changed, 26 insertions(+), 25 deletions(-)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index 58fd855..4978f54 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -77,25 +77,11 @@ int process_line_callback(po_message_t msg, void* user) {
+ 	struct callbackdata *d = (struct callbackdata *) user;
+ 	struct strtbl *str, *trans;
+ 	size_t m;
+-	int i, j, k;
++	int i, j, k = msg->sysdep;
+ 
+ 	if (msg->flags & PO_FUZZY) return 0;
+ 	if (msg->strlen[0] == 0) return 0;
+ 
+-	// PO_SYSDEP_PRIUMAX == 0, it has no effects to our codes
+-	switch (msg->sysdep_flag) {
+-	case PO_SYSDEP_PRIU32:
+-	case PO_SYSDEP_PRIU64:
+-		k = 2;
+-		break;
+-	case PO_SYSDEP_PRIU32|PO_SYSDEP_PRIU64:
+-		k = 3;
+-		break;
+-	default:
+-		k = 1;
+-		break;
+-	}
+-
+ 	switch(d->stage) {
+ 	case ps_size:
+ 		m = 0;
+diff --git a/src/poparser.c b/src/poparser.c
+index 484071e..978f262 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -7,6 +7,11 @@
+ 
+ #define strstarts(S, W) (memcmp(S, W, sizeof(W) - 1) ? NULL : (S + (sizeof(W) - 1)))
+ 
++#define PO_SYSDEP_PRIU32 (1 << st_priu32)
++#define PO_SYSDEP_PRIU64 (1 << st_priu64)
++// for complement, no usage
++#define PO_SYSDEP_PRIUMAX 0
++
+ static const char* sysdep_str[st_max]={
+ 	[st_priu32] = "<PRIu32>",
+ 	[st_priu64] = "<PRIu64>",
+@@ -19,7 +24,7 @@ static const char* sysdep_repl[st_max][3]={
+ 	[st_priumax]  = {"ju", "ju", "ju"},
+ };
+ 
+-static const int sysdep_flag[st_max]={
++static const int sysdep[st_max]={
+ 	[st_priu32]  = PO_SYSDEP_PRIU32,
+ 	[st_priu64]  = PO_SYSDEP_PRIU64,
+ 	[st_priumax]  = PO_SYSDEP_PRIUMAX,
+@@ -80,11 +85,25 @@ static inline enum po_error poparser_clean(struct po_parser *p, po_message_t msg
+ 			return t;
+ 		}
+ 
++		// PO_SYSDEP_PRIUMAX == 0, it has no effects to our codes
++		switch (msg->sysdep) {
++		case PO_SYSDEP_PRIU32:
++		case PO_SYSDEP_PRIU64:
++			msg->sysdep = 2;
++			break;
++		case PO_SYSDEP_PRIU32|PO_SYSDEP_PRIU64:
++			msg->sysdep = 3;
++			break;
++		default:
++			msg->sysdep = 1;
++			break;
++		}
++
+ 		// met a new block starting with msgid
+ 		if (p->cb)
+ 			p->cb(msg, p->cbdata);
+ 
+-		msg->sysdep_flag = 0;
++		msg->sysdep = 0;
+ 		msg->ctxt_len = 0;
+ 		msg->id_len = 0;
+ 		msg->plural_len = 0;
+@@ -147,7 +166,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 		for (cnt = 0; cnt < st_max; cnt++) {
+ 			if (strstr(x, sysdep_str[cnt])) {
+-				msg->sysdep_flag |= sysdep_flag[cnt];
++				msg->sysdep |= sysdep[cnt];
+ 			}
+ 		}
+ 
+@@ -214,7 +233,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 			for (cnt = 0; cnt < st_max; cnt++) {
+ 				if (strstr(x, sysdep_str[cnt])) {
+-					msg->sysdep_flag |= sysdep_flag[cnt];
++					msg->sysdep |= sysdep[cnt];
+ 				}
+ 			}
+ 
+@@ -237,7 +256,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 
+ 			for (cnt = 0; cnt < st_max; cnt++) {
+ 				if (strstr(x, sysdep_str[cnt])) {
+-					msg->sysdep_flag |= sysdep_flag[cnt];
++					msg->sysdep |= sysdep[cnt];
+ 				}
+ 			}
+ 
+diff --git a/src/poparser.h b/src/poparser.h
+index 79c3775..a4409d3 100644
+--- a/src/poparser.h
++++ b/src/poparser.h
+@@ -24,10 +24,6 @@ struct po_header {
+ };
+ 
+ #define PO_FUZZY 1u
+-#define PO_SYSDEP_PRIU32 (1 << st_priu32)
+-#define PO_SYSDEP_PRIU64 (1 << st_priu64)
+-// for complement, no usage
+-#define PO_SYSDEP_PRIUMAX 0
+ 
+ struct po_message {
+ 	char *ctxt;
+@@ -35,7 +31,7 @@ struct po_message {
+ 	char *plural;
+ 	char* str[MAX_NPLURALS];
+ 
+-	int sysdep_flag;
++	int sysdep;
+ 	size_t ctxt_len;
+ 	size_t id_len;
+ 	size_t plural_len;
+-- 
+2.25.0
+

@@ -1,0 +1,27 @@
+From bfecd62d5b393158169d8683ad8c7819e382863c Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Thu, 27 Dec 2018 20:21:59 +0800
+Subject: [PATCH 30/48] poparser: should check length instead of pointer at
+ stage two, it's a buffer allocated by poparser_finish. it will never be a
+ NULL pointer, so may trigger an abort.
+
+---
+ src/poparser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/poparser.c b/src/poparser.c
+index 64be654..d9fc187 100644
+--- a/src/poparser.c
++++ b/src/poparser.c
+@@ -242,7 +242,7 @@ enum po_error poparser_feed_line(struct po_parser *p, char* in, size_t in_len) {
+ 			if ( (t = poparser_clean(p, msg)) != po_success)
+ 				return t;
+ 
+-			if (msg->id_len || msg->plural)
++			if (msg->id_len || msg->plural_len)
+ 				return -po_invalid_entry;
+ 
+ 			for (cnt = 0; cnt < st_max; cnt++) {
+-- 
+2.25.0
+

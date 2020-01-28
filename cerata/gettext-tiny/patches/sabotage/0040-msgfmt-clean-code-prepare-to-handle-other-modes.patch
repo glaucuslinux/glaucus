@@ -1,0 +1,245 @@
+From 3119174cf1f7b7ba3db8c5723d69d73d61597e97 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Tue, 5 Feb 2019 13:47:18 +0800
+Subject: [PATCH 40/48] msgfmt: clean code, prepare to handle other modes
+ msgfmt only focus on po->mo mode(and a stub for .msg). now as we want to
+ generate .desktop and .xml too, i'd like to handle these modes explicitly.
+
+---
+ src/msgfmt.c | 136 +++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 94 insertions(+), 42 deletions(-)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index d132c81..0352866 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -10,6 +10,18 @@
+ #include <assert.h>
+ #include "poparser.h"
+ 
++enum mode {
++	m_normal = 0,
++	m_java,
++	m_java2,
++	m_csharp,
++	m_csharp_resources,
++	m_tcl,
++	m_qt,
++	m_desktop,
++	m_xml
++};
++
+ static void syntax(void) {
+ 	fprintf(stdout, "Usage: msgfmt [OPTION] filename.po ...\n");
+ }
+@@ -233,25 +245,30 @@ int process(FILE *in, FILE *out, bool strict) {
+ }
+ 
+ void set_file(int out, char* fn, FILE** dest) {
++	char b[4096];
++	size_t n;
++	FILE *tmpf = NULL;
++
+ 	if(streq(fn, "-")) {
+ 		if(out) {
+ 			*dest = stdout;
+ 		} else {
+-			char b[4096];
+-			size_t n=0;
+-			FILE* tmpf = tmpfile();
+-			if(!tmpf)
++			tmpf = tmpfile();
++			if(!tmpf) {
+ 				perror("tmpfile");
++				exit(1);
++			}
++			*dest = tmpf;
+ 
+ 			while((n=fread(b, sizeof(*b), sizeof(b), stdin)) > 0)
+ 				fwrite(b, sizeof(*b), n, tmpf);
+ 
+ 			fseek(tmpf, 0, SEEK_SET);
+-			*dest = tmpf;
+ 		}
+ 	} else {
+ 		*dest = fopen(fn, out ? "w" : "r");
+ 	}
++
+ 	if(!*dest) {
+ 		perror("fopen");
+ 		exit(1);
+@@ -265,24 +282,24 @@ int main(int argc, char**argv) {
+ 	}
+ 
+ 	int arg = 1;
++	enum mode mode = m_normal;
+ 	bool strict = false;
+ 	FILE *out = NULL;
+ 	FILE *in = NULL;
+-	int expect_in_fn = 1;
++	int expect_in_fn = 0;
+ 	char path[PATH_MAX];
++	char buf[4096];
++	size_t n;
++	int ret = 0;
+ 	char* locale = NULL;
+ 	char* dest = NULL;
++
+ #define A argv[arg]
+ 	for(; arg < argc; arg++) {
+ 		if(A[0] == '-') {
+ 			if(A[1] == '-') {
+ 				if(
+-					streq(A+2, "java") ||
+-					streq(A+2, "java2") ||
+-					streq(A+2, "csharp") ||
+-					streq(A+2, "csharp-resources") ||
+-					streq(A+2, "tcl") ||
+-					streq(A+2, "qt") ||
++					streq(A+2, "template") ||
+ 					streq(A+2, "strict") ||
+ 					streq(A+2, "properties-input") ||
+ 					streq(A+2, "stringtable-input") ||
+@@ -299,24 +316,36 @@ int main(int argc, char**argv) {
+ 					strstarts(A+2, "check-accelerators=") ||
+ 					strstarts(A+2, "resource=")
+ 					) {
++					} else if(streq(A+2, "java")) {
++						mode = m_java;
++					} else if(streq(A+2, "java2")) {
++						mode = m_java2;
++					} else if(streq(A+2, "csharp")) {
++						mode = m_csharp;
++					} else if(streq(A+2, "csharp-resources")) {
++						mode = m_csharp_resources;
++					} else if(streq(A+2, "tcl")) {
++						mode = m_tcl;
++					} else if(streq(A+2, "qt")) {
++						mode = m_qt;
++					} else if(streq(A+2, "desktop")) {
++						mode = m_desktop;
++					} else if(streq(A+2, "xml")) {
++						mode = m_xml;
+ 					} else if((locale = strstarts(A+2, "locale="))) {
+ 					} else if(streq(A+2, "check")) {
+ 						strict = true;
+-					} else if((dest = strstarts(A+2, "output-file="))) {
+-						set_file(1, dest, &out);
++					} else if(strstarts(A+2, "output-file=")) {
++						set_file(1, A+14, &out);
+ 					} else if(streq(A+2, "version")) {
+ 						version();
+ 						return 0;
+ 					} else if(streq(A+2, "help")) {
+ 						syntax();
+ 						return 0;
+-					} else if (expect_in_fn) {
+-						set_file(0, A, &in);
+-						expect_in_fn = 0;
+-					}
++					} else expect_in_fn = 1;
+ 			} else if(streq(A + 1, "o")) {
+ 				arg++;
+-				dest = A;
+ 				set_file(1, A, &out);
+ 			} else if(
+ 				streq(A+1, "j") ||
+@@ -332,7 +361,12 @@ int main(int argc, char**argv) {
+ 			} else if (streq(A+1, "V")) {
+ 				version();
+ 				return 0;
+-			} else if (streq(A+1, "h")) {
++			} else if (
++				streq(A+1, "h") ||
++				// D means find input files in the specific directory
++				// we should fail this option explicitly
++				streq(A+1, "D")
++			) {
+ 				syntax();
+ 				return 0;
+ 			} else if (streq(A+1, "l")) {
+@@ -341,41 +375,59 @@ int main(int argc, char**argv) {
+ 			} else if (streq(A+1, "d")) {
+ 				arg++;
+ 				dest = A;
+-			} else if (expect_in_fn) {
+-				set_file(0, A, &in);
+-				expect_in_fn = 0;
+-			}
+-		} else if (expect_in_fn) {
++			} else expect_in_fn = 1;
++		} else expect_in_fn = 1;
++
++		if (expect_in_fn) {
+ 			set_file(0, A, &in);
+ 			expect_in_fn = 0;
+ 		}
+ 	}
+ 
+-	if (locale != NULL && dest != NULL) {
++	switch (mode) {
++	case m_tcl:
++		if (locale == NULL || dest == NULL) {
++			return -1;
++		}
++
+ 		snprintf(path, sizeof(path), "%s/%s.msg", dest, locale);
+-		FILE *fp = fopen(path, "w");
+-		if (fp) {
+-			fclose(fp);
+-			return 0;
++		out = fopen(path, "w");
++
++		if (out == NULL) {
++			perror("fopen");
++			ret = -1;
+ 		}
++		break;
++	case m_desktop:
++	case m_xml:
++		while((n = fread(buf, sizeof(buf[0]), sizeof(buf), in)) > 0)
++			fwrite(buf, sizeof(buf[0]), n, out);
+ 
+-		return -1;
+-	}
++		break;
++	case m_normal:
++		if(out == NULL) {
++			set_file(1, "messages.mo", &out);
++		}
+ 
+-	if(out == NULL) {
+-		dest = "messages.mo";
+-		set_file(1, "messages.mo", &out);
+-	}
++		if(in == NULL || out == NULL) {
++			return -1;
++		}
+ 
+-	if(in == NULL || out == NULL) {
+-		return -1;
++		ret = process(in, out, strict);
++	default:
++		fprintf(stderr, "unsupported mode %d", mode);
++		ret = -1;
+ 	}
+ 
+-	int ret = process(in, out, strict);
+-	fflush(in); fflush(out);
++	if(in == stdin)
++		fflush(in);
++	else
++		fclose(in);
+ 
+-	if(in != stdin) fclose(in);
+-	if(out != stdout) fclose(out);
++	if(out == stdout)
++		fflush(out);
++	else
++		fclose(out);
+ 
+ 	if (ret < 0) remove(dest);
+ 	return ret;
+-- 
+2.25.0
+

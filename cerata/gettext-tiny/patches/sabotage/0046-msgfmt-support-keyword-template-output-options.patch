@@ -1,0 +1,41 @@
+From 55a2119d06403e05808d89eedc9e94a20e87cbd3 Mon Sep 17 00:00:00 2001
+From: xhe <xw897002528@gmail.com>
+Date: Sat, 30 Nov 2019 14:32:26 +0800
+Subject: [PATCH 46/48] msgfmt: support keyword, template, output options
+ follow https://github.com/sabotage-linux/gettext-tiny/issues/47.
+
+'keyword=' is simply ignored. msgfmt will generate the output based on
+the template file and other sources. so 'template=' is the input file.
+---
+ src/msgfmt.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/msgfmt.c b/src/msgfmt.c
+index 6f4cd40..1120ff6 100644
+--- a/src/msgfmt.c
++++ b/src/msgfmt.c
+@@ -313,6 +313,7 @@ int main(int argc, char**argv) {
+ 					streq(A+2, "no-hash") ||
+ 					streq(A+2, "verbose") ||
+ 					streq(A+2, "statistics") ||
++					strstarts(A+2, "keyword=") ||
+ 					strstarts(A+2, "check-accelerators=") ||
+ 					strstarts(A+2, "resource=")
+ 					) {
+@@ -335,8 +336,13 @@ int main(int argc, char**argv) {
+ 					} else if((locale = strstarts(A+2, "locale="))) {
+ 					} else if(streq(A+2, "check")) {
+ 						strict = true;
++					} else if(strstarts(A+2, "template=")) {
++						set_file(0, A+11, &in);
++						expect_in_fn = 0;
+ 					} else if(strstarts(A+2, "output-file=")) {
+ 						set_file(1, A+14, &out);
++					} else if(strstarts(A+2, "output=")) {
++						set_file(1, A+9, &out);
+ 					} else if(streq(A+2, "version")) {
+ 						version();
+ 						return 0;
+-- 
+2.25.0
+
