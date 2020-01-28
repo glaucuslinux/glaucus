@@ -1,0 +1,37 @@
+From fcb34db768e0312cfdfdc8a2f4ae9950fa3f8d63 Mon Sep 17 00:00:00 2001
+From: Simon Ruderich <simon@ruderich.org>
+Date: Sat, 8 Jul 2017 11:42:13 +0200
+Subject: [PATCH 05/12] getfattr.1: by default only user namespace attributes
+ are dumped
+
+---
+ man/man1/getfattr.1 | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/man/man1/getfattr.1 b/man/man1/getfattr.1
+index b4f651f..9821112 100644
+--- a/man/man1/getfattr.1
++++ b/man/man1/getfattr.1
+@@ -35,7 +35,8 @@ For each file,
+ .B getfattr
+ displays the file name,
+ and the set of extended attribute names (and optionally values) which
+-are associated with that file.
++are associated with that file. Per default only attributes in the user
++namespace are displayed, see \f3\-m\f1.
+ .PP
+ The output format of
+ .B "getfattr \-d"
+@@ -65,8 +66,7 @@ pairs associated with the specified file.
+ Dump the value of the named extended attribute.
+ .TP
+ .BR \-d ", " \-\-dump
+-Dump the values of all extended attributes associated with
+-.IR pathname .
++Dump the values of all matched extended attributes.
+ .TP
+ .BR \-e " \f2en\f1, " \-\-encoding "=\f2en\f1"
+ Encode values after retrieving them.
+-- 
+2.25.0
+

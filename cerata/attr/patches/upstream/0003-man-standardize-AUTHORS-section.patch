@@ -1,0 +1,68 @@
+From e007449435391c540f1e1917fe95b258ea3bcc86 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 21 Jan 2018 00:17:38 -0500
+Subject: [PATCH 03/12] man: standardize AUTHORS section
+
+Point people to the Savannah project now.
+---
+ man/man1/attr.1     | 10 ++++++++++
+ man/man1/getfattr.1 |  5 ++++-
+ man/man1/setfattr.1 |  5 ++++-
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/man/man1/attr.1 b/man/man1/attr.1
+index 872c6d1..e860f26 100644
+--- a/man/man1/attr.1
++++ b/man/man1/attr.1
+@@ -193,6 +193,16 @@ program will.
+ The list option present in the IRIX version of this command is not supported.
+ .I getfattr
+ provides a mechanism to retrieve all of the attribute names.
++.SH AUTHOR
++Andreas Gruenbacher,
++.RI < a.gruenbacher@bestbits.at >
++and the SGI XFS development team,
++.RI < linux-xfs@oss.sgi.com >.
++.P
++Please send your bug reports or comments to
++.RI < https://savannah.nongnu.org/bugs/?group=attr >
++or
++.RI < acl-devel@nongnu.org >.
+ .SH "SEE ALSO"
+ .BR getfattr (1),
+ .BR setfattr (1),
+diff --git a/man/man1/getfattr.1 b/man/man1/getfattr.1
+index 19ad1cc..b4f651f 100644
+--- a/man/man1/getfattr.1
++++ b/man/man1/getfattr.1
+@@ -133,7 +133,10 @@ Andreas Gruenbacher,
+ and the SGI XFS development team,
+ .RI < linux-xfs@oss.sgi.com >.
+ .P
+-Please send your bug reports or comments to these addresses.
++Please send your bug reports or comments to
++.RI < https://savannah.nongnu.org/bugs/?group=attr >
++or
++.RI < acl-devel@nongnu.org >.
+ .SH "SEE ALSO"
+ .BR setfattr (1),
+ .BR attr (5)
+diff --git a/man/man1/setfattr.1 b/man/man1/setfattr.1
+index d368d7f..922caf2 100644
+--- a/man/man1/setfattr.1
++++ b/man/man1/setfattr.1
+@@ -100,7 +100,10 @@ Andreas Gruenbacher,
+ and the SGI XFS development team,
+ .RI < linux-xfs@oss.sgi.com >.
+ .P
+-Please send your bug reports or comments to these addresses.
++Please send your bug reports or comments to
++.RI < https://savannah.nongnu.org/bugs/?group=attr >
++or
++.RI < acl-devel@nongnu.org >.
+ .SH "SEE ALSO"
+ .BR getfattr (1),
+ .BR attr (5)
+-- 
+2.25.0
+
