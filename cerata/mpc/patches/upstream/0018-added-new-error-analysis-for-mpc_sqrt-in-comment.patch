@@ -1,0 +1,49 @@
+From 7b20d0483ae3722b835efc6d8480500cf5473aa7 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 13 Jun 2018 13:14:59 +0200
+Subject: [PATCH 18/29] added new error analysis for mpc_sqrt (in comment)
+
+---
+ doc/algorithms.tex | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/doc/algorithms.tex b/doc/algorithms.tex
+index b79be41..bdda0ba 100644
+--- a/doc/algorithms.tex
++++ b/doc/algorithms.tex
+@@ -1085,6 +1085,32 @@ $t$ is rounded away. Plugging the error of \ulp{3} for $w$ and \ulp{0} for $y$ i
+ \ulp{6}, to which an additional rounding error of \ulp{1} has to be added
+ for a total error of \ulp{7}.
+ 
++\begin{comment}
++% commented out since this does not work as easily: indeed, to compute the
++% ternary values, we still need to detect exact cases, or to compute the sign
++% of the error in extreme cases like sqrt(1 + i*2^-202281173)
++Jeannerod and Muller prove in \cite{jeannerod:ensl-01780265} that the relative
++error of this algorithm is at most $\frac{5}{2} u$ for the real part, denoted
++$w$ here, and
++$\frac{7}{2} u$ for the imaginary part, denoted $t$ here,
++where $u = 2^{-p}$ and $p$ is the
++working precision.
++Assume $x > 0$, let $w, t$ be the exact real and imaginary parts of
++$\sqrt{z}$, and $\hat{w}, \hat{t}$ be the approximate values computed by
++Friedland's algorithm.
++We thus have $|\hat(w) - w| \leq \frac{5}{2} u |w|$, and
++$\hat(t) - t| \leq \frac{7}{2} u |t|$.
++We claim that those bounds can be converted to
++$|\hat(w) - w| \leq 5 \ulp(\hat(w))$ and $\hat(t) - t| \leq 7 \ulp(\hat(t))$
++respectively.
++Consider for example the real part, and assume $w > 0$ for simplicity.
++Assume $w$ is in the binade $[2^k,2^{k+1})$, then $\hat{w}$ is either in that
++binade or in one of the two adjacent binades.
++Since $\ulp(w) = 2^{k+1} u$, we thus have $\ulp(\hat{w}) \geq 2^{-k} u$ in
++all cases, which yields $|\hat(w) - w| \leq 5 \ulp(\hat{w})$.
++
++Thus the total error on $w$ is at most \ulp{5}, and \ulp{7} for $t$.
++\end{comment}
+ 
+ \subsection {\texttt {mpc\_log}}
+ 
+-- 
+2.25.0
+

@@ -1,0 +1,136 @@
+From 0641b55b6a5665b2449c70a6073db722ad15269e Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Thu, 19 Apr 2018 18:03:14 +0200
+Subject: [PATCH 05/29] added mpc_sum (based on mpfr_sum)
+
+---
+ src/sum.c    | 40 ++++++++++++++++++++++++++++++
+ tests/tsum.c | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 109 insertions(+)
+ create mode 100644 src/sum.c
+ create mode 100644 tests/tsum.c
+
+diff --git a/src/sum.c b/src/sum.c
+new file mode 100644
+index 0000000..9cebe12
+--- /dev/null
++++ b/src/sum.c
+@@ -0,0 +1,40 @@
++/* mpc_sum -- Add an array of complex numbers.
++
++Copyright (C) 2018 INRIA
++
++This file is part of GNU MPC.
++
++GNU MPC is free software; you can redistribute it and/or modify it under
++the terms of the GNU Lesser General Public License as published by the
++Free Software Foundation; either version 3 of the License, or (at your
++option) any later version.
++
++GNU MPC is distributed in the hope that it will be useful, but WITHOUT ANY
++WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
++more details.
++
++You should have received a copy of the GNU Lesser General Public License
++along with this program. If not, see http://www.gnu.org/licenses/ .
++*/
++
++#include "mpc-impl.h"
++
++int
++mpc_sum (mpc_ptr sum, const mpc_ptr *z, unsigned long n, mpc_rnd_t rnd)
++{
++  int inex_re, inex_im;
++  mpfr_ptr *t;
++  unsigned long i;
++
++  t = (mpfr_ptr *) malloc (n * sizeof(mpfr_t));
++  for (i = 0; i < n; i++)
++    t[i] = mpc_realref (z[i]);
++  inex_re = mpfr_sum (mpc_realref (sum), t, n, MPC_RND_RE (rnd));
++  for (i = 0; i < n; i++)
++    t[i] = mpc_imagref (z[i]);
++  inex_im = mpfr_sum (mpc_imagref (sum), t, n, MPC_RND_IM (rnd));
++  free (t);
++
++  return MPC_INEX(inex_re, inex_im);
++}
+diff --git a/tests/tsum.c b/tests/tsum.c
+new file mode 100644
+index 0000000..74733d7
+--- /dev/null
++++ b/tests/tsum.c
+@@ -0,0 +1,69 @@
++/* tsum -- test file for mpc_sum.
++
++Copyright (C) 2018 INRIA
++
++This file is part of GNU MPC.
++
++GNU MPC is free software; you can redistribute it and/or modify it under
++the terms of the GNU Lesser General Public License as published by the
++Free Software Foundation; either version 3 of the License, or (at your
++option) any later version.
++
++GNU MPC is distributed in the hope that it will be useful, but WITHOUT ANY
++WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
++more details.
++
++You should have received a copy of the GNU Lesser General Public License
++along with this program. If not, see http://www.gnu.org/licenses/ .
++*/
++
++#include "mpc-tests.h"
++
++static void
++check_special (void)
++{
++  mpc_t z[3], res;
++  mpc_ptr t[3];
++  int i, inex;
++
++  for (i = 0; i < 3; i++)
++    {
++      mpc_init2 (z[i], 17);
++      mpc_set_ui_ui (z[i], i+1, i+2, MPC_RNDNN);
++      t[i] = z[i];
++    }
++  mpc_init2 (res, 17);
++  inex = mpc_sum (res, t, 0, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 0) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 0) == 0);
++  inex = mpc_sum (res, t, 1, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 1) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 2) == 0);
++  inex = mpc_sum (res, t, 2, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 3) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 5) == 0);
++  inex = mpc_sum (res, t, 3, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 6) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 9) == 0);
++  for (i = 0; i < 3; i++)
++    mpc_clear (z[i]);
++  mpc_clear (res);
++}
++
++int
++main (void)
++{
++  test_start ();
++
++  check_special ();
++
++  test_end ();
++
++  return 0;
++}
++
+-- 
+2.25.0
+

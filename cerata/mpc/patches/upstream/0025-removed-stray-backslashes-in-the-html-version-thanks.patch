@@ -1,0 +1,82 @@
+From ba605c936bb1baffeff030c3dd1014734ce2ee6a Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Mon, 14 Jan 2019 13:36:48 +0100
+Subject: [PATCH 25/29] removed stray backslashes in the html version (thanks
+ Trevor Spiteri)
+
+(https://lists.gforge.inria.fr/pipermail/mpc-discuss/2019-January/001506.html)
+---
+ doc/mpc.texi | 39 ++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 36 insertions(+), 3 deletions(-)
+
+diff --git a/doc/mpc.texi b/doc/mpc.texi
+index 31ce0f7..70afe15 100644
+--- a/doc/mpc.texi
++++ b/doc/mpc.texi
+@@ -79,6 +79,20 @@ x
+ @end macro
+ @end ifnottex
+ 
++@c  @m{T,N} is $T$ in tex or @math{N} otherwise.  This is an easy way to give
++@c  different forms for math in tex and info.  Commas in N or T don't work,
++@c  but @C{} can be used instead.  \, works in info but not in tex.
++@c  (copied from mpfr.texi)
++@iftex
++@macro m {T,N}
++@tex$\T\$@end tex
++@end macro
++@end iftex
++@ifnottex
++@macro m {T,N}
++@math{\N\}
++@end macro
++@end ifnottex
+ 
+ @node Copying
+ @unnumbered GNU MPC Copying Conditions
+@@ -988,12 +1002,25 @@ Set @var{rop} to the natural and base-10 logarithm of @var{op} respectively,
+ rounded according to @var{rnd} with the precision of @var{rop}.
+ The principal branch is chosen, with the branch cut on the negative real axis,
+ so that the imaginary part of the result lies in
+-@math{]-\pi , \pi]} and @math{]-\pi/log(10) , \pi/log(10)]} respectively.
++@iftex
++@math{]-\pi , \pi]}
++@end iftex
++@ifnottex
++]-Pi , Pi]
++@end ifnottex
++and
++@iftex
++@math{]-\pi/log(10) , \pi/log(10)]}
++@end iftex
++@ifnottex
++]-Pi/log(10) , Pi/log(10)]
++@end ifnottex
++respectively.
+ @end deftypefun
+ 
+ @deftypefun int mpc_rootofunity (mpc_t @var{rop}, unsigned long int @var{n}, unsigned long int @var{k}, mpc_rnd_t @var{rnd})
+ Set @var{rop} to the standard primitive @var{n}-th root of unity raised to the power @var{k}, that is,
+-@math{\exp (2 \pi i k / n)},
++@m{\exp (2 \pi i k / n),exp (2 Pi i k / n)},
+ rounded according to @var{rnd} with the precision of @var{rop}.
+ @end deftypefun
+ 
+@@ -1052,7 +1079,13 @@ rounded according to @var{rnd} with the precision of @var{rop}.
+ Set @var{rop} to the inverse hyperbolic sine, inverse hyperbolic cosine,
+ inverse hyperbolic tangent of @var{op},
+ rounded according to @var{rnd} with the precision of @var{rop}.
+-The branch cut of @var{mpc_acosh} is @math{(-\infty, 1)}.
++The branch cut of @var{mpc_acosh} is
++@iftex
++@math{(-\infty, 1)}.
++@end iftex
++@ifnottex
++(-Inf, 1)
++@end ifnottex
+ @end deftypefun
+ 
+ @node Miscellaneous Complex Functions
+-- 
+2.25.0
+

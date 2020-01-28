@@ -1,0 +1,29 @@
+From c52c7df5f0c4aa41e3cdf5f3c9ce584acd7c6128 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 13 Jun 2018 10:03:51 +0200
+Subject: [PATCH 14/29] added reference (thanks Claude-Pierre Jeannerod)
+
+---
+ doc/algorithms.bib | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/doc/algorithms.bib b/doc/algorithms.bib
+index d2ed603..8274625 100644
+--- a/doc/algorithms.bib
++++ b/doc/algorithms.bib
+@@ -63,3 +63,12 @@
+   howpublished = {\url{http://forge.scilab.org/upload/compdiv/files/complexerrorbounds_v0.2.pdf}},
+   year = 	 2011}
+ 
++@Article{Stewart85,
++  author = 	 {G. W. Stewart},
++  title = 	 {A Note on Complex Division},
++  journal = 	 toms,
++  year = 	 1985,
++  volume = 	 11,
++  number = 	 3,
++  pages = 	 {238--241}}
++
+-- 
+2.25.0
+

@@ -1,0 +1,49 @@
+From cad9be9a4990b9bab4494175580ebfcdc1635a38 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 13 Jun 2018 10:43:08 +0200
+Subject: [PATCH 16/29] added another reference
+
+---
+ doc/algorithms.bib | 15 +++++++++++++++
+ doc/algorithms.tex |  2 +-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/doc/algorithms.bib b/doc/algorithms.bib
+index 9f44755..18f3e98 100644
+--- a/doc/algorithms.bib
++++ b/doc/algorithms.bib
+@@ -81,3 +81,18 @@
+   number = 	 4,
+   pages = 	 {389--401}}
+ 
++@book{muller:hal-01766584,
++  TITLE = {{Handbook of Floating-point Arithmetic}},
++  AUTHOR = {Muller, Jean-Michel and Brunie, Nicolas and de Dinechin, Florent and Jeannerod, Claude-Pierre and Joldes, Mioara and Lef{\`e}vre, Vincent and Melquiond, Guillaume and Revol, Nathalie and Torres, Serge},
++  URL = {https://hal.inria.fr/hal-01766584},
++  HAL_LOCAL_REFERENCE = {Rapport LAAS n{\textdegree} 18106},
++  PUBLISHER = {{Birkh{\"a}user Basel}},
++  PAGES = {1-627},
++  YEAR = {2018},
++  MONTH = Jul,
++  DOI = {10.1007/978-3-319-76526-6},
++  KEYWORDS = {arithmetic operators ; arithmetic algorithms ; numerical computing ; floating-point arithmetic ; computer arithmetic},
++  HAL_ID = {hal-01766584},
++  HAL_VERSION = {v1},
++  note = {2nd edition, which contains a chapter on complex numbers}
++}
+diff --git a/doc/algorithms.tex b/doc/algorithms.tex
+index 8a3fae3..7129454 100644
+--- a/doc/algorithms.tex
++++ b/doc/algorithms.tex
+@@ -2425,7 +2425,7 @@ $k_R$ and $k_I$ will most likely not change with a larger precision.
+ So one should let $k' = \max (k_R, k_I)$, replace $N$ by $N + k'$
+ and adapt the precision and number of iterations accordingly.
+ 
+-\nocite{Baudin11,Stewart85,Priest04}
++\nocite{Baudin11,Stewart85,Priest04,muller:hal-01766584}
+ \bibliographystyle{acm}
+ \bibliography{algorithms}
+ 
+-- 
+2.25.0
+

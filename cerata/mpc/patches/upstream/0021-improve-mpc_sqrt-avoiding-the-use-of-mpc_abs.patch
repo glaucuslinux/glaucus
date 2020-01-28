@@ -1,0 +1,179 @@
+From 54b8d5f09a3cf6f5d88d616118996b20413c7acd Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 20 Jun 2018 11:09:52 +0200
+Subject: [PATCH 21/29] improve mpc_sqrt, avoiding the use of mpc_abs
+
+On tomate.loria.fr (Intel(R) Core(TM) i5-4590) with gcc 7.3.0,
+the score for sqrt (given by mpcbench) improves from 21600 to 24800,
+the group score Arith improves from 83500 to 89200, and the
+global score improves from 6450 to 6630.
+---
+ doc/algorithms.tex | 80 ++++++++++++++++++++++++++--------------------
+ src/sqrt.c         | 21 ++++++------
+ 2 files changed, 58 insertions(+), 43 deletions(-)
+
+diff --git a/doc/algorithms.tex b/doc/algorithms.tex
+index bdda0ba..8005417 100644
+--- a/doc/algorithms.tex
++++ b/doc/algorithms.tex
+@@ -1070,47 +1070,59 @@ t + i w & \text {if } x < 0, y > 0 \\
+ \right.
+ \]
+ 
+-We compute $w$ rounded down and thus round down all intermediate results.
+-$\sqrt {x^2 + y^2}$ is computed with an error of \ulp{1}
+-by a call to \texttt {mpc\_abs}; $|x|$ is added with an error of \ulp{1},
+-since both terms are positive; division by~$2$ is free of error. So
+-$w^2$ is computed with a cumulated error of \ulp{2}.
+-This error of \ulp{2} propagates as is through the real square root:
+-Since we rounded down the argument, we have $\epsilon_1^- = 0$ in
+-\eqref {eq:proprealsqrt}; an error of \ulp{1} needs to be added for the
+-rounding of $w$, so that the total error is \ulp{3}.
+-
+-$t$ is rounded away. Plugging the error of \ulp{3} for $w$ and \ulp{0} for $y$ into
+-\eqref {eq:proprealdiv} shows that the propagated error of real division is
+-\ulp{6}, to which an additional rounding error of \ulp{1} has to be added
+-for a total error of \ulp{7}.
+-
+-\begin{comment}
+-% commented out since this does not work as easily: indeed, to compute the
+-% ternary values, we still need to detect exact cases, or to compute the sign
+-% of the error in extreme cases like sqrt(1 + i*2^-202281173)
+ Jeannerod and Muller prove in \cite{jeannerod:ensl-01780265} that the relative
+-error of this algorithm is at most $\frac{5}{2} u$ for the real part, denoted
++error of this algorithm --- with rounding to nearest ---
++is at most $\frac{5}{2} u$ for the real part, denoted
+ $w$ here, and
+ $\frac{7}{2} u$ for the imaginary part, denoted $t$ here,
+ where $u = 2^{-p}$ and $p$ is the
+ working precision.
+-Assume $x > 0$, let $w, t$ be the exact real and imaginary parts of
+-$\sqrt{z}$, and $\hat{w}, \hat{t}$ be the approximate values computed by
++However, this is not sufficient to be able to compute the ternary value,
++for which a directed rounding is preferred.
++We thus reuse the error analysis of that paper using directed roundings.
++
++With the notations of \cite{jeannerod:ensl-01780265}, and denoting RD for
++rounding down (for $t > 0$), equation (5) becomes:
++\[ t (1 - \frac{2u}{1+2u}) \leq {\rm RD}(t) \]
++% \[ {\rm RU}(t) \leq t (1 + 2u), \]
++since --- assuming without loss of generality $1 \leq t < 2$ ---
++the worst case is when $t$ is just below ${\rm nextafter}(1) = 1+2u$.
++% and worst case for RU is attained for $t$ just above $1$.
++The same bounds apply both for additions and multiplications, as in equation (5)
++from \cite{jeannerod:ensl-01780265}, but also for the square root and division,
++as in equations (6) and (7).
++The lower bound $L'$ from equation (9) then becomes:
++\[ L' = (1 - \delta_d)^{5/2} \] % U' = (1 + \delta_u)^{5/2}
++with $\delta_d = 2u/(1+2u)$. % and $\delta_u = 2u$.
++% var('u')
++% delta_d = 2*u/(1+2*u); delta_u = 2*u
++% taylor((1-delta_d)^(5/2), u, 0, 3)
++% -105/2*u^3 + 35/2*u^2 - 5*u + 1
++% taylor((1+delta_u)^(5/2), u, 0, 3)
++% 5/2*u^3 + 15/2*u^2 + 5*u + 1
++It follows from a Taylor expansion of $L'$:
++\[ 1 - 5u \leq L'. \]
++
++Assume $x > 0$, let $w$ be the exact real part of
++$\sqrt{z}$, and $\hat{w}$ be the approximate value computed by
+ Friedland's algorithm.
+-We thus have $|\hat(w) - w| \leq \frac{5}{2} u |w|$, and
+-$\hat(t) - t| \leq \frac{7}{2} u |t|$.
+-We claim that those bounds can be converted to
+-$|\hat(w) - w| \leq 5 \ulp(\hat(w))$ and $\hat(t) - t| \leq 7 \ulp(\hat(t))$
+-respectively.
+-Consider for example the real part, and assume $w > 0$ for simplicity.
++We thus have $0 \leq w - \hat(w) \leq 5 u w$.
++We claim that this bound can be converted to
++$0 \leq w - \hat(w) \leq 10 \ulp(\hat(w))$.
+ Assume $w$ is in the binade $[2^k,2^{k+1})$, then $\hat{w}$ is either in that
+-binade or in one of the two adjacent binades.
+-Since $\ulp(w) = 2^{k+1} u$, we thus have $\ulp(\hat{w}) \geq 2^{-k} u$ in
+-all cases, which yields $|\hat(w) - w| \leq 5 \ulp(\hat{w})$.
+-
+-Thus the total error on $w$ is at most \ulp{5}, and \ulp{7} for $t$.
+-\end{comment}
++binade or in $[2^{k-1},2^k)$.
++Since $\ulp(w) = 2^{k+1} \cdot u$, we thus have $\ulp(\hat{w}) \geq 2^k \cdot u$ in
++all cases, which yields $w - \hat(w) \leq 5 (w/2^k) \ulp(\hat{w}) \leq 10 \ulp(\hat{w})$.
++
++Thus the total error on $w$ is at most \ulp{10}.
++For the computation of $t$, assuming $y > 0$, we round upwards the division $y/(2w)$,
++which yields a relative error of at most $2u$, and thus:
++\[ \hat{t}/t \leq \frac{1 + \delta_u}{(1 - \delta_d)^{5/2}} = 1 + 7u + \frac{35}{2} u^2 + O(u^3), \]
++with $\delta_u = 2u$,
++which implies $\hat{t}/t \leq 1 + 8u$ for $p \geq 5$.
++% taylor((1+delta_u)/(1-delta_d)^(5/2), u, 0, 3)
++% 35/2*u^3 + 35/2*u^2 + 7*u + 1
++As above, this implies $\hat{t} - t \leq 16 \ulp(\hat{t})$.
+ 
+ \subsection {\texttt {mpc\_log}}
+ 
+diff --git a/src/sqrt.c b/src/sqrt.c
+index 01753cc..048a54c 100644
+--- a/src/sqrt.c
++++ b/src/sqrt.c
+@@ -210,8 +210,11 @@ mpc_sqrt (mpc_ptr a, mpc_srcptr b, mpc_rnd_t rnd)
+       mpfr_set_prec (t, prec);
+       /* let b = x + iy */
+       /* w = sqrt ((|x| + sqrt (x^2 + y^2)) / 2), rounded down */
+-      /* total error bounded by 3 ulps */
+-      inex_w = mpc_abs (w, b, MPFR_RNDD);
++      /* final error on w bounded by 10 ulps, see algorithms.tex */
++      inex_w = mpfr_sqr (w, mpc_realref (b), MPFR_RNDD);
++      inex_w |= mpfr_sqr (t, mpc_imagref (b), MPFR_RNDD);
++      inex_w |= mpfr_add (w, w, t, MPFR_RNDD);
++      inex_w |= mpfr_sqrt (w, w, MPFR_RNDD);
+       if (re_cmp < 0)
+         inex_w |= mpfr_sub (w, w, mpc_realref (b), MPFR_RNDD);
+       else
+@@ -222,7 +225,7 @@ mpc_sqrt (mpc_ptr a, mpc_srcptr b, mpc_rnd_t rnd)
+       repr_w = mpfr_min_prec (w) <= prec_w;
+       if (!repr_w)
+          /* use the usual trick for obtaining the ternary value */
+-         ok_w = mpfr_can_round (w, prec - 2, MPFR_RNDD, MPFR_RNDU,
++         ok_w = mpfr_can_round (w, prec - 4, MPFR_RNDD, MPFR_RNDU,
+                                 prec_w + (rnd_w == MPFR_RNDN));
+       else {
+             /* w is representable in the target precision and thus cannot be
+@@ -230,16 +233,16 @@ mpc_sqrt (mpc_ptr a, mpc_srcptr b, mpc_rnd_t rnd)
+          if (rnd_w == MPFR_RNDN)
+             /* If w can be rounded to nearest, then actually no rounding
+                occurs, and the ternary value is known from inex_w. */
+-            ok_w = mpfr_can_round (w, prec - 2, MPFR_RNDD, MPFR_RNDN, prec_w);
++            ok_w = mpfr_can_round (w, prec - 4, MPFR_RNDD, MPFR_RNDN, prec_w);
+          else
+             /* If w can be rounded down, then any direct rounding and the
+                ternary flag can be determined from inex_w. */
+-            ok_w = mpfr_can_round (w, prec - 2, MPFR_RNDD, MPFR_RNDD, prec_w);
++            ok_w = mpfr_can_round (w, prec - 4, MPFR_RNDD, MPFR_RNDD, prec_w);
+       }
+ 
+       if (!inex_w || ok_w) {
+          /* t = y / 2w, rounded away */
+-         /* total error bounded by 7 ulps */
++         /* total error bounded by 16 ulps, see algorithms.tex */
+          inex_t = mpfr_div (t, mpc_imagref (b), w, r);
+          if (!inex_t && inex_w)
+             /* The division was exact, but w was not. */
+@@ -249,13 +252,13 @@ mpc_sqrt (mpc_ptr a, mpc_srcptr b, mpc_rnd_t rnd)
+          if (!repr_t)
+              /* As for w; since t was rounded away, we check whether rounding to 0
+                 is possible. */
+-            ok_t = mpfr_can_round (t, prec - 3, r, MPFR_RNDZ,
++            ok_t = mpfr_can_round (t, prec - 4, r, MPFR_RNDZ,
+                                    prec_t + (rnd_t == MPFR_RNDN));
+          else {
+             if (rnd_t == MPFR_RNDN)
+-               ok_t = mpfr_can_round (t, prec - 3, r, MPFR_RNDN, prec_t);
++               ok_t = mpfr_can_round (t, prec - 4, r, MPFR_RNDN, prec_t);
+             else
+-               ok_t = mpfr_can_round (t, prec - 3, r, r, prec_t);
++               ok_t = mpfr_can_round (t, prec - 4, r, r, prec_t);
+          }
+       }
+     }
+-- 
+2.25.0
+

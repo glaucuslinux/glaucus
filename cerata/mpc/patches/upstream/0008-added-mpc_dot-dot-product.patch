@@ -1,0 +1,252 @@
+From 89a5a83eb65cfa428cb2f5b7539cada86a668481 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Tue, 24 Apr 2018 09:38:35 +0200
+Subject: [PATCH 08/29] added mpc_dot (dot product)
+
+---
+ NEWS              |  2 +-
+ doc/mpc.texi      |  5 ++++
+ src/Makefile.am   |  6 ++--
+ src/dot.c         | 71 +++++++++++++++++++++++++++++++++++++++++++++
+ src/mpc.h         |  1 +
+ tests/Makefile.am |  4 +--
+ tests/tdot.c      | 74 +++++++++++++++++++++++++++++++++++++++++++++++
+ 7 files changed, 157 insertions(+), 6 deletions(-)
+ create mode 100644 src/dot.c
+ create mode 100644 tests/tdot.c
+
+diff --git a/NEWS b/NEWS
+index c2025c7..7a94d0c 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,5 +1,5 @@
+ Changes in version xxx:
+-  - New functions: mpc_sum
++  - New functions: mpc_sum, mpc_dot
+ 
+ Changes in version 1.1.0:
+   - Minimally required library versions: GMP 5.0.0 and MPFR 3.0.0
+diff --git a/doc/mpc.texi b/doc/mpc.texi
+index a84dbab..31ce0f7 100644
+--- a/doc/mpc.texi
++++ b/doc/mpc.texi
+@@ -903,6 +903,11 @@ Set @var{rop} to @var{op1}*@var{op2}+@var{op3},
+ rounded according to @var{rnd}, with only one final rounding.
+ @end deftypefun
+ 
++@deftypefun int mpc_dot (mpc_t @var{rop}, mpc_ptr* @var{op1}, mpc_ptr* @var{op2}, unsigned long @var{n}, mpc_rnd_t @var{rnd})
++Set @var{rop} to the dot product of the elements in the arrays @var{op1} and
++@var{op2}, both of length @var{n}, rounded according to @var{rnd}.
++@end deftypefun
++
+ @deftypefun int mpc_div (mpc_t @var{rop}, mpc_t @var{op1}, mpc_t @var{op2}, mpc_rnd_t @var{rnd})
+ @deftypefunx int mpc_div_ui (mpc_t @var{rop}, mpc_t @var{op1}, unsigned long int @var{op2}, mpc_rnd_t @var{rnd})
+ @deftypefunx int mpc_div_fr (mpc_t @var{rop}, mpc_t @var{op1}, mpfr_t @var{op2}, mpc_rnd_t @var{rnd})
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ac2ff53..f489219 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,13 +22,13 @@ libmpc_la_LDFLAGS = $(MPC_LDFLAGS) -version-info 4:0:1
+ libmpc_la_SOURCES = mpc-impl.h abs.c acos.c acosh.c add.c add_fr.c         \
+   add_si.c add_ui.c arg.c asin.c asinh.c atan.c atanh.c clear.c            \
+   cmp.c cmp_abs.c cmp_si_si.c conj.c cos.c cosh.c                          \
+-  div_2si.c div_2ui.c div.c div_fr.c                                       \
+-  div_ui.c exp.c fma.c fr_div.c fr_sub.c get_prec2.c get_prec.c            \
++  div_2si.c div_2ui.c div.c div_fr.c div_ui.c				   \
++  dot.c exp.c fma.c fr_div.c fr_sub.c get_prec2.c get_prec.c		   \
+   get_version.c get_x.c imag.c init2.c init3.c inp_str.c log.c log10.c     \
+   mem.c mul_2si.c mul_2ui.c mul.c mul_fr.c mul_i.c mul_si.c mul_ui.c       \
+   neg.c norm.c out_str.c pow.c pow_fr.c                                    \
+   pow_ld.c pow_d.c pow_si.c pow_ui.c pow_z.c proj.c real.c rootofunity.c   \
+-  urandom.c set.c \
++  urandom.c set.c 							   \
+   set_prec.c set_str.c set_x.c set_x_x.c sin.c sin_cos.c sinh.c sqr.c      \
+   sqrt.c strtoc.c sub.c sub_fr.c sub_ui.c sum.c swap.c tan.c tanh.c        \
+   uceil_log2.c ui_div.c ui_ui_sub.c
+diff --git a/src/dot.c b/src/dot.c
+new file mode 100644
+index 0000000..302bf0f
+--- /dev/null
++++ b/src/dot.c
+@@ -0,0 +1,71 @@
++/* mpc_dot -- Dot product of two arrays of complex numbers.
++
++Copyright (C) 2018 INRIA
++
++This file is part of GNU MPC.
++
++GNU MPC is free software; you can redistribute it and/or modify it under
++the terms of the GNU Lesser General Public License as published by the
++Free Software Foundation; either version 3 of the License, or (at your
++option) any later version.
++
++GNU MPC is distributed in the hope that it will be useful, but WITHOUT ANY
++WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
++more details.
++
++You should have received a copy of the GNU Lesser General Public License
++along with this program. If not, see http://www.gnu.org/licenses/ .
++*/
++
++#include <stdio.h> /* for MPC_ASSERT */
++#include "mpc-impl.h"
++
++/* res <- x[0]*y[0] + ... + x[n-1]*y[n-1] */
++int
++mpc_dot (mpc_ptr res, const mpc_ptr *x, const mpc_ptr *y,
++         unsigned long n, mpc_rnd_t rnd)
++{
++  int inex_re, inex_im;
++  mpfr_ptr *t;
++  mpfr_t *z;
++  unsigned long i;
++
++  z = (mpfr_t *) malloc (2 * n * sizeof (mpfr_t));
++  MPC_ASSERT(z != NULL);
++  t = (mpfr_ptr *) malloc (2 * n * sizeof(mpfr_t));
++  MPC_ASSERT(t != NULL);
++  for (i = 0; i < 2 * n; i++)
++    t[i] = z[i];
++  /* we first store in z[i] the value of Re(x[i])*Re(y[i])
++     and in z[n+i] that of -Im(x[i])*Im(y[i]) */
++  for (i = 0; i < n; i++)
++    {
++      mpfr_init2 (z[i], mpfr_get_prec (mpc_realref (x[i]))
++                  + mpfr_get_prec (mpc_realref (y[i])));
++      mpfr_mul (z[i], mpc_realref (x[i]), mpc_realref (y[i]), MPFR_RNDZ);
++      mpfr_init2 (z[n+i], mpfr_get_prec (mpc_imagref (x[i]))
++                  + mpfr_get_prec (mpc_imagref (y[i])));
++      mpfr_mul (z[n+i], mpc_imagref (x[i]), mpc_imagref (y[i]), MPFR_RNDZ);
++      mpfr_neg (z[n+i], z[n+i], MPFR_RNDZ);
++    }
++  inex_re = mpfr_sum (mpc_realref (res), t, 2 * n, MPC_RND_RE (rnd));
++  /* we then store in z[i] the value of Re(x[i])*Im(y[i])
++     and in z[n+i] that of Im(x[i])*Re(y[i]) */
++  for (i = 0; i < n; i++)
++    {
++      mpfr_set_prec (z[i], mpfr_get_prec (mpc_realref (x[i]))
++                     + mpfr_get_prec (mpc_imagref (y[i])));
++      mpfr_mul (z[i], mpc_realref (x[i]), mpc_imagref (y[i]), MPFR_RNDZ);
++      mpfr_set_prec (z[n+i], mpfr_get_prec (mpc_imagref (x[i]))
++                  + mpfr_get_prec (mpc_realref (y[i])));
++      mpfr_mul (z[n+i], mpc_imagref (x[i]), mpc_realref (y[i]), MPFR_RNDZ);
++    }
++  inex_im = mpfr_sum (mpc_imagref (res), t, 2 * n, MPC_RND_IM (rnd));
++  for (i = 0; i < 2 * n; i++)
++    mpfr_clear (z[i]);
++  free (t);
++  free (z);
++
++  return MPC_INEX(inex_re, inex_im);
++}
+diff --git a/src/mpc.h b/src/mpc.h
+index 09f00ed..4c7aa52 100644
+--- a/src/mpc.h
++++ b/src/mpc.h
+@@ -153,6 +153,7 @@ __MPC_DECLSPEC int  mpc_mul_2si   (mpc_ptr, mpc_srcptr, long int, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_conj      (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_neg       (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_sum (mpc_ptr, const mpc_ptr *, unsigned long, mpc_rnd_t);
++__MPC_DECLSPEC int  mpc_dot (mpc_ptr, const mpc_ptr *, const mpc_ptr *, unsigned long, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_norm      (mpfr_ptr, mpc_srcptr, mpfr_rnd_t);
+ __MPC_DECLSPEC int  mpc_abs       (mpfr_ptr, mpc_srcptr, mpfr_rnd_t);
+ __MPC_DECLSPEC int  mpc_sqrt      (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index c7e4616..2b7d447 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -31,8 +31,8 @@ LOADLIBES=$(DEFS) $(AM_CPPFLAGS) $(CPPFLAGS) $(CFLAGS)	\
+ 
+ check_PROGRAMS = tabs tacos tacosh tadd tadd_fr tadd_si tadd_ui targ	\
+   tasin tasinh tatan tatanh tcmp_abs tconj tcos tcosh                   \
+-  tdiv tdiv_2si tdiv_2ui	                                        \
+-  tdiv_fr tdiv_ui texp tfma tfr_div tfr_sub timag tio_str tlog tlog10	\
++  tdiv tdiv_2si tdiv_2ui tdiv_fr tdiv_ui tdot texp tfma tfr_div tfr_sub \
++  timag tio_str tlog tlog10						\
+   tmul tmul_2si tmul_2ui tmul_fr tmul_i tmul_si tmul_ui tneg tnorm tpow	\
+   tpow_d tpow_fr tpow_ld tpow_si tpow_ui tpow_z tprec tproj treal	\
+   treimref trootofunity                                                 \
+diff --git a/tests/tdot.c b/tests/tdot.c
+new file mode 100644
+index 0000000..b5a61d6
+--- /dev/null
++++ b/tests/tdot.c
+@@ -0,0 +1,74 @@
++/* tdot -- test file for mpc_dot.
++
++Copyright (C) 2018 INRIA
++
++This file is part of GNU MPC.
++
++GNU MPC is free software; you can redistribute it and/or modify it under
++the terms of the GNU Lesser General Public License as published by the
++Free Software Foundation; either version 3 of the License, or (at your
++option) any later version.
++
++GNU MPC is distributed in the hope that it will be useful, but WITHOUT ANY
++WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
++more details.
++
++You should have received a copy of the GNU Lesser General Public License
++along with this program. If not, see http://www.gnu.org/licenses/ .
++*/
++
++#include "mpc-tests.h"
++
++static void
++check_special (void)
++{
++  mpc_t z[3], res;
++  mpc_ptr t[3];
++  int i, inex;
++
++  /* z[0] = (1,2), z[1] = (2,3), z[2] = (3,4) */
++  for (i = 0; i < 3; i++)
++    {
++      mpc_init2 (z[i], 17);
++      mpc_set_ui_ui (z[i], i+1, i+2, MPC_RNDNN);
++      t[i] = z[i];
++    }
++  mpc_init2 (res, 17);
++  /* dot product of empty vectors is 0 */
++  inex = mpc_dot (res, t, t, 0, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 0) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 0) == 0);
++  /* (1,2)*(1,2) = (-3,4) */
++  inex = mpc_dot (res, t, t, 1, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -3) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 4) == 0);
++  /* (1,2)*(1,2) + (2,3)*(2,3) = (-8,16) */
++  inex = mpc_dot (res, t, t, 2, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -8) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 16) == 0);
++  /* (1,2)*(1,2) + (2,3)*(2,3) + (3,4)*(3,4) = (-15,40) */
++  inex = mpc_dot (res, t, t, 3, MPC_RNDNN);
++  MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -15) == 0);
++  MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 40) == 0);
++  for (i = 0; i < 3; i++)
++    mpc_clear (z[i]);
++  mpc_clear (res);
++}
++
++int
++main (void)
++{
++  test_start ();
++
++  check_special ();
++
++  test_end ();
++
++  return 0;
++}
++
+-- 
+2.25.0
+

@@ -1,0 +1,44 @@
+From 75e443222d350544cf4348e86773d3e7a92a85af Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 13 Jun 2018 10:36:40 +0200
+Subject: [PATCH 15/29] added another reference for division (thanks again CP
+ Jeannerod)
+
+---
+ doc/algorithms.bib | 9 +++++++++
+ doc/algorithms.tex | 2 +-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/doc/algorithms.bib b/doc/algorithms.bib
+index 8274625..9f44755 100644
+--- a/doc/algorithms.bib
++++ b/doc/algorithms.bib
+@@ -72,3 +72,12 @@
+   number = 	 3,
+   pages = 	 {238--241}}
+ 
++@Article{Priest04,
++  author = 	 {Douglas M. Priest},
++  title = 	 {Efficient Scaling for Complex Division},
++  journal = 	 toms,
++  year = 	 2004,
++  volume = 	 30,
++  number = 	 4,
++  pages = 	 {389--401}}
++
+diff --git a/doc/algorithms.tex b/doc/algorithms.tex
+index da6aa33..8a3fae3 100644
+--- a/doc/algorithms.tex
++++ b/doc/algorithms.tex
+@@ -2425,7 +2425,7 @@ $k_R$ and $k_I$ will most likely not change with a larger precision.
+ So one should let $k' = \max (k_R, k_I)$, replace $N$ by $N + k'$
+ and adapt the precision and number of iterations accordingly.
+ 
+-\nocite{Baudin11}
++\nocite{Baudin11,Stewart85,Priest04}
+ \bibliographystyle{acm}
+ \bibliography{algorithms}
+ 
+-- 
+2.25.0
+

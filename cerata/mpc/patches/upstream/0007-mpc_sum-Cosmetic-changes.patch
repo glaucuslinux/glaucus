@@ -1,0 +1,76 @@
+From aa583763cebe1263be7be0b8cbccc680e488a66a Mon Sep 17 00:00:00 2001
+From: Andreas Enge <andreas.enge@inria.fr>
+Date: Fri, 20 Apr 2018 11:40:34 +0200
+Subject: [PATCH 07/29] mpc_sum: Cosmetic changes.
+
+* doc/mpc.texi: Tiny change to the description of mpc_sum.
+* src/mpc.h: Move declaration.
+* src/Makefile.am: Update copyright date.
+---
+ doc/mpc.texi    | 9 +++++----
+ src/Makefile.am | 2 +-
+ src/mpc.h       | 2 +-
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/doc/mpc.texi b/doc/mpc.texi
+index 7cf43b2..a84dbab 100644
+--- a/doc/mpc.texi
++++ b/doc/mpc.texi
+@@ -874,6 +874,11 @@ Set @var{rop} to @minus{}@var{op} rounded according to @var{rnd}.
+ Just changes the sign if @var{rop} and @var{op} are the same variable.
+ @end deftypefun
+ 
++@deftypefun int mpc_sum (mpc_t @var{rop}, mpc_ptr* @var{op}, unsigned long @var{n}, mpc_rnd_t @var{rnd})
++Set @var{rop} to the sum of the elements in the array @var{op} of
++length @var{n}, rounded according to @var{rnd}.
++@end deftypefun
++
+ @deftypefun int mpc_mul (mpc_t @var{rop}, mpc_t @var{op1}, mpc_t @var{op2}, mpc_rnd_t @var{rnd})
+ @deftypefunx int mpc_mul_ui (mpc_t @var{rop}, mpc_t @var{op1}, unsigned long int @var{op2}, mpc_rnd_t @var{rnd})
+ @deftypefunx int mpc_mul_si (mpc_t @var{rop}, mpc_t @var{op1}, long int @var{op2}, mpc_rnd_t @var{rnd})
+@@ -939,10 +944,6 @@ of the real and imaginary parts by @var{op2}
+ when @var{rop} and @var{op1} are identical.
+ @end deftypefun
+ 
+-@deftypefun int mpc_sum (mpc_t @var{rop}, mpc_ptr* @var{op}, unsigned long @var{n}, mpc_rnd_t @var{rnd})
+-Set @var{rop} to the sum of the array @var{op} of length @var{n}
+-rounded according to @var{rnd}.
+-@end deftypefun
+ 
+ @node Power Functions and Logarithm
+ @section Power Functions and Logarithm
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c17c9da..ac2ff53 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,6 @@
+ ## src/Makefile.am -- Process this file with automake to produce Makefile.in
+ ##
+-## Copyright (C) 2008, 2009, 2010, 2011, 2012, 2016 INRIA
++## Copyright (C) 2008, 2009, 2010, 2011, 2012, 2016, 2018 INRIA
+ ##
+ ## This file is part of GNU MPC.
+ ##
+diff --git a/src/mpc.h b/src/mpc.h
+index 5252d9d..09f00ed 100644
+--- a/src/mpc.h
++++ b/src/mpc.h
+@@ -152,6 +152,7 @@ __MPC_DECLSPEC int  mpc_div_2si   (mpc_ptr, mpc_srcptr, long int, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_mul_2si   (mpc_ptr, mpc_srcptr, long int, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_conj      (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_neg       (mpc_ptr, mpc_srcptr, mpc_rnd_t);
++__MPC_DECLSPEC int  mpc_sum (mpc_ptr, const mpc_ptr *, unsigned long, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_norm      (mpfr_ptr, mpc_srcptr, mpfr_rnd_t);
+ __MPC_DECLSPEC int  mpc_abs       (mpfr_ptr, mpc_srcptr, mpfr_rnd_t);
+ __MPC_DECLSPEC int  mpc_sqrt      (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+@@ -201,7 +202,6 @@ __MPC_DECLSPEC int  mpc_asinh       (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_acosh       (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_atanh       (mpc_ptr, mpc_srcptr, mpc_rnd_t);
+ __MPC_DECLSPEC int  mpc_rootofunity (mpc_ptr, unsigned long int, unsigned long int, mpc_rnd_t);
+-__MPC_DECLSPEC int mpc_sum (mpc_ptr, const mpc_ptr *, unsigned long, mpc_rnd_t);
+ __MPC_DECLSPEC void mpc_clear       (mpc_ptr);
+ __MPC_DECLSPEC int  mpc_urandom     (mpc_ptr, gmp_randstate_t);
+ __MPC_DECLSPEC void mpc_init2       (mpc_ptr, mpfr_prec_t);
+-- 
+2.25.0
+

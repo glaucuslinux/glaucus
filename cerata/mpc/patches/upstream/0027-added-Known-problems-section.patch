@@ -1,0 +1,32 @@
+From 34792d39a227e6836daa23019cab4db594ecc551 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Thu, 25 Apr 2019 14:26:18 +0200
+Subject: [PATCH 27/29] added "Known problems" section
+
+---
+ INSTALL | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/INSTALL b/INSTALL
+index 163f1dd..c0d981e 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -59,6 +59,15 @@ In case of difficulties, please send a description of the problem to
+ 
+ ##############################################################################
+ 
++Known problems:
++===============
++
++When LD_LIBRARY_PATH is set to various paths, it might confuse the configure
++script, even with --with-gmp and --with-mpfr options. Then try to unset
++LD_LIBRARY_PATH.
++
++##############################################################################
++
+ Note for AIX users:
+ ===================
+ 
+-- 
+2.25.0
+

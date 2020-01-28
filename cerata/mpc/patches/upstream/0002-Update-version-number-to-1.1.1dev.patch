@@ -1,0 +1,120 @@
+From c550190e067ad5a97651bd336074bcce70e76b84 Mon Sep 17 00:00:00 2001
+From: Andreas Enge <andreas.enge@inria.fr>
+Date: Fri, 19 Jan 2018 15:21:16 +0100
+Subject: [PATCH 02/29] Update version number to 1.1.1dev.
+
+* INSTALL: Update version number to 1.1.1.
+* configure.ac, src/get_version.c, src/mpc.h, Makefile.vc: Update version
+  number to 1.1.1dev.
+---
+ INSTALL           | 4 ++--
+ Makefile.vc       | 4 ++--
+ configure.ac      | 4 ++--
+ src/get_version.c | 4 ++--
+ src/mpc.h         | 6 +++---
+ 5 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/INSTALL b/INSTALL
+index 5a2bcaf..163f1dd 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -1,4 +1,4 @@
+-Copyright (C) INRIA 2003, 2005, 2007, 2008, 2009, 2010, 2011, 2012
++Copyright (C) INRIA 2003, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2018
+ 
+ Copying and distribution of this file, with or without modification,
+ are permitted in any medium without royalty provided the copyright
+@@ -19,7 +19,7 @@ This is for the impatient, for deeper explanations see the chapter
+ 
+ 1. In the directory of the GNU MPC archive, type
+ 
+-      tar xzf mpc-1.1.0.tar.gz
++      tar xzf mpc-1.1.1.tar.gz
+       cd mpc-1.1.0
+       ./configure
+       make
+diff --git a/Makefile.vc b/Makefile.vc
+index 7c76ab8..e68ff75 100644
+--- a/Makefile.vc
++++ b/Makefile.vc
+@@ -1,6 +1,6 @@
+ # Makefile for the MPC library (Windows version).
+ #
+-# Copyright (C) INRIA - CNRS, 2002, 2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017
++# Copyright (C) INRIA - CNRS, 2002, 2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017, 2018
+ #
+ # This file is part of the MPC Library.
+ #
+@@ -50,7 +50,7 @@ CPP = cl.exe
+ CC = cl.exe
+ CDEFAULTFLAGS=/O2 /GR- /MD /nologo /EHs
+ 
+-VERSION=1.1.0
++VERSION=1.1.1dev
+ 
+ ######################## do not edit below this line ##########################
+ 
+diff --git a/configure.ac b/configure.ac
+index f0c65a8..a97485c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-# Copyright (C) 2008, 2009, 2010, 2011, 2012, 2014, 2016, 2017 INRIA
++# Copyright (C) 2008, 2009, 2010, 2011, 2012, 2014, 2016, 2017, 2018 INRIA
+ #
+ # This file is part of GNU MPC.
+ #
+@@ -20,7 +20,7 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ(2.61)
+-AC_INIT(mpc, 1.1.0, mpc-discuss@lists.gforge.inria.fr)
++AC_INIT(mpc, 1.1.1dev, mpc-discuss@lists.gforge.inria.fr)
+ AC_CONFIG_SRCDIR([src/mpc-impl.h])
+ AC_CONFIG_HEADER([config.h])
+ 
+diff --git a/src/get_version.c b/src/get_version.c
+index 34e24c5..f853287 100644
+--- a/src/get_version.c
++++ b/src/get_version.c
+@@ -1,6 +1,6 @@
+ /* mpc_get_version -- MPC version
+ 
+-Copyright (C) 2008, 2009, 2010, 2011, 2012, 2017 INRIA
++Copyright (C) 2008, 2009, 2010, 2011, 2012, 2017, 2018 INRIA
+ 
+ This file is part of GNU MPC.
+ 
+@@ -23,5 +23,5 @@ along with this program. If not, see http://www.gnu.org/licenses/ .
+ const char *
+ mpc_get_version (void)
+ {
+-  return "1.1.0";
++  return "1.1.1dev";
+ }
+diff --git a/src/mpc.h b/src/mpc.h
+index 1770439..07da900 100644
+--- a/src/mpc.h
++++ b/src/mpc.h
+@@ -1,6 +1,6 @@
+ /* mpc.h -- Include file for mpc.
+ 
+-Copyright (C) 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2016, 2017 INRIA
++Copyright (C) 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2016, 2017, 2018 INRIA
+ 
+ This file is part of GNU MPC.
+ 
+@@ -27,8 +27,8 @@ along with this program. If not, see http://www.gnu.org/licenses/ .
+ /* Define MPC version number */
+ #define MPC_VERSION_MAJOR 1
+ #define MPC_VERSION_MINOR 1
+-#define MPC_VERSION_PATCHLEVEL 0
+-#define MPC_VERSION_STRING "1.1.0"
++#define MPC_VERSION_PATCHLEVEL 1
++#define MPC_VERSION_STRING "1.1.1dev"
+ 
+ /* Macros dealing with MPC VERSION */
+ #define MPC_VERSION_NUM(a,b,c) (((a) << 16L) | ((b) << 8) | (c))
+-- 
+2.25.0
+

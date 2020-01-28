@@ -1,0 +1,46 @@
+From 44751a0256d8aca8ce1f0118c65841d55d2d8e45 Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 13 Jun 2018 16:39:11 +0200
+Subject: [PATCH 19/29] added assertions in tests/tdot.c (which fail currently)
+
+---
+ tests/tdot.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/tests/tdot.c b/tests/tdot.c
+index b5a61d6..cfd54cd 100644
+--- a/tests/tdot.c
++++ b/tests/tdot.c
+@@ -38,21 +38,29 @@ check_special (void)
+   /* dot product of empty vectors is 0 */
+   inex = mpc_dot (res, t, t, 0, MPC_RNDNN);
+   MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_regular_p (mpc_realref (res)));
++  MPC_ASSERT (mpfr_regular_p (mpc_imagref (res)));
+   MPC_ASSERT (mpfr_cmp_ui (mpc_realref (res), 0) == 0);
+   MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 0) == 0);
+   /* (1,2)*(1,2) = (-3,4) */
+   inex = mpc_dot (res, t, t, 1, MPC_RNDNN);
+   MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_regular_p (mpc_realref (res)));
++  MPC_ASSERT (mpfr_regular_p (mpc_imagref (res)));
+   MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -3) == 0);
+   MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 4) == 0);
+   /* (1,2)*(1,2) + (2,3)*(2,3) = (-8,16) */
+   inex = mpc_dot (res, t, t, 2, MPC_RNDNN);
+   MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_regular_p (mpc_realref (res)));
++  MPC_ASSERT (mpfr_regular_p (mpc_imagref (res)));
+   MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -8) == 0);
+   MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 16) == 0);
+   /* (1,2)*(1,2) + (2,3)*(2,3) + (3,4)*(3,4) = (-15,40) */
+   inex = mpc_dot (res, t, t, 3, MPC_RNDNN);
+   MPC_ASSERT (inex == 0);
++  MPC_ASSERT (mpfr_regular_p (mpc_realref (res)));
++  MPC_ASSERT (mpfr_regular_p (mpc_imagref (res)));
+   MPC_ASSERT (mpfr_cmp_si (mpc_realref (res), -15) == 0);
+   MPC_ASSERT (mpfr_cmp_ui (mpc_imagref (res), 40) == 0);
+   for (i = 0; i < 3; i++)
+-- 
+2.25.0
+
