@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=isl
-ver=0.22
+ver=0.22.1
 url=http://$nom.gforge.inria.fr/$nom-$ver.tar.xz
-sum=7c3c9502ea07e4d47a823841837c3aa0b9d7ba0fe58deaf180734e44c18e53735ec783645da0bdc56b617c9e639b226cc03b40a947f852e1e787166a64f59424
+sum=8dc7b0c14e5bfdca8f2161be51d3c9afcd18bc217bb19b7de01dbba0c6f3fdc2b725fb999f8562c77bf2918d3005c9247f7a58474a6da7697390067944d4d4aa
 lic=MIT
