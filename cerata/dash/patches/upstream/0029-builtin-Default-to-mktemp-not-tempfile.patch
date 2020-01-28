@@ -1,0 +1,30 @@
+From ad072645af04c31300c84d2840fcf1a8d48588ec Mon Sep 17 00:00:00 2001
+From: Andrej Shadura <andrew.shadura@collabora.co.uk>
+Date: Fri, 7 Sep 2018 10:34:11 +0200
+Subject: [PATCH 29/53] builtin: Default to mktemp, not tempfile
+
+Don't use tempfile, as it currently runs tempnam(), which is insecure
+and fails under pseudo(1).
+
+Signed-off-by: Andrej Shadura <andrew.shadura@collabora.co.uk>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/mkbuiltins | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mkbuiltins b/src/mkbuiltins
+index b4d6f4e..f1f2593 100644
+--- a/src/mkbuiltins
++++ b/src/mkbuiltins
+@@ -35,7 +35,7 @@
+ #
+ #	@(#)mkbuiltins	8.2 (Berkeley) 5/4/95
+ 
+-tempfile=tempfile
++tempfile=mktemp
+ if ! type tempfile > /dev/null 2>&1 && ! type mktemp > /dev/null 2>&1; then
+ 	_my_tempfile()
+ 	{
+-- 
+2.25.0
+

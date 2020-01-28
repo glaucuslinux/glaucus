@@ -1,0 +1,29 @@
+From 0e18261c159f0af3d9ea7eae116d201bc1e05dd5 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:44 +0800
+Subject: [PATCH 07/53] output: Fix fmtstr return value
+
+The function fmtstr is meant to return the actual length of output
+produced, rather than the untruncated length.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/output.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/output.c b/src/output.c
+index 4d3b4c2..34243ea 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -286,7 +286,7 @@ fmtstr(char *outbuf, size_t length, const char *fmt, ...)
+ 	va_start(ap, fmt);
+ 	ret = xvsnprintf(outbuf, length, fmt, ap);
+ 	va_end(ap);
+-	return ret;
++	return ret > (int)length ? length : ret;
+ }
+ 
+ 
+-- 
+2.25.0
+

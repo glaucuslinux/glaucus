@@ -1,0 +1,48 @@
+From 7710a926b321879b84bf349b865b1dd4c52083f8 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Mon, 27 May 2019 13:39:37 +0800
+Subject: [PATCH 52/53] parser: Only accept single-digit parameter expansion
+ outside of braces
+
+On Thu, Apr 25, 2019 at 01:39:52AM +0000, Michael Orlitzky wrote:
+> The POSIX spec says,
+>
+>   The parameter name or symbol can be enclosed in braces, which are
+>   optional except for positional parameters with more than one digit or
+>   when parameter is a name and is followed by a character that could be
+>   interpreted as part of the name.
+>
+> However, dash seems to diverge from that behavior when we get to $10:
+>
+>   $ cat test.sh
+>   echo $10
+>
+>   $ dash ./test.sh one two three four five six seven eight nine ten
+>   ten
+>
+>   $ bash ./test.sh one two three four five six seven eight nine ten
+>   one0
+
+This patch should fix the problem.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/parser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/parser.c b/src/parser.c
+index 4bda42e..b318b08 100644
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -1268,7 +1268,7 @@ varname:
+ 			do {
+ 				STPUTC(c, out);
+ 				c = pgetc_eatbnl();
+-			} while (is_digit(c));
++			} while (!subtype && is_digit(c));
+ 		} else if (c != '}') {
+ 			int cc = c;
+ 
+-- 
+2.25.0
+

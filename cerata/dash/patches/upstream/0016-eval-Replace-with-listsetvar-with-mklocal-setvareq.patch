@@ -1,0 +1,242 @@
+From 811a36120aef848cd308d56e06bf62e721be853c Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:55 +0800
+Subject: [PATCH 16/53] eval: Replace with listsetvar with mklocal/setvareq
+
+This patch replaces listsetvar with mklocal/setvareq.  As we now
+determine special built-in status prior to variable assignment, we
+no longer have to do a second pass listsetvar.  Instead we will
+call setvareq directly instead of mklocal when necessary.
+
+In order to do this mklocal can now take a flag in order to mark
+a variable for export.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 36 +++++++++++++++++++++++-------------
+ src/var.c  | 32 +++++---------------------------
+ src/var.h  |  3 +--
+ 3 files changed, 29 insertions(+), 42 deletions(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index cda9ab4..76a209b 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -737,6 +737,8 @@ evalcommand(union node *cmd, int flags)
+ 	int execcmd;
+ 	int status;
+ 	char **nargv;
++	int vflags;
++	int vlocal;
+ 
+ 	errlinno = lineno = cmd->ncmd.linno;
+ 	if (funcline)
+@@ -745,7 +747,6 @@ evalcommand(union node *cmd, int flags)
+ 	/* First expand the arguments. */
+ 	TRACE(("evalcommand(0x%lx, %d) called\n", (long)cmd, flags));
+ 	setstackmark(&smark);
+-	localvar_stop = pushlocalvars();
+ 	file_stop = parsefile;
+ 	back_exitstatus = 0;
+ 
+@@ -759,6 +760,8 @@ evalcommand(union node *cmd, int flags)
+ 	cmd_flag = 0;
+ 	execcmd = 0;
+ 	spclbltin = -1;
++	vflags = 0;
++	vlocal = 0;
+ 	path = NULL;
+ 
+ 	argc = 0;
+@@ -770,6 +773,8 @@ evalcommand(union node *cmd, int flags)
+ 			find_command(arglist.list->text, &cmdentry,
+ 				     cmd_flag | DO_REGBLTIN, pathval());
+ 
++			vlocal++;
++
+ 			/* implement bltin and command here */
+ 			if (cmdentry.cmdtype != CMDBUILTIN)
+ 				break;
+@@ -780,6 +785,7 @@ evalcommand(union node *cmd, int flags)
+ 					cmdentry.u.cmd->flags &
+ 					BUILTIN_SPECIAL
+ 				;
++				vlocal = spclbltin ^ BUILTIN_SPECIAL;
+ 			}
+ 			execcmd = cmdentry.u.cmd == EXECCMD;
+ 			if (likely(cmdentry.u.cmd != COMMANDCMD))
+@@ -798,6 +804,9 @@ evalcommand(union node *cmd, int flags)
+ 
+ 		for (sp = arglist.list; sp; sp = sp->next)
+ 			argc++;
++
++		if (execcmd && argc > 1)
++			vflags = VEXPORT;
+ 	}
+ 
+ 	/* Reserve one extra spot at the front for shellexec. */
+@@ -818,7 +827,8 @@ evalcommand(union node *cmd, int flags)
+ 	redir_stop = pushredir(cmd->ncmd.redirect);
+ 	status = redirectsafe(cmd->ncmd.redirect, REDIR_PUSH|REDIR_SAVEFD2);
+ 
+-	if (status) {
++	if (unlikely(status)) {
++		vlocal = 0;
+ bail:
+ 		exitstatus = status;
+ 
+@@ -829,13 +839,19 @@ bail:
+ 		goto out;
+ 	}
+ 
++	if (likely(vlocal))
++		localvar_stop = pushlocalvars();
++
+ 	for (argp = cmd->ncmd.assign; argp; argp = argp->narg.next) {
+ 		struct strlist **spp;
+ 
+ 		spp = varlist.lastp;
+ 		expandarg(argp, &varlist, EXP_VARTILDE);
+ 
+-		mklocal((*spp)->text);
++		if (vlocal)
++			mklocal((*spp)->text, VEXPORT);
++		else
++			setvareq((*spp)->text, vflags);
+ 	}
+ 
+ 	/* Print the command if xflag is set. */
+@@ -857,8 +873,8 @@ bail:
+ 	/* Now locate the command. */
+ 	if (cmdentry.cmdtype != CMDBUILTIN ||
+ 	    !(cmdentry.u.cmd->flags & BUILTIN_REGULAR)) {
+-		find_command(argv[0], &cmdentry, cmd_flag | DO_ERR,
+-			     unlikely(path) ? path : pathval());
++		path = unlikely(path) ? path : pathval();
++		find_command(argv[0], &cmdentry, cmd_flag | DO_ERR, path);
+ 	}
+ 
+ 	jp = NULL;
+@@ -881,17 +897,10 @@ bail:
+ 				break;
+ 			FORCEINTON;
+ 		}
+-		listsetvar(varlist.list, VEXPORT|VSTACK);
+-		path = unlikely(path) ? path : pathval();
+ 		shellexec(argv, path, cmdentry.u.index);
+ 		/* NOTREACHED */
+ 
+ 	case CMDBUILTIN:
+-		if (spclbltin > 0 || argc == 0) {
+-			poplocalvars(1);
+-			if (execcmd && argc > 1)
+-				listsetvar(varlist.list, VEXPORT);
+-		}
+ 		if (evalbltin(cmdentry.u.cmd, argc, argv, flags) &&
+ 		    !(exception == EXERROR && spclbltin <= 0)) {
+ raise:
+@@ -913,7 +922,8 @@ out:
+ 		popredir(execcmd);
+ 	unwindredir(redir_stop);
+ 	unwindfiles(file_stop);
+-	unwindlocalvars(localvar_stop);
++	if (likely(vlocal))
++		unwindlocalvars(localvar_stop);
+ 	if (lastarg)
+ 		/* dsl: I think this is intended to be used to support
+ 		 * '_' in 'vi' command mode during line editing...
+diff --git a/src/var.c b/src/var.c
+index 604ab1f..40743e5 100644
+--- a/src/var.c
++++ b/src/var.c
+@@ -302,28 +302,6 @@ out:
+ 	return vp;
+ }
+ 
+-
+-
+-/*
+- * Process a linked list of variable assignments.
+- */
+-
+-void
+-listsetvar(struct strlist *list, int flags)
+-{
+-	struct strlist *lp;
+-
+-	lp = list;
+-	if (!lp)
+-		return;
+-	INTOFF;
+-	do {
+-		setvareq(lp->text, flags);
+-	} while ((lp = lp->next));
+-	INTON;
+-}
+-
+-
+ /*
+  * Find the value of a variable.  Returns NULL if not set.
+  */
+@@ -468,7 +446,7 @@ localcmd(int argc, char **argv)
+ 
+ 	argv = argptr;
+ 	while ((name = *argv++) != NULL) {
+-		mklocal(name);
++		mklocal(name, 0);
+ 	}
+ 	return 0;
+ }
+@@ -481,7 +459,7 @@ localcmd(int argc, char **argv)
+  * "-" as a special case.
+  */
+ 
+-void mklocal(char *name)
++void mklocal(char *name, int flags)
+ {
+ 	struct localvar *lvp;
+ 	struct var **vpp;
+@@ -502,16 +480,16 @@ void mklocal(char *name)
+ 		eq = strchr(name, '=');
+ 		if (vp == NULL) {
+ 			if (eq)
+-				vp = setvareq(name, VSTRFIXED);
++				vp = setvareq(name, VSTRFIXED | flags);
+ 			else
+-				vp = setvar(name, NULL, VSTRFIXED);
++				vp = setvar(name, NULL, VSTRFIXED | flags);
+ 			lvp->flags = VUNSET;
+ 		} else {
+ 			lvp->text = vp->text;
+ 			lvp->flags = vp->flags;
+ 			vp->flags |= VSTRFIXED|VTEXTFIXED;
+ 			if (eq)
+-				setvareq(name, 0);
++				setvareq(name, flags);
+ 		}
+ 	}
+ 	lvp->vp = vp;
+diff --git a/src/var.h b/src/var.h
+index 55fed1b..b2054f7 100644
+--- a/src/var.h
++++ b/src/var.h
+@@ -139,7 +139,6 @@ struct var *setvar(const char *name, const char *val, int flags);
+ intmax_t setvarint(const char *, intmax_t, int);
+ struct var *setvareq(char *s, int flags);
+ struct strlist;
+-void listsetvar(struct strlist *, int);
+ char *lookupvar(const char *);
+ intmax_t lookupvarint(const char *);
+ char **listvars(int, int, char ***);
+@@ -147,7 +146,7 @@ char **listvars(int, int, char ***);
+ int showvars(const char *, int, int);
+ int exportcmd(int, char **);
+ int localcmd(int, char **);
+-void mklocal(char *);
++void mklocal(char *name, int flags);
+ struct localvar_list *pushlocalvars(void);
+ void poplocalvars(int);
+ void unwindlocalvars(struct localvar_list *stop);
+-- 
+2.25.0
+

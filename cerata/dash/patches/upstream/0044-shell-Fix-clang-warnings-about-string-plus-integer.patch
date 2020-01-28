@@ -1,0 +1,73 @@
+From 604bd2b57a08817da8d757c5eb265dbe11ef3d39 Mon Sep 17 00:00:00 2001
+From: Antonio Ospite <ao2@ao2.it>
+Date: Sat, 15 Dec 2018 18:49:31 +0100
+Subject: [PATCH 44/53] shell: Fix clang warnings about "string plus integer"
+
+Building with clang results in some warnings about integer values being
+added to strings:
+
+-----------------------------------------------------------------------
+eval.c:1138:13: warning: adding 'int' to a string does not append to the string [-Wstring-plus-int]
+                p = " %s" + (1 - sep);
+                    ~~~~~~^~~~~~~~~~~
+eval.c:1138:13: note: use array indexing to silence this warning
+                p = " %s" + (1 - sep);
+                          ^
+                    &     [          ]
+1 warning generated.
+
+...
+
+jobs.c:1424:16: warning: adding 'int' to a string does not append to the string [-Wstring-plus-int]
+                        str = "\"}" + !(quoted & 1);
+                              ~~~~~~^~~~~~~~~~~~~~~
+jobs.c:1424:16: note: use array indexing to silence this warning
+                        str = "\"}" + !(quoted & 1);
+                                    ^
+                              &     [              ]
+1 warning generated.
+-----------------------------------------------------------------------
+
+While the code itself is fine and the warnings are indeed harmless,
+fixing them also makes the semantic more explicit: what it is actually
+being increased is the address which points to the start of the string
+in order to skip the initial character when some conditions are met.
+
+Signed-off-by: Antonio Ospite <ao2@ao2.it>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 3 ++-
+ src/jobs.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index 514922e..1aad31a 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -1132,7 +1132,8 @@ eprintlist(struct output *out, struct strlist *sp, int sep)
+ 	while (sp) {
+ 		const char *p;
+ 
+-		p = " %s" + (1 - sep);
++		p = " %s";
++		p += (1 - sep);
+ 		sep |= 1;
+ 		outfmt(out, p, sp->text);
+ 		sp = sp->next;
+diff --git a/src/jobs.c b/src/jobs.c
+index f3a0d80..26a6248 100644
+--- a/src/jobs.c
++++ b/src/jobs.c
+@@ -1421,7 +1421,8 @@ cmdputs(const char *s)
+ 				str = "${";
+ 			goto dostr;
+ 		case CTLENDVAR:
+-			str = "\"}" + !(quoted & 1);
++			str = "\"}";
++			str += !(quoted & 1);
+ 			quoted >>= 1;
+ 			subtype = 0;
+ 			goto dostr;
+-- 
+2.25.0
+

@@ -1,0 +1,121 @@
+From a29e9a1738a4e7040211842f3f3d90e172fa58ce Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Wed, 12 Sep 2018 14:27:16 +0800
+Subject: [PATCH 32/53] expand: Fix multiple issues with EXP_DISCARD in evalvar
+
+The commit 3cd538634f71538370f5af239f342aec48b7470b broke parameter
+expansion in multiple ways because the EXP_DISCARD flag wasn't set
+or tested for various cases:
+
+	$ src/dash -c 'var=; echo ${var:+nonempty}'
+	nonempty
+        $ src/dash -u -c 'unset foo bar; echo ${foo+${bar}}'
+        dash: 1: bar: parameter not set
+        $ src/dash -c 'foo=bar; echo ${foo=BUG}; echo $foo'
+        barBUG
+        bar
+        $
+
+This patch fixes them by introducing a new discard variable that
+tracks whether the extra word should be discarded or not when it
+is parsed.
+
+Reported-by: Martijn Dekker <martijn@inlv.org>
+Fixes: 3cd538634f71 ("expand: Do not reprocess data when...")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+Reported-by: Martijn Dekker <martijn@inlv.org>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/expand.c | 30 ++++++++++++++++--------------
+ 1 file changed, 16 insertions(+), 14 deletions(-)
+
+diff --git a/src/expand.c b/src/expand.c
+index 14daa63..856b7a9 100644
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -698,6 +698,7 @@ evalvar(char *p, int flag)
+ 	int patloc;
+ 	int startloc;
+ 	ssize_t varlen;
++	int discard;
+ 	int quoted;
+ 
+ 	varflags = *p++;
+@@ -713,41 +714,41 @@ again:
+ 	if (varflags & VSNUL)
+ 		varlen--;
+ 
++	discard = varlen < 0 ? EXP_DISCARD : 0;
++
+ 	switch (subtype) {
+ 	case VSPLUS:
+-		varlen = -1 - varlen;
++		discard ^= EXP_DISCARD;
+ 		/* fall through */
+ 
+ 	case 0:
+ 	case VSMINUS:
+-		p = argstr(p, flag | EXP_TILDE | EXP_WORD);
+-		if (varlen < 0)
+-			return p;
++		p = argstr(p, flag | EXP_TILDE | EXP_WORD |
++			      (discard ^ EXP_DISCARD));
+ 		goto record;
+ 
+ 	case VSASSIGN:
+ 	case VSQUESTION:
+-		if (varlen >= 0)
+-			goto record;
+-
+ 		p = subevalvar(p, var, 0, startloc, varflags,
+-			       flag & ~QUOTES_ESC);
++			       (flag & ~QUOTES_ESC) |
++			       (discard ^ EXP_DISCARD));
+ 
+-		if (flag & EXP_DISCARD)
+-			return p;
++		if ((flag | ~discard) & EXP_DISCARD)
++			goto record;
+ 
+ 		varflags &= ~VSNUL;
++		subtype = VSNORMAL;
+ 		goto again;
+ 	}
+ 
+-	if (varlen < 0 && uflag)
++	if ((discard & ~flag) && uflag)
+ 		varunset(p, var, 0, 0);
+ 
+ 	if (subtype == VSLENGTH) {
+ 		if (flag & EXP_DISCARD)
+ 			return p;
+ 		cvtnum(varlen > 0 ? varlen : 0, flag);
+-		goto record;
++		goto really_record;
+ 	}
+ 
+ 	if (subtype == VSNORMAL)
+@@ -765,7 +766,7 @@ again:
+ 	}
+ #endif
+ 
+-	flag |= varlen < 0 ? EXP_DISCARD : 0;
++	flag |= discard;
+ 	if (!(flag & EXP_DISCARD)) {
+ 		/*
+ 		 * Terminate the string and start recording the pattern
+@@ -778,9 +779,10 @@ again:
+ 	p = subevalvar(p, NULL, patloc, startloc, varflags, flag);
+ 
+ record:
+-	if (flag & EXP_DISCARD)
++	if ((flag | discard) & EXP_DISCARD)
+ 		return p;
+ 
++really_record:
+ 	if (quoted) {
+ 		quoted = *var == '@' && shellparam.nparam;
+ 		if (!quoted)
+-- 
+2.25.0
+

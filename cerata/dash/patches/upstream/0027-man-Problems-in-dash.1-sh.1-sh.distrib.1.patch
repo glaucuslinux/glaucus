@@ -1,0 +1,39 @@
+From fba95e9e4a5d0f1f1ac9f7d86557e47bc0e2656c Mon Sep 17 00:00:00 2001
+From: "esr@thyrsus.com" <esr@thyrsus.com>
+Date: Tue, 19 Jun 2018 11:27:37 -0400
+Subject: [PATCH 27/53] man: Problems in dash.1, sh.1, sh.distrib.1
+
+This is automatically generated email about markup problems in a man
+page for which you appear to be responsible.  If you are not the right
+person or list, please tell me so I can correct my database.
+
+See http://catb.org/~esr/doclifter/bugs.html for details on how and
+why these patches were generated.  Feel free to email me with any
+questions.  Note: These patches do not change the modification date of
+any manual page.  You may wish to do that by hand.
+
+I apologize if this message seems spammy or impersonal. The volume of
+markup bugs I am tracking is over five hundred - there is no real
+alternative to generating bugmail from a database and template.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/dash.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/dash.1 b/src/dash.1
+index c452c3f..32f6ac0 100644
+--- a/src/dash.1
++++ b/src/dash.1
+@@ -1814,7 +1814,7 @@ If n is greater than the number of positional parameters,
+ .Ic shift
+ will issue an error message, and exit with return status 2.
+ .It test Ar expression
+-.It \&[ Ar expression Cm ]
++.It \&[ Ar expression Cm \&]
+ The
+ .Ic test
+ utility evaluates the expression and, if it evaluates
+-- 
+2.25.0
+

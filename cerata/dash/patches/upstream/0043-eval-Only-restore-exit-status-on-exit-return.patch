@@ -1,0 +1,125 @@
+From 62cf6955f8abe875752d7163f6f3adbc7e49ebae Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Fri, 14 Dec 2018 13:52:02 +0800
+Subject: [PATCH 43/53] eval: Only restore exit status on exit/return
+
+We unconditionally restore the saved status in exitreset, which
+is incorrect as we only want to do it for exitcmd and returncmd.
+This patch fixes the problem by introducing EXEND.
+
+Reported-by: Martijn Dekker <martijn@inlv.org>
+Fixes: da30b4b78769 ("[BUILTIN] Exit without arguments in a trap...")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/error.h | 3 ++-
+ src/eval.c  | 9 +++++----
+ src/exec.c  | 2 +-
+ src/main.c  | 2 +-
+ src/trap.c  | 5 ++++-
+ 5 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/src/error.h b/src/error.h
+index 9630b56..94e30a2 100644
+--- a/src/error.h
++++ b/src/error.h
+@@ -66,7 +66,8 @@ extern int exception;
+ /* exceptions */
+ #define EXINT 0		/* SIGINT received */
+ #define EXERROR 1	/* a generic error */
+-#define EXEXIT 4	/* exit the shell */
++#define EXEND 3		/* exit the shell */
++#define EXEXIT 4	/* exit the shell via exitcmd */
+ 
+ 
+ /*
+diff --git a/src/eval.c b/src/eval.c
+index 6a65d00..514922e 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -114,12 +114,13 @@ STATIC const struct builtincmd bltin = {
+ INCLUDE "eval.h"
+ 
+ EXITRESET {
+-	evalskip = 0;
+-	loopnest = 0;
+ 	if (savestatus >= 0) {
+-		exitstatus = savestatus;
++		if (exception == EXEXIT || evalskip == SKIPFUNCDEF)
++			exitstatus = savestatus;
+ 		savestatus = -1;
+ 	}
++	evalskip = 0;
++	loopnest = 0;
+ }
+ #endif
+ 
+@@ -318,7 +319,7 @@ out:
+ 
+ 	if (flags & EV_EXIT) {
+ exexit:
+-		exraise(EXEXIT);
++		exraise(EXEND);
+ 	}
+ 
+ 	popstackmark(&smark);
+diff --git a/src/exec.c b/src/exec.c
+index 9d0215a..87354d4 100644
+--- a/src/exec.c
++++ b/src/exec.c
+@@ -143,7 +143,7 @@ shellexec(char **argv, const char *path, int idx)
+ 	exitstatus = exerrno;
+ 	TRACE(("shellexec failed for %s, errno %d, suppressint %d\n",
+ 		argv[0], e, suppressint ));
+-	exerror(EXEXIT, "%s: %s", argv[0], errmsg(e, E_EXEC));
++	exerror(EXEND, "%s: %s", argv[0], errmsg(e, E_EXEC));
+ 	/* NOTREACHED */
+ }
+ 
+diff --git a/src/main.c b/src/main.c
+index 6d53e00..6b3a090 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -111,7 +111,7 @@ main(int argc, char **argv)
+ 		e = exception;
+ 
+ 		s = state;
+-		if (e == EXEXIT || s == 0 || iflag == 0 || shlvl)
++		if (e == EXEND || e == EXEXIT || s == 0 || iflag == 0 || shlvl)
+ 			exitshell();
+ 
+ 		reset();
+diff --git a/src/trap.c b/src/trap.c
+index ab0ecd4..58a7c60 100644
+--- a/src/trap.c
++++ b/src/trap.c
+@@ -41,6 +41,7 @@
+ #include "main.h"
+ #include "nodes.h"	/* for other headers */
+ #include "eval.h"
++#include "init.h"
+ #include "jobs.h"
+ #include "show.h"
+ #include "options.h"
+@@ -397,8 +398,10 @@ exitshell(void)
+ 		trap[0] = NULL;
+ 		evalskip = 0;
+ 		evalstring(p, 0);
++		evalskip = SKIPFUNCDEF;
+ 	}
+ out:
++	exitreset();
+ 	/*
+ 	 * Disable job control so that whoever had the foreground before we
+ 	 * started can get it back.
+@@ -406,7 +409,7 @@ out:
+ 	if (likely(!setjmp(loc.loc)))
+ 		setjobctl(0);
+ 	flushall();
+-	_exit(savestatus);
++	_exit(exitstatus);
+ 	/* NOTREACHED */
+ }
+ 
+-- 
+2.25.0
+

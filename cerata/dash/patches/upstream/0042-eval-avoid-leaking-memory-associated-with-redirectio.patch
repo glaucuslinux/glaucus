@@ -1,0 +1,127 @@
+From 2bc6caace3b08024955ed57fc993d91067f883a1 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Fri, 14 Dec 2018 13:44:14 +0800
+Subject: [PATCH 42/53] eval: avoid leaking memory associated with redirections
+
+The following constructs result in ever-increasing memory usage:
+
+  while true; do { true; } </dev/null; done
+  while true; do ( true; ) </dev/null; done
+
+For comparison, bash displays static memory usage in both cases.
+
+This issue was reported for BusyBox ash which is derived from dash:
+
+  https://bugs.busybox.net/show_bug.cgi?id=7748
+
+Signed-off-by: Ron Yorston <rmy@frippery.org>
+
+I have simplified evaltree so that it simply sets the stack mark
+unconditionally.  This allows us to remove the stack marks in the
+functions called by evaltree.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index f45e2e2..6a65d00 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -200,8 +200,12 @@ evaltree(union node *n, int flags)
+ {
+ 	int checkexit = 0;
+ 	int (*evalfn)(union node *, int);
++	struct stackmark smark;
+ 	unsigned isor;
+ 	int status = 0;
++
++	setstackmark(&smark);
++
+ 	if (n == NULL) {
+ 		TRACE(("evaltree(NULL) called\n"));
+ 		goto out;
+@@ -317,6 +321,8 @@ exexit:
+ 		exraise(EXEXIT);
+ 	}
+ 
++	popstackmark(&smark);
++
+ 	return exitstatus;
+ }
+ 
+@@ -396,14 +402,12 @@ evalfor(union node *n, int flags)
+ 	struct arglist arglist;
+ 	union node *argp;
+ 	struct strlist *sp;
+-	struct stackmark smark;
+ 	int status;
+ 
+ 	errlinno = lineno = n->nfor.linno;
+ 	if (funcline)
+ 		lineno -= funcline - 1;
+ 
+-	setstackmark(&smark);
+ 	arglist.lastp = &arglist.list;
+ 	for (argp = n->nfor.args ; argp ; argp = argp->narg.next) {
+ 		expandarg(argp, &arglist, EXP_FULL | EXP_TILDE);
+@@ -420,7 +424,6 @@ evalfor(union node *n, int flags)
+ 			break;
+ 	}
+ 	loopnest--;
+-	popstackmark(&smark);
+ 
+ 	return status;
+ }
+@@ -433,14 +436,12 @@ evalcase(union node *n, int flags)
+ 	union node *cp;
+ 	union node *patp;
+ 	struct arglist arglist;
+-	struct stackmark smark;
+ 	int status = 0;
+ 
+ 	errlinno = lineno = n->ncase.linno;
+ 	if (funcline)
+ 		lineno -= funcline - 1;
+ 
+-	setstackmark(&smark);
+ 	arglist.lastp = &arglist.list;
+ 	expandarg(n->ncase.expr, &arglist, EXP_TILDE);
+ 	for (cp = n->ncase.cases ; cp && evalskip == 0 ; cp = cp->nclist.next) {
+@@ -459,8 +460,6 @@ evalcase(union node *n, int flags)
+ 		}
+ 	}
+ out:
+-	popstackmark(&smark);
+-
+ 	return status;
+ }
+ 
+@@ -717,7 +716,6 @@ evalcommand(union node *cmd, int flags)
+ 	struct localvar_list *localvar_stop;
+ 	struct parsefile *file_stop;
+ 	struct redirtab *redir_stop;
+-	struct stackmark smark;
+ 	union node *argp;
+ 	struct arglist arglist;
+ 	struct arglist varlist;
+@@ -746,7 +744,6 @@ evalcommand(union node *cmd, int flags)
+ 
+ 	/* First expand the arguments. */
+ 	TRACE(("evalcommand(0x%lx, %d) called\n", (long)cmd, flags));
+-	setstackmark(&smark);
+ 	file_stop = parsefile;
+ 	back_exitstatus = 0;
+ 
+@@ -925,7 +922,6 @@ out:
+ 		 * However I implemented that within libedit itself.
+ 		 */
+ 		setvar("_", lastarg, 0);
+-	popstackmark(&smark);
+ 
+ 	return status;
+ }
+-- 
+2.25.0
+

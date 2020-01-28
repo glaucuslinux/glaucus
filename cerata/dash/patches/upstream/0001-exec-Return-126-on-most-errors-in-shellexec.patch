@@ -1,0 +1,44 @@
+From a332ebdaa13d3eaf70082e1be214c42645bc186a Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:37 +0800
+Subject: [PATCH 01/53] exec: Return 126 on most errors in shellexec
+
+Currently when shellexec fails on most errors the shell will exit
+with exit status 2.  This patch changes it to 126 in order to avoid
+ambiguities with the exit status from a successful exec.
+
+The errors that result in 127 has also been expanded to include
+ENOTDIR, ENAMETOOLONG and ELOOP.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/exec.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/exec.c b/src/exec.c
+index e9e29b7..d7ced35 100644
+--- a/src/exec.c
++++ b/src/exec.c
+@@ -130,15 +130,15 @@ shellexec(char **argv, const char *path, int idx)
+ 
+ 	/* Map to POSIX errors */
+ 	switch (e) {
+-	case EACCES:
++	default:
+ 		exerrno = 126;
+ 		break;
++	case ELOOP:
++	case ENAMETOOLONG:
+ 	case ENOENT:
++	case ENOTDIR:
+ 		exerrno = 127;
+ 		break;
+-	default:
+-		exerrno = 2;
+-		break;
+ 	}
+ 	exitstatus = exerrno;
+ 	TRACE(("shellexec failed for %s, errno %d, suppressint %d\n",
+-- 
+2.25.0
+

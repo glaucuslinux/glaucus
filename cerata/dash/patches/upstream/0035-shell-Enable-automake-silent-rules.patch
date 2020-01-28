@@ -1,0 +1,76 @@
+From ef2ab7b23bd744a327dd5cf8f604adb64aa84556 Mon Sep 17 00:00:00 2001
+From: Antonio Ospite <ao2@ao2.it>
+Date: Tue, 16 Oct 2018 18:42:17 +0200
+Subject: [PATCH 35/53] shell: Enable automake silent rules
+
+Enable automake silent rules to make it easier to spot compilation
+problems.
+
+Silent rules will be enabled by default, but only if they are available,
+in order to keep compatibility with older autotools versions.
+
+Prepend the silent strings also to custom rules.
+
+Signed-off-by: Antonio Ospite <ao2@ao2.it>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ configure.ac    |  2 ++
+ src/Makefile.am | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 594fb42..036730d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,6 +4,8 @@ AC_CONFIG_SRCDIR([src/main.c])
+ 
+ AC_CONFIG_HEADERS(config.h)
+ 
++m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES(yes)])
++
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_USE_SYSTEM_EXTENSIONS
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 8b9eb8c..1732465 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -44,27 +44,27 @@ EXTRA_DIST = \
+ 	mknodes.c nodetypes nodes.c.pat mksyntax.c mksignames.c
+ 
+ token.h token_vars.h: mktokens
+-	$(SHELL) $^
++	$(AM_V_GEN)$(SHELL) $^
+ 
+ builtins.def: builtins.def.in $(top_builddir)/config.h
+-	$(COMPILE) -E -x c -o $@ $<
++	$(AM_V_CC)$(COMPILE) -E -x c -o $@ $<
+ 
+ builtins.c builtins.h: mkbuiltins builtins.def
+-	$(SHELL) $^
++	$(AM_V_GEN)$(SHELL) $^
+ 
+ init.c: mkinit $(dash_CFILES)
+-	./$^
++	$(AM_V_GEN)./$^
+ 
+ nodes.c nodes.h: mknodes nodetypes nodes.c.pat
+-	./$^
++	$(AM_V_GEN)./$^
+ 
+ syntax.c syntax.h: mksyntax
+-	./$^
++	$(AM_V_GEN)./$^
+ 
+ signames.c: mksignames
+-	./$^
++	$(AM_V_GEN)./$^
+ 
+ mksyntax: token.h
+ 
+ $(HELPERS): %: %.c
+-	$(COMPILE_FOR_BUILD) -o $@ $<
++	$(AM_V_CC)$(COMPILE_FOR_BUILD) -o $@ $<
+-- 
+2.25.0
+

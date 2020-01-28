@@ -1,0 +1,181 @@
+From cbca3d6f744e39d812817405f1eeef72480bf89c Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Mon, 28 May 2018 00:17:39 +0800
+Subject: [PATCH 21/53] expand: Merge syntax/quotes in memtodest with flags
+
+The function arguments syntax and quotes are both derived from
+the expansion flags.  As syntax is only used by memtodest we do
+not need to maintain it outside of the function at all.
+
+The only place that uses something other than BASESYNTAX or DQSYNTAX
+is exptilde.  However in that case DQSYNTAX has exactly the same
+effect as SQSYNTAX.
+
+This patch merges these two arguments into a single flags.  The
+macro QUOTES_KEEPNUL has been renamed to EXP_KEEPNUL in order
+to keep the namespace separate.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/expand.c | 42 +++++++++++++++++-------------------------
+ src/expand.h |  1 +
+ 2 files changed, 18 insertions(+), 25 deletions(-)
+
+diff --git a/src/expand.c b/src/expand.c
+index eb50e15..c565646 100644
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -86,8 +86,6 @@
+ 
+ /* Add CTLESC when necessary. */
+ #define QUOTES_ESC	(EXP_FULL | EXP_CASE)
+-/* Do not skip NUL characters. */
+-#define QUOTES_KEEPNUL	EXP_TILDE
+ 
+ /*
+  * Structure specifying which parts of the string should be searched
+@@ -117,8 +115,8 @@ STATIC char *exptilde(char *, char *, int);
+ STATIC void expbackq(union node *, int);
+ STATIC const char *subevalvar(char *, char *, int, int, int, int, int);
+ STATIC char *evalvar(char *, int);
+-STATIC size_t strtodest(const char *, const char *, int);
+-STATIC void memtodest(const char *, size_t, const char *, int);
++static size_t strtodest(const char *p, int flags);
++static void memtodest(const char *p, size_t len, int flags);
+ STATIC ssize_t varvalue(char *, int, int, int);
+ STATIC void expandmeta(struct strlist *, int);
+ #ifdef HAVE_GLOB
+@@ -359,7 +357,6 @@ exptilde(char *startp, char *p, int flag)
+ 	signed char c;
+ 	char *name;
+ 	const char *home;
+-	int quotes = flag & QUOTES_ESC;
+ 
+ 	name = p + 1;
+ 
+@@ -388,7 +385,7 @@ done:
+ 	if (!home)
+ 		goto lose;
+ 	*p = c;
+-	strtodest(home, SQSYNTAX, quotes);
++	strtodest(home, flag | EXP_QUOTED);
+ 	return (p);
+ lose:
+ 	*p = c;
+@@ -513,7 +510,6 @@ expbackq(union node *cmd, int flag)
+ 	char *p;
+ 	char *dest;
+ 	int startloc;
+-	char const *syntax = flag & EXP_QUOTED ? DQSYNTAX : BASESYNTAX;
+ 	struct stackmark smark;
+ 
+ 	INTOFF;
+@@ -527,7 +523,7 @@ expbackq(union node *cmd, int flag)
+ 	if (i == 0)
+ 		goto read;
+ 	for (;;) {
+-		memtodest(p, i, syntax, flag & QUOTES_ESC);
++		memtodest(p, i, flag);
+ read:
+ 		if (in.fd < 0)
+ 			break;
+@@ -835,8 +831,9 @@ end:
+  * Put a string on the stack.
+  */
+ 
+-STATIC void
+-memtodest(const char *p, size_t len, const char *syntax, int quotes) {
++static void memtodest(const char *p, size_t len, int flags)
++{
++	const char *syntax = flags & EXP_QUOTED ? DQSYNTAX : BASESYNTAX;
+ 	char *q;
+ 
+ 	if (unlikely(!len))
+@@ -847,11 +844,11 @@ memtodest(const char *p, size_t len, const char *syntax, int quotes) {
+ 	do {
+ 		int c = (signed char)*p++;
+ 		if (c) {
+-			if ((quotes & QUOTES_ESC) &&
++			if ((flags & QUOTES_ESC) &&
+ 			    ((syntax[c] == CCTL) ||
+-			     (syntax != BASESYNTAX && syntax[c] == CBACK)))
++			     (flags & EXP_QUOTED && syntax[c] == CBACK)))
+ 				USTPUTC(CTLESC, q);
+-		} else if (!(quotes & QUOTES_KEEPNUL))
++		} else if (!(flags & EXP_KEEPNUL))
+ 			continue;
+ 		USTPUTC(c, q);
+ 	} while (--len);
+@@ -860,14 +857,10 @@ memtodest(const char *p, size_t len, const char *syntax, int quotes) {
+ }
+ 
+ 
+-STATIC size_t
+-strtodest(p, syntax, quotes)
+-	const char *p;
+-	const char *syntax;
+-	int quotes;
++static size_t strtodest(const char *p, int flags)
+ {
+ 	size_t len = strlen(p);
+-	memtodest(p, len, syntax, quotes);
++	memtodest(p, len, flags);
+ 	return len;
+ }
+ 
+@@ -886,15 +879,14 @@ varvalue(char *name, int varflags, int flags, int quoted)
+ 	int sep;
+ 	char sepc;
+ 	char **ap;
+-	char const *syntax;
+ 	int subtype = varflags & VSTYPE;
+ 	int discard = subtype == VSPLUS || subtype == VSLENGTH;
+-	int quotes = (discard ? 0 : (flags & QUOTES_ESC)) | QUOTES_KEEPNUL;
+ 	ssize_t len = 0;
+ 	char c;
+ 
++	flags |= EXP_KEEPNUL;
++	flags &= discard ? ~QUOTES_ESC : ~0;
+ 	sep = (flags & EXP_FULL) << CHAR_BIT;
+-	syntax = quoted ? DQSYNTAX : BASESYNTAX;
+ 
+ 	switch (*name) {
+ 	case '$':
+@@ -950,11 +942,11 @@ param:
+ 		if (!(ap = shellparam.p))
+ 			return -1;
+ 		while ((p = *ap++)) {
+-			len += strtodest(p, syntax, quotes);
++			len += strtodest(p, flags);
+ 
+ 			if (*ap && sep) {
+ 				len++;
+-				memtodest(&sepc, 1, syntax, quotes);
++				memtodest(&sepc, 1, flags);
+ 			}
+ 		}
+ 		break;
+@@ -979,7 +971,7 @@ value:
+ 		if (!p)
+ 			return -1;
+ 
+-		len = strtodest(p, syntax, quotes);
++		len = strtodest(p, flags);
+ 		break;
+ 	}
+ 
+diff --git a/src/expand.h b/src/expand.h
+index 90f5328..617b851 100644
+--- a/src/expand.h
++++ b/src/expand.h
+@@ -58,6 +58,7 @@ struct arglist {
+ #define EXP_VARTILDE2	0x40	/* expand tildes after colons only */
+ #define EXP_WORD	0x80	/* expand word in parameter expansion */
+ #define EXP_QUOTED	0x100	/* expand word in double quotes */
++#define EXP_KEEPNUL	0x200	/* do not skip NUL characters */
+ 
+ 
+ union node;
+-- 
+2.25.0
+

@@ -1,0 +1,31 @@
+From 86a841bb444ed1d9a09afb38cb818a21c04e1beb Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Mon, 25 Feb 2019 14:00:31 +0800
+Subject: [PATCH 48/53] expand: Fix double-decrement in argstr
+
+Due to a double decrement in argstr we may miss field separators
+at the end of a word in certain situations.
+
+Reported-by: Martijn Dekker <martijn@inlv.org>
+Fixes: 3cd538634f71 ("expand: Do not reprocess data when...")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/expand.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/expand.c b/src/expand.c
+index af9cac9..e57efa6 100644
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -285,7 +285,7 @@ start:
+ 			q = stnputs(p, length, expdest);
+ 			q[-1] &= end - 1;
+ 			expdest = q - (flag & EXP_WORD ? end : 0);
+-			newloc = expdest - (char *)stackblock() - end;
++			newloc = q - (char *)stackblock() - end;
+ 			if (breakall && !inquotes && newloc > startloc) {
+ 				recordregion(startloc, newloc, 0);
+ 			}
+-- 
+2.25.0
+

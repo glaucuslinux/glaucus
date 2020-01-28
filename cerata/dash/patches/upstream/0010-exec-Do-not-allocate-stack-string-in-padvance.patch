@@ -1,0 +1,212 @@
+From 4f7527f8e49276894751a9b100e68bc46568bb85 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:48 +0800
+Subject: [PATCH 10/53] exec: Do not allocate stack string in padvance
+
+Many callers of padvance immediately free the allocated string
+so this patch moves the stalloc call to the caller.  Instead of
+returning the allocated string, padvance now returns the length
+to allocate (this may be longer than the actual string length,
+even including the NUL).  For the case where we would previously
+return NULL, we now return -1.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/cd.c   |  8 +++++---
+ src/exec.c | 26 +++++++++++++-------------
+ src/exec.h |  2 +-
+ src/mail.c |  7 +++++--
+ src/main.c | 12 +++++-------
+ 5 files changed, 29 insertions(+), 26 deletions(-)
+
+diff --git a/src/cd.c b/src/cd.c
+index a4e024d..610a4fa 100644
+--- a/src/cd.c
++++ b/src/cd.c
+@@ -98,6 +98,7 @@ cdcmd(int argc, char **argv)
+ 	char c;
+ 	struct stat statb;
+ 	int flags;
++	int len;
+ 
+ 	flags = cdopt();
+ 	dest = *argptr;
+@@ -127,9 +128,10 @@ dotdot:
+ 	if (!*dest)
+ 		dest = ".";
+ 	path = bltinlookup("CDPATH");
+-	while (path) {
+-		c = *path;
+-		p = padvance(&path, dest);
++	while (p = path, (len = padvance(&path, dest)) >= 0) {
++		c = *p;
++		p = stalloc(len);
++
+ 		if (stat(p, &statb) >= 0 && S_ISDIR(statb.st_mode)) {
+ 			if (c && c != ':')
+ 				flags |= CD_PRINT;
+diff --git a/src/exec.c b/src/exec.c
+index c98f14c..04ee2ba 100644
+--- a/src/exec.c
++++ b/src/exec.c
+@@ -118,13 +118,13 @@ shellexec(char **argv, const char *path, int idx)
+ 		e = errno;
+ 	} else {
+ 		e = ENOENT;
+-		while ((cmdname = padvance(&path, argv[0])) != NULL) {
++		while (padvance(&path, argv[0]) >= 0) {
++			cmdname = stackblock();
+ 			if (--idx < 0 && pathopt == NULL) {
+ 				tryexec(cmdname, argv, envp);
+ 				if (errno != ENOENT && errno != ENOTDIR)
+ 					e = errno;
+ 			}
+-			stunalloc(cmdname);
+ 		}
+ 	}
+ 
+@@ -182,8 +182,7 @@ repeat:
+ 
+ const char *pathopt;
+ 
+-char *
+-padvance(const char **path, const char *name)
++int padvance(const char **path, const char *name)
+ {
+ 	const char *p;
+ 	char *q;
+@@ -191,7 +190,7 @@ padvance(const char **path, const char *name)
+ 	size_t len;
+ 
+ 	if (*path == NULL)
+-		return NULL;
++		return -1;
+ 	start = *path;
+ 	for (p = start ; *p && *p != ':' && *p != '%' ; p++);
+ 	len = p - start + strlen(name) + 2;	/* "2" is for '/' and '\0' */
+@@ -211,7 +210,7 @@ padvance(const char **path, const char *name)
+ 		*path = p + 1;
+ 	else
+ 		*path = NULL;
+-	return stalloc(len);
++	return len;
+ }
+ 
+ 
+@@ -266,9 +265,9 @@ printentry(struct tblentry *cmdp)
+ 	idx = cmdp->param.index;
+ 	path = pathval();
+ 	do {
+-		name = padvance(&path, cmdp->cmdname);
+-		stunalloc(name);
++		padvance(&path, cmdp->cmdname);
+ 	} while (--idx >= 0);
++	name = stackblock();
+ 	out1str(name);
+ 	out1fmt(snlfmt, cmdp->rehash ? "*" : nullstr);
+ }
+@@ -291,6 +290,7 @@ find_command(char *name, struct cmdentry *entry, int act, const char *path)
+ 	int e;
+ 	int updatetbl;
+ 	struct builtincmd *bcmd;
++	int len;
+ 
+ 	/* If name contains a slash, don't use PATH or hash table */
+ 	if (strchr(name, '/') != NULL) {
+@@ -362,8 +362,8 @@ find_command(char *name, struct cmdentry *entry, int act, const char *path)
+ 	e = ENOENT;
+ 	idx = -1;
+ loop:
+-	while ((fullname = padvance(&path, name)) != NULL) {
+-		stunalloc(fullname);
++	while ((len = padvance(&path, name)) >= 0) {
++		fullname = stackblock();
+ 		idx++;
+ 		if (pathopt) {
+ 			if (prefix(pathopt, "builtin")) {
+@@ -398,7 +398,7 @@ loop:
+ 		if (!S_ISREG(statb.st_mode))
+ 			continue;
+ 		if (pathopt) {		/* this is a %func directory */
+-			stalloc(strlen(fullname) + 1);
++			stalloc(len);
+ 			readcmdfile(fullname);
+ 			if ((cmdp = cmdlookup(name, 0)) == NULL ||
+ 			    cmdp->cmdtype != CMDFUNCTION)
+@@ -789,9 +789,9 @@ describe_command(out, command, path, verbose)
+ 			p = command;
+ 		} else {
+ 			do {
+-				p = padvance(&path, command);
+-				stunalloc(p);
++				padvance(&path, command);
+ 			} while (--j >= 0);
++			p = stackblock();
+ 		}
+ 		if (verbose) {
+ 			outfmt(
+diff --git a/src/exec.h b/src/exec.h
+index 9ccb305..e241b74 100644
+--- a/src/exec.h
++++ b/src/exec.h
+@@ -62,7 +62,7 @@ extern const char *pathopt;	/* set by padvance */
+ 
+ void shellexec(char **, const char *, int)
+     __attribute__((__noreturn__));
+-char *padvance(const char **, const char *);
++int padvance(const char **, const char *);
+ int hashcmd(int, char **);
+ void find_command(char *, struct cmdentry *, int, const char *);
+ struct builtincmd *find_builtin(const char *);
+diff --git a/src/mail.c b/src/mail.c
+index 02e07f7..7f9e49d 100644
+--- a/src/mail.c
++++ b/src/mail.c
+@@ -77,9 +77,12 @@ chkmail(void)
+ 	setstackmark(&smark);
+ 	mpath = mpathset() ? mpathval() : mailval();
+ 	for (mtp = mailtime; mtp < mailtime + MAXMBOXES; mtp++) {
+-		p = padvance(&mpath, nullstr);
+-		if (p == NULL)
++		int len;
++
++		len = padvance(&mpath, nullstr);
++		if (!len)
+ 			break;
++		p = stackblock();
+ 		if (*p == '\0')
+ 			continue;
+ 		for (q = p ; *q ; q++);
+diff --git a/src/main.c b/src/main.c
+index 8b35118..c87fbd7 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -292,20 +292,18 @@ find_dot_file(char *basename)
+ 	char *fullname;
+ 	const char *path = pathval();
+ 	struct stat statb;
++	int len;
+ 
+ 	/* don't try this for absolute or relative paths */
+ 	if (strchr(basename, '/'))
+ 		return basename;
+ 
+-	while ((fullname = padvance(&path, basename)) != NULL) {
++	while ((len = padvance(&path, basename)) >= 0) {
++		fullname = stackblock();
+ 		if ((stat(fullname, &statb) == 0) && S_ISREG(statb.st_mode)) {
+-			/*
+-			 * Don't bother freeing here, since it will
+-			 * be freed by the caller.
+-			 */
+-			return fullname;
++			/* This will be freed by the caller. */
++			return stalloc(len);
+ 		}
+-		stunalloc(fullname);
+ 	}
+ 
+ 	/* not found in the PATH */
+-- 
+2.25.0
+

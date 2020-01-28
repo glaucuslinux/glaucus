@@ -1,0 +1,75 @@
+From e9cb50188b1b04b6e5e8e8ccc8874b2abcff8bb1 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Thu, 31 May 2018 01:51:48 +0800
+Subject: [PATCH 25/53] memalloc: Avoid looping in growstackto
+
+Currently growstackto will repeatedly call growstackblock until
+the requisite size is obtained.  This is wasteful.  This patch
+changes growstackblock to take a minimum size instead.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/memalloc.c | 16 ++++++++--------
+ src/memalloc.h |  1 -
+ 2 files changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/src/memalloc.c b/src/memalloc.c
+index 9d1de74..60637da 100644
+--- a/src/memalloc.c
++++ b/src/memalloc.c
+@@ -201,16 +201,16 @@ popstackmark(struct stackmark *mark)
+  * part of the block that has been used.
+  */
+ 
+-void
+-growstackblock(void)
++static void growstackblock(size_t min)
+ {
+ 	size_t newlen;
+ 
+ 	newlen = stacknleft * 2;
+ 	if (newlen < stacknleft)
+ 		sh_error("Out of space");
+-	if (newlen < 128)
+-		newlen += 128;
++	min = SHELL_ALIGN(min | 128);
++	if (newlen < min)
++		newlen += min;
+ 
+ 	if (stacknxt == stackp->space && stackp != &stackbase) {
+ 		struct stack_block *sp;
+@@ -261,15 +261,15 @@ void *
+ growstackstr(void)
+ {
+ 	size_t len = stackblocksize();
+-	growstackblock();
++
++	growstackblock(0);
+ 	return stackblock() + len;
+ }
+ 
+ char *growstackto(size_t len)
+ {
+-	while (stackblocksize() < len)
+-		growstackblock();
+-
++	if (stackblocksize() < len)
++		growstackblock(len);
+ 	return stackblock();
+ }
+ 
+diff --git a/src/memalloc.h b/src/memalloc.h
+index b348d9c..b9c63da 100644
+--- a/src/memalloc.h
++++ b/src/memalloc.h
+@@ -55,7 +55,6 @@ void stunalloc(pointer);
+ void pushstackmark(struct stackmark *mark, size_t len);
+ void setstackmark(struct stackmark *);
+ void popstackmark(struct stackmark *);
+-void growstackblock(void);
+ void *growstackstr(void);
+ char *growstackto(size_t len);
+ char *makestrspace(size_t, char *);
+-- 
+2.25.0
+

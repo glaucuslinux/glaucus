@@ -1,0 +1,37 @@
+From 70712c93c40a322056dafce7cbb45c727400936b Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Mon, 19 Nov 2018 18:00:32 +0800
+Subject: [PATCH 37/53] eval: Use the correct expansion mode for fd redirection
+
+It has been reported that
+
+	echo test >&$EMPTY_VARIABLE
+
+causes dash to segfault.  This is a symptom of the bigger problem
+that dash tries to perform pathname expansion as well as field
+splitting on the word after >& and <&.  This is wrong and this
+patch fixes it to use the same expansions as done on a normal
+redirection.
+
+Reported-by: Andrej Shadura <andrew.shadura@collabora.co.uk>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index 943948a..8f65d94 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -529,7 +529,7 @@ expredir(union node *n)
+ 		case NFROMFD:
+ 		case NTOFD:
+ 			if (redir->ndup.vname) {
+-				expandarg(redir->ndup.vname, &fn, EXP_FULL | EXP_TILDE);
++				expandarg(redir->ndup.vname, &fn, EXP_TILDE | EXP_REDIR);
+ 				fixredir(redir, fn.list->text, 1);
+ 			}
+ 			break;
+-- 
+2.25.0
+

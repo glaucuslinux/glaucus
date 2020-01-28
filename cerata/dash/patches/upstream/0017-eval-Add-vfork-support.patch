@@ -1,0 +1,342 @@
+From e94a964e7dd03d0dd6923d7fc62bc46bd4431189 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:56 +0800
+Subject: [PATCH 17/53] eval: Add vfork support
+
+This patch adds basic vfork support for the case of a simple command.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/error.c |  5 ++++
+ src/eval.c  |  6 ++--
+ src/exec.h  |  2 ++
+ src/jobs.c  | 86 ++++++++++++++++++++++++++++++++++++++++-------------
+ src/jobs.h  |  4 +++
+ src/trap.c  | 22 ++++++++++++--
+ src/trap.h  |  1 +
+ 7 files changed, 99 insertions(+), 27 deletions(-)
+
+diff --git a/src/error.c b/src/error.c
+index f9ea919..728ff88 100644
+--- a/src/error.c
++++ b/src/error.c
+@@ -43,6 +43,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#include "jobs.h"
+ #include "shell.h"
+ #include "main.h"
+ #include "options.h"
+@@ -81,6 +82,10 @@ exraise(int e)
+ 	if (handler == NULL)
+ 		abort();
+ #endif
++
++	if (vforked)
++		_exit(exitstatus);
++
+ 	INTOFF;
+ 
+ 	exception = e;
+diff --git a/src/eval.c b/src/eval.c
+index 76a209b..c300d0c 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -892,10 +892,8 @@ bail:
+ 		/* Fork off a child process if necessary. */
+ 		if (!(flags & EV_EXIT) || have_traps()) {
+ 			INTOFF;
+-			jp = makejob(cmd, 1);
+-			if (forkshell(jp, cmd, FORK_FG) != 0)
+-				break;
+-			FORCEINTON;
++			jp = vforkexec(cmd, argv, path, cmdentry.u.index);
++			break;
+ 		}
+ 		shellexec(argv, path, cmdentry.u.index);
+ 		/* NOTREACHED */
+diff --git a/src/exec.h b/src/exec.h
+index 2b31825..423b07e 100644
+--- a/src/exec.h
++++ b/src/exec.h
+@@ -58,6 +58,8 @@ struct cmdentry {
+ #define DO_ALTPATH	0x08	/* using alternate path */
+ #define DO_REGBLTIN	0x10	/* regular built-ins and functions only */
+ 
++union node;
++
+ extern const char *pathopt;	/* set by padvance */
+ 
+ void shellexec(char **, const char *, int)
+diff --git a/src/jobs.c b/src/jobs.c
+index 601232d..f3a0d80 100644
+--- a/src/jobs.c
++++ b/src/jobs.c
+@@ -53,6 +53,7 @@
+ #include <termios.h>
+ #undef CEOF			/* syntax.h redefines this */
+ #endif
++#include "exec.h"
+ #include "eval.h"
+ #include "redir.h"
+ #include "show.h"
+@@ -97,6 +98,9 @@ static int ttyfd = -1;
+ /* current job */
+ static struct job *curjob;
+ 
++/* Set if we are in the vforked child */
++int vforked;
++
+ STATIC void set_curjob(struct job *, unsigned);
+ STATIC int jobno(const struct job *);
+ STATIC int sprint_status(char *, int, int);
+@@ -840,20 +844,29 @@ growjobtab(void)
+  * Called with interrupts off.
+  */
+ 
+-STATIC inline void
+-forkchild(struct job *jp, union node *n, int mode)
++static void forkchild(struct job *jp, union node *n, int mode)
+ {
++	int lvforked;
+ 	int oldlvl;
+ 
+ 	TRACE(("Child shell %d\n", getpid()));
++
+ 	oldlvl = shlvl;
+-	shlvl++;
++	lvforked = vforked;
++
++	if (!lvforked) {
++		shlvl++;
++
++		closescript();
++		clear_traps();
++
++#if JOBS
++		/* do job control only in root shell */
++		jobctl = 0;
++#endif
++	}
+ 
+-	closescript();
+-	clear_traps();
+ #if JOBS
+-	/* do job control only in root shell */
+-	jobctl = 0;
+ 	if (mode != FORK_NOJOB && jp->jobctl && !oldlvl) {
+ 		pid_t pgrp;
+ 
+@@ -879,17 +892,30 @@ forkchild(struct job *jp, union node *n, int mode)
+ 		}
+ 	}
+ 	if (!oldlvl && iflag) {
+-		setsignal(SIGINT);
+-		setsignal(SIGQUIT);
++		if (mode != FORK_BG) {
++			setsignal(SIGINT);
++			setsignal(SIGQUIT);
++		}
+ 		setsignal(SIGTERM);
+ 	}
++
++	if (lvforked)
++		return;
++
+ 	for (jp = curjob; jp; jp = jp->prev_job)
+ 		freejob(jp);
+ }
+ 
+-STATIC inline void
+-forkparent(struct job *jp, union node *n, int mode, pid_t pid)
++static void forkparent(struct job *jp, union node *n, int mode, pid_t pid)
+ {
++	if (pid < 0) {
++		TRACE(("Fork failed, errno=%d", errno));
++		if (jp)
++			freejob(jp);
++		sh_error("Cannot fork");
++		/* NOTREACHED */
++	}
++
+ 	TRACE(("In parent shell:  child = %d\n", pid));
+ 	if (!jp)
+ 		return;
+@@ -926,19 +952,40 @@ forkshell(struct job *jp, union node *n, int mode)
+ 
+ 	TRACE(("forkshell(%%%d, %p, %d) called\n", jobno(jp), n, mode));
+ 	pid = fork();
+-	if (pid < 0) {
+-		TRACE(("Fork failed, errno=%d", errno));
+-		if (jp)
+-			freejob(jp);
+-		sh_error("Cannot fork");
+-	}
+ 	if (pid == 0)
+ 		forkchild(jp, n, mode);
+ 	else
+ 		forkparent(jp, n, mode, pid);
++
+ 	return pid;
+ }
+ 
++struct job *vforkexec(union node *n, char **argv, const char *path, int idx)
++{
++	struct job *jp;
++	int pid;
++
++	jp = makejob(n, 1);
++
++	sigblockall(NULL);
++	vforked++;
++
++	pid = vfork();
++
++	if (!pid) {
++		forkchild(jp, n, FORK_FG);
++		sigclearmask();
++		shellexec(argv, path, idx);
++		/* NOTREACHED */
++	}
++
++	vforked = 0;
++	sigclearmask();
++	forkparent(jp, n, FORK_FG, pid);
++
++	return jp;
++}
++
+ /*
+  * Wait for job to finish.
+  *
+@@ -1106,7 +1153,7 @@ static int dowait(int block, struct job *jp)
+ STATIC int
+ waitproc(int block, int *status)
+ {
+-	sigset_t mask, oldmask;
++	sigset_t oldmask;
+ 	int flags = block == DOWAIT_BLOCK ? 0 : WNOHANG;
+ 	int err;
+ 
+@@ -1120,8 +1167,7 @@ waitproc(int block, int *status)
+ 		if (err || (err = -!block))
+ 			break;
+ 
+-		sigfillset(&mask);
+-		sigprocmask(SIG_SETMASK, &mask, &oldmask);
++		sigblockall(&oldmask);
+ 
+ 		while (!gotsigchld && !pending_sig)
+ 			sigsuspend(&oldmask);
+diff --git a/src/jobs.h b/src/jobs.h
+index 953ee87..6ac6c56 100644
+--- a/src/jobs.h
++++ b/src/jobs.h
+@@ -83,6 +83,8 @@ struct job {
+ 	struct job *prev_job;	/* previous job */
+ };
+ 
++union node;
++
+ extern pid_t backgndpid;	/* pid of last background process */
+ extern int job_warning;		/* user was warned about stopped jobs */
+ #if JOBS
+@@ -90,6 +92,7 @@ extern int jobctl;		/* true if doing job control */
+ #else
+ #define jobctl 0
+ #endif
++extern int vforked;		/* Set if we are in the vforked child */
+ 
+ void setjobctl(int);
+ int killcmd(int, char **);
+@@ -101,6 +104,7 @@ void showjobs(struct output *, int);
+ int waitcmd(int, char **);
+ struct job *makejob(union node *, int);
+ int forkshell(struct job *, union node *, int);
++struct job *vforkexec(union node *n, char **argv, const char *path, int idx);
+ int waitforjob(struct job *);
+ int stoppedjobs(void);
+ 
+diff --git a/src/trap.c b/src/trap.c
+index 69eb8ab..ab0ecd4 100644
+--- a/src/trap.c
++++ b/src/trap.c
+@@ -182,16 +182,19 @@ void
+ setsignal(int signo)
+ {
+ 	int action;
++	int lvforked;
+ 	char *t, tsig;
+ 	struct sigaction act;
+ 
++	lvforked = vforked;
++
+ 	if ((t = trap[signo]) == NULL)
+ 		action = S_DFL;
+ 	else if (*t != '\0')
+ 		action = S_CATCH;
+ 	else
+ 		action = S_IGN;
+-	if (rootshell && action == S_DFL) {
++	if (rootshell && action == S_DFL && !lvforked) {
+ 		switch (signo) {
+ 		case SIGINT:
+ 			if (iflag || minusc || sflag == 0)
+@@ -256,7 +259,8 @@ setsignal(int signo)
+ 	default:
+ 		act.sa_handler = SIG_DFL;
+ 	}
+-	*t = action;
++	if (!lvforked)
++		*t = action;
+ 	act.sa_flags = 0;
+ 	sigfillset(&act.sa_mask);
+ 	sigaction(signo, &act, 0);
+@@ -272,7 +276,8 @@ ignoresig(int signo)
+ 	if (sigmode[signo - 1] != S_IGN && sigmode[signo - 1] != S_HARD_IGN) {
+ 		signal(signo, SIG_IGN);
+ 	}
+-	sigmode[signo - 1] = S_HARD_IGN;
++	if (!vforked)
++		sigmode[signo - 1] = S_HARD_IGN;
+ }
+ 
+ 
+@@ -284,6 +289,9 @@ ignoresig(int signo)
+ void
+ onsig(int signo)
+ {
++	if (vforked)
++		return;
++
+ 	if (signo == SIGCHLD) {
+ 		gotsigchld = 1;
+ 		if (!trap[SIGCHLD])
+@@ -431,3 +439,11 @@ int decode_signal(const char *string, int minsig)
+ 
+ 	return -1;
+ }
++
++void sigblockall(sigset_t *oldmask)
++{
++	sigset_t mask;
++
++	sigfillset(&mask);
++	sigprocmask(SIG_SETMASK, &mask, oldmask);
++}
+diff --git a/src/trap.h b/src/trap.h
+index b9dfcf2..5fd65af 100644
+--- a/src/trap.h
++++ b/src/trap.h
+@@ -50,6 +50,7 @@ void dotrap(void);
+ void setinteractive(int);
+ void exitshell(void) __attribute__((__noreturn__));
+ int decode_signal(const char *, int);
++void sigblockall(sigset_t *oldmask);
+ 
+ static inline int have_traps(void)
+ {
+-- 
+2.25.0
+

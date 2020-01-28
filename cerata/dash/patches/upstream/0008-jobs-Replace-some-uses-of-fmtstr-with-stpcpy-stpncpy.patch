@@ -1,0 +1,64 @@
+From 15a60c2357f772ccf953772859e8f9fc124442e2 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:45 +0800
+Subject: [PATCH 08/53] jobs: Replace some uses of fmtstr with stpcpy/stpncpy
+
+Some uses of fmtstr, particularly the ones without a format string,
+can be replaced with stpcpy or stpncpy.  This patch does that so
+we don't have to introduce unnecessary format strings in order to
+silence compiler warnings.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/jobs.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/src/jobs.c b/src/jobs.c
+index 79a087e..601232d 100644
+--- a/src/jobs.c
++++ b/src/jobs.c
+@@ -405,12 +405,11 @@ out:
+ #endif
+ 
+ STATIC int
+-sprint_status(char *s, int status, int sigonly)
++sprint_status(char *os, int status, int sigonly)
+ {
+-	int col;
++	char *s = os;
+ 	int st;
+ 
+-	col = 0;
+ 	st = WEXITSTATUS(status);
+ 	if (!WIFEXITED(status)) {
+ #if JOBS
+@@ -426,21 +425,21 @@ sprint_status(char *s, int status, int sigonly)
+ 				goto out;
+ #endif
+ 		}
+-		col = fmtstr(s, 32, strsignal(st));
++		s = stpncpy(s, strsignal(st), 32);
+ #ifdef WCOREDUMP
+ 		if (WCOREDUMP(status)) {
+-			col += fmtstr(s + col, 16, " (core dumped)");
++			s = stpcpy(s, " (core dumped)");
+ 		}
+ #endif
+ 	} else if (!sigonly) {
+ 		if (st)
+-			col = fmtstr(s, 16, "Done(%d)", st);
++			s += fmtstr(s, 16, "Done(%d)", st);
+ 		else
+-			col = fmtstr(s, 16, "Done");
++			s = stpcpy(s, "Done");
+ 	}
+ 
+ out:
+-	return col;
++	return s - os;
+ }
+ 
+ static void
+-- 
+2.25.0
+

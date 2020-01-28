@@ -1,0 +1,30 @@
+From 14dff0f69d37e73cf99c77f5f5f38b2a3c6522f5 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sun, 27 May 2018 17:31:57 +0800
+Subject: [PATCH 20/53] expand: Use HOME in tilde expansion when it is empty
+
+Currently if HOME is set to empty tilde expansion will fail, i.e.,
+it will remain as a literal tilde.  This patch changes it to
+return the empty string as required by POSIX.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/expand.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/expand.c b/src/expand.c
+index 45e9b79..eb50e15 100644
+--- a/src/expand.c
++++ b/src/expand.c
+@@ -385,7 +385,7 @@ done:
+ 	} else {
+ 		home = getpwhome(name);
+ 	}
+-	if (!home || !*home)
++	if (!home)
+ 		goto lose;
+ 	*p = c;
+ 	strtodest(home, SQSYNTAX, quotes);
+-- 
+2.25.0
+

@@ -1,0 +1,44 @@
+From 284b9192ed12a80b35fa7b9b85d75055887b64e9 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Wed, 21 Nov 2018 11:45:04 +0800
+Subject: [PATCH 41/53] system: Disable glibc warning on sigsetmask
+
+As sigsetmask is set as deprecated in glibc this patch adds the
+pragmas to disable the warning in gcc around our one and only use
+of sigsetmask.
+
+It also disables it completely for non-gcc compilers and older
+gcc compilers as they may generate a warning too.
+
+Reported-by: Antonio Ospite <ao2@ao2.it>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/system.h | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/system.h b/src/system.h
+index a8d09b3..007952c 100644
+--- a/src/system.h
++++ b/src/system.h
+@@ -36,8 +36,17 @@
+ 
+ static inline void sigclearmask(void)
+ {
+-#ifdef HAVE_SIGSETMASK
++#if defined(HAVE_SIGSETMASK) && \
++    (!defined(__GLIBC__) || \
++     (defined(__GNUC__) && (__GNUC__ * 1000 + __GNUC_MINOR__) >= 4006))
++#ifdef __GLIBC__
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
++#endif
+ 	sigsetmask(0);
++#ifdef __GLIBC__
++#pragma GCC diagnostic pop
++#endif
+ #else
+ 	sigset_t set;
+ 	sigemptyset(&set);
+-- 
+2.25.0
+

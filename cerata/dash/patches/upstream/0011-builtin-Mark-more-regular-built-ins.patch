@@ -1,0 +1,56 @@
+From ae850b2a23083b489b85dca469110aa7a76d8976 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:49 +0800
+Subject: [PATCH 11/53] builtin: Mark more regular built-ins
+
+This patch marks the following built-ins as regular, meaning that
+they cannot be overriden using PATH search:
+
+	hash
+	pwd
+	type
+	ulimit
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/builtins.def.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/builtins.def.in b/src/builtins.def.in
+index 4441fe4..95e420c 100644
+--- a/src/builtins.def.in
++++ b/src/builtins.def.in
+@@ -69,11 +69,11 @@ exitcmd		-s exit
+ exportcmd	-as export -as readonly
+ falsecmd	-u false
+ getoptscmd	-u getopts
+-hashcmd		hash
++hashcmd		-u hash
+ jobscmd		-u jobs
+ localcmd	-as local
+ printfcmd	printf
+-pwdcmd		pwd
++pwdcmd		-u pwd
+ readcmd		-u read
+ returncmd	-s return
+ setcmd		-s set
+@@ -81,14 +81,14 @@ shiftcmd	-s shift
+ timescmd	-s times
+ trapcmd		-s trap
+ truecmd		-s : -u true
+-typecmd		type
++typecmd		-u type
+ umaskcmd	-u umask
+ unaliascmd	-u unalias
+ unsetcmd	-s unset
+ waitcmd		-u wait
+ aliascmd	-au alias
+ #ifdef HAVE_GETRLIMIT
+-ulimitcmd	ulimit
++ulimitcmd	-u ulimit
+ #endif
+ testcmd		test [
+ killcmd		-u kill
+-- 
+2.25.0
+

@@ -1,0 +1,70 @@
+From 51e2d88d6e513150a76c007111bbee21bb922c33 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 19 May 2018 02:39:42 +0800
+Subject: [PATCH 05/53] parser: Save/restore here-documents in command
+ substitution
+
+This patch changes the parsing of here-documents within command
+substitution, both old style and new style.  In particular, the
+original here-document list is saved upon the beginning of parsing
+command substitution and restored when exiting.
+
+This means that here-documents outside of command substitution
+can no longer be filled by text within it and vice-versa.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/parser.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/src/parser.c b/src/parser.c
+index 8bd3db4..809c6a8 100644
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -1368,6 +1368,7 @@ parsebackq: {
+ 	union node *n;
+ 	char *str;
+ 	size_t savelen;
++	struct heredoc *saveheredoclist;
+ 	int uninitialized_var(saveprompt);
+ 
+ 	str = NULL;
+@@ -1432,6 +1433,9 @@ done:
+ 	*nlpp = (struct nodelist *)stalloc(sizeof (struct nodelist));
+ 	(*nlpp)->next = NULL;
+ 
++	saveheredoclist = heredoclist;
++	heredoclist = NULL;
++
+ 	if (oldstyle) {
+ 		saveprompt = doprompt;
+ 		doprompt = 0;
+@@ -1444,17 +1448,18 @@ done:
+ 	else {
+ 		if (readtoken() != TRP)
+ 			synexpect(TRP);
++		setinputstring(nullstr);
++		parseheredoc();
+ 	}
+ 
++	heredoclist = saveheredoclist;
++
+ 	(*nlpp)->n = n;
+-        if (oldstyle) {
+-		/*
+-		 * Start reading from old file again, ignoring any pushed back
+-		 * tokens left from the backquote parsing
+-		 */
+-                popfile();
++	/* Start reading from old file again. */
++	popfile();
++	/* Ignore any pushed back tokens left from the backquote parsing. */
++	if (oldstyle)
+ 		tokpushback = 0;
+-	}
+ 	while (stackblocksize() <= savelen)
+ 		growstackblock();
+ 	STARTSTACKSTR(out);
+-- 
+2.25.0
+

@@ -1,0 +1,53 @@
+From 06204f0c9f539fcb8cb532166656e80b81bd689a Mon Sep 17 00:00:00 2001
+From: Antonio Ospite <ao2@ao2.it>
+Date: Tue, 16 Oct 2018 14:09:52 +0200
+Subject: [PATCH 33/53] eval: make traps work when "set -e" is enabled
+
+When "set -e" is enabled traps are not always executed, in particular
+the EXIT trap is not executed when the shell exits on an unhandled
+error.
+
+Consider the following test script:
+
+  #!/bin/dash
+
+  set -e
+
+  trap 'ret=$?; echo "EXIT: $ret"' EXIT
+  trap 'exit 2' HUP INT QUIT PIPE TERM
+
+  read variable
+
+By pressing Ctrl-C one would expect the EXIT trap to be called, as it is
+the case with other shells (bash, zsh), but dash does not do it.
+
+By calling dotrap() before jumping to the exit path when checkexit is
+not zero, dash behaves like other shells.
+
+Signed-off-by: Antonio Ospite <ao2@ao2.it>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index 546ee1b..dde9fa2 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -307,11 +307,11 @@ setstatus:
+ 		break;
+ 	}
+ out:
++	dotrap();
++
+ 	if (checkexit & status)
+ 		goto exexit;
+ 
+-	dotrap();
+-
+ 	if (flags & EV_EXIT) {
+ exexit:
+ 		exraise(EXEXIT);
+-- 
+2.25.0
+
