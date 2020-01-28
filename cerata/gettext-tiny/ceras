@@ -5,6 +5,6 @@
 
 nom=gettext-tiny
 ver=0.3.1
-url=http://ftp.barfooze.de/pub/sabotage/tarballs/$nom-$ver.tar.xz
+url=https://ftp.barfooze.de/pub/sabotage/tarballs/$nom-$ver.tar.xz
 sum=a2d88d3d0989a2f775d7940c28470f4cb80e41f190b69c65f61890764c73f96810006320e9daaf717e9fccd93eb541ca0c818bd58b2180713e030ad788263060
 lic=MIT
