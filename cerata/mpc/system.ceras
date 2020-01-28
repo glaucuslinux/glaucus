@@ -20,6 +20,7 @@ prepare_system() {
   $SCRD/patch 1 $nom upstream 0012-m4-Disable-Werror-completely.patch &&
   $SCRD/patch 1 $nom upstream 0019-added-assertions-in-tests-tdot.c-which-fail-currentl.patch &&
   $SCRD/patch 1 $nom upstream 0020-fixed-a-bug-in-mpc_dot-thanks-Trevor-Spiteri-for-ide.patch &&
+  $SCRD/patch 1 $nom upstream 0021-improve-mpc_sqrt-avoiding-the-use-of-mpc_abs.patch &&
   $SCRD/patch 1 $nom upstream 0022-added-example-which-triggers-a-bug-in-mpc_div.patch &&
   $SCRD/patch 1 $nom upstream 0023-Whitespace-edits.patch &&
   $SCRD/patch 1 $nom upstream 0024-improved-mpc_div-using-scaling-of-exponents.patch &&
