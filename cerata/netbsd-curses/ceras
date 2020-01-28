@@ -5,6 +5,6 @@
 
 nom=netbsd-curses
 ver=0.3.1
-url=http://ftp.barfooze.de/pub/sabotage/tarballs/$nom-$ver.tar.xz
+url=https://ftp.barfooze.de/pub/sabotage/tarballs/$nom-$ver.tar.xz
 sum=bd65358b59299de6b9879022842c7cd4fcdc1449b6bf7db5870a5fe0ffcc873f68da2bcf6b27bc231a956797377d66f56177178dad14304f332aaf924482ca90
 lic='BSD-2-Clause BSD-3-Clause'
