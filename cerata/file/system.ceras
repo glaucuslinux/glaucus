@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-libseccomp \
     --enable-fsect-man5
