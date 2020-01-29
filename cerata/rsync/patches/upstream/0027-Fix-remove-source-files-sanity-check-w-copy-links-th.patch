@@ -1,0 +1,46 @@
+From 79332c0d66d933369a28c63b096addb67514cb38 Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayned@samba.org>
+Date: Sat, 16 Mar 2019 09:09:09 -0700
+Subject: [PATCH 27/36] Fix --remove-source-files sanity check w/--copy-links
+ the right way. Fixes bug #10494.
+
+---
+ sender.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/sender.c b/sender.c
+index 03e4aadd..9b432ed9 100644
+--- a/sender.c
++++ b/sender.c
+@@ -32,6 +32,7 @@ extern int logfile_format_has_i;
+ extern int want_xattr_optim;
+ extern int csum_length;
+ extern int append_mode;
++extern int copy_links;
+ extern int io_error;
+ extern int flist_eof;
+ extern int allowed_lull;
+@@ -138,17 +139,16 @@ void successful_send(int ndx)
+ 		return;
+ 	f_name(file, fname);
+ 
+-	if (do_lstat(fname, &st) < 0) {
++	if ((copy_links ? do_stat(fname, &st) : do_lstat(fname, &st)) < 0) {
+ 		failed_op = "re-lstat";
+ 		goto failed;
+ 	}
+ 
+-	if (S_ISREG(file->mode) /* Symlinks & devices don't need this check: */
+-	 && (st.st_size != F_LENGTH(file) || st.st_mtime != file->modtime
++	if (st.st_size != F_LENGTH(file) || st.st_mtime != file->modtime
+ #ifdef ST_MTIME_NSEC
+ 	 || (NSEC_BUMP(file) && (uint32)st.ST_MTIME_NSEC != F_MOD_NSEC(file))
+ #endif
+-	)) {
++	) {
+ 		rprintf(FERROR_XFER, "ERROR: Skipping sender remove for changed file: %s\n", fname);
+ 		return;
+ 	}
+-- 
+2.25.0
+

@@ -1,0 +1,43 @@
+From 2ad1c4e800d00244932b028c6c01e7d4090ce367 Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayned@samba.org>
+Date: Tue, 15 Jan 2019 11:18:36 -0800
+Subject: [PATCH 25/36] Improve write-only --sender check & handle 2 new
+ options.
+
+---
+ support/rrsync | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/support/rrsync b/support/rrsync
+index ad4d434b..3bbca2e0 100644
+--- a/support/rrsync
++++ b/support/rrsync
+@@ -63,7 +63,7 @@ die "$0 reading from write-only server not allowed\n" if $only eq 'w' && $am_sen
+ our $short_disabled = 's';
+ 
+ our $short_no_arg = 'ACDEHIJKLORSWXbcdgklmnoprstuvxyz'; # DO NOT REMOVE ANY
+-our $short_with_num = 'B'; # DO NOT REMOVE ANY
++our $short_with_num = '@B'; # DO NOT REMOVE ANY
+ 
+ # To disable a long-named option, change its value to a -1.  The values mean:
+ # 0 = the option has no arg; 1 = the arg doesn't need any checking; 2 = only
+@@ -73,6 +73,7 @@ our %long_opt = (
+   'backup-dir' => 2,
+   'block-size' => 1,
+   'bwlimit' => 1,
++  'checksum-choice' => 1,
+   'checksum-seed' => 1,
+   'compare-dest' => 2,
+   'compress-level' => 1,
+@@ -130,7 +131,7 @@ our %long_opt = (
+   'remove-sent-files' => $only eq 'r' ? -1 : 0,
+   'remove-source-files' => $only eq 'r' ? -1 : 0,
+   'safe-links' => 0,
+-  'sender' => 0,
++  'sender' => $only eq 'w' ? -1 : 0,
+   'server' => 0,
+   'size-only' => 0,
+   'skip-compress' => 1,
+-- 
+2.25.0
+

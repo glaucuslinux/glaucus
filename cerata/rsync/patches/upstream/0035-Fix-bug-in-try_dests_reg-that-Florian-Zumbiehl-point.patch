@@ -1,0 +1,57 @@
+From d47d3792160210ce14700e38a223eaa0059f3551 Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayned@samba.org>
+Date: Sat, 16 Mar 2019 11:12:53 -0700
+Subject: [PATCH 35/36] Fix bug in try_dests_reg that Florian Zumbiehl pointed
+ out.
+
+If the alternate-destination code was scanning multiple alt dirs and it
+found the right size/mtime/checksum info but not the right xattrs, it
+would keep scanning the other dirs for a better xattr match, but it
+would omit the unchanged-file check that needs to happen first.
+---
+ generator.c | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
+
+diff --git a/generator.c b/generator.c
+index 6021a220..5538a92d 100644
+--- a/generator.c
++++ b/generator.c
+@@ -876,27 +876,22 @@ static int try_dests_reg(struct file_struct *file, char *fname, int ndx,
+ 		pathjoin(cmpbuf, MAXPATHLEN, basis_dir[j], fname);
+ 		if (link_stat(cmpbuf, &sxp->st, 0) < 0 || !S_ISREG(sxp->st.st_mode))
+ 			continue;
+-		switch (match_level) {
+-		case 0:
++		if (match_level == 0) {
+ 			best_match = j;
+ 			match_level = 1;
+-			/* FALL THROUGH */
+-		case 1:
+-			if (!unchanged_file(cmpbuf, file, &sxp->st))
+-				continue;
++		}
++		if (!unchanged_file(cmpbuf, file, &sxp->st))
++			continue;
++		if (match_level == 1) {
+ 			best_match = j;
+ 			match_level = 2;
+-			/* FALL THROUGH */
+-		case 2:
+-			if (!unchanged_attrs(cmpbuf, file, sxp)) {
+-				free_stat_x(sxp);
+-				continue;
+-			}
++		}
++		if (unchanged_attrs(cmpbuf, file, sxp)) {
+ 			best_match = j;
+ 			match_level = 3;
+ 			break;
+ 		}
+-		break;
++		free_stat_x(sxp);
+ 	} while (basis_dir[++j] != NULL);
+ 
+ 	if (!match_level)
+-- 
+2.25.0
+
