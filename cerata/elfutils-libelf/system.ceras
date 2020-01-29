@@ -10,7 +10,7 @@ prepare_system() {
   $RSYNC $CERD/elfutils/error.h lib &&
   $RSYNC $CERD/elfutils/error.h src &&
 
-  patch -p0 -i $CERD/elfutils/patches/2.patch
+  $SCRD/patch 0 elfutils void musl-cdefs.patch
 }
 
 configure_system() {
