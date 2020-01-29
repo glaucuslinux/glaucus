@@ -1,0 +1,45 @@
+From f10e22c2a13876a5494f11b1110d0e2976797873 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Fri, 19 Feb 2016 18:22:15 +0100
+Subject: [PATCH 32/44] tests: fix $objdir hardcoding check with CFLAGS=-g3
+
+At least with gcc, specifying -g3 in CFLAGS ends up with macros
+expanded including LT_OBJDIR macro.  This fooled the testsuite.
+
+* tests/demo.at (Demo hardcode): Filter out the expanded LT_OBJDIR
+macro.
+---
+ tests/demo.at | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/demo.at b/tests/demo.at
+index b1de7061..97a52a10 100644
+--- a/tests/demo.at
++++ b/tests/demo.at
+@@ -623,6 +623,10 @@ LT_AT_MAKE([hardcode])
+ eval "`$LIBTOOL --config | $EGREP '^hardcode_(direct|minus_L|shlibpath_var|libdir_flag_spec)='`"
+ 
+ AT_CHECK([[exit_status=0
++func_hardcode_filter_fp ()
++{
++  $FGREP -v "LT_OBJDIR \"$objdir/\"" 2>/dev/null
++}
+ for file in hc-*; do
+   case $file in
+   hc-direct)  expected="$hardcode_direct" ;;
+@@ -662,10 +666,10 @@ for file in hc-*; do
+   # AIX fgrep also has a limited line length, so we turn unprintable
+   # characters into newlines.
+   elif cat $file | (tr '\000-\037\200-\377' '\n' || cat) 2>/dev/null \
+-	         | $FGREP "$objdir" > /dev/null 2>&1; then
++                 | func_hardcode_filter_fp | $FGREP "$objdir" > /dev/null 2>&1; then
+     hardcoded=yes
+ 
+-  elif $FGREP "$objdir" $file > /dev/null 2>&1; then
++  elif cat $file | func_hardcode_filter_fp | $FGREP "$objdir" > /dev/null 2>&1; then
+     # We retry fgrep without tr, in case the above lead to a false negative.
+     hardcoded=yes
+   elif ($SED -e '1!d' $file | $GREP 'unsupported') >/dev/null 2>&1; then
+-- 
+2.25.0
+

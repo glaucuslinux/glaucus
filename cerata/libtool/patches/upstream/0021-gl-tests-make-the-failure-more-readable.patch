@@ -1,0 +1,27 @@
+From ae816aced1e09adaf38a8d938f226db1cc27e79c Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Mon, 30 Nov 2015 07:06:56 +0100
+Subject: [PATCH 21/44] gl-tests: make the failure more readable
+
+* gl/tests/test-funclib-quote.sh (_compare_or_error): Put $1 into
+error output, not having it like that was my mistake.
+---
+ gl/tests/test-funclib-quote.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gl/tests/test-funclib-quote.sh b/gl/tests/test-funclib-quote.sh
+index 7669a44b..60be1523 100755
+--- a/gl/tests/test-funclib-quote.sh
++++ b/gl/tests/test-funclib-quote.sh
+@@ -25,7 +25,7 @@ all_shells_script=$0
+ 
+ _compare_or_error ()
+ {
+-    _G_msg="strings differ:
++    _G_msg="$1: strings differ:
+     a: $2
+     b: $3"
+     test "$2" = "$3" || all_shells_error "$_G_msg"
+-- 
+2.25.0
+

@@ -1,0 +1,29 @@
+From 5859cc50d62667438f36c4a2872583bcd09cfdd5 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Thu, 25 Jun 2015 14:53:28 +0200
+Subject: [PATCH 10/44] maint: relax 'sc_prohibit_test_dollar' check
+
+* cfg.mk (sc_prohibit_test_dollar): White-list the
+'test ${VAR+y}' construct because that is autoconf-suggested
+portable way to check for unset variable.
+---
+ cfg.mk | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cfg.mk b/cfg.mk
+index fdc21a1e..6767b2d5 100644
+--- a/cfg.mk
++++ b/cfg.mk
+@@ -176,7 +176,8 @@ sc_prohibit_test_binary_operators:
+ exclude_file_name_regexp--sc_prohibit_test_dollar = ^cfg.mk$$
+ sc_prohibit_test_dollar:
+ 	@prohibit='test[	 ]+(![	 ])?(-.[	 ]+)?X?\$$[^?#]' \
+-	halt='use '\''test "$$..."'\'' instead of '\''test $$'\'		\
++	exclude='test \$${[A-Za-z_][A-Za-z0-9_]+\+y}'			\
++	halt='use '\''test "$$..."'\'' instead of '\''test $$'\'	\
+ 	  $(_sc_search_regexp)
+ 
+ # Never use test -e.
+-- 
+2.25.0
+
