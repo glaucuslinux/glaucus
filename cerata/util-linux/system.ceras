@@ -4,8 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 1 $nom clear 0001-Speed-up-agetty-waits.patch &&
 
   install -dv /var/lib/hwclock
 }
@@ -13,7 +15,7 @@ prepare_system() {
 configure_system() {
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
