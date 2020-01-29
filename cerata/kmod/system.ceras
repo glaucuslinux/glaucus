@@ -4,12 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 1 $nom void strndupa.patch &&
+  $SCRD/patch 1 $nom arch 0001-Link-against-libcrypto-not-all-of-openssl.patch
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-manpages \
