@@ -1,0 +1,25 @@
+From b0e3f1e060184b5ee4afa88b4801609c4c1ae6ec Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Sun, 26 Jan 2020 14:32:21 -0800
+Subject: [PATCH 7/7] manual: Specify list width to avoid lint warning
+
+---
+ samu.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/samu.1 b/samu.1
+index cdf640f..2b50849 100644
+--- a/samu.1
++++ b/samu.1
+@@ -150,7 +150,7 @@ The status output printed to the left of each rule description, using printf-lik
+ If unset, the default is "[%s/%t] ".
+ .Pp
+ Available conversion specifiers:
+-.Bl -tag
++.Bl -tag -width Ds
+ .It Cm %s
+ Number of started jobs.
+ .It Cm %f
+-- 
+2.25.0
+

@@ -1,0 +1,210 @@
+From 4e285ac5b65cf4f9e1b5f65b1269a911b343ed69 Mon Sep 17 00:00:00 2001
+From: Ethan Sommer <e5ten.arch@gmail.com>
+Date: Sun, 26 Jan 2020 13:58:03 -0500
+Subject: [PATCH 6/7] Add support for NINJA_STATUS environment variable
+
+---
+ build.c | 72 +++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ build.h |  1 +
+ samu.1  | 27 ++++++++++++++++++++--
+ samu.c  |  4 ++++
+ 4 files changed, 100 insertions(+), 4 deletions(-)
+
+diff --git a/build.c b/build.c
+index c382c17..4c24229 100644
+--- a/build.c
++++ b/build.c
+@@ -9,6 +9,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/wait.h>
++#include <time.h>
+ #include <unistd.h>
+ #include "build.h"
+ #include "deps.h"
+@@ -29,8 +30,9 @@ struct job {
+ 
+ struct buildoptions buildopts = {.maxfail = 1};
+ static struct edge *work;
+-static size_t nstarted, ntotal;
++static size_t nstarted, nfinished, ntotal;
+ static bool consoleused;
++static struct timespec starttime;
+ 
+ void
+ buildreset(void) {
+@@ -199,6 +201,48 @@ buildadd(struct node *n)
+ 	e->flags &= ~FLAG_CYCLE;
+ }
+ 
++static void
++printstatus(void)
++{
++	const char *fmt;
++	struct timespec endtime;
++
++	for (fmt = buildopts.statusfmt; *fmt; ++fmt) {
++		if (*fmt == '%') {
++			++fmt;
++			switch (*fmt) {
++			case 's':
++				printf("%zu", nstarted);
++				break;
++			case 'f':
++				printf("%zu", nfinished);
++				break;
++			case 't':
++				printf("%zu", ntotal);
++				break;
++			case 'r':
++				printf("%zu", nstarted - nfinished);
++				break;
++			case 'u':
++				printf("%zu", ntotal - nstarted);
++				break;
++			case 'p':
++				printf("%3zu%%", 100 * nfinished / ntotal);
++				break;
++			case 'e':
++				clock_gettime(CLOCK_MONOTONIC, &endtime);
++				printf("%.3f", (endtime.tv_sec - starttime.tv_sec) + 0.000000001 * (endtime.tv_nsec - starttime.tv_nsec));
++				break;
++			case '%':
++				putchar('%');
++				break;
++			}
++		} else {
++			putchar(*fmt);
++		}
++	}
++}
++
+ static int
+ jobstart(struct job *j, struct edge *e)
+ {
+@@ -238,7 +282,8 @@ jobstart(struct job *j, struct edge *e)
+ 		description = buildopts.verbose ? NULL : edgevar(e, "description", true);
+ 		if (!description || description->n == 0)
+ 			description = j->cmd;
+-		printf("[%zu/%zu] %s\n", nstarted, ntotal, description->s);
++		printstatus();
++		puts(description->s);
+ 	}
+ 
+ 	if ((errno = posix_spawn_file_actions_init(&actions))) {
+@@ -373,6 +418,7 @@ jobdone(struct job *j)
+ 	struct edge *e, *new;
+ 	struct pool *p;
+ 
++	++nfinished;
+ 	if (waitpid(j->pid, &status, 0) < 0) {
+ 		warn("waitpid %d:", j->pid);
+ 		j->failed = true;
+@@ -456,6 +502,28 @@ build(void)
+ 	struct pollfd *fds = NULL;
+ 	size_t i, next = 0, jobslen = 0, numjobs = 0, numfail = 0;
+ 	struct edge *e;
++	const char *fmt;
++
++	clock_gettime(CLOCK_MONOTONIC, &starttime);
++
++	for (fmt = buildopts.statusfmt; *fmt; ++fmt) {
++		if (*fmt == '%') {
++			++fmt;
++			switch (*fmt) {
++			case 's':
++			case 'f':
++			case 't':
++			case 'r':
++			case 'u':
++			case 'p':
++			case 'e':
++			case '%':
++				break;
++			default:
++				fatal("unknown placeholder '%%%c' in $NINJA_STATUS", *fmt);
++			}
++		}
++	}
+ 
+ 	if (!work)
+ 		warn("nothing to do");
+diff --git a/build.h b/build.h
+index 6eb1988..1c52b7e 100644
+--- a/build.h
++++ b/build.h
+@@ -3,6 +3,7 @@ struct node;
+ struct buildoptions {
+ 	size_t maxjobs, maxfail;
+ 	_Bool verbose, explain, keepdepfile, keeprsp;
++	const char *statusfmt;
+ };
+ 
+ extern struct buildoptions buildopts;
+diff --git a/samu.1 b/samu.1
+index 0f10e93..cdf640f 100644
+--- a/samu.1
++++ b/samu.1
+@@ -1,4 +1,4 @@
+-.Dd January 22, 2019
++.Dd January 26, 2020
+ .Dt SAMU 1
+ .Os
+ .Sh NAME
+@@ -134,7 +134,7 @@ types will be cleaned instead.
+ When printing a compilation database, replace @$rspfile with $rspfile_content (with <blank> in place of <newline>).
+ .El
+ .Sh ENVIRONMENT
+-.Bl -tag -width SAMUFLAGS
++.Bl -tag -width NINJA_STATUS
+ .It Ev SAMUFLAGS
+ Options for
+ .Nm
+@@ -145,6 +145,29 @@ are
+ .Fl v
+ and
+ .Fl j .
++.It Ev NINJA_STATUS
++The status output printed to the left of each rule description, using printf-like conversion specifiers.
++If unset, the default is "[%s/%t] ".
++.Pp
++Available conversion specifiers:
++.Bl -tag
++.It Cm %s
++Number of started jobs.
++.It Cm %f
++Number of finished jobs.
++.It Cm %t
++Total number of jobs.
++.It Cm %r
++Number of running jobs.
++.It Cm %u
++Number of remaining jobs.
++.It Cm %p
++Percentage of completed jobs.
++.It Cm %e
++Elapsed time in seconds (to 3 decimal places).
++.It Cm %%
++The '%' character.
++.El
+ .El
+ .Sh SEE ALSO
+ .Xr make 1
+diff --git a/samu.c b/samu.c
+index f09c808..012511b 100644
+--- a/samu.c
++++ b/samu.c
+@@ -214,6 +214,10 @@ argdone:
+ #endif
+ 	}
+ 
++	buildopts.statusfmt = getenv("NINJA_STATUS");
++	if (!buildopts.statusfmt)
++		buildopts.statusfmt = "[%s/%t] ";
++
+ 	setvbuf(stdout, NULL, _IOLBF, 0);
+ 
+ 	tries = 0;
+-- 
+2.25.0
+
