@@ -1,0 +1,26 @@
+From 8a989015ad99f98e221278a5dbeb00f0cee78a5d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 23 Jan 2020 22:22:27 +0100
+Subject: [PATCH 41/41] README.md: Replace "should" by "can" regarding Windows
+ binaries (#376)
+
+---
+ expat/README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/expat/README.md b/expat/README.md
+index 1cc52b0..ad1eb88 100644
+--- a/expat/README.md
++++ b/expat/README.md
+@@ -18,7 +18,7 @@ Expat supports the following compilers:
+ - LLVM Clang >=3.5
+ - Microsoft Visual Studio >=8.0/2005
+ 
+-Windows users should use the
++Windows users can use the
+ [`expat_win32` package](https://sourceforge.net/projects/expat/files/expat_win32/),
+ which includes both precompiled libraries and executables, and source code for
+ developers.
+-- 
+2.25.0
+

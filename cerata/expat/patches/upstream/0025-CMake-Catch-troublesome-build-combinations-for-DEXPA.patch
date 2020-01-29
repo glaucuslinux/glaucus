@@ -1,0 +1,30 @@
+From db01810bf3359cde70cdab848bbd4aa8f4fafb9c Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 9 Oct 2019 23:10:28 +0200
+Subject: [PATCH 25/41] CMake: Catch troublesome build combinations for
+ -DEXPAT_CHAR_TYPE=ushort
+
+---
+ expat/CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/expat/CMakeLists.txt b/expat/CMakeLists.txt
+index 4873e41..72c3212 100644
+--- a/expat/CMakeLists.txt
++++ b/expat/CMakeLists.txt
+@@ -111,6 +111,12 @@ if(EXPAT_CHAR_TYPE STREQUAL "char")
+ elseif(EXPAT_CHAR_TYPE STREQUAL "ushort")
+     set(_EXPAT_UNICODE ON)
+     set(_EXPAT_UNICODE_WCHAR_T OFF)
++    if(EXPAT_BUILD_EXAMPLES)
++        message(SEND_ERROR "Examples can not be built with option -DEXPAT_CHAR_TYPE=ushort. Please pass -DEXPAT_CHAR_TYPE=(char|wchar_t) or -DEXPAT_BUILD_EXAMPLES=OFF.")
++    endif()
++    if(EXPAT_BUILD_TESTS)
++        message(SEND_ERROR "The testsuite can not be built with option -DEXPAT_CHAR_TYPE=ushort. Please pass -DEXPAT_CHAR_TYPE=(char|wchar_t) or -DEXPAT_BUILD_TESTS=OFF.")
++    endif()
+     if(EXPAT_BUILD_TOOLS)
+         message(SEND_ERROR "The xmlwf tool can not be built with option -DEXPAT_CHAR_TYPE=ushort. Please pass -DEXPAT_CHAR_TYPE=(char|wchar_t) or -DEXPAT_BUILD_TOOLS=OFF.")
+     endif()
+-- 
+2.25.0
+

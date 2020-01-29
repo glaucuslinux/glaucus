@@ -1,0 +1,28 @@
+From d05afa582966455a9cc3cd8874f142fd1c96c1f3 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 29 Sep 2019 19:23:24 +0200
+Subject: [PATCH 02/41] xmlparse.c: Address compiler warninging with
+ -DEXPAT_CONTEXT_BYTES=OFF
+
+Warning was:
+comparison of integers of different signs: 'int' and 'unsigned long'
+---
+ expat/lib/xmlparse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/expat/lib/xmlparse.c b/expat/lib/xmlparse.c
+index 3aaf35b..1ba4853 100644
+--- a/expat/lib/xmlparse.c
++++ b/expat/lib/xmlparse.c
+@@ -1782,7 +1782,7 @@ XML_Parse(XML_Parser parser, const char *s, int len, int isFinal) {
+     int nLeftOver;
+     enum XML_Status result;
+     /* Detect overflow (a+b > MAX <==> b > MAX-a) */
+-    if (len > ((XML_Size)-1) / 2 - parser->m_parseEndByteIndex) {
++    if ((XML_Size)len > ((XML_Size)-1) / 2 - parser->m_parseEndByteIndex) {
+       parser->m_errorCode = XML_ERROR_NO_MEMORY;
+       parser->m_eventPtr = parser->m_eventEndPtr = NULL;
+       parser->m_processor = errorProcessor;
+-- 
+2.25.0
+

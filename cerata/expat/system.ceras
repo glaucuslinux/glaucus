@@ -4,12 +4,38 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 2 $nom upstream 0001-Changes-Fix-spelling-of-September.patch &&
+  $SCRD/patch 2 $nom upstream 0002-xmlparse.c-Address-compiler-warninging-with-DEXPAT_C.patch &&
+  $SCRD/patch 2 $nom upstream 0003-xmlparse.c-xmlrole.c-Fix-compiler-warning-unused-par.patch &&
+  $SCRD/patch 2 $nom upstream 0004-runtests.c-Fix-compiler-warning-unused-function-with.patch &&
+  $SCRD/patch 2 $nom upstream 0005-runtests.c-Fix-for-DEXPAT_NS-OFF.patch &&
+  $SCRD/patch 2 $nom upstream 0006-runtests.c-Fix-for-DEXPAT_DTD-OFF.patch &&
+  $SCRD/patch 2 $nom upstream 0009-Changes-Document-354.patch &&
+  $SCRD/patch 2 $nom upstream 0010-xmltok.c-Address-warnings-about-accidental-non-ASCII.patch &&
+  $SCRD/patch 2 $nom upstream 0011-Declare-rand_s-for-MinGW-32-ourselves.patch &&
+  $SCRD/patch 2 $nom upstream 0019-codepage.c-Define-functions-codepageMap-and-codepage.patch &&
+  $SCRD/patch 2 $nom upstream 0022-Changes-Document-356.patch &&
+  $SCRD/patch 2 $nom upstream 0023-CMake-Fix-visibility-of-EXPAT_WITH_LIBBSD-and-EXPAT_.patch &&
+  $SCRD/patch 2 $nom upstream 0025-CMake-Catch-troublesome-build-combinations-for-DEXPA.patch &&
+  $SCRD/patch 2 $nom upstream 0026-CMake-Catch-troublesome-build-combinations-for-DEXPA.patch &&
+  $SCRD/patch 2 $nom upstream 0027-CMake-Install-shipped-xmlwf-manpage-in-case-of-DEXPA.patch &&
+  $SCRD/patch 2 $nom upstream 0028-Changes-Document-improvements-to-CMake.patch &&
+  $SCRD/patch 2 $nom upstream 0029-xmlparse.c-Limit-declaration-of-rand_s-to-mingwrt-5..patch &&
+  $SCRD/patch 2 $nom upstream 0031-Changes-Give-credit-for-361-and-362.patch &&
+  $SCRD/patch 2 $nom upstream 0032-Changes-Fix-name-order-for-2.2.8.patch &&
+  $SCRD/patch 2 $nom upstream 0033-xmlparse.c-Improve-warning-regarding-lack-of-high-qu.patch &&
+  $SCRD/patch 2 $nom upstream 0036-CMake-Enable-oss-fuzz-integration.patch &&
+  $SCRD/patch 2 $nom upstream 0038-xmlwf-Improve-output-of-xmlwf-h-by-two-tiny-bits.patch &&
+  $SCRD/patch 2 $nom upstream 0039-CMake-Fix-warning-due-to-if-statement-with-mismatchi.patch &&
+  $SCRD/patch 2 $nom upstream 0040-Update-COPYING.patch &&
+  $SCRD/patch 2 $nom upstream 0041-README.md-Replace-should-by-can-regarding-Windows-bi.patch
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --disable-static \
     --without-xmlwf \

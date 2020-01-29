@@ -1,0 +1,28 @@
+From a328ba3ca632954458f1fe11a305effef3c48655 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 16 Oct 2019 15:24:05 +0200
+Subject: [PATCH 32/41] Changes: Fix name order for 2.2.8
+
+---
+ expat/Changes | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/expat/Changes b/expat/Changes
+index 51eefe4..fa44435 100644
+--- a/expat/Changes
++++ b/expat/Changes
+@@ -132,10 +132,10 @@ Release 2.2.8 Fri September 13 2019
+         Special thanks to:
+             David Loffredo
+             Joonun Jang
+-            Khajapasha Mohammed
+             Kishore Kunche
+             Marco Maggi
+             Mitch Phillips
++            Mohammed Khajapasha
+             Rolf Ade
+             xantares
+             Zhongyuan Zhou
+-- 
+2.25.0
+

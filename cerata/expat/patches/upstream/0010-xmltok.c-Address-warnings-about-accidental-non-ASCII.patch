@@ -1,0 +1,50 @@
+From 5123c8ed95a0494ac51df2ead8cef666fffdb7d7 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 1 Oct 2019 21:50:11 +0200
+Subject: [PATCH 10/41] xmltok.c: Address warnings about accidental non-ASCII
+ dashes in comments (#355)
+
+---
+ expat/Changes      | 5 ++++-
+ expat/lib/xmltok.c | 4 ++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/expat/Changes b/expat/Changes
+index 1bb41a0..e7b1703 100644
+--- a/expat/Changes
++++ b/expat/Changes
+@@ -5,7 +5,10 @@ NOTE: We are looking for help with a few things:
+ Release x.x.x xxx xxxxxxxxx xx xxxx
+         Other changes:
+             #354  Fix testsuite for -DEXPAT_DTD=OFF and -DEXPAT_NS=OFF, each
+-            #354  Address compiler warnings
++       #354 #355  Address compiler warnings
++
++        Special thanks to:
++            Ma Lin
+ 
+ Release 2.2.9 Wed September 25 2019
+         Other changes:
+diff --git a/expat/lib/xmltok.c b/expat/lib/xmltok.c
+index 11e9d1c..c4f9897 100644
+--- a/expat/lib/xmltok.c
++++ b/expat/lib/xmltok.c
+@@ -589,13 +589,13 @@ static const struct normal_encoding ascii_encoding
+ static int PTRFASTCALL
+ unicode_byte_type(char hi, char lo) {
+   switch ((unsigned char)hi) {
+-  /* 0xD800–0xDBFF first 16-bit code unit or high surrogate (W1) */
++  /* 0xD800-0xDBFF first 16-bit code unit or high surrogate (W1) */
+   case 0xD8:
+   case 0xD9:
+   case 0xDA:
+   case 0xDB:
+     return BT_LEAD4;
+-  /* 0xDC00–0xDFFF second 16-bit code unit or low surrogate (W2) */
++  /* 0xDC00-0xDFFF second 16-bit code unit or low surrogate (W2) */
+   case 0xDC:
+   case 0xDD:
+   case 0xDE:
+-- 
+2.25.0
+

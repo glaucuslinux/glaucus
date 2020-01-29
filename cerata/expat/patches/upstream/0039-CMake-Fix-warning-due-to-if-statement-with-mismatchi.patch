@@ -1,0 +1,26 @@
+From 037bcd1657af7c68bac82830bca52aa63ab0d86a Mon Sep 17 00:00:00 2001
+From: Bhargava Shastry <bhargava.shastry@ethereum.org>
+Date: Fri, 29 Nov 2019 13:29:45 +0100
+Subject: [PATCH 39/41] CMake: Fix warning due to if statement with mismatching
+ arguments
+
+---
+ expat/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/expat/CMakeLists.txt b/expat/CMakeLists.txt
+index 544a897..b50c307 100644
+--- a/expat/CMakeLists.txt
++++ b/expat/CMakeLists.txt
+@@ -457,7 +457,7 @@ if(EXPAT_BUILD_FUZZERS)
+                 set_target_properties(${target_name} PROPERTIES LINKER_LANGUAGE "CXX")
+             else()
+                 set_target_properties(${target_name} PROPERTIES LINK_FLAGS -fsanitize=fuzzer)
+-            endif(NOT EXPAT_OSSFUZZ_BUILD)
++            endif(EXPAT_OSSFUZZ_BUILD)
+             set_property(
+                 TARGET ${target_name} PROPERTY RUNTIME_OUTPUT_DIRECTORY fuzz)
+         endforeach()
+-- 
+2.25.0
+

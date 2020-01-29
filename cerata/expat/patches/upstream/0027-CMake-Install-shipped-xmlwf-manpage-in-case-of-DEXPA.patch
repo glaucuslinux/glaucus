@@ -1,0 +1,26 @@
+From c513cea7876039eea03b89fb0aff87dc45e00953 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 12 Oct 2019 17:57:39 +0200
+Subject: [PATCH 27/41] CMake: Install shipped xmlwf manpage in case of
+ -DEXPAT_BUILD_DOCS=OFF
+
+---
+ expat/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/expat/CMakeLists.txt b/expat/CMakeLists.txt
+index 6a2d291..3417b69 100644
+--- a/expat/CMakeLists.txt
++++ b/expat/CMakeLists.txt
+@@ -345,6 +345,8 @@ if(EXPAT_BUILD_TOOLS)
+         file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/doc)
+         add_custom_command(TARGET ${_EXPAT_TARGET} PRE_BUILD COMMAND "${DOCBOOK_TO_MAN}" "${PROJECT_SOURCE_DIR}/doc/xmlwf.xml" && mv "XMLWF.1" "${PROJECT_BINARY_DIR}/doc/xmlwf.1")
+         expat_install(FILES "${PROJECT_BINARY_DIR}/doc/xmlwf.1" DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
++    elseif(EXISTS ${PROJECT_SOURCE_DIR}/doc/xmlwf.1)
++        expat_install(FILES "${PROJECT_SOURCE_DIR}/doc/xmlwf.1" DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+     endif()
+ endif()
+ 
+-- 
+2.25.0
+

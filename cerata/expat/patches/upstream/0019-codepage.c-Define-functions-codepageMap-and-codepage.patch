@@ -1,0 +1,70 @@
+From 7426853889cb1ced4f9dfcec7e3390ba84f969ee Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 8 Oct 2019 00:16:00 +0200
+Subject: [PATCH 19/41] codepage.c: Define functions codepageMap and
+ codepageConvert no more than once
+
+---
+ expat/xmlwf/codepage.c | 25 ++++++++++---------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/expat/xmlwf/codepage.c b/expat/xmlwf/codepage.c
+index 1095adf..44d2035 100644
+--- a/expat/xmlwf/codepage.c
++++ b/expat/xmlwf/codepage.c
+@@ -38,9 +38,11 @@
+ #  define WIN32_LEAN_AND_MEAN 1
+ 
+ #  include <windows.h>
++#endif /* defined(_WIN32) */
+ 
+ int
+ codepageMap(int cp, int *map) {
++#if defined(_WIN32)
+   int i;
+   CPINFO info;
+   if (! GetCPInfo(cp, &info) || info.MaxCharSize > 2)
+@@ -68,32 +70,25 @@ codepageMap(int cp, int *map) {
+     }
+   }
+   return 1;
++#else
++  UNUSED_P(cp);
++  UNUSED_P(map);
++  return 0;
++#endif
+ }
+ 
+ int
+ codepageConvert(int cp, const char *p) {
++#if defined(_WIN32)
+   unsigned short c;
+   if (MultiByteToWideChar(cp, MB_PRECOMPOSED | MB_ERR_INVALID_CHARS, p, 2, &c,
+                           1)
+       == 1)
+     return c;
+   return -1;
+-}
+-
+-#else /* not _WIN32 */
+-
+-int
+-codepageMap(int cp, int *map) {
+-  UNUSED_P(cp);
+-  UNUSED_P(map);
+-  return 0;
+-}
+-
+-int
+-codepageConvert(int cp, const char *p) {
++#else
+   UNUSED_P(cp);
+   UNUSED_P(p);
+   return -1;
++#endif
+ }
+-
+-#endif /* not _WIN32 */
+-- 
+2.25.0
+
