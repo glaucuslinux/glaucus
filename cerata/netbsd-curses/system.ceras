@@ -5,7 +5,9 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 1 $nom sabotage 0001-mac-compat-don-t-redefine-__dead.patch
 }
 
 configure_system() {

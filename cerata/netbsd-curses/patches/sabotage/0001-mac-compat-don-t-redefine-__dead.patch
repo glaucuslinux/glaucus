@@ -1,0 +1,26 @@
+From 5b0d21692c6c2db31e960961f7a846429e701c30 Mon Sep 17 00:00:00 2001
+From: rofl0r <retnyg@gmx.net>
+Date: Wed, 17 Apr 2019 16:40:58 +0100
+Subject: [PATCH] mac compat: don't redefine __dead
+
+---
+ netbsd_sys/cdefs.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/netbsd_sys/cdefs.h b/netbsd_sys/cdefs.h
+index 97f3628..67bc160 100644
+--- a/netbsd_sys/cdefs.h
++++ b/netbsd_sys/cdefs.h
+@@ -30,7 +30,9 @@
+ #ifndef __P
+ #define __P(X) X
+ #endif
++#ifndef __dead
+ #define __dead __attribute__((__noreturn__))
++#endif
+ #define __UNCONST(a)   (void *)(intptr_t)(a)
+ # define __STRING(x)    #x
+ #if 0
+-- 
+2.25.0
+
