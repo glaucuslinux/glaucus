@@ -1,0 +1,47 @@
+From ef7483d774cf8917bf025300508f2b6dddfee9c6 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@fb.com>
+Date: Mon, 23 Dec 2019 12:13:26 -0800
+Subject: [PATCH 18/25] maint: make maintainer-check tests pass
+
+* maintainer/syntax-checks.mk (sc_sanity_gnu_grep): Remove
+NUL byte from grep output, to avoid shell diagnostic about
+"NUL byte suppressed from expansion."
+(automake_diff_no, aclocal_diff_no): Adjust number of expected
+diff lines.
+---
+ maintainer/syntax-checks.mk | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/maintainer/syntax-checks.mk b/maintainer/syntax-checks.mk
+index 7598e8c44..1b19204a3 100644
+--- a/maintainer/syntax-checks.mk
++++ b/maintainer/syntax-checks.mk
+@@ -95,7 +95,8 @@ lint: maintainer-check
+ sc_sanity_gnu_grep:
+ 	$(AM_V_GEN)grep --version | grep 'GNU grep' >/dev/null 2>&1 \
+ 	  && ab=$$(printf 'a\nb') \
+-	  && test "$$(printf 'xa\nb\nc' | grep -Pzo 'a\nb')" = "$$ab" \
++	  && test "$$(printf 'xa\nb\nc' | grep -Pzo 'a\nb' | tr -d '\0')" \
++	       = "$$ab" \
+ 	  || { \
+ 	    echo "Syntax checks recipes require a modern GNU grep" >&2; \
+ 	    exit 1; \
+@@ -111,11 +112,11 @@ sc_perl_protos:
+ 	$(srcdir)/maintainer/check-perl-protos <$(srcdir)/bin/automake.in
+ 
+ # These check avoids accidental configure substitutions in the source.
+-# There are exactly 8 lines that should be modified from automake.in to
+-# automake, and 9 lines that should be modified from aclocal.in to
++# There are exactly 7 lines that should be modified from automake.in to
++# automake, and 8 lines that should be modified from aclocal.in to
+ # aclocal.
+-automake_diff_no = 8
+-aclocal_diff_no = 9
++automake_diff_no = 7
++aclocal_diff_no = 8
+ sc_diff_automake sc_diff_aclocal: in=$($*_in)
+ sc_diff_automake sc_diff_aclocal: out=$($*_script)
+ sc_diff_automake sc_diff_aclocal: sc_diff_% :
+-- 
+2.25.0
+

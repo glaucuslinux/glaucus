@@ -1,0 +1,58 @@
+From 51823f144c513007d8c05f3c6c88732e91bd13fd Mon Sep 17 00:00:00 2001
+From: Mathieu Lirzin <mthl@gnu.org>
+Date: Tue, 20 Feb 2018 23:18:09 +0100
+Subject: [PATCH 02/25] bin: Rely only on the shebang line
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previously ‘automake’ and ‘aclocal’ were handling the case of being
+interpreted as a Shell script by using a hack leveraging the fact that
+Shell and Perl has a compatible syntax intersection allowing those
+scripts to launch ‘perl’ from the shell.
+
+* bin/aclocal.in: Remove cryptic launching hack.
+* bin/automake.in: Likewise.
+---
+ bin/aclocal.in  | 8 +-------
+ bin/automake.in | 7 +------
+ 2 files changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/bin/aclocal.in b/bin/aclocal.in
+index b3715d9c6..722affa55 100644
+--- a/bin/aclocal.in
++++ b/bin/aclocal.in
+@@ -1,12 +1,6 @@
+ #!@PERL@ -w
+-# -*- perl -*-
++# aclocal - create aclocal.m4 by scanning configure.ac      -*- perl -*-
+ # @configure_input@
+-
+-eval 'case $# in 0) exec @PERL@ -S "$0";; *) exec @PERL@ -S "$0" "$@";; esac'
+-    if 0;
+-
+-# aclocal - create aclocal.m4 by scanning configure.ac
+-
+ # Copyright (C) 1996-2018 Free Software Foundation, Inc.
+ 
+ # This program is free software; you can redistribute it and/or modify
+diff --git a/bin/automake.in b/bin/automake.in
+index a52a48951..b4ae8f43f 100644
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -1,11 +1,6 @@
+ #!@PERL@ -w
+-# -*- perl -*-
++# automake - create Makefile.in from Makefile.am            -*- perl -*-
+ # @configure_input@
+-
+-eval 'case $# in 0) exec @PERL@ -S "$0";; *) exec @PERL@ -S "$0" "$@";; esac'
+-    if 0;
+-
+-# automake - create Makefile.in from Makefile.am
+ # Copyright (C) 1994-2018 Free Software Foundation, Inc.
+ 
+ # This program is free software; you can redistribute it and/or modify
+-- 
+2.25.0
+

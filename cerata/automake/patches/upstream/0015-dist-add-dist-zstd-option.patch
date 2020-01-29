@@ -1,0 +1,202 @@
+From 5c466eafa75dfa34ff63642d8762efab8c115a2d Mon Sep 17 00:00:00 2001
+From: Giuseppe Scrivano <gscrivan@redhat.com>
+Date: Fri, 4 Oct 2019 16:39:24 +0200
+Subject: [PATCH 15/25] dist: add dist-zstd option
+
+Add support for using the zstd compression algorithm.
+Use a default compression setting of -19, and ".zst" as the suffix.
+
+* bin/automake.in (handle_dist): Add zstd to the list of known dist-
+suffixes.
+(preprocess_file): Map ZSTD to dist-zstd.
+* doc/automake.texi: Document the new option.
+* lib/Automake/Options.pm (_is_valid_easy_option): Add dist-zstd.
+* lib/am/distdir.am (dist-zstd): New rule.
+(?ZSTD?DIST_TARGETS): Add definition.
+(distcheck): Add a case for *.tar.zst*.
+* t/dist-formats.tap: Add tests.
+* NEWS: Mention the change.
+---
+ NEWS                    |  4 ++++
+ bin/automake.in         |  3 ++-
+ doc/automake.texi       | 23 ++++++++++++++++++++---
+ lib/Automake/Options.pm |  1 +
+ lib/am/distdir.am       |  9 +++++++++
+ t/dist-formats.tap      |  6 ++++--
+ 6 files changed, 40 insertions(+), 6 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index d4f781ea9..bb3fff83f 100644
+--- a/NEWS
++++ b/NEWS
+@@ -64,6 +64,10 @@
+ 
+ New in ?.?.?:
+ 
++* New features added
++
++  - add zstd support and the automake option, dist-zstd.
++
+ * Miscellaneous changes
+ 
+   - automake no longer requires a @setfilename in each .texi file
+diff --git a/bin/automake.in b/bin/automake.in
+index 06f4ee9b2..67a7a9578 100644
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -3806,7 +3806,7 @@ sub handle_dist ()
+     {
+       my $archive_defined = option 'no-dist-gzip' ? 0 : 1;
+       $archive_defined ||=
+-	grep { option "dist-$_" } qw(shar zip tarZ bzip2 lzip xz);
++	grep { option "dist-$_" } qw(shar zip tarZ bzip2 lzip xz zstd);
+       error (option 'no-dist-gzip',
+ 	     "no-dist-gzip specified but no dist-* specified,\n"
+ 	     . "at least one archive format must be enabled")
+@@ -6788,6 +6788,7 @@ sub preprocess_file
+ 		 'GZIP'        =>  ! option 'no-dist-gzip',
+ 		 'SHAR'        => !! option 'dist-shar',
+ 		 'ZIP'         => !! option 'dist-zip',
++		 'ZSTD'        => !! option 'dist-zstd',
+ 
+ 		 'INSTALL-INFO' =>  ! option 'no-installinfo',
+ 		 'INSTALL-MAN'  =>  ! option 'no-installman',
+diff --git a/doc/automake.texi b/doc/automake.texi
+index 732aa1303..09374a8aa 100644
+--- a/doc/automake.texi
++++ b/doc/automake.texi
+@@ -8750,6 +8750,17 @@ It and the corresponding functionality will be removed altogether
+ in Automake 2.0.
+ @trindex dist-shar
+ 
++@vindex ZSTD_OPT
++@vindex ZSTD_CLEVEL
++@item @code{dist-zstd}
++Generate a @samp{zstd} tar archive of the distribution.  By default, this
++rule makes @samp{zstd} use a compression option of @option{-19}.  To
++make it use a different one, set the @env{ZSTD_OPT} environment variable.
++For example, run this command to use the default compression ratio,
++but with a progress indicator: @samp{make dist-zstd ZSTD_OPT=-19v}.
++However, note that for compatibility with zstd itself, you may instead set the @env{ZSTD_CLEVEL} environment variable, in which case, any @env{ZSTD_OPT} setting is ignored.
++@trindex dist-zstd
++
+ @end table
+ 
+ The rule @code{dist} (and its historical synonym @code{dist-all})
+@@ -10123,6 +10134,12 @@ Hook @code{dist-xz} to @code{dist}.
+ Hook @code{dist-zip} to @code{dist}.
+ @trindex dist-zip
+ 
++@item @option{dist-zstd}
++@cindex Option, @option{dist-zstd}
++@opindex dist-zstd
++Hook @code{dist-zstd} to @code{dist}.
++@trindex dist-zstd
++
+ @item @option{dist-shar}
+ @cindex Option, @option{dist-shar}
+ @opindex dist-shar
+@@ -10316,8 +10333,8 @@ the source file.  For instance, if the source file is
+ These three mutually exclusive options select the tar format to use
+ when generating tarballs with @samp{make dist}.  (The tar file created
+ is then compressed according to the set of @option{no-dist-gzip},
+-@option{dist-bzip2}, @option{dist-lzip}, @option{dist-xz} and
+-@option{dist-tarZ} options in use.)
++@option{dist-bzip2}, @option{dist-lzip}, @option{dist-xz},
++@option{dist-zstd} and @option{dist-tarZ} options in use.)
+ 
+ These options must be passed as arguments to @code{AM_INIT_AUTOMAKE}
+ (@pxref{Macros}) because they can require additional configure checks.
+@@ -13228,4 +13245,4 @@ suite failures, please attach the @file{test-suite.log} file.
+ @c  LocalWords:  LTALLOCA MALLOC malloc memcmp strdup alloca libcompat xyz DFOO
+ @c  LocalWords:  unprefixed buildable preprocessed DBAZ DDATADIR WARNINGCFLAGS
+ @c  LocalWords:  LIBFOOCFLAGS LIBFOOLDFLAGS ftable testSubDir obj LIBTOOLFLAGS
+-@c  LocalWords:  barexec Pinard's automatize initialize lzip xz cscope
++@c  LocalWords:  barexec Pinard's automatize initialize lzip xz zstd cscope
+diff --git a/lib/Automake/Options.pm b/lib/Automake/Options.pm
+index 5a85b753a..7aaad86dd 100644
+--- a/lib/Automake/Options.pm
++++ b/lib/Automake/Options.pm
+@@ -277,6 +277,7 @@ sub _is_valid_easy_option ($)
+     dist-lzip
+     dist-xz
+     dist-zip
++    dist-zstd
+     info-in-builddir
+     no-define
+     no-dependencies
+diff --git a/lib/am/distdir.am b/lib/am/distdir.am
+index ec78ca70c..cdd77eb83 100644
+--- a/lib/am/distdir.am
++++ b/lib/am/distdir.am
+@@ -350,6 +350,12 @@ dist-xz: distdir
+ 	tardir=$(distdir) && $(am__tar) | XZ_OPT=$${XZ_OPT--e} xz -c >$(distdir).tar.xz
+ 	$(am__post_remove_distdir)
+ 
++?ZSTD?DIST_ARCHIVES += $(distdir).tar.zst
++.PHONY: dist-zstd
++dist-zstd: distdir
++	tardir=$(distdir) && $(am__tar) | zstd -c $${ZSTD_CLEVEL-$${ZSTD_OPT--19}} >$(distdir).tar.zst
++	$(am__post_remove_distdir)
++
+ ?COMPRESS?DIST_ARCHIVES += $(distdir).tar.Z
+ .PHONY: dist-tarZ
+ dist-tarZ: distdir
+@@ -381,6 +387,7 @@ dist-zip: distdir
+ ?BZIP2?DIST_TARGETS += dist-bzip2
+ ?GZIP?DIST_TARGETS += dist-gzip
+ ?ZIP?DIST_TARGETS += dist-zip
++?ZSTD?DIST_TARGETS += dist-zstd
+ ?COMPRESS?DIST_TARGETS += dist-tarZ
+ 
+ endif %?TOPDIR_P%
+@@ -438,6 +445,8 @@ distcheck: dist
+ 	  eval GZIP= gzip $(GZIP_ENV) -dc $(distdir).shar.gz | unshar ;;\
+ 	*.zip*) \
+ 	  unzip $(distdir).zip ;;\
++	*.tar.zst*) \
++	  zstd -dc $(distdir).tar.zst | $(am__untar) ;;\
+ 	esac
+ ## Make the new source tree read-only.  Distributions ought to work in
+ ## this case.  However, make the top-level directory writable so we
+diff --git a/t/dist-formats.tap b/t/dist-formats.tap
+index 588b22fe6..3a91160c5 100644
+--- a/t/dist-formats.tap
++++ b/t/dist-formats.tap
+@@ -20,7 +20,7 @@
+ am_create_testdir=empty
+ . test-init.sh
+ 
+-plan_ 66
++plan_ 75
+ 
+ # ---------------------------------------------------- #
+ #  Common and/or auxiliary subroutines and variables.  #
+@@ -60,6 +60,7 @@ setup_vars_for_compression_format ()
+       xz) suffix=tar.xz  compressor=xz       ;;
+    bzip2) suffix=tar.bz2 compressor=bzip2    ;;
+      zip) suffix=zip     compressor=zip      ;;
++    zstd) suffix=tar.zst compressor=zstd     ;;
+        *) fatal_ "invalid compression format '$1'";;
+   esac
+ }
+@@ -101,7 +102,7 @@ have_compressor ()
+   return 0
+ }
+ 
+-all_compression_formats='gzip lzip xz bzip2 zip'
++all_compression_formats='gzip lzip xz bzip2 zip zstd'
+ 
+ all_compressors=$(
+   for x in $all_compression_formats; do
+@@ -294,6 +295,7 @@ nogzip in am  and  bzip2  in  am
+ nogzip in ac  and  xz     in  am
+ nogzip in am  and  lzip   in  ac
+ nogzip in ac  and  zip    in  ac
++nogzip in ac  and  zstd   in  ac
+ 
+ 
+ # ----------------------------------------------------------- #
+-- 
+2.25.0
+

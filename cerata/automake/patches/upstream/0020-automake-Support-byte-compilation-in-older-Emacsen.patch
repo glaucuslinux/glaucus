@@ -1,0 +1,98 @@
+From b87f297426c2d79494b707d0fecddaff2b6eaefd Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Sat, 4 Jan 2020 17:06:40 -0800
+Subject: [PATCH 20/25] automake: Support byte compilation in older Emacsen
+
+* lib/am/lisp.am (am__emacs_byte_compile_setup) [FIRST]: define
+new make variable, to use byte-compile-dest-file-function if
+available, else byte-compile-dest-file.
+(.el.elc): use it.
+* t/lisp-loadpath.sh: skip test if emacs version is <= 23,
+since their -L ordering is backwards.
+* NEWS: update.
+---
+ NEWS               |  3 +++
+ lib/am/lisp.am     | 21 ++++++++++++++++++++-
+ t/lisp-loadpath.sh | 17 +++++++++++++++++
+ 3 files changed, 40 insertions(+), 1 deletion(-)
+
+diff --git a/NEWS b/NEWS
+index 8c5bf5702..8dc53207b 100644
+--- a/NEWS
++++ b/NEWS
+@@ -87,6 +87,9 @@ New in ?.?.?:
+   - The automake test txinfo-vtexi4.sh no longer fails when localtime
+     and UTC cross a day boundary.
+ 
++  - Emacsen older than version 25, which require use of
++    byte-compile-dest-file, are supported again.
++
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ New in 1.16.1:
+diff --git a/lib/am/lisp.am b/lib/am/lisp.am
+index 02383eb1e..705181ca1 100644
+--- a/lib/am/lisp.am
++++ b/lib/am/lisp.am
+@@ -41,10 +41,29 @@ endif %?INSTALL%
+ 	  $(EMACS) --batch \
+ 	    $(AM_ELCFLAGS) $(ELCFLAGS) \
+ 	    $$am__subdir_includes -L $(builddir) -L $(srcdir) \
+-	    --eval '(setq byte-compile-dest-file-function (lambda (_) "$@"))' \
++	    --eval '$(am__emacs_byte_compile_setup)' \
+ 	    -f batch-byte-compile '$<'; \
+ 	else :; fi
+ 
++if %?FIRST%
++## In Automake 1.16, byte compilation was changed to use
++## byte-compile-dest-file-function, but that doesn't exist in Emacs
++## versions earlier than 25, which are still widespread (likely
++## permanently). There's no harm in supporting the older versions, which
++## require defining the byte-compile-file defun, so do so.
++## Otherwise, various of our lisp-related tests fail with the older
++## Emacsen, since they would try to byte-compile into a read-only srcdir.
++##
++## This is used, single-quoted, in the shell sequence above.
++## So use (quote) instead of another single quote in the Lisp.
++##
++am__emacs_byte_compile_setup = \
++  (if (boundp (quote byte-compile-dest-file-function)) \
++    (setq byte-compile-dest-file-function (lambda (_) "$@")) \
++    (defun byte-compile-dest-file (_) "$@") \
++  )
++## Just to be clear: that "$@" above is an Elisp string of the make target.
++endif %?FIRST%
+ 
+ ## ------------ ##
+ ## Installing.  ##
+diff --git a/t/lisp-loadpath.sh b/t/lisp-loadpath.sh
+index 312498845..37bec19d6 100644
+--- a/t/lisp-loadpath.sh
++++ b/t/lisp-loadpath.sh
+@@ -20,6 +20,23 @@
+ required=emacs
+ . test-init.sh
+ 
++# The story here is that at least in Emacs 21, -L foo -L bar ends up
++# with bar before foo in load-path. The invocation in the .el.elc rule
++# in lisp.am correctly uses -L $(builddir) -L $(srcdir), and thus the
++# test below ends up failing. So skip the test on such old Emacs; no
++# need to work around in the code.
++#
++# At least as of Emacs 24, -L foo -L bar preserves command line order,
++# so foo is before bar in load-path, and all is well.
++#
++# Situation with Emacs 22 and 23 is unknown, so play it safe and skip
++# the test for them too.
++#
++emacs_major=$(${EMACS-emacs} --version | sed -e 's/.* //;s/\..*$//;1q')
++if test -z "$emacs_major" || test "$emacs_major" -le 23; then
++  exit 77
++fi
++
+ cat >> configure.ac << 'END'
+ AM_PATH_LISPDIR
+ AC_OUTPUT
+-- 
+2.25.0
+

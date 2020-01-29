@@ -1,0 +1,43 @@
+From d89a1aadedd26b8caf97f7202766706b2480f524 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Sun, 25 Aug 2019 18:51:26 -0700
+Subject: [PATCH 10/25] install-sh: support -s with read-only source
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Karl Berry in:
+https://lists.gnu.org/r/bug-gnulib/2019-08/msg00067.html
+* lib/install-sh: If -s is given, create the temporary file
+with $cp_umask so that ‘strip’ can write to it.
+---
+ lib/install-sh | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/lib/install-sh b/lib/install-sh
+index 8175c640f..20d8b2eae 100755
+--- a/lib/install-sh
++++ b/lib/install-sh
+@@ -451,7 +451,18 @@ do
+     trap 'ret=$?; rm -f "$dsttmp" "$rmtmp" && exit $ret' 0
+ 
+     # Copy the file name to the temp name.
+-    (umask $cp_umask && $doit_exec $cpprog "$src" "$dsttmp") &&
++    (umask $cp_umask &&
++     { test -z "$stripcmd" || {
++	 # Create $dsttmp read-write so that cp doesn't create it read-only,
++	 # which would cause strip to fail.
++	 if test -z "$doit"; then
++	   : >"$dsttmp" # No need to fork-exec 'touch'.
++	 else
++	   $doit touch "$dsttmp"
++	 fi
++       }
++     } &&
++     $doit_exec $cpprog "$src" "$dsttmp") &&
+ 
+     # and set any options; do chmod last to preserve setuid bits.
+     #
+-- 
+2.25.0
+

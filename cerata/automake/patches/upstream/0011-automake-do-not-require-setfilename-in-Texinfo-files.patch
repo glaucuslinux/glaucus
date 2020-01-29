@@ -1,0 +1,119 @@
+From 309a6c477eec80b847078699303c65ccd7787eb0 Mon Sep 17 00:00:00 2001
+From: Gavin Smith <gavinsmith0123@gmail.com>
+Date: Sun, 25 Aug 2019 21:07:58 -0700
+Subject: [PATCH 11/25] automake: do not require @setfilename in Texinfo files
+
+Texinfo no longer requires a @setfilename directive in each
+.texi file, so automake now also relaxes its restriction.
+* bin/automake.in (scan_texinfo_file): Derive name of info file from
+name of input file if no @setfilename line occurs in the file.
+* t/txinfo-no-setfilename.sh: New test.
+* t/list-of-tests.mk: Add it.
+* NEWS: Mention it.
+
+Fixes automake bugs #36921 and #34201.
+---
+ NEWS                       |  4 ++++
+ bin/automake.in            |  8 +++++---
+ t/list-of-tests.mk         |  1 +
+ t/txinfo-no-setfilename.sh | 35 +++++++++++++++++++++++++++++++++++
+ 4 files changed, 45 insertions(+), 3 deletions(-)
+ create mode 100644 t/txinfo-no-setfilename.sh
+
+diff --git a/NEWS b/NEWS
+index 8d6eb3aae..8bb57133f 100644
+--- a/NEWS
++++ b/NEWS
+@@ -64,6 +64,10 @@
+ 
+ New in ?.?.?:
+ 
++* Miscellaneous changes
++
++  - automake no longer requires a @setfilename in each .texi file
++
+ * Bugs fixed
+ 
+   - When cleaning the compiled python files, '\n' is not used anymore in the
+diff --git a/bin/automake.in b/bin/automake.in
+index b4ae8f43f..06f4ee9b2 100644
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -1,7 +1,7 @@
+ #!@PERL@ -w
+ # automake - create Makefile.in from Makefile.am            -*- perl -*-
+ # @configure_input@
+-# Copyright (C) 1994-2018 Free Software Foundation, Inc.
++# Copyright (C) 1994-2019 Free Software Foundation, Inc.
+ 
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -3083,8 +3083,10 @@ sub scan_texinfo_file
+ 
+   if (! $outfile)
+     {
+-      err_am "'$filename' missing \@setfilename";
+-      return;
++      # Replace a .texi extension with .info
++      $outfile = basename($filename);
++      $outfile =~ s/\.[^.]+$//;
++      $outfile .= '.info';
+     }
+ 
+   return ($outfile, $vfile);
+diff --git a/t/list-of-tests.mk b/t/list-of-tests.mk
+index 84dd29af0..32fca8436 100644
+--- a/t/list-of-tests.mk
++++ b/t/list-of-tests.mk
+@@ -1214,6 +1214,7 @@ t/txinfo-no-clutter.sh \
+ t/txinfo-no-extra-dist.sh \
+ t/txinfo-no-installinfo.sh \
+ t/txinfo-no-repeated-targets.sh \
++t/txinfo-no-setfilename.sh \
+ t/txinfo-other-suffixes.sh \
+ t/txinfo-override-infodeps.sh \
+ t/txinfo-override-texinfo-tex.sh \
+diff --git a/t/txinfo-no-setfilename.sh b/t/txinfo-no-setfilename.sh
+new file mode 100644
+index 000000000..3ef1730de
+--- /dev/null
++++ b/t/txinfo-no-setfilename.sh
+@@ -0,0 +1,35 @@
++#! /bin/sh
++# Copyright (C) 2019 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2, or (at your option)
++# any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <https://www.gnu.org/licenses/>.
++
++# Check Texinfo files work without a @setfilename line
++
++. test-init.sh
++
++cat > Makefile.am << 'END'
++info_TEXINFOS = file.texi
++END
++
++cat > file.texi << 'END'
++contents
++END
++
++$ACLOCAL
++$AUTOMAKE --add-missing
++
++
++grep 'file.info:' Makefile.in
++
++:
+-- 
+2.25.0
+
