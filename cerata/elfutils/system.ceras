@@ -4,24 +4,35 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
 
-  $RSYNC $CERD/$nom/error.h lib
-  $RSYNC $CERD/$nom/error.h src
+  $RSYNC $CERD/$nom/error.h lib &&
+  $RSYNC $CERD/$nom/error.h src &&
 
-  patch -p0 -i $CERD/$nom/patches/1.patch
-  patch -p0 -i $CERD/$nom/patches/2.patch
-  patch -p0 -i $CERD/$nom/patches/3.patch
-  patch -p1 -i $CERD/$nom/patches/4.patch
-  patch -p0 -i $CERD/$nom/patches/5.patch
-  patch -p0 -i $CERD/$nom/patches/6.patch
-  patch -p0 -i $CERD/$nom/patches/7.patch
-  patch -p0 -i $CERD/$nom/patches/8.patch
-  patch -p0 -i $CERD/$nom/patches/9.patch
+  #cat > lib/libintl.h <<-EOF
+##ifndef LIBINTL_H
+##define LIBINTL_H
+##define _(x) (x)
+##endif
+#EOF
+
+  $SCRD/patch 0 $nom void fix-aarch64_fregs.patch &&
+  $SCRD/patch 0 $nom void fix-uninitialized.patch &&
+  $SCRD/patch 0 $nom void musl-cdefs.patch &&
+  $SCRD/patch 0 $nom void musl-fts-obstack.patch &&
+  
+  $SCRD/patch 0 $nom glaucus musl-fts-obstack-0.178.patch &&
+  
+  $SCRD/patch 0 $nom void musl-macros.patch &&
+  $SCRD/patch 0 $nom void musl-qsort_r.patch &&
+  $SCRD/patch 0 $nom void musl-strerror_r.patch &&
+  $SCRD/patch 0 $nom void musl-strndupa.patch
 }
 
 configure_system() {
+  autoreconf -vfi &&
+
   CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
     --prefix=/usr \

@@ -1,6 +1,5 @@
-diff -urNa /home/glaucus/cerata/elfutils-libelf/elfutils-0.178/libdw/Makefile.am elfutils-0.178/libdw/Makefile.am
---- /home/glaucus/cerata/elfutils-libelf/elfutils-0.178/libdw/Makefile.am	2019-11-27 00:48:42.000000000 +0200
-+++ elfutils-0.178/libdw/Makefile.am	2019-11-30 22:45:25.648857483 +0200
+--- libdw/Makefile.am
++++ libdw/Makefile.am
 @@ -109,7 +109,7 @@
  		../libcpu/libcpu_pic.a libdw_pic.a ../libdwelf/libdwelf_pic.a \
  		../libdwfl/libdwfl_pic.a
@@ -10,9 +9,8 @@ diff -urNa /home/glaucus/cerata/elfutils-libelf/elfutils-0.178/libdw/Makefile.am
  libdw_so_SOURCES =
  libdw.so$(EXEEXT): $(srcdir)/libdw.map $(libdw_so_LIBS) $(libdw_so_DEPS)
  	$(AM_V_CCLD)$(LINK) $(dso_LDFLAGS) -o $@ \
-diff -urNa /home/glaucus/cerata/elfutils-libelf/elfutils-0.178/src/Makefile.am elfutils-0.178/src/Makefile.am
---- /home/glaucus/cerata/elfutils-libelf/elfutils-0.178/src/Makefile.am	2019-11-27 00:48:42.000000000 +0200
-+++ elfutils-0.178/src/Makefile.am	2019-11-30 22:44:17.930020180 +0200
+--- src/Makefile.am
++++ src/Makefile.am
 @@ -68,23 +68,23 @@
  ar_no_Wstack_usage = yes
  unstrip_no_Wstack_usage = yes
