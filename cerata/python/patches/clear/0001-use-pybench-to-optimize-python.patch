@@ -1,0 +1,25 @@
+From 687a67defda0b86ab491516d7ac5698223df6558 Mon Sep 17 00:00:00 2001
+From: guowangy <wangyang.guo@intel.com>
+Date: Fri, 13 Dec 2019 18:33:23 +0000
+Subject: [PATCH] use pybench to optimize python
+
+---
+ Makefile.pre.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 502317a..a6a6e5d 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -258,7 +258,7 @@ TCLTK_LIBS=	@TCLTK_LIBS@
+ # To speed up profile generation, we don't run the full unit test suite
+ # by default. The default is "-m test --pgo". To run more tests, use
+ # PROFILE_TASK="-m test --pgo-extended"
+-PROFILE_TASK=	@PROFILE_TASK@
++PROFILE_TASK=$(srcdir)/Tools/pybench/pybench.py -n 20
+ 
+ # report files for gcov / lcov coverage report
+ COVERAGE_INFO=	$(abs_builddir)/coverage.info
+-- 
+2.24.0
+
