@@ -7,7 +7,7 @@ prepare_chroot() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/alpine/fix-build-without-NLS.patch
+  $SCRD/patch 1 $nom alpine fix-build-without-NLS.patch
 }
 
 configure_chroot() {
