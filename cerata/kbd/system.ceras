@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/lfs/$nom-$ver-backspace-1.patch
+  $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1.patch
 }
 
 configure_system() {
