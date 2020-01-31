@@ -22,7 +22,6 @@ configure_system() {
 }
 
 build_system() {
-  CFLAGS="$CFLAGSNOCOMMON"
   make
 }
 
