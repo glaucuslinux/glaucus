@@ -10,13 +10,6 @@ prepare_system() {
   $RSYNC $CERD/$nom/error.h lib &&
   $RSYNC $CERD/$nom/error.h src &&
 
-  #cat > lib/libintl.h <<-EOF
-##ifndef LIBINTL_H
-##define LIBINTL_H
-##define _(x) (x)
-##endif
-#EOF
-
   $SCRD/patch 0 $nom void fix-aarch64_fregs.patch &&
   $SCRD/patch 0 $nom void fix-uninitialized.patch &&
   $SCRD/patch 0 $nom void musl-cdefs.patch &&
