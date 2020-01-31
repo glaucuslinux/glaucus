@@ -35,5 +35,8 @@ install_system() {
   printf '/usr/lib\n' > /etc/ld-$nom-$ARCH.path &&
 
   printf '#!/usr/bin/true\n' > /usr/bin/ldconfig &&
-  chmod +x /usr/bin/ldconfig
+  chmod +x /usr/bin/ldconfig &&
+
+  rm -fv /usr/include/utmp.h &&
+  rm -fv /usr/include/utmpx.h
 }
