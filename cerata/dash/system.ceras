@@ -33,7 +33,7 @@ prepare_system() {
   $SCRD/patch 1 $nom upstream 0024-eval-Always-set-localvar_stop.patch &&
   $SCRD/patch 1 $nom upstream 0025-memalloc-Avoid-looping-in-growstackto.patch &&
   $SCRD/patch 1 $nom upstream 0026-expand-Ensure-result-is-escaped-in-cvtnum.patch &&
-  $SCRD/patch 1 $nom upstream 0027-man-Problems-in-dash.1-sh.1-sh.distrib.1.patch &&
+  $SCRD/patch 1 $nom upstream 0027-man-Problems-in-$nom.1-sh.1-sh.distrib.1.patch &&
   $SCRD/patch 1 $nom upstream 0029-builtin-Default-to-mktemp-not-tempfile.patch &&
   $SCRD/patch 1 $nom upstream 0030-eval-Report-I-O-error-on-stdout.patch &&
   $SCRD/patch 1 $nom upstream 0031-main-Print-n-upon-EOF-CTRL-D-when-run-interactively.patch &&
