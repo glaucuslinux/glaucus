@@ -7,9 +7,11 @@ cerata/elfutils/error.h linguist-language=C
 cerata/smdev/config.h linguist-language=C
 
 scripts/check linguist-language=Shell
+scripts/exit linguist-language=Shell
 scripts/fetch linguist-language=Shell
 scripts/flags linguist-language=Shell
 scripts/log linguist-language=Shell
+scripts/patch linguist-language=Shell
 scripts/require linguist-language=Shell
 scripts/verify linguist-language=Shell
 
