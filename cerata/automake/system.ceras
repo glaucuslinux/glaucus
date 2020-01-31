@@ -16,7 +16,7 @@ prepare_system() {
   $SCRD/patch 1 $nom upstream 0014-config-add-msys-support.patch &&
   $SCRD/patch 1 $nom upstream 0015-dist-add-dist-zstd-option.patch &&
   $SCRD/patch 1 $nom upstream 0018-maint-make-maintainer-check-tests-pass.patch &&
-  $SCRD/patch 1 $nom upstream 0020-automake-Support-byte-compilation-in-older-Emacsen.patch &&
+  $SCRD/patch 1 $nom upstream 0020-$nom-Support-byte-compilation-in-older-Emacsen.patch &&
   $SCRD/patch 1 $nom upstream 0021-tests-Correctly-simulate-no-emacs-in-t-nobase-nodist.patch &&
   $SCRD/patch 1 $nom upstream 0022-tests-use-skip_-consistently.patch &&
   $SCRD/patch 1 $nom upstream 0023-tests-use-find-rm-not-perl-to-remove-temporary-direc.patch &&
