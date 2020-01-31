@@ -62,7 +62,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --disable-static
 }
