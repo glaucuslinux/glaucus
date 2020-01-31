@@ -7,8 +7,8 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/clear/fix-make-install.patch
-  patch -p1 -i $CERD/$nom/patches/clear/0001-Makefile-propagate-CFLAGS.patch
+  $SCRD/patch 1 $nom clear fix-make-install.patch &&
+  $SCRD/patch 1 $nom clear 0001-Makefile-propagate-CFLAGS.patch
 }
 
 configure_system() {
