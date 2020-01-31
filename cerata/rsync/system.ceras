@@ -28,7 +28,7 @@ prepare_system() {
   $SCRD/patch 1 $nom upstream 0019-Reject-log-file-when-read-only.patch &&
   $SCRD/patch 1 $nom upstream 0020-Fix-prealloc-to-keep-file-size-0-when-possible.patch &&
   $SCRD/patch 1 $nom upstream 0021-Avoid-leaving-a-file-open-on-error-return.patch &&
-  $SCRD/patch 1 $nom upstream 0022-Avoid-warning-about-leaked-mem-didn-t-affect-rsync-s.patch &&
+  $SCRD/patch 1 $nom upstream 0022-Avoid-warning-about-leaked-mem-didn-t-affect-$nom-s.patch &&
   $SCRD/patch 1 $nom upstream 0023-Use-a-separate-pass-by-value-pointer-for-clarity.patch &&
   $SCRD/patch 1 $nom upstream 0024-Update-option-culling-to-handle-latest-changes.patch &&
   $SCRD/patch 1 $nom upstream 0025-Improve-write-only-sender-check-handle-2-new-options.patch &&
