@@ -7,9 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/Python-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom clear 0001-Fix-python-path-for-linux.patch &&
+  $SCRD/patch 1 $nom clear 0001-Fix-$nom-path-for-linux.patch &&
   $SCRD/patch 1 $nom clear 0001-Add-pybench-for-pgo-optimization.patch &&
-  $SCRD/patch 1 $nom clear 0001-use-pybench-to-optimize-python.patch
+  $SCRD/patch 1 $nom clear 0001-use-pybench-to-optimize-$nom.patch
 }
 
 configure_system() {
