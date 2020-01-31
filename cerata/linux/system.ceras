@@ -26,6 +26,11 @@ prepare_system() {
   $SCRD/patch 1 $nom clear 0124-locking-rwsem-spin-faster.patch &&
   $SCRD/patch 1 $nom clear 0125-ata-libahci-ignore-staggered-spin-up.patch &&
   $SCRD/patch 1 $nom clear 0131-nvme-workaround.patch &&
+  
+  $SCRD/patch 1 $nom sirlucjan 0001-mm-ksm-introduce-ksm_madvise_merge-helper.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0002-mm-ksm-introduce-ksm_madvise_unmerge-helper.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0003-mm-ksm-proc-introduce-remote-merge.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0004-mm-ksm-proc-add-remote-KSM-documentation.patch &&
 
   $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v$ver+.patch &&
 
