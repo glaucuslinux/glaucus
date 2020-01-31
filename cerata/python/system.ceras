@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom &&
+  $RSYNC $SRCD/$nom/Python-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
 
   $SCRD/patch 1 $nom clear 0001-Fix-python-path-for-linux.patch &&
   $SCRD/patch 1 $nom clear 0001-Add-pybench-for-pgo-optimization.patch &&
@@ -14,7 +14,7 @@ prepare_system() {
 
 configure_system() {
   ax_cv_c_float_words_bigendian=no \
-  $SRCD/$nom/Python-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --enable-shared \
     --enable-optimizations \
