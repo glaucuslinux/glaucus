@@ -49,7 +49,7 @@ prepare_system() {
   $SCRD/patch 1 $nom sabotage 0040-msgfmt-clean-code-prepare-to-handle-other-modes.patch &&
   $SCRD/patch 1 $nom sabotage 0041-msgfmt-missing-break.patch &&
   $SCRD/patch 1 $nom sabotage 0042-xgettext-parse-arguments-correctly.patch &&
-  $SCRD/patch 1 $nom sabotage 0043-gettext-tiny-Fix-format-not-a-string-literal-error-4.patch &&
+  $SCRD/patch 1 $nom sabotage 0043-$nom-Fix-format-not-a-string-literal-error-4.patch &&
   $SCRD/patch 1 $nom sabotage 0044-autopoint-support-dist-target-to-release-tarballs.patch &&
   $SCRD/patch 1 $nom sabotage 0045-data-Makefile.in-add-missing-maintainer-targets.patch &&
   $SCRD/patch 1 $nom sabotage 0046-msgfmt-support-keyword-template-output-options.patch &&
