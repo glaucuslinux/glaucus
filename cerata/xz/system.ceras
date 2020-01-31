@@ -7,10 +7,10 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/clear/default-threading.patch &&
-  patch -p1 -i $CERD/$nom/patches/clear/io-size.patch &&
-  patch -p1 -i $CERD/$nom/patches/clear/speedup.patch &&
-  patch -p2 -i $CERD/$nom/patches/clear/add-pgo.patch
+  $SCRD/patch 1 $nom clear default-threading.patch &&
+  $SCRD/patch 1 $nom clear io-size.patch &&
+  $SCRD/patch 1 $nom clear speedup.patch &&
+  $SCRD/patch 2 $nom clear add-pgo.patch
 }
 
 configure_system() {
