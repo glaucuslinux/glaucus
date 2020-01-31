@@ -6,7 +6,7 @@
 prepare_cross() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
   
-  $RSYNC $SRCD/gmp/gmp-6.1.2/ $TSRC/$nom/gmp --delete &&
+  $RSYNC $SRCD/gmp/gmp-6.2.0/ $TSRC/$nom/gmp --delete &&
   $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   
