@@ -26,4 +26,6 @@ tty:x:1:
 disk:x:2:
 audio:x:3:
 video:x:4:
-utmp:x:5:\n' > /etc/group
+utmp:x:5:\n' > /etc/group &&
+
+printf '127.0.0.1 localhost glaucus\n' > /etc/hosts
