@@ -22,7 +22,7 @@ prepare_cross() {
 
 #undef STANDARD_STARTFILE_PREFIX_2
 #define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> $file
-  done
+  done &&
 
   sed '/m64/s/lib64/lib/' \
     -i i386/t-linux64 &&
