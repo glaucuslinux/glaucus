@@ -5,9 +5,7 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom clear 0001-Lower-test-timeout.patch
+  cd $SSRC/$nom
 }
 
 configure_system() {
@@ -19,7 +17,9 @@ configure_system() {
     --sysconfdir=/etc \
     --disable-nls \
     --disable-efiemu \
-    --disable-werror
+    --disable-werror &&
+
+  $SCRD/patch 1 $nom glaucus 0001-Lower-test-timeout.patch
 }
 
 build_system() {
