@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  patch -p1 -i $CERD/$nom/patches/void/filter-xz-enable-threads.patch
+  $SCRD/patch 1 $nom void filter-xz-enable-threads.patch
 }
 
 configure_system() {
