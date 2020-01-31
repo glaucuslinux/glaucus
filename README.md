@@ -86,9 +86,10 @@ This project is dedicated to my lovely family.
 * [PayPal](https://www.paypal.me/glaucuslinux)
 
 ## Mirrors
+* [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
+* [Framagit](https://framagit.org/glaucuslinux/glaucus)
 * [GitHub](https://github.com/glaucuslinux/glaucus)
 * [GitLab](https://gitlab.com/glaucuslinux/glaucus)
 * [NotABug](https://notabug.org/glaucuslinux/glaucus)
-* [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
-* [Framagit](https://framagit.org/glaucuslinux/glaucus)
 * [SourceForge](https://git.code.sf.net/p/glaucuslinux/glaucus)
+* [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
