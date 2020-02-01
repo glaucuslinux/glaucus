@@ -34,7 +34,7 @@ install_system() {
 
   printf '/usr/lib\n' > /etc/ld-$nom-$ARCH.path &&
 
-  printf '#!/usr/bin/true\n' > /usr/bin/ldconfig &&
+  $RSYNC $CERD/$nom/ldconfig /usr/bin/ldconfig &&
   chmod +x /usr/bin/ldconfig &&
 
   rm -fv /usr/include/utmp.h &&

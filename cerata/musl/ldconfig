@@ -1,0 +1,178 @@
+#!/usr/bin/dash -eu
+#
+# Copyright © 2016-2018 Samuel Holland <samuel@sholland.org>
+# SPDX-License-Identifier: 0BSD
+#
+
+ME=${0##*/}
+VERSION=0.2.1
+
+echo() {
+	printf '%s\n' "$*"
+}
+
+echo_lines() {
+	printf '%s\n' "$@"
+}
+
+msg() {
+	printf >&2 '%s: %s\n' "$ME" "$*"
+}
+
+read_ldso_conf() {
+	local conf="$*" d dir file glob line
+
+	# Start with the default "trusted" directories
+	set -- /lib /usr/lib
+	for file in $conf; do
+		test -r "$file" || continue
+		$VERBOSE && msg "Reading ${file}"
+		while read -r line; do
+			line=$(tokenize ${line%%#*})
+			if test "${line#include }" != "$line"; then
+				glob=${file%/*}/${line#include }
+				$VERBOSE && msg "Including ${glob}"
+				line=$(read_ldso_conf $glob)
+			fi
+			for dir in $line; do
+				# Ignore missing directories
+				test -d "$ROOT$dir" || continue
+				# Ignore duplicate directories
+				for d; do test "$d" = "$dir" && continue 2; done
+				set -- "$@" "$dir"
+			done
+		done < "$file"
+	done
+
+	echo_lines "$@"
+}
+
+tokenize() {
+	echo "$*" | sed 's/=libc[456]//g;y/:,/  /' | xargs
+}
+
+LDSO_CACHE="/etc/ld.so.cache"
+LDSO_CONF="/etc/ld.so.conf"
+LIBRARY_MODE=false
+ONLYARG_MODE=false
+PRINT_CACHE=false
+PRINT_VERSION=false
+ROOT=
+UPDATE_CACHE=true
+UPDATE_LINKS=true
+VERBOSE=false
+
+while getopts ":c:C:Df:ilnNpr:vVX" OPTION; do
+	case "$OPTION" in
+	C)
+		LDSO_CACHE=$OPTARG
+		;;
+	D)
+		UPDATE_CACHE=false
+		UPDATE_LINKS=false
+		;;
+	f)
+		LDSO_CONF=$OPTARG
+		;;
+	l)
+		LIBRARY_MODE=true
+		;;
+	n)
+		ONLYARG_MODE=true
+		;;
+	N)
+		UPDATE_CACHE=false
+		;;
+	p)
+		PRINT_CACHE=true
+		;;
+	r)
+		ROOT=$OPTARG
+		if ! test -f "$ROOT$LDSO_CONF"; then
+			msg "${ROOT} does not appear to be a valid root directory"
+			exit 1
+		fi
+		;;
+	v)
+		VERBOSE=true
+		;;
+	V)
+		PRINT_VERSION=true
+		;;
+	X)
+		UPDATE_LINKS=false
+		;;
+	c|i)
+		msg "Ignored option -${OPTION}"
+		;;
+	\?)
+		msg "Invalid option -${OPTARG}"
+		cat >&2 <<- EOF
+		Usage: $ME [-DnNvX] [-C cache] [-f conf] [-r root] [dir...]
+		       $ME [-v] -l lib...
+		       $ME [-v] [-C cache] [-r root] -p
+		       $ME -V
+		EOF
+		exit 1
+		;;
+	esac
+done
+shift $((OPTIND-1))
+
+BANNER="ldconfig ${VERSION} for musl"
+LDSO_CACHE="$ROOT$LDSO_CACHE"
+LDSO_CONF="$ROOT$LDSO_CONF"
+LDSO_PATH="$ROOT/etc/ld-musl-x86_64.path"
+LDSO_PATH_TMP="$LDSO_PATH.$$"
+
+if $PRINT_VERSION; then
+	echo "$BANNER"
+	exit 0
+elif $PRINT_CACHE; then
+	test -r "$LDSO_PATH" && cat "$LDSO_PATH"
+	exit 0
+fi
+
+$VERBOSE && echo "$BANNER"
+
+if $LIBRARY_MODE; then
+	for lib; do
+		soname=$(scanelf -qS "$ROOT$lib")
+		soname=${soname%% *}
+	done
+	exit 0
+fi
+
+# Update musl's list of library paths
+if ! test -w "${LDSO_PATH%/*}"; then
+	msg "You do not have permission to update ${LDSO_PATH}"
+	exit 0
+fi
+trap 'rm -f "$LDSO_PATH_TMP"' EXIT
+read_ldso_conf "$LDSO_CONF" > "$LDSO_PATH_TMP"
+$VERBOSE && msg "Writing ${LDSO_PATH}"
+mv "$LDSO_PATH_TMP" "$LDSO_PATH"
+trap - EXIT
+
+# Read the updated list of library paths
+$ONLYARG_MODE || set -- "$@" $(cat "$LDSO_PATH")
+
+if $UPDATE_LINKS; then
+	for dir; do
+		# Packages are responsible for libraries in these directories
+		if test "$dir" = /lib || test "$dir" = /usr/lib; then
+			continue
+		fi
+		$VERBOSE && msg "Scanning ${ROOT}${dir}"
+		scanelf -qS "$ROOT$dir" | while read soname file; do
+			link=${file%/*}/$soname
+			test -f "$link" && continue
+			$VERBOSE && msg "Creating link ${link}"
+			ln -fns "${file##*/}" "$link"
+		done
+	done
+fi
+
+if $UPDATE_CACHE && test $# -gt 0; then
+	touch "$LDSO_CACHE"
+fi
