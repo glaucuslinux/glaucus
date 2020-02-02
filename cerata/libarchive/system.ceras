@@ -29,6 +29,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv bsdcpio $SCER/$nom/sac/usr/bin/cpio &&
-  ln -fsv bsdtar $SCER/$nom/sac/usr/bin/tar
+  for i in cpio tar; do
+    ln -fsv bsd$i $SCER/$nom/sac/usr/bin/$i
+  done
 }
