@@ -23,6 +23,7 @@ configure_system() {
   sed 's/1000/999/' \
     -i etc/useradd &&
 
+  LIBS='-lutmps -lskarnet' \
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
