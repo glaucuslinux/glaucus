@@ -22,7 +22,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/bzip2 &&
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/bunzip2 &&
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/bzcat
+  for i in bzip2 bunzip2 bzcat; do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+  done
 }
