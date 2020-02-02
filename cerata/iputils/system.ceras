@@ -35,5 +35,8 @@ install_system() {
   DESTDIR=$SCER/$nom/sac \
   samu \
     -C $SBLD/$nom \
-    install
+    install &&
+
+  ln -fsv ping $SCER/$nom/sac/usr/bin/ping6 &&
+  ln -fsv tracepath $SCER/$nom/sac/usr/bin/tracepath6
 }
