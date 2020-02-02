@@ -1,5 +1,5 @@
---- a/Makefile
-+++ b/Makefile
+--- Makefile
++++ Makefile
 @@ -3334,7 +3334,7 @@
  # Randomly generated
  SUCCESSFUL_BOOT_STRING = 3e49994fd5d82b7c9298d672d774080d

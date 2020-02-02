@@ -19,7 +19,7 @@ configure_system() {
     --disable-efiemu \
     --disable-werror &&
 
-  $SCRD/patch 1 $nom glaucus 0001-Lower-test-timeout.patch
+  $SCRD/patch 0 $nom glaucus 0001-Lower-test-timeout.patch
 }
 
 build_system() {
