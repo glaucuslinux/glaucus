@@ -24,10 +24,7 @@ install_system() {
   $RSYNC $nom $SCER/$nom/sac/usr/bin &&
   $RSYNC $nom.1 $SCER/$nom/sac/usr/share/man/man1 &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/un$nom &&
-  
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/gzip &&
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/gunzip &&
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/gzcat &&
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/zcat
+  for i in un$nom gzip gunzip gzcat zcat; do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+  done
 }
