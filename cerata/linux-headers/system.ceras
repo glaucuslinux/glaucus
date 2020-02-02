@@ -27,5 +27,5 @@ install_system() {
     INSTALL_HDR_PATH=/usr \
     headers_install &&
 
-  find /usr/include \( -name ..install.cmd -o -name .install \) -delete
+  find /usr/include -type f \( -name ..install.cmd -o -name .install \) -delete
 }
