@@ -25,7 +25,5 @@ install_system() {
     O=$SBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=/usr \
-    headers_install &&
-
-  find /usr/include -type f \( -name ..install.cmd -o -name .install \) -delete
+    headers_install
 }
