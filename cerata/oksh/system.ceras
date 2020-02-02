@@ -19,6 +19,7 @@ prepare_system() {
 configure_system() {
   ./configure \
     --prefix=/usr \
+    --bindir=/usr/bin \
     --mandir=/usr/share/man \
     --enable-curses \
     --enable-ksh &&
