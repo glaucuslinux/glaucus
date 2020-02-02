@@ -1,5 +1,5 @@
---- a/kernel/gen_kheaders.sh
-+++ b/kernel/gen_kheaders.sh
+--- kernel/gen_kheaders.sh
++++ kernel/gen_kheaders.sh
 @@ -76,7 +76,7 @@
  # pre-sorted, as --sort=name might not be available.
  find $cpio_dir -printf "./%P\n" | LC_ALL=C sort | \
@@ -9,8 +9,8 @@
      -Jcf $tarfile -C $cpio_dir/ -T - > /dev/null
  
  echo "$src_files_md5" >  kernel/kheaders.md5
---- a/scripts/package/buildtar
-+++ b/scripts/package/buildtar
+--- scripts/package/buildtar
++++ scripts/package/buildtar
 @@ -129,8 +129,8 @@
  #
  # Create the tarball

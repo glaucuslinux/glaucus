@@ -34,7 +34,7 @@ prepare_system() {
 
   $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v$ver+.patch &&
 
-  $SCRD/patch 1 $nom glaucus 0001-libarchive-bsdtar-compatibility.patch &&
+  $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility.patch &&
 
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v.patch &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default.patch &&
