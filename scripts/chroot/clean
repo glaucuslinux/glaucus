@@ -1,7 +1,7 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-find $TOOL -name \*.la -delete &&
+find $TOOL -name *.la -delete &&
 
 strip -gv $TOOL/lib/* &&
 /usr/bin/strip --strip-unneeded -v $TOOL/bin/* &&
