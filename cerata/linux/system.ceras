@@ -32,7 +32,7 @@ prepare_system() {
   $SCRD/patch 1 $nom sirlucjan 0003-mm-ksm-proc-introduce-remote-merge.patch &&
   $SCRD/patch 1 $nom sirlucjan 0004-mm-ksm-proc-add-remote-KSM-documentation.patch &&
 
-  $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v$ver+.patch &&
+  $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch &&
 
   $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility.patch &&
 
