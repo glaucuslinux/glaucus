@@ -5,10 +5,14 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 1 $nom clear 0001-Lower-test-timeout.patch
 }
 
 configure_system() {
+  autoreconf -vfi &&
+
   CFLAGS="$CFLAGSNOLTONOOPENMPNOPLT" \
   LDFLAGS="$LDFLAGSNOOPENMP" \
   ./configure \
@@ -17,9 +21,7 @@ configure_system() {
     --sysconfdir=/etc \
     --disable-nls \
     --disable-efiemu \
-    --disable-werror &&
-
-  $SCRD/patch 0 $nom glaucus 0001-Lower-test-timeout.patch
+    --disable-werror
 }
 
 build_system() {
