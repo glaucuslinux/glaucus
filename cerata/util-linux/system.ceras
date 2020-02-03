@@ -13,6 +13,8 @@ prepare_system() {
 }
 
 configure_system() {
+  autoreconf -vfi &&
+
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
   ./configure \
