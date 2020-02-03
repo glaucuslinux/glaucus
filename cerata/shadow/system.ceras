@@ -29,7 +29,6 @@ configure_system() {
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
-    --usbindir=/usr/bin \
     --sysconfdir=/etc \
     --enable-shared \
     --disable-static \
