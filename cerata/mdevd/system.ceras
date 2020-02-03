@@ -1,0 +1,37 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom
+}
+
+configure_system() {
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/libexec \
+    --with-sysdeps=/usr/lib/skalibs/sysdeps \
+    --with-include=/usr/include \
+    --with-dynlib=/usr/lib \
+    --enable-shared \
+    --disable-static \
+    --disable-allstatic \
+    --disable-all-pic &&
+
+  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+    -e 's/-Wl,--hash-style=both //' \
+    -i config.mak
+}
+
+build_system() {
+  make \
+    strip
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$nom/sac \
+    install
+}

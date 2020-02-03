@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=mdevd
+ver=0.1.1.1
+url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
+sum=cd7d6dcddc2bca30a3dd4583c2aa800fc54b559d4ca9385d3247eec93ee8500493254a60e47028243f715e6a3517930135407a5249641c8f23efdcaa67a50467
+lic=ISC
