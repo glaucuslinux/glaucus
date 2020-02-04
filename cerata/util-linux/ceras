@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=util-linux
-ver=2.35
+ver=2.35.1
 url=https://cdn.kernel.org/pub/linux/utils/$nom/v$ver/$nom-$ver.tar.xz
-sum=c95d26b9037d6b877a247e6aeb58d17aa80f7e1bd6b523a4e0fde559fe07b3d924ece6d373300fefb65d1f206b3f990aeddb3a03605040e72ce6d6ee88591021
+sum=6e27e08bfc02378970f015decfea5a52d6c342c4c8f4ac48dd07d248485eb797e506d91d290dbbca344c3e5cfe1fc150db80a23d510367427232f5abeabe591a
 lic='BSD-3-Clause BSD-4-Clause-UC GPL-2.0-only ISC LGPL-2.1-only'
