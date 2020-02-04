@@ -4,14 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
-  cd $CSRC/$nom &&
-
-  $SCRD/patch 1 $nom alpine fix-build-without-NLS.patch
+  install -dv $CBLD/$nom &&
+  cd $CBLD/$nom
 }
 
 configure_chroot() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \
     --disable-nls
