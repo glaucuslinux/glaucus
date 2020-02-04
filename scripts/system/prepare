@@ -10,7 +10,7 @@ install -dvm 0750 /root &&
 install -dvm 1777 /tmp &&
 
 ln -fsv $TOOL/bin/bash $TOOL/bin/echo $TOOL/bin/ls /bin &&
-ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd $TOOL/bin/true /usr/bin &&
+ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd $TOOL/bin/true $TOOL/bin/mkdir /usr/bin &&
 ln -fsv $TOOL/bin/dash /bin/sh &&
 
 ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib &&
