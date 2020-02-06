@@ -8,7 +8,7 @@ Subject: [PATCH] use lfence instead of rep and nop
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/x86/include/asm/processor.h b/arch/x86/include/asm/processor.h
-index 54f5d54280f6..ee60a1f2dd11 100644
+index 54f5d54..ee60a1f 100644
 --- a/arch/x86/include/asm/processor.h
 +++ b/arch/x86/include/asm/processor.h
 @@ -647,7 +647,7 @@ static inline unsigned int cpuid_edx(unsigned int op)

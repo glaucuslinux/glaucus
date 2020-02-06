@@ -14,7 +14,7 @@ performance while keeping power efficiency
  1 file changed, 22 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
-index 347b08b56042..31772dd98192 100644
+index 347b08b..31772dd 100644
 --- a/drivers/idle/intel_idle.c
 +++ b/drivers/idle/intel_idle.c
 @@ -454,7 +454,7 @@ static struct cpuidle_state hsw_cstates[] = {

@@ -10,7 +10,7 @@ saves 200ms+ of boot time.
  1 file changed, 3 insertions(+)
 
 diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
-index 7e322e2daaf5..bb2c9b5eed71 100644
+index 7e322e2..bb2c9b5 100644
 --- a/arch/x86/kernel/tsc.c
 +++ b/arch/x86/kernel/tsc.c
 @@ -1528,6 +1528,9 @@ unsigned long calibrate_delay_is_known(void)
