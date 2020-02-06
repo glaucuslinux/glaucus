@@ -34,5 +34,6 @@ build_system() {
 
 install_system() {
   make \
+    DESTDIR=$SCER/$nom/sac \
     install
 }
