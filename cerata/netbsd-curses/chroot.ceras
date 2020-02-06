@@ -28,7 +28,5 @@ install_chroot() {
 
   for i in captoinfo infotocap; do
     ln -fsv tic $TOOL/bin/$i
-  done &&
-
-  ln -fsv tset $TOOL/bin/reset
+  done
 }

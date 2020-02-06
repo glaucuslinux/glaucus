@@ -31,7 +31,5 @@ install_system() {
 
   for i in captoinfo infotocap; do
     ln -fsv tic $SCER/$nom/sac/usr/bin/$i
-  done &&
-
-  ln -fsv tset $SCER/$nom/sac/usr/bin/reset
+  done
 }
