@@ -11,6 +11,7 @@ prepare_system() {
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
+    --localstatedir=/var/lib/locate \
     --disable-nls
 }
 
