@@ -16,22 +16,14 @@ configure_system() {
     --enable-symlink-install \
     --enable-elf-shlibs \
     --disable-bsd-shlibs \
-    --disable-testio-debug \
     --disable-libuuid \
     --disable-libblkid \
-    --disable-debugfs \
-    --disable-imager \
-    --disable-defrag \
     --disable-fsck \
-    --disable-e2initrd-helper \
     --disable-uuidd \
-    --disable-mmp \
-    --disable-tdb \
     --disable-nls \
-    --disable-fuse2fs \
     --enable-lto &&
 
-  sed 's/MKDIR_P =.*/MKDIR_P = \/usr\/bin\/mkdir -p/' \
+  sed 's/MKDIR_P =.*/MKDIR_P = \/usr\/bin\/install -dv/' \
     -i MCONFIG Makefile
 }
 
