@@ -23,7 +23,7 @@ configure_system() {
     --disable-nls \
     --enable-lto &&
 
-  sed 's/MKDIR_P =.*/MKDIR_P = \/usr\/bin\/install -dv/' \
+  sed 's/MKDIR_P =.*/MKDIR_P = install -dv/' \
     -i MCONFIG Makefile
 }
 
