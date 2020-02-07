@@ -11,6 +11,7 @@
 # hidden directories
 .cache/
 .config/
+.gnupg/
 .ssh/
 .subversion/
 .vim/
