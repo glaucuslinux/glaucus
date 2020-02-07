@@ -22,6 +22,7 @@ construct toybox &&
 construct rsync &&
 construct diffutils &&
 construct file &&
+construct findutils &&
 construct mawk &&
 construct gettext-tiny &&
 construct grep &&
