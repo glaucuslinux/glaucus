@@ -21,7 +21,6 @@ configure_system() {
     --disable-libblkid \
     --disable-debugfs \
     --disable-imager \
-    --disable-resizer \
     --disable-defrag \
     --disable-fsck \
     --disable-e2initrd-helper \
