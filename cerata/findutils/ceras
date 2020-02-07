@@ -7,4 +7,4 @@ nom=findutils
 ver=4.7.0
 url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.xz
 sum=650a24507f8f4ebff83ad28dd27daa4785b4038dcaadc4fe00823b976e848527074cce3f9ec34065b7f037436d2aa6e9ec099bc05d7472c29864ac2c69de7f2e
-lic=
+lic='GPL-3.0-only GPL-3.0-or-later'
