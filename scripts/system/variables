@@ -19,8 +19,6 @@ export TOOL='/toolchain' &&
 
 export PATH="/usr/bin:/bin:$TOOL/bin" &&
 
-export MAKEFLAGS='-j1' &&
-
 export RSYNC='rsync -vaHXSx' &&
 
 export AR='gcc-ar' &&
