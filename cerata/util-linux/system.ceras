@@ -24,7 +24,6 @@ configure_system() {
     --disable-nls \
     --disable-setpriv \
     --disable-nologin \
-    --disable-sulogin \
     --disable-su \
     --disable-runuser \
     --disable-more \
