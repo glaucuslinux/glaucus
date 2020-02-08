@@ -10,7 +10,7 @@ prepare_system() {
 
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
-    CFLAGS="$CFLAGSNOFPMATHNOLTO" \
+    CFLAGS="$CFLAGSNOALIGNNOFPMATHNOLTO" \
     --prefix=/usr \
     --syslibdir=/usr/lib \
     --disable-wrapper \
