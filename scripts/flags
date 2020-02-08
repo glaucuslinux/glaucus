@@ -35,11 +35,11 @@ export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT\n" | sed "s/$COMMON //")" &&
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")" &&
 
+export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/ $ALIGN//" -e "s/ $FPMATH//" -e "s/$LTO //")" &&
+
 export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
 
 export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")" &&
-
-export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$FPMATH //" -e "s/$LTO //")" &&
 
 export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")" &&
 export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")" &&
@@ -50,4 +50,6 @@ export CXXFLAGS="$CFLAGS" &&
 
 export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGS" &&
 
-export LDFLAGSNOOPENMP="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGSNOOPENMP"
+export LDFLAGSNOOPENMP="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFLAGSNOOPENMP" &&
+
+export MAKEFLAGS='-j1'
