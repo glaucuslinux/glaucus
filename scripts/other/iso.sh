@@ -22,6 +22,6 @@ printf 'prompt 0
 default glaucus
 label glaucus
   kernel /boot/vmlinuz
-  append root=/dev/sr0 rootfstype=iso9660 init=/etc/s6/bin/init ro' > $DEST/isolinux/isolinux.cfg &&
+  append root=/dev/sr0 rootfstype=iso9660 init=/etc/s6/bin/init ro quiet' > $DEST/isolinux/isolinux.cfg &&
 
-mkisofs -o glaucus.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table $DEST
+mkisofs -o glaucus.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -D -R $DEST
