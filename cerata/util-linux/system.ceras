@@ -45,5 +45,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
+
+  chown 0:0 $SCER/$nom/sac/usr/bin/wall
 }
