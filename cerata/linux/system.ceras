@@ -67,5 +67,9 @@ install_system() {
   install -dv $SCER/$nom/sac/boot &&
 
   $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz &&
-  $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot
+  $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot &&
+
+  make \
+    DESTDIR=$SCER/$nom/sac/usr \
+    modules_install
 }
