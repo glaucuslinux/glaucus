@@ -4,9 +4,9 @@
 # Distributed under the terms of the ISC License
 
 NAME=glaucus.img &&
-SIZE=1G &&
+SIZE=2G &&
 LOOP=$(losetup -f) &&
-RSYNC='/usr/bin/rsync -vaHAXSx' &&
+RSYNC='/usr/bin/rsync -vaHAXx' &&
 
 cd /home/glaucus &&
 
@@ -23,7 +23,6 @@ losetup $LOOP $NAME &&
 partx -a $LOOP &&
 mkfs.ext4 $(printf $LOOP)p1 &&
 
-umount /mnt/loop &&
 mount $(printf $LOOP)p1 /mnt/loop &&
 
 rm -frv /mnt/loop/lost+found &&
