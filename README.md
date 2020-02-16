@@ -74,7 +74,8 @@ Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
 for glaucus related artwork.
 
 ## Voyager
-Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+Firas Khalil Khana (firasuke) [<firasuke@glaucuslinux.org>](
+mailto:firasuke@glaucuslinux.org)
 
 ## License
 glaucus is licensed under the Internet Systems Consortium (ISC) license.
