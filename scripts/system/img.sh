@@ -21,9 +21,9 @@ losetup -D &&
 losetup "$LOOP" "$NAME" &&
 
 partx -a "$LOOP" &&
-mkfs.ext4 "$(printf $LOOP)"p1 &&
+mkfs.ext4 "$(printf "$LOOP")"p1 &&
 
-mount "$(printf $LOOP)"p1 /mnt/loop &&
+mount "$(printf "$LOOP")"p1 /mnt/loop &&
 
 rm -frv /mnt/loop/lost+found &&
 
