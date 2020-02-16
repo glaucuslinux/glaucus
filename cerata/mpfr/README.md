@@ -1,8 +1,6 @@
 # mpfr
-
 ## Cross
-
-### Configure
+### Cross Configure
 no need for --build and --host (set to gnu) as the configure script is smart
 enough to detect them
 
@@ -31,14 +29,13 @@ for libgmp.so in $CRSS/$TUPL instead of $CRSS.
 Still needs to get rid of the long path in `ldd libmpfr.so`
 
 ## Native
-
-### Configure
+### Native Configure
 LTO couldn't be enabled on the shared version of mpfr, as it would result
 in the following error when running configure:
 error: --enable-lto can only work in static mode (--disable-shared)
 
 ## System
-### Configure
+### System Configure
 MPFR built with Ofast only (without `-fno-finite-math-only` causes problems with
 packages using GCC such as lbzip2 not being able to use the libstdcxx correctly
 due to missing symbols.
