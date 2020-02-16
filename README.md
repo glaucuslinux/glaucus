@@ -83,6 +83,12 @@ glaucus is licensed under the Internet Systems Consortium (ISC) license.
 ## Dedication
 This project is dedicated to my lovely family.
 
+## Community
+*   [Discord](https://discord.gg/gZSHj65)
+*   [Gitter](https://gitter.im/glaucuslinux/glaucus)
+*   [Reddit](https://www.reddit.com/r/glaucus)
+*   [Telegram](https://t.me/glaucuslinux)
+
 ## Donate
 *   [Patreon](https://www.patreon.com/glaucuslinux)
 *   [Liberapay](https://liberapay.com/glaucuslinux)
