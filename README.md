@@ -90,9 +90,9 @@ This project is dedicated to my lovely family.
 *   [Telegram](https://t.me/glaucuslinux)
 
 ## Donate
-*   [Patreon](https://www.patreon.com/glaucuslinux)
-*   [Liberapay](https://liberapay.com/glaucuslinux)
 *   [Ko-fi](https://ko-fi.com/glaucuslinux)
+*   [Liberapay](https://liberapay.com/glaucuslinux)
+*   [Patreon](https://www.patreon.com/glaucuslinux)
 *   [PayPal](https://www.paypal.me/glaucuslinux)
 
 ## Mirrors
