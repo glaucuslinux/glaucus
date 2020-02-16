@@ -1,8 +1,6 @@
 # gcc
-
 ## Cross
-
-### Prepare
+### Cross Prepare
 Curated and cleaned modifications to GCC's source that are up to date and
 still relevant. Using these modifications will remove the need to adjust the
 cross-compilation toolchain's compiler specs file.
@@ -19,7 +17,7 @@ Since we're only building for x86-64
 
 Further optimizing the linker's path
 
-### Configure
+### Cross Configure
 According to the GCC wiki, this is the 'difficult way' and is 'not 
 recommended'; however, it's the only way to get the latest GCC to build
 with the latest upstream prerequisites:
@@ -115,8 +113,7 @@ for the sake of correctness, the install script complains about missing
 file/directory, so here's a fix even though it's an ignored error...
 
 ## Native
-
-### Prepare
+### Native Prepare
 Curated and cleaned modifications to GCC's source that are still relevant
 
 This should point to the linker
@@ -130,7 +127,7 @@ cross GCC to not detect the custom installed prerequisites; hence, adding a
 limits.h is only done for native GCC. This step is done in the end due to
 having to cd to the upper directory.
 
-### Configure
+### Native Configure
 --with-local-prefix helps further move away from the host
 
 --with-native-system-header will cause GCC to search dirname inside the
@@ -194,7 +191,7 @@ space, so it's being disabled
 Still thinking about separately building libstdcxx-v3, but we'll see.
 
 ## System
-### Build
+### System Build
 Doesn't build with `-flto`:
 ```C
 /temporary/system/builds/gcc/./gcc/xgcc -B/temporary/system/builds/gcc/./gcc/ -B/usr/x86_64-pc-linux-musl/bin/ -B/usr/x86_64-pc-linux-musl/lib/ -isystem /usr/x86_64-pc-linux-musl/include -isystem /usr/x86_64-pc-linux-musl/sys-include    -O2  -g -O2 -pipe -fopenmp -g0 -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fgcse-sm -fgcse-las -fira-loop-pressure  -fgraphite-identity -floop-nest-optimize -floop-parallelize-all -fmerge-all-constants -fdevirtualize-at-ltrans -fno-semantic-interposition -fvariable-expansion-in-unroller -flto -ftracer -funroll-loops -s -fno-common -fno-plt -march=x86-64 -DIN_GCC    -W -Wall -Wno-narrowing -Wwrite-strings -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition  -isystem ./include   -fpic -mlong-double-80 -DUSE_ELF_SYMVER  -g -DIN_LIBGCC2 -fbuilding-libgcc -fno-stack-protector  -shared -nodefaultlibs -Wl,--soname=libgcc_s.so.1 -Wl,--version-script=libgcc.map -o ./libgcc_s.so.1.tmp -g -O2 -pipe -fopenmp -g0 -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fgcse-sm -fgcse-las -fira-loop-pressure -fgraphite-identity -floop-nest-optimize -floop-parallelize-all -fmerge-all-constants -fdevirtualize-at-ltrans -fno-semantic-interposition -fvariable-expansion-in-unroller -flto -ftracer -funroll-loops -s -fno-common -fno-plt -march=x86-64 -B./ _muldi3_s.o _negdi2_s.o _lshrdi3_s.o _ashldi3_s.o _ashrdi3_s.o _cmpdi2_s.o _ucmpdi2_s.o _clear_cache_s.o _trampoline_s.o __main_s.o _absvsi2_s.o _absvdi2_s.o _addvsi3_s.o _addvdi3_s.o _subvsi3_s.o _subvdi3_s.o _mulvsi3_s.o _mulvdi3_s.o _negvsi2_s.o _negvdi2_s.o _ctors_s.o _ffssi2_s.o _ffsdi2_s.o _clz_s.o _clzsi2_s.o _clzdi2_s.o _ctzsi2_s.o _ctzdi2_s.o _popcount_tab_s.o _popcountsi2_s.o _popcountdi2_s.o _paritysi2_s.o _paritydi2_s.o _powisf2_s.o _powidf2_s.o _powixf2_s.o _mulhc3_s.o _mulsc3_s.o _muldc3_s.o _mulxc3_s.o _divhc3_s.o _divsc3_s.o _divdc3_s.o _divxc3_s.o _bswapsi2_s.o _bswapdi2_s.o _clrsbsi2_s.o _clrsbdi2_s.o _fixunssfsi_s.o _fixunsdfsi_s.o _fixunsxfsi_s.o _fixsfdi_s.o _fixdfdi_s.o _fixxfdi_s.o _fixunssfdi_s.o _fixunsdfdi_s.o _fixunsxfdi_s.o _floatdisf_s.o _floatdidf_s.o _floatdixf_s.o _floatundisf_s.o _floatundidf_s.o _floatundixf_s.o _divdi3_s.o _moddi3_s.o _divmoddi4_s.o _udivdi3_s.o _umoddi3_s.o _udivmoddi4_s.o _udiv_w_sdiv_s.o sfp-exceptions_s.o addtf3_s.o divtf3_s.o multf3_s.o negtf2_s.o subtf3_s.o unordtf2_s.o fixtfsi_s.o fixunstfsi_s.o floatsitf_s.o floatunsitf_s.o fixtfdi_s.o fixunstfdi_s.o floatditf_s.o floatunditf_s.o fixtfti_s.o fixunstfti_s.o floattitf_s.o floatuntitf_s.o extendsftf2_s.o extenddftf2_s.o extendxftf2_s.o trunctfsf2_s.o trunctfdf2_s.o trunctfxf2_s.o getf2_s.o letf2_s.o eqtf2_s.o _divtc3_s.o _multc3_s.o _powitf2_s.o enable-execute-stack_s.o unwind-dw2_s.o unwind-dw2-fde-dip_s.o unwind-sjlj_s.o unwind-c_s.o emutls_s.o libgcc.a -lc && rm -f ./libgcc_s.so && if [ -f ./libgcc_s.so.1 ]; then mv -f ./libgcc_s.so.1 ./libgcc_s.so.1.backup; else true; fi && mv ./libgcc_s.so.1.tmp ./libgcc_s.so.1 && (echo "/* GNU ld script"; echo "   Use the shared library, but some functions are only in"; echo "   the static library.  */"; echo "GROUP ( libgcc_s.so.1 -lgcc )" ) > ./libgcc_s.so
