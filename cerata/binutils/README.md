@@ -1,8 +1,7 @@
 # binutils
 
 ## Cross
-
-### Configure
+### Cross Configure
 no need for --build and --host (set to gnu) as the configure script is smart
 enough to detect them
 
@@ -38,8 +37,7 @@ The symlink from lib64 to lib has already been created in prepare, also
 install-strip doesn't work with readline.
 
 ## Native
-
-### Configure
+### Native Configure
 Added --with-lib-path from LFS for better separation from the host
 
 GNU's gold linker doesn't like musl, as it refuses to build without
@@ -51,5 +49,5 @@ and yet manages to still fail:
 Be careful as CPPFLAGS isn't honored, but CFLAGS is!
 
 ## System
-### Configure
+### System Configure
 binutils enables plugins support by default
