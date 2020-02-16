@@ -24,13 +24,13 @@ According to the GCC wiki, this is the 'difficult way' and is 'not
 recommended'; however, it's the only way to get the latest GCC to build
 with the latest upstream prerequisites:
 
-https://gcc.gnu.org/wiki/InstallingGCC
+<https://gcc.gnu.org/wiki/InstallingGCC>
 
 Since we're using the latest upstream repository, it's common to find some
 options in some configure scripts that do nothing or have been removed. The
 latest updated reference for GCC configuration options is the following link:
 
-https://gcc.gnu.org/install/configure.html
+<https://gcc.gnu.org/install/configure.html>
 
 A list of supported options follows; `configure --help` may list other
 options, but those not listed in the link above, may not work and should not
@@ -47,7 +47,7 @@ process.
 `LDFLAGS="-Wl,-rpath,$TOOL/lib"` is needed as we're building GCC the
 'difficult way' according to:
 
-https://gcc.gnu.org/wiki/InstallingGCC
+<https://gcc.gnu.org/wiki/InstallingGCC>
 
 No need for --build and --host (set to gnu) as the configure script is
 smart enough to detect them. I also believe that the common consumption of
@@ -79,11 +79,13 @@ There's no need to add support for the C++ language here.
 
 --disable-libmpx isn't relevant as MPX support was removed from GCC
 starting from GCC 9:
-https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html
+
+<https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html>
 
 --disable-libmudflap is also not relevant as the mudflap run time
 checker was removed starting from GCC 4.9:
-https://gcc.gnu.org/gcc-4.9/changes.html
+
+<https://gcc.gnu.org/gcc-4.9/changes.html>
 
 The first pass of GCC can be built easily without isl (isl isn't
 required to build GCC, simply pass --without-isl to get rid of the
@@ -95,7 +97,8 @@ as only ISL is required.
 GNU's gold linker doesn't like musl, as it refuses to build without
 enabling PIE support, and bloats things up after enabling PIE support
 and yet manages to still fail:
-https://github.com/NixOS/nixpkgs/issues/49071
+
+<https://github.com/NixOS/nixpkgs/issues/49071>
 
 `--disable-compressed-debug-sections` in GCC's configure script isn't for
 GCC but for binutils gas and ld
@@ -142,16 +145,19 @@ cc1: error: no include path in which to search for stdc-predef.h
 
 --disable-libmpx isn't relevant as MPX support was removed from GCC
 starting from GCC 9:
-https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html
+
+<https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html>
 
 --disable-libmudflap is also not relevant as the mudflap run time
 checker was removed starting from GCC 4.9:
-https://gcc.gnu.org/gcc-4.9/changes.html
+
+<https://gcc.gnu.org/gcc-4.9/changes.html>
 
 According to the GCC wiki, this is the 'difficult way' and is 'not 
 recommended'; however, it's the only way to get the latest GCC to build
 with the latest upstream prerequisites:
-https://gcc.gnu.org/wiki/InstallingGCC
+
+<https://gcc.gnu.org/wiki/InstallingGCC>
 
 The first pass of GCC can be built easily without isl (isl isn't
 required to build GCC, simply pass --without-isl to get rid of the
@@ -163,7 +169,8 @@ as only ISL is required.
 GNU's gold linker doesn't like musl, as it refuses to build without
 enabling PIE support, and bloats things up after enabling PIE support
 and yet manages to still fail:
-https://github.com/NixOS/nixpkgs/issues/49071
+
+<https://github.com/NixOS/nixpkgs/issues/49071>
 
 Since the first pass of GCC will only be used to build musl, support
 for everything else is being disabled. Optimizations will also be 
@@ -178,7 +185,8 @@ libstdc++-v3 is inside gcc's tree and is being built by default after
 enabling the c++ language support.
 
 libc++ has some performance regressions so it's not being used:
-http://lists.llvm.org/pipermail/cfe-dev/2016-July/049814.html
+
+<http://lists.llvm.org/pipermail/cfe-dev/2016-July/049814.html>
 
 We also don't have any use for libstdcxx-pch plus it takes up a lot of
 space, so it's being disabled
