@@ -5,6 +5,9 @@ https://app.codacy.com/gh/glaucuslinux/glaucus?utm_source=github.com&utm_medium=
 [![Build Status](
 https://travis-ci.org/glaucuslinux/glaucus.svg?branch=master)](
 https://travis-ci.org/glaucuslinux/glaucus)
+[![Downloads](
+https://img.shields.io/github/downloads/glaucuslinux/glaucus/total.svg)](
+https://github.com/glaucuslinux/glaucus/releases)
 [![Join the chat at https://gitter.im/glaucuslinux/glaucus](
 https://badges.gitter.im/glaucuslinux/glaucus.svg)](
 https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
