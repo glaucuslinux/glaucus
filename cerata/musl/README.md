@@ -1,8 +1,6 @@
 # musl
-
 ## Native
-
-### Configure
+### Native Configure
 Tread with care as the destination directories for some of these options
 are tricky.
 
@@ -91,8 +89,7 @@ build without chrooting, so this will changed later as glaucus' graphics
 stack requires a separate chroot)
 
 ## System
-
-### Configure
+### System Configure
 
 CFLAGS are passed to configure and not as an environment variable.
 
@@ -113,7 +110,7 @@ for wrongly linking the resulting dynamic linker with the wrong libc.so, so
 that the dynamic linker it links to the resulting libc.so is located in the
 exact same location of the libc.so
 
-### Build
+### System Build
 Doesn't build with `-flto`:
 ```C
 /sources/musl/musl-1.1.24/src/thread/pthread_create.c:210:1: warning: type of '__pthread_tsd_main' does not match original declaration [-Wlto-type-mismatch]
