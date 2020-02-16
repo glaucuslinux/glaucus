@@ -37,7 +37,8 @@ Enables Swing Modulo Scheduling
 
 Your regular flags, ordered by the order in which they appear in 
 `man gcc`, the gcc `configure` file and the following link 
-https://gcc.gnu.org/install/configure.html
+
+<https://gcc.gnu.org/install/configure.html>
 
 Additional optimizations are listed in the flags below without 
 defining them as variables these include pipe, OpenMP, the dangerous 
