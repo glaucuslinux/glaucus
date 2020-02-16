@@ -9,7 +9,8 @@ enough to detect them
 GNU's gold linker doesn't like musl, as it refuses to build without
 enabling PIE support, and bloats things up after enabling PIE support
 and yet manages to still fail:
-https://github.com/NixOS/nixpkgs/issues/49071
+
+<https://github.com/NixOS/nixpkgs/issues/49071>
 
 `--disable-gold` is the default option, only ld is built
 
@@ -25,7 +26,8 @@ intended for enabling 64-bit support on 32-bit (and smaller) hosts
 only intended for enabling 64-bit support on 32-bit (and smaller) hosts
 
 `--enable-deterministic-archives` because:
-https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities
+
+<https://stackoverflow.com/questions/49211308/deterministic-mode-in-ranlib-in-gnu-utilities>
 
 `--disable-werror` is on by default so no need to add it
 
@@ -43,7 +45,8 @@ Added --with-lib-path from LFS for better separation from the host
 GNU's gold linker doesn't like musl, as it refuses to build without
 enabling PIE support, and bloats things up after enabling PIE support
 and yet manages to still fail:
-https://github.com/NixOS/nixpkgs/issues/49071
+
+<https://github.com/NixOS/nixpkgs/issues/49071>
 
 Be careful as CPPFLAGS isn't honored, but CFLAGS is!
 
