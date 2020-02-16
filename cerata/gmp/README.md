@@ -1,8 +1,6 @@
 # gmp
-
 ## Cross
-
-### Configure
+### Cross Configure
 mini-gmp has less memory footprint and is smaller than GMP but is slower (up
 to 10 times slower in some cases). You should never install mini-gmp as
 applications can either include `mini-gmp.c` or compile it and use the
@@ -18,8 +16,7 @@ build/host/target alltogether, but meh...)
 to GCC's configure script while using the in tree gmp.
 
 ## Native
-
-### Configure
+### Native Configure
 No need to specify `--build` as its smart enough to detect it
 
 For now it builds fine without `--enable-cxx` as it errors about not being
