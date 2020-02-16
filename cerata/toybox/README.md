@@ -1,71 +1,71 @@
 # toybox
-* toybox replaces the following:
-* GNU Coreutils
-* Suckless Base (sbase)
-* Unportable Base (ubase)
-* Heirloom Base (hbase)
-* OpenBSD userland port to Linux (lobase)
-* Util-Linux
-* Utilities Chest (UtilChest)
-* Diffutils
-* File
-* Findutils
-* Grep
-* Sed
-* Patch
+*   toybox replaces the following:
+*   GNU Coreutils
+*   Suckless Base (sbase)
+*   Unportable Base (ubase)
+*   Heirloom Base (hbase)
+*   OpenBSD userland port to Linux (lobase)
+*   Util-Linux
+*   Utilities Chest (UtilChest)
+*   Diffutils
+*   File
+*   Findutils
+*   Grep
+*   Sed
+*   Patch
 
 When compared to other tools, toybox lacks the following:
 
-* Suckless Base (sbase): `cols`, `join`, `pathchk`, `sha512-224um`,
-  `sha512-256um`, `sponge`, `tsort`, `unexpand` and `xinstall`
+*   Suckless Base (sbase): `cols`, `join`, `pathchk`, `sha512-224um`,
+    `sha512-256um`, `sponge`, `tsort`, `unexpand` and `xinstall`
 
-* Unportable Base (ubase): `mesg` (not `dmesg`), `blkdiscard`, `ctrlaltdel`,
-  `lastlog`, `nologin`, `pagesize`, `respawn`, `swaplabel` and `vtallow`
+*   Unportable Base (ubase): `mesg` (not `dmesg`), `blkdiscard`, `ctrlaltdel`,
+    `lastlog`, `nologin`, `pagesize`, `respawn`, `swaplabel` and `vtallow`
 
-* Heirloom Base (hbase): `banner`, `bdiff`, `bfs`, `build`, `calendar`, `col`,
-  `copy`, `csplit`, `dc`, `deroff`, `diff3`, `dircmp`, `ed`, `fmtmsg`,
-  `getopt`, `hd`, `listusers`, `mesg`, `nawk`, `news`, `oawk`, `pg`, `pr`,
-  `priocntl`, `psrinfo`, `random`, `sdiff`, `setpgrp`, `shl`, `spell`, `sum`,
-  `tabs`, `tapecntl`, `tcopy`, `tsort`, `ul`, `units`, `users`, `what` and
-  `whodo`
+*   Heirloom Base (hbase): `banner`, `bdiff`, `bfs`, `build`, `calendar`, `col`,
+    `copy`, `csplit`, `dc`, `deroff`, `diff3`, `dircmp`, `ed`, `fmtmsg`,
+    `getopt`, `hd`, `listusers`, `mesg`, `nawk`, `news`, `oawk`, `pg`, `pr`,
+    `priocntl`, `psrinfo`, `random`, `sdiff`, `setpgrp`, `shl`, `spell`, `sum`,
+    `tabs`, `tapecntl`, `tcopy`, `tsort`, `ul`, `units`, `users`, `what` and
+    `whodo`
 
-* GNU Coreutils: `dir`, `dircolors`, `vdir`, `b2sum`, `base32`, `csplit`,
-  `join`, `numfmt`, `ptx`, `pr`, `shuf`, `tsort`, `unexpand`, `pathchk`,
-  `pinky`, `stdbuf`, `users` and `[`
+*   GNU Coreutils: `dir`, `dircolors`, `vdir`, `b2sum`, `base32`, `csplit`,
+    `join`, `numfmt`, `ptx`, `pr`, `shuf`, `tsort`, `unexpand`, `pathchk`,
+    `pinky`, `stdbuf`, `users` and `[`
 
-* Diffutils: `diff3` and `sdiff`
+*   Diffutils: `diff3` and `sdiff`
 
-* Findutils: `locate` and `updatedb`
+*   Findutils: `locate` and `updatedb`
 
-* Util-Linux: `addpart`, `agetty`, `blkdiscard`, `blkzone`, `cfdisk`, `chcpu`,
-  `chfn`, `chmem`, `choom`, `chsh`, `col`, `colcrt`, `colrm`, `column`,
-  `ctrlaltdel`, `delpart`, `fdformat`, `findfs`, `findmnt`, `fsck.cramfs`,
-  `fsck.minix`, `fstrim`, `getopt`, `hardlink`, `hexdump`, `ipcmk`, `isosize`,
-  `idattach`, `look`, `lsblk`, `lscpu`, `lslocks`, `lslogins`, `lsmem`, `mesg`,
-  `mkfs` (legacy), `mkfs.bfs`, `mkfs.cramfs`, `mkfs.minix`, `namei`, `newgrp`,
-  `nologin`, `partx`, `pg` (legacy), `raw`, `readprofile`, `rename`,
-  `resizepart`, `rtcwake`, `runuser`, `script`, `scriptreplay`, `setarch`,
-  `setpriv`, `setterm`, `sfdisk`, `swaplabel`, `tailf` (legacy), `ul` (ulimit?
-  if so it's included in toybox), `utmpdump`, `uuidd`, `uuidgen`, `uuidparse`,
-  `vipw`, `wall`, `wdctl`, `whereis`, `wipefs`, `write` and `zramctl`
+*   Util-Linux: `addpart`, `agetty`, `blkdiscard`, `blkzone`, `cfdisk`, `chcpu`,
+    `chfn`, `chmem`, `choom`, `chsh`, `col`, `colcrt`, `colrm`, `column`,
+    `ctrlaltdel`, `delpart`, `fdformat`, `findfs`, `findmnt`, `fsck.cramfs`,
+    `fsck.minix`, `fstrim`, `getopt`, `hardlink`, `hexdump`, `ipcmk`, `isosize`,
+    `idattach`, `look`, `lsblk`, `lscpu`, `lslocks`, `lslogins`, `lsmem`,
+    `mesg`, `mkfs` (legacy), `mkfs.bfs`, `mkfs.cramfs`, `mkfs.minix`, `namei`,
+    `newgrp`, `nologin`, `partx`, `pg` (legacy), `raw`, `readprofile`, `rename`,
+    `resizepart`, `rtcwake`, `runuser`, `script`, `scriptreplay`, `setarch`,
+    `setpriv`, `setterm`, `sfdisk`, `swaplabel`, `tailf` (legacy), `ul` (ulimit?
+    if so it's included in toybox), `utmpdump`, `uuidd`, `uuidgen`, `uuidparse`,
+    `vipw`, `wall`, `wdctl`, `whereis`, `wipefs`, `write` and `zramctl`
 
-* Utilities Chest (UtilChest): `pathchk`
+*   Utilities Chest (UtilChest): `pathchk`
 
 It also has the following turned off by default (mostly pending):
 
-* Suckless Base (sbase): `cron`, `expr`, `fold`, `libcrypto` (shasums), `tftp`
-  and `tr`
+*   Suckless Base (sbase): `cron`, `expr`, `fold`, `libcrypto` (shasums), `tftp`
+    and `tr`
 
-* Unportable Base (ubase): `last`, `getty` and `dd`
+*   Unportable Base (ubase): `last`, `getty` and `dd`
 
-* Heirloom Base (hbase): `bc`
+*   Heirloom Base (hbase): `bc`
 
-* GNU Coreutils: `chcon` (SELinux), `fold`, `tr`, `hostid` (example command),
-  `runcon` (SELinux) and `stty`
+*   GNU Coreutils: `chcon` (SELinux), `fold`, `tr`, `hostid` (example command),
+    `runcon` (SELinux) and `stty`
 
-* Diffutils: `diff`
+*   Diffutils: `diff`
 
-* Util-Linux: `fdisk`, `fsck`, `ipcrm`, `ipcs`, `last`, `more` and `sulogin`
+*   Util-Linux: `fdisk`, `fsck`, `ipcrm`, `ipcs`, `last`, `more` and `sulogin`
 
 ## Configure
 toybox's `ls` outputs in the `long-iso` time style, which isn't compatible with
