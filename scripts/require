@@ -1,9 +1,6 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-printf 'awk:       ' &&
-awk --version | sed 1q | cut -d' ' -f3 | sed s/,// &&
-
 printf 'bash:      ' &&
 bash --version | sed 1q | cut -d' ' -f4 &&
 
@@ -24,6 +21,9 @@ diff --version | sed 1q | cut -d' ' -f4 &&
 
 printf 'findutils: ' &&
 find --version | sed 1q | cut -d' ' -f4 &&
+
+printf 'gawk:      ' &&
+gawk --version | sed 1q | cut -d' ' -f3 | sed s/,// &&
 
 printf 'gcc:       ' &&
 gcc --version | sed 1q | cut -d' ' -f3 &&
