@@ -4,13 +4,13 @@
 # Distributed under the terms of the ISC License
 
 . /scripts/system/variables &&
-. "$SSCR"/prepare &&
+. $SSCR/prepare &&
 
-"$SCRD"/log "$SLOG" "$SSCR"/construct &&
+$SCRD/log $SLOG $SSCR/construct &&
 
-. "$SSCR"/adjust &&
+. $SSCR/adjust &&
 
-"$SCRD"/log "$SLOG" "$SSCR"/envenomate &&
+$SCRD/log $SLOG $SSCR/envenomate &&
 
-. "$SSCR"/configure &&
-. "$SSCR"/clean
+. $SSCR/configure &&
+. $SSCR/clean
