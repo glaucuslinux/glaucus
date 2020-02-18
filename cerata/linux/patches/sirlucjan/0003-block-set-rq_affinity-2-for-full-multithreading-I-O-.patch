@@ -1,4 +1,4 @@
-From c517e57636bd459427486322b0cecd062b875479 Mon Sep 17 00:00:00 2001
+From df55c34b194f4dc308c96e5c4b9f649206b6b33c Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 25 Nov 2019 13:45:35 +0100
 Subject: [PATCH 3/3] block: set rq_affinity = 2 for full multithreading I/O
@@ -10,10 +10,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index f3ea78b0c..4dbacc6b0 100644
+index 4c636c42a..d0e089ba4 100644
 --- a/include/linux/blkdev.h
 +++ b/include/linux/blkdev.h
-@@ -621,7 +621,8 @@ struct request_queue {
+@@ -614,7 +614,8 @@ struct request_queue {
  #define QUEUE_FLAG_RQ_ALLOC_TIME 27	/* record rq->alloc_time_ns */
  
  #define QUEUE_FLAG_MQ_DEFAULT	((1 << QUEUE_FLAG_IO_STAT) |		\
@@ -24,5 +24,5 @@ index f3ea78b0c..4dbacc6b0 100644
  void blk_queue_flag_set(unsigned int flag, struct request_queue *q);
  void blk_queue_flag_clear(unsigned int flag, struct request_queue *q);
 -- 
-2.24.1.590.gb02fd2acca
+2.25.0.2.g232378479e.dirty
 
