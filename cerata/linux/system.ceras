@@ -12,7 +12,7 @@ prepare_system() {
 
   make \
     mrproper &&
-
+  
   $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups.patch &&
   $SCRD/patch 1 $nom clear 0105-ksm-wakeups.patch &&
   $SCRD/patch 1 $nom clear 0106-intel_idle-tweak-cpuidle-cstates.patch &&
@@ -25,25 +25,24 @@ prepare_system() {
   $SCRD/patch 1 $nom clear 0122-do-accept-in-LIFO-order-for-cache-efficiency.patch &&
   $SCRD/patch 1 $nom clear 0124-locking-rwsem-spin-faster.patch &&
   $SCRD/patch 1 $nom clear 0125-ata-libahci-ignore-staggered-spin-up.patch &&
-  $SCRD/patch 1 $nom clear 0131-nvme-workaround.patch &&
-  
-  $SCRD/patch 1 $nom dolohow uksm-5.4.patch &&
+  $SCRD/patch 1 $nom clear 0130-nvme-workaround.patch &&
 
-  $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch &&
+  $SCRD/patch 1 $nom dolohow uksm-5.5.patch &&
+
+  $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch &&
 
   $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility.patch &&
 
+  $SCRD/patch 1 $nom sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures.patch &&
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0001-cpu-5.4-make-O3-always-available.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0001-futex-Split-key-setup-from-key-queue-locking-and-rea.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0001-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default.patch &&
   $SCRD/patch 1 $nom sirlucjan 0002-futex-Implement-mechanism-to-wait-on-any-of-several-.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0002-media-rc-prevent-memory-leak-in-cx23888_ir_probe.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches.patch &&
   $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O-.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0003-futex-Change-WAIT_MULTIPLE-opcode-to-31.patch &&
   $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead-.patch
+  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead-.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0005-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch &&
+  $SCRD/patch 1 $nom sirlucjan 0006-futex-Add-Proton-compatibility-code.patch
 }
 
 configure_system() {
