@@ -1,6 +1,6 @@
 --- kernel/gen_kheaders.sh
 +++ kernel/gen_kheaders.sh
-@@ -76,7 +76,7 @@
+@@ -87,7 +87,7 @@
  # pre-sorted, as --sort=name might not be available.
  find $cpio_dir -printf "./%P\n" | LC_ALL=C sort | \
      tar "${KBUILD_BUILD_TIMESTAMP:+--mtime=$KBUILD_BUILD_TIMESTAMP}" \
@@ -11,7 +11,7 @@
  echo "$src_files_md5" >  kernel/kheaders.md5
 --- scripts/package/buildtar
 +++ scripts/package/buildtar
-@@ -129,8 +129,8 @@
+@@ -133,8 +133,8 @@
  #
  # Create the tarball
  #
