@@ -43,14 +43,14 @@ https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) page in the wiki
 before further reading.
 
 ## Features
-*   Fast
-*   Minimal
-*   Clean
-*   Simple
-*   Convenient
+* Fast
+* Minimal
+* Clean
+* Simple
+* Convenient
 
 ## Architectures
-*   x86-64
+* x86-64
 
 ## Install
 Kindly refer to the [Install](
@@ -87,22 +87,22 @@ glaucus is licensed under the Internet Systems Consortium (ISC) license.
 This project is dedicated to my lovely family.
 
 ## Community
-*   [Discord](https://discord.gg/gZSHj65)
-*   [Gitter](https://gitter.im/glaucuslinux/glaucus)
-*   [Reddit](https://www.reddit.com/r/glaucus)
-*   [Telegram](https://t.me/glaucuslinux)
+* [Discord](https://discord.gg/gZSHj65)
+* [Gitter](https://gitter.im/glaucuslinux/glaucus)
+* [Reddit](https://www.reddit.com/r/glaucus)
+* [Telegram](https://t.me/glaucuslinux)
 
 ## Donate
-*   [Ko-fi](https://ko-fi.com/glaucuslinux)
-*   [Liberapay](https://liberapay.com/glaucuslinux)
-*   [Patreon](https://www.patreon.com/glaucuslinux)
-*   [PayPal](https://www.paypal.me/glaucuslinux)
+* [Ko-fi](https://ko-fi.com/glaucuslinux)
+* [Liberapay](https://liberapay.com/glaucuslinux)
+* [Patreon](https://www.patreon.com/glaucuslinux)
+* [PayPal](https://www.paypal.me/glaucuslinux)
 
 ## Mirrors
-*   [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
-*   [Framagit](https://framagit.org/glaucuslinux/glaucus)
-*   [GitHub](https://github.com/glaucuslinux/glaucus)
-*   [GitLab](https://gitlab.com/glaucuslinux/glaucus)
-*   [NotABug](https://notabug.org/glaucuslinux/glaucus)
-*   [SourceForge](https://git.code.sf.net/p/glaucuslinux/glaucus)
-*   [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
+* [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
+* [Framagit](https://framagit.org/glaucuslinux/glaucus)
+* [GitHub](https://github.com/glaucuslinux/glaucus)
+* [GitLab](https://gitlab.com/glaucuslinux/glaucus)
+* [NotABug](https://notabug.org/glaucuslinux/glaucus)
+* [SourceForge](https://git.code.sf.net/p/glaucuslinux/glaucus)
+* [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
