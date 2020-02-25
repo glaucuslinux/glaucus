@@ -7,8 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 $nom void strndupa.patch &&
-  $SCRD/patch 1 $nom arch 0001-Link-against-libcrypto-not-all-of-openssl.patch
+  $SCRD/patch 0 $nom void strndupa.patch
 }
 
 configure_system() {
