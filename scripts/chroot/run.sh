@@ -11,7 +11,7 @@ $SCRD/log $CLOG $CSCR/construct &&
 
 . $CSCR/clean
 . $CSCR/root &&
-. $CSCR/backup
+. $CSCR/backup &&
 . $CSCR/vkfs &&
 . $CSCR/resolv &&
 
