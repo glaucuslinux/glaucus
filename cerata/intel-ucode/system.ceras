@@ -1,0 +1,28 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  $RSYNC $SRCD/$nom/Intel-Linux-Processor-Microcode-Data-Files-microcode-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $RSYNC $CERD/$nom/06-55-04 $SSRC/$nom
+}
+
+configure_system() {
+  install -dv kernel/x86/microcode
+}
+
+build_system() {
+  iucode_tool \
+    --write-earlyfw=intel-ucode.img intel-ucode/ intel-ucode-with-caveats/ \
+    --overwrite \
+    --mini-earlyfw
+}
+
+install_system() {
+  install -dv $SCER/$nom/sac/boot &&
+
+  $RSYNC intel-ucode.img $SCER/$nom/sac/boot
+}
