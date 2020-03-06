@@ -15,26 +15,26 @@ envenomate() {
   $RSYNC $SCER/$nom/sac/ /
 }
 
-envenomate zlib-ng &&
+#envenomate zlib-ng &&
 #envenomate lbzip2 &&
-envenomate lz4 &&
+#envenomate lz4 &&
 #envenomate file &&
-#envenomate libedit &&
-envenomate m4 &&
+envenomate libedit &&
+#envenomate m4 &&
 envenomate bc &&
 #envenomate binutils &&
 #envenomate gmp &&
 #envenomate mpfr &&
 #envenomate mpc &&
 #envenomate isl &&
-envenomate attr &&
-envenomate acl &&
+#envenomate attr &&
+#envenomate acl &&
 #envenomate skalibs &&
 #envenomate utmps &&
 #envenomate shadow &&
 #envenomate gcc &&
 envenomate pkgconf &&
-#envenomate netbsd-curses &&
+envenomate netbsd-curses &&
 #envenomate libcap &&
 #envenomate sed &&
 #envenomate psmisc &&
@@ -46,28 +46,28 @@ envenomate flex &&
 #envenomate bash &&
 envenomate slibtool &&
 envenomate libtool &&
-#envenomate gdbm &&
-#envenomate gperf &&
-#envenomate expat &&
-#envenomate perl &&
-#envenomate perl-xml-parser &&
-#envenomate intltool &&
+envenomate gdbm &&
+envenomate gperf &&
+envenomate expat &&
+envenomate perl &&
+envenomate perl-xml-parser &&
+envenomate intltool &&
 envenomate autoconf &&
 envenomate automake &&
-envenomate xz &&
+envenomate xz
 #envenomate kmod &&
 #envenomate gettext-tiny &&
-envenomate libuargp &&
-envenomate musl-fts &&
-envenomate musl-obstack &&
-envenomate elfutils-libelf &&
-envenomate libffi &&
-envenomate libressl &&
+#envenomate libuargp &&
+#envenomate musl-fts &&
+#envenomate musl-obstack &&
+#envenomate elfutils-libelf &&
+#envenomate libffi &&
+#envenomate libressl &&
 #envenomate python &&
 #envenomate samurai &&
 #envenomate meson &&
-envenomate toybox &&
-envenomate rsync &&
+#envenomate toybox &&
+#envenomate rsync &&
 #envenomate diffutils &&
 #envenomate mawk &&
 #envenomate findutils &&
@@ -81,7 +81,7 @@ envenomate rsync &&
 #envenomate make &&
 #envenomate patch &&
 #envenomate mandoc &&
-envenomate libarchive &&
+#envenomate libarchive &&
 #envenomate texinfo &&
 #envenomate vim &&
 #envenomate execline &&
@@ -93,4 +93,6 @@ envenomate libarchive &&
 #envenomate s6-rc &&
 #envenomate eudev &&
 #envenomate s6-boot-scripts &&
-envenomate linux
+#envenomate iucode-tool &&
+#envenomate intel-ucode &&
+#envenomate linux
