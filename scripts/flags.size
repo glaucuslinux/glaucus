@@ -1,0 +1,41 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+AUNWIND='-fno-asynchronous-unwind-tables' &&
+DSECTS='-fdata-sections' &&
+DEBUG='-g0' &&
+FAT='-ffat-lto-objects' &&
+FSECTS='-ffunction-sections' &&
+LTO='-flto' &&
+MARCH='-march=x86-64' &&
+OMIT='-fomit-frame-pointer' &&
+OS='-Os' &&
+PIPE='-pipe' &&
+STRIP='-s' &&
+UNWIND='-fno-unwind-tables' &&
+
+export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $MARCH" &&
+
+export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")" &&
+export CFLAGSFATNOCOMMON="$CFLAGSFAT" &&
+
+export CFLAGSFINITE="$CFLAGS" &&
+
+export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")" &&
+
+export CFLAGSNOIPANOLTO="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
+
+export CFLAGSNOCOMMON="$CFLAGS" &&
+
+export CFLAGSNOLTO="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
+export CFLAGSNOLTONOOPENMPNOPLT="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
+
+export CFLAGSNOOPENMP="$CFLAGS" &&
+
+export CXXFLAGS="$CFLAGS" &&
+
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed -Wl,--gc-sections $CFLAGS" &&
+
+export LDFLAGSNOOPENMP="$LDFLAGS" &&
+
+export MAKEFLAGS='-j1'
