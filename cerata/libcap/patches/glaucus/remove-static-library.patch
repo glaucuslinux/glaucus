@@ -1,0 +1,47 @@
+--- libcap/Makefile
++++ libcap/Makefile
+@@ -7,7 +7,6 @@
+ # Library version
+ #
+ LIBNAME=$(LIBTITLE).so
+-STACAPLIBNAME=$(LIBTITLE).a
+ #
+ STAPSXLIBNAME=libpsx.a
+ 
+@@ -22,7 +21,7 @@
+ MINLIBNAME=$(MAJLIBNAME).$(MINOR)
+ GPERF_OUTPUT = _caps_output.gperf
+ 
+-all: $(MINLIBNAME) $(STACAPLIBNAME) libcap.pc libpsx.pc $(STAPSXLIBNAME)
++all: $(MINLIBNAME) libcap.pc libpsx.pc $(STAPSXLIBNAME)
+ 
+ ifeq ($(BUILD_GPERF),yes)
+ USE_GPERF_OUTPUT = $(GPERF_OUTPUT)
+@@ -61,10 +60,6 @@
+ 	@echo "=> making $@ from $(KERNEL_HEADERS)/linux/capability.h"
+ 	perl -e 'while ($$l=<>) { if ($$l =~ /^\#define[ \t](CAP[_A-Z]+)[ \t]+([0-9]+)\s+$$/) { $$tok=$$1; $$val=$$2; $$tok =~ tr/A-Z/a-z/; print "{\"$$tok\",$$val},\n"; } }' $(KERNEL_HEADERS)/linux/capability.h | fgrep -v 0x > $@
+ 
+-$(STACAPLIBNAME): $(CAPOBJS)
+-	$(AR) rcs $@ $^
+-	$(RANLIB) $@
+-
+ $(STAPSXLIBNAME): $(PSXOBJS)
+ 	$(AR) rcs $@ $^
+ 	$(RANLIB) $@
+@@ -91,7 +86,6 @@
+ 	install -m 0644 include/sys/capability.h $(FAKEROOT)$(INCDIR)/sys
+ 	install -m 0644 include/sys/psx_syscall.h $(FAKEROOT)$(INCDIR)/sys
+ 	mkdir -p -m 0755 $(FAKEROOT)$(LIBDIR)
+-	install -m 0644 $(STACAPLIBNAME) $(FAKEROOT)$(LIBDIR)/$(STACAPLIBNAME)
+ 	install -m 0644 $(STAPSXLIBNAME) $(FAKEROOT)$(LIBDIR)/$(STAPSXLIBNAME)
+ 	install -m 0644 $(MINLIBNAME) $(FAKEROOT)$(LIBDIR)/$(MINLIBNAME)
+ 	ln -sf $(MINLIBNAME) $(FAKEROOT)$(LIBDIR)/$(MAJLIBNAME)
+@@ -105,7 +99,7 @@
+ 
+ clean:
+ 	$(LOCALCLEAN)
+-	rm -f $(CAPOBJS) $(LIBNAME)* $(STACAPLIBNAME) libcap.pc libpsx.pc
++	rm -f $(CAPOBJS) $(LIBNAME)* libcap.pc libpsx.pc
+ 	rm -f $(PSXOBJS) $(STAPSXLIBNAME)
+ 	rm -f cap_names.h cap_names.list.h _makenames $(GPERF_OUTPUT) cap_test
+ 	cd include/sys && $(LOCALCLEAN)
