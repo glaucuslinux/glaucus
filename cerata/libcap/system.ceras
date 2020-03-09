@@ -4,13 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  rsync -vah $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
 configure_system() {
-  sed 's/ --static//' \
-    -i tests/Makefile
+  $SCRD/patch 0 $nom glaucus remove-static.patch &&
+  $SCRD/patch 0 $nom void disable-tests.patch
 }
 
 build_system() {

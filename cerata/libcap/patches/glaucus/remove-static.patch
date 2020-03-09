@@ -45,3 +45,14 @@
  	rm -f $(PSXOBJS) $(STAPSXLIBNAME)
  	rm -f cap_names.h cap_names.list.h _makenames $(GPERF_OUTPUT) cap_test
  	cd include/sys && $(LOCALCLEAN)
+--- tests/Makefile
++++ tests/Makefile
+@@ -32,7 +32,7 @@
+ 	./libcap_psx_test
+ 
+ libcap_psx_test: libcap_psx_test.c $(DEPS)
+-	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LIBCAPLIB) $(LIBPSXLIB) -Wl,-wrap,pthread_create --static
++	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LIBCAPLIB) $(LIBPSXLIB) -Wl,-wrap,pthread_create
+ 
+ run_libcap_launch_test: libcap_launch_test libcap_psx_launch_test noop
+ 	sudo ./libcap_launch_test
