@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  CFLAGS="$CFLAGSNOCOMMON" \
+  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOCOMMON" || printf -- "$CFLAGS")" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
