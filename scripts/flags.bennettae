@@ -16,21 +16,12 @@ UNWIND='-fno-unwind-tables' &&
 
 export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $MARCH" &&
 
-export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")" &&
-export CFLAGSFATNOCOMMON="$CFLAGSFAT" &&
+export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
+export CFLAGSFATNODSECTS="$(printf -- "$CFLAGSFAT" | sed "s/$DSECTS //")" &&
 
-export CFLAGSFINITE="$CFLAGS" &&
+export CFLAGSNODSECTS="$(printf -- "$CFLAGS" | sed "s/$DSECTS //")" &&
 
-export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")" &&
-
-export CFLAGSNOIPANOLTO="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
-
-export CFLAGSNOCOMMON="$CFLAGS" &&
-
-export CFLAGSNOLTO="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
-export CFLAGSNOLTONOOPENMPNOPLT="$CFLAGSNOALIGNNOFPMATHNOLTO" &&
-
-export CFLAGSNOOPENMP="$CFLAGS" &&
+export CFLAGSNOLTO="$(printf -- "$CFLAGS" | sed "s/$LTO //")" &&
 
 export CXXFLAGS="$CFLAGS" &&
 
