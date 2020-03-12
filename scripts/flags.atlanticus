@@ -16,8 +16,6 @@ IRA='-fira-loop-pressure' &&
 LTO='-flto' &&
 MARCH='-march=x86-64' &&
 MERGE='-fmerge-all-constants' &&
-O2='-O2' &&
-O3='-O3' &&
 OFAST='-Ofast' &&
 OPENMP='-fopenmp' &&
 PGO='-ftracer -funroll-loops' &&
@@ -30,21 +28,21 @@ TLS='-mtls-dialect=gnu2' &&
 
 export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN" &&
 
-export CFLAGSFAT="$(printf -- "$CFLAGS\n" | sed "s/$LTO/& $FAT/")" &&
-export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT\n" | sed "s/$COMMON //")" &&
+export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
+export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$COMMON //")" &&
 
-export CFLAGSFINITE="$(printf -- "$CFLAGS\n" | sed "s/$OFAST/& $FINITE/")" &&
+export CFLAGSFINITE="$(printf -- "$CFLAGS" | sed "s/$OFAST/& $FINITE/")" &&
 
-export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/ $ALIGN//" -e "s/ $FPMATH//" -e "s/$LTO //")" &&
+export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $ALIGN//" -e "s/ $FPMATH//" -e "s/$LTO //")" &&
 
-export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS\n" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
+export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
 
-export CFLAGSNOCOMMON="$(printf -- "$CFLAGS\n" | sed "s/$COMMON //")" &&
+export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$COMMON //")" &&
 
-export CFLAGSNOLTO="$(printf -- "$CFLAGS\n" | sed "s/$LTO //")" &&
-export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO\n" | sed -e "s/$OPENMP //" -e "s/$PLT //")" &&
+export CFLAGSNOLTO="$(printf -- "$CFLAGS" | sed "s/$LTO //")" &&
+export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO" | sed -e "s/$OPENMP //" -e "s/$PLT //")" &&
 
-export CFLAGSNOOPENMP="$(printf -- "$CFLAGS\n" | sed "s/$OPENMP //")" &&
+export CFLAGSNOOPENMP="$(printf -- "$CFLAGS" | sed "s/$OPENMP //")" &&
 
 export CXXFLAGS="$CFLAGS" &&
 
