@@ -13,8 +13,8 @@ prepare_system() {
 configure_system() {
   autoreconf -vfi &&
 
-  CFLAGS="$CFLAGSNOLTONOOPENMPNOPLT" \
-  LDFLAGS="$LDFLAGSNOOPENMP" \
+  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOLTONOOPENMPNOPLT" || printf -- "$CFLAGS")" \
+  LDFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$LDFLAGSNOOPENMP" || printf -- "$LDFLAGS")" \
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
