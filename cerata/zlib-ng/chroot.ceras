@@ -12,7 +12,7 @@ configure_chroot() {
   sed s/bash/dash/ \
     -i configure &&
 
-  CFLAGS="$CFLAGSNOCOMMON" \
+  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOCOMMON" || printf -- "$CFLAGS")" \
   ./configure \
     --prefix=$TOOL \
     --zlib-compat
