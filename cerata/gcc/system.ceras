@@ -32,7 +32,7 @@ prepare_system() {
 
 configure_system() {
   CFLAGS="$CFLAGSNOLTO" \
-  CXXFLAGS="$CFLAGSNOIPANOLTO" \
+  CXXFLAGS="$(grep -q bennettae $SCRD/species && printf -- "$CFLAGS" || printf -- "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-multilib \
