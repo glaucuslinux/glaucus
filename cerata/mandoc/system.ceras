@@ -15,7 +15,7 @@ configure_system() {
 OSNAME=glaucus
 PREFIX=/usr
 AR=$AR
-CFLAGS='$CFLAGSFATNOCOMMON'\n" > configure.local &&
+CFLAGS='$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSFATNOCOMMON" || printf -- "$CFLAGSFAT")'\n" > configure.local &&
 
   ./configure &&
   

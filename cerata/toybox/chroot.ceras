@@ -18,7 +18,7 @@ configure_chroot() {
 }
 
 build_chroot() {
-  CFLAGS="$CFLAGSNOLTO" \
+  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOALIGNNOCOMMONNOLTO" || printf -- "$CFLAGSNOLTO")" \
   make
 }
 

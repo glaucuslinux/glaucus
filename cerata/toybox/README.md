@@ -77,3 +77,30 @@ uses the internally provided libz and libcrypto to prevent messing with the
 LD_LIBRARY_PATH variables when building chroot and system, while system toybox
 relies on the system installed zlib and libressl to provide better and faster
 support.
+
+## Build
+Building toybox with any of the flags `-fno-common`, `-flto` and
+`-malign-data=cacheline` causes weird `autoconf` output which makes cerata that
+require running `autoreconf` (which includes running `autoconf`) to fail with
+the weird m4 Error:
+```C
+autoreconf: Entering directory `.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I m4
+autoreconf: configure.ac: tracing
+autoreconf: configure.ac: not using Libtool
+autoreconf: running: /usr/bin/autoconf --force
+autoreconf: configure.ac: not using Autoheader
+autoreconf: configure.ac: not using Automake
+autoreconf: Leaving directory `.'
+configure: WARNING: libattr development library was not found or not usable.
+configure: WARNING: GNU patch will be built without xattr support.
+m4:/tmp/am4tJkeFDJ/traces.m4:293: ERROR: end of file in argument list
+configure.ac: error: no proper invocation of AM_INIT_AUTOMAKE was found.
+configure.ac: You should verify that configure.ac invokes AM_INIT_AUTOMAKE,
+configure.ac: that aclocal.m4 is present in the top-level directory,
+configure.ac: and that aclocal.m4 was recently regenerated (using aclocal)
+automake-1.16: error: no 'Makefile.am' found for any configure output
+automake-1.16: Did you forget AC_CONFIG_FILES([Makefile]) in configure.ac?
+make: *** [Makefile:1231: Makefile.in] Error 1
+```
