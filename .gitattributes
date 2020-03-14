@@ -9,10 +9,13 @@ cerata/smdev/config.h linguist-language=C
 scripts/check linguist-language=Shell
 scripts/exit linguist-language=Shell
 scripts/fetch linguist-language=Shell
-scripts/flags linguist-language=Shell
+scripts/flags.atlanticus linguist-language=Shell
+scripts/flags.bennettae linguist-language=Shell
+scripts/flags.marginatus linguist-language=Shell
 scripts/log linguist-language=Shell
 scripts/patch linguist-language=Shell
 scripts/require linguist-language=Shell
+scripts/species linguist-language=Shell
 scripts/verify linguist-language=Shell
 
 scripts/chroot/backup linguist-language=Shell

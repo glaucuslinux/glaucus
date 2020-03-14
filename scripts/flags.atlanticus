@@ -33,11 +33,12 @@ export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$COMMON //")" &&
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS" | sed "s/$OFAST/& $FINITE/")" &&
 
+export CFLAGSNOALIGNNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $ALIGN//" -e "s/$COMMON //" -e "s/$LTO //")" &&
 export CFLAGSNOALIGNNOFPMATHNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $ALIGN//" -e "s/ $FPMATH//" -e "s/$LTO //")" &&
 
-export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
-
 export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$COMMON //")" &&
+
+export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
 
 export CFLAGSNOLTO="$(printf -- "$CFLAGS" | sed "s/$LTO //")" &&
 export CFLAGSNOLTONOOPENMPNOPLT="$(printf -- "$CFLAGSNOLTO" | sed -e "s/$OPENMP //" -e "s/$PLT //")" &&
