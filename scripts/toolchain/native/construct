@@ -11,7 +11,6 @@ construct() {
   install_native || $SCRD/exit native $nom install $? || return
 }
 
-construct linux-headers &&
 construct musl &&
 construct libstdc++-v3 &&
 construct binutils &&
