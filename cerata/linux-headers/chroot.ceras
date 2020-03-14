@@ -3,8 +3,8 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_native() {
-  install -dv $NBLD/$nom &&
+prepare_chroot() {
+  install -dv $CBLD/$nom &&
 
   cd $SRCD/linux/linux-$ver &&
 
@@ -12,17 +12,17 @@ prepare_native() {
     mrproper
 }
 
-configure_native() {
+configure_chroot() {
   :
 }
 
-build_native() {
+build_chroot() {
   :
 }
 
-install_native() {
+install_chroot() {
   make \
-    O=$NBLD/$nom \
+    O=$CBLD/$nom \
     ARCH=$ARCH \
     INSTALL_HDR_PATH=$TOOL \
     headers_install
