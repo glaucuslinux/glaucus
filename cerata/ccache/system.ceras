@@ -1,0 +1,24 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
+}
+
+configure_system() {
+  $SRCD/$nom/$nom-$ver/configure \
+    --prefix=/usr
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$nom/sac \
+    install-strip
+}

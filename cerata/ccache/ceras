@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=ccache
+ver=3.7.8
+url=https://github.com/$nom/$nom/releases/download/v$ver/$nom-$ver.tar.xz
+sum=dc8cc9cd5f6f054421f0ecb50f66e0af85222c347d59fecd4555dfe1d8d6cbdca304818de8bc8a39fc1a1225567c141ce104ac315369bf6c307e9da67e14b51c
+lic=GPL-3.0-or-later
