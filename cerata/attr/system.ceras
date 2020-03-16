@@ -4,23 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom upstream 0001-test-escape-left-brace-in-a-regex-in-test-run.patch &&
-  $SCRD/patch 1 $nom upstream 0002-man-fix-bold-style-in-SEE-ALSO-section.patch &&
-  $SCRD/patch 1 $nom upstream 0003-man-standardize-AUTHORS-section.patch &&
-  $SCRD/patch 1 $nom upstream 0005-getf$nom.1-by-default-only-user-namespace-attributes.patch &&
-  $SCRD/patch 1 $nom upstream 0006-attr_list.3-Fix-the-attributes.h-include-path.patch &&
-  $SCRD/patch 1 $nom upstream 0007-Switch-back-to-syscall.patch &&
-  $SCRD/patch 1 $nom upstream 0008-attr_multi-attr_multif-Don-t-set-errno-to-EINVAL.patch &&
-  $SCRD/patch 1 $nom upstream 0009-attr_list-attr_listf-Guard-against-unterminated-buff.patch &&
-  $SCRD/patch 1 $nom upstream 0010-getf$nom-don-t-count-terminating-NULL-in-well_enough.patch &&
-  $SCRD/patch 1 $nom upstream 0011-$nom-Replace-bzero-with-memset.patch
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
