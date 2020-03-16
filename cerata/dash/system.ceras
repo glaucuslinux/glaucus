@@ -4,65 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom upstream 0001-exec-Return-126-on-most-errors-in-shellexec.patch &&
-  $SCRD/patch 1 $nom upstream 0002-main-Only-set-savestatus-in-exitcmd.patch &&
-  $SCRD/patch 1 $nom upstream 0003-mkinit-Split-reset-into-exitreset-and-reset.patch &&
-  $SCRD/patch 1 $nom upstream 0004-jobs-Only-clear-gotsigchld-when-waiting-for-everythi.patch &&
-  $SCRD/patch 1 $nom upstream 0005-parser-Save-restore-here-documents-in-command-substi.patch &&
-  $SCRD/patch 1 $nom upstream 0006-var-Set-IFS-to-fixed-value-at-start-time.patch &&
-  $SCRD/patch 1 $nom upstream 0007-output-Fix-fmtstr-return-value.patch &&
-  $SCRD/patch 1 $nom upstream 0008-jobs-Replace-some-uses-of-fmtstr-with-stpcpy-stpncpy.patch &&
-  $SCRD/patch 1 $nom upstream 0009-memalloc-Add-growstackto-helper.patch &&
-  $SCRD/patch 1 $nom upstream 0010-exec-Do-not-allocate-stack-string-in-padvance.patch &&
-  $SCRD/patch 1 $nom upstream 0011-builtin-Mark-more-regular-built-ins.patch &&
-  $SCRD/patch 1 $nom upstream 0012-exec-Stricter-pathopt-parsing.patch &&
-  $SCRD/patch 1 $nom upstream 0013-exec-Never-rehash-regular-built-ins.patch &&
-  $SCRD/patch 1 $nom upstream 0014-eval-Add-assignment-built-in-support-again.patch &&
-  $SCRD/patch 1 $nom upstream 0015-eval-Fail-immediately-with-redirections-errors-for-s.patch &&
-  $SCRD/patch 1 $nom upstream 0016-eval-Replace-with-listsetvar-with-mklocal-setvareq.patch &&
-  $SCRD/patch 1 $nom upstream 0017-eval-Add-vfork-support.patch &&
-  $SCRD/patch 1 $nom upstream 0018-builtin-Use-test_access-from-NetBSD-when-faccessat-i.patch &&
-  $SCRD/patch 1 $nom upstream 0019-shell-Don-t-include-config.h-for-native-helpers.patch &&
-  $SCRD/patch 1 $nom upstream 0020-expand-Use-HOME-in-tilde-expansion-when-it-is-empty.patch &&
-  $SCRD/patch 1 $nom upstream 0021-expand-Merge-syntax-quotes-in-memtodest-with-flags.patch &&
-  $SCRD/patch 1 $nom upstream 0022-expand-Fix-skipping-of-command-substitution-when-tri.patch &&
-  $SCRD/patch 1 $nom upstream 0023-expand-Do-not-reprocess-data-when-expanding-words.patch &&
-  $SCRD/patch 1 $nom upstream 0024-eval-Always-set-localvar_stop.patch &&
-  $SCRD/patch 1 $nom upstream 0025-memalloc-Avoid-looping-in-growstackto.patch &&
-  $SCRD/patch 1 $nom upstream 0026-expand-Ensure-result-is-escaped-in-cvtnum.patch &&
-  $SCRD/patch 1 $nom upstream 0027-man-Problems-in-$nom.1-sh.1-sh.distrib.1.patch &&
-  $SCRD/patch 1 $nom upstream 0029-builtin-Default-to-mktemp-not-tempfile.patch &&
-  $SCRD/patch 1 $nom upstream 0030-eval-Report-I-O-error-on-stdout.patch &&
-  $SCRD/patch 1 $nom upstream 0031-main-Print-n-upon-EOF-CTRL-D-when-run-interactively.patch &&
-  $SCRD/patch 1 $nom upstream 0032-expand-Fix-multiple-issues-with-EXP_DISCARD-in-evalv.patch &&
-  $SCRD/patch 1 $nom upstream 0033-eval-make-traps-work-when-set-e-is-enabled.patch &&
-  $SCRD/patch 1 $nom upstream 0034-shell-Update-configure.ac-with-suggestions-from-auto.patch &&
-  $SCRD/patch 1 $nom upstream 0035-shell-Enable-automake-silent-rules.patch &&
-  $SCRD/patch 1 $nom upstream 0036-eval-Silence-compiler-warning-about-missing-parenthe.patch &&
-  $SCRD/patch 1 $nom upstream 0037-eval-Use-the-correct-expansion-mode-for-fd-redirecti.patch &&
-  $SCRD/patch 1 $nom upstream 0038-expand-Eat-closing-brace-for-length-parameter-expans.patch &&
-  $SCRD/patch 1 $nom upstream 0039-parser-Do-not-push-token-back-before-parseheredoc.patch &&
-  $SCRD/patch 1 $nom upstream 0040-eval-Use-sh_warnx-instead-of-warnx.patch &&
-  $SCRD/patch 1 $nom upstream 0041-system-Disable-glibc-warning-on-sigsetmask.patch &&
-  $SCRD/patch 1 $nom upstream 0042-eval-avoid-leaking-memory-associated-with-redirectio.patch &&
-  $SCRD/patch 1 $nom upstream 0043-eval-Only-restore-exit-status-on-exit-return.patch &&
-  $SCRD/patch 1 $nom upstream 0044-shell-Fix-clang-warnings-about-string-plus-integer.patch &&
-  $SCRD/patch 1 $nom upstream 0045-output-Fix-clang-warnings-about-GNU-old-style-field-.patch &&
-  $SCRD/patch 1 $nom upstream 0046-redir-Handle-nested-exec-within-REALLY_CLOSED-redire.patch &&
-  $SCRD/patch 1 $nom upstream 0047-options-Do-not-set-commandname-in-procargs.patch &&
-  $SCRD/patch 1 $nom upstream 0048-expand-Fix-double-decrement-in-argstr.patch &&
-  $SCRD/patch 1 $nom upstream 0049-eval-Reset-handler-when-entering-a-subshell.patch &&
-  $SCRD/patch 1 $nom upstream 0050-parser-Fix-old-style-command-substitution-here-docum.patch &&
-  $SCRD/patch 1 $nom upstream 0051-expand-Fix-trailing-newlines-processing-in-backquote.patch &&
-  $SCRD/patch 1 $nom upstream 0052-parser-Only-accept-single-digit-parameter-expansion-.patch &&
-  $SCRD/patch 1 $nom upstream 0053-shell-delete-AC_PROG_YACC.patch
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static
 }
