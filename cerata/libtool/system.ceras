@@ -4,18 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom upstream 0010-maint-relax-sc_prohibit_test_dollar-check.patch &&
-  $SCRD/patch 1 $nom upstream 0016-gl-tests-new-tests-for-func_quote-family.patch &&
-  $SCRD/patch 1 $nom upstream 0017-syntax-check-fix-sed-syntax-errors.patch &&
-  $SCRD/patch 1 $nom upstream 0021-gl-tests-make-the-failure-more-readable.patch &&
-  $SCRD/patch 1 $nom upstream 0032-tests-fix-objdir-hardcoding-check-with-CFLAGS-g3.patch
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --program-prefix=g \
     --disable-static
@@ -28,7 +22,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip &&
-
-  ln -fsv glibtoolize $SCER/$nom/sac/usr/bin/libtoolize
+    install-strip
 }
