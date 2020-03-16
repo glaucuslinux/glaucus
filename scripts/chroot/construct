@@ -33,5 +33,4 @@ construct patch &&
 construct perl &&
 construct sed &&
 construct xz &&
-construct libarchive &&
-construct texinfo
+construct libarchive
