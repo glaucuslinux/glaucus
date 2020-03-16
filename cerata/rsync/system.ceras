@@ -4,56 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom upstream 0001-Prepare-the-repository-for-more-development.patch &&
-  $SCRD/patch 1 $nom upstream 0002-Allow-some-pre-post-xfer-exec-shell-restrictions.patch &&
-  $SCRD/patch 1 $nom upstream 0003-Avoid-a-compiler-error-warning-about-shifting-a-nega.patch &&
-  $SCRD/patch 1 $nom upstream 0004-Need-to-mark-xattr-rules-in-get_rule_prefix.patch &&
-  $SCRD/patch 1 $nom upstream 0005-Fix-itemizing-of-wrong-dir-name-on-some-iconv-transf.patch &&
-  $SCRD/patch 1 $nom upstream 0006-Document-how-a-leading-comma-changes-the-gid-parsing.patch &&
-  $SCRD/patch 1 $nom upstream 0007-Don-t-force-cygwin-to-solaris-ACLs-anymore.patch &&
-  $SCRD/patch 1 $nom upstream 0008-Try-to-be-clearer-that-append-verify-isn-t-a-general.patch &&
-  $SCRD/patch 1 $nom upstream 0009-Avoid-a-potential-out-of-bounds-read-in-daemon-mode-.patch &&
-  $SCRD/patch 1 $nom upstream 0010-Silence-fall-through-warnings.patch &&
-  $SCRD/patch 1 $nom upstream 0011-Avoid-a-failed-test-if-dirs-report-1-hlink-e.g.-WSL-.patch &&
-  $SCRD/patch 1 $nom upstream 0012-Fix-2-spelling-errors-pointed-out-by-bug-13734.patch &&
-  $SCRD/patch 1 $nom upstream 0013-Avoid-a-yodl-macro-warning.patch &&
-  $SCRD/patch 1 $nom upstream 0014-Make-sure-that-some-memory-zeroing-always-happens.patch &&
-  $SCRD/patch 1 $nom upstream 0015-Avoid-a-yodl-macro-warning.patch &&
-  $SCRD/patch 1 $nom upstream 0016-No-need-to-strdup-each-new-section-since-we-stopped-.patch &&
-  $SCRD/patch 1 $nom upstream 0017-Save-each-expanded-daemon-config-string-on-first-use.patch &&
-  $SCRD/patch 1 $nom upstream 0018-Improve-check-for-.-and-guard-against-dash-args.patch &&
-  $SCRD/patch 1 $nom upstream 0019-Reject-log-file-when-read-only.patch &&
-  $SCRD/patch 1 $nom upstream 0020-Fix-prealloc-to-keep-file-size-0-when-possible.patch &&
-  $SCRD/patch 1 $nom upstream 0021-Avoid-leaving-a-file-open-on-error-return.patch &&
-  $SCRD/patch 1 $nom upstream 0022-Avoid-warning-about-leaked-mem-didn-t-affect-$nom-s.patch &&
-  $SCRD/patch 1 $nom upstream 0023-Use-a-separate-pass-by-value-pointer-for-clarity.patch &&
-  $SCRD/patch 1 $nom upstream 0024-Update-option-culling-to-handle-latest-changes.patch &&
-  $SCRD/patch 1 $nom upstream 0025-Improve-write-only-sender-check-handle-2-new-options.patch &&
-  $SCRD/patch 1 $nom upstream 0026-Handle-a-run-from-down-inside-the-checkout-tree.patch &&
-  $SCRD/patch 1 $nom upstream 0027-Fix-remove-source-files-sanity-check-w-copy-links-th.patch &&
-  $SCRD/patch 1 $nom upstream 0028-Tweak-the-copyright-year.patch &&
-  $SCRD/patch 1 $nom upstream 0029-Fix-zlib-CVE-2016-9840.patch &&
-  $SCRD/patch 1 $nom upstream 0030-Fix-zlib-CVE-2016-9841.patch &&
-  $SCRD/patch 1 $nom upstream 0031-Fix-zlib-CVE-2016-9842.patch &&
-  $SCRD/patch 1 $nom upstream 0032-Fix-zlib-CVE-2016-9843.patch &&
-  $SCRD/patch 1 $nom upstream 0033-Some-doc-tweaks-suggested-by-Cl-ment-Pit-Claudel.patch &&
-  $SCRD/patch 1 $nom upstream 0034-Clarify-the-cut-off-point-for-copy-safe-links.patch &&
-  $SCRD/patch 1 $nom upstream 0035-Fix-bug-in-try_dests_reg-that-Florian-Zumbiehl-point.patch &&
-  $SCRD/patch 1 $nom upstream 0036-Try-to-fix-the-iconv-crash-in-bug-11338.patch
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr
 }
 
 build_system() {
-  make \
-    reconfigure &&
-
   make
 }
 
