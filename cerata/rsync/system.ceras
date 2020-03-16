@@ -10,7 +10,8 @@ prepare_system() {
 
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-debug
 }
 
 build_system() {
