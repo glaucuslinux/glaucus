@@ -4,31 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom upstream 0005-added-mpc_sum-based-on-mpfr_sum.patch &&
-  $SCRD/patch 1 $nom upstream 0006-check-return-value-of-malloc-is-not-NULL-in-mpc_sum.patch &&
-  $SCRD/patch 1 $nom upstream 0007-mpc_sum-Cosmetic-changes.patch &&
-  $SCRD/patch 1 $nom upstream 0008-added-mpc_dot-dot-product.patch &&
-  $SCRD/patch 1 $nom upstream 0009-src-dot.c-fixed-bug-mentioned-by-Trevor-Spiteri.patch &&
-  $SCRD/patch 1 $nom upstream 0010-src-dot.c-implement-a-suggestion-from-Trevor-Spiteri.patch &&
-  $SCRD/patch 1 $nom upstream 0011-avoid-huge-inefficiency-due-to-MPC_INEX-evaluating-t.patch &&
-  $SCRD/patch 1 $nom upstream 0012-m4-Disable-Werror-completely.patch &&
-  $SCRD/patch 1 $nom upstream 0019-added-assertions-in-tests-tdot.c-which-fail-currentl.patch &&
-  $SCRD/patch 1 $nom upstream 0020-fixed-a-bug-in-mpc_dot-thanks-Trevor-Spiteri-for-ide.patch &&
-  $SCRD/patch 1 $nom upstream 0021-improve-mpc_sqrt-avoiding-the-use-of-mpc_abs.patch &&
-  $SCRD/patch 1 $nom upstream 0022-added-example-which-triggers-a-bug-in-mpc_div.patch &&
-  $SCRD/patch 1 $nom upstream 0023-Whitespace-edits.patch &&
-  $SCRD/patch 1 $nom upstream 0024-improved-mpc_div-using-scaling-of-exponents.patch &&
-  $SCRD/patch 1 $nom upstream 0025-removed-stray-backslashes-in-the-html-version-thanks.patch &&
-  $SCRD/patch 1 $nom upstream 0026-log-log.patch &&
-  $SCRD/patch 1 $nom upstream 0027-added-Known-problems-section.patch &&
-  $SCRD/patch 1 $nom upstream 0029-added-reference-to-Pascal-Molin-paper-on-erf.patch
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
+  $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static
 }
