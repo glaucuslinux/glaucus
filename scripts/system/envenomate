@@ -81,7 +81,6 @@ envenomate xz
 #envenomate patch &&
 #envenomate mandoc &&
 #envenomate libarchive &&
-#envenomate texinfo &&
 #envenomate vim &&
 #envenomate execline &&
 #envenomate s6 &&
