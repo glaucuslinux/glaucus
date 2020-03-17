@@ -1,7 +1,7 @@
 nom=libpng
 ver=git
 url=https://github.com/glennrp/$nom
-lic='Apachev2.0 BSDv2 GPLv2+ libpngv2 MIT zlib'
+lic='Apachev2.0 BSDv2 GPLv2+ ${nom}v2 MIT zlib'
 
 prepare_system() {
   mkdir -v $SBLD/$nom
