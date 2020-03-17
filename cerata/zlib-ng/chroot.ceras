@@ -11,7 +11,7 @@ prepare_chroot() {
 configure_chroot() {
   $SCRD/patch 0 $nom glaucus fix-shell &&
 
-  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOCOMMON" || printf -- "$CFLAGS")" \
+  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
   ./configure \
     --prefix=$TOOL \
     --zlib-compat
