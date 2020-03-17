@@ -49,13 +49,11 @@ prepare_system() {
 configure_system() {
   $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
 
-  make \
-    O=$SBLD/$nom \
-    oldconfig &&
-
-  make \
-    O=$SBLD/$nom \
-    prepare
+  for i in oldconfig prepare; do
+    make \
+      O=$SBLD/$nom \
+      $i
+  done
 }
 
 build_system() {
