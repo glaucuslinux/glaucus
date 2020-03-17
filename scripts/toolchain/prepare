@@ -4,4 +4,5 @@
 sudo rm -frv $TOOL $GLAT &&
 
 install -dv $GLAT &&
+
 sudo ln -fsv $GLAT $TOOL
