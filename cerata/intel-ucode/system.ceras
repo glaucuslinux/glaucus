@@ -16,7 +16,7 @@ configure_system() {
 
 build_system() {
   iucode_tool \
-    --write-earlyfw=intel-ucode.img intel-ucode/ intel-ucode-with-caveats/ \
+    --write-earlyfw=$nom.img $nom/ $nom-with-caveats/ \
     --overwrite \
     --mini-earlyfw
 }
@@ -24,5 +24,5 @@ build_system() {
 install_system() {
   install -dv $SCER/$nom/sac/boot &&
 
-  $RSYNC intel-ucode.img $SCER/$nom/sac/boot
+  $RSYNC $nom.img $SCER/$nom/sac/boot
 }
