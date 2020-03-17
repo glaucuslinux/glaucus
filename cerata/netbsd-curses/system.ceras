@@ -11,12 +11,9 @@ prepare_system() {
 }
 
 configure_system() {
-  printf "PREFIX = /usr
-AR = $AR
-RANLIB = $RANLIB\n" > config.mak &&
+  $RSYNC $CERD/$nom/config.mak.system config.mak &&
 
-  sed 's/-O0 //' \
-    -i GNUmakefile
+  $SCRD/patch 0 $nom glaucus optimize-more
 }
 
 build_system() {
