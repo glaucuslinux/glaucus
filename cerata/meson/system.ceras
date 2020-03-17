@@ -8,7 +8,7 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   sed "s/isfile(a)/& and not a.startswith('\/dev')/" \
-    -i mesonbuild/interpreter.py
+    -i ${nom}build/interpreter.py
 }
 
 configure_system() {

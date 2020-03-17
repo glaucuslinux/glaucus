@@ -5,6 +5,6 @@
 
 nom=meson
 ver=0.53.2
-url=https://github.com/mesonbuild/$nom/releases/download/$ver/$nom-$ver.tar.gz
+url=https://github.com/${nom}build/$nom/releases/download/$ver/$nom-$ver.tar.gz
 sum=005340f0faaa8fc5065b916355af6c2e3311da59fae67c781eb9ca47c5430dca85e9aa1052c5e92b3da8546b4b197fe623a6d48b073a24e05535141ba59ecac7
 lic=Apache-2.0
