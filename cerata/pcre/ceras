@@ -1,5 +1,5 @@
 nom=pcre
-ver=8.43
+ver=8.44
 url=https://ftp.$nom.org/pub/$nom/$nom-$ver.tar.bz2
 lic=BSDv3
 build(){
