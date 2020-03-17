@@ -1,7 +1,7 @@
 nom=nsss
-ver=0.0.2.1
+ver=0.0.2.2
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=fb96459b70738a15f196f33d77316c858c7b4930f7a72f6b608b435d945df888304b221ce73b43a1095b670f63f5eefbd44a1afe4b02462048a1e62b05194226
+sum=6cece92d0aa48eb47baa321d20b77fe48d7255dd07d2d4226c9319d817e6355f72277c119ef9aa2dab8c65e144a9c13ca9df4d55120c250ca048c109ee16380f
 lic=ISC
 build(){
         $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
