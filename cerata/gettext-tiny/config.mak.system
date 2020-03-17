@@ -1,0 +1,4 @@
+prefix=/usr
+LIBINTL=MUSL
+AR=gcc-ar
+RANLIB=gcc-ranlib

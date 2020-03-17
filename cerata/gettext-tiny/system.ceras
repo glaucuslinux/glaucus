@@ -58,12 +58,10 @@ prepare_system() {
 }
 
 configure_system() {
-  printf "prefix=/usr
-LIBINTL=MUSL
-AR=$AR
-RANLIB=$RANLIB
-CFLAGS=$CFLAGS -fPIC
-LDFLAGS=$LDFLAGS\n" > config.mak
+  $RSYNC $CERD/$nom/config.mak.system config.mak &&
+
+  printf "CFLAGS=$CFLAGS -fPIC
+LDFLAGS=$LDFLAGS\n" >> config.mak
 }
 
 build_system() {
