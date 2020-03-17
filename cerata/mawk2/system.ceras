@@ -23,6 +23,6 @@ install_system() {
   $RSYNC mawk $SCER/$nom/sac/usr/bin/$nom &&
   chmod 0755 $SCER/$nom/sac/usr/bin/$nom &&
 
-  $RSYNC man/mawk.1 $SCER/$nom/sac/usr/share/man/man1/mawk2.1 &&
-  chmod 0644 $SCER/$nom/sac/usr/share/man/man1/mawk2.1
+  $RSYNC man/mawk.1 $SCER/$nom/sac/usr/share/man/man1/$nom.1 &&
+  chmod 0644 $SCER/$nom/sac/usr/share/man/man1/$nom.1
 }
