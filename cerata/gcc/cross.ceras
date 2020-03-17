@@ -12,7 +12,7 @@ prepare_cross() {
   
   cd $TSRC/$nom &&
 
-  $SCRD/patch 0 $nom adjust-paths &&
+  $SCRD/patch 0 $nom glaucus adjust-paths &&
 
   install -dv $XBLD/$nom &&
   cd $XBLD/$nom
