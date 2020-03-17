@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=mdevd
-ver=0.1.1.1
+ver=0.1.1.2
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=cd7d6dcddc2bca30a3dd4583c2aa800fc54b559d4ca9385d3247eec93ee8500493254a60e47028243f715e6a3517930135407a5249641c8f23efdcaa67a50467
+sum=7d7a25facde1291854f564e805cc2bf7e7e0b06aaa4b631a640cf999007a3ef063ec68e8973559ec69023f40bb6ed24937d4d8510fd697f34a97345a22ede5b5
 lic=ISC
