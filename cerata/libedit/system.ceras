@@ -28,8 +28,8 @@ install_system() {
  
   install -dv $SCER/$nom/sac/usr/include/readline &&
   
-  touch $SCER/$nom/sac/usr/include/readline/history.h &&
-  touch $SCER/$nom/sac/usr/include/readline/tilde.h &&
+  touch $SCER/$nom/sac/usr/include/readline/history.h \
+    $SCER/$nom/sac/usr/include/readline/tilde.h &&
 
   ln -fsv ../editline/readline.h $SCER/$nom/sac/usr/include/readline/readline.h
 }
