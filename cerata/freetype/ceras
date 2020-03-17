@@ -1,17 +1,17 @@
 nom=freetype
 ver=git
-url=https://$ver.sv.nongnu.org/r/$nom/freetype2
+url=https://$ver.sv.nongnu.org/r/$nom/${nom}2
 lic='FTL GPLv2+ MIT zlib'
 
 prepare_system() {
-  $RSYNC $CERD/$nom/freetype2/ $SSRC/$nom --delete
+  $RSYNC $CERD/$nom/${nom}2/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
 configure_system() {
   ./autogen.sh
   case $ceras in
-    freetype_1)
+    ${nom}_1)
       ZLIB_CFLAGS=-I$GLAD/usr/include \
       ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
       BZIP2_CFLAGS=-I$GLAD/usr/include \
@@ -37,7 +37,7 @@ configure_system() {
         --without-quickdraw-carbon \
         --without-ats
       ;;
-    freetype_2)
+    ${nom}_2)
       ZLIB_CFLAGS=-I$GLAD/usr/include \
       ZLIB_LIBS="-L$GLAD/usr/lib -lz" \
       BZIP2_CFLAGS=-I$GLAD/usr/include \
