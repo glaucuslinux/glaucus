@@ -17,10 +17,10 @@ configure_chroot() {
 }
 
 build_chroot() {
-  make
+  $nom
 }
 
 install_chroot() {
-  make \
+  $nom \
     install-strip
 }

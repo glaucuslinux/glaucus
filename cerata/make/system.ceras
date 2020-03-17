@@ -15,11 +15,11 @@ configure_system() {
 }
 
 build_system() {
-  make
+  $nom
 }
 
 install_system() {
-  make \
+  $nom \
     DESTDIR=$SCER/$nom/sac \
     install-strip
 }
