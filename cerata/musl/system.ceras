@@ -10,7 +10,7 @@ prepare_system() {
 
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
-    CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOALIGNNOFPMATHNOLTO" || printf -- "$CFLAGSNOLTO")" \
+    CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOALIGNNOFPMATHNOLTO" "$CFLAGSNOLTO")" \
     --prefix=/usr \
     --syslibdir=/usr/lib \
     --disable-wrapper \
