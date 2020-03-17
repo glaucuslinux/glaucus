@@ -1,6 +1,6 @@
 nom=swaybg
 ver=git
-url=https://github.com/swaywm/swaybg
+url=https://github.com/swaywm/$nom
 lic=MIT
 build(){
         $RSYNC $CERD/$nom/$nom $SSRC --delete
