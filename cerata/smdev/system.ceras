@@ -35,7 +35,7 @@ install_system() {
   install -dv $SCER/$nom/sac/etc/$nom
 
   $RSYNC proceeddev $SCER/$nom/sac/etc/$nom
-  chmod 744 $SCER/$nom/sac/etc/$nom/proceeddev
+  chmod -v 0744 $SCER/$nom/sac/etc/$nom/proceeddev
 
   install -dv $SCER/$nom/sac/etc/$nom/add
   install -dv $SCER/$nom/sac/etc/$nom/remove
