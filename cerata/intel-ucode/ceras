@@ -7,4 +7,4 @@ nom=intel-ucode
 ver=20191115
 url=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-$ver.tar.gz
 sum=11014c16bde83ac290bc75e458242f5e64b8dffd49de2e938f61f4a09979cd5e80dd1a85d2ccbac067e4398dc3d93ef3583e4aa9b2e545ba46d26e65ec1e2881
-lic=intel-ucode-2018
+lic=$nom-2018
