@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=execline
-ver=2.5.3.0
+ver=2.6.0.0
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=75b584e2365288bb1d05fd67e390fab1b6ccf48cb0a2ccbfb84a7d22ddf6957c9c591ab165542ed180b2ff1ef9ceb2a16cbae569e69c5dd5f20e52be092cff15
+sum=890a533a6ffad98b066adda34ae4a7e69daa98950974fcdb4635cff4c8957851b7fc6beaf25802c7ed5085285fc9b2aa9d9806afdb1aaa6884745a978b969f7a
 lic=ISC
