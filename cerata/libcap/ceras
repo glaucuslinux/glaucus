@@ -5,6 +5,6 @@
 
 nom=libcap
 ver=2.33
-url=https://cdn.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$nom-$ver.tar.xz
+url=https://cdn.kernel.org/pub/linux/libs/security/linux-privs/${nom}2/$nom-$ver.tar.xz
 sum=bb5bdc1318b524ee607026038dff7c1c621f1710fa07f8c341b1f86761cb086d32b93d7a12dbe4256d4440ee984143db8659d2679330e221ce184d7048c142b4
 lic='BSD-2-Clause GPL-2.0-only'
