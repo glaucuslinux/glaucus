@@ -11,27 +11,11 @@ prepare_native() {
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   $RSYNC $SRCD/isl/isl-0.22.1/ $TSRC/$nom/isl --delete &&
 
-  cd $TSRC/$nom/$nom/config &&
+  cd $TSRC/$nom &&
 
-  for file in i386/linux.h i386/linux64.h linux.h; do
-    sed "s/\/lib/\\$TOOL&/" \
-      -i $file &&
+  $SCRD/patch 0 $nom adjust-paths &&
 
-    printf "
-#undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$TOOL/lib/\"
-
-#undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> $file
-  done &&
-
-  sed '/m64/s/lib64/lib/' \
-    -i i386/t-linux64 &&
-
-  sed "/MUSL_DYNAMIC_LINKER64/s/\/dev\/null/\\$TOOL\/lib\/ld-musl-$ARCH.so.1/" \
-    -i linux.h &&
-
-  cat ../limitx.h ../glimits.h ../limity.h > $(dirname $($TUPL-$nom \
+  cat $nom/limitx.h $nom/glimits.h $nom/limity.h > $(dirname $($TUPL-$nom \
     -print-lib$nom-file-name))/include-fixed/limits.h &&
 
   install -dv $NBLD/$nom &&
