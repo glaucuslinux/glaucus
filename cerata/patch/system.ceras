@@ -11,8 +11,8 @@ prepare_system() {
   $SCRD/$nom 1 $nom upstream 0002-Test-suite-compatibility-fixes.$nom &&
   $SCRD/$nom 1 $nom upstream 0003-Test-suite-fix-Korn-shell-incompatibility.$nom &&
   $SCRD/$nom 1 $nom upstream 0004-Fix-segfault-with-mangled-rename-$nom.$nom &&
-  $SCRD/$nom 1 $nom upstream 0005-Allow-input-files-to-be-missing-for-ed-style-patches.$nom &&
-  $SCRD/$nom 1 $nom upstream 0006-Fix-arbitrary-command-execution-in-ed-style-patches-.$nom &&
+  $SCRD/$nom 1 $nom upstream 0005-Allow-input-files-to-be-missing-for-ed-style-${nom}es.$nom &&
+  $SCRD/$nom 1 $nom upstream 0006-Fix-arbitrary-command-execution-in-ed-style-${nom}es-.$nom &&
   $SCRD/$nom 1 $nom upstream 0007-Invoke-ed-directly-instead-of-using-the-shell.$nom &&
   $SCRD/$nom 1 $nom upstream 0011-Fix-check-of-return-value-of-fwrite.$nom &&
   $SCRD/$nom 1 $nom upstream 0012-Fix-ed-style-test-failure.$nom &&
