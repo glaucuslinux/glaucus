@@ -1,0 +1,370 @@
+#!/usr/bin/env sh
+# This file is part of libertine. It is subject to the licence terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/libertine-linux-packages/libertine/master/COPYRIGHT. No part of libertine, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2016 The developers of libertine. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/libertine-linux-packages/libertine/master/COPYRIGHT.
+
+
+# Note: AC_CONFIG_AUX_DIR and AC_CONFIG_MACRO_DIRS are ignored; we do not try to find them, it's very hard
+# Note: recursion isn't supported
+# Note: installing ltdl or ltdl.tar.gz isn't supported
+set -e
+set -u
+set -f
+
+
+_libtoolize_execute()
+{
+	if $libtoolize_dryRun; then
+		echo "$@"
+		return 0
+	fi
+	
+	if [ $libtoolize_verbosityLevel -eq 3 ]; then
+		set -x 2>/dev/null
+	fi
+	
+	"$@"
+	
+	if [ $libtoolize_verbosityLevel -eq 3 ]; then
+		set +x 2>/dev/null
+	fi
+}
+
+_libtoolize_linkOrCopyFile()
+{
+	local sourceFilePath="$1"
+	local destinationFolderPath="$2"
+	local destinationFilePath="$3"
+	
+	if $libtoolize_force; then
+		_libtoolize_execute rm -rf "$destinationFilePath"
+	elif [ -e "$destinationFilePath" ]; then
+		return 0
+	fi
+	
+	if $libtoolize_copy; then
+		printf "libtoolize: copying file '%s'\n" "$destinationFilePath"
+		_libtoolize_execute cp "$sourceFilePath" "$destinationFolderPath"
+	else
+		printf "libtoolize: linking file '%s'\n" "$destinationFilePath"
+		_libtoolize_execute ln -s "$sourceFilePath" "$destinationFilePath"
+	fi
+}
+
+core_variable_isSet()
+{
+	# These expressions work in all shells bar pdksh 5.2.14, which treats expanded emptiness as unset...
+	# Other techniques here: http://mywiki.wooledge.org/BashFAQ/083
+	# eval "[ \"\${$1+set}\" = 'set' ]"
+	# eval "$(printf '[ "${%s+set}" = '%s' ]' "$1" "set")"
+	
+	local x
+	eval x="\"\${$1+set}\""
+	[ "$x" = 'set' ]
+}
+
+libtoolize_processCommandLine()
+{
+	libtoolize_copy=false
+	libtoolize_dryRun=false
+	libtoolize_force=false
+	libtoolize_install=false
+	libtoolize_installLtdlTar=false
+	libtoolize_installLtdl=false
+	libtoolize_ltdlValue='libltdl'
+	libtoolize_warn=true
+	libtoolize_preparation=''
+	libtoolize_verbosityLevel=1
+	
+	if core_variable_isSet LIBTOOLIZE_OPTIONS; then
+		# Double quotes deliberately omitted
+		local libtoolizeEnvironmentVariableOption
+		for libtoolizeEnvironmentVariableOption in $LIBTOOLIZE_OPTIONS
+		do
+			# Unrecognised options are to be ignored
+			case "$argument" in
+			
+				--debug)
+					libtoolize_verbosityLevel=3
+				;;
+			
+				--no-warn)
+					libtoolize_warn=false
+				;;
+			
+				# -q isn't specified by man page
+				--quiet)
+					libtoolize_verbosityLevel=0
+				;;
+			
+				# -v isn't specified by man page
+				--verbose)
+					libtoolize_verbosityLevel=2
+				;;
+			esac
+		done
+	fi
+	
+	local argument
+	while [ $# -gt 0 ]
+	do
+		argument="$1"
+		shift 1
+		
+		case "$argument" in
+			
+			--)
+				break
+			;;
+			
+			--automake)
+				libtoolize_verbosityLevel=0
+			;;
+			
+			-c|--copy)
+				libtoolize_copy=true
+			;;
+			
+			--debug)
+				libtoolize_verbosityLevel=3
+			;;
+			
+			-n|--dry-run)
+				libtoolize_dryRun=true
+			;;
+			
+			-f|--force)
+				libtoolize_force=true
+			;;
+			
+			-i|--install)
+				libtoolize_install=true
+			;;
+			
+			--ltdl-tar)
+				libtoolize_installLtdlTar=true
+			;;
+			
+			--ltdl=*)
+				libtoolize_installLtdl=true
+				libtoolize_ltdlValue="${argument#--ltdl=*}"
+			;;
+			
+			--ltdl)
+				libtoolize_installLtdl=true
+				if [ $# -gt 0 ]; then
+					case "$1" in
+						
+						--)
+							:
+						;;
+						
+						--*)
+							:
+						;;
+						
+						-*)
+							:
+						;;
+						
+						*)
+							libtoolize_ltdlValue="$1"
+							shift 1
+						;;
+						
+					esac
+				fi
+			;;
+			
+			--no-warn)
+				libtoolize_warn=false
+			;;
+			
+			--nonrecursive)
+				libtoolize_preparation='nonRecursive'
+			;;
+			
+			-q|--quiet)
+				libtoolize_verbosityLevel=0
+			;;
+			
+			--recursive)
+				libtoolize_preparation='recursive'
+			;;
+			
+			--subproject)
+				libtoolize_preparation='subproject'
+			;;
+			
+			-v|--verbose)
+				libtoolize_verbosityLevel=2
+			;;
+			
+			--version)
+				printf 'libtoolize 2.4.6 (replacement)\n'
+				exit 0
+			;;
+			
+			-h|--help)
+				printf 'See man pages\nThis text is to fool gnulib bootstrap:-\n --install\n'
+				exit 0
+			;;
+			
+			*)
+				printf "Unrecognised option '%s'\n" "$argument"
+				exit 1
+			;;
+			
+		esac
+		
+	done
+	
+	if [ $# -ne 0 ]; then
+		printf "Non options '$@' remain\n"
+		exit 1
+	fi
+}
+
+libtoolize_guard()
+{
+	libtoolize_sourceFilesPath="$libtoolize_sysrootExceptForEtcFolderPath"/share/libtoolize
+	if [ ! -d "$libtoolize_sourceFilesPath" ]; then
+		printf "libtoolize_sourceFilesPath '$libtoolize_sourceFilesPath' does not exist\n" 1>&2
+		exit 1
+	fi
+}
+
+_libtoolize_install()
+{
+	local destinationName="$1"
+	local destinationFolderName="$2"
+	shift 2
+	
+	local destinationFolderPath="$(pwd)"/"$destinationFolderName"
+	
+	printf "libtoolize: putting macros in %s, '%s'.\n" "$destinationName" "$destinationFolderPath" 1>&2
+	_libtoolize_execute mkdir -m 0755 -p "$destinationFolderPath"
+	
+	local sourceFolderPath="$libtoolize_sourceFilesPath"/"$destinationName"
+	
+	cd "$sourceFolderPath" 1>/dev/null 2>/dev/null
+		set +f
+			local fileName
+			for fileName in *
+			do
+				set -f
+		
+				if [ ! -e "$fileName" ]; then
+					break
+				fi
+				
+				local sourceFilePath="$sourceFolderPath"/"$fileName"
+		
+				local destinationFilePath="$destinationFolderPath"/"$fileName"
+								
+				_libtoolize_linkOrCopyFile "$sourceFilePath" "$destinationFolderPath" "$destinationFilePath"
+			done
+		set -f
+	cd - 1>/dev/null 2>/dev/null
+}
+
+libtoolize_installLtMain()
+{
+	_libtoolize_install AC_CONFIG_AUX_DIR build-aux
+}
+
+libtoolize_installMacros()
+{
+	_libtoolize_install AC_CONFIG_MACRO_DIRS m4
+}
+
+libtoolize_findSysrootExceptForEtcFolderPath()
+{
+	# pdksh / mksh have problems with unsetting a variable that was never set...
+	if [ "${CDPATH+set}" = 'set' ]; then
+		unset CDPATH
+	fi
+
+	# Assumes we are in /usr/bin or /usr/local/bin or /opt/package/version/bin
+	cd "$_program_path"/.. 1>/dev/null
+	pwd
+}
+
+libtoolize_main()
+{
+	libtoolize_sysrootExceptForEtcFolderPath="$(libtoolize_findSysrootExceptForEtcFolderPath)"
+
+	libtoolize_processCommandLine "$@"
+	libtoolize_guard
+	libtoolize_installLtMain
+	libtoolize_installMacros
+}
+
+_program_path_find()
+{
+	if [ "${_program_fattening_program_path+set}" = 'set' ]; then
+		printf '%s\n' "$_program_fattening_program_path"
+
+	elif [ "${0%/*}" = "$0" ]; then
+
+		# We've been invoked by the interpreter as, say, bash program
+		if [ -r "$0" ]; then
+			pwd -P
+		# Clutching at straws; probably run via a download, anonymous script, etc, weird execve, etc
+		else
+			printf '\n'
+		fi
+
+	else
+
+		# We've been invoked with a relative or absolute path (also when invoked via PATH in a shell)
+
+		_program_path_find_parentPath()
+		{
+			parentPath="${scriptPath%/*}"
+			if [ -z "$parentPath" ]; then
+				parentPath='/'
+			fi
+			cd "$parentPath" 1>/dev/null
+		}
+
+		# pdksh / mksh have problems with unsetting a variable that was never set...
+		if [ "${CDPATH+set}" = 'set' ]; then
+			unset CDPATH
+		fi
+
+		if command -v realpath 1>/dev/null 2>/dev/null; then
+			(
+				scriptPath="$(realpath "$0")"
+
+				_program_path_find_parentPath
+				pwd -P
+			)
+		elif command -v readlink 1>/dev/null 2>/dev/null; then
+			(
+				scriptPath="$0"
+
+				while [ -L "$scriptPath" ]
+				do
+					_program_path_find_parentPath
+					scriptPath="$(readlink "$scriptPath")"
+				done
+
+				_program_path_find_parentPath
+				pwd -P
+			)
+		else
+			# This approach will fail in corner cases where the script itself is a symlink in a path not parallel with the concrete script
+			(
+				scriptPath="$0"
+
+				_program_path_find_parentPath
+				pwd -P
+			)
+		fi
+
+	fi
+}
+
+_program_path="$(_program_path_find)"
+
+libtoolize_main "$@"
