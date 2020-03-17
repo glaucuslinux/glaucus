@@ -6,9 +6,8 @@
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
-  
-  sed 's/%F/%b &/' \
-    -i toys/posix/ls.c
+
+  $SCRD/patch 0 $nom glaucus fix-long-iso
 }
 
 configure_system() {

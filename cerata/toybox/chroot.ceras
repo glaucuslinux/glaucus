@@ -7,8 +7,7 @@ prepare_chroot() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
-  sed 's/%F/%b &/' \
-    -i toys/posix/ls.c
+  $SCRD/patch 0 $nom glaucus fix-long-iso
 }
 
 configure_chroot() {
