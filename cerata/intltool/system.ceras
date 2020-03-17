@@ -7,8 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 $nom void avoid-process-race &&
-  $SCRD/patch 0 $nom void perl522
+  for i in avoid-process-race perl522; do
+    $SCRD/patch 0 $nom void $i
+  done
 }
 
 configure_system() {
