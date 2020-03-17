@@ -7,13 +7,13 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom ibara 0001-Remove-clear-line-from-example-.profile.patch &&
-  $SCRD/patch 1 $nom ibara 0002-Update-to-latest-ksh-code-fixes-a-hard-failure-with-.patch &&
-  $SCRD/patch 1 $nom ibara 0003-Manual-page-updates.patch &&
-  $SCRD/patch 1 $nom ibara 0004-portable.h-midipix-port.patch &&
-  $SCRD/patch 1 $nom ibara 0005-Add-midipix-to-the-list-of-supported-systems.patch &&
-  $SCRD/patch 1 $nom ibara 0006-configure-Implement-bindir.patch &&
-  $SCRD/patch 1 $nom ibara 0008-Tighten-configure-a-little.patch
+  $SCRD/patch 1 $nom ibara 0001-Remove-clear-line-from-example-.profile &&
+  $SCRD/patch 1 $nom ibara 0002-Update-to-latest-ksh-code-fixes-a-hard-failure-with- &&
+  $SCRD/patch 1 $nom ibara 0003-Manual-page-updates &&
+  $SCRD/patch 1 $nom ibara 0004-portable.h-midipix-port &&
+  $SCRD/patch 1 $nom ibara 0005-Add-midipix-to-the-list-of-supported-systems &&
+  $SCRD/patch 1 $nom ibara 0006-configure-Implement-bindir &&
+  $SCRD/patch 1 $nom ibara 0008-Tighten-configure-a-little
 }
 
 configure_system() {
