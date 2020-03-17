@@ -17,8 +17,7 @@ configure_native() {
 
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
-  sed 's/ $(libdir)\/libc.so/ libc.so/' \
-    -i Makefile
+  $SCRD/patch 0 $nom remove-libdir
 }
 
 build_native() {

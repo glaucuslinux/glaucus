@@ -18,8 +18,7 @@ configure_system() {
 
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
-  sed 's/ $(libdir)\/libc.so/ libc.so/' \
-    -i Makefile
+  $SCRD/patch 0 $nom remove-libdir
 }
 
 build_system() {
@@ -32,11 +31,8 @@ install_system() {
 
   ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
 
-  printf '/usr/lib\n' > /etc/ld-$nom-$ARCH.path &&
+  $RSYNC $CERD/$nom/ld-$nom-$ARCH.path /etc &&
+  $RSYNC $CERD/$nom/ldconfig /usr/bin &&
 
-  $RSYNC $CERD/$nom/ldconfig /usr/bin/ldconfig &&
-  chmod +x /usr/bin/ldconfig &&
-
-  rm -fv /usr/include/utmp.h &&
-  rm -fv /usr/include/utmpx.h
+  rm -fv /usr/include/utmp.h /usr/include/utmpx.h
 }
