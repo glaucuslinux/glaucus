@@ -1,0 +1,23 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  :
+}
+
+configure_system() {
+  :
+}
+
+build_system() {
+  :
+}
+
+install_system() {
+  install -dv $SCER/$nom/sac/etc/$nom $SCER/$nom/sac/usr/bin &&
+
+  $RSYNC $CERD/$nom/${nom}rc.system $SCER/$nom/sac/etc/$nom/${nom}rc &&
+  $RSYNC $SCRD/$nom/$nom-$ver/$nom.pl $SCER/$nom/sac/usr/bin/$nom
+}

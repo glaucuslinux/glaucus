@@ -1,0 +1,23 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_chroot() {
+  :
+}
+
+configure_chroot() {
+  :
+}
+
+build_chroot() {
+  :
+}
+
+install_chroot() {
+  install -dv /etc/$nom &&
+
+  $RSYNC $CERD/$nom/${nom}rc.chroot /etc/$nom/${nom}rc &&
+  $RSYNC $SCRD/$nom/$nom-$ver/$nom.pl /usr/bin/$nom
+}

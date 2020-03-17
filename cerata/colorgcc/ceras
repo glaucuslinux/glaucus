@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=colorgcc
+ver=1.4.5
+url=https://github.com/$nom/$nom/archive/$ver.tar.gz
+sum=4125ada9b65b6387c2c259e2347236b3b18f7cdbf06ae0bb0212474a11354be6d463fbc4d239c2eb666c8246fc20277e06c8272fdee6dd4f60caa66164bcc1cf
+lic=GPL-2.0-only

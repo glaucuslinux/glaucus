@@ -1,0 +1,30 @@
+chainedPath: 1
+
+color-g++: /toolchain/bin/g++
+color-gcc: /toolchain/bin/gcc
+color-c++: /toolchain/bin/c++
+color-cc:  /toolchain/bin/cc
+
+g++: /toolchain/bin/g++
+gcc: /toolchain/bin/gcc
+c++: /toolchain/bin/c++
+cc:  /toolchain/bin/cc
+
+nocolor: dumb
+
+srcColor: bold cyan
+
+introFileNameColor: reset
+introMessageColor:  blue
+
+warningFileNameColor: reset
+warningNumberColor:   white
+warningMessageColor:  yellow
+
+errorFileNameColor: reset
+errorNumberColor:   white
+errorMessageColor:  bold red
+
+noteFileNameColor: reset
+noteNumberColor:   white
+noteMessageColor:  green
