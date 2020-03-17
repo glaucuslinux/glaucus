@@ -7,29 +7,29 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/$nom 1 $nom upstream 0001-Avoid-set_file_attributes-sign-conversion-warnings.$nom &&
-  $SCRD/$nom 1 $nom upstream 0002-Test-suite-compatibility-fixes.$nom &&
-  $SCRD/$nom 1 $nom upstream 0003-Test-suite-fix-Korn-shell-incompatibility.$nom &&
-  $SCRD/$nom 1 $nom upstream 0004-Fix-segfault-with-mangled-rename-$nom.$nom &&
-  $SCRD/$nom 1 $nom upstream 0005-Allow-input-files-to-be-missing-for-ed-style-${nom}es.$nom &&
-  $SCRD/$nom 1 $nom upstream 0006-Fix-arbitrary-command-execution-in-ed-style-${nom}es-.$nom &&
-  $SCRD/$nom 1 $nom upstream 0007-Invoke-ed-directly-instead-of-using-the-shell.$nom &&
-  $SCRD/$nom 1 $nom upstream 0011-Fix-check-of-return-value-of-fwrite.$nom &&
-  $SCRD/$nom 1 $nom upstream 0012-Fix-ed-style-test-failure.$nom &&
+  $SCRD/$nom 1 $nom upstream 0001-Avoid-set_file_attributes-sign-conversion-warnings &&
+  $SCRD/$nom 1 $nom upstream 0002-Test-suite-compatibility-fixes &&
+  $SCRD/$nom 1 $nom upstream 0003-Test-suite-fix-Korn-shell-incompatibility &&
+  $SCRD/$nom 1 $nom upstream 0004-Fix-segfault-with-mangled-rename-$nom &&
+  $SCRD/$nom 1 $nom upstream 0005-Allow-input-files-to-be-missing-for-ed-style-${nom}es &&
+  $SCRD/$nom 1 $nom upstream 0006-Fix-arbitrary-command-execution-in-ed-style-${nom}es- &&
+  $SCRD/$nom 1 $nom upstream 0007-Invoke-ed-directly-instead-of-using-the-shell &&
+  $SCRD/$nom 1 $nom upstream 0011-Fix-check-of-return-value-of-fwrite &&
+  $SCRD/$nom 1 $nom upstream 0012-Fix-ed-style-test-failure &&
   
-  $SCRD/$nom 1 $nom gentoo $nom-2.7.6-CVE-2018-1000156-fix1.$nom &&
+  $SCRD/$nom 1 $nom gentoo $nom-2.7.6-CVE-2018-1000156-fix1 &&
   
-  $SCRD/$nom 1 $nom upstream 0015-Don-t-leak-temporary-file-on-failed-multi-file-ed-st.$nom &&
-  $SCRD/$nom 1 $nom upstream 0016-Make-the-debug-2-output-more-useful.$nom &&
-  $SCRD/$nom 1 $nom upstream 0017-Fix-swapping-fake-lines-in-pch_swap.$nom &&
-  $SCRD/$nom 1 $nom upstream 0018-Improve-support-for-memory-leak-detection.$nom &&
-  $SCRD/$nom 1 $nom upstream 0019-Skip-ed-test-when-the-ed-utility-is-not-installed.$nom &&
-  $SCRD/$nom 1 $nom upstream 0020-Abort-when-cleaning-up-fails.$nom &&
-  $SCRD/$nom 1 $nom upstream 0021-Don-t-crash-when-RLIMIT_NOFILE-is-set-to-RLIM_INFINI.$nom &&
-  $SCRD/$nom 1 $nom upstream 0022-Don-t-follow-symlinks-unless-follow-symlinks-is-give.$nom &&
-  $SCRD/$nom 1 $nom upstream 0023-Avoid-invalid-memory-access-in-context-format-diffs.$nom &&
-  $SCRD/$nom 1 $nom upstream 0024-Fix-failed-assertion-outstate-after_newline.$nom &&
-  $SCRD/$nom 1 $nom upstream 0025-Add-missing-section-tests-to-context-format-test-cas.$nom
+  $SCRD/$nom 1 $nom upstream 0015-Don-t-leak-temporary-file-on-failed-multi-file-ed-st &&
+  $SCRD/$nom 1 $nom upstream 0016-Make-the-debug-2-output-more-useful &&
+  $SCRD/$nom 1 $nom upstream 0017-Fix-swapping-fake-lines-in-pch_swap &&
+  $SCRD/$nom 1 $nom upstream 0018-Improve-support-for-memory-leak-detection &&
+  $SCRD/$nom 1 $nom upstream 0019-Skip-ed-test-when-the-ed-utility-is-not-installed &&
+  $SCRD/$nom 1 $nom upstream 0020-Abort-when-cleaning-up-fails &&
+  $SCRD/$nom 1 $nom upstream 0021-Don-t-crash-when-RLIMIT_NOFILE-is-set-to-RLIM_INFINI &&
+  $SCRD/$nom 1 $nom upstream 0022-Don-t-follow-symlinks-unless-follow-symlinks-is-give &&
+  $SCRD/$nom 1 $nom upstream 0023-Avoid-invalid-memory-access-in-context-format-diffs &&
+  $SCRD/$nom 1 $nom upstream 0024-Fix-failed-assertion-outstate-after_newline &&
+  $SCRD/$nom 1 $nom upstream 0025-Add-missing-section-tests-to-context-format-test-cas
 }
 
 configure_system() {
