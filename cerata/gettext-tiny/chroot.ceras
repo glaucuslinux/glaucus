@@ -9,12 +9,10 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  printf "prefix=$TOOL
-LIBINTL=MUSL
-AR=$AR
-RANLIB=$RANLIB
-CFLAGS=$CFLAGS
-LDFLAGS=$LDFLAGS\n" > config.mak
+  $RSYNC $CERD/$nom/config.mak.chroot config.mak &&
+  
+  printf "CFLAGS=$CFLAGS
+LDFLAGS=$LDFLAGS\n" >> config.mak
 }
 
 build_chroot() {
