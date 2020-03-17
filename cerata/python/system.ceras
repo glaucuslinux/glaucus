@@ -35,6 +35,6 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
 
-  ln -fsv python3 $SCER/$nom/sac/usr/bin/$nom &&
+  ln -fsv ${nom}3 $SCER/$nom/sac/usr/bin/$nom &&
   ln -fsv pip3.8 $SCER/$nom/sac/usr/bin/pip3
 }
