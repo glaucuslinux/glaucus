@@ -13,7 +13,7 @@ prepare_native() {
 
   cd $TSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus adjust-paths &&
+  $SCRD/patch 0 $nom glaucus 0001-adjust-paths &&
 
   cat $nom/limitx.h $nom/glimits.h $nom/limity.h > $(dirname $($TUPL-$nom \
     -print-lib$nom-file-name))/include-fixed/limits.h &&
