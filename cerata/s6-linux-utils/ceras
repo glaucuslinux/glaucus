@@ -1,7 +1,7 @@
 nom=s6-linux-utils
-ver=2.5.1.1
+ver=2.5.1.2
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=59c58c4d8e13b7a6e0215f21978f8ac2ac54fc3685884204ea1f011f2a882b9381a9686cbb24c9e566e322c14174dda40368c308e37e9c44f6a1687231d108a2
+sum=4557148c3e739471a8846d3e0425da826d77ab3b7fc8d6c777d110152343596d17fde37fddcb099b107663138a5447866c3ff00a05f59d034379d26b1e147331
 lic=ISC
 build(){
         $RSYNC $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
