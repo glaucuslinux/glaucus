@@ -15,7 +15,7 @@ prepare_system() {
   $SCRD/patch 0 $nom void musl-cdefs &&
   $SCRD/patch 0 $nom void musl-fts-obstack &&
   
-  $SCRD/patch 0 $nom glaucus musl-fts-obstack-0.178 &&
+  $SCRD/patch 0 $nom glaucus 0001-musl-fts-obstack-0.178 &&
   
   $SCRD/patch 0 $nom void musl-macros &&
   $SCRD/patch 0 $nom void musl-qsort_r &&
