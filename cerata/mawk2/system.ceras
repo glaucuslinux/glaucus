@@ -18,8 +18,7 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/usr/bin &&
-  install -dv $SCER/$nom/sac/usr/share/man/man1 &&
+  install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1 &&
   
   $RSYNC mawk $SCER/$nom/sac/usr/bin/$nom &&
   chmod 0755 $SCER/$nom/sac/usr/bin/$nom &&
