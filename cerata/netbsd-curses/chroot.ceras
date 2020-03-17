@@ -9,12 +9,9 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  printf "PREFIX = $TOOL
-AR = $AR
-RANLIB = $RANLIB\n" > config.mak &&
+  $RSYNC $CERD/$nom/config.mak.chroot config.mak &&
 
-  sed 's/-O0 //' \
-    -i GNUmakefile
+  $SCRD/patch 0 $nom glaucus optimize-more
 }
 
 build_chroot() {
