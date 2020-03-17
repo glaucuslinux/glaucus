@@ -11,7 +11,7 @@ prepare_chroot() {
 configure_chroot() {
   $RSYNC $CERD/$nom/config.mak.chroot config.mak &&
 
-  $SCRD/patch 0 $nom glaucus optimize-more
+  $SCRD/patch 0 $nom glaucus 0001-optimize-more
 }
 
 build_chroot() {
