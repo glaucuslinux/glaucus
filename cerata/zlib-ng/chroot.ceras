@@ -9,8 +9,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  sed s/bash/dash/ \
-    -i configure &&
+  $SCRD/patch 0 $nom glaucus fix-shell &&
 
   CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOCOMMON" || printf -- "$CFLAGS")" \
   ./configure \
