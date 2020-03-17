@@ -7,22 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 $nom upstream ${nom}50-001 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-002 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-003 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-004 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-005 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-006 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-007 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-008 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-009 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-010 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-011 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-012 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-013 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-014 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-015 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-016
+  for i in $(seq -w 16); do
+    $SCRD/patch 0 $nom upstream ${nom}50-0$i
+  done
 }
 
 configure_system() {
