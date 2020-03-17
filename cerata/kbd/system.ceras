@@ -11,10 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  sed 's/\(RESIZECONS_PROGS=\)yes/\1no/' \
-    -i configure &&
-  sed 's/resizecons.8 //' \
-    -i docs/man/man8/Makefile.in &&
+  $SCRD/patch 0 $nom lfs remove-resizecons &&
 
   ./configure \
     --prefix=/usr \
