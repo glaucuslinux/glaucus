@@ -7,7 +7,7 @@ prepare_chroot() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus fix-long-iso
+  $SCRD/patch 0 $nom glaucus 0001-extend-long-iso-format
 }
 
 configure_chroot() {
@@ -17,7 +17,7 @@ configure_chroot() {
 }
 
 build_chroot() {
-  CFLAGS="$(grep -q atlanticus $SCRD/species && printf -- "$CFLAGSNOALIGNNOCOMMONNOLTO" || printf -- "$CFLAGSNOLTO")" \
+  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOALIGNNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
   make
 }
 
