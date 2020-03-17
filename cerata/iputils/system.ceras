@@ -37,6 +37,7 @@ install_system() {
     -C $SBLD/$nom \
     install &&
 
-  ln -fsv ping $SCER/$nom/sac/usr/bin/ping6 &&
-  ln -fsv tracepath $SCER/$nom/sac/usr/bin/tracepath6
+  for i in ping tracepath; do
+    ln -fsv $i $SCER/$nom/sac/usr/bin/${i}6
+  done
 }
