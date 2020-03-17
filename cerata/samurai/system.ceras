@@ -5,15 +5,7 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  $SCRD/patch 1 $nom michaelforney 0001-Fix-manifest-rebuild-when-it-was-pruned-due-to-resta  &&
-  $SCRD/patch 1 $nom michaelforney 0002-parse-Check-that-rules-always-have-a-command &&
-  $SCRD/patch 1 $nom michaelforney 0003-parse-Check-that-rules-have-rspfile-iff-they-have-rs &&
-  $SCRD/patch 1 $nom michaelforney 0004-tool-Implement-compdb &&
-  $SCRD/patch 1 $nom michaelforney 0005-compdb-Remove-trailing-comma-after-last-entry-in-com &&
-  $SCRD/patch 1 $nom michaelforney 0006-Add-support-for-NINJA_STATUS-environment-variable &&
-  $SCRD/patch 1 $nom michaelforney 0007-manual-Specify-list-width-to-avoid-lint-warning
+  cd $SSRC/$nom
 }
 
 configure_system() {
