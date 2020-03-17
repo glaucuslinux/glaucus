@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=s6
-ver=2.9.0.1
+ver=2.9.1.0
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=5beb6170e4a457a0a307cbace67369cc35f6fd79d13ece2e82a3ebbdb4b032304eba8124be3e45b4db921863eaa02f51472c1365b0da000eef0868c11514dfff
+sum=190660ed3af678b304230c688d3364a20dfb8d6e944314506bc27c90fc2ccf1062c7b2931df93620dd3b6f5f794d6119d984f28cb2f4562c1abb8609270b90f5
 lic=ISC
