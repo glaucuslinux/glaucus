@@ -25,5 +25,5 @@ install_system() {
     install &&
 
   $RSYNC $CERD/$nom/autopoint $SCER/$nom/sac/usr/bin/autopoint &&
-  chown 0:0 $SCER/$nom/sac/usr/bin/autopoint
+  chown -v 0:0 $SCER/$nom/sac/usr/bin/autopoint
 }
