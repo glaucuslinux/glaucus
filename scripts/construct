@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+. $CERD/$2/ceras &&
+. $CERD/$nom/$1.ceras &&
+
+prepare_$1 || $SCRD/exit $1 $nom prepare $? || return &&
+configure_$1 || $SCRD/exit $1 $nom configure $? || return &&
+build_$1 || $SCRD/exit $1 $nom build $? || return &&
+install_$1 || $SCRD/exit $1 $nom install $? || return
