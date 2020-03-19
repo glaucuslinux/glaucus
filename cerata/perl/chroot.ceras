@@ -6,6 +6,7 @@
 prepare_chroot() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   $RSYNC $SRCD/$nom-cross/$nom-cross-1.3.1/ $CSRC/$nom &&
+  $RSYNC $CERD/$nom-cross/${nom}5-$ver $CSRC/$nom/cnf/diffs &&
   cd $CSRC/$nom
 }
 
