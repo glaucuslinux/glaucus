@@ -28,6 +28,6 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  chmod -v 755 $SCER/$nom/sac/usr/lib/libcrypto.so.45.0.5 \
+  chmod -v 0755 $SCER/$nom/sac/usr/lib/libcrypto.so.45.0.5 \
     $SCER/$nom/sac/usr/lib/libssl.so.47.0.6 $SCER/$nom/sac/usr/lib/libtls.so.19.0.7
 }
