@@ -47,5 +47,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  chown 0:0 $SCER/$nom/sac/usr/bin/wall
+  chown -v 0:0 $SCER/$nom/sac/usr/bin/wall
 }
