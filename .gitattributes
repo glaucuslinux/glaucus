@@ -8,6 +8,7 @@ cerata/smdev/config.h linguist-language=C
 
 scripts/check linguist-language=Shell
 scripts/classify linguist-language=Shell
+scripts/construct linguist-language=Shell
 scripts/exit linguist-language=Shell
 scripts/fetch linguist-language=Shell
 scripts/flags.atlanticus linguist-language=Shell
