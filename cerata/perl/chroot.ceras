@@ -11,7 +11,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  CFLAGS="$(grep -q bennettae $SCRD/species && echo $CFLAGSFATNODSECTS || echo $CFLAGSFAT)" \
+  CFLAGS="$($SCRD/classify bennettae "$CFLAGSFATNODSECTS" "$CFLAGSFAT")" \
   ./configure \
     --prefix=$TOOL \
     --target=$TUPL
