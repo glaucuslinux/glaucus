@@ -190,6 +190,63 @@ space, so it's being disabled
 
 Still thinking about separately building libstdcxx-v3, but we'll see.
 
+Specifying `--build=$TUPL` is necessary even though it shouldn't be specified
+(as it should only be CC_FOR_BUILD=gcc, as in cross-native binutils) because
+gmp, mpfr, mpc and isl will complain about using the wrong `CC_FOR_BUILD` (e.g.
+in gmp this happens):
+```C
+mkdir -p -- ./gmp
+Configuring in ./gmp
+configure: creating cache ./config.cache
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... none-pc-linux-musl
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for none-pc-linux-musl-strip... x86_64-pc-linux-musl-strip
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+configure: WARNING: the "none" host is obsolete, use --disable-assembly
+checking ABI=standard
+checking whether x86_64-pc-linux-musl-gcc is gcc... yes
+checking compiler x86_64-pc-linux-musl-gcc -g -O2 ... yes
+checking for none-pc-linux-musl-gcc... x86_64-pc-linux-musl-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether x86_64-pc-linux-musl-gcc accepts -g... yes
+checking for x86_64-pc-linux-musl-gcc option to accept ISO C89... none needed
+checking whether x86_64-pc-linux-musl-gcc understands -c and -o together... yes
+checking for x86_64-pc-linux-musl-gcc option to accept ISO C99... none needed
+checking how to run the C preprocessor... x86_64-pc-linux-musl-gcc -E
+checking build system compiler gcc... no
+configure: error: Specified CC_FOR_BUILD doesn't seem to work
+make[1]: *** [Makefile:4743: configure-gmp] Error 1
+make[1]: Leaving directory '/home/glaucus/temporary/toolchain/native/builds/gcc'
+make: *** [Makefile:962: all] Error 2
+```
+### Native Build
+Native GCC requires libstdc++-v3 be built, otherwise it'll error out with:
+```C
+/home/glaucus/temporary/toolchain/sources/gcc/isl/isl_test_cpp.cc:8:10: fatal error: vector: No such file or directory
+8 | #include <vector>
+|          ^~~~~~~~
+compilation terminated.
+make[4]: *** [Makefile:1721: isl_test_cpp.o] Error 1
+make[4]: Leaving directory '/home/glaucus/temporary/toolchain/native/builds/gcc/isl'
+make[3]: *** [Makefile:1824: all-recursive] Error 1
+make[3]: Leaving directory '/home/glaucus/temporary/toolchain/native/builds/gcc/isl'
+make[2]: *** [Makefile:1372: all] Error 2
+make[2]: Leaving directory '/home/glaucus/temporary/toolchain/native/builds/gcc/isl'
+make[1]: *** [Makefile:6172: all-isl] Error 2
+make[1]: Leaving directory '/home/glaucus/temporary/toolchain/native/builds/gcc'
+make: *** [Makefile:962: all] Error 2
+```
 ## System
 ### System Build
 Doesn't build with `-flto`:

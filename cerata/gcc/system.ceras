@@ -8,7 +8,7 @@ prepare_system() {
 
   cd $SSRC/$nom &&
   
-  $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths &&
+  $SCRD/patch 0 glaucus 0002-adjust-system-paths &&
 
   install -dv $SBLD/$nom &&
   cd $SBLD/$nom
