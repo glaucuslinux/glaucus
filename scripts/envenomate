@@ -5,4 +5,4 @@ install -dv $SCER/$1/sac $SCER/$1/venom &&
 
 $SCRD/construct system $1 &&
 
-$RSYNC $SCER/$nom/sac/ /
+$RSYNC $SCER/$1/sac/ /
