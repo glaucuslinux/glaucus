@@ -4,17 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom &&
-
-  for i in avoid-process-race perl522; do
-    $SCRD/patch 0 $nom void $i
-  done
+  install -dv $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  ./configure \
-    --prefix=/usr
+  $SRCD/$nom/$nom-$ver/configure \
+    --prefix=/usr \
+    --disable-nls
 }
 
 build_system() {
@@ -24,5 +21,7 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
+
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/lex
 }

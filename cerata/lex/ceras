@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=lex
+ver=2.15
+url=https://github.com/sabotage-linux/$nom/archive/v$ver.tar.gz
+sum=fffdb48465f4a858243b42b6da7317a7b629227913b19731a88354a5a2f0a59df2f0de9c947ec3b6740d0116040b94893db71e6cc05d7a54ec42f563138e815b
+lic=CDDL-1.0

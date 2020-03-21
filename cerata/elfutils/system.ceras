@@ -10,17 +10,17 @@ prepare_system() {
   $RSYNC $CERD/$nom/error.h lib &&
   $RSYNC $CERD/$nom/error.h src &&
 
-  $SCRD/patch 0 void fix-aarch64_fregs &&
-  $SCRD/patch 0 void fix-uninitialized &&
-  $SCRD/patch 0 void musl-cdefs &&
-  $SCRD/patch 0 void musl-fts-obstack &&
+  $SCRD/patch 0 $nom void fix-aarch64_fregs &&
+  $SCRD/patch 0 $nom void fix-uninitialized &&
+  $SCRD/patch 0 $nom void musl-cdefs &&
+  $SCRD/patch 0 $nom void musl-fts-obstack &&
   
-  $SCRD/patch 0 glaucus 0001-musl-fts-obstack-0.178 &&
+  $SCRD/patch 0 $nom glaucus 0001-musl-fts-obstack-0.178 &&
   
-  $SCRD/patch 0 void musl-macros &&
-  $SCRD/patch 0 void musl-qsort_r &&
-  $SCRD/patch 0 void musl-strerror_r &&
-  $SCRD/patch 0 void musl-strndupa
+  $SCRD/patch 0 $nom void musl-macros &&
+  $SCRD/patch 0 $nom void musl-qsort_r &&
+  $SCRD/patch 0 $nom void musl-strerror_r &&
+  $SCRD/patch 0 $nom void musl-strndupa
 }
 
 configure_system() {

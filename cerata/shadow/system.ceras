@@ -7,8 +7,8 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 glaucus 0001-change-default-shell &&
-  $SCRD/patch 0 glaucus 0002-fix-installation-paths
+  $SCRD/patch 0 $nom glaucus 0001-change-default-shell &&
+  $SCRD/patch 0 $nom glaucus 0002-fix-installation-paths
 }
 
 configure_system() {

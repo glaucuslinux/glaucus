@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 adelie use-utmpx
+  $SCRD/patch 1 $nom adelie use-utmpx
 }
 
 configure_system() {

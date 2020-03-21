@@ -13,37 +13,37 @@ prepare_system() {
   make \
     mrproper &&
   
-  $SCRD/patch 1 clear 0104-pci-pme-wakeups &&
-  $SCRD/patch 1 clear 0105-ksm-wakeups &&
-  $SCRD/patch 1 clear 0106-intel_idle-tweak-cpuidle-cstates &&
-  $SCRD/patch 1 clear 0108-smpboot-reuse-timer-calibration &&
-  $SCRD/patch 1 clear 0110-Initialize-ata-before-graphics &&
-  $SCRD/patch 1 clear 0111-give-rdrand-some-credit &&
-  $SCRD/patch 1 clear 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit &&
-  $SCRD/patch 1 clear 0113-kernel-time-reduce-ntp-wakeups &&
-  $SCRD/patch 1 clear 0121-use-lfence-instead-of-rep-and-nop &&
-  $SCRD/patch 1 clear 0122-do-accept-in-LIFO-order-for-cache-efficiency &&
-  $SCRD/patch 1 clear 0124-locking-rwsem-spin-faster &&
-  $SCRD/patch 1 clear 0125-ata-libahci-ignore-staggered-spin-up &&
-  $SCRD/patch 1 clear 0130-nvme-workaround &&
+  $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups &&
+  $SCRD/patch 1 $nom clear 0105-ksm-wakeups &&
+  $SCRD/patch 1 $nom clear 0106-intel_idle-tweak-cpuidle-cstates &&
+  $SCRD/patch 1 $nom clear 0108-smpboot-reuse-timer-calibration &&
+  $SCRD/patch 1 $nom clear 0110-Initialize-ata-before-graphics &&
+  $SCRD/patch 1 $nom clear 0111-give-rdrand-some-credit &&
+  $SCRD/patch 1 $nom clear 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit &&
+  $SCRD/patch 1 $nom clear 0113-kernel-time-reduce-ntp-wakeups &&
+  $SCRD/patch 1 $nom clear 0121-use-lfence-instead-of-rep-and-nop &&
+  $SCRD/patch 1 $nom clear 0122-do-accept-in-LIFO-order-for-cache-efficiency &&
+  $SCRD/patch 1 $nom clear 0124-locking-rwsem-spin-faster &&
+  $SCRD/patch 1 $nom clear 0125-ata-libahci-ignore-staggered-spin-up &&
+  $SCRD/patch 1 $nom clear 0130-nvme-workaround &&
 
-  $SCRD/patch 1 dolohow uksm-5.5 &&
+  $SCRD/patch 1 $nom dolohow uksm-5.5 &&
 
-  $SCRD/patch 1 graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+ &&
+  $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+ &&
 
-  $SCRD/patch 0 glaucus 0001-libarchive-bsdtar-compatibility &&
+  $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
 
-  $SCRD/patch 1 sirlucjan 0001-aufs-20200203 &&
-  $SCRD/patch 1 sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures &&
-  $SCRD/patch 1 sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
-  $SCRD/patch 1 sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
-  $SCRD/patch 1 sirlucjan 0002-futex-Implement-mechanism-to-wait-on-any-of-several- &&
-  $SCRD/patch 1 sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
-  $SCRD/patch 1 sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
-  $SCRD/patch 1 sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
-  $SCRD/patch 1 sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
-  $SCRD/patch 1 sirlucjan 0005-kbuild-reuse-intermediate-linker-scripts-in-the-fina &&
-  $SCRD/patch 1 sirlucjan 0006-futex-Add-Proton-compatibility-code
+  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200203 &&
+  $SCRD/patch 1 $nom sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures &&
+  $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
+  $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
+  $SCRD/patch 1 $nom sirlucjan 0002-futex-Implement-mechanism-to-wait-on-any-of-several- &&
+  $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
+  $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
+  $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
+  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
+  $SCRD/patch 1 $nom sirlucjan 0005-kbuild-reuse-intermediate-linker-scripts-in-the-fina &&
+  $SCRD/patch 1 $nom sirlucjan 0006-futex-Add-Proton-compatibility-code
 }
 
 configure_system() {
