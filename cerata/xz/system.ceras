@@ -8,10 +8,10 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   for i in default-threading io-size speedup; do
-    $SCRD/patch 1 $nom clear $i
+    $SCRD/patch 1 clear $i
   done &&
 
-  $SCRD/patch 2 $nom clear add-pgo
+  $SCRD/patch 2 clear add-pgo
 }
 
 configure_system() {
