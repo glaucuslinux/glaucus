@@ -7,13 +7,13 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom sabotage 0001-mac-compat-don-t-redefine-__dead
+  $SCRD/patch 1 sabotage 0001-mac-compat-don-t-redefine-__dead
 }
 
 configure_system() {
   $RSYNC $CERD/$nom/config.mak.system config.mak &&
 
-  $SCRD/patch 0 $nom glaucus 0001-optimize-more
+  $SCRD/patch 0 glaucus 0001-optimize-more
 }
 
 build_system() {
