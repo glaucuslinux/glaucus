@@ -8,7 +8,7 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   for i in avoid-process-race perl522; do
-    $SCRD/patch 0 $nom void $i
+    $SCRD/patch 0 void $i
   done
 }
 
