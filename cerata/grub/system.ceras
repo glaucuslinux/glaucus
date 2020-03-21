@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom clear 0001-Lower-test-timeout
+  $SCRD/patch 1 clear 0001-Lower-test-timeout
 }
 
 configure_system() {
