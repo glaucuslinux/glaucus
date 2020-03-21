@@ -7,10 +7,11 @@ prepare_system() {
   $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete &&
   cd $SSRC/elfutils &&
 
-  $RSYNC $CERD/elfutils/error.h lib &&
-  $RSYNC $CERD/elfutils/error.h src &&
+  for i in lib src; do
+    $RSYNC $CERD/elfutils/error.h $i
+  done &&
 
-  $SCRD/patch 0 elfutils void musl-cdefs
+  $SCRD/patch 0 void musl-cdefs
 }
 
 configure_system() {
