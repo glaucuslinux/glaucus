@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus 0001-extend-long-iso-format
+  $SCRD/patch 0 glaucus 0001-extend-long-iso-format
 }
 
 configure_system() {
