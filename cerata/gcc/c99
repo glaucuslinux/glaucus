@@ -1,0 +1,15 @@
+#!/usr/bin/dash -e
+
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+fl='-std=c99'
+
+for opt; do
+  case $opt in
+    -std=c99 | -std=iso9899:1999) fl='' ;;
+    -std=*) printf "c99 called with non ISO C99 option $opt\n" >&2 && exit 1 ;;
+  esac
+done
+
+exec gcc $fl $@
