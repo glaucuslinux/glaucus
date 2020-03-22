@@ -13,6 +13,9 @@ bison --version | sed 1q | cut -d' ' -f4 &&
 printf 'bzip2:     ' &&
 bzip2 --version 2>&1 < /dev/null | sed 1q | cut -d' ' -f8 | sed s/,// &&
 
+printf 'ccache:    ' &&
+ccache --version | sed 1q | cut -d' ' -f3 &&
+
 printf 'coreutils: ' &&
 ls --version | sed 1q | cut -d' ' -f4 &&
 
