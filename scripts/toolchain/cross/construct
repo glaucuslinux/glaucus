@@ -1,15 +1,6 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-construct() {
-  . $CERD/$1/ceras &&
-  . $CERD/$nom/cross.ceras &&
-  
-  prepare_cross || $SCRD/exit cross $nom prepare $? || return &&
-  configure_cross || $SCRD/exit cross $nom configure $? || return &&
-  build_cross || $SCRD/exit cross $nom build $? || return &&
-  install_cross || $SCRD/exit cross $nom install $? || return
-}
-
-construct binutils &&
-construct gcc
+$SCRD/construct cross binutils &&
+$SCRD/construct cross gcc &&
+$SCRD/construct cross ccache
