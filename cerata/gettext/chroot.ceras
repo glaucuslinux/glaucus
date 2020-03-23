@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $CSRC/$nom --delete
+  $RSYNC $CERD/$nom/$nom-$ver/ $CSRC/$nom --delete
   cd $CSRC/$nom
 }
 
