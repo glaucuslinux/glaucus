@@ -5,4 +5,5 @@ $SCRD/check binutils &&
 $SCRD/check gmp &&
 $SCRD/check mpfr &&
 $SCRD/check mpc &&
-$SCRD/check gcc
+$SCRD/check gcc &&
+$SCRD/check ccache
