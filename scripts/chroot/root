@@ -2,4 +2,4 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  chown -Rv root:root $TOOL/
+  chown -Rv 0:0 $TOOL
