@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=perl-cross
-ver=1.3.1
+ver=1.3.2
 url=https://github.com/arsv/$nom/releases/download/$ver/$nom-$ver.tar.gz
-sum=4715c1f65e39a7d0c605558b345a0a037e61afa992b3f723d66277d5ff7f1c7368ff1dfdb726895d75c4afdb6f710743708fdd9e79569a7d14a2d7002cc9f3b2
+sum=d61d25066a8d87c34aeacc5b9bd86fab964b33c4c65e84a89e4077fe1d8011c0bdf810a304631af44fae32edcffd6c99fc17b0c584ea83d1ce5ce492aaedfea5
 lic=Artistic-1.0-Perl
