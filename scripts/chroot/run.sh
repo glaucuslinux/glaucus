@@ -9,7 +9,7 @@
 
 $SCRD/log $CLOG $CSCR/construct &&
 
-. $CSCR/clean
+. $CSCR/clean &&
 . $CSCR/root &&
 . $CSCR/backup &&
 . $CSCR/vkfs &&
