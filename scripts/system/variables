@@ -17,7 +17,9 @@ export SSRC=$STMP/sources &&
 
 export TOOL=/toolchain &&
 
-export PATH=/usr/bin:/bin:$TOOL/bin &&
+export PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin &&
+
+export CCACHE_DIR=/.ccache &&
 
 export RSYNC='rsync -vaHXSx' &&
 
