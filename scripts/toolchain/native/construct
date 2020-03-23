@@ -1,17 +1,8 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-construct() {
-  . $CERD/$1/ceras &&
-  . $CERD/$nom/native.ceras &&
-  
-  prepare_native || $SCRD/exit native $nom prepare $? || return &&
-  configure_native || $SCRD/exit native $nom configure $? || return &&
-  build_native || $SCRD/exit native $nom build $? || return &&
-  install_native || $SCRD/exit native $nom install $? || return
-}
-
-construct musl &&
-construct libstdc++-v3 &&
-construct binutils &&
-construct gcc
+$SCRD/construct native musl &&
+$SCRD/construct native libstdc++-v3 &&
+$SCRD/construct native binutils &&
+$SCRD/construct native gcc &&
+$SCRD/construct native ccache
