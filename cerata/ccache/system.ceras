@@ -10,7 +10,8 @@ prepare_system() {
 
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --bindir=/usr/bin/$nom
 }
 
 build_system() {
@@ -20,5 +21,9 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
+
+  for i in c++ c89 c99 cc g++ gcc; do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$nom/$i
+  done
 }
