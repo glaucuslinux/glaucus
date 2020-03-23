@@ -27,5 +27,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/pkg-config
+  for i in pkg-config $TUPL-pkg-config $TUPL-$nom; do
+    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+  done
 }
