@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_cross() {
+prepare_native() {
   install -dv $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
-configure_cross() {
+configure_native() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --bindir=$TOOL/bin/$nom \
@@ -16,11 +16,11 @@ configure_cross() {
     --target=$TUPL
 }
 
-build_cross() {
+build_native() {
   make
 }
 
-install_cross() {
+install_native() {
   make \
     install &&
 
