@@ -22,6 +22,10 @@ install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install &&
+  
+  install -dv $SCER/$nom/sac/etc &&
+
+  $RSYNC $CERD/$nom/$nom.conf $SCER/$nom/sac/etc &&
 
   for i in c++ c89 c99 cc g++ gcc; do
     ln -fsv $nom $SCER/$nom/sac/usr/bin/$nom/$i
