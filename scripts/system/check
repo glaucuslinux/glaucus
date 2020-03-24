@@ -16,7 +16,6 @@ $SCRD/check libcap &&
 $SCRD/check psmisc &&
 $SCRD/check flex &&
 $SCRD/check slibtool &&
-$SCRD/check libtool &&
 $SCRD/check gdbm &&
 $SCRD/check gperf &&
 $SCRD/check expat &&
