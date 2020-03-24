@@ -16,7 +16,7 @@ prepare_system() {
 
 configure_system() {
   CFLAGS="$CFLAGSNOLTO" \
-  CXXFLAGS="$($SCRD/classify bennettae "$CFLAGS" "$CFLAGSNOIPANOLTO")" \
+  CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-multilib \
