@@ -17,7 +17,7 @@ configure_chroot() {
 }
 
 build_chroot() {
-  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOALIGNNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
+  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
   LDFLAGS="$LDFLAGSNORELRO" \
   make
 }

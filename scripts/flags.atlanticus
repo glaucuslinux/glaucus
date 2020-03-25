@@ -33,7 +33,7 @@ export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$COMMON //")" &&
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS" | sed "s/$OFAST/& $FINITE/")" &&
 
-export CFLAGSNOALIGNNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $ALIGN//" -e "s/$COMMON //" -e "s/$LTO //")" &&
+export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/$COMMON //" -e "s/$LTO //")" &&
 export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $FPMATH//" -e "s/$LTO //")" &&
 
 export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$COMMON //")" &&
