@@ -24,12 +24,13 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv $nom.so $SCER/$nom/sac/usr/lib/libreadline.so &&
- 
   install -dv $SCER/$nom/sac/usr/include/readline &&
   
-  touch $SCER/$nom/sac/usr/include/readline/history.h \
-    $SCER/$nom/sac/usr/include/readline/tilde.h &&
+  for i in history tilde; do
+    touch $SCER/$nom/sac/usr/include/readline/$i.h
+  done &&
 
-  ln -fsv ../editline/readline.h $SCER/$nom/sac/usr/include/readline/readline.h
+  ln -fsv ../editline/readline.h $SCER/$nom/sac/usr/include/readline/readline.h &&
+  
+  ln -fsv $nom.so $SCER/$nom/sac/usr/lib/libreadline.so
 }
