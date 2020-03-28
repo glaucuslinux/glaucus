@@ -15,7 +15,8 @@ prepare_system() {
 }
 
 configure_system() {
-  ./autogen.sh &&
+  ./autogen.sh \
+    --no-po4a &&
 
   ./configure \
     --prefix=/usr \
