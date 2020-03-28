@@ -7,8 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom clear fix-make-install &&
-  $SCRD/patch 1 $nom clear 0001-Makefile-propagate-CFLAGS
+  for i in fix-make-install 0001-Makefile-propagate-CFLAGS; do
+    $SCRD/patch 1 $nom clear $i
+  done
 }
 
 configure_system() {
