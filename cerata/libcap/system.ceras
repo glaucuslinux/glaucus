@@ -9,8 +9,9 @@ prepare_system() {
 }
 
 configure_system() {
-  $SCRD/patch 0 $nom glaucus 0001-remove-static &&
-  $SCRD/patch 0 $nom void disable-tests
+  for i in 'glaucus 0001-remove-static' 'void disable-tests'; do
+    $SCRD/patch 0 $nom $i
+  done
 }
 
 build_system() {
