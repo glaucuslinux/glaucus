@@ -7,8 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus 0001-change-default-shell &&
-  $SCRD/patch 0 $nom glaucus 0002-fix-installation-paths
+  for i in 0001-change-default-shell 0002-fix-installation-paths; do
+    $SCRD/patch 0 $nom glaucus $i
+  done
 }
 
 configure_system() {
@@ -17,11 +18,12 @@ configure_system() {
 
   find man -name Makefile.in -exec sed 's/groups\.1 / /' -i {} \; &&
 
-  sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
-    -e 's@/var/spool/mail@/var/mail@' \
+  sed -e 's/#ENCRYPT_METHOD DES/ENCRYPT_METHOD SHA512/' \
+    -e 's/\/var\/spool\/mail/\/var\/mail/' \
     -i etc/login.defs &&
 
   sed 's/1000/999/' \
+    -e 's/yes/no/' \
     -i etc/useradd &&
 
   LIBS='-lutmps -lskarnet' \
@@ -44,8 +46,5 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip &&
-
-  sed 's/yes/no/' \
-    -i $SCER/$nom/sac/etc/default/useradd
+    install-strip
 }
