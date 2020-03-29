@@ -21,12 +21,14 @@ configure_system() {
 
 build_system() {
   make \
-    tooldir=/usr
+    tooldir=/usr \
+    MAKEINFO=true
 }
 
 install_system() {
   make \
-    DESTDIR=$SCER/$nom/sac \
     tooldir=/usr \
+    MAKEINFO=true \
+    DESTDIR=$SCER/$nom/sac \
     install-strip
 }
