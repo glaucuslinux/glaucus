@@ -22,7 +22,7 @@ configure_system() {
     -e 's/\/var\/spool\/mail/\/var\/mail/' \
     -i etc/login.defs &&
 
-  sed 's/1000/999/' \
+  sed -e 's/1000/999/' \
     -e 's/yes/no/' \
     -i etc/useradd &&
 
