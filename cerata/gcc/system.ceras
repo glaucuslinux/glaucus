@@ -36,9 +36,9 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc &&
-
   for i in 89 99; do
     $RSYNC $CERD/$nom/c$i $SCER/$nom/sac/usr/bin
-  done
+  done &&
+  
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc
 }
