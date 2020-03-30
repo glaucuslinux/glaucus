@@ -4,8 +4,8 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=elfutils-libelf
-ver=0.178
+ver=0.179
 url=https://sourceware.org/elfutils/ftp/$ver/elfutils-$ver.tar.bz2
-sum=356656ad0db8f6877b461de1a11280de16a9cc5d8dde4381a938a212e828e32755135e5e3171d311c4c9297b728fbd98123048e2e8fbf7fe7de68976a2daabe5
+sum=ff2d96ad1db08e3a2ddaa60bd5a05e9b61ffa71d646f889cebb6bef51322e874930809c6dd0a257ced8c6e8de4b59ecf13ca6741dc68f9400293208278a0c052
 lic='GPL-2.0-only GPL-2.0-or-later GPL-3.0-only GPL-3.0-or-later LGPL-3.0-only
 LGPL-3.0-or-later'
