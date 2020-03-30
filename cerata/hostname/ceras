@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=hostname
+ver=3.23
+url=https://mirrors.kernel.org/debian/pool/main/h/hostname/hostname_3.23.tar.gz
+sum=aff70bc381ea58944e01f0cabfc674a273b18b0935a87737e16964c08c24382177cc3495368f88a877e293b7fbda76684979cc227eca93e4b033b9c3a975af01
+lic=GPL-2.0-only

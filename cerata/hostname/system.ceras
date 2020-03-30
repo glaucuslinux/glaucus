@@ -1,0 +1,24 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  $RSYNC $SRCD/$nom/$nom/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom
+}
+
+configure_system() {
+  :
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    BINDIR=/usr/bin \
+    BASEDIR=$SCER/$nom/sac \
+    install
+}
