@@ -9,6 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
+  $SCRD/patch 1 $nom gentoo $nom-1.16.0-rename-man &&
+
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static
