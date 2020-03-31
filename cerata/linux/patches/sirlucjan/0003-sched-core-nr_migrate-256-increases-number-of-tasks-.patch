@@ -1,4 +1,4 @@
-From 00e60c0016625402468d9485efbfd071c50cd172 Mon Sep 17 00:00:00 2001
+From e0c63c8e0993bde7b36ec87c771ad5f317d68665 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 10 Jun 2019 22:15:13 +0100
 Subject: [PATCH 3/5] sched/core: nr_migrate = 256 increases number of tasks to
@@ -10,7 +10,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 90e4b00ac..82379657c 100644
+index fc1dfc007..08d873821 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -57,7 +57,7 @@ const_debug unsigned int sysctl_sched_features =
@@ -35,5 +35,5 @@ index 90e4b00ac..82379657c 100644
  /*
   * __task_rq_lock - lock the rq @p resides on.
 -- 
-2.25.0.2.g232378479e.dirty
+2.25.0.191.gde93cc14ab.dirty
 
