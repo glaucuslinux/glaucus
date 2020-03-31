@@ -37,7 +37,6 @@ prepare_system() {
   $SCRD/patch 1 $nom sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures &&
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
-  $SCRD/patch 1 $nom sirlucjan 0002-futex-Implement-mechanism-to-wait-on-any-of-several- &&
   $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
   $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
   $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
