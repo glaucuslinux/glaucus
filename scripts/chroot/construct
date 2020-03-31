@@ -13,7 +13,7 @@ $SCRD/construct chroot diffutils &&
 $SCRD/construct chroot file &&
 $SCRD/construct chroot findutils &&
 $SCRD/construct chroot mawk &&
-$SCRD/construct chroot gettext-tiny &&
+$SCRD/construct chroot gettext &&
 $SCRD/construct chroot grep &&
 $SCRD/construct chroot make &&
 $SCRD/construct chroot patch &&
