@@ -150,7 +150,7 @@ generic -Iobj/src/internal -I/sources/musl/musl-1.1.24/src/include -I/sources/mu
 make: *** [Makefile:157: obj/src/math/__rem_pio2.lo] Error 1
 ```
 
-Doesn't build with `-malign-data=cacheline` and causes this weird m4 error
+Shouldn't be built with `-malign-data=cacheline` and causes this weird m4 error
 (ERROR: end of file in argument list) due to `autoconf`'s wrong (unparseable
 output) when checked with `autoconf -v`:
 ```C
