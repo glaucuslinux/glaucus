@@ -32,15 +32,20 @@ prepare_system() {
   $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
 
   $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200302 &&
-  $SCRD/patch 1 $nom sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures &&
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
   $SCRD/patch 1 $nom sirlucjan 0001-cpu-$ver-merge-graysky-s-patchset &&
+  $SCRD/patch 1 $nom sirlucjan 0001-futex-Implement-mechanism-to-wait-on-any-of-several- &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
+  $SCRD/patch 1 $nom sirlucjan 0002-ZEN-intel-pstate-Implement-enable-parameter &&
+  $SCRD/patch 1 $nom sirlucjan 0002-drm-Remove-PageReserved-manipulation-from-drm_pci_al &&
+  $SCRD/patch 1 $nom sirlucjan 0002-infiniband-Fix-__read_overflow2-error-with-O3-inlini &&
   $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
   $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
   $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
   $SCRD/patch 1 $nom sirlucjan 0004-kbuild-reuse-intermediate-linker-scripts-in-the-fina &&
-  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead-
+  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
+  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code &&
+  $SCRD/patch 1 $nom sirlucjan 0006-bpf-Undo-incorrect-__reg_bound_offset32-handling
 }
 
 configure_system() {
