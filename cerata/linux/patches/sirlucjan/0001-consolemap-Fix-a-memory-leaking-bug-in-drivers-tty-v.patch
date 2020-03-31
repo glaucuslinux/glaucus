@@ -1,4 +1,4 @@
-From 50d7ba2cfb26e3b279356e36badad5de82f9f4b4 Mon Sep 17 00:00:00 2001
+From 03fe75675eb3f88b3eefe612993cc97862bcab4d Mon Sep 17 00:00:00 2001
 From: Gen Zhang <blackgod016574@gmail.com>
 Date: Thu, 23 May 2019 08:34:52 +0800
 Subject: [PATCH] consolemap: Fix a memory leaking bug in
@@ -34,5 +34,5 @@ index b28aa0d28..79fcc96cc 100644
  	}
  
 -- 
-2.25.0.2.g232378479e.dirty
+2.26.0.51.ga7d14a4428
 
