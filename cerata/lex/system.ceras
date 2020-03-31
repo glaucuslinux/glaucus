@@ -14,7 +14,8 @@ configure_system() {
 
 build_system() {
   make \
-    AR=$AR
+    AR=$AR \
+    RANLIB=$RANLIB
 }
 
 install_system() {
