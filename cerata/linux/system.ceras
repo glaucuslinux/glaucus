@@ -27,7 +27,7 @@ prepare_system() {
   $SCRD/patch 1 $nom clear 0125-ata-libahci-ignore-staggered-spin-up &&
   $SCRD/patch 1 $nom clear 0130-nvme-workaround &&
 
-  $SCRD/patch 1 $nom dolohow uksm-5.5 &&
+  $SCRD/patch 1 $nom dolohow uksm-$ver &&
 
   $SCRD/patch 1 $nom graysky2 enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+ &&
 
