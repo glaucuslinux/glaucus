@@ -20,7 +20,7 @@ build_system() {
 
 install_system() {
   make \
-    PREFIX=/usr
+    PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
     install &&
 
