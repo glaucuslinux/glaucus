@@ -4,24 +4,24 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom
 }
 
 configure_system() {
-  $SRCD/$nom/$nom-$ver/configure \
-    --prefix=/usr \
-    --disable-nls
+  :
 }
 
 build_system() {
-  make
+  make \
+    AR=$AR
 }
 
 install_system() {
   make \
+    PREFIX=/usr
     DESTDIR=$SCER/$nom/sac \
-    install-strip &&
+    install &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/$nom
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/f$nom
 }
