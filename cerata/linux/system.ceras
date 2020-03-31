@@ -33,7 +33,7 @@ prepare_system() {
 
   $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
 
-  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200203 &&
+  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200302 &&
   $SCRD/patch 1 $nom sirlucjan 0001-compat-provide-compat_ptr-on-all-architectures &&
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
