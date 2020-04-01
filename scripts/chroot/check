@@ -7,21 +7,16 @@ $SCRD/check oksh &&
 $SCRD/check dash &&
 $SCRD/check bash &&
 $SCRD/check bison &&
-$SCRD/check lbzip2 &&
 $SCRD/check toybox &&
 $SCRD/check rsync &&
 $SCRD/check diffutils &&
 $SCRD/check file &&
+$SCRD/check findutils &&
 $SCRD/check mawk &&
 $SCRD/check gettext-tiny &&
 $SCRD/check grep &&
-$SCRD/check zlib-ng &&
-$SCRD/check pigz &&
 $SCRD/check make &&
 $SCRD/check patch &&
 $SCRD/check perl-cross &&
 $SCRD/check perl &&
-$SCRD/check sed &&
-$SCRD/check xz &&
-$SCRD/check libarchive &&
-$SCRD/check texinfo
+$SCRD/check sed
