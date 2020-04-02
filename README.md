@@ -11,6 +11,7 @@ https://github.com/glaucuslinux/glaucus/releases)
 [![Join the chat at https://gitter.im/glaucuslinux/glaucus](
 https://badges.gitter.im/glaucuslinux/glaucus.svg)](
 https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus?ref=badge_shield)
 
 <p align=center><img
 src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
@@ -82,6 +83,9 @@ mailto:firasuke@glaucuslinux.org)>
 
 ## License
 glaucus is licensed under the Internet Systems Consortium (ISC) license.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus?ref=badge_large)
 
 ## Dedication
 This project is dedicated to my lovely family.
