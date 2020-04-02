@@ -20,4 +20,5 @@ $SCRD/construct chroot patch &&
 $SCRD/construct chroot perl &&
 $SCRD/construct chroot sed &&
 $SCRD/construct chroot libarchive &&
+$SCRD/construct chroot texinfo &&
 $SCRD/construct chroot ccache
