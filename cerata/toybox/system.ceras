@@ -17,6 +17,7 @@ configure_system() {
 }
 
 build_system() {
+  LDFLAGS="$LDFLAGSNORELRO" \
   make
 }
 
