@@ -9,7 +9,6 @@ prepare_system() {
 }
 
 configure_system() {
-  HELP2MAN=true \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-nls
