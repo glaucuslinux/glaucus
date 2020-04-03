@@ -70,6 +70,8 @@ $SCRD/envenomate make &&
 $SCRD/envenomate patch &&
 $SCRD/envenomate mandoc &&
 $SCRD/envenomate libarchive &&
+$SCRD/envenomate texinfo &&
+$SCRD/envenomate help2man &&
 $SCRD/envenomate vim &&
 $SCRD/envenomate execline &&
 $SCRD/envenomate s6 &&
