@@ -12,6 +12,7 @@ configure_chroot() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --host=$TUPL \
+    --disable-acl \
     --disable-nls \
     --disable-i18n
 }
