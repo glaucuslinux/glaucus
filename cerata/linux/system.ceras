@@ -44,8 +44,7 @@ prepare_system() {
   $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
   $SCRD/patch 1 $nom sirlucjan 0004-kbuild-reuse-intermediate-linker-scripts-in-the-fina &&
   $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
-  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code &&
-  $SCRD/patch 1 $nom sirlucjan 0006-bpf-Undo-incorrect-__reg_bound_offset32-handling
+  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code
 }
 
 configure_system() {
