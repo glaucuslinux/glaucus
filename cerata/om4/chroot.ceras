@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_chroot() {
-  rsync -vah $CERD/$nom/m4/ $CSRC/$nom --delete
+  $RSYNC $SRCD/$nom/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
 }
 
@@ -20,8 +20,7 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
+    install &&
 
-  cd $TOOL/bin
-  ln -fsv $nom m4
+  ln -fsv $nom $TOOL/bin/m4
 }
