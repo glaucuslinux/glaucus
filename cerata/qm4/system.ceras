@@ -3,25 +3,26 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
-  rsync -vah $CERD/$nom/m4-$ver/ $CSRC/$nom --delete
-  cd $CSRC/$nom
+prepare_system() {
+  $RSYNC $CERD/$nom/m4-2/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom
 }
 
-configure_chroot() {
+configure_system() {
   sed -e "s/(BINDIR)\/m4/(BINDIR)\/$nom/" \
     -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$nom.1/" \
     -i Makefile
 }
 
-build_chroot() {
+build_system() {
   make
 }
 
-install_chroot() {
+install_system() {
   make \
-    PREFIX=$TOOL \
-    install
+    DESTDIR=$SCER/$nom/sac \
+    PREFIX=/usr \
+    install &&
 
-  ln -fsv $nom $TOOL/bin/m4
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/m4
 }
