@@ -9,9 +9,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  sed -e "s/(BINDIR)\/m4/(BINDIR)\/$nom/" \
-    -e "s/(MANDIR)\/man1\/m4.1/(MANDIR)\/man1\/$nom.1/" \
-    -i Makefile
+  $SCRD/patch 0 $nom glaucus 0001-fix-name
 }
 
 build_chroot() {
