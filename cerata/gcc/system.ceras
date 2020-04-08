@@ -41,9 +41,11 @@ install_system() {
   done &&
   
   ln -fsv $nom $SCER/$nom/sac/usr/bin/cc &&
-
+  
   install -dv $SCER/$nom/sac/usr/lib/bfd-plugins &&
 
   ln -fsv ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so \
-    $SCER/$nom/sac/usr/lib/bfd-plugins/
+    $SCER/$nom/sac/usr/lib/bfd-plugins/ &&
+  
+  ln -fsv ../bin/cpp $SCER/$nom/sac/usr/lib/cpp
 }
