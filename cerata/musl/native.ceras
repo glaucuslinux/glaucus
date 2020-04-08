@@ -11,9 +11,9 @@ prepare_native() {
 configure_native() {
   CROSS_COMPILE=$TUPL- \
   $SRCD/$nom/$nom-$ver/configure \
+    --target=$TUPL \
     --prefix=$TOOL \
-    --syslibdir=$TOOL/lib \
-    --target=$TUPL &&
+    --syslibdir=$TOOL/lib &&
 
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
