@@ -10,8 +10,8 @@ prepare_cross() {
 
 configure_cross() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=$TOOL \
     --target=$TUPL \
+    --prefix=$TOOL \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --disable-werror \
