@@ -10,10 +10,10 @@ prepare_native() {
 
 configure_native() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=$TOOL \
-    --bindir=$TOOL/bin/$nom \
     --host=$TUPL \
-    --target=$TUPL
+    --target=$TUPL \
+    --prefix=$TOOL \
+    --bindir=$TOOL/bin/$nom
 }
 
 build_native() {
