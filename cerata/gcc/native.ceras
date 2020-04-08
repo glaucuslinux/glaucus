@@ -28,6 +28,7 @@ configure_native() {
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
+    --libexecdir=$TOOL/lib \
     --with-local-prefix=$TOOL \
     --with-native-system-header-dir=$TOOL/include \
     --disable-multilib \
