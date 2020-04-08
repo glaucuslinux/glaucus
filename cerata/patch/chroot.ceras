@@ -10,8 +10,8 @@ prepare_chroot() {
 
 configure_chroot() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=$TOOL \
     --host=$TUPL \
+    --prefix=$TOOL \
     --disable-xattr
 }
 
