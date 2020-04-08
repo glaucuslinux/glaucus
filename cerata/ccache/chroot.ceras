@@ -10,9 +10,9 @@ prepare_chroot() {
 
 configure_chroot() {
   $SRCD/$nom/$nom-$ver/configure \
+    --host=$TUPL \
     --prefix=$TOOL \
-    --bindir=$TOOL/bin/$nom \
-    --host=$TUPL
+    --bindir=$TOOL/bin/$nom
 }
 
 build_chroot() {
