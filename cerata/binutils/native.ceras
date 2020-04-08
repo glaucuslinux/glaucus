@@ -10,9 +10,9 @@ prepare_native() {
 
 configure_native() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=$TOOL \
     --host=$TUPL \
     --target=$TUPL \
+    --prefix=$TOOL \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --disable-werror \
