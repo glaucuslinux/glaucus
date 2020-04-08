@@ -10,9 +10,9 @@ prepare_cross() {
 
 configure_cross() {
   $SRCD/$nom/$nom-$ver/configure \
+    --target=$TUPL \
     --prefix=$TOOL \
-    --bindir=$TOOL/bin/$nom \
-    --target=$TUPL
+    --bindir=$TOOL/bin/$nom
 }
 
 build_cross() {
