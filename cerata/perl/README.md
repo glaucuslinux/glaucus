@@ -6,7 +6,7 @@
 clearlinux uses threaded perl
 
 There's no such option as `--host`, plus `--target` is the suggested way by
-`perl-cross`
+`perl-cross`, and target order is after prefix not before it
 
 perl/texinfo still show missing EXTERN.h
 
