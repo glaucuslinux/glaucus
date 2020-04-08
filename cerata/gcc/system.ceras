@@ -40,5 +40,10 @@ install_system() {
     $RSYNC $CERD/$nom/c$i $SCER/$nom/sac/usr/bin
   done &&
   
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc
+  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc &&
+
+  install -dv $SCER/$nom/sac/usr/lib/bfd-plugins &&
+
+  ln -fsv ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so \
+    $SCER/$nom/sac/usr/lib/bfd-plugins/
 }
