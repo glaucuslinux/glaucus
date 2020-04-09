@@ -12,6 +12,7 @@ configure_chroot() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
+    --libexecdir=$TOOL/lib/$nom \
     --disable-nls
 }
 
