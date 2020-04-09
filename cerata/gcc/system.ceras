@@ -19,6 +19,7 @@ configure_system() {
   CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
     --prefix=/usr \
+    --libexecdir=/usr/lib \
     --disable-multilib \
     --disable-bootstrap \
     --enable-languages=c,c++ \
