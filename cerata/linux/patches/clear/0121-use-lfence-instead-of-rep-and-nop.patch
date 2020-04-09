@@ -8,10 +8,10 @@ Subject: [PATCH] use lfence instead of rep and nop
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/x86/include/asm/processor.h b/arch/x86/include/asm/processor.h
-index 0340aad..9478c0a 100644
+index 09705ccc3..2e4e58833 100644
 --- a/arch/x86/include/asm/processor.h
 +++ b/arch/x86/include/asm/processor.h
-@@ -676,7 +676,7 @@ static inline unsigned int cpuid_edx(unsigned int op)
+@@ -680,7 +680,7 @@ static inline unsigned int cpuid_edx(unsigned int op)
  /* REP NOP (PAUSE) is a good thing to insert into busy-wait loops. */
  static __always_inline void rep_nop(void)
  {
