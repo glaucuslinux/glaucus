@@ -35,16 +35,24 @@ prepare_system() {
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
   $SCRD/patch 1 $nom sirlucjan 0001-cpu-5.6-merge-graysky-s-patchset &&
   $SCRD/patch 1 $nom sirlucjan 0001-futex-Implement-mechanism-to-wait-on-any-of-several- &&
+  $SCRD/patch 1 $nom sirlucjan 0001-lib-prepare-zstd-for-preboot-environment &&
   $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
   $SCRD/patch 1 $nom sirlucjan 0002-ZEN-intel-pstate-Implement-enable-parameter &&
   $SCRD/patch 1 $nom sirlucjan 0002-infiniband-Fix-__read_overflow2-error-with-O3-inlini &&
   $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
+  $SCRD/patch 1 $nom sirlucjan 0002-lib-prepare-xxhash-for-preboot-environment &&
   $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
+  $SCRD/patch 1 $nom sirlucjan 0003-lib-add-zstd-support-to-decompress &&
   $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
+  $SCRD/patch 1 $nom sirlucjan 0004-init-add-support-for-zstd-compressed-kernel &&
   $SCRD/patch 1 $nom sirlucjan 0004-kbuild-reuse-intermediate-linker-scripts-in-the-fina &&
   $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
-  $SCRD/patch 1 $nom sirlucjan 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code
+  $SCRD/patch 1 $nom sirlucjan 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al &&
+  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code &&
+  $SCRD/patch 1 $nom sirlucjan 0005-usr-add-support-for-zstd-compressed-initramfs &&
+  $SCRD/patch 1 $nom sirlucjan 0006-x86-bump-ZO_z_extra_bytes-margin-for-zstd &&
+  $SCRD/patch 1 $nom sirlucjan 0007-x86-Add-support-for-ZSTD-compressed-kernel &&
+  $SCRD/patch 1 $nom sirlucjan 0008-.gitignore-add-ZSTD-compressed-files
 }
 
 configure_system() {
