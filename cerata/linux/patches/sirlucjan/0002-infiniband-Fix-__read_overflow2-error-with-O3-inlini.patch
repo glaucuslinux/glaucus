@@ -1,14 +1,14 @@
-From c832212bd9c394f58cf9fd410ef50dc0e0d6a379 Mon Sep 17 00:00:00 2001
+From f1aca52899796f3d25689596b869ca67cf08dc26 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Fri, 26 Oct 2018 11:22:33 +0100
-Subject: [PATCH 2/6] infiniband: Fix __read_overflow2 error with -O3 inlining
+Subject: [PATCH 2/8] infiniband: Fix __read_overflow2 error with -O3 inlining
 
 ---
  drivers/infiniband/core/addr.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/infiniband/core/addr.c b/drivers/infiniband/core/addr.c
-index 1753a9801..184b30282 100644
+index 1753a98..184b302 100644
 --- a/drivers/infiniband/core/addr.c
 +++ b/drivers/infiniband/core/addr.c
 @@ -816,6 +816,7 @@ int rdma_addr_find_l2_eth_by_grh(const union ib_gid *sgid,
@@ -20,5 +20,5 @@ index 1753a9801..184b30282 100644
  	int ret;
  
 -- 
-2.26.0.51.ga7d14a4428
+2.26.0.106.g9fadedd637
 

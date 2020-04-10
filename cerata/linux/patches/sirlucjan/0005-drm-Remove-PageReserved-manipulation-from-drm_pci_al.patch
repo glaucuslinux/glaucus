@@ -1,7 +1,7 @@
-From f1cab3bf5a2f62f856928477a0894b4a44ef9a45 Mon Sep 17 00:00:00 2001
+From c4f09dadae2dad6bcd3a1cb4cafc37ce66573a8a Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 2 Feb 2020 17:16:31 +0000
-Subject: [PATCH 2/2] drm: Remove PageReserved manipulation from drm_pci_alloc
+Subject: [PATCH 5/8] drm: Remove PageReserved manipulation from drm_pci_alloc
 
 drm_pci_alloc/drm_pci_free are very thin wrappers around the core dma
 facilities, and we have no special reason within the drm layer to behave
@@ -31,7 +31,7 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20200202171635.4039044-1-chr
  1 file changed, 2 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/gpu/drm/drm_pci.c b/drivers/gpu/drm/drm_pci.c
-index f2e43d341..d16dac432 100644
+index f2e43d3..d16dac4 100644
 --- a/drivers/gpu/drm/drm_pci.c
 +++ b/drivers/gpu/drm/drm_pci.c
 @@ -51,8 +51,6 @@
@@ -87,5 +87,5 @@ index f2e43d341..d16dac432 100644
  
  /**
 -- 
-2.26.0.51.ga7d14a4428
+2.26.0.106.g9fadedd637
 
