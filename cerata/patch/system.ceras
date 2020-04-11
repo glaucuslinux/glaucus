@@ -33,7 +33,7 @@ prepare_system() {
 }
 
 configure_system() {
-  autoreconf -vfi &&
+  autoreconf -vfis &&
 
   ./configure \
     --prefix=/usr
