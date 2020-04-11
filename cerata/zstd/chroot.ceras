@@ -26,6 +26,6 @@ build_chroot() {
 
 install_chroot() {
   make \
-    DESTDIR=$TOOL \
+    PREFIX=$TOOL \
     install
 }
