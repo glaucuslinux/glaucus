@@ -9,7 +9,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  autoreconf -vfi
+  autoreconf -vfis
 
   ./configure \
     --prefix=/ \

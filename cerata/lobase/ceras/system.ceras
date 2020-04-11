@@ -8,7 +8,7 @@ rsync -vah $CERD/$nom/$nom $SSRC --delete
 cd $SSRC/$nom
 
 # configure
-autoreconf -vfi
+autoreconf -vfis
 ./configure \
   --prefix=/usr \
   --build=$TUPL \
