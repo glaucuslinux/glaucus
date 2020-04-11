@@ -3,9 +3,7 @@
 
 $SCRD/check zlib-ng &&
 $SCRD/check lbzip2 &&
-$SCRD/check xz &&
 $SCRD/check lz4 &&
-$SCRD/check zstd &&
 $SCRD/check libedit &&
 $SCRD/check bc &&
 $SCRD/check attr &&
@@ -26,6 +24,8 @@ $SCRD/check perl-xml-parser &&
 $SCRD/check intltool &&
 $SCRD/check autoconf &&
 $SCRD/check automake &&
+$SCRD/check xz &&
+$SCRD/check zstd &&
 $SCRD/check kmod &&
 $SCRD/check libuargp &&
 $SCRD/check musl-fts &&
