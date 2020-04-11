@@ -22,4 +22,5 @@ $SCRD/check perl &&
 $SCRD/check sed &&
 $SCRD/check libarchive &&
 $SCRD/check texinfo &&
-$SCRD/check help2man
+$SCRD/check help2man &&
+$SCRD/check zstd
