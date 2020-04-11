@@ -11,7 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  autoreconf -vfi &&
+  autoreconf -vfis &&
 
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOLTONOOPENMPNOPLT" "$CFLAGSNOLTO")" \
   LDFLAGS="$($SCRD/classify atlanticus "$LDFLAGSNOOPENMP" "$LDFLAGS")" \
