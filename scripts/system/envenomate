@@ -44,14 +44,14 @@ $SCRD/envenomate autoconf &&
 $SCRD/envenomate automake &&
 $SCRD/envenomate xz &&
 $SCRD/envenomate zstd &&
+$SCRD/envenomate gettext-tiny &&
+$SCRD/envenomate libuargp &&
+$SCRD/envenomate musl-fts &&
+$SCRD/envenomate musl-obstack &&
+$SCRD/envenomate elfutils-libelf &&
+$SCRD/envenomate libffi &&
+$SCRD/envenomate libressl &&
 $SCRD/envenomate kmod
-#$SCRD/envenomate gettext-tiny &&
-#$SCRD/envenomate libuargp &&
-#$SCRD/envenomate musl-fts &&
-#$SCRD/envenomate musl-obstack &&
-#$SCRD/envenomate elfutils-libelf &&
-#$SCRD/envenomate libffi &&
-#$SCRD/envenomate libressl &&
 #$SCRD/envenomate python &&
 #$SCRD/envenomate samurai &&
 #$SCRD/envenomate meson &&
