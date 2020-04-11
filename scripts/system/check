@@ -26,13 +26,13 @@ $SCRD/check autoconf &&
 $SCRD/check automake &&
 $SCRD/check xz &&
 $SCRD/check zstd &&
-$SCRD/check kmod &&
 $SCRD/check libuargp &&
 $SCRD/check musl-fts &&
 $SCRD/check musl-obstack &&
 $SCRD/check elfutils &&
 $SCRD/check libffi &&
 $SCRD/check libressl &&
+$SCRD/check kmod &&
 $SCRD/check python &&
 $SCRD/check samurai &&
 $SCRD/check meson &&
