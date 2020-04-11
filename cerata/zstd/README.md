@@ -1,4 +1,4 @@
-# # zstd
+# zstd
 
 ## Native
 
