@@ -3,6 +3,7 @@
 
 $SCRD/envenomate zlib-ng &&
 $SCRD/envenomate lbzip2 &&
+$SCRD/envenomate zstd &&
 $SCRD/envenomate lz4 &&
 $SCRD/envenomate file &&
 $SCRD/envenomate libedit &&
