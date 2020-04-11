@@ -7,6 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
+  $SCRD/patch 1 $nom arch 0002-add-zstd-compressed-module-support &&
   $SCRD/patch 0 $nom void strndupa
 }
 
@@ -17,6 +18,8 @@ configure_system() {
     --disable-manpages \
     --with-xz \
     --with-zlib \
+    --with-zstd \
+    --with-openssl \
     --without-bashcompletiondir
 }
 
