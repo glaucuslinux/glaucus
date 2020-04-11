@@ -1,0 +1,11 @@
+--- zstd-1.3.4/programs/zstdcli.c~	2018-03-26 22:19:34.000000000 +0000
++++ zstd-1.3.4/programs/zstdcli.c	2018-04-29 20:54:34.165096671 +0000
+@@ -422,7 +422,7 @@
+     g_displayOut = stderr;
+     programName = lastNameFromPath(programName);
+ #ifdef ZSTD_MULTITHREAD
+-    nbWorkers = 1;
++    nbWorkers = 0;
+ #endif
+ 
+     /* preset behaviors */

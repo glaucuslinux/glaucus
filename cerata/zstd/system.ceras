@@ -4,8 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
-  cd $SSRC/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 1 $nom clear multi-thread-default
 }
 
 configure_system() {
@@ -14,11 +16,11 @@ configure_system() {
 
 build_system() {
   make \
-    HAVE_THREAD=1 \
+    HAVE_PTHREAD=1 \
     ZSTD_LEGACY_SUPPORT=0 \
-    HAVE_ZLIB=0 \
-    HAVE_LZMA=0 \
-    HAVE_LZ4=0 \
+    HAVE_ZLIB=1 \
+    HAVE_LZMA=1 \
+    HAVE_LZ4=1 \
     BACKTRACE=0
 }
 
