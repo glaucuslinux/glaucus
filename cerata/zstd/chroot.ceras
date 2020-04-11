@@ -26,6 +26,6 @@ build_chroot() {
 
 install_chroot() {
   make \
-    PREFIX=$SCER/$nom/sac/usr \
+    DESTDIR=$TOOL \
     install
 }
