@@ -17,6 +17,7 @@ configure_system() {
 }
 
 build_system() {
+  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
   LDFLAGS="$LDFLAGSNORELRO" \
   make
 }
