@@ -22,4 +22,5 @@ $SCRD/construct chroot sed &&
 $SCRD/construct chroot libarchive &&
 $SCRD/construct chroot texinfo &&
 $SCRD/construct chroot help2man &&
+$SCRD/construct chroot zstd &&
 $SCRD/construct chroot ccache
