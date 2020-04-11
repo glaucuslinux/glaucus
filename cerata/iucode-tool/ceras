@@ -5,6 +5,6 @@
 
 nom=iucode-tool
 ver=2.3.1
-url=https://gitlab.com/$nom/releases/raw/master/${nom}_$version.tar.xz
+url=https://gitlab.com/$nom/releases/raw/master/${nom}_$ver.tar.xz
 sum=2c7f72eaf509f9daa482ec5f8eb86a45ac9fa84fa856678fdf9ad056e19532e3734e04656d9dbebbd3a774d69f4c861c1340bbe67b1c6c60d61135705980e7d6
 lic=GPL-2.0-only
