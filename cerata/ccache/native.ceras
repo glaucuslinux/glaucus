@@ -24,7 +24,8 @@ install_native() {
   make \
     install &&
 
-  for i in c++ cc g++ gcc; do
-    ln -fsv $nom $TOOL/bin/$nom/$i
-  done
+  $LN $nom $TOOL/bin/$nom/c++ &&
+  $LN $nom $TOOL/bin/$nom/cc &&
+  $LN $nom $TOOL/bin/$nom/g++ &&
+  $LN $nom $TOOL/bin/$nom/gcc
 }
