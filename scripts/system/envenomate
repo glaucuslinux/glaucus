@@ -11,11 +11,10 @@ $SCRD/envenomate perl-xml-parser &&
 $SCRD/envenomate libtool &&
 $SCRD/envenomate autoconf &&
 $SCRD/envenomate automake &&
-$SCRD/envenomate autoconf &&
+$SCRD/envenomate zstd &&
 $SCRD/envenomate zlib-ng &&
 $SCRD/envenomate lbzip2 &&
 $SCRD/envenomate xz &&
-$SCRD/envenomate zstd &&
 $SCRD/envenomate file &&
 $SCRD/envenomate libedit &&
 $SCRD/envenomate m4 &&
@@ -44,7 +43,6 @@ $SCRD/envenomate grep &&
 $SCRD/envenomate oksh &&
 $SCRD/envenomate dash &&
 $SCRD/envenomate bash &&
-$SCRD/envenomate hostname &&
 $SCRD/envenomate gettext-tiny &&
 $SCRD/envenomate libuargp &&
 $SCRD/envenomate musl-fts &&
@@ -57,6 +55,7 @@ $SCRD/envenomate python &&
 $SCRD/envenomate samurai &&
 $SCRD/envenomate meson &&
 $SCRD/envenomate toybox &&
+$SCRD/envenomate hostname &&
 $SCRD/envenomate rsync &&
 $SCRD/envenomate diffutils &&
 $SCRD/envenomate mawk &&
