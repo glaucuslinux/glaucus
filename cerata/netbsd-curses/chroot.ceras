@@ -23,7 +23,6 @@ install_chroot() {
   make \
     install-dynamic &&
 
-  for i in captoinfo infotocap; do
-    ln -fsv tic $TOOL/bin/$i
-  done
+  $LN tic $TOOL/bin/captoinfo &&
+  $LN tic $TOOL/bin/infotocap
 }
