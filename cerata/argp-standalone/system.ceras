@@ -1,0 +1,39 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+  
+  for i in 001-throw-in-funcdef gnu89-inline; do
+    $SCRD/patch 1 $nom alpine $nom-$ver-$i
+  done &&
+
+  $SCRD/patch 0 $nom glaucus 0001-fix-optimize
+}
+
+configure_system() {
+  autoreconf -vfis &&
+
+  ./configure \
+    --prefix=/usr
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    DESTDIR=$SCER/$nom/sac \
+    install-strip &&
+
+  for i in include lib; do
+    install -dv $SCER/$nom/sac/usr/$i
+  done &&
+
+  $RSYNC argp.h $SCER/$nom/sac/usr/include &&
+  $RSYNC libargp.a $SCER/$nom/sac/usr/lib
+}
