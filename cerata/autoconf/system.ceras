@@ -11,6 +11,8 @@ prepare_system() {
 }
 
 configure_system() {
+  autoreconf -vfis &&
+
   ./configure \
     --prefix=/usr
 }
