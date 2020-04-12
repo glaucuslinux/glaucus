@@ -23,5 +23,5 @@ install_chroot() {
   make \
     install
 
-  ln -fsv $nom $TOOL/bin/yacc
+  $LN $nom $TOOL/bin/yacc
 }
