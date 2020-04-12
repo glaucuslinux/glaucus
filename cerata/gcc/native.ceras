@@ -51,7 +51,6 @@ install_native() {
   make \
     install-strip &&
 
-  for i in cc $TUPL-cc; do
-    ln -fsv $TUPL-$nom $TOOL/bin/$i
-  done
+  $LN $TUPL-$nom $TOOL/bin/cc &&
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-cc
 }
