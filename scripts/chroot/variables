@@ -20,6 +20,7 @@ export TOOL=/toolchain &&
 
 export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/core_perl &&
 
+export LN='/usr/bin/ln -fsv' &&
 export RSYNC='/usr/bin/rsync -vaHAXSx' &&
 
 export AR=gcc-ar &&
