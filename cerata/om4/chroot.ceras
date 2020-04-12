@@ -22,5 +22,5 @@ install_chroot() {
   make \
     install &&
 
-  ln -fsv $nom $TOOL/bin/m4
+  $LN $nom $TOOL/bin/m4
 }
