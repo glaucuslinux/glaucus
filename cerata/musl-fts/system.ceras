@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  ./bootstrap.sh &&
+  autoreconf -vfis &&
 
   ./configure \
     --prefix=/usr \
