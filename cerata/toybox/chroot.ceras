@@ -26,6 +26,6 @@ install_chroot() {
   $RSYNC $nom $TOOL/bin &&
 
   for i in $(./$nom); do
-    ln -fsv $nom $TOOL/bin/$i
+    $LN $nom $TOOL/bin/$i
   done
 }
