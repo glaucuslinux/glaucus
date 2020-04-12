@@ -21,7 +21,7 @@ install_chroot() {
   make \
     install-strip &&
 
-  for i in bzip2 bunzip2 bzcat; do
-    ln -fsv $nom $TOOL/bin/$i
-  done
+  $LN $nom $TOOL/bin/bunzip2 &&
+  $LN $nom $TOOL/bin/bzcat &&
+  $LN $nom $TOOL/bin/bzip2
 }
