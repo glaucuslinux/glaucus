@@ -26,7 +26,9 @@ configure_system() {
     -e 's/yes/no/' \
     -i etc/useradd &&
 
-  autoreconf -vfis &&
+  autoreconf -vfis
+  
+  autoreconf -vis &&
 
   LIBS='-lutmps -lskarnet' \
   ./configure \
