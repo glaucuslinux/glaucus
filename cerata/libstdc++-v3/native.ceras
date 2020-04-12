@@ -6,7 +6,7 @@
 prepare_native() {
   $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/gcc --delete &&
 
-  install -dv $NBLD/$nom &&
+  $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
