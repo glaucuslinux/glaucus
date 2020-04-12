@@ -13,6 +13,8 @@ prepare_system() {
 }
 
 configure_system() {
+  autoreconf -vfis &&
+
   ax_cv_c_float_words_bigendian=no \
   ./configure \
     --prefix=/usr \
