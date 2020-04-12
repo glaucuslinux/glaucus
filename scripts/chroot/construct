@@ -17,10 +17,7 @@ $SCRD/construct chroot gettext-tiny &&
 $SCRD/construct chroot grep &&
 $SCRD/construct chroot make &&
 $SCRD/construct chroot patch &&
-$SCRD/construct chroot perl &&
 $SCRD/construct chroot sed &&
 $SCRD/construct chroot libarchive &&
-$SCRD/construct chroot texinfo &&
-$SCRD/construct chroot help2man &&
 $SCRD/construct chroot zstd &&
 $SCRD/construct chroot ccache
