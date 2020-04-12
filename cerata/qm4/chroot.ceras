@@ -9,7 +9,7 @@ prepare_chroot() {
 }
 
 configure_chroot() {
-  $SCRD/patch 0 $nom glaucus 0001-fix-name
+  $SCRD/patch $nom glaucus 0001-fix-name
 }
 
 build_chroot() {
