@@ -27,7 +27,6 @@ install_chroot() {
   make \
     install-strip &&
 
-  for i in cpio tar; do
-    ln -fsv bsd$i $TOOL/bin/$i
-  done
+  $LN bsdcpio $TOOL/bin/cpio &&
+  $LN bsdtar $TOOL/bin/tar
 }
