@@ -7,8 +7,9 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $RSYNC $CERD/$nom/error.h lib &&
-  $RSYNC $CERD/$nom/error.h src &&
+  for i in lib src; do
+    $RSYNC $CERD/$nom/error.h $i
+  done &&
 
   $SCRD/patch 0 $nom void fix-aarch64_fregs &&
   $SCRD/patch 0 $nom void fix-uninitialized &&
