@@ -21,6 +21,8 @@ export PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin &&
 
 export CCACHE_DIR=/.ccache &&
 
+export AUTORECONF='autoreconf -vfis' &&
+export LN='ln -fsv' &&
 export RSYNC='rsync -vaHXSx' &&
 
 export AR=gcc-ar &&
