@@ -1,4 +1,4 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-patch -p$1 -i $CERD/$2/patches/$3/$4.patch
+patch -p${1-0} -i $CERD/$2/patches/$3/$4.patch
