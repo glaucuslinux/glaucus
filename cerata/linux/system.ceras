@@ -12,20 +12,15 @@ prepare_system() {
 
   make \
     mrproper &&
-  
-  $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups &&
-  $SCRD/patch 1 $nom clear 0105-ksm-wakeups &&
-  $SCRD/patch 1 $nom clear 0106-intel_idle-tweak-cpuidle-cstates &&
-  $SCRD/patch 1 $nom clear 0108-smpboot-reuse-timer-calibration &&
-  $SCRD/patch 1 $nom clear 0110-Initialize-ata-before-graphics &&
-  $SCRD/patch 1 $nom clear 0111-give-rdrand-some-credit &&
-  $SCRD/patch 1 $nom clear 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit &&
-  $SCRD/patch 1 $nom clear 0113-kernel-time-reduce-ntp-wakeups &&
-  $SCRD/patch 1 $nom clear 0121-use-lfence-instead-of-rep-and-nop &&
-  $SCRD/patch 1 $nom clear 0122-do-accept-in-LIFO-order-for-cache-efficiency &&
-  $SCRD/patch 1 $nom clear 0124-locking-rwsem-spin-faster &&
-  $SCRD/patch 1 $nom clear 0125-ata-libahci-ignore-staggered-spin-up &&
-  $SCRD/patch 1 $nom clear 0130-nvme-workaround &&
+
+  for i in 0104-pci-pme-wakeups 0105-ksm-wakeups 0106-intel_idle-tweak-cpuidle-cstates \
+    0108-smpboot-reuse-timer-calibration 0110-Initialize-ata-before-graphics \
+    0111-give-rdrand-some-credit 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit \
+    0113-kernel-time-reduce-ntp-wakeups 0121-use-lfence-instead-of-rep-and-nop \
+    0122-do-accept-in-LIFO-order-for-cache-efficiency 0124-locking-rwsem-spin-faster \
+    0125-ata-libahci-ignore-staggered-spin-up 0130-nvme-workaround; do
+      $SCRD/patch 1 $nom clear $i
+  done
 
   $SCRD/patch 1 $nom dolohow uksm-5.6 &&
 
