@@ -4,14 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+  
+  $SCRD/patch 1 $nom gentoo $nom-1.16.0-rename-man
 }
 
 configure_system() {
-  $SCRD/patch 1 $nom gentoo $nom-1.16.0-rename-man &&
+  autoreconf -vfis &&
 
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --prefix=/usr \
     --disable-static
 }
