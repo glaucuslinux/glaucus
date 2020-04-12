@@ -21,5 +21,5 @@ install_chroot() {
     PREFIX=$TOOL \
     install &&
 
-  ln -fsv $nom $TOOL/bin/m4
+  $LN $nom $TOOL/bin/m4
 }
