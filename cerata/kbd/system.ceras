@@ -7,12 +7,12 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
+  for i in $nom-$ver-backspace-1 remove-resizecons; do
+    $SCRD/patch 1 $nom lfs $i
+  done
 }
 
 configure_system() {
-  $SCRD/patch 0 $nom lfs remove-resizecons &&
-
   ./configure \
     --prefix=/usr \
     --disable-static \
