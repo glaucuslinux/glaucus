@@ -15,7 +15,7 @@ prepare_system() {
     $SCRD/patch 0 $nom void $i
   done &&
   
-  $SCRD/patch 0 $nom glaucus 0001-musl-fts-obstack-0.178 &&
+  $SCRD/patch 0 $nom glaucus 0001-musl-fts-obstack-$ver &&
   
   for i in musl-macros musl-qsort_r musl-strerror_r musl-strndupa; do
     $SCRD/patch 0 $nom void $i
