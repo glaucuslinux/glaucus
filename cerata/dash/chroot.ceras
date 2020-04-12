@@ -23,5 +23,5 @@ install_chroot() {
   make \
     install-strip &&
 
-  ln -fsv $nom $TOOL/bin/sh
+  $LN $nom $TOOL/bin/sh
 }
