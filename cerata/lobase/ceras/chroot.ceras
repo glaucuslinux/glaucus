@@ -44,6 +44,6 @@ install_chroot() {
   install -m 444 -Dv bin/pax/cpio.1 bin/pax/pax.1 bin/pax/tar.1 -t \
     $TOOL/share/man/man1
 
-  ln -fsv pax $TOOL/bin/cpio
-  ln -fsv pax $TOOL/bin/tar
+  $LN pax $TOOL/bin/cpio
+  $LN pax $TOOL/bin/tar
 }
