@@ -18,11 +18,14 @@ prepare_native() {
   cat $nom/limitx.h $nom/glimits.h $nom/limity.h > $(dirname $($TUPL-$nom \
     -print-lib$nom-file-name))/include-fixed/limits.h &&
 
-  install -dv $NBLD/$nom &&
-  cd $NBLD/$nom
+  install -dv $NBLD/$nom
 }
 
 configure_native() {
+  $AUTORECONF &&
+
+  cd $NBLD/$nom &&
+
   $TSRC/$nom/configure \
     --build=$TUPL \
     --host=$TUPL \
