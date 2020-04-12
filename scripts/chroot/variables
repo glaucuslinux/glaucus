@@ -20,6 +20,7 @@ export TOOL=/toolchain &&
 
 export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/core_perl &&
 
+export AUTORECONF='/usr/bin/autoreconf -vfis' &&
 export LN='/usr/bin/ln -fsv' &&
 export RSYNC='/usr/bin/rsync -vaHAXSx' &&
 
