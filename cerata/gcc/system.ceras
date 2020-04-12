@@ -10,11 +10,14 @@ prepare_system() {
   
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths &&
 
-  install -dv $SBLD/$nom &&
-  cd $SBLD/$nom
+  install -dv $SBLD/$nom
 }
 
 configure_system() {
+  autoreconf -vfis &&
+
+  cd $SBLD/$nom &&
+
   CFLAGS="$CFLAGSNOLTO" \
   CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
