@@ -14,7 +14,7 @@ prepare_cross() {
 
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
 
-  install -dv $XBLD/$nom
+  $MKDIR $XBLD/$nom
 }
 
 configure_cross() {
