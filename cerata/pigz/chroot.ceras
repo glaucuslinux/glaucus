@@ -21,7 +21,9 @@ build_chroot() {
 install_chroot() {
   $RSYNC $nom $TOOL/bin &&
 
-  for i in un$nom gzip gunzip gzcat zcat; do
-    ln -fsv $nom $TOOL/bin/$i
-  done
+  $LN $nom $TOOL/bin/gunzip &&
+  $LN $nom $TOOL/bin/gzcat &&
+  $LN $nom $TOOL/bin/gzip &&
+  $LN $nom $TOOL/bin/un$nom &&
+  $LN $nom $TOOL/bin/zcat
 }
