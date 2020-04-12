@@ -23,7 +23,8 @@ install_cross() {
   make \
     install &&
 
-  for i in c++ g++ gcc gcc-9.3.0; do
-    ln -fsv $nom $TOOL/bin/$nom/$TUPL-$i
-  done
+  $LN $nom $TOOL/bin/$nom/$TUPL-c++ &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-g++ &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-gcc &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-gcc-9.3.0
 }
