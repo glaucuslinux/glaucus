@@ -1,5 +1,5 @@
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -16004,8 +16004,8 @@
  
  
@@ -11,8 +11,8 @@
  	*)       RESIZECONS_PROGS=no  ;;
  esac
   if test "$RESIZECONS_PROGS" = "yes"; then
---- docs/man/man8/Makefile.in
-+++ docs/man/man8/Makefile.in
+--- a/docs/man/man8/Makefile.in
++++ b/docs/man/man8/Makefile.in
 @@ -314,7 +314,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
