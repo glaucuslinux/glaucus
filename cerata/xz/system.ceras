@@ -15,8 +15,7 @@ prepare_system() {
 }
 
 configure_system() {
-  ./autogen.sh \
-    --no-po4a &&
+  autoreconf -vfis &&
 
   ./configure \
     --prefix=/usr \
