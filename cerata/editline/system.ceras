@@ -33,7 +33,7 @@ install_system() {
     touch $SCER/$nom/sac/usr/include/readline/$i.h
   done &&
 
-  ln -fsv ../$nom.h $SCER/$nom/sac/usr/include/readline/readline.h &&
+  $LN ../$nom.h $SCER/$nom/sac/usr/include/readline/readline.h &&
   
-  ln -fsv lib$nom.so $SCER/$nom/sac/usr/lib/libreadline.so
+  $LN lib$nom.so $SCER/$nom/sac/usr/lib/libreadline.so
 }
