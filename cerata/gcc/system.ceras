@@ -44,14 +44,14 @@ install_system() {
     $RSYNC $CERD/$nom/c$i $SCER/$nom/sac/usr/bin
   done &&
   
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/cc &&
+  $LN $nom $SCER/$nom/sac/usr/bin/cc &&
   
   install -dv $SCER/$nom/sac/usr/lib/bfd-plugins &&
 
-  ln -fsv ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so \
+  $LN ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so \
     $SCER/$nom/sac/usr/lib/bfd-plugins/ &&
   
-  ln -fsv ../bin/cpp $SCER/$nom/sac/usr/lib/cpp &&
+  $LN ../bin/cpp $SCER/$nom/sac/usr/lib/cpp &&
 
   install -dv $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib &&
 
