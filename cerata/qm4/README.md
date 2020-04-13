@@ -12,3 +12,5 @@ beware as this would conflict both GNU M4 and OpenBSD M4
 `gmp` fails to build with:
 
 `doesnt support radix in eval`
+
+`bison` also failed to build.
