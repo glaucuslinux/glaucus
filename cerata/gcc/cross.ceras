@@ -14,14 +14,11 @@ prepare_cross() {
 
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
 
-  $MKDIR $XBLD/$nom
+  $MKDIR $XBLD/$nom &&
+  cd $XBLD/$nom
 }
 
 configure_cross() {
-  $AUTORECONF &&
-
-  cd $XBLD/$nom &&
-
   CFLAGS='-g0 -O0' \
   CXXFLAGS='-g0 -O0' \
   $TSRC/$nom/configure \
