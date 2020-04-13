@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SCRD/patch 0 $nom glaucus 0001-gnu-hash-style &&
+  $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
 
   ./configure \
     --prefix=/usr \
