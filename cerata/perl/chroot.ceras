@@ -23,7 +23,7 @@ build_chroot() {
 install_chroot() {
   $RSYNC $nom cpan/podlators/scripts/pod2man $TOOL/bin &&
 
-  install -dv $TOOL/lib/${nom}5/$ver &&
+  $MKDIR $TOOL/lib/${nom}5/$ver &&
 
   $RSYNC lib/ $TOOL/lib/${nom}5/$ver
 }
