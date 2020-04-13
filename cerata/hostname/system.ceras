@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SCRD/patch $nom glaucus remove-O2
+  $SCRD/patch 0 $nom glaucus remove-O2
 }
 
 build_system() {
