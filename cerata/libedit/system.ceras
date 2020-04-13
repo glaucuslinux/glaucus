@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
+  $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -24,7 +24,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  install -dv $SCER/$nom/sac/usr/include/readline &&
+  $MKDIR $SCER/$nom/sac/usr/include/readline &&
   
   for i in history tilde; do
     touch $SCER/$nom/sac/usr/include/readline/$i.h
