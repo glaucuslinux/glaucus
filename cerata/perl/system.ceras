@@ -7,9 +7,8 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  for i in option-for-pgo-profiling-test-with-${nom}bench ${nom}bench-for-pgo-optimization; do
-    $SCRD/patch 1 $nom clear 0001-Add-$i
-  done
+  $SCRD/patch 1 $nom clear 0001-Add-option-for-pgo-profiling-test-with-${nom}bench &&
+  $SCRD/patch 1 $nom clear 0001-Add-${nom}bench-for-pgo-optimization
 }
 
 configure_system() {
