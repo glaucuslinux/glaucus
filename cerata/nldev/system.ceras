@@ -4,17 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom $SSRC --delete
+  $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
 }
 
 configure_system() {
+  $SCRD/patch 0 $nom glaucus 0001-fix-shell &&
+
   sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
     -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
-
-  sed 's/\/bin\/busybox ash/\/usr\/bin\/dash/' \
-    -i nltrigger run_$nom
 }
 
 build_system() {
