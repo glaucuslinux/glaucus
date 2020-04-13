@@ -38,6 +38,6 @@ install_system() {
     install &&
 
   for i in ping tracepath; do
-    ln -fsv $i $SCER/$nom/sac/usr/bin/${i}6
+    $LN $i $SCER/$nom/sac/usr/bin/${i}6
   done
 }
