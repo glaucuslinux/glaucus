@@ -11,8 +11,6 @@ prepare_system() {
 }
 
 configure_system() {
-  $AUTORECONF &&
-
   ./configure \
     --prefix=/usr \
     --disable-static \
