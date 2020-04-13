@@ -10,7 +10,7 @@ prepare_system() {
   
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths &&
 
-  install -dv $SBLD/$nom
+  $MKDIR $SBLD/$nom
 }
 
 configure_system() {
@@ -46,14 +46,14 @@ install_system() {
   
   $LN $nom $SCER/$nom/sac/usr/bin/cc &&
   
-  install -dv $SCER/$nom/sac/usr/lib/bfd-plugins &&
+  $MKDIR $SCER/$nom/sac/usr/lib/bfd-plugins &&
 
   $LN ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so \
     $SCER/$nom/sac/usr/lib/bfd-plugins/ &&
   
   $LN ../bin/cpp $SCER/$nom/sac/usr/lib/cpp &&
 
-  install -dv $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib &&
+  $MKDIR $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib &&
 
   mv $SCER/$nom/sac/usr/lib/*gdb.py $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib
 }
