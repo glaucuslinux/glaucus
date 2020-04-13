@@ -16,7 +16,7 @@ build_chroot() {
 }
 
 install_chroot() {
-  install -dv /etc/$nom &&
+  $MKDIR /etc/$nom &&
 
   $RSYNC $CERD/$nom/${nom}rc.chroot /etc/$nom/${nom}rc &&
   $RSYNC $SCRD/$nom/$nom-$ver/$nom.pl /usr/bin/$nom
