@@ -11,7 +11,7 @@ prepare_system() {
     $SCRD/patch 1 $nom alpine $nom-$ver-$i
   done &&
 
-  $SCRD/patch $nom glaucus 0001-fix-optimize
+  $SCRD/patch 0 $nom glaucus 0001-fix-optimize
 }
 
 configure_system() {
