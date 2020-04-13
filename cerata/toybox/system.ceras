@@ -28,6 +28,6 @@ install_system() {
   $RSYNC $nom $SCER/$nom/sac/usr/bin &&
 
   for i in $(./$nom); do
-    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+    $LN $nom $SCER/$nom/sac/usr/bin/$i
   done
 }
