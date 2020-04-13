@@ -23,12 +23,12 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/libtool &&
+  $LN $nom $SCER/$nom/sac/usr/bin/libtool &&
 
   $RSYNC $CERD/$nom/${nom}ize $SCER/$nom/sac/usr/bin &&
   
-  ln -fsv ${nom}ize $SCER/$nom/sac/usr/bin/libtoolize &&
-  ln -fsv ${nom}ize $SCER/$nom/sac/usr/bin/glibtoolize &&
+  $LN ${nom}ize $SCER/$nom/sac/usr/bin/libtoolize &&
+  $LN ${nom}ize $SCER/$nom/sac/usr/bin/glibtoolize &&
 
   install -dv $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_AUX_DIR &&
   install -dv $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_MACRO_DIRS
