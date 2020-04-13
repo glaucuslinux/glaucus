@@ -10,7 +10,7 @@ prepare_system() {
 
 configure_system() {
   for i in 'glaucus 0001-remove-static' 'void disable-tests'; do
-    $SCRD/patch $nom $i
+    $SCRD/patch 0 $nom $i
   done
 }
 
