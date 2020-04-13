@@ -7,14 +7,11 @@ prepare_system() {
   $RSYNC $SRCD/$nom/Python-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  for i in 0001-Fix-$nom-path-for-linux CVE-2020-8492; do
-    $SCRD/patch 1 $nom clear $i
-  done
+  $SCRD/patch 1 $nom clear 0001-Fix-$nom-path-for-linux &&
+  $SCRD/patch 1 $nom clear CVE-2020-8492
 }
 
 configure_system() {
-  $AUTORECONF &&
-
   ax_cv_c_float_words_bigendian=no \
   ./configure \
     --prefix=/usr \
