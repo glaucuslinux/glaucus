@@ -13,7 +13,7 @@ prepare_system() {
 }
 
 configure_system() {
-  autoreconf -vfis &&
+  $AUTORECONF &&
 
   ax_cv_c_float_words_bigendian=no \
   ./configure \
