@@ -7,16 +7,13 @@ prepare_system() {
   $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete &&
   cd $SSRC/elfutils &&
 
-  for i in lib src; do
-    $RSYNC $CERD/elfutils/error.h $i
-  done &&
+  $RSYNC $CERD/elfutils/error.h lib &&
+  $RSYNC $CERD/elfutils/error.h src &&
 
-  $SCRD/patch elfutils void musl-cdefs
+  $SCRD/patch 0 elfutils void musl-cdefs
 }
 
 configure_system() {
-  $AUTORECONF &&
-
   CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
     --prefix=/usr \
