@@ -11,7 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  ./autogen.sh
+  $AUTORECONF
 
   sed -e 's/-O2//' \
     -i configure
