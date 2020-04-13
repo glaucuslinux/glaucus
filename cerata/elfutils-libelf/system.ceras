@@ -11,7 +11,7 @@ prepare_system() {
     $RSYNC $CERD/elfutils/error.h $i
   done &&
 
-  $SCRD/patch 0 elfutils void musl-cdefs
+  $SCRD/patch elfutils void musl-cdefs
 }
 
 configure_system() {
