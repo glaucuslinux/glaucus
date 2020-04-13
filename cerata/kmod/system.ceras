@@ -35,6 +35,6 @@ install_system() {
     install-strip &&
 
   for i in depmod insmod lsmod modinfo modprobe rmmod; do
-    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+    $LN $nom $SCER/$nom/sac/usr/bin/$i
   done
 }
