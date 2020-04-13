@@ -26,9 +26,8 @@ install_system() {
 
   $MKDIR $SCER/$nom/sac/usr/include/readline &&
   
-  for i in history tilde; do
-    touch $SCER/$nom/sac/usr/include/readline/$i.h
-  done &&
+  touch $SCER/$nom/sac/usr/include/readline/history.h &&
+  touch $SCER/$nom/sac/usr/include/readline/tilde.h &&
 
   $LN ../editline/readline.h $SCER/$nom/sac/usr/include/readline/readline.h &&
   
