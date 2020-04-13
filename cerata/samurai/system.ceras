@@ -23,5 +23,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
 
-  ln -fsv samu $SCER/$nom/sac/usr/bin/ninja
+  $LN samu $SCER/$nom/sac/usr/bin/ninja
 }
