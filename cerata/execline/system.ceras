@@ -5,7 +5,9 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style
 }
 
 configure_system() {
@@ -19,8 +21,7 @@ configure_system() {
     --disable-allstatic \
     --disable-all-pic &&
 
-  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-    -e 's/-Wl,--hash-style=both //' \
+  sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
 }
 
