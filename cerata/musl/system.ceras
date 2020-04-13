@@ -29,7 +29,7 @@ install_system() {
   make \
     install &&
 
-  ln -fsv ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
+  $LN ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
 
   $RSYNC $CERD/$nom/ld-$nom-$ARCH.path /etc &&
   $RSYNC $CERD/$nom/ldconfig /usr/bin &&
