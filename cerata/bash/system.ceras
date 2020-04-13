@@ -8,7 +8,7 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   for i in $(seq -w 16); do
-    $SCRD/patch 0 $nom upstream ${nom}50-0$i
+    $SCRD/patch $nom upstream ${nom}50-0$i
   done
 }
 
