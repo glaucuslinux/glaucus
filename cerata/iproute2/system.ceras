@@ -5,20 +5,13 @@
 
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
+
+  $SCRD/patch 0 $nom glaucus 0001-remove-sbin
 }
 
 configure_system() {
-  sed /ARPD/d \
-    -i Makefile &&
-
-  rm -fv man/man8/arpd.8 &&
-
-  sed 's/\/usr\/sbin/\/usr\/bin/' \
-    -i misc/ss.c &&
-
-  sed 's/.m_ipt.o//' \
-    -i tc/Makefile
+  $SCRD/patch 1 $nom lfs 0001-remove-arpd-and-two-modules
 }
 
 build_system() {
