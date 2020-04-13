@@ -12,13 +12,13 @@ prepare_system() {
   done &&
 
   for i in fix-aarch64_fregs fix-uninitialized musl-cdefs musl-fts-obstack; do
-    $SCRD/patch 0 $nom void $i
+    $SCRD/patch $nom void $i
   done &&
   
-  $SCRD/patch 0 $nom glaucus 0001-musl-fts-obstack-$ver &&
+  $SCRD/patch $nom glaucus 0001-musl-fts-obstack-$ver &&
   
   for i in musl-macros musl-qsort_r musl-strerror_r musl-strndupa; do
-    $SCRD/patch 0 $nom void $i
+    $SCRD/patch $nom void $i
   done
 }
 
