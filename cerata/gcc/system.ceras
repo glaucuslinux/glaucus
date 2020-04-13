@@ -10,14 +10,11 @@ prepare_system() {
   
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths &&
 
-  $MKDIR $SBLD/$nom
+  $MKDIR $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  $AUTORECONF &&
-
-  cd $SBLD/$nom &&
-
   CFLAGS="$CFLAGSNOLTO" \
   CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
