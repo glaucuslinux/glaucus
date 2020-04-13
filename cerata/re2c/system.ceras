@@ -1,0 +1,36 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_system() {
+  rsync -vah $CERD/$nom/$nom $SSRC --delete
+  cd $SSRC/$nom
+
+  $MKDIR $SBLD/$nom
+}
+
+configure_system() {
+  ./autogen.sh
+
+  sed -e 's/-O2//' \
+    -i configure
+  
+  cd $SBLD/$nom
+
+  $SSRC/$nom/configure \
+    --prefix=$TOOL \
+    --build=$TUPL \
+    --host=$TUPL \
+    --target=$TUPL \
+    --disable-static
+}
+
+build_system() {
+  make
+}
+
+install_system() {
+  make \
+    install-strip
+}
