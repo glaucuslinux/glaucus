@@ -34,7 +34,10 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  for i in depmod insmod lsmod modinfo modprobe rmmod; do
-    $LN $nom $SCER/$nom/sac/usr/bin/$i
-  done
+  $LN $nom $SCER/$nom/sac/usr/bin/depmod &&
+  $LN $nom $SCER/$nom/sac/usr/bin/insmod &&
+  $LN $nom $SCER/$nom/sac/usr/bin/lsmod &&
+  $LN $nom $SCER/$nom/sac/usr/bin/modinfo &&
+  $LN $nom $SCER/$nom/sac/usr/bin/modprobe &&
+  $LN $nom $SCER/$nom/sac/usr/bin/rmmod
 }
