@@ -11,7 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SCRD/patch 1 $nom lfs 0001-remove-arpd-and-two-modules
+  $SCRD/patch 0 $nom lfs 0001-remove-arpd-and-two-modules
 }
 
 build_system() {
