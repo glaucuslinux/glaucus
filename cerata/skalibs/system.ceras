@@ -9,6 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
+  $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
+
   ./configure \
     --prefix=/usr \
     --datadir=/etc \
@@ -16,8 +18,7 @@ configure_system() {
     --disable-all-pic \
     --disable-ipv6 &&
 
-  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
-    -e 's/-Wl,--hash-style=both //' \
+  sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
 }
 
