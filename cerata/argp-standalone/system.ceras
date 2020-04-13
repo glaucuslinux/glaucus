@@ -31,7 +31,7 @@ install_system() {
     install-strip &&
 
   for i in include lib; do
-    install -dv $SCER/$nom/sac/usr/$i
+    $MKDIR $SCER/$nom/sac/usr/$i
   done &&
 
   $RSYNC argp.h $SCER/$nom/sac/usr/include &&
