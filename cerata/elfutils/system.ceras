@@ -24,6 +24,8 @@ prepare_system() {
 }
 
 configure_system() {
+  $AUTORECONF &&
+
   CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
     --prefix=/usr \
