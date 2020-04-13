@@ -20,5 +20,8 @@ build_system() {
 install_system() {
   python3 setup.py \
     install \
-    --root=$SCER/$nom/sac
+    --root=$SCER/$nom/sac \
+    --optimize=2 \
+    --force \
+    --skip-build
 }
