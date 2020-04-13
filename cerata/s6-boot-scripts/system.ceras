@@ -16,9 +16,8 @@ build_system() {
 }
 
 install_system() {
-  for i in $SRCD/$nom/etc $SRCD/$nom/usr; do
-    $RSYNC $i $SCER/$nom/sac --delete
-  done &&
+  $RSYNC $SRCD/$nom/etc $SCER/$nom/sac --delete &&
+  $RSYNC $SRCD/$nom/usr $SCER/$nom/sac --delete &&
   
   chown -Rv 0:0 $SCER/$nom/sac &&
 
