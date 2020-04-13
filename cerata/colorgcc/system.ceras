@@ -16,7 +16,7 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/etc/$nom $SCER/$nom/sac/usr/bin &&
+  $MKDIR $SCER/$nom/sac/etc/$nom $SCER/$nom/sac/usr/bin &&
 
   $RSYNC $CERD/$nom/${nom}rc.system $SCER/$nom/sac/etc/$nom/${nom}rc &&
   $RSYNC $SCRD/$nom/$nom-$ver/$nom.pl $SCER/$nom/sac/usr/bin/$nom
