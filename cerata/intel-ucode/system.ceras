@@ -11,7 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  install -dv kernel/x86/microcode
+  $MKDIR kernel/x86/microcode
 }
 
 build_system() {
@@ -22,7 +22,7 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/boot &&
+  $MKDIR $SCER/$nom/sac/boot &&
 
   $RSYNC $nom.img $SCER/$nom/sac/boot
 }
