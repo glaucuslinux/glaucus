@@ -24,6 +24,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
 
-  $RSYNC $CERD/$nom/autopoint $SCER/$nom/sac/usr/bin/autopoint &&
+  $RSYNC $CERD/$nom/autopoint $SCER/$nom/sac/usr/bin &&
+
   chown -v 0:0 $SCER/$nom/sac/usr/bin/autopoint
 }
