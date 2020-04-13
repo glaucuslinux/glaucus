@@ -23,5 +23,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/m4
+  $LN $nom $SCER/$nom/sac/usr/bin/m4
 }
