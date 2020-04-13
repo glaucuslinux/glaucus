@@ -1,4 +1,4 @@
-#! /bin/sh -
+#!/usr/bin/dash -
 #
 # autopoint:  Copies standard gettext infrastructure (lightweight version).
 #
