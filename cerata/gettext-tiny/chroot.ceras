@@ -21,5 +21,7 @@ build_chroot() {
 
 install_chroot() {
   make \
-    install
+    install &&
+  
+  $RSYNC $CERD/$nom/autopoint $TOOL/bin
 }
