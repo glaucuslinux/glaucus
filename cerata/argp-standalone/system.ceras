@@ -7,16 +7,13 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
   
-  for i in 001-throw-in-funcdef gnu89-inline; do
-    $SCRD/patch 1 $nom alpine $nom-$ver-$i
-  done &&
+  $SCRD/patch 1 $nom alpine $nom-$ver-001-throw-in-funcdef &&
+  $SCRD/patch 1 $nom alpine $nom-$ver-gnu89-inline &&
 
   $SCRD/patch 0 $nom glaucus 0001-fix-optimize
 }
 
 configure_system() {
-  $AUTORECONF &&
-
   ./configure \
     --prefix=/usr
 }
@@ -30,9 +27,8 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  for i in include lib; do
-    $MKDIR $SCER/$nom/sac/usr/$i
-  done &&
+  $MKDIR $SCER/$nom/sac/usr/include &&
+  $MKDIR $SCER/$nom/sac/usr/lib &&
 
   $RSYNC argp.h $SCER/$nom/sac/usr/include &&
   $RSYNC libargp.a $SCER/$nom/sac/usr/lib
