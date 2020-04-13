@@ -7,13 +7,11 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  for i in $nom-$ver-backspace-1 remove-resizecons; do
-    $SCRD/patch 1 $nom lfs $i
-  done
+  $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
 }
 
 configure_system() {
-  $AUTORECONF &&
+  $SCRD/patch 1 $nom lfs remove-resizecons &&
 
   ./configure \
     --prefix=/usr \
