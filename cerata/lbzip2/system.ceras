@@ -23,6 +23,6 @@ install_system() {
     install-strip &&
 
   for i in bzip2 bunzip2 bzcat; do
-    ln -fsv $nom $SCER/$nom/sac/usr/bin/$i
+    $LN $nom $SCER/$nom/sac/usr/bin/$i
   done
 }
