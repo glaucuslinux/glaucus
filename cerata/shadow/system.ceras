@@ -8,7 +8,7 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   for i in 0001-change-default-shell 0002-fix-installation-paths; do
-    $SCRD/patch 0 $nom glaucus $i
+    $SCRD/patch $nom glaucus $i
   done
 }
 
@@ -26,7 +26,7 @@ configure_system() {
     -e 's/yes/no/' \
     -i etc/useradd &&
 
-  autoreconf -vfis
+  autoreconf -vis
   
   autoreconf -vis &&
 
