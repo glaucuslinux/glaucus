@@ -13,7 +13,7 @@ prepare_system() {
 configure_system() {
   $RSYNC $CERD/$nom/config.mak.system config.mak &&
 
-  $SCRD/patch $nom glaucus 0001-optimize-more
+  $SCRD/patch 0 $nom glaucus 0001-optimize-more
 }
 
 build_system() {
