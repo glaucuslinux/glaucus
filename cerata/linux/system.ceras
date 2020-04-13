@@ -24,7 +24,7 @@ prepare_system() {
 
   $SCRD/patch 1 $nom dolohow uksm-5.6 &&
 
-  $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
+  $SCRD/patch $nom glaucus 0001-libarchive-bsdtar-compatibility &&
 
   for i in 0001-aufs-20200302 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v \
     0001-cpu-5.6-merge-graysky-s-patchset 0001-futex-Implement-mechanism-to-wait-on-any-of-several- \
