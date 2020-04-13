@@ -23,5 +23,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/lex
+  $LN $nom $SCER/$nom/sac/usr/bin/lex
 }
