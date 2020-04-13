@@ -1,0 +1,14 @@
+#!/usr/bin/dash -e
+
+exec meson setup \
+  --prefix /usr \
+  --libexecdir lib \
+  --sbindir bin \
+  --buildtype release \
+  --optimization 3 \
+  --stdsplit \
+  --strip \
+  --wrap-mode nodownload \
+  -Db_lto=true \
+  -Db_pie=true \
+  $@
