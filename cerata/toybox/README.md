@@ -78,6 +78,9 @@ LD_LIBRARY_PATH variables when building chroot and system, while system toybox
 relies on the system installed zlib and libressl to provide better and faster
 support.
 
+Also chroot toybox has hostname built into it to satisfy cerata that require it
+(e.g. m4), while system toybox doesn't as `hostname` from debian is used.
+
 ## Build
 Building toybox with any of the flags `-fno-common`, `-flto` and
 `-malign-data=cacheline` causes weird `autoconf` output which makes cerata that
