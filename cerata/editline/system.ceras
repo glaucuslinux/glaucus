@@ -11,8 +11,6 @@ prepare_system() {
 }
 
 configure_system() {
-  $AUTORECONF &&
-
   ./configure \
     --prefix=/usr \
     --disable-static
@@ -29,9 +27,8 @@ install_system() {
 
   $MKDIR $SCER/$nom/sac/usr/include/readline &&
   
-  for i in history tilde; do
-    touch $SCER/$nom/sac/usr/include/readline/$i.h
-  done &&
+  touch $SCER/$nom/sac/usr/include/readline/history.h &&
+  touch $SCER/$nom/sac/usr/include/readline/tilde.h &&
 
   $LN ../$nom.h $SCER/$nom/sac/usr/include/readline/readline.h &&
   
