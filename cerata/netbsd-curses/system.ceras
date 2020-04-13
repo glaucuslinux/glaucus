@@ -27,6 +27,6 @@ install_system() {
     install-dynamic &&
 
   for i in captoinfo infotocap; do
-    ln -fsv tic $SCER/$nom/sac/usr/bin/$i
+    $LN tic $SCER/$nom/sac/usr/bin/$i
   done
 }
