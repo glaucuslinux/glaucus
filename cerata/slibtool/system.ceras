@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
+  $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -30,6 +30,6 @@ install_system() {
   $LN ${nom}ize $SCER/$nom/sac/usr/bin/libtoolize &&
   $LN ${nom}ize $SCER/$nom/sac/usr/bin/glibtoolize &&
 
-  install -dv $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_AUX_DIR &&
-  install -dv $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_MACRO_DIRS
+  $MKDIR $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_AUX_DIR &&
+  $MKDIR $SCER/$nom/sac/usr/share/libtoolize/AC_CONFIG_MACRO_DIRS
 }
