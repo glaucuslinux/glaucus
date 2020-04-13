@@ -1,0 +1,12 @@
+diff -urNa s6-2.9.1.0.orig/configure s6-2.9.1.0/configure
+--- s6-2.9.1.0.orig/configure	2019-12-23 14:05:46.000000000 +0200
++++ s6-2.9.1.0/configure	2020-04-13 13:33:55.955130664 +0300
+@@ -360,7 +360,7 @@
+ fi
+ 
+ if $shared ; then
+-  tryldflag LDFLAGS -Wl,--hash-style=both
++  tryldflag LDFLAGS -Wl,--hash-style=gnu
+ fi
+ 
+ LDFLAGS_SHARED="${LDFLAGS_SHARED}${addlibdpath}"
