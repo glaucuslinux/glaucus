@@ -23,7 +23,7 @@ prepare_system() {
 }
 
 configure_system() {
-  autoreconf -vfis &&
+  $AUTORECONF &&
 
   CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
