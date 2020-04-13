@@ -22,5 +22,5 @@ install_system() {
     PREFIX=/usr \
     install &&
 
-  ln -fsv $nom $SCER/$nom/sac/usr/bin/m4
+  $LN $nom $SCER/$nom/sac/usr/bin/m4
 }
