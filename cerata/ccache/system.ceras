@@ -28,6 +28,6 @@ install_system() {
   $RSYNC $CERD/$nom/$nom.conf $SCER/$nom/sac/etc &&
 
   for i in c++ c89 c99 cc g++ gcc; do
-    ln -fsv $nom $SCER/$nom/sac/usr/bin/$nom/$i
+    $LN $nom $SCER/$nom/sac/usr/bin/$nom/$i
   done
 }
