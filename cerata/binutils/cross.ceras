@@ -14,10 +14,15 @@ configure_cross() {
     --prefix=$TOOL \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
+    --enable-relro \
+    --enable-default-hash-style=gnu \
     --disable-werror \
     --disable-nls \
+    --with-pic \
     --with-lib-path=$TOOL/lib \
     --with-sysroot=$GLAD \
+    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --with-system-zlib \
     --disable-multilib
 }
 
@@ -27,5 +32,7 @@ build_cross() {
 
 install_cross() {
   make \
-    install-strip
+    install-strip &&
+
+  $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld
 }
