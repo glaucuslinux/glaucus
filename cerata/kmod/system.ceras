@@ -8,7 +8,7 @@ prepare_system() {
   cd $SSRC/$nom &&
 
   $SCRD/patch 1 $nom arch 0002-add-zstd-compressed-module-support &&
-  $SCRD/patch $nom void strndupa
+  $SCRD/patch 0 $nom void strndupa
 }
 
 configure_system() {
