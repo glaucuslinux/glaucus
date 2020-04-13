@@ -24,7 +24,7 @@ configure_system() {
     --disable-all-pic \
     --enable-utmps &&
 
-  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGSFAT -fno-stack-protector/" \
+  sed "s/CFLAGS := .*/CFLAGS := $CFLAGSFAT -fno-stack-protector/" \
     -i config.mak
 }
 
