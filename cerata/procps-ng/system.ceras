@@ -11,7 +11,7 @@ prepare_system() {
 }
 
 configure_system() {
-  autoreconf -vfis &&
+  $AUTORECONF &&
 
   LIBS='-lutmps -lskarnet' \
   ./configure \
