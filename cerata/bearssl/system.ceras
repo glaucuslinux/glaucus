@@ -17,7 +17,7 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/lib &&
+  $MKDIR $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/lib &&
 
   $RSYNC build/brssl $SCER/$nom/sac/usr/bin &&
   $RSYNC build/lib$nom.so $SCER/$nom/sac/usr/lib
