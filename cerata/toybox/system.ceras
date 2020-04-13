@@ -23,7 +23,7 @@ build_system() {
 }
 
 install_system() {
-  install -dv $SCER/$nom/sac/usr/bin &&
+  $MKDIR $SCER/$nom/sac/usr/bin &&
 
   $RSYNC $nom $SCER/$nom/sac/usr/bin &&
 
