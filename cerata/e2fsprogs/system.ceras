@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
+  $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -23,7 +23,7 @@ configure_system() {
     --disable-nls \
     --enable-lto &&
 
-  sed 's/MKDIR_P =.*/MKDIR_P = install -dv/' \
+  sed 's/MKDIR_P =.*/MKDIR_P = $MKDIR/' \
     -i MCONFIG Makefile
 }
 
