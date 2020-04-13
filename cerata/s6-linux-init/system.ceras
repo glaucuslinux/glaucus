@@ -9,6 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
+  $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
+
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib/libexec \
@@ -23,7 +25,6 @@ configure_system() {
     --enable-utmps &&
 
   sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGSFAT -fno-stack-protector/" \
-    -e 's/-Wl,--hash-style=both //' \
     -i config.mak
 }
 
