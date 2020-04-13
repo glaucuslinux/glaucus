@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  install -dv $SBLD/$nom &&
+  $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
@@ -23,7 +23,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install &&
   
-  install -dv $SCER/$nom/sac/etc &&
+  $MKDIR $SCER/$nom/sac/etc &&
 
   $RSYNC $CERD/$nom/$nom.conf $SCER/$nom/sac/etc &&
 
