@@ -26,7 +26,6 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-dynamic &&
 
-  for i in captoinfo infotocap; do
-    $LN tic $SCER/$nom/sac/usr/bin/$i
-  done
+  $LN tic $SCER/$nom/sac/usr/bin/captoinfo &&
+  $LN tic $SCER/$nom/sac/usr/bin/infotocap
 }
