@@ -26,10 +26,6 @@ configure_system() {
     -e 's/yes/no/' \
     -i etc/useradd &&
 
-  $AUTORECONF
-  
-  autoreconf -vis &&
-
   LIBS='-lutmps -lskarnet' \
   ./configure \
     --prefix=/usr \
