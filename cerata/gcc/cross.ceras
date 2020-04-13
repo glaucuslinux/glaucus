@@ -12,7 +12,7 @@ prepare_cross() {
   
   cd $TSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
+  $SCRD/patch $nom glaucus 0001-adjust-toolchain-paths &&
 
   $MKDIR $XBLD/$nom
 }
