@@ -9,7 +9,7 @@ prepare_system() {
 }
 
 configure_system() {
-  $SCRD/patch 0 $nom glaucus 0001-fix-name
+  $SCRD/patch $nom glaucus 0001-fix-name
 }
 
 build_system() {
