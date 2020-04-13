@@ -6,7 +6,7 @@
 prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
 
-  install -dv $SBLD/$nom &&
+  $MKDIR $SBLD/$nom &&
 
   cd $SSRC/$nom &&
 
@@ -62,7 +62,7 @@ install_system() {
     INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
     modules_install &&
 
-  install -dv $SCER/$nom/sac/boot &&
+  $MKDIR $SCER/$nom/sac/boot &&
 
   $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz &&
   $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot
