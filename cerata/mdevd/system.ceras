@@ -22,7 +22,7 @@ configure_system() {
     --disable-allstatic \
     --disable-all-pic &&
 
-  sed -e "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
+  sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
 }
 
