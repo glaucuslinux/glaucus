@@ -21,7 +21,6 @@ export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/cor
 
 export MAKEFLAGS=-j1 &&
 
-export AUTORECONF='/usr/bin/autoreconf -vfis' &&
 export LN='/usr/bin/ln -fsv' &&
 export MKDIR='/usr/bin/install -dv' &&
 export RSYNC='/usr/bin/rsync -vaHAXSx'
