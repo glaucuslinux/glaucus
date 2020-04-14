@@ -18,7 +18,6 @@ configure_cross() {
     --enable-default-hash-style=gnu \
     --disable-werror \
     --disable-nls \
-    --with-pic \
     --with-lib-path=$TOOL/lib \
     --with-sysroot=$GLAD \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
