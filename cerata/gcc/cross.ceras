@@ -41,6 +41,9 @@ configure_cross() {
     --disable-decimal-float \
     --without-isl \
     --with-sysroot=$GLAD \
+    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --with-system-zlib \
+    --with-linker-hash-style=gnu \
     --without-headers \
     --with-newlib \
     --disable-libatomic \
