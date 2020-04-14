@@ -62,5 +62,10 @@ build_cross() {
 
 install_cross() {
   make \
-    install-strip
+    install-strip &&
+
+  $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
+
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
 }
