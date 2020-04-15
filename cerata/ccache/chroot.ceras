@@ -25,6 +25,7 @@ install_chroot() {
 
   $LN $nom $TOOL/bin/$nom/c++ &&
   $LN $nom $TOOL/bin/$nom/cc &&
+  $LN $nom $TOOL/bin/$nom/cpp &&
   $LN $nom $TOOL/bin/$nom/g++ &&
   $LN $nom $TOOL/bin/$nom/gcc
 }
