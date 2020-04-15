@@ -25,6 +25,7 @@ install_cross() {
 
   $LN $nom $TOOL/bin/$nom/$TUPL-c++ &&
   $LN $nom $TOOL/bin/$nom/$TUPL-cc &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-cpp &&
   $LN $nom $TOOL/bin/$nom/$TUPL-g++ &&
   $LN $nom $TOOL/bin/$nom/$TUPL-gcc &&
   $LN $nom $TOOL/bin/$nom/$TUPL-gcc-9.3.0
