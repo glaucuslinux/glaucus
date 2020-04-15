@@ -21,11 +21,14 @@ configure_system() {
     --prefix=/usr \
     --libexecdir=/usr/lib \
     --disable-multilib \
+    --disable-symvers \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
     --disable-nls \
-    --with-system-zlib
+    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --with-system-zlib \
+    --with-linker-hash-style=gnu
 }
 
 build_system() {
