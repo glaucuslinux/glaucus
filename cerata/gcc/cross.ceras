@@ -29,6 +29,7 @@ configure_cross() {
     --with-native-system-header-dir=$TOOL/include \
     --disable-shared \
     --disable-multilib \
+    --disable-symvers \
     --enable-threads=single \
     --with-arch=x86-64 \
     --enable-languages=c,c++ \
