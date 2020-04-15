@@ -55,4 +55,5 @@ $SCRD/check s6-rc &&
 $SCRD/check eudev &&
 $SCRD/check s6-boot-scripts &&
 $SCRD/check iucode-tool &&
-$SCRD/check intel-ucode
+$SCRD/check intel-ucode &&
+$SCRD/check linux
