@@ -32,6 +32,7 @@ configure_native() {
     --with-local-prefix=$TOOL \
     --with-native-system-header-dir=$TOOL/include \
     --disable-multilib \
+    --disable-symvers \
     --enable-threads=posix \
     --with-arch=x86-64 \
     --disable-bootstrap \
