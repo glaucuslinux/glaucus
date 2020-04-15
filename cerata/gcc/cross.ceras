@@ -32,6 +32,7 @@ configure_cross() {
     --enable-threads=single \
     --with-arch=x86-64 \
     --enable-languages=c,c++ \
+    --disable-libsanitizer \
     --disable-libssp \
     --disable-libquadmath \
     --disable-libgomp \
