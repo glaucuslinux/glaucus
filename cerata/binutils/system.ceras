@@ -16,11 +16,16 @@ configure_system() {
     --enable-new-dtags \
     --disable-werror \
     --disable-nls \
+    --disable-initfini-array \
     --with-system-zlib \
     --disable-multilib
 }
 
 build_system() {
+  make \
+    tooldir=/usr \
+    configure-host &&
+
   make \
     tooldir=/usr
 }
