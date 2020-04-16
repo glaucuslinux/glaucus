@@ -27,6 +27,9 @@ configure_native() {
 }
 
 build_native() {
+  make \
+    configure-host &&
+
   make
 }
 
