@@ -27,6 +27,9 @@ configure_cross() {
 }
 
 build_cross() {
+  make \
+    configure-host &&
+
   make
 }
 
