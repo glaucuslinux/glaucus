@@ -15,6 +15,7 @@ configure_native() {
     --prefix=$TOOL \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
+    --enable-new-dtags \
     --enable-relro \
     --enable-default-hash-style=gnu \
     --disable-werror \
