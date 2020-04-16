@@ -13,6 +13,7 @@ configure_system() {
     --prefix=/usr \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
+    --enable-new-dtags \
     --disable-werror \
     --disable-nls \
     --with-system-zlib \
