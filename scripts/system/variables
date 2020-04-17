@@ -24,6 +24,7 @@ export CCACHE_DIR=/.ccache &&
 export AUTORECONF='autoreconf -vfis' &&
 export LN='ln -fsv' &&
 export MKDIR='install -dv' &&
+export RM='rm -frv' &&
 export RSYNC='rsync -vaHXSx' &&
 
 export AR=gcc-ar &&
