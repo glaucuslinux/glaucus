@@ -2,4 +2,5 @@
 # Distributed under the terms of the ISC License
 
 $SCRD/check musl &&
+$SCRD/check zlib-ng &&
 $SCRD/check isl
