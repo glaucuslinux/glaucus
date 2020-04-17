@@ -13,7 +13,6 @@ configure_system() {
     --prefix=/usr \
     --bindir=/usr/bin \
     --mandir=/usr/share/man \
-    --enable-curses \
     --enable-ksh &&
 
   sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
