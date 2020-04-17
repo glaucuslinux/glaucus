@@ -9,7 +9,7 @@ prepare_native() {
 }
 
 configure_native() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $SRCD/$nom/configure \
     --prefix=$TOOL \
     --zlib-compat
 }
