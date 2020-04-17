@@ -3,5 +3,5 @@
 
 $RSYNC $GLAD/backup/toolchain/ $TOOL --delete &&
 
-rm -frv $CBLD &&
-install -dv $CBLD
+$RM $CBLD &&
+$MKDIR $CBLD
