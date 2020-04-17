@@ -9,6 +9,8 @@ prepare_system() {
 }
 
 configure_system() {
+  $SCRD/patch 0 $nom glaucus 0001-fix-shell &&
+
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
   $SRCD/$nom/configure \
     --prefix=/usr \
