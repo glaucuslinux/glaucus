@@ -1,7 +1,7 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-rm -fv /usr/lib/charset.alias &&
+$RM /usr/lib/charset.alias &&
 
 find /usr \( -name perllocal.pod -o -name .packlist \) -type f -delete &&
 
@@ -17,6 +17,6 @@ find /etc -type d -empty -delete &&
   #--strip-unneeded -v {} \; &&
 #$TOOL/bin/find /bin /usr -type f -exec strip -sv {} \; &&
 
-rm -frv /tmp/* &&
+$RM /tmp/* &&
 
 find /usr -name *.la -delete
