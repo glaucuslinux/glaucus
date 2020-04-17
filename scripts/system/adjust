@@ -5,7 +5,7 @@ mv -v $TOOL/bin/ld $TOOL/bin/ld-old &&
 mv -v $TOOL/$TUPL/bin/ld $TOOL/$TUPL/bin/ld-old &&
 
 mv -v $TOOL/bin/ld-new $TOOL/bin/ld &&
-ln -fsv $TOOL/bin/ld $TOOL/$TUPL/bin/ld &&
+$LN $TOOL/bin/ld $TOOL/$TUPL/bin/ld &&
 
 gcc -dumpspecs > $(dirname $(gcc --print-libgcc-file-name))/specs &&
 
