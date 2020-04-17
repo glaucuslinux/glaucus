@@ -2,22 +2,59 @@
 # Distributed under the terms of the ISC License
 
 $RSYNC /backup/chroot/ $TOOL --delete &&
-rm -frv $SBLD $SCER /bin /boot /root /tmp /usr /var &&
 
-install -dv $SBLD $SCER /bin /boot /usr/bin /usr/cerata /usr/include /usr/lib \
-  /usr/share /var /var/lib /var/lib/urandom /var/log &&
-install -dvm 0750 /root &&
-install -dvm 1777 /tmp &&
+$RM $SBLD &&
+$RM $SCER &&
 
-ln -fsv $TOOL/bin/bash $TOOL/bin/echo $TOOL/bin/false $TOOL/bin/ls /bin &&
-ln -fsv $TOOL/bin/env $TOOL/bin/file $TOOL/bin/pwd $TOOL/bin/true /usr/bin &&
-ln -fsv $TOOL/bin/dash /bin/sh &&
+$RM /bin &&
+$RM /boot &&
+$RM /root &&
+$RM /tmp &&
+$RM /usr &&
+$RM /var &&
 
-ln -fsv $TOOL/lib/libgcc_s.so $TOOL/lib/libgcc_s.so.1 /usr/lib &&
-ln -fsv $TOOL/lib/libstdc++.so $TOOL/lib/libstdc++.so.6 /usr/lib &&
-ln -fsv $TOOL/lib/libgomp.so $TOOL/lib/libgomp.so.1 $TOOL/lib/libgomp.so.1.0.0 \
-  $TOOL/lib/libgomp.spec /usr/lib &&
-ln -fsv $TOOL/lib/libtermcap.so $TOOL/lib/libterminfo.so /usr/lib &&
+$MKDIR $SBLD &&
+$MKDIR $SCER &&
+
+$MKDIR /bin &&
+$MKDIR /boot &&
+$MKDIR /usr/bin &&
+$MKDIR /usr/cerata &&
+$MKDIR /usr/include &&
+$MKDIR /usr/lib &&
+$MKDIR /usr/share &&
+$MKDIR /var &&
+$MKDIR /var/lib &&
+$MKDIR /var/lib/urandom &&
+$MKDIR /var/log &&
+
+$MKDIR -m 0750 /root &&
+$MKDIR -m 1777 /tmp &&
+
+$LN $TOOL/bin/bash /bin &&
+$LN $TOOL/bin/echo /bin &&
+$LN $TOOL/bin/false /bin &&
+$LN $TOOL/bin/ls /bin &&
+
+$LN $TOOL/bin/env /usr/bin &&
+$LN $TOOL/bin/file /usr/bin &&
+$LN $TOOL/bin/pwd /usr/bin &&
+$LN $TOOL/bin/true /usr/bin &&
+
+$LN $TOOL/bin/dash /bin/sh &&
+
+$LN $TOOL/lib/libgcc_s.so /usr/lib &&
+$LN $TOOL/lib/libgcc_s.so.1 /usr/lib &&
+
+$LN $TOOL/lib/libstdc++.so /usr/lib &&
+$LN $TOOL/lib/libstdc++.so.6 /usr/lib &&
+
+$LN $TOOL/lib/libgomp.so /usr/lib &&
+$LN $TOOL/lib/libgomp.so.1 /usr/lib &&
+$LN $TOOL/lib/libgomp.so.1.0.0 /usr/lib &&
+$LN $TOOL/lib/libgomp.spec /usr/lib &&
+
+$LN $TOOL/lib/libz.so.1 /usr/lib &&
 
 printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
 
