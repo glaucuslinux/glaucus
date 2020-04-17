@@ -2,10 +2,8 @@
 # Distributed under the terms of the ISC License
 
 $SCRD/construct chroot m4 &&
-$SCRD/construct chroot netbsd-curses &&
 $SCRD/construct chroot oksh &&
 $SCRD/construct chroot dash &&
-$SCRD/construct chroot bash &&
 $SCRD/construct chroot bison &&
 $SCRD/construct chroot toybox &&
 $SCRD/construct chroot rsync &&
