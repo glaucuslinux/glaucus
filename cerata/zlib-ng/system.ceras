@@ -4,15 +4,13 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare_system() {
-  $RSYNC $SRCD/$nom/ $SSRC/$nom --delete &&
-  cd $SSRC/$nom
+  $MKDIR $SBLD/$nom &&
+  cd $SBLD/$nom
 }
 
 configure_system() {
-  $SCRD/patch 0 $nom glaucus 0001-fix-shell &&
-
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
-  ./configure \
+  $SRCD/$nom/configure \
     --prefix=/usr \
     --zlib-compat
 }
