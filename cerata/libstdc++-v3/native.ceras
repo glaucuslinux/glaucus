@@ -18,6 +18,7 @@ configure_native() {
     --disable-multilib \
     --disable-nls \
     --disable-libstdcxx-pch \
+    --disable-symvers \
     --disable-libstdcxx-threads \
     --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$ver
 }
