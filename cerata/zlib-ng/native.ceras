@@ -1,0 +1,24 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_native() {
+  $MKDIR $NBLD/$nom &&
+  cd $NBLD/$nom
+}
+
+configure_native() {
+  $SRCD/$nom/$nom-$ver/configure \
+    --prefix=$TOOL \
+    --zlib-compat
+}
+
+build_native() {
+  make
+}
+
+install_native() {
+  make \
+    install
+}
