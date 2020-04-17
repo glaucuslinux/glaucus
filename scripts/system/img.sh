@@ -6,6 +6,9 @@
 NAME=glaucus.img &&
 SIZE=2G &&
 LOOP=$(losetup -f) &&
+
+MKDIR='/usr/bin/install -dv' &&
+RM='/usr/bin/rm -frv' &&
 RSYNC='/usr/bin/rsync -vaHAXx' &&
 
 cd /home/glaucus &&
@@ -25,12 +28,20 @@ mkfs.ext4 $(printf $LOOP)p1 &&
 
 mount $(printf $LOOP)p1 /mnt/loop &&
 
-rm -frv /mnt/loop/lost+found &&
+$RM /mnt/loop/lost+found &&
 
-install -dv /mnt/loop/dev /mnt/loop/proc /mnt/loop/run /mnt/loop/sys &&
-$RSYNC boot etc root usr var /mnt/loop --delete &&
+$MKDIR /mnt/loop/dev &&
+$MKDIR /mnt/loop/proc &&
+$MKDIR /mnt/loop/run &&
+$MKDIR /mnt/loop/sys &&
 
-install -dv /mnt/loop/boot/extlinux &&
+$RSYNC boot /mnt/loop --delete &&
+$RSYNC etc /mnt/loop &&
+$RSYNC root /mnt/loop &&
+$RSYNC usr /mnt/loop &&
+$RSYNC var /mnt/loop &&
+
+$MKDIR /mnt/loop/boot/extlinux &&
 $RSYNC scripts/other/extlinux.conf /mnt/loop/boot/extlinux &&
 extlinux --install /mnt/loop/boot/extlinux &&
 
