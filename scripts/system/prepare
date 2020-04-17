@@ -36,6 +36,7 @@ $LN $TOOL/bin/echo /bin &&
 $LN $TOOL/bin/false /bin &&
 $LN $TOOL/bin/ls /bin &&
 
+$LN $TOOL/bin/dash /usr/bin &&
 $LN $TOOL/bin/env /usr/bin &&
 $LN $TOOL/bin/file /usr/bin &&
 $LN $TOOL/bin/pwd /usr/bin &&
