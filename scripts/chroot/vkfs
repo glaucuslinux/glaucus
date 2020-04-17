@@ -2,7 +2,7 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  install -dv $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys &&
+  $MKDIR $GLAD/dev $GLAD/proc $GLAD/run $GLAD/sys &&
 
 sudo \
   mknod -m 600 $GLAD/dev/console c 5 1 &&
