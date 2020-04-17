@@ -4,7 +4,7 @@
 . $CERD/$1/ceras &&
 
 if [ ! -d $SRCD/$nom ]; then
- install -dv $SRCD/$nom &&
+ $MKDIR $SRCD/$nom &&
  . $SCRD/fetch || $SCRD/exit ceras $nom fetch $? || exit
 else
  . $SCRD/verify
