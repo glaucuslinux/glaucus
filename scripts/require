@@ -46,6 +46,9 @@ gzip --version | sed 1q | cut -d' ' -f2 &&
 printf 'linux:     ' &&
 uname -r &&
 
+printf 'lzip:      ' &&
+lzip --version | sed 1q | cut -d' ' -f2 &&
+
 printf 'm4:        ' &&
 m4 --version | sed 1q | cut -d' ' -f4 &&
 
