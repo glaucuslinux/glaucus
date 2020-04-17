@@ -24,6 +24,7 @@ configure_native() {
     --with-lib-path=$TOOL/lib \
     --with-sysroot \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --with-system-zlib \
     --disable-multilib
 }
 
