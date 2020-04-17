@@ -1,8 +1,8 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-sudo rm -frv $TOOL $GLAT &&
+sudo $RM $TOOL $GLAT &&
 
-install -dv $GLAT &&
+$MKDIR $GLAT &&
 
-sudo ln -fsv $GLAT $TOOL
+sudo $LN $GLAT $TOOL
