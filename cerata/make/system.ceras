@@ -21,5 +21,7 @@ build_system() {
 install_system() {
   $nom \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
+
+  $LN $nom $SCER/$nom/sac/usr/bin/g$nom
 }
