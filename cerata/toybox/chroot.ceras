@@ -25,7 +25,83 @@ build_chroot() {
 install_chroot() {
   $RSYNC $nom $TOOL/bin &&
 
-  for i in $(./$nom); do
-    $LN $nom $TOOL/bin/$i
-  done
+  $LN $nom $TOOL/bin/base64 &&
+  $LN $nom $TOOL/bin/basename &&
+  $LN $nom $TOOL/bin/cat &&
+  $LN $nom $TOOL/bin/chgrp &&
+  $LN $nom $TOOL/bin/chmod &&
+  $LN $nom $TOOL/bin/chown &&
+  $LN $nom $TOOL/bin/chroot &&
+  $LN $nom $TOOL/bin/cksum &&
+  $LN $nom $TOOL/bin/comm &&
+  $LN $nom $TOOL/bin/cp &&
+  $LN $nom $TOOL/bin/cut &&
+  $LN $nom $TOOL/bin/date &&
+  $LN $nom $TOOL/bin/dd &&
+  $LN $nom $TOOL/bin/df &&
+  $LN $nom $TOOL/bin/dirname &&
+  $LN $nom $TOOL/bin/du &&
+  $LN $nom $TOOL/bin/echo &&
+  $LN $nom $TOOL/bin/env &&
+  $LN $nom $TOOL/bin/expand &&
+  $LN $nom $TOOL/bin/expr &&
+  $LN $nom $TOOL/bin/factor &&
+  $LN $nom $TOOL/bin/false &&
+  $LN $nom $TOOL/bin/fmt &&
+  $LN $nom $TOOL/bin/fold &&
+  $LN $nom $TOOL/bin/groups &&
+  $LN $nom $TOOL/bin/head &&
+  $LN $nom $TOOL/bin/hostid &&
+  $LN $nom $TOOL/bin/hostname &&
+  $LN $nom $TOOL/bin/iconv &&
+  $LN $nom $TOOL/bin/id &&
+  $LN $nom $TOOL/bin/install &&
+  $LN $nom $TOOL/bin/iotop &&
+  $LN $nom $TOOL/bin/link &&
+  $LN $nom $TOOL/bin/ln &&
+  $LN $nom $TOOL/bin/logname &&
+  $LN $nom $TOOL/bin/ls &&
+  $LN $nom $TOOL/bin/mkdir &&
+  $LN $nom $TOOL/bin/mkfifo &&
+  $LN $nom $TOOL/bin/mknod &&
+  $LN $nom $TOOL/bin/mktemp &&
+  $LN $nom $TOOL/bin/mv &&
+  $LN $nom $TOOL/bin/nice &&
+  $LN $nom $TOOL/bin/nl &&
+  $LN $nom $TOOL/bin/nohup &&
+  $LN $nom $TOOL/bin/nproc &&
+  $LN $nom $TOOL/bin/od &&
+  $LN $nom $TOOL/bin/paste &&
+  $LN $nom $TOOL/bin/printenv &&
+  $LN $nom $TOOL/bin/printf &&
+  $LN $nom $TOOL/bin/pwd &&
+  $LN $nom $TOOL/bin/readlink &&
+  $LN $nom $TOOL/bin/realpath &&
+  $LN $nom $TOOL/bin/rm &&
+  $LN $nom $TOOL/bin/rmdir &&
+  $LN $nom $TOOL/bin/seq &&
+  $LN $nom $TOOL/bin/shred &&
+  $LN $nom $TOOL/bin/sleep &&
+  $LN $nom $TOOL/bin/sort &&
+  $LN $nom $TOOL/bin/split &&
+  $LN $nom $TOOL/bin/stat &&
+  $LN $nom $TOOL/bin/sync &&
+  $LN $nom $TOOL/bin/tac &&
+  $LN $nom $TOOL/bin/tail &&
+  $LN $nom $TOOL/bin/tee &&
+  $LN $nom $TOOL/bin/test &&
+  $LN $nom $TOOL/bin/time &&
+  $LN $nom $TOOL/bin/timeout &&
+  $LN $nom $TOOL/bin/touch &&
+  $LN $nom $TOOL/bin/tr &&
+  $LN $nom $TOOL/bin/true &&
+  $LN $nom $TOOL/bin/truncate &&
+  $LN $nom $TOOL/bin/tty &&
+  $LN $nom $TOOL/bin/uname &&
+  $LN $nom $TOOL/bin/uniq &&
+  $LN $nom $TOOL/bin/unlink &&
+  $LN $nom $TOOL/bin/wc &&
+  $LN $nom $TOOL/bin/who &&
+  $LN $nom $TOOL/bin/whoami &&
+  $LN $nom $TOOL/bin/yes
 }
