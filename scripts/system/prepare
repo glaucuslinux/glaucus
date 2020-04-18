@@ -1,8 +1,6 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$RSYNC /backup/chroot/ $TOOL --delete &&
-
 $RM $SBLD &&
 $RM $SCER &&
 
@@ -67,4 +65,6 @@ audio:x:3:
 video:x:4:
 utmp:x:5:\n' > /etc/group &&
 
-printf '127.0.0.1 localhost glaucus\n' > /etc/hosts
+printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
+
+$RSYNC /backup/chroot/ $TOOL --delete
