@@ -23,8 +23,10 @@ configure_system() {
     --disable-nls \
     --enable-lto &&
 
-  sed 's/MKDIR_P =.*/MKDIR_P = $MKDIR/' \
-    -i MCONFIG Makefile
+  sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
+    -i MCONFIG &&
+  sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
+    -i Makefile
 }
 
 build_system() {
