@@ -12,8 +12,7 @@ configure_system() {
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
-    --mandir=/usr/share/man \
-    --enable-ksh &&
+    --mandir=/usr/share/man &&
 
   sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
     -i Makefile
@@ -26,5 +25,11 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
+
+  $LN $nom $SCER/$nom/sac/usr/bin/ksh &&
+  $LN $nom $SCER/$nom/sac/usr/bin/rksh &&
+
+  $LN $nom.1 $SCER/$nom/sac/usr/share/man/man1/ksh.1 &&
+  $LN $nom.1 $SCER/$nom/sac/usr/share/man/man1/rksh.1
 }
