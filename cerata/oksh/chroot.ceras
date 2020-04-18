@@ -12,8 +12,7 @@ configure_chroot() {
   ./configure \
     --prefix=$TOOL \
     --mandir=$TOOL/share/man \
-    --disable-curses \
-    --enable-ksh &&
+    --disable-curses &&
 
   sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
     -i Makefile
