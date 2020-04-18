@@ -15,7 +15,11 @@ prepare_native() {
 
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
 
-  cat $nom/limitx.h $nom/glimits.h $nom/limity.h > $(dirname $($TUPL-$nom \
+  cat $nom/limitx.h > $(dirname $($TUPL-$nom \
+    -print-lib$nom-file-name))/include-fixed/limits.h &&
+  cat $nom/glimits.h >> $(dirname $($TUPL-$nom \
+    -print-lib$nom-file-name))/include-fixed/limits.h &&
+  cat $nom/limity.h >> $(dirname $($TUPL-$nom \
     -print-lib$nom-file-name))/include-fixed/limits.h &&
 
   $MKDIR $NBLD/$nom &&
