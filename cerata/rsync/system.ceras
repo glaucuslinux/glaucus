@@ -11,7 +11,8 @@ prepare_system() {
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --disable-debug
+    --disable-debug \
+    --without-included-zlib
 }
 
 build_system() {
