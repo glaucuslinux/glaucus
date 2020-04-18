@@ -4,17 +4,13 @@
 $SCRD/construct chroot m4 &&
 $SCRD/construct chroot oksh &&
 $SCRD/construct chroot dash &&
-$SCRD/construct chroot bison &&
 $SCRD/construct chroot toybox &&
 $SCRD/construct chroot rsync &&
 $SCRD/construct chroot diffutils &&
 $SCRD/construct chroot file &&
 $SCRD/construct chroot findutils &&
-$SCRD/construct chroot mawk &&
-$SCRD/construct chroot grep &&
 $SCRD/construct chroot make &&
 $SCRD/construct chroot patch &&
-$SCRD/construct chroot sed &&
 $SCRD/construct chroot libarchive &&
 $SCRD/construct chroot zstd &&
 $SCRD/construct chroot ccache
