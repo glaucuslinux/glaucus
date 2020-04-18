@@ -4,7 +4,6 @@
 $SCRD/construct chroot m4 &&
 $SCRD/construct chroot oksh &&
 $SCRD/construct chroot dash &&
-$SCRD/construct chroot bison &&
 $SCRD/construct chroot toybox &&
 $SCRD/construct chroot rsync &&
 $SCRD/construct chroot diffutils &&
