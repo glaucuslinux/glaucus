@@ -8,4 +8,4 @@ chroot $GLAD \
   PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin \
   TERM=xterm-256color \
   PS1="[\033[0;44mglaucus\033[0m:\033[1m\w\033[0m]$ " \
-  ksh
+  oksh
