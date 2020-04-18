@@ -31,7 +31,8 @@ $MKDIR /var/log &&
 $MKDIR -m 0750 /root &&
 $MKDIR -m 1777 /tmp &&
 
-$LN $TOOL/bin/bash /bin &&
+$LN /usr/bin/bash /bin &&
+
 $LN $TOOL/bin/echo /bin &&
 $LN $TOOL/bin/false /bin &&
 $LN $TOOL/bin/ls /bin &&
