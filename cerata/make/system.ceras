@@ -11,7 +11,8 @@ prepare_system() {
 configure_system() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --disable-nls
+    --disable-nls \
+    --without-guile
 }
 
 build_system() {
