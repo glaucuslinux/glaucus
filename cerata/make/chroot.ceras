@@ -12,8 +12,7 @@ configure_chroot() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
-    --disable-nls \
-    --without-guile
+    --disable-nls
 }
 
 build_chroot() {
