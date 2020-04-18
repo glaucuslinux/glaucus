@@ -22,7 +22,5 @@ build_chroot() {
 
 install_chroot() {
   $nom \
-    install-strip &&
-
-  $LN $nom $TOOL/bin/g$nom
+    install-strip
 }
