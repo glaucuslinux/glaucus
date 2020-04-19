@@ -4,14 +4,12 @@
 $SCRD/check m4 &&
 $SCRD/check oksh &&
 $SCRD/check dash &&
-$SCRD/check bison &&
 $SCRD/check toybox &&
 $SCRD/check rsync &&
 $SCRD/check diffutils &&
 $SCRD/check file &&
 $SCRD/check findutils &&
 $SCRD/check mawk &&
-$SCRD/check gettext-tiny &&
 $SCRD/check grep &&
 $SCRD/check make &&
 $SCRD/check patch &&
