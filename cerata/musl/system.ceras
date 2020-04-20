@@ -29,10 +29,11 @@ install_system() {
   make \
     install &&
 
-  $LN ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
-
   $RSYNC $CERD/$nom/ld-$nom-$ARCH.path /etc &&
   $RSYNC $CERD/$nom/ldconfig /usr/bin &&
 
-  rm -fv /usr/include/utmp.h /usr/include/utmpx.h
+  $LN ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
+
+  $RM /usr/include/utmp.h &&
+  $RM /usr/include/utmpx.h
 }
