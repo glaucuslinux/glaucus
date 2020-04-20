@@ -13,7 +13,8 @@ configure_native() {
   $SRCD/$nom/$nom-$ver/configure \
     --target=$TUPL \
     --prefix=$TOOL \
-    --syslibdir=$TOOL/lib &&
+    --syslibdir=$TOOL/lib \
+    --disable-wrapper &&
 
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
