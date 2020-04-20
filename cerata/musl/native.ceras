@@ -14,7 +14,8 @@ configure_native() {
     --target=$TUPL \
     --prefix=$TOOL \
     --syslibdir=$TOOL/lib \
-    --disable-wrapper &&
+    --disable-wrapper \
+    --disable-static &&
 
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
@@ -27,5 +28,8 @@ build_native() {
 
 install_native() {
   make \
-    install
+    install &&
+
+  $RM $TOOL/include/utmp.h &&
+  $RM $TOOL/include/utmpx.h
 }
