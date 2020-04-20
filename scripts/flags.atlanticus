@@ -53,4 +53,4 @@ export LDFLAGSNOOPENMP="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed $CFL
 
 export LDFLAGSNORELRO="-Wl,--strip-all -Wl,--as-needed $CFLAGS" &&
 
-export MAKEFLAGS='-j1'
+export MAKEFLAGS=-j1
