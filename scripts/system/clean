@@ -9,8 +9,10 @@ find /usr -name *.py[co] -type f -delete &&
 
 find /etc -type d -empty -delete &&
 
-#strip --strip-unneeded -v /usr/lib/libatomic.so.1.2.0 /usr/lib/libitm.so.1.0.0 \
-  #/usr/lib/libquadmath.so.0.0.0 /usr/lib/libstdc++.so.6.0.28 &&
+#strip --strip-unneeded -v /usr/lib/libatomic.so.1.2.0 &&
+#strip --strip-unneeded -v /usr/lib/libitm.so.1.0.0 &&
+#strip --strip-unneeded -v /usr/lib/libquadmath.so.0.0.0 &&
+#strip --strip-unneeded -v /usr/lib/libstdc++.so.6.0.28 &&
 
 #$TOOL/bin/find /usr -name *.a -type f -exec strip -gv {} \; &&
 #$TOOL/bin/find /usr \( -name *.so* -a ! -name *dbg \) -type f -exec strip \
