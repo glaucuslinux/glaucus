@@ -54,5 +54,5 @@ install_system() {
 
   $MKDIR $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib &&
 
-  mv -v $SCER/$nom/sac/usr/lib/*gdb.py $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib
+  $MV $SCER/$nom/sac/usr/lib/*gdb.py $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib
 }
