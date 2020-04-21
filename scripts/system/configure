@@ -1,15 +1,15 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+printf '/dev/sda1 / ext4 defaults 0 1\n' > /etc/fstab &&
+
 printf 'export PS1="[\033[0;44m\u@\h\033[0m:\033[1m\w\033[0m]$ "
 export HISTFILE=$HOME/.ksh_history\n' > /etc/profile &&
 
-printf '/usr/bin/dash
+mkfifo -m 0600 /etc/s6/run-image/service/s6-linux-init-shutdownd/fifo &&
+mkfifo -m 0600 /etc/s6/run-image/service/s6-svscan-log/fifo &&
+
+printf '/usr/bin/bash
+/usr/bin/dash
 /usr/bin/ksh
-/usr/bin/sh
-/usr/bin/bash\n' > /etc/shells &&
-
-printf '/dev/sda1 / ext4 defaults 0 1\n' > /etc/fstab &&
-
-mkfifo -m 0600 /etc/s6/run-image/service/s6-linux-init-shutdownd/fifo \
-  /etc/s6/run-image/service/s6-svscan-log/fifo
+/usr/bin/sh\n' > /etc/shells
