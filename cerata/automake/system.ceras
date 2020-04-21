@@ -20,5 +20,9 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
+
+  $LN aclocal-1.16 $SCER/$nom/sac/usr/bin/aclocal &&
+
+  $LN $nom-1.16 $SCER/$nom/sac/usr/bin/$nom
 }
