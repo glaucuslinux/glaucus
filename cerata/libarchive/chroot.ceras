@@ -13,10 +13,20 @@ configure_chroot() {
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-static \
+    --disable-bsdcat \
+    --disable-bsdcpio \
+    --disable-xattr \
     --disable-acl \
+    --without-zlib \
+    --without-bz2lib \
+    --without-libb2 \
+    --without-lz4 \
+    --without-lzma \
     --without-cng \
     --without-nettle \
-    --without-xml2
+    --without-openssl \
+    --without-xml2 \
+    --without-expat
 }
 
 build_chroot() {
@@ -27,6 +37,5 @@ install_chroot() {
   make \
     install-strip &&
 
-  $LN bsdcpio $TOOL/bin/cpio &&
   $LN bsdtar $TOOL/bin/tar
 }
