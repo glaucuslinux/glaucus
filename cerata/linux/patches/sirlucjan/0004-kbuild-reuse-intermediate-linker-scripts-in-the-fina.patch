@@ -1,4 +1,4 @@
-From 8b9a3d8fcae0e07c0cfc8a8f99065630daede436 Mon Sep 17 00:00:00 2001
+From b216df49d8faa6b653c9974bdee47537fc6bf0f7 Mon Sep 17 00:00:00 2001
 From: Ilie Halip <ilie.halip@gmail.com>
 Date: Sat, 30 Nov 2019 13:48:03 -0300
 Subject: [PATCH 4/8] kbuild: reuse intermediate linker scripts in the final
@@ -27,7 +27,7 @@ Signed-off-by: Alexandre Frade <admfrade@gmail.com>
  3 files changed, 17 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index a1e546c..19bb1e8 100644
+index 0bfc680e1..7883bd77c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1037,6 +1037,7 @@ drivers-y	:= $(patsubst %/, %/built-in.a, $(drivers-y))
@@ -53,7 +53,7 @@ index a1e546c..19bb1e8 100644
  # Recurse until adjust_autoksyms.sh is satisfied
  PHONY += autoksyms_recursive
 diff --git a/scripts/Makefile.build b/scripts/Makefile.build
-index a1730d4..f2184df 100644
+index a1730d42e..f2184dfed 100644
 --- a/scripts/Makefile.build
 +++ b/scripts/Makefile.build
 @@ -419,7 +419,7 @@ cmd_export_list = $(OBJDUMP) -h $< | \
@@ -66,7 +66,7 @@ index a1730d4..f2184df 100644
  $(obj)/lib-ksyms.o: $(lib-target) FORCE
  	$(call if_changed,export_list)
 diff --git a/scripts/link-vmlinux.sh b/scripts/link-vmlinux.sh
-index dd484e9..b1d556b 100755
+index dd484e927..b1d556b56 100755
 --- a/scripts/link-vmlinux.sh
 +++ b/scripts/link-vmlinux.sh
 @@ -61,6 +61,7 @@ modpost_link()

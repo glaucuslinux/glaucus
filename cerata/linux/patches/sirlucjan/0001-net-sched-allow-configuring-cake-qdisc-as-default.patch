@@ -1,4 +1,4 @@
-From d916f3f524f2f95118cb206a466ab2a2bc33b1b8 Mon Sep 17 00:00:00 2001
+From fe543dd6abeb735cadc4aa8fc6af71e64d329ba7 Mon Sep 17 00:00:00 2001
 From: Alexandre Frade <admfrade@gmail.com>
 Date: Wed, 24 Oct 2018 16:58:52 -0300
 Subject: [PATCH 1/8] net/sched: allow configuring cake qdisc as default
@@ -9,7 +9,7 @@ Signed-off-by: Alexandre Frade <admfrade@gmail.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/net/sched/Kconfig b/net/sched/Kconfig
-index edde0e5..fba9b6d 100644
+index edde0e519..fba9b6dfb 100644
 --- a/net/sched/Kconfig
 +++ b/net/sched/Kconfig
 @@ -471,6 +471,9 @@ choice
