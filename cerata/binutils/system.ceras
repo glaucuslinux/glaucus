@@ -34,5 +34,7 @@ install_system() {
   make \
     tooldir=/usr \
     DESTDIR=$SCER/$nom/sac \
-    install-strip
+    install-strip &&
+
+  $LN ld.bfd $SCER/$nom/sac/usr/bin/ld
 }
