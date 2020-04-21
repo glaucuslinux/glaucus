@@ -75,7 +75,7 @@ use, therefore a `%b` was added prior to `%F` to fix this problem.
 The difference between chroot toybox and system toybox is that chroot toybox
 uses the internally provided libz and libcrypto to prevent messing with the
 LD_LIBRARY_PATH variables when building chroot and system, while system toybox
-relies on the system installed zlib and libressl to provide better and faster
+relies on the system installed zlib-ng and libressl to provide better and faster
 support.
 
 Also chroot toybox has hostname built into it to satisfy cerata that require it
@@ -107,3 +107,8 @@ automake-1.16: error: no 'Makefile.am' found for any configure output
 automake-1.16: Did you forget AC_CONFIG_FILES([Makefile]) in configure.ac?
 make: *** [Makefile:1231: Makefile.in] Error 1
 ```
+
+# Native
+## Configure
+Don't disable who and whoami (and utmp/utmpx) because it will cause autotools
+to break again (like the m4 error end of file in string...).
