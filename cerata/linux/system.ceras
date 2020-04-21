@@ -31,7 +31,7 @@ prepare_system() {
 
   $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
 
-  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200302 &&
+  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200413.patch &&
   $SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v &&
   $SCRD/patch 1 $nom sirlucjan 0001-cpu-5.6-merge-graysky-s-patchset &&
   $SCRD/patch 1 $nom sirlucjan 0001-futex-Implement-mechanism-to-wait-on-any-of-several- &&
