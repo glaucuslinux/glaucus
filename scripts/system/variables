@@ -22,8 +22,10 @@ export PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin &&
 export CCACHE_DIR=/.ccache &&
 
 export AUTORECONF='autoreconf -vfis' &&
+export CHOWN='chown -Rv' &&
 export LN='ln -fsv' &&
 export MKDIR='install -dv' &&
+export MV='mv -v' &&
 export RM='rm -frv' &&
 export RSYNC='rsync -vaHXSx' &&
 
