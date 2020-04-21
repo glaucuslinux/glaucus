@@ -19,7 +19,7 @@ install_system() {
   $RSYNC $SRCD/$nom/etc $SCER/$nom/sac --delete &&
   $RSYNC $SRCD/$nom/usr $SCER/$nom/sac --delete &&
   
-  chown -Rv 0:0 $SCER/$nom/sac &&
+  $CHOWN 0:0 $SCER/$nom/sac &&
 
   s6-rc-compile $SCER/$nom/sac/etc/s6/compiled $SCER/$nom/sac/etc/s6/source
 }
