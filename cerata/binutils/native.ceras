@@ -46,5 +46,7 @@ install_native() {
     LIB_PATH=/usr/lib \
     -C ld &&
 
-  $RSYNC ld/ld-new $TOOL/bin
+  $RSYNC ld/ld-new $TOOL/bin &&
+
+  $LN ld.bfd $TOOL/bin/ld
 }
