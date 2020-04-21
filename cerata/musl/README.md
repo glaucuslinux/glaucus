@@ -88,6 +88,18 @@ overwrite any existing musl dynamic linker, and it makes it possible to
 build without chrooting, so this will changed later as glaucus' graphics
 stack requires a separate chroot)
 
+### Native Install
+Don't delete `include/utmp.h` and `include/utmpx.h` from native musl because
+that'll cause chroot toybox to complain about missing utmp and utmpx because
+some tools use it:
+
+<https://github.com/landley/toybox/issues/185>
+
+Even after successfully configuring toybox to not use utmp and utmpx, some
+software like who and whoami from toybox when disabled cause autotools to
+complain when autoreconfing anything (similar to the m4 Error end of file in
+string), so don't remove utmp.h/utmpx.h from native musl.
+
 ## System
 ### System Configure
 
