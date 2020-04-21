@@ -14,7 +14,7 @@ prepare_system() {
 configure_system() {
   BUILD_ZLIB=False \
   BUILD_BZIP2=0 \
-  sh Configure \
+  ./Configure \
     -des \
     -Dprefix=/usr \
     -Dvendorprefix=/usr \
