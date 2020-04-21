@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=perl-xml-parser-lite
+ver=0.722
+url=https://cpan.metacpan.org/authors/id/P/PH/PHRED/XML-Parser-Lite-$ver.tar.gz
+sum=44e70fd9f350fc4276bd0ded1255beea2ca7c46506b5fa38da21ca21d1bafd084f0cdf7671e0bc37edaa283cc1f10f076e70a9ec7fe00a50d3cdc1aa047f189a
+lic=Artistic-1.0-Perl
