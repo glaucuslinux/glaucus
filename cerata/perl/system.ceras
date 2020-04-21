@@ -35,5 +35,11 @@ build_system() {
 install_system() {
   make \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
+
+  $LN ${nom}${ver} $SCER/$nom/sac/usr/bin/${nom} &&
+
+  $LN ${nom}thanks $SCER/$nom/sac/usr/bin/${nom}bug &&
+
+  $LN ${nom}thanks.1 $SCER/$nom/sac/usr/share/man/man1/${nom}bug.1
 }
