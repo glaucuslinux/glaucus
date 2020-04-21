@@ -28,8 +28,5 @@ build_native() {
 
 install_native() {
   make \
-    install &&
-
-  $RM $TOOL/include/utmp.h &&
-  $RM $TOOL/include/utmpx.h
+    install
 }
