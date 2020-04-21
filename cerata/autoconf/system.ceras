@@ -7,7 +7,7 @@ prepare_system() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/patch 1 $nom alpine $nom-$ver-fix-perl-regex
+  $SCRD/patch 0 $nom lfs 0001-fix-perl-bug
 }
 
 configure_system() {
