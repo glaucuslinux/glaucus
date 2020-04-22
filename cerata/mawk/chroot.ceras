@@ -3,24 +3,24 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom &&
   
   $RSYNC $SRCD/$nom/$nom-$ver/man . --delete
 }
 
-configure_chroot() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL
 }
 
-build_chroot() {
+build() {
   make
 }
 
-install_chroot() {
+install() {
   make \
     install &&
 
