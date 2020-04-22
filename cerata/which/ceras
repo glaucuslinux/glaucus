@@ -1,0 +1,10 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=which
+ver=2.21
+url=https://ftpmirror.gnu.org/$nom/$nom-$ver.tar.gz
+sum=d2f04a5c5291f2d7d1226982da7cf999d36cfe24d3f7bda145508efcfb359511251d3c68b860c0ddcedd66b15a0587b648a35ab6d1f173707565305c506dfc61
+lic=GPL-3.0-only
