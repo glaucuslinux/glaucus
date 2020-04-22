@@ -21,6 +21,7 @@ export TOOL=/toolchain &&
 export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/core_perl &&
 
 export LN='/usr/bin/ln -fsv' &&
+export CHMOD='/usr/bin/chmod -Rv' &&
 export MKDIR='/usr/bin/install -dv' &&
 export RM='/usr/bin/rm -frv' &&
 export RSYNC='/usr/bin/rsync -vaHAXSx' &&
