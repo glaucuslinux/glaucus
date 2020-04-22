@@ -3,20 +3,20 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
 }
 
-configure_chroot() {
+configure() {
   $SCRD/patch 0 $nom glaucus remove-O2
 }
 
-build_chroot() {
+build() {
   make
 }
 
-install_chroot() {
+install() {
   make \
     BINDIR=/bin \
     BASEDIR=$TOOL \
