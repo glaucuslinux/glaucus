@@ -13,6 +13,7 @@ configure() {
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-nls \
+    --disable-rpath \
     --without-guile
 }
 
