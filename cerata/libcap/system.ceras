@@ -3,21 +3,21 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   $SCRD/patch 0 $nom glaucus 0001-remove-static &&
   $SCRD/patch 0 $nom void disable-tests
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     prefix=/usr \
