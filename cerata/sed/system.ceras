@@ -12,7 +12,10 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-nls \
-    --disable-i18n
+    --disable-i18n \
+    --without-selinux \
+    --with-packager=glaucus \
+    --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
 
 build() {
