@@ -75,6 +75,5 @@ install_cross() {
   $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
 
   $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-cpp &&
   $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
 }
