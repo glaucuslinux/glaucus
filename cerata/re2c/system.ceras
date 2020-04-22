@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   rsync -vah $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 
   $MKDIR $SBLD/$nom
 }
 
-configure_system() {
+configure() {
   $AUTORECONF
 
   sed -e 's/-O2//' \
@@ -26,11 +26,11 @@ configure_system() {
     --disable-static
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     install-strip
 }
