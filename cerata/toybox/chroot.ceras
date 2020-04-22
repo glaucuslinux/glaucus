@@ -44,7 +44,7 @@ install() {
   $LN $nom $TOOL/bin/echo &&
   $LN $nom $TOOL/bin/env &&
   $LN $nom $TOOL/bin/expand &&
-  $LN $nom $TOOL/bin/expr &&
+  $LN $nom $TOOL/bin/expr
   $LN $nom $TOOL/bin/factor &&
   $LN $nom $TOOL/bin/false &&
   $LN $nom $TOOL/bin/fmt &&
@@ -60,6 +60,7 @@ install() {
   $LN $nom $TOOL/bin/ln &&
   $LN $nom $TOOL/bin/logname &&
   $LN $nom $TOOL/bin/ls &&
+  $LN $nom $TOOL/bin/md5sum &&
   $LN $nom $TOOL/bin/mkdir &&
   $LN $nom $TOOL/bin/mkfifo &&
   $LN $nom $TOOL/bin/mknod &&
@@ -79,6 +80,11 @@ install() {
   $LN $nom $TOOL/bin/rm &&
   $LN $nom $TOOL/bin/rmdir &&
   $LN $nom $TOOL/bin/seq &&
+  $LN $nom $TOOL/bin/sha1sum &&
+  $LN $nom $TOOL/bin/sha224sum &&
+  $LN $nom $TOOL/bin/sha256sum &&
+  $LN $nom $TOOL/bin/sha384sum &&
+  $LN $nom $TOOL/bin/sha512sum &&
   $LN $nom $TOOL/bin/shred &&
   $LN $nom $TOOL/bin/sleep &&
   $LN $nom $TOOL/bin/sort &&
