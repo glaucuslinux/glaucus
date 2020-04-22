@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -13,7 +13,7 @@ prepare_system() {
   $SCRD/patch 2 $nom clear add-pgo
 }
 
-configure_system() {
+configure() {
   $AUTORECONF &&
 
   ./configure \
@@ -24,12 +24,12 @@ configure_system() {
     --disable-rpath
 }
 
-build_system() {
+build() {
   make \
     pgo-build
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
