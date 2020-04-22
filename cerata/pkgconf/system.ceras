@@ -15,7 +15,7 @@ configure_system() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --disable-static \
-    --with-system-libdir=/usr/lib
+    --with-pkg-config-dir=/usr/lib/pkgconf:/usr/share/pkgconfig
 }
 
 build_system() {
@@ -27,7 +27,7 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
-  for i in pkg-config $TUPL-pkg-config $TUPL-$nom; do
-    $LN $nom $SCER/$nom/sac/usr/bin/$i
-  done
+  $LN $nom $SCER/$nom/sac/usr/bin/pkg-config &&
+  $LN $nom $SCER/$nom/sac/usr/bin/$TUPL-pkg-config &&
+  $LN $nom $SCER/$nom/sac/usr/bin/$TUPL-$nom
 }
