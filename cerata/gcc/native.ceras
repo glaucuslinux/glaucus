@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_native() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
  
   $RSYNC $SRCD/gmp/gmp-6.2.0/ $TSRC/$nom/gmp --delete &&
@@ -26,7 +26,7 @@ prepare_native() {
   cd $NBLD/$nom
 }
 
-configure_native() {
+configure() {
   $TSRC/$nom/configure \
     --build=$TUPL \
     --host=$TUPL \
@@ -50,11 +50,11 @@ configure_native() {
     --with-linker-hash-style=gnu
 }
 
-build_native() {
+build() {
   make
 }
 
-install_native() {
+install() {
   make \
     install-strip &&
 
