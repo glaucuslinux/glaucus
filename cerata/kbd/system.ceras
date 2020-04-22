@@ -17,6 +17,7 @@ configure() {
     --prefix=/usr \
     --disable-static \
     --disable-nls \
+    --disable-rpath \
     --disable-vlock \
     --disable-tests
 }
