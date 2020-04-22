@@ -22,6 +22,7 @@ configure() {
     --disable-static \
     --disable-symvers \
     --disable-nls \
+    --disable-rpath \
     --disable-setpriv \
     --disable-nologin \
     --disable-su \
