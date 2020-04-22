@@ -12,7 +12,8 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
-    --disable-nls
+    --disable-nls \
+    --disable-rpath
 }
 
 build() {
