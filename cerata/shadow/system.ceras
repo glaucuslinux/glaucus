@@ -35,6 +35,7 @@ configure() {
     --disable-static \
     --enable-utmpx \
     --disable-nls \
+    --disable-rpath \
     --with-group-name-max-length=32
 }
 
