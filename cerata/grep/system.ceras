@@ -3,22 +3,22 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
-configure_system() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-nls
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
