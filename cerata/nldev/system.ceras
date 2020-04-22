@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   $SCRD/patch 0 $nom glaucus 0001-fix-shell &&
 
   sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
@@ -16,11 +16,11 @@ configure_system() {
     -i config.mk
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
