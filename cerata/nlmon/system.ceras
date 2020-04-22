@@ -3,22 +3,22 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3/" \
     -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
