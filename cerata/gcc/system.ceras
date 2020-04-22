@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
 
   cd $SSRC/$nom &&
@@ -14,7 +14,7 @@ prepare_system() {
   cd $SBLD/$nom
 }
 
-configure_system() {
+configure() {
   CFLAGS="$CFLAGSNOLTO" \
   CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
@@ -33,11 +33,11 @@ configure_system() {
     --with-linker-hash-style=gnu
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
