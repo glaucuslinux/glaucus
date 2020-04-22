@@ -28,8 +28,10 @@ prepare_system() {
 configure_system() {
   ./configure \
     --prefix=/usr \
+    --enable-multibyte \
     --disable-nls \
     --without-$nom-malloc \
+    --with-curses \
     --with-installed-readline
 }
 
