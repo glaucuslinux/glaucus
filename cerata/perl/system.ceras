@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -11,7 +11,7 @@ prepare_system() {
   $SCRD/patch 1 $nom clear 0001-Add-${nom}bench-for-pgo-optimization
 }
 
-configure_system() {
+configure() {
   BUILD_ZLIB=False \
   BUILD_BZIP2=0 \
   ./Configure \
@@ -28,11 +28,11 @@ configure_system() {
     -Aldflags="$LDFLAGS"
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install &&
