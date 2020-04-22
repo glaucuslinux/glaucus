@@ -3,25 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/Intel-Linux-Processor-Microcode-Data-Files-microcode-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $RSYNC $CERD/$nom/06-55-04 $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   $MKDIR kernel/x86/microcode
 }
 
-build_system() {
+build() {
   iucode_tool \
     --write-earlyfw=$nom.img $nom/ $nom-with-caveats/ \
     --overwrite \
     --mini-earlyfw
 }
 
-install_system() {
+install() {
   $MKDIR $SCER/$nom/sac/boot &&
 
   $RSYNC $nom.img $SCER/$nom/sac/boot
