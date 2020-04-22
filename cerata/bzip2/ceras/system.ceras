@@ -3,19 +3,19 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   patch -p1 -i $CERD/$nom/patches/lfs/$nom-$ver-install_docs-1.patch
 
   sed 's/$(PREFIX)\/man/$(PREFIX)\/share\/man/' \
     -i Makefile
 }
 
-build_system() {
+build() {
   make \
     -f Makefile-libbz2_so
 
@@ -25,7 +25,7 @@ build_system() {
   make
 }
 
-install_system() {
+install() {
   install -dv $SCER/$nom/sac/usr/share/man/man1
   
   make \
