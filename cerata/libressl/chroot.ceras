@@ -1,0 +1,33 @@
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare_chroot() {
+  $MKDIR $CBLD/$nom &&
+  cd $CBLD/$nom
+}
+
+configure_chroot() {
+  $SRCD/$nom/$nom-$ver/configure \
+    --prefix=$TOOL \
+    --sysconfdir=$TOOL/etc \
+    --localstatedir=$TOOL/var \
+    --disable-static &&
+
+  sed 's/tests //' \
+    -i Makefile
+}
+
+build_chroot() {
+  make
+}
+
+install_chroot() {
+  make \
+    install-strip &&
+
+  $CHMOD 0755 $TOOL/lib/libcrypto.so.46.0.1 &&
+  $CHMOD 0755 $TOOL/lib/libssl.so.48.0.1 &&
+  $CHMOD 0755 $TOOL/lib/libtls.so.20.0.1
+}

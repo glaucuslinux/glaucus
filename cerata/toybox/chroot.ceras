@@ -52,7 +52,6 @@ install_chroot() {
   $LN $nom $TOOL/bin/groups &&
   $LN $nom $TOOL/bin/head &&
   $LN $nom $TOOL/bin/hostid &&
-  $LN $nom $TOOL/bin/hostname &&
   $LN $nom $TOOL/bin/iconv &&
   $LN $nom $TOOL/bin/id &&
   $LN $nom $TOOL/bin/install &&
