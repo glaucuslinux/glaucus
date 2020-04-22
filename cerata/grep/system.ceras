@@ -11,7 +11,9 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --disable-nls
+    --disable-nls \
+    --with-packager=glaucus \
+    --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
 
 build() {
