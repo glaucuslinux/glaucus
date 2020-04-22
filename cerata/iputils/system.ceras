@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-s$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $MKDIR $SBLD/$nom
 }
 
-configure_system() {
+configure() {
   meson \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -26,18 +26,17 @@ configure_system() {
     $SBLD/$nom
 }
 
-build_system() {
+build() {
   samu \
     -C $SBLD/$nom
 }
 
-install_system() {
+install() {
   DESTDIR=$SCER/$nom/sac \
   samu \
     -C $SBLD/$nom \
     install &&
 
-  for i in ping tracepath; do
-    $LN $i $SCER/$nom/sac/usr/bin/${i}6
-  done
+  $LN ping $SCER/$nom/sac/usr/bin/ping6 &&
+  $LN tracepath $SCER/$nom/sac/usr/bin/tracepath6
 }
