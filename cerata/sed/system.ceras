@@ -12,6 +12,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-nls \
+    --disable-rpath \
     --disable-i18n \
     --without-selinux \
     --with-packager=glaucus \
