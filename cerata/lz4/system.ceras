@@ -3,25 +3,24 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  for i in fix-make-install 0001-Makefile-propagate-CFLAGS; do
-    $SCRD/patch 1 $nom clear $i
-  done
+  $SCRD/patch 1 $nom clear fix-make-install &&
+  $SCRD/patch 1 $nom clear 0001-Makefile-propagate-CFLAGS
 }
 
-configure_system() {
+configure() {
   :
 }
 
-build_system() {
+build() {
   make \
     BUILD_STATIC=no
 }
 
-install_system() {
+install() {
   make \
     BUILD_STATIC=no \
     PREFIX=/usr \
