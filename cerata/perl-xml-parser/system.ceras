@@ -3,20 +3,20 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/XML-Parser-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   perl Makefile.PL
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
