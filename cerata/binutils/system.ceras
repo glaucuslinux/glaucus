@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
-configure_system() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --enable-deterministic-archives \
@@ -24,7 +24,7 @@ configure_system() {
     --disable-multilib
 }
 
-build_system() {
+build() {
   make \
     tooldir=/usr \
     configure-host &&
@@ -33,7 +33,7 @@ build_system() {
     tooldir=/usr
 }
 
-install_system() {
+install() {
   make \
     tooldir=/usr \
     DESTDIR=$SCER/$nom/sac \
