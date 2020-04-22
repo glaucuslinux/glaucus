@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_native() {
+prepare() {
   $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/gcc --delete &&
 
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
-configure_native() {
+configure() {
   $TSRC/gcc/$nom/configure \
     --host=$TUPL \
     --target=$TUPL \
@@ -23,11 +23,11 @@ configure_native() {
     --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$ver
 }
 
-build_native() {
+build() {
   make
 }
 
-install_native() {
+install() {
   make \
     install-strip
 }
