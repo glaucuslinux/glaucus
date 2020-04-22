@@ -28,8 +28,8 @@ configure() {
     --disable-libssp \
     --disable-werror \
     --disable-nls \
-    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --disable-rpath \
+    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-system-zlib \
     --with-linker-hash-style=gnu
 }
