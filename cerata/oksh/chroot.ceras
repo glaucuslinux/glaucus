@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
 }
 
-configure_chroot() {
+configure() {
   ./configure \
     --prefix=$TOOL \
     --mandir=$TOOL/share/man \
@@ -18,11 +18,11 @@ configure_chroot() {
     -i Makefile
 }
 
-build_chroot() {
+build() {
   make
 }
 
-install_chroot() {
+install() {
   make \
     install
 }
