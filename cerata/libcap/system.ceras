@@ -23,6 +23,7 @@ install() {
     prefix=/usr \
     SBINDIR=/usr/bin \
     LIBDIR=/usr/lib \
+    PKGCONFIGDIR=/usr/lib/pkgconfig \
     install &&
 
   $CHMOD 0755 $SCER/$nom/sac/usr/lib/$nom.so.$ver
