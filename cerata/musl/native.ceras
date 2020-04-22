@@ -29,8 +29,10 @@ build() {
 install() {
   make \
     install &&
-  
+ 
+  $RSYNC $TOOL/etc &&
   $RSYNC $CERD/$nom/ld-$nom-$ARCH.path.native $TOOL/etc/ld-$nom-$ARCH.path &&
+
   $RSYNC $CERD/$nom/ldconfig $TOOL/bin &&
 
   $LN ../lib/ld-$nom-$ARCH.so.1 $TOOL/bin/ldd
