@@ -14,6 +14,7 @@ configure() {
     --prefix=$TOOL \
     --libexecdir=$TOOL/lib/$nom \
     --localstatedir=$TOOL/var/lib/locate \
+    --disable-rpath \
     --disable-nls \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
