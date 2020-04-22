@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -23,7 +23,7 @@ prepare_system() {
   $SCRD/patch 0 $nom void musl-strndupa
 }
 
-configure_system() {
+configure() {
   $AUTORECONF &&
 
   CFLAGS="$CFLAGS -Wno-error" \
@@ -37,11 +37,11 @@ configure_system() {
     --disable-debuginfod
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
