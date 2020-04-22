@@ -14,6 +14,7 @@ configure() {
     --prefix=$TOOL \
     --disable-acl \
     --disable-nls \
+    --disable-rpath \
     --disable-i18n \
     --without-selinux \
     --with-packager=glaucus \
