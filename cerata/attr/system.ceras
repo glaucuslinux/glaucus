@@ -13,7 +13,8 @@ configure() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \
-    --disable-nls
+    --disable-nls \
+    --disable-rpath
 }
 
 build() {
