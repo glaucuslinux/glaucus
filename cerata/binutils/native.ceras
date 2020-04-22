@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_native() {
+prepare() {
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
-configure_native() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --target=$TUPL \
@@ -28,14 +28,14 @@ configure_native() {
     --disable-multilib
 }
 
-build_native() {
+build() {
   make \
     configure-host &&
 
   make
 }
 
-install_native() {
+install() {
   make \
     install-strip &&
 
