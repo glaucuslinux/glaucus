@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -11,7 +11,7 @@ prepare_system() {
   $SCRD/patch 0 $nom glaucus 0002-fix-installation-paths
 }
 
-configure_system() {
+configure() {
   sed 's/groups$(EXEEXT) //' \
     -i src/Makefile.in &&
 
@@ -38,11 +38,11 @@ configure_system() {
     --with-group-name-max-length=32
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
