@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_cross() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
   
   $RSYNC $SRCD/gmp/gmp-6.2.0/ $TSRC/$nom/gmp --delete &&
@@ -21,7 +21,7 @@ prepare_cross() {
   cd $XBLD/$nom
 }
 
-configure_cross() {
+configure() {
   CFLAGS='-g0 -O0' \
   CXXFLAGS='-g0 -O0' \
   $TSRC/$nom/configure \
@@ -55,7 +55,7 @@ configure_cross() {
     --disable-libstdcxx
 }
 
-build_cross() {
+build() {
   make \
     AR_FOR_TARGET=$TUPL-ar \
     AS_FOR_TARGET=$TUPL-as \
@@ -68,7 +68,7 @@ build_cross() {
     STRIP_FOR_TARGET=$TUPL-strip
 }
 
-install_cross() {
+install() {
   make \
     install-strip &&
 
