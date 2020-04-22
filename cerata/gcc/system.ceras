@@ -25,6 +25,8 @@ configure_system() {
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
+    --disable-libssp \
+    --disable-werror \
     --disable-nls \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-system-zlib \
@@ -46,12 +48,10 @@ install_system() {
   $LN $nom $SCER/$nom/sac/usr/bin/cc &&
   
   $MKDIR $SCER/$nom/sac/usr/lib/bfd-plugins &&
-
-  $LN ../../libexec/$nom/$TUPL/$ver/liblto_plugin.so $SCER/$nom/sac/usr/lib/bfd-plugins/ &&
+  $LN ../../lib/$nom/$TUPL/$ver/liblto_plugin.so $SCER/$nom/sac/usr/lib/bfd-plugins &&
   
   $LN ../bin/cpp $SCER/$nom/sac/usr/lib/cpp &&
 
   $MKDIR $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib &&
-
-  $MV $SCER/$nom/sac/usr/lib/*gdb.py $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib
+  $MV $SCER/$nom/sac/usr/lib/libstdc++.so.6.0.28-gdb.py $SCER/$nom/sac/usr/share/gdb/auto-load/usr/lib
 }
