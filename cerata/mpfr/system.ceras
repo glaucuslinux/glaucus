@@ -12,7 +12,9 @@ configure_system() {
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSFINITE" "$CFLAGS")" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --disable-static
+    --enable-thread-safe \
+    --disable-static \
+    --enable-lto
 }
 
 build_system() {
