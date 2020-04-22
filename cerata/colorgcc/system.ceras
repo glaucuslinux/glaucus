@@ -3,19 +3,19 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   :
 }
 
-configure_system() {
+configure() {
   :
 }
 
-build_system() {
+build() {
   :
 }
 
-install_system() {
+install() {
   $MKDIR $SCER/$nom/sac/etc/$nom $SCER/$nom/sac/usr/bin &&
 
   $RSYNC $CERD/$nom/${nom}rc.system $SCER/$nom/sac/etc/$nom/${nom}rc &&
