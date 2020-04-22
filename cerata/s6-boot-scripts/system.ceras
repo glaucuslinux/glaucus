@@ -3,19 +3,19 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   :
 }
 
-configure_system() {
+configure() {
   :
 }
 
-build_system() {
+build() {
   :
 }
 
-install_system() {
+install() {
   $RSYNC $SRCD/$nom/etc $SCER/$nom/sac --delete &&
   $RSYNC $SRCD/$nom/usr $SCER/$nom/sac --delete &&
   
