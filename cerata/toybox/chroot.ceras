@@ -3,26 +3,26 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-extend-long-iso-format
 }
 
-configure_chroot() {
+configure() {
   $RSYNC $CERD/$nom/chroot.config .config &&
 
   scripts/genconfig.sh
 }
 
-build_chroot() {
+build() {
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
   LDFLAGS="$LDFLAGSNORELRO" \
   make
 }
 
-install_chroot() {
+install() {
   $RSYNC $nom $TOOL/bin &&
 
   $LN $nom $TOOL/bin/base64 &&
