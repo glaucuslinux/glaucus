@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -32,18 +32,18 @@ prepare_system() {
   $SCRD/$nom 1 $nom upstream 0025-Add-missing-section-tests-to-context-format-test-cas
 }
 
-configure_system() {
+configure() {
   $AUTORECONF &&
 
   ./configure \
     --prefix=/usr
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
