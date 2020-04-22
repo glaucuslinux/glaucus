@@ -13,7 +13,10 @@ configure() {
     --host=$TUPL \
     --prefix=$TOOL \
     --libexecdir=$TOOL/lib/$nom \
-    --disable-nls
+    --localstatedir=$TOOL/var/lib/locate \
+    --disable-nls \
+    --with-packager=glaucus \
+    --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
 
 build() {
