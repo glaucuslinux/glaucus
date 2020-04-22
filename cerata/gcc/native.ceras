@@ -61,11 +61,9 @@ install_native() {
   $LN g++ $TOOL/bin/c++ &&
 
   $LN $nom $TOOL/bin/cc &&
-  $LN $nom $TOOL/bin/cpp &&
 
   $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
 
   $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-cpp &&
   $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
 }
