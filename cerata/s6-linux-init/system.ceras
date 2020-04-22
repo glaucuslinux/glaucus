@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
 
   ./configure \
@@ -28,12 +28,12 @@ configure_system() {
     -i config.mak
 }
 
-build_system() {
+build() {
   make \
     strip
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install &&
