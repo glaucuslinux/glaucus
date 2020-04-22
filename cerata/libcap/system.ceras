@@ -25,5 +25,5 @@ install_system() {
     LIBDIR=/usr/lib \
     install &&
 
-  chmod -v 0755 $SCER/$nom/sac/usr/lib/$nom.so.$ver
+  $CHMOD 0755 $SCER/$nom/sac/usr/lib/$nom.so.$ver
 }
