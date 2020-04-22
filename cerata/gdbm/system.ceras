@@ -14,7 +14,8 @@ configure() {
     --prefix=/usr \
     --enable-libgdbm-compat \
     --disable-static \
-    --disable-nls
+    --disable-nls \
+    --disable-rpath
 }
 
 build() {
