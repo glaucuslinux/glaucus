@@ -13,7 +13,6 @@ configure_system() {
 
   ./configure \
     --prefix=/usr \
-    --libexecdir=/usr/lib/libexec \
     --with-sysdeps=/usr/lib/skalibs/sysdeps \
     --with-include=/usr/include \
     --with-dynlib=/usr/lib \
