@@ -1,5 +1,8 @@
 # pkgconf
 ## System
+### Configure
+No need to specify `--with-system-libdir` and `--with-system-includedir` when
+prefix exists.
 ### Build
 Doesn't build with `-fno-common`:
 ```C
