@@ -11,8 +11,10 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
+    --disable-harden-flags \
     --disable-ipv6 \
-    --disable-nls
+    --disable-nls \
+    --disable-rpath
 }
 
 build() {
