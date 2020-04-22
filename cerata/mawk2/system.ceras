@@ -3,21 +3,21 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/mawk-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   ./configure \
     --prefix=/usr
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   $MKDIR $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1 &&
   
   $RSYNC mawk $SCER/$nom/sac/usr/bin/$nom &&
