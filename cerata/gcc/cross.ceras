@@ -47,6 +47,7 @@ configure() {
     --without-isl \
     --with-sysroot=$GLAD \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --disable-rpath \
     --with-system-zlib \
     --with-linker-hash-style=gnu \
     --without-headers \
