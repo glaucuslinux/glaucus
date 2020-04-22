@@ -46,6 +46,7 @@ configure() {
     --disable-werror \
     --disable-nls \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --disable-rpath \
     --with-system-zlib \
     --with-linker-hash-style=gnu
 }
