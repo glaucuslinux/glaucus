@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_native() {
+prepare() {
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
 }
 
-configure_native() {
+configure() {
   CROSS_COMPILE=$TUPL- \
   $SRCD/$nom/$nom-$ver/configure \
     --target=$TUPL \
@@ -22,11 +22,11 @@ configure_native() {
   $SCRD/patch 0 $nom glaucus 0001-remove-libdir
 }
 
-build_native() {
+build() {
   make
 }
 
-install_native() {
+install() {
   make \
     install &&
   
