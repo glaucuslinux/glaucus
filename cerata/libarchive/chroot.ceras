@@ -15,6 +15,7 @@ configure() {
     --disable-static \
     --disable-bsdcat \
     --disable-bsdcpio \
+    --disable-rpath \
     --disable-xattr \
     --disable-acl \
     --without-zlib \
