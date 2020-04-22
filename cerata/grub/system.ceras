@@ -20,6 +20,7 @@ configure() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --disable-nls \
+    --disable-rpath \
     --disable-efiemu \
     --disable-werror
 }
