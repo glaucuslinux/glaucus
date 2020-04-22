@@ -3,20 +3,20 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   $SCRD/patch 0 $nom glaucus remove-O2
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     BINDIR=/usr/bin \
     BASEDIR=$SCER/$nom/sac \
