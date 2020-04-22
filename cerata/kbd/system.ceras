@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
 }
 
-configure_system() {
+configure() {
   $SCRD/patch 1 $nom lfs remove-resizecons &&
 
   ./configure \
@@ -21,11 +21,11 @@ configure_system() {
     --disable-tests
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
