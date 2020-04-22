@@ -42,5 +42,5 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-libs &&
 
-  find $SCER/$nom/sac/usr/lib -name *.a -type f -exec chmod -v u+w {} \;
+  find $SCER/$nom/sac/usr/lib -name *.a -type f -exec $CHMOD u+w {} \;
 }
