@@ -3,21 +3,21 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   :
 }
 
-build_system() {
+build() {
   make \
     CC='cc -std=c99'
 }
 
-install_system() {
+install() {
   make \
     PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
