@@ -18,6 +18,7 @@ configure() {
     --enable-default-hash-style=gnu \
     --disable-werror \
     --disable-nls \
+    --disable-rpath \
     --disable-initfini-array \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-system-zlib \
