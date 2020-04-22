@@ -13,7 +13,9 @@ configure() {
     --prefix=/usr \
     --libexecdir=/usr/lib/$nom \
     --localstatedir=/var/lib/locate \
-    --disable-nls
+    --disable-nls \
+    --with-packager=glaucus \
+    --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
 
 build() {
