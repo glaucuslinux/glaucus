@@ -14,9 +14,12 @@ configure_system() {
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
+    --enable-relro \
+    --enable-default-hash-style=gnu \
     --disable-werror \
     --disable-nls \
     --disable-initfini-array \
+    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-system-zlib \
     --disable-multilib
 }
