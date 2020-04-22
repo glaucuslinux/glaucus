@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
 
   $MKDIR $SBLD/$nom &&
@@ -53,7 +53,7 @@ prepare_system() {
   $SCRD/patch 1 $nom sirlucjan 0008-.gitignore-add-ZSTD-compressed-files
 }
 
-configure_system() {
+configure() {
   $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
 
   make \
@@ -65,12 +65,12 @@ configure_system() {
     prepare
 }
 
-build_system() {
+build() {
   make \
     O=$SBLD/$nom
 }
 
-install_system() {
+install() {
   make \
     O=$SBLD/$nom \
     INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
