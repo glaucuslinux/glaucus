@@ -14,3 +14,5 @@ We also don't have any use for libstdcxx-pch plus it takes up a lot of
 space, so it's being disabled
 
 Still thinking about separately building libstdcxx-v3, but we'll see.
+
+`--disable-werror` is the default here

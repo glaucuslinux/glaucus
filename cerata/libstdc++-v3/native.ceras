@@ -17,6 +17,7 @@ configure() {
     --prefix=$TOOL \
     --disable-multilib \
     --disable-nls \
+    --disable-rpath \
     --disable-libstdcxx-pch \
     --disable-symvers \
     --disable-libstdcxx-threads \
