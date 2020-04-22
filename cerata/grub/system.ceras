@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $SCRD/patch 1 $nom clear 0001-Lower-test-timeout
 }
 
-configure_system() {
+configure() {
   $AUTORECONF &&
 
   CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOLTONOOPENMPNOPLT" "$CFLAGSNOLTO")" \
@@ -24,11 +24,11 @@ configure_system() {
     --disable-werror
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip
