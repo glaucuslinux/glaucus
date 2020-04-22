@@ -24,7 +24,6 @@ install_system() {
     install &&
   
   $MKDIR $SCER/$nom/sac/etc &&
-
   $RSYNC $CERD/$nom/$nom.conf $SCER/$nom/sac/etc &&
 
   $LN $nom $SCER/$nom/sac/usr/bin/$nom/c++ &&
