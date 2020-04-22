@@ -21,6 +21,7 @@ configure() {
     --disable-fsck \
     --disable-uuidd \
     --disable-nls \
+    --disable-rpath \
     --enable-lto &&
 
   sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
