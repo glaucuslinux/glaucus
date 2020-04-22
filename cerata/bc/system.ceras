@@ -9,7 +9,6 @@ prepare_system() {
 }
 
 configure_system() {
-  CC='cc -std=c99' \
   PREFIX=/usr \
   DESTDIR=$SCER/$nom/sac \
   ./configure.sh \
