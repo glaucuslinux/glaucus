@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_cross() {
+prepare() {
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
 }
 
-configure_cross() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --target=$TUPL \
     --prefix=$TOOL \
@@ -27,14 +27,14 @@ configure_cross() {
     --disable-multilib
 }
 
-build_cross() {
+build() {
   make \
     configure-host &&
 
   make
 }
 
-install_cross() {
+install() {
   make \
     install-strip &&
 
