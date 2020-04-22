@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   rsync -vah $CERD/$nom/$nom $SSRC --delete
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   cat > config.mak << EOF
 prefix=/usr
 sysconfdir=/etc
@@ -18,11 +18,11 @@ RANLIB=$RANLIB
 EOF
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
