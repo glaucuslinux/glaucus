@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
   
@@ -13,16 +13,16 @@ prepare_system() {
   $SCRD/patch 0 $nom glaucus 0001-fix-optimize
 }
 
-configure_system() {
+configure() {
   ./configure \
     --prefix=/usr
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
