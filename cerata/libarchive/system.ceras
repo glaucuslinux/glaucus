@@ -14,6 +14,7 @@ configure() {
   ./configure \
     --prefix=/usr \
     --disable-static \
+    --disable-rpath \
     --disable-acl \
     --without-cng \
     --without-nettle \
