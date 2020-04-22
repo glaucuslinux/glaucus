@@ -42,10 +42,20 @@ install_system() {
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
 
+  $LN g++ $SCER/$nom/sac/usr/bin/c++ &&
+
   $RSYNC $CERD/$nom/c89 $SCER/$nom/sac/usr/bin &&
   $RSYNC $CERD/$nom/c99 $SCER/$nom/sac/usr/bin &&
+
+  $CHOWN 0:0 $SCER/$nom/sac/usr/bin/c89 &&
+  $CHOWN 0:0 $SCER/$nom/sac/usr/bin/c99 &&
   
   $LN $nom $SCER/$nom/sac/usr/bin/cc &&
+
+  $LN $TUPL-g++ $SCER/$nom/sac/usr/bin/$TUPL-c++ &&
+
+  $LN $TUPL-$nom $SCER/$nom/sac/usr/bin/$TUPL-cc &&
+  $LN $TUPL-$nom $SCER/$nom/sac/usr/bin/$TUPL-$nom-$ver &&
   
   $MKDIR $SCER/$nom/sac/usr/lib/bfd-plugins &&
   $LN ../../lib/$nom/$TUPL/$ver/liblto_plugin.so $SCER/$nom/sac/usr/lib/bfd-plugins &&
