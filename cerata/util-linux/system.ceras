@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom &&
 
   $MKDIR /var/lib/hwclock
 }
 
-configure_system() {
+configure() {
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
   $SRCD/$nom/$nom-$ver/configure \
@@ -38,11 +38,11 @@ configure_system() {
     -i Makefile
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
