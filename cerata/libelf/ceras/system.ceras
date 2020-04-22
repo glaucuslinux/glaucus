@@ -3,20 +3,20 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   rsync -vah $CERD/$nom/$nom-$ver/ $SSRC/$nom --delete
   cd $SSRC/$nom
 }
 
-configure_system() {
+configure() {
   ./configure
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     prefix=$SCER/$nom/sac/usr \
     install
