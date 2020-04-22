@@ -3,18 +3,18 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
   $SCRD/patch 1 $nom clear multi-thread-default
 }
 
-configure_chroot() {
+configure() {
   :
 }
 
-build_chroot() {
+build() {
   make \
     HAVE_PTHREAD=1 \
     ZSTD_LEGACY_SUPPORT=0 \
@@ -24,7 +24,7 @@ build_chroot() {
     BACKTRACE=0
 }
 
-install_chroot() {
+install() {
   make \
     PREFIX=$TOOL \
     install
