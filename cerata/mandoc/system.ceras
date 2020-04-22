@@ -3,14 +3,14 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-path-for-make-4.3
 }
 
-configure_system() {
+configure() {
   printf "HAVE_WCHAR=1
 OSNAME=glaucus
 PREFIX=/usr
@@ -30,11 +30,11 @@ CFLAGS='$($SCRD/classify atlanticus "$CFLAGSFATNOCOMMON" "$CFLAGSFAT")'\n" > con
     -i Makefile
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install
