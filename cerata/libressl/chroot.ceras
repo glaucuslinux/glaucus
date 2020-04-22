@@ -3,12 +3,12 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_chroot() {
+prepare() {
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
 }
 
-configure_chroot() {
+configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=$TOOL \
     --sysconfdir=$TOOL/etc \
@@ -19,11 +19,11 @@ configure_chroot() {
     -i Makefile
 }
 
-build_chroot() {
+build() {
   make
 }
 
-install_chroot() {
+install() {
   make \
     install-strip &&
 
