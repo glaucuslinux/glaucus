@@ -3,25 +3,25 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
   $SCRD/patch 1 $nom sabotage 0001-mac-compat-don-t-redefine-__dead
 }
 
-configure_system() {
+configure() {
   $RSYNC $CERD/$nom/config.mak.system config.mak &&
 
   $SCRD/patch 0 $nom glaucus 0001-optimize-more
 }
 
-build_system() {
+build() {
   make \
     all-dynamic
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install-dynamic &&
