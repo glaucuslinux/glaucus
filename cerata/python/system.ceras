@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom/Python-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
@@ -11,7 +11,7 @@ prepare_system() {
   $SCRD/patch 1 $nom clear CVE-2020-8492
 }
 
-configure_system() {
+configure() {
   ax_cv_c_float_words_bigendian=no \
   ./configure \
     --prefix=/usr \
@@ -25,11 +25,11 @@ configure_system() {
     --with-ensurepip
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install &&
