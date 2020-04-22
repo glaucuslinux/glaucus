@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $MKDIR $SBLD/$nom &&
 
   cd $SRCD/linux/linux-$ver &&
@@ -12,15 +12,15 @@ prepare_system() {
     mrproper
 }
 
-configure_system() {
+configure() {
   :
 }
 
-build_system() {
+build() {
   :
 }
 
-install_system() {
+install() {
   make \
     O=$SBLD/$nom \
     ARCH=$ARCH \
