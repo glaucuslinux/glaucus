@@ -21,6 +21,7 @@ configure() {
     --disable-doc \
     --disable-static \
     --disable-nls \
+    --disable-rpath \
     --disable-rpath
 }
 
