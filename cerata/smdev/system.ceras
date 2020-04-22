@@ -3,7 +3,7 @@
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
-prepare_system() {
+prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   $RSYNC $CERD/$nom/config.h $SSRC/$nom &&
   cd $SSRC/$nom &&
@@ -12,18 +12,18 @@ prepare_system() {
   $SCRD/patch 1 $nom aur scan_all
 }
 
-configure_system() {
+configure() {
   sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
     -e "s/CFLAGS   = .*/CFLAGS = $CFLAGSFAT -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
     -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
 }
 
-build_system() {
+build() {
   make
 }
 
-install_system() {
+install() {
   make \
     DESTDIR=$SCER/$nom/sac \
     install &&
@@ -33,7 +33,7 @@ install_system() {
   $MKDIR $SCER/$nom/sac/etc/$nom &&
 
   $RSYNC proceeddev $SCER/$nom/sac/etc/$nom &&
-  chmod -v 0744 $SCER/$nom/sac/etc/$nom/proceeddev &&
+  $CHMOD 0744 $SCER/$nom/sac/etc/$nom/proceeddev &&
 
   $MKDIR $SCER/$nom/sac/etc/$nom/add &&
   $MKDIR $SCER/$nom/sac/etc/$nom/remove &&
