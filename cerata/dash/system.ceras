@@ -11,7 +11,8 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --disable-static
+    --disable-static \
+    --with-libedit
 }
 
 build() {
