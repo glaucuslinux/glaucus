@@ -10,7 +10,8 @@ prepare() {
 
 configure() {
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --disable-selinux
 }
 
 build() {
