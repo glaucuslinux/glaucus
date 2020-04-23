@@ -1,15 +1,5 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-construct() {
-  . $CERD/$1/ceras &&
-  . $CERD/$nom/system.ceras &&
-  
-  prepare_system || $SCRD/exit system $nom prepare $? || return &&
-  configure_system || $SCRD/exit system $nom configure $? || return &&
-  build_system || $SCRD/exit system $nom build $? || return &&
-  install_system || $SCRD/exit system $nom install $? || return
-}
-
-construct linux-headers &&
-construct musl
+$SCRD/construct system linux-headers &&
+$SCRD/construct system musl

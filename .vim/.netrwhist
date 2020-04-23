@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/glaucus/cerata/psmisc'
+let g:netrw_dirhist_2='/home/glaucus/cerata/gcc'
+let g:netrw_dirhist_1='/home/glaucus/cerata/gettext-tiny'

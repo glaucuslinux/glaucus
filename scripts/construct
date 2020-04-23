@@ -4,7 +4,7 @@
 . $CERD/$2/ceras &&
 . $CERD/$nom/$1.ceras &&
 
-prepare_$1 || $SCRD/exit $1 $nom prepare $? || exit &&
-configure_$1 || $SCRD/exit $1 $nom configure $? || exit &&
-build_$1 || $SCRD/exit $1 $nom build $? || exit &&
-install_$1 || $SCRD/exit $1 $nom install $? || exit
+prepare || $SCRD/exit $1 $nom prepare $? || exit &&
+configure || $SCRD/exit $1 $nom configure $? || exit &&
+build || $SCRD/exit $1 $nom build $? || exit &&
+install || $SCRD/exit $1 $nom install $? || exit

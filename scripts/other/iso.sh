@@ -4,15 +4,15 @@
 # Distributed under the terms of the ISC License
 
 DEST=temporary/system/iso &&
-RSYNC='/usr/bin/rsync -vaHAXSx' &&
+RSYNC='/usr/bin/rsync -vaHAXx' &&
 
 cd /home/glaucus &&
 
-install -dv $DEST &&
+$RSYNC $DEST &&
 
 $RSYNC boot etc root usr var $DEST --delete &&
 
-install -dv $DEST/images $DEST/isolinux $DEST/kernel &&
+$RSYNC $DEST/images $DEST/isolinux $DEST/kernel &&
 
 $RSYNC /usr/lib/syslinux/bios/isolinux.bin /usr/lib/syslinux/bios/ldlinux.c32 \
   $DEST/isolinux --delete &&
