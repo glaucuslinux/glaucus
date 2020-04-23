@@ -11,6 +11,7 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
+    --disable-static \
     --disable-nls \
     --disable-rpath \
     --disable-bootstrap
