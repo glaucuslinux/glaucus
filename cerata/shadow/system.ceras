@@ -36,6 +36,7 @@ configure() {
     --enable-utmpx \
     --disable-nls \
     --disable-rpath \
+    --without-selinux \
     --with-group-name-max-length=32
 }
 
