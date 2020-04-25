@@ -17,7 +17,9 @@ export TSRC=$TTMP/sources &&
 
 export GLAT=$GLAD/toolchain &&
 
-export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/core_perl &&
+export CCCH=/usr/lib64/ccache &&
+
+export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin:/usr/bin/core_perl &&
 
 export MAKEFLAGS=-j1 &&
 
