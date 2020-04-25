@@ -12,10 +12,10 @@ prepare() {
   
   cd $TSRC/$nom &&
 
-  $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
+  $SCRD/patch 0 $nom glaucus 0001-adjust-GLATchain-paths &&
 
-  $MKDIR $TOOL/include &&
-  touch $TOOL/include/stdc-predef.h &&
+  $MKDIR $GLAT/include &&
+  touch $GLAT/include/stdc-predef.h &&
 
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
@@ -26,10 +26,10 @@ configure() {
   CXXFLAGS='-g0 -O0' \
   $TSRC/$nom/configure \
     --target=$TUPL \
-    --prefix=$TOOL \
-    --libexecdir=$TOOL/lib \
-    --with-local-prefix=$TOOL \
-    --with-native-system-header-dir=$TOOL/include \
+    --prefix=$GLAT \
+    --libexecdir=$GLAT/lib \
+    --with-local-prefix=$GLAT \
+    --with-native-system-header-dir=$GLAT/include \
     --disable-shared \
     --disable-multilib \
     --disable-symvers \
@@ -73,8 +73,8 @@ install() {
   make \
     install-strip &&
 
-  $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
+  $LN $TUPL-g++ $GLAT/bin/$TUPL-c++ &&
 
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
+  $LN $TUPL-$nom $GLAT/bin/$TUPL-cc &&
+  $LN $TUPL-$nom $GLAT/bin/$TUPL-$nom-$ver
 }
