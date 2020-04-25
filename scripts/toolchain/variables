@@ -4,7 +4,8 @@
 export ARCH=x86_64 &&
 export TUPL=$ARCH-pc-linux-musl &&
 
-export GLAD=/home/glaucus &&
+export GLAD="$(pwd)" &&
+
 export CERD=$GLAD/cerata &&
 export SCRD=$GLAD/scripts &&
 export SRCD=$GLAD/sources &&
@@ -15,7 +16,6 @@ export TTMP=$GLAD/temporary/toolchain &&
 export TSRC=$TTMP/sources &&
 
 export GLAT=$GLAD/toolchain &&
-export TOOL=/toolchain &&
 
 export PATH=$TOOL/bin/ccache:$TOOL/bin:/usr/lib/ccache/bin:/usr/bin:/usr/bin/core_perl &&
 
