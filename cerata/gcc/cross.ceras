@@ -10,9 +10,42 @@ prepare() {
   $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   
-  cd $TSRC/$nom &&
+  cd $TSRC/$nom/$nom/config &&
+  
+  sed "s|/lib|$GLAT&|" \
+    -i i386/linux.h &&
+    
+  printf "
+#undef STANDARD_STARTFILE_PREFIX_1
+#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
 
-  $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> i386/linux.h &&
+
+  sed "s|/lib|$GLAT&|" \
+    -i i386/linux64.h &&
+    
+  printf "
+#undef STANDARD_STARTFILE_PREFIX_1
+#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
+
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> i386/linux64.h &&
+
+  sed "s|/lib|$GLAT&|" \
+    -i linux.h &&
+    
+  printf "
+#undef STANDARD_STARTFILE_PREFIX_1
+#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
+
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> linux.h &&
+
+  $SCRD/patch 0 $nom lfs 0001-remove-lib64 &&
+
+  sed "/MUSL_DYNAMIC_LINKER64/s|/dev/null|$GLAT/lib/ld-musl-$ARCH.so.1|" \
+    -i linux.h &&
 
   $MKDIR $GLAT/include &&
   touch $GLAT/include/stdc-predef.h &&
