@@ -5,7 +5,7 @@ printf 'bash:      ' &&
 bash --version | sed 1q | cut -d' ' -f4 &&
 
 printf 'binutils:  ' &&
-ld --version | sed 1q | cut -d' ' -f5- &&
+ld --version | sed 1q | cut -d' ' -f4- &&
 
 printf 'bison:     ' &&
 bison --version | sed 1q | cut -d' ' -f4 &&
