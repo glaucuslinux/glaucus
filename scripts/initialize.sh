@@ -3,13 +3,24 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-cd /home/glaucus &&
+export MKDIR='/usr/bin/install -dv' &&
 
-install -dv backup sources toolchain &&
+$MKDIR backup &&
+$MKDIR sources &&
+$MKDIR toolchain &&
 
-install -dv logs/chroot logs/system logs/toolchain/cross logs/toolchain/native &&
+$MKDIR logs/chroot &&
+$MKDIR logs/system &&
+$MKDIR logs/toolchain/cross &&
+$MKDIR logs/toolchain/native &&
 
-install -dv temporary/chroot/builds temporary/chroot/sources \
-  temporary/system/builds temporary/system/cerata temporary/system/sources \
-  temporary/toolchain/sources temporary/toolchain/cross/builds \
-  temporary/toolchain/native/builds
+$MKDIR temporary/chroot/builds &&
+$MKDIR temporary/chroot/sources &&
+
+$MKDIR temporary/system/builds &&
+$MKDIR temporary/system/cerata &&
+$MKDIR temporary/system/sources &&
+
+$MKDIR temporary/toolchain/sources &&
+$MKDIR temporary/toolchain/cross/builds &&
+$MKDIR temporary/toolchain/native/builds
