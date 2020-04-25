@@ -1,5 +1,5 @@
---- gcc/config/i386/t-linux64
-+++ gcc/config/i386/t-linux64
+--- i386/t-linux64
++++ i386/t-linux64
 @@ -33,6 +33,6 @@
  comma=,
  MULTILIB_OPTIONS    = $(subst $(comma),/,$(TM_MULTILIB_CONFIG))
