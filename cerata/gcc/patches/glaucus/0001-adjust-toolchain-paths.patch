@@ -5,14 +5,14 @@
  
  #define GNU_USER_LINK_EMULATION "elf_i386"
 -#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER "$GLAT/lib/ld-linux.so.2"
  
  #undef MUSL_DYNAMIC_LINKER
 -#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
-+#define MUSL_DYNAMIC_LINKER "/toolchain/lib/ld-musl-i386.so.1"
++#define MUSL_DYNAMIC_LINKER "$GLAT/lib/ld-musl-i386.so.1"
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "$GLAT/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
@@ -25,22 +25,22 @@
 -#define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
 -#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
 -#define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
-+#define GLIBC_DYNAMIC_LINKER32 "/toolchain/lib/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER64 "/toolchain/lib64/ld-linux-x86-64.so.2"
-+#define GLIBC_DYNAMIC_LINKERX32 "/toolchain/libx32/ld-linux-x32.so.2"
++#define GLIBC_DYNAMIC_LINKER32 "$GLAT/lib/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER64 "$GLAT/lib64/ld-linux-x86-64.so.2"
++#define GLIBC_DYNAMIC_LINKERX32 "$GLAT/libx32/ld-linux-x32.so.2"
  
  #undef MUSL_DYNAMIC_LINKER32
 -#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
-+#define MUSL_DYNAMIC_LINKER32 "/toolchain/lib/ld-musl-i386.so.1"
++#define MUSL_DYNAMIC_LINKER32 "$GLAT/lib/ld-musl-i386.so.1"
  #undef MUSL_DYNAMIC_LINKER64
 -#define MUSL_DYNAMIC_LINKER64 "/lib/ld-musl-x86_64.so.1"
-+#define MUSL_DYNAMIC_LINKER64 "/toolchain/lib/ld-musl-x86_64.so.1"
++#define MUSL_DYNAMIC_LINKER64 "$GLAT/lib/ld-musl-x86_64.so.1"
  #undef MUSL_DYNAMIC_LINKERX32
 -#define MUSL_DYNAMIC_LINKERX32 "/lib/ld-musl-x32.so.1"
-+#define MUSL_DYNAMIC_LINKERX32 "/toolchain/lib/ld-musl-x32.so.1"
++#define MUSL_DYNAMIC_LINKERX32 "$GLAT/lib/ld-musl-x32.so.1"
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "$GLAT/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
@@ -64,10 +64,10 @@
 -#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKERX32 "/lib/ldx32-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER32 "/toolchain/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER64 "/toolchain/lib/ld64-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKERX32 "/toolchain/lib/ldx32-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER "$GLAT/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "$GLAT/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER64 "$GLAT/lib/ld64-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKERX32 "$GLAT/lib/ldx32-uClibc.so.0"
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
@@ -76,7 +76,7 @@
  #define MUSL_DYNAMIC_LINKER "/dev/null"
  #define MUSL_DYNAMIC_LINKER32 "/dev/null"
 -#define MUSL_DYNAMIC_LINKER64 "/dev/null"
-+#define MUSL_DYNAMIC_LINKER64 "/toolchain/lib/ld-musl-x86_64.so.1"
++#define MUSL_DYNAMIC_LINKER64 "$GLAT/lib/ld-musl-x86_64.so.1"
  #define MUSL_DYNAMIC_LINKERX32 "/dev/null"
  
  #define GNU_USER_DYNAMIC_LINKER						\
@@ -86,7 +86,7 @@
  #endif
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "$GLAT/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
