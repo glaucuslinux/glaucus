@@ -25,6 +25,9 @@ diff --version | sed 1q | cut -d' ' -f4 &&
 printf 'findutils: ' &&
 find --version | sed 1q | cut -d' ' -f4 &&
 
+printf 'g++:       ' &&
+g++ --version | sed 1q | cut -d' ' -f3 &&
+
 printf 'gawk:      ' &&
 gawk --version | sed 1q | cut -d' ' -f3 | sed s/,// &&
 
