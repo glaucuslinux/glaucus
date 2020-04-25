@@ -4,7 +4,8 @@
 export ARCH=x86_64 &&
 export TUPL=$ARCH-pc-linux-musl &&
 
-export GLAD=/home/glaucus &&
+export GLAD="$(pwd)" &&
+
 export CERD=$GLAD/cerata &&
 export SCRD=$GLAD/scripts &&
 export SRCD=$GLAD/sources &&
