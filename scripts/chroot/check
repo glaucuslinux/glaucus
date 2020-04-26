@@ -4,7 +4,10 @@
 $SCRD/check m4 &&
 $SCRD/check oksh &&
 $SCRD/check dash &&
+$SCRD/check libressl &&
 $SCRD/check toybox &&
+$SCRD/check hostname &&
+$SCRD/check which &&
 $SCRD/check rsync &&
 $SCRD/check diffutils &&
 $SCRD/check file &&
