@@ -11,7 +11,7 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --target=$TUPL \
-    --prefix=$GLAT \
+    --prefix=$TOOL \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
@@ -21,7 +21,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
-    --with-lib-path=$GLAT/lib \
+    --with-lib-path=$TOOL/lib \
     --with-sysroot=$GLAD \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-system-zlib \
@@ -39,5 +39,5 @@ install() {
   make \
     install-strip &&
 
-  $LN $TUPL-ld.bfd $GLAT/bin/$TUPL-ld
+  $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld
 }
