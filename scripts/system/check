@@ -35,7 +35,6 @@ $SCRD/check musl-fts &&
 $SCRD/check musl-obstack &&
 $SCRD/check elfutils &&
 $SCRD/check libffi &&
-$SCRD/check libressl &&
 $SCRD/check kmod &&
 $SCRD/check python &&
 $SCRD/check samurai &&
