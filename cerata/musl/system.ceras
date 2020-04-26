@@ -30,6 +30,7 @@ install() {
     install &&
 
   $RSYNC $CERD/$nom/ld-$nom-$ARCH.path.system /etc/ld-$nom-$ARCH.path &&
+
   $RSYNC $CERD/$nom/ldconfig /usr/bin &&
 
   $LN ../lib/ld-$nom-$ARCH.so.1 /usr/bin/ldd &&
