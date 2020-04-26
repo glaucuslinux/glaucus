@@ -40,7 +40,6 @@ $SCRD/check kmod &&
 $SCRD/check python &&
 $SCRD/check samurai &&
 $SCRD/check meson &&
-$SCRD/check hostname &&
 $SCRD/check grub &&
 $SCRD/check pcre2 &&
 $SCRD/check less &&
