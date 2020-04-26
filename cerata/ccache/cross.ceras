@@ -11,8 +11,8 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --target=$TUPL \
-    --prefix=$GLAT \
-    --bindir=$GLAT/bin/$nom
+    --prefix=$TOOL \
+    --bindir=$TOOL/bin/$nom
 }
 
 build() {
@@ -23,10 +23,10 @@ install() {
   make \
     install &&
 
-  $LN $nom $GLAT/bin/$nom/$TUPL-c++ &&
-  $LN $nom $GLAT/bin/$nom/$TUPL-cc &&
-  $LN $nom $GLAT/bin/$nom/$TUPL-cpp &&
-  $LN $nom $GLAT/bin/$nom/$TUPL-g++ &&
-  $LN $nom $GLAT/bin/$nom/$TUPL-gcc &&
-  $LN $nom $GLAT/bin/$nom/$TUPL-gcc-9.3.0
+  $LN $nom $TOOL/bin/$nom/$TUPL-c++ &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-cc &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-cpp &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-g++ &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-gcc &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-gcc-9.3.0
 }
