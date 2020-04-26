@@ -77,4 +77,7 @@ printf 'texinfo:   ' &&
 makeinfo --version | sed 1q | cut -d' ' -f4 &&
 
 printf 'xz:        ' &&
-xz --version | sed 1q | cut -d' ' -f4
+xz --version | sed 1q | cut -d' ' -f4 &&
+
+printf 'zstd:      ' &&
+zstd --version | cut -d' ' -f7 | sed 's/,$//'
