@@ -106,7 +106,21 @@ Host's zlib isn't needed here as it's only pass 1 (doesn't really matter).
 Please don't consider disabling optimizations for this build as it'll bloat
 the entire toolchain to a whopping 1.7 GiB... (and it won't speed up boot time
 as it's inspired by LFS, so this means that this cross GCC builds musl and
-the final binutils and the final GCC).
+the final binutils and the final GCC). <- This notice is old and stripping can
+easily reduce the size of the toolchain, plus the cross tools will be overwrited
+with the native toolchain components (entirely) which are left with their own
+CFLAGS so they won't be bloated. So not optimizing the first build of GCC is a
+good idea.
+
+Don't pass `--libdir=$TOOL/lib` to prevent the need for a `lib64 -> lib` in
+$TOOL due to how some hosts are configured (e.g. Fedora). Since the cross
+toolchain on the host's libc (which is mostly Glibc) a folder called `lib64`
+with `libcc1.so` libraries in it may be created when cross gcc is installed
+which isn't desirable. We can solve this by creating a symlink `lib64 -> lib`
+before cross gcc installation and remove it once the installation is finished as
+it's not needed anymore (for the cleanliness of the toolchain). Note that some
+Glibc hosts don't have this problem at all like Arch, and doesn't create a
+`lib64` directory at all and don't require a symlink).
 
 ### Install
 for the sake of correctness, the install script complains about missing
