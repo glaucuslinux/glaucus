@@ -10,45 +10,12 @@ prepare() {
   $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   
-  cd $TSRC/$nom/$nom/config &&
+  cd $TSRC/$nom &&
   
-  sed "s|/lib|$GLAT&|" \
-    -i i386/linux.h &&
-    
-  printf "
-#undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
+  $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths &&
 
-#undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> i386/linux.h &&
-
-  sed "s|/lib|$GLAT&|" \
-    -i i386/linux64.h &&
-    
-  printf "
-#undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
-
-#undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> i386/linux64.h &&
-
-  sed "s|/lib|$GLAT&|" \
-    -i linux.h &&
-    
-  printf "
-#undef STANDARD_STARTFILE_PREFIX_1
-#define STANDARD_STARTFILE_PREFIX_1 \"$GLAT/lib/\"
-
-#undef STANDARD_STARTFILE_PREFIX_2
-#define STANDARD_STARTFILE_PREFIX_2 \"\"\n" >> linux.h &&
-
-  $SCRD/patch 0 $nom lfs 0001-remove-lib64 &&
-
-  sed "/MUSL_DYNAMIC_LINKER64/s|/dev/null|$GLAT/lib/ld-musl-$ARCH.so.1|" \
-    -i linux.h &&
-
-  $MKDIR $GLAT/include &&
-  touch $GLAT/include/stdc-predef.h &&
+  $MKDIR $TOOL/include &&
+  touch $TOOL/include/stdc-predef.h &&
 
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
@@ -59,10 +26,10 @@ configure() {
   CXXFLAGS='-g0 -O0' \
   $TSRC/$nom/configure \
     --target=$TUPL \
-    --prefix=$GLAT \
-    --libexecdir=$GLAT/lib \
-    --with-local-prefix=$GLAT \
-    --with-native-system-header-dir=$GLAT/include \
+    --prefix=$TOOL \
+    --libexecdir=$TOOL/lib \
+    --with-local-prefix=$TOOL \
+    --with-native-system-header-dir=$TOOL/include \
     --disable-shared \
     --disable-multilib \
     --disable-symvers \
@@ -106,8 +73,8 @@ install() {
   make \
     install-strip &&
 
-  $LN $TUPL-g++ $GLAT/bin/$TUPL-c++ &&
+  $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
 
-  $LN $TUPL-$nom $GLAT/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $GLAT/bin/$TUPL-$nom-$ver
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
 }
