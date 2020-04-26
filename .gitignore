@@ -6,6 +6,7 @@
 .tig_history
 .viminfo
 .wget-hsts
+.xauth*
 
 
 # hidden directories
