@@ -70,11 +70,16 @@ build() {
 }
 
 install() {
+  $MKDIR $TOOL/lib &&
+  $LN lib $TOOL/lib64 &&
+
   make \
     install-strip &&
 
   $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
 
   $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
+  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver &&
+
+  $RM $TOOL/lib64
 }
