@@ -1,6 +1,5 @@
-colorscheme molokai
+colorscheme slate
 filetype plugin indent on
-let NERDTreeShowHidden=1
 set autoindent
 set colorcolumn=80
 set cursorcolumn
