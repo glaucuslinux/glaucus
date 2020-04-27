@@ -15,6 +15,8 @@ configure() {
     --enable-thread-safe \
     --enable-shared-cache \
     --disable-static \
+    --enable-decimal-float \
+    --enable-float128 \
     --enable-lto
 }
 
