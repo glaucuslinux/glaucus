@@ -21,6 +21,7 @@ configure() {
     --disable-rpath \
     --disable-initfini-array \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --without-included-gettext \
     --with-system-zlib \
     --disable-multilib
 }
