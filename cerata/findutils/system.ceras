@@ -13,6 +13,7 @@ configure() {
     --prefix=/usr \
     --libexecdir=/usr/lib/$nom \
     --localstatedir=/var/lib/locate \
+    --enable-threads=posix \
     --disable-rpath \
     --disable-nls \
     --without-selinux \
