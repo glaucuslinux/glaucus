@@ -35,6 +35,7 @@ configure() {
     --disable-symvers \
     --enable-threads=single \
     --with-arch=x86-64 \
+    --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
     --disable-libssp \
