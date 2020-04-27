@@ -33,7 +33,8 @@ configure() {
     --disable-rpath \
     --without-$nom-malloc \
     --with-curses \
-    --with-installed-readline
+    --with-installed-readline \
+    --without-included-gettext
 }
 
 build() {
