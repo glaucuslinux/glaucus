@@ -12,6 +12,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
+    --enable-threads=posix \
     --disable-rpath \
     --disable-nls \
     --with-packager=glaucus \
