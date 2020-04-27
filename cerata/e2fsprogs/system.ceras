@@ -23,7 +23,8 @@ configure() {
     --disable-nls \
     --enable-threads=posix \
     --disable-rpath \
-    --enable-lto &&
+    --enable-lto \
+    --without-included-gettext &&
 
   sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
     -i MCONFIG &&
