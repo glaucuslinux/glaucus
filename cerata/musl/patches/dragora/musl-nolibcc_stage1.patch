@@ -1,0 +1,11 @@
+--- musl-1.1.19/configure~	2018-02-22 15:39:19.000000000 -0300
++++ musl-1.1.19/configure	2018-02-25 16:09:04.477036114 -0300
+@@ -598,8 +598,6 @@
+ # Find compiler runtime library
+ test -z "$LIBCC" && tryldflag LIBCC -lgcc && tryldflag LIBCC -lgcc_eh
+ test -z "$LIBCC" && tryldflag LIBCC -lcompiler_rt
+-test -z "$LIBCC" && try_libcc=`$CC -print-libgcc-file-name 2>/dev/null` \
+-                 && tryldflag LIBCC "$try_libcc"
+ test -z "$LIBCC" && try_libcc=`$CC -print-file-name=libpcc.a 2>/dev/null` \
+                  && tryldflag LIBCC "$try_libcc"
+ printf "using compiler runtime libraries: %s\n" "$LIBCC"
