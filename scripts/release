@@ -1,0 +1,19 @@
+#!/usr/bin/dash -e
+
+# Copyright (c) 2019-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+/usr/bin/rsync -vaHAXSx toolchain /tmp --delete &&
+
+. scripts/toolchain/variables &&
+
+find /tmp/toolchain -name *.la -delete &&
+
+strip -gv /tmp/toolchain/lib/*
+/usr/bin/strip --strip-unneeded -v /tmp/toolchain/bin/*
+
+$RM /tmp/toolchain/share/doc &&
+$RM /tmp/toolchain/share/info &&
+$RM /tmp/toolchain/share/man &&
+
+/usr/bin/tar -I '/usr/bin/zstd -22 --ultra --long=31 -T0' -cvf toolchain-$(date +%d%m%Y).tar.zstd /tmp/toolchain
