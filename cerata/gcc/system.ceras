@@ -22,6 +22,8 @@ configure() {
     --libexecdir=/usr/lib \
     --disable-multilib \
     --disable-symvers \
+    --enable-threads=posix \
+    --with-arch=x86-64 \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
