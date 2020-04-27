@@ -4,13 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $NBLD/$nom &&
-  cd $NBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
+  cd $TSRC/$nom
 }
 
 configure() {
+  $SCRD/patch 1 $nom dragora musl-nolibcc_stage1 &&
+
   CROSS_COMPILE=$TUPL- \
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --target=$TUPL \
     --prefix=$TOOL \
     --syslibdir=$TOOL/lib \
