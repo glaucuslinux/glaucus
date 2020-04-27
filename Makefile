@@ -1,10 +1,10 @@
 all: toolchain chroot
 
 toolchain:
-	time dash scripts/$@/run.sh
+	time dash scripts/$@/run
 
 chroot:
-	time dash scripts/$@/run.sh
+	time dash scripts/$@/run
 
 system:
 	time dash scripts/$@/run.sh
