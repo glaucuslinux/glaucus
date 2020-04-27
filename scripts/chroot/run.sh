@@ -3,7 +3,7 @@
 # Copyright (c) 2019-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-. /home/glaucus/scripts/chroot/variables &&
+. scripts/chroot/variables &&
 . $CSCR/check &&
 . $CSCR/prepare &&
 
