@@ -21,6 +21,7 @@ configure() {
     --disable-fsck \
     --disable-uuidd \
     --disable-nls \
+    --enable-threads=posix \
     --disable-rpath \
     --enable-lto &&
 
