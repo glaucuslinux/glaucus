@@ -13,6 +13,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --enable-thread-safe \
+    --enable-shared-cache \
     --disable-static \
     --enable-lto
 }
