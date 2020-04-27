@@ -5,6 +5,7 @@
 .lesshst
 .tig_history
 .viminfo
+.vimrc
 .wget-hsts
 .xauth*
 
@@ -16,6 +17,7 @@
 .gnupg/
 .local/
 .ssh/
+.vim/
 
 
 # cerata that can't be added as git submodules
