@@ -28,7 +28,6 @@ prepare() {
 
 configure() {
   $TSRC/$nom/configure \
-    --build=$TUPL \
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
