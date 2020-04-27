@@ -9,7 +9,10 @@ chroot:
 system:
 	time dash scripts/$@/run.sh
 
+release:
+	time dash scripts/$@
+
 clean:
-	time dash scripts/$@.sh
+	time dash scripts/$@
 
 .PHONY: toolchain
