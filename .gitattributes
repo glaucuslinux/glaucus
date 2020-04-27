@@ -8,6 +8,7 @@ cerata/smdev/config.h linguist-language=C
 
 scripts/check linguist-language=Shell
 scripts/classify linguist-language=Shell
+scripts/clean linguist-language=Shell
 scripts/construct linguist-language=Shell
 scripts/envenomate linguist-language=Shell
 scripts/exit linguist-language=Shell
@@ -15,8 +16,10 @@ scripts/fetch linguist-language=Shell
 scripts/flags.atlanticus linguist-language=Shell
 scripts/flags.bennettae linguist-language=Shell
 scripts/flags.marginatus linguist-language=Shell
+scripts/initialize linguist-language=Shell
 scripts/log linguist-language=Shell
 scripts/patch linguist-language=Shell
+scripts/release linguist-language=Shell
 scripts/require linguist-language=Shell
 scripts/species linguist-language=Shell
 scripts/verify linguist-language=Shell
@@ -27,9 +30,9 @@ scripts/chroot/chroot linguist-language=Shell
 scripts/chroot/clean linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
-scripts/chroot/require linguist-language=Shell
 scripts/chroot/resolv linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
+scripts/chroot/run linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
 scripts/chroot/vkfs linguist-language=Shell
 
@@ -39,11 +42,14 @@ scripts/system/clean linguist-language=Shell
 scripts/system/configure linguist-language=Shell
 scripts/system/construct linguist-language=Shell
 scripts/system/envenomate linguist-language=Shell
+scripts/system/img linguist-language=Shell
 scripts/system/prepare linguist-language=Shell
+scripts/system/run linguist-language=Shell
 scripts/system/variables linguist-language=Shell
 
 scripts/toolchain/backup linguist-language=Shell
 scripts/toolchain/prepare linguist-language=Shell
+scripts/toolchain/run linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
 
 scripts/toolchain/cross/check linguist-language=Shell
