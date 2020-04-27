@@ -24,6 +24,7 @@ configure() {
     --with-lib-path=$TOOL/lib \
     --with-sysroot=$GLAD \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --without-included-gettext \
     --with-system-zlib \
     --disable-multilib
 }
