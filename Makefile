@@ -9,6 +9,9 @@ chroot:
 system:
 	time dash scripts/$@/run.sh
 
+initialize:
+	time dash scripts/$@
+
 release:
 	time dash scripts/$@
 
