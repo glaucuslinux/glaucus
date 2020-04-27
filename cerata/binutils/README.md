@@ -35,6 +35,9 @@ Added --with-lib-path from LFS for better separation from the host
 `--enable-threads=yes` is only for gold and since gold is disabled by default
 and is not being used in the final system this option is not being used.
 
+`--with-arch` is only available for gas and for architectures other than x86
+like v2, v2j, v3, v3f...
+
 ### Install
 The symlink from lib64 to lib has already been created in prepare, also
 install-strip doesn't work with readline.
