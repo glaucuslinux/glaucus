@@ -19,6 +19,7 @@ configure() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
+    --enable-threads=posix \
     --disable-nls \
     --disable-rpath \
     --disable-efiemu \
