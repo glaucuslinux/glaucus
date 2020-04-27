@@ -1,22 +1,43 @@
 #!/usr/bin/dash -e
 
-sudo umount -fR /home/glaucus/dev
-sudo umount -fR /home/glaucus/proc
-sudo umount -fR /home/glaucus/sys
-sudo umount -fR /home/glaucus/run
+export RM='/usr/bin/rm -frv'
 
-sudo /usr/bin/rm -frv /home/glaucus/bin &&
-sudo /usr/bin/rm -frv /home/glaucus/boot &&
-sudo /usr/bin/rm -frv /home/glaucus/dev &&
-sudo /usr/bin/rm -frv /home/glaucus/etc &&
-sudo /usr/bin/rm -frv /home/glaucus/proc &&
-sudo /usr/bin/rm -frv /home/glaucus/root &&
-sudo /usr/bin/rm -frv /home/glaucus/run &&
-sudo /usr/bin/rm -frv /home/glaucus/sys &&
-sudo /usr/bin/rm -frv /home/glaucus/usr &&
-sudo /usr/bin/rm -frv /home/glaucus/var &&
-sudo /usr/bin/rm -frv /home/glaucus/tmp &&
+sudo \
+  /usr/bin/umount -fR /home/glaucus/dev
+sudo \
+  /usr/bin/umount -fR /home/glaucus/proc
+sudo \
+  /usr/bin/umount -fR /home/glaucus/sys
+sudo \
+  /usr/bin/umount -fR /home/glaucus/run
 
-sudo chown glaucus:glaucus /home/glaucus &&
+sudo \
+  $RM /home/glaucus/bin
+sudo \
+  $RM /home/glaucus/boot
+sudo \
+  $RM /home/glaucus/dev
+sudo \
+  $RM /home/glaucus/etc
+sudo \
+  $RM /home/glaucus/proc
+sudo \
+  $RM /home/glaucus/root
+sudo \
+  $RM /home/glaucus/run
+sudo \
+  $RM /home/glaucus/sys
+sudo \
+  $RM /home/glaucus/usr
+sudo \
+  $RM /home/glaucus/var
+sudo \
+  $RM /home/glaucus/tmp
 
-[ -d /home/glaucus/backup/toolchain ] && sudo /usr/bin/rsync -vaHAXSxh /home/glaucus/backup/toolchain/ /home/glaucus/toolchain --delete
+sudo \
+  chown glaucus:glaucus /home/glaucus
+
+[ -d /home/glaucus/backup/toolchain ] &&
+
+sudo \
+  /usr/bin/rsync -vaHAXSxh /home/glaucus/backup/toolchain/ /home/glaucus/toolchain --delete
