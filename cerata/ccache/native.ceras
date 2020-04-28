@@ -13,7 +13,9 @@ configure() {
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
-    --bindir=$TOOL/bin/$nom
+    --bindir=$TOOL/bin/$nom \
+    --disable-man \
+    --without-bundled-zlib
 }
 
 build() {
