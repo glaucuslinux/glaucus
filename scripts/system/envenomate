@@ -58,6 +58,7 @@ $SCRD/envenomate shadow
 #$SCRD/envenomate toybox &&
 #$SCRD/envenomate hostname &&
 #$SCRD/envenomate which &&
+#$SCRD/envenomate popt &&
 #$SCRD/envenomate rsync &&
 #$SCRD/envenomate diffutils &&
 #$SCRD/envenomate mawk &&
