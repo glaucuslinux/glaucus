@@ -12,7 +12,8 @@ prepare() {
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --without-man2html
 }
 
 build() {
