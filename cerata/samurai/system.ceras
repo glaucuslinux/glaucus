@@ -13,8 +13,7 @@ configure() {
 }
 
 build() {
-  make \
-    CC='cc -std=c99'
+  make
 }
 
 install() {
