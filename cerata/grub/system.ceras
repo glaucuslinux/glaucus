@@ -23,7 +23,8 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-efiemu \
-    --disable-werror
+    --disable-werror \
+    --without-included-regex
 }
 
 build() {
