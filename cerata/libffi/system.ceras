@@ -12,6 +12,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
+    --disable-docs \
     --disable-symvers \
     --with-gcc-arch=$ARCH
 }
