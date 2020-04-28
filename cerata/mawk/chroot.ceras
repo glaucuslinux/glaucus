@@ -13,7 +13,8 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
-    --prefix=$TOOL
+    --prefix=$TOOL \
+    --without-man2html
 }
 
 build() {
