@@ -15,6 +15,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-i18n \
+    --without-included-regex \
     --without-selinux \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
