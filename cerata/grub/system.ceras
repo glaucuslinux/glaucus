@@ -23,6 +23,11 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-efiemu \
+    --disable-grub-mkfont \
+    --enable-grub-themes \
+    --enable-device-mapper \
+    --disable-liblzma \
+    --enable-libzfs \
     --disable-werror \
     --without-included-regex
 }
