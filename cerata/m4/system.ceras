@@ -13,6 +13,7 @@ configure() {
     --prefix=/usr \
     --enable-threads=posix \
     --disable-rpath \
+    --without-included-regex \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
