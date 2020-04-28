@@ -14,7 +14,8 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
-    --without-man2html
+    --without-man2html \
+    --without-builtin-regex
 }
 
 build() {
