@@ -19,14 +19,15 @@ build() {
 }
 
 install() {
-  $MKDIR $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1 &&
-
+  $MKDIR $SCER/$nom/sac/usr/bin &&
   $RSYNC $nom $SCER/$nom/sac/usr/bin &&
-  $RSYNC $nom.1 $SCER/$nom/sac/usr/share/man/man1 &&
 
   $LN $nom $SCER/$nom/sac/usr/bin/gunzip &&
   $LN $nom $SCER/$nom/sac/usr/bin/gzcat &&
   $LN $nom $SCER/$nom/sac/usr/bin/gzip &&
   $LN $nom $SCER/$nom/sac/usr/bin/unpigz &&
-  $LN $nom $SCER/$nom/sac/usr/bin/zcat
+  $LN $nom $SCER/$nom/sac/usr/bin/zcat &&
+
+  $MKDIR $SCER/$nom/sac/usr/share/man/man1 &&
+  $RSYNC $nom.1 $SCER/$nom/sac/usr/share/man/man1
 }
