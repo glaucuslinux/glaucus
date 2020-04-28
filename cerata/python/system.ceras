@@ -21,6 +21,7 @@ configure() {
     --with-lto \
     --with-system-expat \
     --with-system-ffi \
+    --without-doc-strings \
     --with-pymalloc \
     --with-ensurepip
 }
