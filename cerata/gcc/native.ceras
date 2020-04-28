@@ -37,7 +37,7 @@ configure() {
     --disable-multilib \
     --disable-symvers \
     --enable-threads=posix \
-    --with-arch=x86-64 \
+    --with-arch=$ARCH \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
