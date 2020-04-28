@@ -13,7 +13,8 @@ configure() {
     --prefix=/usr \
     --enable-threads=posix \
     --disable-rpath \
-    --disable-nls
+    --disable-nls \
+    --without-included-regex
 }
 
 build() {
