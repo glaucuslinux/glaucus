@@ -6,6 +6,7 @@ cerata/*/ceras/ceras linguist-language=Shell
 cerata/elfutils/error.h linguist-language=C
 cerata/smdev/config.h linguist-language=C
 
+scripts/arch linguist-language=Shell
 scripts/check linguist-language=Shell
 scripts/classify linguist-language=Shell
 scripts/clean linguist-language=Shell
