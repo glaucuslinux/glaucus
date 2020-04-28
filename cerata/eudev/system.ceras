@@ -13,7 +13,9 @@ configure() {
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
-    --disable-static
+    --disable-static \
+    --disable-selinux \
+    --disable-manpages
 }
 
 build() {
