@@ -13,7 +13,7 @@ configure() {
     --prefix=/usr \
     --disable-static \
     --disable-symvers \
-    --with-gcc-arch=x86-64
+    --with-gcc-arch=$ARCH
 }
 
 build() {
