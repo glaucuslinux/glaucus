@@ -11,7 +11,9 @@ prepare() {
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
-    --bindir=/usr/bin/$nom
+    --bindir=/usr/bin/$nom \
+    --disable-man \
+    --without-bundled-zlib
 }
 
 build() {
