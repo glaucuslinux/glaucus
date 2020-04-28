@@ -11,10 +11,7 @@ prepare() {
 }
 
 configure() {
-  meson \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --buildtype=release \
+  glaucus-meson \
     -DUSE_IDN=false \
     -DBUILD_RARPD=true \
     -DBUILD_TRACEROUTE6=true \
