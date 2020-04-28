@@ -12,6 +12,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-debug \
+    --without-included-popt \
     --without-included-zlib
 }
 
