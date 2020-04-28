@@ -14,8 +14,7 @@ configure_system() {
   CFLAGS="$CFLAGS -I$GLAD/usr/include" \
   LDFLAGS="$LDFLAGS -L$GLAD/usr/lib" \
   LD_LIBRARY_PATH=$GLAD/usr/lib \
-  meson \
-    --prefix=/usr \
+  glaucus-meson \
     -Dlibmount=false \
     $SBLD/$nom
 }
