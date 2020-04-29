@@ -28,4 +28,4 @@ export RSYNC='/usr/bin/rsync -vaHAXSx' &&
 
 export MAKEFLAGS=-j1 &&
 
-. $SCRD/arch
+. $SCRD/genome
