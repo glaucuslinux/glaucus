@@ -11,7 +11,9 @@ prepare() {
 }
 
 configure() {
-  $SCRD/patch 0 $nom lfs 0001-remove-arpd-and-two-modules
+  $SCRD/patch 0 $nom lfs 0001-remove-arpd-and-two-modules &&
+
+  ./configure
 }
 
 build() {
