@@ -59,7 +59,7 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     AR_FOR_TARGET=$TUPL-ar \
     AS_FOR_TARGET=$TUPL-as \
     LD_FOR_TARGET=$TUPL-ld \
@@ -75,7 +75,7 @@ install() {
   $MKDIR $TOOL/lib &&
   $LN lib $TOOL/lib64 &&
 
-  make \
+  $MAKE \
     install-strip &&
 
   $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
