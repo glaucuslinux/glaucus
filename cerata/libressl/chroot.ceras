@@ -20,11 +20,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install-strip &&
 
   $CHMOD 0755 $TOOL/lib/libcrypto.so.46.0.1 &&
