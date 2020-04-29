@@ -1,6 +1,6 @@
 #!/usr/bin/dash -e
 
-# Copyright (c) 2019-2020, Firas Khalil Khana
+# Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 PATH=/usr/bin &&
@@ -9,7 +9,7 @@ CERD=/home/glaucus/cerata &&
 if [ ! -d $CERD/$1 ]; then
   cd $CERD/$1 &&
 
-printf '# Copyright (c) 2019-2020, Firas Khalil Khana
+printf '# Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
@@ -19,7 +19,7 @@ ver=$2
 url=$3
 lic=' > ceras &&
   
-printf '# Copyright (c) 2019-2020, Firas Khalil Khana
+printf '# Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
