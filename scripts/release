@@ -5,6 +5,8 @@
 
 . scripts/toolchain/variables &&
 
+$RM /tmp/toolchain/lib64 &&
+
 find /tmp/toolchain -name *.la -delete &&
 
 strip -gv /tmp/toolchain/lib/*
