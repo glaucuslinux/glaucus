@@ -25,11 +25,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install &&
  
   $MKDIR $TOOL/etc &&
