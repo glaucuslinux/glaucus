@@ -1,6 +1,8 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+$RM $TOOL/lib64 &&
+
 find $TOOL/ -name *.la -delete &&
 
 strip -gv $TOOL/lib/*
