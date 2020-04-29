@@ -30,14 +30,14 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     configure-host &&
 
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install-strip &&
 
   $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld
