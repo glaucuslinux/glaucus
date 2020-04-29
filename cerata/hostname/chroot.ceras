@@ -13,11 +13,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     BINDIR=/bin \
     MANDIR=/share/man \
     BASEDIR=$TOOL \
