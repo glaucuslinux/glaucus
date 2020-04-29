@@ -8,4 +8,7 @@ $RM $GLAT &&
 $MKDIR $GLAT &&
 
 sudo \
-  $LN $GLAT $TOOL
+  $LN $GLAT $TOOL &&
+
+$MKDIR $TOOL/lib &&
+$LN lib $TOOL/lib64
