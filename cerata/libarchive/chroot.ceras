@@ -31,11 +31,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install-strip &&
 
   $LN bsdtar $TOOL/bin/tar
