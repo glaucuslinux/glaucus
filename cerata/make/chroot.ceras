@@ -18,10 +18,10 @@ configure() {
 }
 
 build() {
-  $nom
+  $MAKE
 }
 
 install() {
-  $nom \
+  $MAKE \
     install-strip
 }
