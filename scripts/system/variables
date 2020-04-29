@@ -33,4 +33,4 @@ export RANLIB=gcc-ranlib &&
 
 . $SCRD/species &&
 
-. $SCRD/arch
+. $SCRD/genome
