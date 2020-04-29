@@ -19,11 +19,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install &&
 
   $LN $nom $TOOL/bin/$nom/c++ &&
