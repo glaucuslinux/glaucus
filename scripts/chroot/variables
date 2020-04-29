@@ -35,4 +35,4 @@ export RANLIB=gcc-ranlib &&
 . $SCRD/species &&
 export CPPFLAGS=-I$TOOL/include &&
 
-. $SCRD/arch
+. $SCRD/genome
