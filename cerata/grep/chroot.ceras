@@ -22,10 +22,10 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     install-strip
 }
