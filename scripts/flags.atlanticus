@@ -14,7 +14,7 @@ GRAPHITE='-fgraphite-identity -floop-nest-optimize' &&
 IPA='-fipa-pta' &&
 IRA='-fira-loop-pressure' &&
 LTO='-flto' &&
-MARCH='-march=x86-64' &&
+MARCH="-march=$ARCH" &&
 MERGE='-fmerge-all-constants' &&
 OFAST='-Ofast' &&
 OPENMP='-fopenmp' &&

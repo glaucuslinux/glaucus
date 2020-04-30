@@ -7,7 +7,7 @@ DEBUG='-g0' &&
 FAT='-ffat-lto-objects' &&
 FSECTS='-ffunction-sections' &&
 LTO='-flto' &&
-MARCH='-march=x86-64' &&
+MARCH="-march=$ARCH" &&
 OMIT='-fomit-frame-pointer' &&
 OS='-Os' &&
 PIPE='-pipe' &&

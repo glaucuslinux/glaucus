@@ -7,7 +7,7 @@ FAT='-ffat-lto-objects' &&
 GRAPHITE='-fgraphite-identity -floop-nest-optimize' &&
 IPA='-fipa-pta' &&
 LTO='-flto' &&
-MARCH='-march=x86-64' &&
+MARCH="-march=$ARCH" &&
 O3='-O3' &&
 PIPE='-pipe' &&
 SEMANTIC='-fno-semantic-interposition' &&
