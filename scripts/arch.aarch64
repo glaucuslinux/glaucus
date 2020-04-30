@@ -1,0 +1,7 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+export ARCH=aarch64 &&
+export _ARCH=$ARCH &&
+
+export TUPL=$ARCH-linux-musl
