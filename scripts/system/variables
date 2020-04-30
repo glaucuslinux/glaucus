@@ -22,6 +22,8 @@ export AUTORECONF='autoreconf -vfis' &&
 export CHMOD='chmod -Rv' &&
 export CHOWN='chown -Rv' &&
 export LN='ln -fsv' &&
+export MAKE='make \
+  V=1' &&
 export MKDIR='install -dv' &&
 export MV='mv -v' &&
 export RM='rm -frv' &&
@@ -31,6 +33,6 @@ export AR=gcc-ar &&
 export NM=gcc-nm &&
 export RANLIB=gcc-ranlib &&
 
-. $SCRD/species &&
+. $SCRD/genome &&
 
-. $SCRD/genome
+. $SCRD/species
