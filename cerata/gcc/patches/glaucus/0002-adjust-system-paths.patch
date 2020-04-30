@@ -26,8 +26,8 @@
 -#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
 -#define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
 +#define GLIBC_DYNAMIC_LINKER32 "/usr/lib/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER64 "/usr/lib64/ld-linux-x86-64.so.2"
-+#define GLIBC_DYNAMIC_LINKERX32 "/usr/libx32/ld-linux-x32.so.2"
++#define GLIBC_DYNAMIC_LINKER64 "/usr/lib/ld-linux-x86-64.so.2"
++#define GLIBC_DYNAMIC_LINKERX32 "/usr/lib/ld-linux-x32.so.2"
  
  #undef MUSL_DYNAMIC_LINKER32
 -#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
@@ -51,12 +51,14 @@
  MULTILIB_OPTIONS    = $(subst $(comma),/,$(TM_MULTILIB_CONFIG))
  MULTILIB_DIRNAMES   = $(patsubst m%, %, $(subst /, ,$(MULTILIB_OPTIONS)))
 -MULTILIB_OSDIRNAMES = m64=../lib64$(call if_multiarch,:x86_64-linux-gnu)
+-MULTILIB_OSDIRNAMES+= m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib32,../lib)$(call if_multiarch,:i386-linux-gnu)
+-MULTILIB_OSDIRNAMES+= mx32=../libx32$(call if_multiarch,:x86_64-linux-gnux32)
 +MULTILIB_OSDIRNAMES = m64=../lib$(call if_multiarch,:x86_64-linux-gnu)
- MULTILIB_OSDIRNAMES+= m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib32,../lib)$(call if_multiarch,:i386-linux-gnu)
- MULTILIB_OSDIRNAMES+= mx32=../libx32$(call if_multiarch,:x86_64-linux-gnux32)
++MULTILIB_OSDIRNAMES+= m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib),../lib)$(call if_multiarch,:i386-linux-gnu)
++MULTILIB_OSDIRNAMES+= mx32=../lib$(call if_multiarch,:x86_64-linux-gnux32)
 --- gcc/config/linux.h
 +++ gcc/config/linux.h
-@@ -94,10 +94,10 @@
+@@ -94,19 +94,19 @@
     GLIBC_DYNAMIC_LINKER must be defined for each target using them, or
     GLIBC_DYNAMIC_LINKER32 and GLIBC_DYNAMIC_LINKER64 for targets
     supporting both 32-bit and 64-bit compilation.  */
@@ -71,15 +73,19 @@
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
-@@ -105,7 +105,7 @@
+ #define BIONIC_DYNAMIC_LINKERX32 "/system/bin/linkerx32"
  /* Should be redefined for each target that supports musl.  */
- #define MUSL_DYNAMIC_LINKER "/dev/null"
- #define MUSL_DYNAMIC_LINKER32 "/dev/null"
+-#define MUSL_DYNAMIC_LINKER "/dev/null"
+-#define MUSL_DYNAMIC_LINKER32 "/dev/null"
 -#define MUSL_DYNAMIC_LINKER64 "/dev/null"
+-#define MUSL_DYNAMIC_LINKERX32 "/dev/null"
++#define MUSL_DYNAMIC_LINKER "/usr/lib/ld-musl-i386.so.1"
++#define MUSL_DYNAMIC_LINKER32 "/usr/lib/ld-musl-i386.so.1"
 +#define MUSL_DYNAMIC_LINKER64 "/usr/lib/ld-musl-x86_64.so.1"
- #define MUSL_DYNAMIC_LINKERX32 "/dev/null"
++#define MUSL_DYNAMIC_LINKERX32 "/usr/lib/ld-musl-x32.so.1"
  
  #define GNU_USER_DYNAMIC_LINKER						\
+   CHOOSE_DYNAMIC_LINKER (GLIBC_DYNAMIC_LINKER, UCLIBC_DYNAMIC_LINKER,	\
 @@ -221,3 +221,9 @@
  # define TARGET_LIBC_HAS_FUNCTION linux_libc_has_function
  
