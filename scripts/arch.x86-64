@@ -2,6 +2,13 @@
 # Distributed under the terms of the ISC License
 
 export ARCH=x86-64 &&
-export _ARCH=x86_64 &&
 
-export TUPL=$_ARCH-linux-musl
+export CARCH=$ARCH &&
+
+export FARCH="-march=$ARCH" &&
+
+export GARCH=$ARCH &&
+export MARCH=x86_64 &&
+export LARCH=$MARCH &&
+
+export TUPL=$MARCH-glaucus-linux-musl
