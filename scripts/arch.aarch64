@@ -2,6 +2,17 @@
 # Distributed under the terms of the ISC License
 
 export ARCH=aarch64 &&
-export _ARCH=$ARCH &&
 
-export TUPL=$ARCH-linux-musl
+export CARCH=armv8-a &&
+
+export FARCH='-mabi=lp64 -march=armv8-a -mfix-cortex-a53-835769
+-mfix-cortex-a53-843419' &&
+
+export GARCH='armv8-a \
+--with-abi=lp64 \
+--enable-fix-cortex-a53-835769 \
+--enable-fix-cortex-a53-843419' &&
+export MARCH=$ARCH &&
+export LARCH=arm64 &&
+
+export TUPL=$ARCH-glaucus-linux-musl
