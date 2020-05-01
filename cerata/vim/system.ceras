@@ -11,7 +11,10 @@ prepare() {
 configure() {
   ./configure \
     --prefix=/usr \
-    --disable-selinux
+    --disable-selinux \
+    --disable-nls \
+    --with-compiledby=glaucus \
+    --without-x
 }
 
 build() {
