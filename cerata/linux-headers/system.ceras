@@ -23,7 +23,7 @@ build() {
 install() {
   make \
     O=$SBLD/$nom \
-    ARCH=$_ARCH \
+    ARCH=$LARCH \
     INSTALL_HDR_PATH=/usr \
     headers_install
 }
