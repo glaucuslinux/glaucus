@@ -1,4 +1,4 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-grep -q $1 $SCRD/species && printf -- "$2" || printf -- "$3"
+grep -q $1 $(readlink $SCRD/species) && printf -- "$2" || printf -- "$3"
