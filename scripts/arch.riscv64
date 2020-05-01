@@ -2,6 +2,14 @@
 # Distributed under the terms of the ISC License
 
 export ARCH=riscv64 &&
-export _ARCH=$ARCH &&
 
-export TUPL=$ARCH-linux-musl
+export CARCH=$ARCH &&
+
+export FARCH='-mabi=lp64d -march=rv64imafdc' &&
+
+export GARCH='rv64imafdc \
+--with-abi=lp64d' &&
+export MARCH=$ARCH &&
+export LARCH=riscv &&
+
+export TUPL=$ARCH-glaucus-linux-musl
