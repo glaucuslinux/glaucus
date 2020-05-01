@@ -7,14 +7,13 @@ DEBUG='-g0' &&
 FAT='-ffat-lto-objects' &&
 FSECTS='-ffunction-sections' &&
 LTO='-flto' &&
-MARCH="-march=$ARCH" &&
 OMIT='-fomit-frame-pointer' &&
 OS='-Os' &&
 PIPE='-pipe' &&
 STRIP='-s' &&
 UNWIND='-fno-unwind-tables' &&
 
-export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $MARCH" &&
+export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH" &&
 
 export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
 export CFLAGSFATNODSECTS="$(printf -- "$CFLAGSFAT" | sed "s/$DSECTS //")" &&
