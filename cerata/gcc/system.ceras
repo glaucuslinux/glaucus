@@ -23,7 +23,7 @@ configure() {
     --disable-multilib \
     --disable-symvers \
     --enable-threads=posix \
-    --with-arch=$ARCH \
+    --with-arch=$GARCH \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
