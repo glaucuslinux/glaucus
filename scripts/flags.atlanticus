@@ -14,7 +14,6 @@ GRAPHITE='-fgraphite-identity -floop-nest-optimize' &&
 IPA='-fipa-pta' &&
 IRA='-fira-loop-pressure' &&
 LTO='-flto' &&
-MARCH="-march=$ARCH" &&
 MERGE='-fmerge-all-constants' &&
 OFAST='-Ofast' &&
 OPENMP='-fopenmp' &&
@@ -26,7 +25,7 @@ SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves' &&
 STRIP='-s' &&
 TLS='-mtls-dialect=gnu2' &&
 
-export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $MARCH $TLS $FPMATH $ALIGN" &&
+export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $FARCH $TLS $FPMATH $ALIGN" &&
 
 export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
 export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$COMMON //")" &&
