@@ -85,6 +85,8 @@ checker was removed starting from GCC 4.9:
 
 <https://gcc.gnu.org/gcc-4.9/changes.html>
 
+Also `musl` libc doesn't even support libmudflap in the first place.
+
 The first pass of GCC can be built easily without isl (isl isn't
 required to build GCC, simply pass --without-isl to get rid of the
 warnings in config.log).
@@ -158,6 +160,8 @@ cc1: error: no include path in which to search for stdc-predef.h
 starting from GCC 9:
 
 <https://gcc.gnu.org/ml/gcc-patches/2018-04/msg01225.html>
+
+Also `musl` libc doesn't even support libmpx in the first place.
 
 --disable-libmudflap is also not relevant as the mudflap run time
 checker was removed starting from GCC 4.9:
