@@ -13,8 +13,8 @@ prepare() {
 configure() {
   $AUTORECONF &&
 
-  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOLTONOOPENMPNOPLT" "$CFLAGSNOLTO")" \
-  LDFLAGS="$($SCRD/classify atlanticus "$LDFLAGSNOOPENMP" "$LDFLAGS")" \
+  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOLTONOOPENMPNOPLT" "$CFLAGSNOLTO")" \
+  LDFLAGS="$($SCRD/classify species atlanticus "$LDFLAGSNOOPENMP" "$LDFLAGS")" \
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
