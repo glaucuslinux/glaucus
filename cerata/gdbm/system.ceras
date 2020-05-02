@@ -9,7 +9,7 @@ prepare() {
 }
 
 configure() {
-  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
+  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --enable-libgdbm-compat \
