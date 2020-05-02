@@ -57,5 +57,5 @@ $SCRD/check s6-linux-init &&
 $SCRD/check s6-rc &&
 $SCRD/check eudev &&
 $SCRD/check s6-boot-scripts &&
-$SCRD/check iucode-tool &&
-$SCRD/check intel-ucode
+$($SCRD/classify genome x86-64 "$SCRD/check iucode-tool" true) &&
+$($SCRD/classify genome x86-64 "$SCRD/check intel-ucode")
