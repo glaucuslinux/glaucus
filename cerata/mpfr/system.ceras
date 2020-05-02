@@ -9,7 +9,7 @@ prepare() {
 }
 
 configure() {
-  CFLAGS="$($SCRD/classify atlanticus "$CFLAGSFINITE" "$CFLAGS")" \
+  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSFINITE" "$CFLAGS")" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --enable-thread-safe \
