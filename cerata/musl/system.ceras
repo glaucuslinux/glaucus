@@ -10,7 +10,7 @@ prepare() {
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
-    CFLAGS="$($SCRD/classify atlanticus "$CFLAGSNOFPMATHNOLTO" "$CFLAGSNOLTO")" \
+    CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOFPMATHNOLTO" "$CFLAGSNOLTO")" \
     --prefix=/usr \
     --syslibdir=/usr/lib \
     --disable-wrapper \
