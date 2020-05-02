@@ -13,7 +13,7 @@ configure() {
 
   ./configure \
     --prefix=/usr \
-    --libexecdir=/usr/lib/libexec \
+    --libexecdir=/usr/lib/$nom \
     --with-sysdeps=/usr/lib/skalibs/sysdeps \
     --with-include=/usr/include \
     --with-dynlib=/usr/lib \
