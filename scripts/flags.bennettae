@@ -1,6 +1,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+ALIGN="$($SCRD/classify genome riscv64 -malign-data=natural)" &&
 AUNWIND='-fno-asynchronous-unwind-tables' &&
 DSECTS='-fdata-sections' &&
 DEBUG='-g0' &&
@@ -13,7 +14,7 @@ PIPE='-pipe' &&
 STRIP='-s' &&
 UNWIND='-fno-unwind-tables' &&
 
-export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH" &&
+export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH $ALIGN" &&
 
 export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
 export CFLAGSFATNODSECTS="$(printf -- "$CFLAGSFAT" | sed "s/$DSECTS //")" &&
