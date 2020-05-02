@@ -9,6 +9,7 @@ prepare() {
 }
 
 configure() {
+  MKDIR_P="$MKDIR" \
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -24,12 +25,7 @@ configure() {
     --enable-threads=posix \
     --disable-rpath \
     --enable-lto \
-    --without-included-gettext &&
-
-  sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
-    -i MCONFIG &&
-  sed "s/MKDIR_P =.*/MKDIR_P = $MKDIR/" \
-    -i Makefile
+    --without-included-gettext
 }
 
 build() {
