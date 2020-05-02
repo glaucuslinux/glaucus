@@ -16,7 +16,7 @@ prepare() {
 
 configure() {
   CFLAGS="$CFLAGSNOLTO" \
-  CXXFLAGS="$($SCRD/classify bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
+  CXXFLAGS="$($SCRD/classify species bennettae "$CFLAGSNOLTO" "$CFLAGSNOIPANOLTO")" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
