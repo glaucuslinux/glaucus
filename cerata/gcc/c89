@@ -3,13 +3,13 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-fl='-std=c89'
+f=-std=c89
 
-for opt; do
-  case $opt in
-    -ansi | -std=c89 | -std=iso9899:1990) fl='' ;;
-    -std=*) printf "c89 called with non ANSI/ISO C option $opt\n" >&2 && exit 1 ;;
+for i; do
+  case $i in
+    -ansi|-std=c89|-std=iso9899:1990) f= ;;
+    -std=*) printf "c89 called with non ANSI/ISO C option $i\n" >&2 && exit 1 ;;
   esac
 done
 
-exec gcc $fl $@
+exec gcc $f $@
