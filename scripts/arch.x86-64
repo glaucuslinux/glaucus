@@ -10,7 +10,7 @@ export FARCH="-march=$ARCH -mtune=generic -mabi=sysv_abi" &&
 export GARCH="$ARCH \
 --with-tune=generic \
 --with-abi=sysv_abi" &&
-export MARCH=x86_64 &&
-export LARCH=$MARCH &&
+export LARCH=x86_64 &&
+export MARCH=$LARCH &&
 
-export TUPL=$MARCH-glaucus-linux-musl
+export TUPL=$LARCH-glaucus-linux-musl
