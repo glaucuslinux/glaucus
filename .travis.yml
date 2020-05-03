@@ -10,7 +10,7 @@ before_install:
   - sudo install -dv /home/glaucus
   - cd /home/glaucus
   - sudo git clone https://github.com/glaucuslinux/glaucus .
-  - sudo dash scripts/initialize.sh
+  - sudo dash scripts/initialize
 install:
   - sudo curl -Lo toolchain-27122019.tar.xz https://github.com/glaucuslinux/toolchain/releases/download/27122019/toolchain-27122019.tar.xz
   - sudo printf '48163b8bdd63a160021b504287e3d4c7db19164dd53b2a3b3dd0a630f31249b2458b5c6782f605d0abdd846983d5a3e40c6954ad471b3ae88eeae76a7b0bd7d2  toolchain-27122019.tar.xz' | sha512sum -c
