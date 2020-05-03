@@ -1,0 +1,16 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+export ARCH=powerpc64 &&
+
+export CARCH= &&
+
+export FARCH='-msecure-plt -mabi=elfv2' &&
+
+export GARCH="--with-abi=elfv2 \
+--enable-secureplt \
+--disable-decimal-float" &&
+export LARCH=powerpc &&
+export MARCH=$ARCH &&
+
+export TUPL=$ARCH-glaucus-linux-musl
