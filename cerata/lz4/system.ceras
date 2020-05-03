@@ -16,12 +16,12 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     BUILD_STATIC=no
 }
 
 install() {
-  make \
+  $MAKE \
     BUILD_STATIC=no \
     PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
