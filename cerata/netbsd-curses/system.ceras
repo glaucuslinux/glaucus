@@ -17,12 +17,12 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     all-dynamic
 }
 
 install() {
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install-dynamic &&
 
