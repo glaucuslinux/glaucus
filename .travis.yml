@@ -15,7 +15,7 @@ before_install:
   - sudo dash scripts/initialize
 install:
   - sudo curl -Lo toolchain-22042020.tar.zstd https://github.com/glaucuslinux/toolchain/releases/download/22042020/toolchain-22042020.tar.zstd
-  - sudo printf '2aa83371a2ea23a897774a599245b408982043fa02da632849c9eb06c7d14e0b9ac540dacb9feab99be7e0e6629d70ca783f355959d6ce412974b6fe75903345  toolchain-22042020.tar.xz' | sha512sum -c
+  - sudo printf '2aa83371a2ea23a897774a599245b408982043fa02da632849c9eb06c7d14e0b9ac540dacb9feab99be7e0e6629d70ca783f355959d6ce412974b6fe75903345  toolchain-22042020.tar.zstd' | sha512sum -c
   - sudo rm -frv toolchain
   - sudo tar -I "zstd --long=31" -xvf toolchain-22042020.tar.zstd -C .
 script:
