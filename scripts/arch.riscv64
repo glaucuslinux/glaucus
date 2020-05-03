@@ -10,7 +10,7 @@ export FARCH='-mabi=lp64d -march=rv64imafdc -mtune=rocket' &&
 export GARCH="rv64imafdc \
 --with-tune=rocket \
 --with-abi=lp64d" &&
-export MARCH=$ARCH &&
 export LARCH=riscv &&
+export MARCH=$ARCH &&
 
 export TUPL=$ARCH-glaucus-linux-musl
