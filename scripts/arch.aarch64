@@ -13,7 +13,7 @@ export GARCH="armv8-a \
 --with-abi=lp64 \
 --enable-fix-cortex-a53-835769 \
 --enable-fix-cortex-a53-843419" &&
-export MARCH=$ARCH &&
 export LARCH=arm64 &&
+export MARCH=$ARCH &&
 
 export TUPL=$ARCH-glaucus-linux-musl
