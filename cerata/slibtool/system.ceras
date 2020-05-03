@@ -19,7 +19,7 @@ build() {
 }
 
 install() {
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install &&
 
