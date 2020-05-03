@@ -41,7 +41,7 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
