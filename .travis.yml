@@ -7,7 +7,6 @@ addons:
     packages:
     - bzip2
     - lzip
-    - xz
     - zstd
 before_install:
   - sudo install -dv /home/glaucus
