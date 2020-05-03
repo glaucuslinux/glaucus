@@ -29,12 +29,12 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     strip
 }
 
 install() {
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install &&
 
