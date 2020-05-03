@@ -10,7 +10,7 @@ prepare() {
 
   cd $SSRC/$nom &&
 
-  make \
+  $MAKE \
     mrproper &&
 
   $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups &&
@@ -56,22 +56,22 @@ prepare() {
 configure() {
   $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
 
-  make \
+  $MAKE \
     O=$SBLD/$nom \
     oldconfig &&
   
-  make \
+  $MAKE \
     O=$SBLD/$nom \
     prepare
 }
 
 build() {
-  make \
+  $MAKE \
     O=$SBLD/$nom
 }
 
 install() {
-  make \
+  $MAKE \
     O=$SBLD/$nom \
     INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
     modules_install &&
