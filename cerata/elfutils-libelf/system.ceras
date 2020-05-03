@@ -26,15 +26,15 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     -C lib &&
 
-  make \
+  $MAKE \
     -C libelf
 }
 
 install() {
-  make \
+  $MAKE \
     -C libelf \
     DESTDIR=$SCER/$nom/sac \
     install
