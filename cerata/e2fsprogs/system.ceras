@@ -33,11 +33,11 @@ build() {
 }
 
 install() {
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
   
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install-libs &&
 
