@@ -5,22 +5,26 @@ git:
 addons:
   apt:
     packages:
+    - bzip2
     - lzip
+    - xz
+    - zstd
 before_install:
   - sudo install -dv /home/glaucus
   - cd /home/glaucus
   - sudo git clone https://github.com/glaucuslinux/glaucus .
   - sudo dash scripts/initialize
 install:
-  - sudo curl -Lo toolchain-27122019.tar.xz https://github.com/glaucuslinux/toolchain/releases/download/27122019/toolchain-27122019.tar.xz
-  - sudo printf '48163b8bdd63a160021b504287e3d4c7db19164dd53b2a3b3dd0a630f31249b2458b5c6782f605d0abdd846983d5a3e40c6954ad471b3ae88eeae76a7b0bd7d2  toolchain-27122019.tar.xz' | sha512sum -c
+  - sudo curl -Lo toolchain-22042020.tar.zstd https://github.com/glaucuslinux/toolchain/releases/download/22042020/toolchain-22042020.tar.zstd
+  - sudo printf '2aa83371a2ea23a897774a599245b408982043fa02da632849c9eb06c7d14e0b9ac540dacb9feab99be7e0e6629d70ca783f355959d6ce412974b6fe75903345  toolchain-22042020.tar.xz' | sha512sum -c
   - sudo rm -frv toolchain
-  - sudo tar xvf toolchain-27122019.tar.xz -C .
+  - sudo tar -I "zstd --long=31" -xvf toolchain-22042020.tar.zstd -C .
 script:
   - sudo sed 's/tar xvf/sudo tar xf/' -i scripts/fetch
   - export CERD=cerata
   - export SCRD=scripts
   - export SRCD=sources
+  - export MKDIR='/usr/bin/install -dv'
   - sudo dash $SCRD/toolchain/cross/check
   - sudo dash $SCRD/toolchain/native/check
   - sudo dash $SCRD/chroot/check
