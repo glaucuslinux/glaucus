@@ -31,7 +31,7 @@ CFLAGS='$($SCRD/classify species atlanticus "$CFLAGSFATNOCOMMON" "$CFLAGSFAT")'\
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
