@@ -8,7 +8,7 @@ prepare() {
 
   cd $SRCD/linux/linux-$ver &&
 
-  make \
+  $MAKE \
     mrproper
 }
 
@@ -21,7 +21,7 @@ build() {
 }
 
 install() {
-  make \
+  $MAKE \
     O=$SBLD/$nom \
     ARCH=$LARCH \
     INSTALL_HDR_PATH=/usr \
