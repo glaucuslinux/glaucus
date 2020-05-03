@@ -17,7 +17,7 @@ build() {
 }
 
 install() {
-  make \
+  $MAKE \
     prefix=/usr \
     DESTDIR=$SCER/$nom/sac \
     install
