@@ -27,16 +27,16 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     tooldir=/usr \
     configure-host &&
 
-  make \
+  $MAKE \
     tooldir=/usr
 }
 
 install() {
-  make \
+  $MAKE \
     tooldir=/usr \
     DESTDIR=$SCER/$nom/sac \
     install-strip &&
