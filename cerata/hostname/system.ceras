@@ -17,7 +17,7 @@ build() {
 }
 
 install() {
-  make \
+  $MAKE \
     BINDIR=/usr/bin \
     BASEDIR=$SCER/$nom/sac \
     install
