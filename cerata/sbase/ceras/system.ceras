@@ -31,6 +31,6 @@ sed -e 's/^PREFIX = .*/PREFIX = \/usr/' \
 make
 
 # install
-make \
+$MAKE \
   DESTDIR=$SCER/$nom/sac \
   install
