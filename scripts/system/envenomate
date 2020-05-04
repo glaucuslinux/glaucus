@@ -33,11 +33,11 @@ $SCRD/envenomate attr &&
 $SCRD/envenomate acl &&
 $SCRD/envenomate skalibs &&
 $SCRD/envenomate utmps &&
-$SCRD/envenomate shadow
+$SCRD/envenomate libcap &&
+$SCRD/envenomate shadow &&
 $SCRD/envenomate gcc &&
 $SCRD/envenomate ccache &&
 $SCRD/envenomate pkgconf &&
-$SCRD/envenomate libcap &&
 $SCRD/envenomate sed &&
 $SCRD/envenomate psmisc &&
 $SCRD/envenomate flex &&
