@@ -16,19 +16,19 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     -f Makefile-libbz2_so
 
-  make \
+  $MAKE \
     clean
 
-  make
+  $MAKE
 }
 
 install() {
   install -dv $SCER/$nom/sac/usr/share/man/man1
   
-  make \
+  $MAKE \
     PREFIX=$SCER/$nom/sac/usr \
     install
 
