@@ -18,6 +18,6 @@ cd $SSRC/$nom
 make
 
 # install
-make \
+$MAKE \
   DESTDIR=$SCER/$nom/sac \
   install-strip
