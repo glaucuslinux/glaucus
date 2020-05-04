@@ -13,11 +13,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     prefix=$SCER/$nom/sac/usr \
     install
 }
