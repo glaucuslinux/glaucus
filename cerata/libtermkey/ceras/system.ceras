@@ -13,12 +13,12 @@ configure() {
 }
 
 build() {
-  make \
+  $MAKE \
     PREFIX=/usr
 }
 
 install() {
-  make \
+  $MAKE \
     PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
     install
