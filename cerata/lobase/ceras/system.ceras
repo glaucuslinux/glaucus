@@ -20,7 +20,7 @@ for dir in lib/libopenbsd lib/liboutil bin/ls bin/pax bin/stty usr.bin/diff \
   usr.bin/fmt usr.bin/patch usr.bin/sort; do
   cd $dir
 
-  make
+  $MAKE
 
   cd ../..
 done
@@ -30,7 +30,7 @@ for dir in bin/ls bin/stty usr.bin/diff usr.bin/fmt usr.bin/patch \
   usr.bin/sort; do
   cd $dir
 
-  make \
+  $MAKE \
     BINDIR=/usr/bin \
     DESTDIR=$SCER/$nom/sac \
     install
