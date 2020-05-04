@@ -3,11 +3,11 @@
 
 export ARCH=riscv64 &&
 
-export CARCH=$ARCH &&
+export CARCH=--with-gcc-arch=rv64imafdc &&
 
 export FARCH='-mabi=lp64d -march=rv64imafdc -mtune=rocket' &&
 
-export GARCH="rv64imafdc \
+export GARCH="--with-arch=rv64imafdc \
 --with-tune=rocket \
 --with-abi=lp64d" &&
 export LARCH=riscv &&
