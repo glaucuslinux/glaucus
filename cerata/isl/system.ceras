@@ -12,7 +12,7 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-static \
-    --with-gcc-arch=$CARCH
+    $CARCH
 }
 
 build() {
