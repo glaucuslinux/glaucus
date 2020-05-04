@@ -15,11 +15,11 @@ configure() {
 }
 
 build() {
-  make
+  $MAKE
 }
 
 install() {
-  make \
+  $MAKE \
     DESTDIR=$SCER/$nom/sac \
     install
 
