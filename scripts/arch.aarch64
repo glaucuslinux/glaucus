@@ -3,12 +3,12 @@
 
 export ARCH=aarch64 &&
 
-export CARCH=armv8-a &&
+export CARCH=--with-gcc-arch=armv8-a &&
 
 export FARCH='-mabi=lp64 -mfix-cortex-a53-835769 -mfix-cortex-a53-843419
 -march=armv8-a -mtune=generic' &&
 
-export GARCH="armv8-a \
+export GARCH="--with-arch=armv8-a \
 --with-tune=generic \
 --with-abi=lp64 \
 --enable-fix-cortex-a53-835769 \
