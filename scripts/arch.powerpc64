@@ -5,10 +5,10 @@ export ARCH=powerpc64 &&
 
 export CARCH= &&
 
-export FARCH='-msecure-plt -mabi=elfv2' &&
+export FARCH='-mcpu=powerpc64 -mabi=elfv2' &&
 
-export GARCH="--with-abi=elfv2 \
---enable-secureplt \
+export GARCH="--with-cpu=powerpc64 \
+--with-abi=elfv2 \
 --disable-decimal-float" &&
 export LARCH=powerpc &&
 export MARCH=$ARCH &&
