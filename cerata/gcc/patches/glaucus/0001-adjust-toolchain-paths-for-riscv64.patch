@@ -50,7 +50,7 @@
     others do not.  So link libatomic by default, as needed.  */
 --- gcc/config/riscv/riscv.h
 +++ gcc/config/riscv/riscv.h
-@@ -883,10 +883,10 @@
+@@ -883,10 +883,8 @@
    "%{mabi=lp64d:lp64d}" \
  
  #define STARTFILE_PREFIX_SPEC 			\
@@ -59,9 +59,7 @@
 -   "/lib/ "					\
 -   "/usr/lib/ "
 +   "/toolchain/lib" XLEN_SPEC "/" ABI_SPEC "/ "		\
-+   "/toolchain/usr/lib" XLEN_SPEC "/" ABI_SPEC "/ "	\
-+   "/toolchain/lib/ "					\
-+   "/toolchain/usr/lib/ "
++   "/toolchain/lib/ "
  
  /* ISA constants needed for code generation.  */
  #define OPCODE_LW    0x2003
