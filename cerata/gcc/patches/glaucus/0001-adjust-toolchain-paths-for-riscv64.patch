@@ -28,6 +28,16 @@
  
  #define GNU_USER_DYNAMIC_LINKER						\
    CHOOSE_DYNAMIC_LINKER (GLIBC_DYNAMIC_LINKER, UCLIBC_DYNAMIC_LINKER,	\
+@@ -221,3 +221,9 @@
+ # define TARGET_LIBC_HAS_FUNCTION linux_libc_has_function
+ 
+ #endif
++
++#undef STANDARD_STARTFILE_PREFIX_1
++#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++
++#undef STANDARD_STARTFILE_PREFIX_2
++#define STANDARD_STARTFILE_PREFIX_2 ""
 --- gcc/config/riscv/linux.h
 +++ gcc/config/riscv/linux.h
 @@ -22,7 +22,7 @@
@@ -48,6 +58,16 @@
  
  /* Because RISC-V only has word-sized atomics, it requries libatomic where
     others do not.  So link libatomic by default, as needed.  */
+@@ -68,3 +68,9 @@
+     %{static:-static}}"
+ 
+ #define TARGET_ASM_FILE_END file_end_indicate_exec_stack
++
++#undef STANDARD_STARTFILE_PREFIX_1
++#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++
++#undef STANDARD_STARTFILE_PREFIX_2
++#define STANDARD_STARTFILE_PREFIX_2 ""
 --- gcc/config/riscv/riscv.h
 +++ gcc/config/riscv/riscv.h
 @@ -883,10 +883,8 @@
