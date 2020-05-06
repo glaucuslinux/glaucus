@@ -50,7 +50,6 @@ prepare() {
   $SCRD/patch 1 $nom sirlucjan 0004-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch &&
   $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead-.patch &&
   $SCRD/patch 1 $nom sirlucjan 0004-padata-remove-exit-routine.patch &&
-  $SCRD/patch 1 $nom sirlucjan 0005-futex-Add-Proton-compatibility-code.patch &&
   $SCRD/patch 1 $nom sirlucjan 0005-padata-initialize-earlier.patch &&
   $SCRD/patch 1 $nom sirlucjan 0005-usr-add-support-for-zstd-compressed-initramfs.patch &&
   $SCRD/patch 1 $nom sirlucjan 0006-padata-allocate-work-structures-for-parallel-jobs-fr.patch &&
