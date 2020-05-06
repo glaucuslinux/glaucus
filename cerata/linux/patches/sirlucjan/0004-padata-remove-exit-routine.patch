@@ -1,0 +1,34 @@
+From 62075c45f01af2c4c1fc6f315bd7cfc9c3a3c1ee Mon Sep 17 00:00:00 2001
+From: Daniel Jordan <daniel.m.jordan@oracle.com>
+Date: Tue, 26 Nov 2019 02:38:09 -0500
+Subject: [PATCH 04/10] padata: remove exit routine
+
+padata_driver_exit() is unnecessary because padata isn't built as a
+module and doesn't exit.
+
+padata's init routine will soon allocate memory, so getting rid of the
+exit function now avoids pointless code to free it.
+
+Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
+---
+ kernel/padata.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/kernel/padata.c b/kernel/padata.c
+index 72777c10bb9c..36a8e98741bb 100644
+--- a/kernel/padata.c
++++ b/kernel/padata.c
+@@ -1071,10 +1071,4 @@ static __init int padata_driver_init(void)
+ }
+ module_init(padata_driver_init);
+ 
+-static __exit void padata_driver_exit(void)
+-{
+-	cpuhp_remove_multi_state(CPUHP_PADATA_DEAD);
+-	cpuhp_remove_multi_state(hp_online);
+-}
+-module_exit(padata_driver_exit);
+ #endif
+-- 
+2.26.2.266.ge870325ee8
+
