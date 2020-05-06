@@ -1,0 +1,76 @@
+--- gcc/config/rs6000/linux64.h
++++ gcc/config/rs6000/linux64.h
+@@ -423,24 +423,24 @@
+ #undef	LINK_OS_DEFAULT_SPEC
+ #define LINK_OS_DEFAULT_SPEC "%(link_os_linux)"
+ 
+-#define GLIBC_DYNAMIC_LINKER32 "%(dynamic_linker_prefix)/lib/ld.so.1"
++#define GLIBC_DYNAMIC_LINKER32 "%(dynamic_linker_prefix)/toolchain/lib/ld.so.1"
+ 
+ #ifdef LINUX64_DEFAULT_ABI_ELFv2
+ #define GLIBC_DYNAMIC_LINKER64 \
+-"%{mabi=elfv1:%(dynamic_linker_prefix)/lib64/ld64.so.1;" \
+-":%(dynamic_linker_prefix)/lib64/ld64.so.2}"
++"%{mabi=elfv1:%(dynamic_linker_prefix)/toolchain/lib/ld64.so.1;" \
++":%(dynamic_linker_prefix)/toolchain/lib/ld64.so.2}"
+ #else
+ #define GLIBC_DYNAMIC_LINKER64 \
+-"%{mabi=elfv2:%(dynamic_linker_prefix)/lib64/ld64.so.2;" \
+-":%(dynamic_linker_prefix)/lib64/ld64.so.1}"
++"%{mabi=elfv2:%(dynamic_linker_prefix)/toolchain/lib/ld64.so.2;" \
++":%(dynamic_linker_prefix)/toolchain/lib/ld64.so.1}"
+ #endif
+ 
+ #undef MUSL_DYNAMIC_LINKER32
+ #define MUSL_DYNAMIC_LINKER32 \
+-  "/lib/ld-musl-powerpc" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
++  "/toolchain/lib/ld-musl-powerpc" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
+ #undef MUSL_DYNAMIC_LINKER64
+ #define MUSL_DYNAMIC_LINKER64 \
+-  "/lib/ld-musl-powerpc64" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
++  "/toolchain/lib/ld-musl-powerpc64" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
+ 
+ #undef  DEFAULT_ASM_ENDIAN
+ #if (TARGET_DEFAULT & MASK_LITTLE_ENDIAN)
+--- gcc/config/rs6000/t-linux
++++ gcc/config/rs6000/t-linux
+@@ -2,7 +2,7 @@
+ # or soft-float.
+ ifeq (,$(filter $(with_cpu),$(SOFT_FLOAT_CPUS))$(findstring soft,$(with_float)))
+ ifneq (,$(findstring powerpc64,$(target)))
+-MULTILIB_OSDIRNAMES := .=../lib64$(call if_multiarch,:powerpc64-linux-gnu)
++MULTILIB_OSDIRNAMES := .=../lib$(call if_multiarch,:powerpc64-linux-gnu)
+ else
+ MULTIARCH_DIRNAME := $(call if_multiarch,powerpc-linux-gnu)
+ endif
+--- gcc/config/rs6000/t-linux64
++++ gcc/config/rs6000/t-linux64
+@@ -28,7 +28,7 @@
+ MULTILIB_OPTIONS    := m64/m32
+ MULTILIB_DIRNAMES   := 64 32
+ MULTILIB_EXTRA_OPTS := 
+-MULTILIB_OSDIRNAMES := m64=../lib64$(call if_multiarch,:powerpc64-linux-gnu)
++MULTILIB_OSDIRNAMES := m64=../lib$(call if_multiarch,:powerpc64-linux-gnu)
+ MULTILIB_OSDIRNAMES += m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib32,../lib)$(call if_multiarch,:powerpc-linux-gnu)
+ 
+ rs6000-linux.o: $(srcdir)/config/rs6000/rs6000-linux.c
+--- gcc/config/rs6000/t-linux64bele
++++ gcc/config/rs6000/t-linux64bele
+@@ -2,6 +2,6 @@
+ 
+ MULTILIB_OPTIONS    += mlittle
+ MULTILIB_DIRNAMES   += le
+-MULTILIB_OSDIRNAMES += $(subst =,.mlittle=,$(subst lible32,lib32le,$(subst lible64,lib64le,$(subst lib,lible,$(subst -linux,le-linux,$(MULTILIB_OSDIRNAMES))))))
++MULTILIB_OSDIRNAMES += $(subst =,.mlittle=,$(subst lible32,lib32le,$(subst lible,$(subst lib,lible,$(subst -linux,le-linux,$(MULTILIB_OSDIRNAMES))))))
+ MULTILIB_OSDIRNAMES += $(subst $(if $(findstring 64,$(target)),m64,m32).,,$(filter $(if $(findstring 64,$(target)),m64,m32).mlittle%,$(MULTILIB_OSDIRNAMES)))
+ MULTILIB_MATCHES    := ${MULTILIB_MATCHES_ENDIAN}
+--- gcc/config/rs6000/t-linux64lebe
++++ gcc/config/rs6000/t-linux64lebe
+@@ -2,6 +2,6 @@
+ 
+ MULTILIB_OPTIONS    += mbig
+ MULTILIB_DIRNAMES   += be
+-MULTILIB_OSDIRNAMES += $(subst =,.mbig=,$(subst libbe32,lib32be,$(subst libbe64,lib64be,$(subst lib,libbe,$(subst le-linux,-linux,$(MULTILIB_OSDIRNAMES))))))
++MULTILIB_OSDIRNAMES += $(subst =,.mbig=,$(subst libbe32,lib32be,$(subst libbe,$(subst lib,libbe,$(subst le-linux,-linux,$(MULTILIB_OSDIRNAMES))))))
+ MULTILIB_OSDIRNAMES += $(subst $(if $(findstring 64,$(target)),m64,m32).,,$(filter $(if $(findstring 64,$(target)),m64,m32).mbig%,$(MULTILIB_OSDIRNAMES)))
+ MULTILIB_MATCHES    := ${MULTILIB_MATCHES_ENDIAN}
