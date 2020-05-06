@@ -1,7 +1,7 @@
-From cfee190f78af9d2072eea68cc8de08f8da70d149 Mon Sep 17 00:00:00 2001
+From 3da4b7b3607c54c18dcf547b2b9e51972469d868 Mon Sep 17 00:00:00 2001
 From: Gabriel Krisman Bertazi <krisman@collabora.com>
-Date: Fri, 13 Dec 2019 11:08:02 -0300
-Subject: [PATCH 1/5] futex: Implement mechanism to wait on any of several
+Date: Thu, 13 Feb 2020 18:45:22 -0300
+Subject: [PATCH 1/4] futex: Implement mechanism to wait on any of several
  futexes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -42,8 +42,9 @@ distro on top of this kernel.
 2) By an example code that exercises the FUTEX_WAIT_MULTIPLE path on a
 multi-threaded, event-handling setup.
 
-3) By running the Wine fsync implementation and executing multi-threaded
-applications, in particular modern games, on top of this implementation.
+3) By running the Wine fsync with Valve's Proton compatibility code
+implementation and executing multi-threaded applications, in particular
+modern games, on top of this implementation.
 
 Changes were tested for the following ABIs: x86_64, i386 and x32.
 Support for x32 applications is not implemented since it would
@@ -66,19 +67,19 @@ Signed-off-by: Gabriel Krisman Bertazi <krisman@collabora.com>
 Co-developed-by: André Almeida <andrealmeid@collabora.com>
 Signed-off-by: André Almeida <andrealmeid@collabora.com>
 ---
- include/uapi/linux/futex.h |  20 +++
- kernel/futex.c             | 358 ++++++++++++++++++++++++++++++++++++-
- 2 files changed, 376 insertions(+), 2 deletions(-)
+ include/uapi/linux/futex.h |  20 ++
+ kernel/futex.c             | 363 ++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 379 insertions(+), 4 deletions(-)
 
 diff --git a/include/uapi/linux/futex.h b/include/uapi/linux/futex.h
-index a89eb0acc..580001e89 100644
+index a89eb0accd5e..a3e760886b8e 100644
 --- a/include/uapi/linux/futex.h
 +++ b/include/uapi/linux/futex.h
 @@ -21,6 +21,7 @@
  #define FUTEX_WAKE_BITSET	10
  #define FUTEX_WAIT_REQUEUE_PI	11
  #define FUTEX_CMP_REQUEUE_PI	12
-+#define FUTEX_WAIT_MULTIPLE	13
++#define FUTEX_WAIT_MULTIPLE	31
  
  #define FUTEX_PRIVATE_FLAG	128
  #define FUTEX_CLOCK_REALTIME	256
@@ -114,7 +115,7 @@ index a89eb0acc..580001e89 100644
 +
  #endif /* _UAPI_LINUX_FUTEX_H */
 diff --git a/kernel/futex.c b/kernel/futex.c
-index 82dfacb32..503986c64 100644
+index 82dfacb3250e..80c399deddec 100644
 --- a/kernel/futex.c
 +++ b/kernel/futex.c
 @@ -215,6 +215,8 @@ struct futex_pi_state {
@@ -431,6 +432,15 @@ index 82dfacb32..503986c64 100644
  		if (unlikely(should_fail_futex(!(op & FUTEX_PRIVATE_FLAG))))
  			return -EFAULT;
  		if (get_timespec64(&ts, utime))
+@@ -3945,7 +4215,7 @@ SYSCALL_DEFINE6(futex, u32 __user *, uaddr, int, op, u32, val,
+ 			return -EINVAL;
+ 
+ 		t = timespec64_to_ktime(ts);
+-		if (cmd == FUTEX_WAIT)
++		if (cmd == FUTEX_WAIT || cmd == FUTEX_WAIT_MULTIPLE)
+ 			t = ktime_add_safe(ktime_get(), t);
+ 		tp = &t;
+ 	}
 @@ -3957,6 +4227,25 @@ SYSCALL_DEFINE6(futex, u32 __user *, uaddr, int, op, u32, val,
  	    cmd == FUTEX_CMP_REQUEUE_PI || cmd == FUTEX_WAKE_OP)
  		val2 = (u32) (unsigned long) utime;
@@ -457,7 +467,7 @@ index 82dfacb32..503986c64 100644
  	return do_futex(uaddr, op, val, tp, uaddr2, val2, val3);
  }
  
-@@ -4119,6 +4408,57 @@ COMPAT_SYSCALL_DEFINE3(get_robust_list, int, pid,
+@@ -4119,6 +4408,58 @@ COMPAT_SYSCALL_DEFINE3(get_robust_list, int, pid,
  #endif /* CONFIG_COMPAT */
  
  #ifdef CONFIG_COMPAT_32BIT_TIME
@@ -469,6 +479,7 @@ index 82dfacb32..503986c64 100644
 + */
 +struct compat_futex_wait_block {
 +	compat_uptr_t	uaddr;
++	__u32 pad;
 +	__u32 val;
 +	__u32 bitset;
 +};
@@ -515,7 +526,7 @@ index 82dfacb32..503986c64 100644
  SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
  		struct old_timespec32 __user *, utime, u32 __user *, uaddr2,
  		u32, val3)
-@@ -4130,7 +4470,8 @@ SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
+@@ -4130,14 +4471,15 @@ SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
  
  	if (utime && (cmd == FUTEX_WAIT || cmd == FUTEX_LOCK_PI ||
  		      cmd == FUTEX_WAIT_BITSET ||
@@ -525,7 +536,15 @@ index 82dfacb32..503986c64 100644
  		if (get_old_timespec32(&ts, utime))
  			return -EFAULT;
  		if (!timespec64_valid(&ts))
-@@ -4145,6 +4486,19 @@ SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
+ 			return -EINVAL;
+ 
+ 		t = timespec64_to_ktime(ts);
+-		if (cmd == FUTEX_WAIT)
++		if (cmd == FUTEX_WAIT || cmd == FUTEX_WAIT_MULTIPLE)
+ 			t = ktime_add_safe(ktime_get(), t);
+ 		tp = &t;
+ 	}
+@@ -4145,6 +4487,19 @@ SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
  	    cmd == FUTEX_CMP_REQUEUE_PI || cmd == FUTEX_WAKE_OP)
  		val2 = (int) (unsigned long) utime;
  
@@ -546,5 +565,5 @@ index 82dfacb32..503986c64 100644
  }
  #endif /* CONFIG_COMPAT_32BIT_TIME */
 -- 
-2.26.0.51.ga7d14a4428
+2.26.1.107.gefe3874640
 

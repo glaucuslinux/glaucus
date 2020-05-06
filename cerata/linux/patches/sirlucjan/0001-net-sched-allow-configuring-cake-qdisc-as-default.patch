@@ -1,7 +1,7 @@
-From fe543dd6abeb735cadc4aa8fc6af71e64d329ba7 Mon Sep 17 00:00:00 2001
+From 1990804480033984dbf97b899dfe6143fe371b35 Mon Sep 17 00:00:00 2001
 From: Alexandre Frade <admfrade@gmail.com>
 Date: Wed, 24 Oct 2018 16:58:52 -0300
-Subject: [PATCH 1/8] net/sched: allow configuring cake qdisc as default
+Subject: [PATCH 01/10] net/sched: allow configuring cake qdisc as default
 
 Signed-off-by: Alexandre Frade <admfrade@gmail.com>
 ---
@@ -31,5 +31,5 @@ index edde0e519..fba9b6dfb 100644
  endif
  
 -- 
-2.26.0.106.g9fadedd637
+2.26.2.266.ge870325ee8
 
