@@ -8,7 +8,7 @@
 +    --gid 0 --uid 0 --numeric-owner --no-recursion \
      -Jcf $tarfile -C $cpio_dir/ -T - > /dev/null
  
- echo "$src_files_md5" >  kernel/kheaders.md5
+ echo $headers_md5 > kernel/kheaders.md5
 --- scripts/package/buildtar
 +++ scripts/package/buildtar
 @@ -133,8 +133,8 @@
