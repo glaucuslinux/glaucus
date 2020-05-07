@@ -10,6 +10,7 @@ prepare() {
   $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   $RSYNC $SRCD/isl/isl-0.22.1/ $TSRC/$nom/isl --delete &&
+  $RSYNC $SRCD/zstd/zstd-1.4.4/ $TSRC/$nom/zstd --delete &&
 
   cd $TSRC/$nom &&
 
@@ -46,6 +47,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
+    --with-zstd \
     --without-included-gettext \
     --with-system-zlib \
     --with-linker-hash-style=gnu
