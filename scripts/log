@@ -2,5 +2,5 @@
 # Distributed under the terms of the ISC License
 
 $MKDIR $1 &&
-((. $2 || printf "$?\n" > $1/exit) | tee $1/out.log) 3>&1 1>&2 2>&3 | tee $1/err.log &&
+((. $2 || printf "$?\n" > $1/exit) | tee $1/out.log) 3>& 1>&2 2>&3 | tee $1/err.log &&
 [ -e $1/exit ] && exit $(cat $1/exit) || exit 0
