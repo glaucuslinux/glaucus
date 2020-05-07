@@ -1,4 +1,4 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-grep -q $2 $(readlink $SCRD/$1) && printf -- "$3" || printf -- "$4"
+grep -q $2 $SCRD/$(readlink $SCRD/$1) && printf -- "$3" || printf -- "$4"
