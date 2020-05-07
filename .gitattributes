@@ -8,6 +8,7 @@ cerata/smdev/config.h linguist-language=C
 
 scripts/arch.aarch64 linguist-language=Shell
 scripts/arch.powerpc64 linguist-language=Shell
+scripts/arch.powerpc64le linguist-language=Shell
 scripts/arch.riscv64 linguist-language=Shell
 scripts/arch.x86-64 linguist-language=Shell
 scripts/check linguist-language=Shell
