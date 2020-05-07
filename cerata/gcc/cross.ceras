@@ -13,7 +13,7 @@ prepare() {
   cd $TSRC/$nom &&
   
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
-  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH.patch &&
+  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
 
   $MKDIR $TOOL/include &&
   touch $TOOL/include/stdc-predef.h &&
