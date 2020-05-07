@@ -3,4 +3,5 @@
 
 $SCRD/check musl &&
 $SCRD/check zlib-ng &&
-$SCRD/check isl
+$SCRD/check isl &&
+$SCRD/check zstd
