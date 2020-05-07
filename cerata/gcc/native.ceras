@@ -15,6 +15,7 @@ prepare() {
   cd $TSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
+  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH.patch &&
 
   cat $nom/limitx.h > $(dirname $($TUPL-$nom \
     -print-lib$nom-file-name))/include-fixed/limits.h &&
