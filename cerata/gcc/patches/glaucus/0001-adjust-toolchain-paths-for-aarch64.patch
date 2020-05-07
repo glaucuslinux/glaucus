@@ -36,7 +36,7 @@
  MULTILIB_OSDIRNAMES += mabi.ilp32=../libilp32$(call if_multiarch,:aarch64$(AARCH_BE)-linux-gnu_ilp32)
 --- gcc/config/linux.h
 +++ gcc/config/linux.h
-@@ -94,17 +94,17 @@
+@@ -94,10 +94,10 @@
     GLIBC_DYNAMIC_LINKER must be defined for each target using them, or
     GLIBC_DYNAMIC_LINKER32 and GLIBC_DYNAMIC_LINKER64 for targets
     supporting both 32-bit and 64-bit compilation.  */
@@ -51,14 +51,15 @@
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
- #define BIONIC_DYNAMIC_LINKERX32 "/system/bin/linkerx32"
+@@ -105,7 +105,7 @@
  /* Should be redefined for each target that supports musl.  */
  #define MUSL_DYNAMIC_LINKER "/dev/null"
--#define MUSL_DYNAMIC_LINKER32 "/dev/null"
-+#define MUSL_DYNAMIC_LINKER32 "/toolchain/lib/ld-musl-aarch64.so.1"
- #define MUSL_DYNAMIC_LINKER64 "/dev/null"
+ #define MUSL_DYNAMIC_LINKER32 "/dev/null"
+-#define MUSL_DYNAMIC_LINKER64 "/dev/null"
++#define MUSL_DYNAMIC_LINKER64 "/toolchain/lib/ld-musl-aarch64.so.1"
  #define MUSL_DYNAMIC_LINKERX32 "/dev/null"
  
+ #define GNU_USER_DYNAMIC_LINKER						\
 @@ -221,3 +221,9 @@
  # define TARGET_LIBC_HAS_FUNCTION linux_libc_has_function
  
