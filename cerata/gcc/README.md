@@ -124,6 +124,10 @@ it's not needed anymore (for the cleanliness of the toolchain). Note that some
 Glibc hosts don't have this problem at all like Arch, and doesn't create a
 `lib64` directory at all and don't require a symlink).
 
+`--with-zstd` isn't on by default so no need to use `--without-zstd` in cross.
+(this doesn't apply to isl as it's enabled by default, and `--with-isl` is
+mainly when isl is installed outside the default search path).
+
 ### Install
 for the sake of correctness, the install script complains about missing
 file/directory, so here's a fix even though it's an ignored error...
