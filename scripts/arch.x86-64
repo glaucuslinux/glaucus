@@ -5,11 +5,10 @@ export ARCH=x86-64 &&
 
 export CARCH=--with-gcc-arch=$ARCH &&
 
-export FARCH="-march=$ARCH -mtune=generic -mabi=sysv_abi" &&
+export FARCH="-march=$ARCH -mtune=generic -mabi=sysv" &&
 
 export GARCH="--with-arch=$ARCH \
---with-tune=generic \
---with-abi=sysv_abi" &&
+--with-tune=generic" &&
 export LARCH=x86_64 &&
 export MARCH=$LARCH &&
 
