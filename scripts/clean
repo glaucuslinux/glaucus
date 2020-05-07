@@ -1,44 +1,47 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export RM='/usr/bin/rm -frv'
+export CHOWN='/usr/bin/chown -v' &&
+export RM='/usr/bin/rm -frv' &&
+export RSYNC='/usr/bin/rsync -vaHAXSxh' &&
+export UMOUNT='/usr/bin/umuont -fRv' &&
 
 sudo \
-  /usr/bin/umount -fR /home/glaucus/dev
+  $UMOUNT /home/glaucus/dev || true
 sudo \
-  /usr/bin/umount -fR /home/glaucus/proc
+  $UMOUNT /home/glaucus/proc || true
 sudo \
-  /usr/bin/umount -fR /home/glaucus/sys
+  $UMOUNT /home/glaucus/sys || true
 sudo \
-  /usr/bin/umount -fR /home/glaucus/run
+  $UMOUNT /home/glaucus/run || true
 
 sudo \
-  $RM /home/glaucus/bin
+  $RM /home/glaucus/bin || true
 sudo \
-  $RM /home/glaucus/boot
+  $RM /home/glaucus/boot || true
 sudo \
-  $RM /home/glaucus/dev
+  $RM /home/glaucus/dev || true
 sudo \
-  $RM /home/glaucus/etc
+  $RM /home/glaucus/etc || true
 sudo \
-  $RM /home/glaucus/proc
+  $RM /home/glaucus/proc || true
 sudo \
-  $RM /home/glaucus/root
+  $RM /home/glaucus/root || true
 sudo \
-  $RM /home/glaucus/run
+  $RM /home/glaucus/run || true
 sudo \
-  $RM /home/glaucus/sys
+  $RM /home/glaucus/sys || true
 sudo \
-  $RM /home/glaucus/usr
+  $RM /home/glaucus/usr || true
 sudo \
-  $RM /home/glaucus/var
+  $RM /home/glaucus/var || true
 sudo \
-  $RM /home/glaucus/tmp
+  $RM /home/glaucus/tmp || true
 
 sudo \
-  chown glaucus:glaucus /home/glaucus
+  $CHOWN glaucus:glaucus /home/glaucus &&
 
 [ -d /home/glaucus/backup/toolchain ] &&
 
 sudo \
-  /usr/bin/rsync -vaHAXSxh /home/glaucus/backup/toolchain/ /home/glaucus/toolchain --delete
+  $RSYNC /home/glaucus/backup/toolchain/ /home/glaucus/toolchain --delete
