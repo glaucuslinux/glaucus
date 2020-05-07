@@ -25,6 +25,9 @@ configure() {
     -e 's/yes/no/' \
     -i etc/useradd &&
 
+  $MKDIR $SCER/$nom/sac/usr/bin &&
+  touch $SCER/$nom/sac/usr/bin/passwd &&
+
   LIBS='-lutmps -lskarnet' \
   ./configure \
     --prefix=/usr \
