@@ -17,5 +17,4 @@ $SCRD/check grep &&
 $SCRD/check make &&
 $SCRD/check patch &&
 $SCRD/check sed &&
-$SCRD/check libarchive &&
-$SCRD/check zstd
+$SCRD/check libarchive
