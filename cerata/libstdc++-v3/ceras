@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=libstdc++-v3
-ver=9.3.0
+ver=10.1.0
 url=https://ftpmirror.gnu.org/gcc/gcc-$ver/gcc-$ver.tar.xz
-sum=4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de
+sum=0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096
 lic='GPL-3.0-only GPL-3.0-with-GCC-exception'
