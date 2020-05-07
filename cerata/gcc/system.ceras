@@ -9,6 +9,7 @@ prepare() {
   cd $SSRC/$nom &&
   
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths-for-$ARCH &&
+  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH.patch &&
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
