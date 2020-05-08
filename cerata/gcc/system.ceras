@@ -23,6 +23,7 @@ configure() {
     --libexecdir=/usr/lib \
     --disable-multilib \
     --disable-symvers \
+    --disable-cet \
     --enable-threads=posix \
     $GARCH \
     --disable-bootstrap \
