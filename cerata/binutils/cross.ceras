@@ -40,5 +40,16 @@ install() {
   $MAKE \
     install-strip &&
 
-  $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld
+  $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld &&
+
+  $LN $TOOL/bin/$TUPL-ar $TOOL/$TUPL/bin/ar &&
+  $LN $TOOL/bin/$TUPL-as $TOOL/$TUPL/bin/as &&
+  $LN $TOOL/bin/$TUPL-ld $TOOL/$TUPL/bin/ld &&
+  $LN $TOOL/bin/$TUPL-ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
+  $LN $TOOL/bin/$TUPL-nm $TOOL/$TUPL/bin/nm &&
+  $LN $TOOL/bin/$TUPL-objcopy $TOOL/$TUPL/bin/objcopy &&
+  $LN $TOOL/bin/$TUPL-objdump $TOOL/$TUPL/bin/objdump &&
+  $LN $TOOL/bin/$TUPL-ranlib $TOOL/$TUPL/bin/ranlib &&
+  $LN $TOOL/bin/$TUPL-readelf $TOOL/$TUPL/bin/readelf &&
+  $LN $TOOL/bin/$TUPL-strip $TOOL/$TUPL/bin/strip
 }
