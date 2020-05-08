@@ -21,7 +21,7 @@ export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin:/usr/bin/core_perl &&
 
 export LN='/usr/bin/ln -fsv' &&
 export MAKE="/usr/bin/make \
-  V=1" &&
+V=1" &&
 export MKDIR='/usr/bin/install -dv' &&
 export RM='/usr/bin/rm -frv' &&
 export RSYNC='/usr/bin/rsync -vaHAXSx' &&
