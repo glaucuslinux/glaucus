@@ -6,6 +6,10 @@ Since the configure script attempts to run `bash` which requires specifying `LD_
 This is only done inside the chroot environment and not inside system.
 
 The patch is applied in configure and not in prepare because it has nothing to do with the sources but with the configuration system of the ceras.
+### Install
+Don't install as `install-shared` in chroot because we need the header files it
+provides for both binutils and gcc to use `zlib-ng` as a fallback mechanism for
+LTO when `zstd` isn't available.
 ## System
 ### Build
 Doesn't build with `-fno-common`:
