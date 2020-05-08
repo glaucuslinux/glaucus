@@ -50,5 +50,16 @@ install() {
 
   $RSYNC ld/ld-new $TOOL/bin &&
 
-  $LN ld.bfd $TOOL/bin/ld
+  $LN ld.bfd $TOOL/bin/ld &&
+
+  $LN $TOOL/bin/ar $TOOL/$TUPL/bin/ar &&
+  $LN $TOOL/bin/as $TOOL/$TUPL/bin/as &&
+  $LN $TOOL/bin/ld $TOOL/$TUPL/bin/ld &&
+  $LN $TOOL/bin/ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
+  $LN $TOOL/bin/nm $TOOL/$TUPL/bin/nm &&
+  $LN $TOOL/bin/objcopy $TOOL/$TUPL/bin/objcopy &&
+  $LN $TOOL/bin/objdump $TOOL/$TUPL/bin/objdump &&
+  $LN $TOOL/bin/ranlib $TOOL/$TUPL/bin/ranlib &&
+  $LN $TOOL/bin/readelf $TOOL/$TUPL/bin/readelf &&
+  $LN $TOOL/bin/strip $TOOL/$TUPL/bin/strip
 }
