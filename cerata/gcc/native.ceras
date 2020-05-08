@@ -38,6 +38,7 @@ configure() {
     --with-native-system-header-dir=$TOOL/include \
     --disable-multilib \
     --disable-symvers \
+    --disable-cet \
     --enable-threads=posix \
     $GARCH \
     --disable-bootstrap \
