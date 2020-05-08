@@ -20,6 +20,7 @@ configure() {
     --disable-rpath \
     --disable-libstdcxx-pch \
     --disable-symvers \
+    --disable-cet \
     --disable-libstdcxx-threads \
     --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$ver
 }
