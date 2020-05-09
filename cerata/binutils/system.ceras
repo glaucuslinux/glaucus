@@ -20,6 +20,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
+    --with-pkgversion="glaucus $SPCS $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
     --with-system-zlib \
