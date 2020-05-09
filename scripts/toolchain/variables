@@ -28,4 +28,6 @@ export RSYNC='/usr/bin/rsync -vaHAXSx' &&
 
 export MAKEFLAGS=-j1 &&
 
-. $SCRD/genome
+. $SCRD/genome &&
+
+export SPCS=$(readlink $SCRD/species | sed s/flags.//)
