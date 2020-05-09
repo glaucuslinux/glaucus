@@ -11,6 +11,7 @@ prepare() {
 configure() {
   ./configure \
     --prefix=$TOOL \
+    --bindir=$TOOL/bin \
     --mandir=$TOOL/share/man \
     --disable-curses &&
 
