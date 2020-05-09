@@ -14,6 +14,8 @@ prepare() {
   
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
   $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
+  
+  $SCRD/patch 1 $nom upstream Enable-CET-in-cross-compiler-if-possible &&
 
   $MKDIR $TOOL/include &&
   touch $TOOL/include/stdc-predef.h &&
