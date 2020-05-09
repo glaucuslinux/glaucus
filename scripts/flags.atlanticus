@@ -1,28 +1,30 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+export SPCS=atlanticus &&
+
 ALIGN="$($SCRD/classify genome x86-64 -malign-data=cacheline)" &&
-COMMON='-fno-common' &&
-DEBUG='-g0' &&
-DEVIRT='-fdevirtualize-at-ltrans' &&
-EXPAND='-fvariable-expansion-in-unroller' &&
-FAT='-ffat-lto-objects' &&
-FINITE='-fno-finite-math-only' &&
+COMMON=-fno-common &&
+DEBUG=-g0 &&
+DEVIRT=-fdevirtualize-at-ltrans &&
+EXPAND=-fvariable-expansion-in-unroller &&
+FAT=-ffat-lto-objects &&
+FINITE=-fno-finite-math-only &&
 FPMATH="$($SCRD/classify genome x86-64 -mfpmath=both)" &&
 GCSE='-fgcse-sm -fgcse-las' &&
 GRAPHITE='-fgraphite-identity -floop-nest-optimize' &&
-IPA='-fipa-pta' &&
-IRA='-fira-loop-pressure' &&
-LTO='-flto' &&
-MERGE='-fmerge-all-constants' &&
-OFAST='-Ofast' &&
-OPENMP='-fopenmp' &&
+IPA=-fipa-pta &&
+IRA=-fira-loop-pressure &&
+LTO=-flto &&
+MERGE=-fmerge-all-constants &&
+OFAST=-Ofast &&
+OPENMP=-fopenmp &&
 PGO='-ftracer -funroll-loops' &&
-PIPE='-pipe' &&
-PLT='-fno-plt' &&
-SEMANTIC='-fno-semantic-interposition' &&
+PIPE=-pipe &&
+PLT=-fno-plt &&
+SEMANTIC=-fno-semantic-interposition &&
 SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves' &&
-STRIP='-s' &&
+STRIP=-s &&
 TLS="$($SCRD/classify genome x86-64 -mtls-dialect=gnu2)" &&
 
 export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $FARCH $TLS $FPMATH $ALIGN" &&

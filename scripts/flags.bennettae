@@ -1,18 +1,20 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+export SPCS=bennettae &&
+
 ALIGN="$($SCRD/classify genome riscv64 -malign-data=natural)" &&
-AUNWIND='-fno-asynchronous-unwind-tables' &&
-DSECTS='-fdata-sections' &&
-DEBUG='-g0' &&
-FAT='-ffat-lto-objects' &&
-FSECTS='-ffunction-sections' &&
-LTO='-flto' &&
-OMIT='-fomit-frame-pointer' &&
-OS='-Os' &&
-PIPE='-pipe' &&
-STRIP='-s' &&
-UNWIND='-fno-unwind-tables' &&
+AUNWIND=-fno-asynchronous-unwind-tables &&
+DSECTS=-fdata-sections &&
+DEBUG=-g0 &&
+FAT=-ffat-lto-objects &&
+FSECTS=-ffunction-sections &&
+LTO=-flto &&
+OMIT=-fomit-frame-pointer &&
+OS=-Os &&
+PIPE=-pipe &&
+STRIP=-s &&
+UNWIND=-fno-unwind-tables &&
 
 export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH $ALIGN" &&
 
