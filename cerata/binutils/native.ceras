@@ -24,6 +24,7 @@ configure() {
     --disable-initfini-array \
     --with-lib-path=$TOOL/lib \
     --with-sysroot \
+    --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
     --with-system-zlib \
