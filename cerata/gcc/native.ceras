@@ -49,7 +49,7 @@ configure() {
     --disable-werror \
     --disable-nls \
     --disable-rpath \
-    --with-pkgversion="glaucus $SPCS $ARCH" \
+    --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-zstd \
     --without-included-gettext \
