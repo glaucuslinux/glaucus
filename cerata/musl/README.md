@@ -186,7 +186,7 @@ automake-1.16: error: no 'Makefile.am' found for any configure output
 automake-1.16: Did you forget AC_CONFIG_FILES([Makefile]) in configure.ac?
 make: *** [Makefile:1231: Makefile.in] Error 1
 ```
-### install
+### Install
 
 we then create a symlink to the dyanimc linker called ldd (list dynamic
 dependencies)
@@ -198,3 +198,8 @@ builds fine without them
 
 Don't symlink ldconfig to toybox's true as toybox won't recognize ldconfig,
 instead create an ldconfig script with true in it
+
+Musl's regex doesn't support GNU regex functions, so we can't use the flag
+`--without-included-regex` on several of the GNU packages, so we default to
+their already included GNU regex that has GNU regex functions... (Does uclibc-ng
+do the same as well?)
