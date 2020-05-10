@@ -14,7 +14,6 @@ configure() {
     --host=$TUPL \
     --disable-rpath \
     --disable-nls \
-    --without-included-regex \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
 }
