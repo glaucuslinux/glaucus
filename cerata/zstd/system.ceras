@@ -28,5 +28,7 @@ install() {
   $MAKE \
     DESTDIR=$SCER/$nom/sac \
     PREFIX=/usr \
-    install
+    install &&
+
+  $RM $SCER/$nom/sac/usr/lib/lib$nom.a
 }
