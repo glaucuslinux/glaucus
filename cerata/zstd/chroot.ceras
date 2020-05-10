@@ -27,5 +27,7 @@ build() {
 install() {
   $MAKE \
     PREFIX=$TOOL \
-    install
+    install &&
+
+  $RM $TOOL/lib/lib$nom.a
 }
