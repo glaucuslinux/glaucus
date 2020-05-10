@@ -2,6 +2,7 @@
 # Distributed under the terms of the ISC License
 
 $SCRD/check m4 &&
+$SCRD/check netbsd-curses &&
 $SCRD/check oksh &&
 $SCRD/check dash &&
 $SCRD/check libressl &&
