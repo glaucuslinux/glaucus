@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/dash -e
 # Configuration validation subroutine script.
 #   Copyright 1992-2020 Free Software Foundation, Inc.
 

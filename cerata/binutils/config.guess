@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/dash -e
 # Attempt to guess a canonical system name.
 #   Copyright 1992-2020 Free Software Foundation, Inc.
 
