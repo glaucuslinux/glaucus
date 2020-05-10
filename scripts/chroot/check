@@ -9,6 +9,7 @@ $SCRD/check libressl &&
 $SCRD/check toybox &&
 $SCRD/check hostname &&
 $SCRD/check which &&
+$SCRD/check popt &&
 $SCRD/check rsync &&
 $SCRD/check diffutils &&
 $SCRD/check file &&
@@ -17,5 +18,7 @@ $SCRD/check mawk &&
 $SCRD/check grep &&
 $SCRD/check make &&
 $SCRD/check patch &&
+$SCRD/check acl &&
 $SCRD/check sed &&
+$SCRD/check attr &&
 $SCRD/check libarchive
