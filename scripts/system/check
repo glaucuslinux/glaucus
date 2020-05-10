@@ -14,7 +14,6 @@ $SCRD/check autoconf &&
 $SCRD/check automake &&
 $SCRD/check gettext-tiny &&
 $SCRD/check bison &&
-$SCRD/check netbsd-curses &&
 $SCRD/check bash &&
 $SCRD/check zlib-ng &&
 $SCRD/check lbzip2 &&
