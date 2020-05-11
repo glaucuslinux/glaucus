@@ -22,6 +22,7 @@ scripts/flags.atlanticus linguist-language=Shell
 scripts/flags.bennettae linguist-language=Shell
 scripts/flags.marginatus linguist-language=Shell
 scripts/genome linguist-language=Shell
+scripts/gnu linguist-language=Shell
 scripts/initialize linguist-language=Shell
 scripts/log linguist-language=Shell
 scripts/patch linguist-language=Shell
