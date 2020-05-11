@@ -7,6 +7,8 @@ prepare() {
   $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete &&
   cd $SSRC/elfutils &&
 
+  $SCRD/gnu config &&
+
   $RSYNC $CERD/elfutils/error.h lib &&
   $RSYNC $CERD/elfutils/error.h src &&
 
@@ -14,6 +16,8 @@ prepare() {
 }
 
 configure() {
+  $AUTORECONF &&
+
   CFLAGS="$CFLAGS -Wno-error" \
   ./configure \
     --prefix=/usr \
