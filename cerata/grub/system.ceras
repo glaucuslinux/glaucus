@@ -7,6 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
+  $SCRD/gnu build-aux &&
+
   $SCRD/patch 1 $nom clear 0001-Lower-test-timeout
 }
 
