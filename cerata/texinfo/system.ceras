@@ -8,9 +8,11 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess build-aux &&
+  $SCRD/gnu rpath build-aux &&
   $SCRD/gnu sub build-aux &&
   
   $SCRD/gnu guess tp/Texinfo/XS &&
+  $SCRD/gnu rpath tp/Texinfo/XS &&
   $SCRD/gnu sub tp/Texinfo/XS &&
 
   $MKDIR $SBLD/$nom &&
