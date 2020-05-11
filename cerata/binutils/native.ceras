@@ -9,10 +9,11 @@ prepare() {
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $TSRC/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
+    --libdir=$TOOL/lib \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
@@ -28,13 +29,13 @@ configure() {
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
     --with-system-zlib \
-    --disable-multilib
+    --disable-multilib &&
+
+  $MAKE \
+    configure-host
 }
 
 build() {
-  $MAKE \
-    configure-host &&
-
   $MAKE
 }
 
@@ -53,14 +54,14 @@ install() {
 
   $LN ld.bfd $TOOL/bin/ld &&
 
-  $LN $TOOL/bin/ar $TOOL/$TUPL/bin/ar &&
-  $LN $TOOL/bin/as $TOOL/$TUPL/bin/as &&
-  $LN $TOOL/bin/ld $TOOL/$TUPL/bin/ld &&
-  $LN $TOOL/bin/ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
-  $LN $TOOL/bin/nm $TOOL/$TUPL/bin/nm &&
-  $LN $TOOL/bin/objcopy $TOOL/$TUPL/bin/objcopy &&
-  $LN $TOOL/bin/objdump $TOOL/$TUPL/bin/objdump &&
-  $LN $TOOL/bin/ranlib $TOOL/$TUPL/bin/ranlib &&
-  $LN $TOOL/bin/readelf $TOOL/$TUPL/bin/readelf &&
-  $LN $TOOL/bin/strip $TOOL/$TUPL/bin/strip
+  $LN ../../bin/ar $TOOL/$TUPL/bin/ar &&
+  $LN ../../bin/as $TOOL/$TUPL/bin/as &&
+  $LN ../../bin/ld $TOOL/$TUPL/bin/ld &&
+  $LN ../../bin/ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
+  $LN ../../bin/nm $TOOL/$TUPL/bin/nm &&
+  $LN ../../bin/objcopy $TOOL/$TUPL/bin/objcopy &&
+  $LN ../../bin/objdump $TOOL/$TUPL/bin/objdump &&
+  $LN ../../bin/ranlib $TOOL/$TUPL/bin/ranlib &&
+  $LN ../../bin/readelf $TOOL/$TUPL/bin/readelf &&
+  $LN ../../bin/strip $TOOL/$TUPL/bin/strip
 }
