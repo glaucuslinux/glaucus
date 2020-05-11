@@ -10,8 +10,8 @@ prepare() {
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
-    --prefix=$TOOL \
     --host=$TUPL \
+    --prefix=$TOOL \
     --disable-rpath \
     --disable-nls \
     --with-packager=glaucus \
