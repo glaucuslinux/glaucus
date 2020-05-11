@@ -53,6 +53,9 @@ install-strip doesn't work with readline.
 
 ## Native
 ### Native Configure
+No need to apply config.guess and config.sub here because they were applied
+already in cross and weren't changed.
+
 Added --with-lib-path from LFS for better separation from the host
 
 GNU's gold linker doesn't like musl, as it refuses to build without
