@@ -12,7 +12,8 @@ configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
-    --disable-static
+    --disable-static \
+    --with-libedit
 }
 
 build() {
