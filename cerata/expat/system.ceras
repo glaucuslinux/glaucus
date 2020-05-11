@@ -4,12 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/gnu conftools &&
+
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-static \
     --without-examples \
