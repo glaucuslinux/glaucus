@@ -15,7 +15,7 @@ prepare() {
 
 configure() {
   MKDIR_P="$MKDIR" \
-  $SSRC/$nom/$nom-$ver/configure \
+  $SSRC/$nom/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
