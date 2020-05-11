@@ -7,7 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/gnu support &&
+  $SCRD/gnu guess support &&
+  $SCRD/gnu sub support &&
 
   $SCRD/patch 0 $nom upstream ${nom}50-001 &&
   $SCRD/patch 0 $nom upstream ${nom}50-002 &&
