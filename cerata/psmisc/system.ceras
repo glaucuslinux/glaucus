@@ -8,6 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess . &&
+  $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
   $MKDIR $SBLD/$nom &&
