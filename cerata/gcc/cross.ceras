@@ -11,6 +11,8 @@ prepare() {
   $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
   
   cd $TSRC/$nom &&
+
+  $SCRD/gnu &&
   
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
   $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
@@ -31,6 +33,7 @@ configure() {
     --target=$TUPL \
     --prefix=$TOOL \
     --libexecdir=$TOOL/lib \
+    --libdir=$TOOL/lib \
     --with-local-prefix=$TOOL \
     --with-native-system-header-dir=$TOOL/include \
     --disable-shared \
@@ -60,7 +63,10 @@ configure() {
     --without-headers \
     --with-newlib \
     --disable-libatomic \
-    --disable-libstdcxx
+    --disable-libstdcxx &&
+
+  $MAKE \
+    configure-host
 }
 
 build() {
@@ -81,6 +87,14 @@ install() {
     install-strip &&
 
   $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
+  
+  $RSYNC $CERD/$nom/c89 $TOOL/bin/$TUPL-c89 &&
+  $RSYNC $CERD/$nom/c99 $TOOL/bin/$TUPL-c99 &&
+
+  sed s/gcc/$TUPL-gcc/ \
+    -i $TOOL/bin/$TUPL-c89 &&
+  sed s/gcc/$TUPL-gcc/ \
+    -i $TOOL/bin/$TUPL-c99 &&
 
   $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
   $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
