@@ -7,7 +7,7 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
-  $SCRD/gnu &&
+  $SCRD/gnu . &&
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
