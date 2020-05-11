@@ -14,7 +14,7 @@ prepare() {
 }
 
 configure() {
-  $TSRC/$nom/$nom-$ver/configure \
+  $TSRC/$nom/configure \
     --target=$TUPL \
     --prefix=$TOOL \
     --libdir=$TOOL/lib \
