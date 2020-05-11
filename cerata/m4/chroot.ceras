@@ -4,12 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
+  cd $CSRC/$nom &&
+
+  $SCRD/gnu guess build-aux &&
+  $SCRD/gnu sub build-aux &&
+
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $CSRC/$nom/configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --enable-threads=posix \
