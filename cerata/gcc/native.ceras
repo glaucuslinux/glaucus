@@ -13,6 +13,8 @@ prepare() {
 
   cd $TSRC/$nom &&
 
+  $SCRD/gnu &&
+
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
   $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
 
@@ -35,6 +37,7 @@ configure() {
     --target=$TUPL \
     --prefix=$TOOL \
     --libexecdir=$TOOL/lib \
+    --libdir=$TOOL/lib \
     --with-local-prefix=$TOOL \
     --with-native-system-header-dir=$TOOL/include \
     --disable-multilib \
@@ -54,7 +57,10 @@ configure() {
     --with-zstd \
     --without-included-gettext \
     --with-system-zlib \
-    --with-linker-hash-style=gnu
+    --with-linker-hash-style=gnu &&
+
+  $MAKE \
+    configure-host
 }
 
 build() {
@@ -66,6 +72,9 @@ install() {
     install-strip &&
 
   $LN g++ $TOOL/bin/c++ &&
+  
+  $RSYNC $CERD/$nom/c89 $TOOL/bin &&
+  $RSYNC $CERD/$nom/c99 $TOOL/bin &&
 
   $LN $nom $TOOL/bin/cc &&
 
