@@ -14,7 +14,7 @@ prepare() {
 }
 
 configure() {
-  $CSRC/$nom/$nom-$ver/configure \
+  $CSRC/$nom/configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --sysconfdir=$TOOL/etc \
