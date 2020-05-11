@@ -4,13 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/gnu &&
+
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $SSRC/$nom/$nom-$ver/configure \
     --prefix=/usr \
+    --libdir=/usr/lib \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
@@ -20,18 +26,19 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
+    --with-lib-path=/usr/lib \
     --with-pkgversion="glaucus $SPCS $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
     --with-system-zlib \
-    --disable-multilib
+    --disable-multilib &&
+
+  $MAKE \
+    tooldir=/usr \
+    configure-host
 }
 
 build() {
-  $MAKE \
-    tooldir=/usr \
-    configure-host &&
-
   $MAKE \
     tooldir=/usr
 }
