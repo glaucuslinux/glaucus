@@ -24,7 +24,8 @@ prepare() {
   $SCRD/patch 0 $nom upstream ${nom}50-013 &&
   $SCRD/patch 0 $nom upstream ${nom}50-014 &&
   $SCRD/patch 0 $nom upstream ${nom}50-015 &&
-  $SCRD/patch 0 $nom upstream ${nom}50-016
+  $SCRD/patch 0 $nom upstream ${nom}50-016 &&
+  $SCRD/patch 0 $nom upstream ${nom}50-017
 }
 
 configure() {
