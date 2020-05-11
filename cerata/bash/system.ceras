@@ -8,6 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess support &&
+  $SCRD/gnu rpath support &&
   $SCRD/gnu sub support &&
 
   $SCRD/patch 0 $nom upstream ${nom}50-001 &&
