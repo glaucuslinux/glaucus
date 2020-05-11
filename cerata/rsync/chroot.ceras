@@ -13,6 +13,7 @@ configure() {
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-debug \
+    --without-included-popt \
     --without-included-zlib
 }
 
