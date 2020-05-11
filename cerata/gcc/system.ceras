@@ -7,7 +7,9 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
 
   cd $SSRC/$nom &&
-  
+
+  $SCRD/gnu &&
+
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths-for-$ARCH &&
   $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
 
@@ -21,6 +23,7 @@ configure() {
   $SSRC/$nom/configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
+    --libdir=/usr/lib \
     --disable-multilib \
     --disable-symvers \
     --disable-cet \
@@ -38,7 +41,10 @@ configure() {
     --with-zstd \
     --without-included-gettext \
     --with-system-zlib \
-    --with-linker-hash-style=gnu
+    --with-linker-hash-style=gnu &&
+
+  $MAKE \
+    configure-host
 }
 
 build() {
@@ -59,6 +65,7 @@ install() {
   $CHOWN 0:0 $SCER/$nom/sac/usr/bin/c99 &&
   
   $LN $nom $SCER/$nom/sac/usr/bin/cc &&
+  $LN $nom $SCER/$nom/sac/usr/bin/$nom-$ver &&
 
   $LN $TUPL-g++ $SCER/$nom/sac/usr/bin/$TUPL-c++ &&
 
