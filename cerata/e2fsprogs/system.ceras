@@ -4,13 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
+  cd $SSRC/$nom &&
+
+  $SCRD/gnu config &&
+
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 }
 
 configure() {
   MKDIR_P="$MKDIR" \
-  $SRCD/$nom/$nom-$ver/configure \
+  $SSRC/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
