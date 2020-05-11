@@ -4,14 +4,20 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
+  cd $TSRC/$nom &&
+
+  $SCRD/gnu &&
+
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $TSRC/$nom/$nom-$ver/configure \
     --target=$TUPL \
     --prefix=$TOOL \
+    --libdir=$TOOL/lib \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
@@ -27,13 +33,13 @@ configure() {
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
     --with-system-zlib \
-    --disable-multilib
+    --disable-multilib &&
+
+  $MAKE \
+    configure-host
 }
 
 build() {
-  $MAKE \
-    configure-host &&
-
   $MAKE
 }
 
@@ -43,14 +49,14 @@ install() {
 
   $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld &&
 
-  $LN $TOOL/bin/$TUPL-ar $TOOL/$TUPL/bin/ar &&
-  $LN $TOOL/bin/$TUPL-as $TOOL/$TUPL/bin/as &&
-  $LN $TOOL/bin/$TUPL-ld $TOOL/$TUPL/bin/ld &&
-  $LN $TOOL/bin/$TUPL-ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
-  $LN $TOOL/bin/$TUPL-nm $TOOL/$TUPL/bin/nm &&
-  $LN $TOOL/bin/$TUPL-objcopy $TOOL/$TUPL/bin/objcopy &&
-  $LN $TOOL/bin/$TUPL-objdump $TOOL/$TUPL/bin/objdump &&
-  $LN $TOOL/bin/$TUPL-ranlib $TOOL/$TUPL/bin/ranlib &&
-  $LN $TOOL/bin/$TUPL-readelf $TOOL/$TUPL/bin/readelf &&
-  $LN $TOOL/bin/$TUPL-strip $TOOL/$TUPL/bin/strip
+  $LN ../../bin/$TUPL-ar $TOOL/$TUPL/bin/ar &&
+  $LN ../../bin/$TUPL-as $TOOL/$TUPL/bin/as &&
+  $LN ../../bin/$TUPL-ld $TOOL/$TUPL/bin/ld &&
+  $LN ../../bin/$TUPL-ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
+  $LN ../../bin/$TUPL-nm $TOOL/$TUPL/bin/nm &&
+  $LN ../../bin/$TUPL-objcopy $TOOL/$TUPL/bin/objcopy &&
+  $LN ../../bin/$TUPL-objdump $TOOL/$TUPL/bin/objdump &&
+  $LN ../../bin/$TUPL-ranlib $TOOL/$TUPL/bin/ranlib &&
+  $LN ../../bin/$TUPL-readelf $TOOL/$TUPL/bin/readelf &&
+  $LN ../../bin/$TUPL-strip $TOOL/$TUPL/bin/strip
 }
