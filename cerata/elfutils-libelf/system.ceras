@@ -7,7 +7,8 @@ prepare() {
   $RSYNC $SRCD/elfutils/elfutils-$ver/ $SSRC/elfutils --delete &&
   cd $SSRC/elfutils &&
 
-  $SCRD/gnu config &&
+  $SCRD/gnu guess config &&
+  $SCRD/gnu sub config &&
 
   $RSYNC $CERD/elfutils/error.h lib &&
   $RSYNC $CERD/elfutils/error.h src &&
