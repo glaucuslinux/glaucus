@@ -14,6 +14,7 @@ prepare() {
   cd $TSRC/$nom &&
 
   $SCRD/gnu guess . &&
+  $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
   $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
