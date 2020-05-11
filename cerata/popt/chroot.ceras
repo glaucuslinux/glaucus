@@ -8,11 +8,14 @@ prepare() {
   cd $CSRC/$nom &&
 
   $SCRD/gnu guess . &&
-  $SCRD/gnu sub .
+  $SCRD/gnu sub . &&
+
+  $MKDIR $CBLD/$nom &&
+  cd $CBLD/$nom
 }
 
 configure() {
-  ./configure \
+  $CSRC/$nom/configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-static \
