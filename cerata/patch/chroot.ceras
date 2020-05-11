@@ -33,6 +33,8 @@ prepare() {
 }
 
 configure() {
+  $AUTORECONF &&
+
   ./configure \
     --host=$TUPL \
     --prefix=$TOOL
