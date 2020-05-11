@@ -1,4 +1,13 @@
 # binutils
+config.guess and config.sub are stored along binutils because it's the first
+GNU package we build, plus it usually has the latest versions of the two so it
+makes sense to store them here.
+
+To get the latest upstream versions of these two files:
+
+<https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD>
+
+<https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD>
 
 ## Cross
 ### Cross Configure
