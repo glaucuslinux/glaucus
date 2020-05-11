@@ -9,6 +9,7 @@ prepare() {
 
   $SCRD/gnu guess build-aux &&
   $SCRD/gnu sub build-aux &&
+  $SCRD/gnu rpath build-aux &&
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
