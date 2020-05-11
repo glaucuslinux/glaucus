@@ -8,6 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess build-aux &&
+  $SCRD/gnu rpath build-aux &&
   $SCRD/gnu sub build-aux &&
 
   $SCRD/patch 1 $nom clear 0001-Lower-test-timeout
