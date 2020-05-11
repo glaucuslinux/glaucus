@@ -7,7 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/gnu build-aux &&
+  $SCRD/gnu guess build-aux &&
+  $SCRD/gnu sub build-aux &&
 
   $SCRD/patch 0 $nom lfs 0001-fix-perl-bug
 }
