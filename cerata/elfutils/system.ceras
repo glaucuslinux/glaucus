@@ -7,7 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
-  $SCRD/gnu config &&
+  $SCRD/gnu guess config &&
+  $SCRD/gnu sub config &&
 
   $RSYNC $CERD/$nom/error.h lib &&
   $RSYNC $CERD/$nom/error.h src &&
