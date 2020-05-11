@@ -8,6 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess config &&
+  $SCRD/gnu rpath config &&
   $SCRD/gnu sub config &&
 
   $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
