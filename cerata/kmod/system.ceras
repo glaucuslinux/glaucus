@@ -7,6 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
+  $SCRD/gnu build-aux &&
+
   $SCRD/patch 1 $nom arch 0002-add-zstd-compressed-module-support &&
   $SCRD/patch 0 $nom void strndupa
 }
