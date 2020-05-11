@@ -7,7 +7,7 @@ prepare() {
   $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/gcc --delete &&
   cd $TSRC/gcc &&
 
-  $SCRD/gnu &&
+  $SCRD/gnu . &&
 
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
