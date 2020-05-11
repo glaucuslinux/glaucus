@@ -4,12 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
+  cd $CSRC/$nom &&
+
+  $SCRD/gnu &&
+
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $CSRC/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --bindir=$TOOL/bin/$nom \
@@ -26,8 +31,11 @@ install() {
     install &&
 
   $LN $nom $TOOL/bin/$nom/c++ &&
+  $LN $nom $TOOL/bin/$nom/c89 &&
+  $LN $nom $TOOL/bin/$nom/c99 &&
   $LN $nom $TOOL/bin/$nom/cc &&
   $LN $nom $TOOL/bin/$nom/cpp &&
   $LN $nom $TOOL/bin/$nom/g++ &&
-  $LN $nom $TOOL/bin/$nom/gcc
+  $LN $nom $TOOL/bin/$nom/gcc &&
+  $LN $nom $TOOL/bin/$nom/gcc-10.1.0
 }
