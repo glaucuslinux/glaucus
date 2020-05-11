@@ -28,6 +28,8 @@ prepare() {
 }
 
 configure() {
+  $AUTORECONF &&
+
   ./configure \
     --prefix=/usr \
     --enable-multibyte \
