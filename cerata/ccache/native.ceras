@@ -9,7 +9,7 @@ prepare() {
 }
 
 configure() {
-  $TSRC/$nom/$nom-$ver/configure \
+  $TSRC/$nom/configure \
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
