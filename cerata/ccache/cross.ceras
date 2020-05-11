@@ -4,12 +4,17 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
+  cd $TSRC/$nom &&
+
+  $SCRD/gnu &&
+
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  $TSRC/$nom/$nom-$ver/configure \
     --target=$TUPL \
     --prefix=$TOOL \
     --bindir=$TOOL/bin/$nom \
@@ -26,9 +31,11 @@ install() {
     install &&
 
   $LN $nom $TOOL/bin/$nom/$TUPL-c++ &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-c89 &&
+  $LN $nom $TOOL/bin/$nom/$TUPL-c99 &&
   $LN $nom $TOOL/bin/$nom/$TUPL-cc &&
   $LN $nom $TOOL/bin/$nom/$TUPL-cpp &&
   $LN $nom $TOOL/bin/$nom/$TUPL-g++ &&
   $LN $nom $TOOL/bin/$nom/$TUPL-gcc &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-gcc-9.3.0
+  $LN $nom $TOOL/bin/$nom/$TUPL-gcc-10.1.0
 }
