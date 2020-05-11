@@ -13,7 +13,6 @@ configure() {
     --host=$TUPL \
     --prefix=$TOOL \
     --enable-threads=posix \
-    --disable-acl \
     --disable-nls \
     --disable-rpath \
     --disable-i18n \
