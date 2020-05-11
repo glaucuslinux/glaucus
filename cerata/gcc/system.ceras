@@ -9,6 +9,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/gnu guess . &&
+  $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths-for-$ARCH &&
