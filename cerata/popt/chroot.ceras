@@ -7,7 +7,8 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
   cd $CSRC/$nom &&
 
-  $SCRD/gnu .
+  $SCRD/gnu guess . &&
+  $SCRD/gnu sub .
 }
 
 configure() {
