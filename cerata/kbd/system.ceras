@@ -7,11 +7,15 @@ prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom &&
 
+  $SCRD/gnu config &&
+
   $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
 }
 
 configure() {
   $SCRD/patch 1 $nom lfs remove-resizecons &&
+
+  $AUTORECONF &&
 
   ./configure \
     --prefix=/usr \
