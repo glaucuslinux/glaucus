@@ -8,6 +8,7 @@ prepare() {
   cd $CSRC/$nom &&
 
   $SCRD/gnu guess build-aux &&
+  $SCRD/gnu rpath build-aux &&
   $SCRD/gnu sub build-aux &&
 
   $MKDIR $CBLD/$nom &&
