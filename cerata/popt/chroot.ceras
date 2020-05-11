@@ -4,12 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $CBLD/$nom &&
-  cd $CBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
+  cd $CSRC/$nom &&
+
+  $SCRD/gnu
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-static \
