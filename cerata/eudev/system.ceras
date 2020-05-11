@@ -5,7 +5,9 @@
 
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom &&
-  cd $SSRC/$nom
+  cd $SSRC/$nom &&
+
+  $SCRD/gnu .
 }
 
 configure() {
