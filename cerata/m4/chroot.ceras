@@ -24,5 +24,7 @@ build() {
 
 install() {
   $MAKE \
-    install-strip
+    install-strip &&
+
+  $LN $nom $TOOL/bin/g$nom
 }
