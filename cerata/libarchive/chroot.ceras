@@ -4,30 +4,23 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $CBLD/$nom &&
-  cd $CBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $CSRC/$nom --delete &&
+  cd $CSRC/$nom &&
+
+  $SCRD/patch 0 $nom void filter-xz-enable-threads
 }
 
 configure() {
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-static \
-    --disable-bsdcat \
-    --disable-bsdcpio \
     --disable-rpath \
-    --disable-xattr \
-    --disable-acl \
-    --without-zlib \
-    --without-bz2lib \
-    --without-libb2 \
-    --without-lz4 \
-    --without-lzma \
+    --enable-xattr \
+    --enable-acl \
     --without-cng \
     --without-nettle \
-    --without-openssl \
-    --without-xml2 \
-    --without-expat
+    --without-xml2
 }
 
 build() {
@@ -38,5 +31,6 @@ install() {
   $MAKE \
     install-strip &&
 
+  $LN bsdcpio $TOOL/bin/cpio &&
   $LN bsdtar $TOOL/bin/tar
 }
