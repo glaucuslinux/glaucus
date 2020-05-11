@@ -24,5 +24,11 @@ build() {
 
 install() {
   $MAKE \
-    install
+    install &&
+
+  $LN $nom $TOOL/bin/ksh &&
+  $LN $nom $TOOL/bin/rksh &&
+
+  $LN $nom.1 $TOOL/share/man/man1/ksh.1 &&
+  $LN $nom.1 $TOOL/share/man/man1/rksh.1
 }
