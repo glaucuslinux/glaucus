@@ -10,15 +10,15 @@ prepare() {
 
   $MAKE \
     mrproper
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   :
-}
+} &&
 
 install() {
   $MAKE \
