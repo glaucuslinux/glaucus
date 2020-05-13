@@ -26,7 +26,7 @@ prepare() {
 
   $MKDIR $XBLD/$nom &&
   cd $XBLD/$nom
-}
+} &&
 
 configure() {
   CFLAGS='-g0 -O0' \
@@ -69,7 +69,7 @@ configure() {
 
   $MAKE \
     configure-host
-}
+} &&
 
 build() {
   $MAKE \
@@ -82,7 +82,7 @@ build() {
     RANLIB_FOR_TARGET=$TUPL-ranlib \
     READELF_FOR_TARGET=$TUPL-readelf \
     STRIP_FOR_TARGET=$TUPL-strip
-}
+} &&
 
 install() {
   $MAKE \
