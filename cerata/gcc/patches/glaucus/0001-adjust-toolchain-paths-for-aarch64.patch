@@ -5,11 +5,11 @@
  #define GCC_AARCH64_LINUX_H
  
 -#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
-+#define GLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-linux-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
++#define GLIBC_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-linux-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
  
  #undef MUSL_DYNAMIC_LINKER
 -#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
-+#define MUSL_DYNAMIC_LINKER "/toolchain/lib/ld-musl-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
++#define MUSL_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-musl-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
  
  #undef  ASAN_CC1_SPEC
  #define ASAN_CC1_SPEC "%{%:sanitize(address):-funwind-tables}"
@@ -19,7 +19,7 @@
  #endif  /* GCC_AARCH64_LINUX_H */
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "/home/glaucus/toolchain/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
@@ -33,10 +33,10 @@
 -#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKERX32 "/lib/ldx32-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER32 "/toolchain/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER64 "/toolchain/lib/ld64-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKERX32 "/toolchain/lib/ldx32-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/home/glaucus/toolchain/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER64 "/home/glaucus/toolchain/lib/ld64-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKERX32 "/home/glaucus/toolchain/lib/ldx32-uClibc.so.0"
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
@@ -45,7 +45,7 @@
  #define MUSL_DYNAMIC_LINKER "/dev/null"
  #define MUSL_DYNAMIC_LINKER32 "/dev/null"
 -#define MUSL_DYNAMIC_LINKER64 "/dev/null"
-+#define MUSL_DYNAMIC_LINKER64 "/toolchain/lib/ld-musl-aarch64.so.1"
++#define MUSL_DYNAMIC_LINKER64 "/home/glaucus/toolchain/lib/ld-musl-aarch64.so.1"
  #define MUSL_DYNAMIC_LINKERX32 "/dev/null"
  
  #define GNU_USER_DYNAMIC_LINKER						\
@@ -55,7 +55,7 @@
  #endif
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "/home/glaucus/toolchain/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
