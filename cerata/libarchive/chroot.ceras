@@ -12,7 +12,7 @@ prepare() {
   $SCRD/gnu sub build/autoconf &&
 
   $SCRD/patch 0 $nom void filter-xz-enable-threads
-}
+} &&
 
 configure() {
   ./configure \
@@ -25,11 +25,11 @@ configure() {
     --without-cng \
     --without-nettle \
     --without-xml2
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
