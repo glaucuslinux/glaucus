@@ -7,6 +7,7 @@
 
 if [ ! -d $SRCD/$nom ]; then
  $MKDIR $SRCD/$nom &&
+
  . $SCRD/fetch ||
  $SCRD/exit ceras $nom fetch $? ||
  exit
