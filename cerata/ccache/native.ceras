@@ -6,7 +6,7 @@
 prepare() {
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
-}
+} &&
 
 configure() {
   $TSRC/$nom/configure \
@@ -16,11 +16,11 @@ configure() {
     --bindir=$TOOL/bin/$nom \
     --disable-man \
     --without-bundled-zlib
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
