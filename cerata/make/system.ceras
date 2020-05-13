@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
@@ -21,11 +21,11 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --without-guile
-}
+} &&
 
 build() {
   $nom
-}
+} &&
 
 install() {
   $nom \
