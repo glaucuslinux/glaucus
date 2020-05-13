@@ -8,7 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style
-}
+} &&
 
 configure() {
   ./configure \
@@ -23,12 +23,12 @@ configure() {
 
   sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
-}
+} &&
 
 build() {
   $MAKE \
     strip
-}
+} &&
 
 install() {
   $MAKE \
