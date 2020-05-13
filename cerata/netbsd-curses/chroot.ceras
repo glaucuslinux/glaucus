@@ -8,18 +8,18 @@ prepare() {
   cd $CSRC/$nom &&
 
   $SCRD/patch 1 $nom sabotage 0001-mac-compat-don-t-redefine-__dead
-}
+} &&
 
 configure() {
   $RSYNC $CERD/$nom/config.mak.chroot config.mak &&
 
   $SCRD/patch 0 $nom glaucus 0001-optimize-more
-}
+} &&
 
 build() {
   $MAKE \
     all-dynamic
-}
+} &&
 
 install() {
   $MAKE \
