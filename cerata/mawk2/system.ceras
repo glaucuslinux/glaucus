@@ -6,16 +6,16 @@
 prepare() {
   $RSYNC $SRCD/$nom/mawk-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   ./configure \
     --prefix=/usr
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/share/man/man1 &&
