@@ -2,7 +2,9 @@
 # Distributed under the terms of the ISC License
 
 if [ $ver != git ]; then
-  printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c || $SCRD/exit ceras $nom verify $? || exit
+  printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c ||
+  $SCRD/exit ceras $nom verify $? ||
+  exit
 else
   exit 0
 fi
