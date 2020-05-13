@@ -6,15 +6,15 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom/ $CSRC/$nom --delete &&
   cd $CSRC/$nom
-}
+} &&
 
 configure() {
   $SCRD/patch 0 $nom glaucus remove-O2
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
