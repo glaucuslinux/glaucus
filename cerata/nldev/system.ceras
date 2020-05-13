@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $SCRD/patch 0 $nom glaucus 0001-fix-shell &&
@@ -14,11 +14,11 @@ configure() {
   sed -e "s/CFLAGS = .*/CFLAGS = $CFLAGS -std=c99 -pedantic -Wall -DVERSION=0.3 -D_DEFAULT_SOURCE -D_GNU_SOURCE/" \
     -e "s/LDFLAGS = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
