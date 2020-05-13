@@ -9,7 +9,7 @@ prepare() {
 
   $SCRD/patch 1 $nom clear 0001-Add-option-for-pgo-profiling-test-with-${nom}bench &&
   $SCRD/patch 1 $nom clear 0001-Add-${nom}bench-for-pgo-optimization
-}
+} &&
 
 configure() {
   BUILD_ZLIB=False \
@@ -26,11 +26,11 @@ configure() {
     -Accflags="$CFLAGS" \
     -Acppflags="$CFLAGS" \
     -Aldflags="$LDFLAGS"
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
