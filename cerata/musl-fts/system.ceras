@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -14,11 +14,11 @@ configure() {
   ./configure \
     --prefix=/usr \
     --disable-static
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
