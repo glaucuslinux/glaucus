@@ -9,16 +9,16 @@ prepare() {
 
   $SCRD/patch 1 $nom clear fix-make-install &&
   $SCRD/patch 1 $nom clear 0001-Makefile-propagate-CFLAGS
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   $MAKE \
     BUILD_STATIC=no
-}
+} &&
 
 install() {
   $MAKE \
