@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRCD/$nom/configure \
@@ -24,11 +24,11 @@ configure() {
     --without-included-regex \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
