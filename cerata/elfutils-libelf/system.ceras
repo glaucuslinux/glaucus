@@ -14,7 +14,7 @@ prepare() {
   $RSYNC $CERD/elfutils/error.h src &&
 
   $SCRD/patch 0 elfutils void musl-cdefs
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -28,7 +28,7 @@ configure() {
     --disable-symbol-versioning \
     --disable-nls \
     --disable-debuginfod
-}
+} &&
 
 build() {
   $MAKE \
@@ -36,7 +36,7 @@ build() {
 
   $MAKE \
     -C libelf
-}
+} &&
 
 install() {
   $MAKE \
