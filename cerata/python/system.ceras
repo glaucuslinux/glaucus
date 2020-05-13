@@ -12,7 +12,7 @@ prepare() {
 
   $SCRD/patch 1 $nom clear 0001-Fix-$nom-path-for-linux &&
   $SCRD/patch 1 $nom clear CVE-2020-8492
-}
+} &&
 
 configure() {
   ax_cv_c_float_words_bigendian=no \
@@ -27,11 +27,11 @@ configure() {
     --without-doc-strings \
     --with-pymalloc \
     --with-ensurepip
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
