@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
@@ -20,11 +20,11 @@ configure() {
     --bindir=/usr/bin/$nom \
     --disable-man \
     --without-bundled-zlib
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
