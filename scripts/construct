@@ -1,10 +1,23 @@
+#!/usr/bin/dash -eux
+
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
 . $CERD/$2/ceras &&
 . $CERD/$nom/$1.ceras &&
 
-prepare || $SCRD/exit $1 $nom prepare $? || exit &&
-configure || $SCRD/exit $1 $nom configure $? || exit &&
-build || $SCRD/exit $1 $nom build $? || exit &&
-install || $SCRD/exit $1 $nom install $? || exit
+prepare ||
+$SCRD/exit $1 $nom prepare $? ||
+exit &&
+
+configure ||
+$SCRD/exit $1 $nom configure $? ||
+exit &&
+
+build ||
+$SCRD/exit $1 $nom build $? ||
+exit &&
+
+install ||
+$SCRD/exit $1 $nom install $? ||
+exit
