@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -27,11 +27,11 @@ configure() {
     --without-selinux \
     --with-packager=glaucus \
     --with-packager-bug-reports=https://github.com/glaucuslinux/glaucus/issues
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
