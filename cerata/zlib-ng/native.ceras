@@ -6,17 +6,17 @@
 prepare() {
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
-}
+} &&
 
 configure() {
   $SRCD/$nom/configure \
     --prefix=$TOOL \
     --zlib-compat
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
