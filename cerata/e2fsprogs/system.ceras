@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   MKDIR_P="$MKDIR" \
@@ -33,11 +33,11 @@ configure() {
     --disable-rpath \
     --enable-lto \
     --without-included-gettext
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
