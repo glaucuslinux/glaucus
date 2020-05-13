@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   PREFIX=/usr \
@@ -15,11 +15,11 @@ configure() {
     -G \
     -M \
     -N
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
