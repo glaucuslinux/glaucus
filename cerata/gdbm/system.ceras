@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
@@ -23,11 +23,11 @@ configure() {
     --disable-static \
     --disable-nls \
     --disable-rpath
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
