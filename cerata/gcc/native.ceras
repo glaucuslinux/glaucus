@@ -31,7 +31,7 @@ prepare() {
 
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
-}
+} &&
 
 configure() {
   $TSRC/$nom/configure \
@@ -63,11 +63,11 @@ configure() {
 
   $MAKE \
     configure-host
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
