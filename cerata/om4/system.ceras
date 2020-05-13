@@ -6,17 +6,17 @@
 prepare() {
   $RSYNC $SRCD/$nom/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
