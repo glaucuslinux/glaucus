@@ -14,18 +14,18 @@ prepare() {
   cd $SBLD/$nom &&
   
   $RSYNC $SSRC/$nom/man . --delete
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
     --prefix=/usr \
     --without-man2html \
     --without-builtin-regex
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
