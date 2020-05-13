@@ -6,18 +6,18 @@
 prepare() {
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --disable-nls \
     --disable-rpath
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
