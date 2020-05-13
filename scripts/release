@@ -1,3 +1,5 @@
+#!/usr/bin/dash -eux
+
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
@@ -9,8 +11,10 @@ $RM /tmp/toolchain/lib64 &&
 
 find /tmp/toolchain -name *.la -delete &&
 
-strip -gv /tmp/toolchain/lib/* || true
-/usr/bin/strip --strip-unneeded -v /tmp/toolchain/bin/* || true
+strip -gv /tmp/toolchain/lib/* ||
+true
+/usr/bin/strip --strip-unneeded -v /tmp/toolchain/bin/* ||
+true
 
 $RM /tmp/toolchain/share/doc &&
 $RM /tmp/toolchain/share/info &&
