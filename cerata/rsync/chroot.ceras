@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -21,11 +21,11 @@ configure() {
     --disable-debug \
     --without-included-popt \
     --without-included-zlib
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
