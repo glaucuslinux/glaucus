@@ -6,18 +6,18 @@
 prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $AUTORECONF &&
 
   ./configure \
     --prefix=/usr
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
