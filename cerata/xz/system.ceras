@@ -11,7 +11,7 @@ prepare() {
   $SCRD/patch 1 $nom clear io-size &&
   $SCRD/patch 1 $nom clear speedup &&
   $SCRD/patch 2 $nom clear add-pgo
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -22,12 +22,12 @@ configure() {
     --disable-static \
     --disable-nls \
     --disable-rpath
-}
+} &&
 
 build() {
   $MAKE \
     pgo-build
-}
+} &&
 
 install() {
   $MAKE \
