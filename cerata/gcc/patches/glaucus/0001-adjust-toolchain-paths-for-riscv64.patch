@@ -8,10 +8,10 @@
 -#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKERX32 "/lib/ldx32-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER32 "/toolchian/lib/ld-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER64 "/toolchain/lib/ld64-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKERX32 "/toolchain/lib/ldx32-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/home/glaucus/toolchain/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER64 "/home/glaucus/toolchain/lib/ld64-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKERX32 "/home/glaucus/toolchain/lib/ldx32-uClibc.so.0"
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
@@ -21,10 +21,10 @@
 -#define MUSL_DYNAMIC_LINKER32 "/dev/null"
 -#define MUSL_DYNAMIC_LINKER64 "/dev/null"
 -#define MUSL_DYNAMIC_LINKERX32 "/dev/null"
-+#define MUSL_DYNAMIC_LINKER "/toolchain/lib/ld-musl-riscv32.so.1"
-+#define MUSL_DYNAMIC_LINKER32 "/toolchain/lib/ld-musl-riscv32.so.1"
-+#define MUSL_DYNAMIC_LINKER64 "/toolchain/lib/ld-musl-riscv64.so.1"
-+#define MUSL_DYNAMIC_LINKERX32 "/toolchain/lib/ld-musl-riscv64-ilp32d.so.1"
++#define MUSL_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-musl-riscv32.so.1"
++#define MUSL_DYNAMIC_LINKER32 "/home/glaucus/toolchain/lib/ld-musl-riscv32.so.1"
++#define MUSL_DYNAMIC_LINKER64 "/home/glaucus/toolchain/lib/ld-musl-riscv64.so.1"
++#define MUSL_DYNAMIC_LINKERX32 "/home/glaucus/toolchain/lib/ld-musl-riscv64-ilp32d.so.1"
  
  #define GNU_USER_DYNAMIC_LINKER						\
    CHOOSE_DYNAMIC_LINKER (GLIBC_DYNAMIC_LINKER, UCLIBC_DYNAMIC_LINKER,	\
@@ -34,7 +34,7 @@
  #endif
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "/home/glaucus/toolchain/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
@@ -45,7 +45,7 @@
    } while (0)
  
 -#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux-riscv" XLEN_SPEC "-" ABI_SPEC ".so.1"
-+#define GLIBC_DYNAMIC_LINKER "/toolchain/lib/ld-linux-riscv" XLEN_SPEC "-" ABI_SPEC ".so.1"
++#define GLIBC_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-linux-riscv" XLEN_SPEC "-" ABI_SPEC ".so.1"
  
  #define MUSL_ABI_SUFFIX \
    "%{mabi=ilp32:-sf}" \
@@ -54,7 +54,7 @@
  
  #undef MUSL_DYNAMIC_LINKER
 -#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-riscv" XLEN_SPEC MUSL_ABI_SUFFIX ".so.1"
-+#define MUSL_DYNAMIC_LINKER "/toolchain/lib/ld-musl-riscv" XLEN_SPEC MUSL_ABI_SUFFIX ".so.1"
++#define MUSL_DYNAMIC_LINKER "/home/glaucus/toolchain/lib/ld-musl-riscv" XLEN_SPEC MUSL_ABI_SUFFIX ".so.1"
  
  /* Because RISC-V only has word-sized atomics, it requries libatomic where
     others do not.  So link libatomic by default, as needed.  */
@@ -64,7 +64,7 @@
  #define TARGET_ASM_FILE_END file_end_indicate_exec_stack
 +
 +#undef STANDARD_STARTFILE_PREFIX_1
-+#define STANDARD_STARTFILE_PREFIX_1 "/toolchain/lib/"
++#define STANDARD_STARTFILE_PREFIX_1 "/home/glaucus/toolchain/lib/"
 +
 +#undef STANDARD_STARTFILE_PREFIX_2
 +#define STANDARD_STARTFILE_PREFIX_2 ""
@@ -78,8 +78,8 @@
 -   "/usr/lib" XLEN_SPEC "/" ABI_SPEC "/ "	\
 -   "/lib/ "					\
 -   "/usr/lib/ "
-+   "/toolchain/lib" XLEN_SPEC "/" ABI_SPEC "/ "		\
-+   "/toolchain/lib/ "
++   "/home/glaucus/toolchain/lib" XLEN_SPEC "/" ABI_SPEC "/ "		\
++   "/home/glaucus/toolchain/lib/ "
  
  /* ISA constants needed for code generation.  */
  #define OPCODE_LW    0x2003
