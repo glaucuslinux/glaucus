@@ -6,18 +6,18 @@
 prepare() {
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-regex=pcre2
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
