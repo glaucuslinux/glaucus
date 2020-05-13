@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -20,11 +20,11 @@ configure() {
     --prefix=$TOOL \
     --disable-libseccomp \
     --enable-fsect-man5
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
