@@ -6,18 +6,18 @@
 prepare() {
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
     --host=$TUPL \
     --prefix=$TOOL \
     --disable-iberty
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
