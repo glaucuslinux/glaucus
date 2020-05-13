@@ -28,7 +28,7 @@ prepare() {
   $SCRD/patch 0 $nom upstream ${nom}50-015 &&
   $SCRD/patch 0 $nom upstream ${nom}50-016 &&
   $SCRD/patch 0 $nom upstream ${nom}50-017
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -42,11 +42,11 @@ configure() {
     --with-curses \
     --with-installed-readline \
     --without-included-gettext
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
