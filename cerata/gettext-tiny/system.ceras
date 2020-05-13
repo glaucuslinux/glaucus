@@ -6,18 +6,18 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $RSYNC $CERD/$nom/config.mak.system config.mak &&
 
   printf "CFLAGS=$CFLAGS -fPIC
 LDFLAGS=$LDFLAGS\n" >> config.mak
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
