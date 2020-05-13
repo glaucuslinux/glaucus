@@ -6,17 +6,17 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   $MAKE \
     AR=$AR \
     RANLIB=$RANLIB
-}
+} &&
 
 install() {
   $MAKE \
