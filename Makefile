@@ -1,21 +1,21 @@
 all: toolchain chroot
 
 toolchain:
-	time dash -e scripts/$@/run
+	time scripts/$@/run
 
 chroot:
-	time dash -e scripts/$@/run
+	time scripts/$@/run
 
 system:
-	time dash -e scripts/$@/run
+	time scripts/$@/run
 
 initialize:
-	time dash -e scripts/$@
+	time scripts/$@
 
 release:
-	time dash -e scripts/$@
+	time scripts/$@
 
 clean:
-	time dash -e scripts/$@
+	time scripts/$@
 
 .PHONY: toolchain
