@@ -14,7 +14,7 @@ prepare() {
   cd $CBLD/$nom &&
   
   $RSYNC $CSRC/$nom/man . --delete
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -22,11 +22,11 @@ configure() {
     --prefix=$TOOL \
     --without-man2html \
     --without-builtin-regex
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
