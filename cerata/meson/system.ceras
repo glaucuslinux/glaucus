@@ -6,16 +6,16 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   python3 setup.py \
     build
-}
+} &&
 
 install() {
   python3 setup.py \
