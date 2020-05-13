@@ -8,7 +8,7 @@ prepare() {
   cd $SSRC/$nom
 
   $MKDIR $SBLD/$nom
-}
+} &&
 
 configure() {
   $AUTORECONF
@@ -24,11 +24,11 @@ configure() {
     --host=$TUPL \
     --target=$TUPL \
     --disable-static
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
