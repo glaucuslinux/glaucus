@@ -5,15 +5,15 @@
 
 prepare() {
   :
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   :
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/etc/$nom $SCER/$nom/sac/usr/bin &&
