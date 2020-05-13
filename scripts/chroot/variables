@@ -13,8 +13,7 @@ export CTMP=$GLAD/temporary/chroot &&
 export CBLD=$CTMP/builds &&
 export CSRC=$CTMP/sources &&
 
-export GLAT=$GLAD/toolchain &&
-export TOOL=/toolchain &&
+export TOOL=$GLAD/toolchain &&
 
 export CCCH=/usr/lib64/ccache &&
 
