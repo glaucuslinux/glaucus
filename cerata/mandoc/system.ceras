@@ -8,7 +8,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-path-for-make-4.3
-}
+} &&
 
 configure() {
   printf "HAVE_WCHAR=1
@@ -28,11 +28,11 @@ CFLAGS='$($SCRD/classify species atlanticus "$CFLAGSFATNOCOMMON" "$CFLAGSFAT")'\
   sed -e 's/SBINDIR/BINDIR/' \
     -e 's/${BIN_FROM_SBIN}\///' \
     -i Makefile
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
