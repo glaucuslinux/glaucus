@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
@@ -21,11 +21,11 @@ configure() {
     --without-examples \
     --without-tests \
     --without-docbook
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
