@@ -12,7 +12,7 @@ prepare() {
 
   $SCRD/patch 1 $nom arch 0002-add-zstd-compressed-module-support &&
   $SCRD/patch 0 $nom void strndupa
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -26,11 +26,11 @@ configure() {
     --with-zstd \
     --with-openssl \
     --without-bashcompletiondir
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
