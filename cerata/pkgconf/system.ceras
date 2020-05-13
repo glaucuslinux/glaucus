@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
@@ -22,11 +22,11 @@ configure() {
     --localstatedir=/var \
     --disable-static \
     --with-pkg-config-dir=/usr/lib/pkgconf:/usr/share/pkgconfig
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
