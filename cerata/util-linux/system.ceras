@@ -15,7 +15,7 @@ prepare() {
   cd $SBLD/$nom &&
 
   $MKDIR /var/lib/hwclock
-}
+} &&
 
 configure() {
   LIBS='-lutmps -lskarnet' \
@@ -44,11 +44,11 @@ configure() {
 
   sed 's/${exec_prefix}\/sbin/\/usr\/bin/' \
     -i Makefile
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
