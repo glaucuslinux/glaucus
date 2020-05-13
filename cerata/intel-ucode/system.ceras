@@ -8,18 +8,18 @@ prepare() {
   cd $SSRC/$nom &&
 
   $RSYNC $CERD/$nom/06-55-04 $SSRC/$nom
-}
+} &&
 
 configure() {
   $MKDIR kernel/x86/microcode
-}
+} &&
 
 build() {
   iucode_tool \
     --write-earlyfw=$nom.img $nom/ $nom-with-caveats/ \
     --overwrite \
     --mini-earlyfw
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/boot &&
