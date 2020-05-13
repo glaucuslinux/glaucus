@@ -54,8 +54,6 @@ $LN $TOOL/lib/libgomp.spec /usr/lib &&
 
 $LN $TOOL/lib/libz.so.1 /usr/lib &&
 
-$LN /usr/bin/bash /bin &&
-
 printf 'root:x:0:
 tty:x:1:
 disk:x:2:
