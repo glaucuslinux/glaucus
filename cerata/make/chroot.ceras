@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -22,11 +22,11 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --without-guile
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
