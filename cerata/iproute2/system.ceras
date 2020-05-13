@@ -8,17 +8,17 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-remove-sbin
-}
+} &&
 
 configure() {
   $SCRD/patch 0 $nom lfs 0001-remove-arpd-and-two-modules &&
 
   ./configure
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
