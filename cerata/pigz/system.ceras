@@ -6,17 +6,17 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   sed -e "s/CFLAGS=.*/CFLAGS=$CFLAGS/" \
     -e "s/LDFLAGS=/&$LDFLAGS/" \
     -i Makefile
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/usr/bin &&
