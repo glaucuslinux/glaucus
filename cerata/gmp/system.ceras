@@ -12,18 +12,18 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
     --prefix=/usr \
     --enable-cxx \
     --disable-static
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
