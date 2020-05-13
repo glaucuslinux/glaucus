@@ -6,15 +6,15 @@
 prepare() {
   $RSYNC $SRCD/$nom/XML-Parser-Lite-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   perl Makefile.PL
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
