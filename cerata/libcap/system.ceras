@@ -6,16 +6,16 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $SCRD/patch 0 $nom glaucus 0001-remove-static &&
   $SCRD/patch 0 $nom void disable-tests
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
