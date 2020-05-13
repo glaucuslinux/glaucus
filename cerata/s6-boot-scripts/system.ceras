@@ -5,15 +5,15 @@
 
 prepare() {
   :
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   :
-}
+} &&
 
 install() {
   $RSYNC $SRCD/$nom/etc $SCER/$nom/sac --delete &&
