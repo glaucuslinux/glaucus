@@ -12,7 +12,7 @@ prepare() {
   $SCRD/gnu sub . &&
 
   $SCRD/patch 1 $nom adelie use-utmpx
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -28,11 +28,11 @@ configure() {
     --disable-kill \
     --without-systemd \
     --disable-modern-top
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
