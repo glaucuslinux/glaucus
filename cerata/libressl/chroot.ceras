@@ -15,7 +15,7 @@ prepare() {
 
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $CSRC/$nom/configure \
@@ -27,11 +27,11 @@ configure() {
 
   sed 's/tests //' \
     -i Makefile
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
