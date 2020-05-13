@@ -9,7 +9,7 @@ prepare() {
 
   $SCRD/gnu guess . &&
   $SCRD/gnu sub .
-}
+} &&
 
 configure() {
   ./configure \
@@ -19,11 +19,11 @@ configure() {
     --disable-static \
     --disable-selinux \
     --disable-manpages
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
