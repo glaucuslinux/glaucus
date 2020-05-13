@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRCD/$nom/configure \
@@ -24,11 +24,11 @@ configure() {
     --enable-pcre2grep-libz \
     --enable-pcre2grep-libbz2 \
     --enable-pcre2test-libedit
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
