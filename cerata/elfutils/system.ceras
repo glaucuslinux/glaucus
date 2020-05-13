@@ -24,7 +24,7 @@ prepare() {
   $SCRD/patch 0 $nom void musl-qsort_r &&
   $SCRD/patch 0 $nom void musl-strerror_r &&
   $SCRD/patch 0 $nom void musl-strndupa
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -38,11 +38,11 @@ configure() {
     --disable-symbol-versioning \
     --disable-nls \
     --disable-debuginfod
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
