@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
@@ -24,12 +24,12 @@ configure() {
 
   sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
-}
+} &&
 
 build() {
   $MAKE \
     strip
-}
+} &&
 
 install() {
   $MAKE \
