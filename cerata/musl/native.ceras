@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
   cd $TSRC/$nom
-}
+} &&
 
 configure() {
   $SCRD/patch 1 $nom dragora musl-nolibcc_stage1 &&
@@ -22,11 +22,11 @@ configure() {
   $RSYNC $SRCD/$nom/$nom-$ver/Makefile . &&
 
   $SCRD/patch 0 $nom glaucus 0001-remove-libdir
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
