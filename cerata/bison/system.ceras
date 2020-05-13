@@ -13,7 +13,7 @@ prepare() {
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
-}
+} &&
 
 configure() {
   $SSRC/$nom/configure \
@@ -21,11 +21,11 @@ configure() {
     --enable-threads=posix \
     --disable-rpath \
     --disable-nls
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
