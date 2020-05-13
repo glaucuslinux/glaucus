@@ -12,7 +12,7 @@ prepare() {
   $SCRD/gnu sub config &&
 
   $SCRD/patch 1 $nom lfs $nom-$ver-backspace-1
-}
+} &&
 
 configure() {
   $SCRD/patch 1 $nom lfs remove-resizecons &&
@@ -26,11 +26,11 @@ configure() {
     --disable-rpath \
     --disable-vlock \
     --disable-tests
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
