@@ -9,16 +9,16 @@ prepare() {
 
   $SCRD/patch 0 $nom void avoid-process-race &&
   $SCRD/patch 0 $nom void perl522
-}
+} &&
 
 configure() {
   ./configure \
     --prefix=/usr
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
