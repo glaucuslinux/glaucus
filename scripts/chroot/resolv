@@ -3,6 +3,5 @@
 
 sudo \
   $MKDIR $GLAD/etc &&
-
 sudo \
   $RSYNC /etc/resolv.conf $GLAD/etc
