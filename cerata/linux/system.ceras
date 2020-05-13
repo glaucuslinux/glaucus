@@ -60,7 +60,7 @@ prepare() {
   $SCRD/patch 1 $nom sirlucjan 0008-mm-move-zone-iterator-outside-of-deferred_init_maxor.patch &&
   $SCRD/patch 1 $nom sirlucjan 0009-mm-parallelize-deferred_init_memmap.patch &&
   $SCRD/patch 1 $nom sirlucjan 0010-padata-document-multithreaded-jobs.patch
-}
+} &&
 
 configure() {
   $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
@@ -72,12 +72,12 @@ configure() {
   $MAKE \
     O=$SBLD/$nom \
     prepare
-}
+} &&
 
 build() {
   $MAKE \
     O=$SBLD/$nom
-}
+} &&
 
 install() {
   $MAKE \
