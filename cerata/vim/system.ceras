@@ -6,7 +6,7 @@
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $SSRC/$nom --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   ./configure \
@@ -15,11 +15,11 @@ configure() {
     --disable-nls \
     --with-compiledby=glaucus \
     --without-x
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
