@@ -8,19 +8,19 @@ prepare() {
   cd $SSRC/$nom &&
 
   $SCRD/patch 0 $nom glaucus 0001-extend-long-iso-format
-}
+} &&
 
 configure() {
   $RSYNC $CERD/$nom/system.config .config &&
 
   scripts/genconfig.sh
-}
+} &&
 
 build() {
   CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
   LDFLAGS="$LDFLAGSNORELRO" \
   $MAKE
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/usr/bin &&
