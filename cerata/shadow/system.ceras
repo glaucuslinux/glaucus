@@ -13,7 +13,7 @@ prepare() {
 
   $SCRD/patch 0 $nom glaucus 0001-change-default-shell &&
   $SCRD/patch 0 $nom glaucus 0002-fix-installation-paths
-}
+} &&
 
 configure() {
   sed 's/groups$(EXEEXT) //' \
@@ -45,11 +45,11 @@ configure() {
     --disable-rpath \
     --without-selinux \
     --with-group-name-max-length=32
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
