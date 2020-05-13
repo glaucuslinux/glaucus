@@ -10,18 +10,18 @@ prepare() {
 
   $SCRD/patch 0 $nom glaucus 0001-add-sysmacros &&
   $SCRD/patch 1 $nom aur scan_all
-}
+} &&
 
 configure() {
   sed -e 's/PREFIX = .*/PREFIX = \/usr/' \
     -e "s/CFLAGS   = .*/CFLAGS = $CFLAGSFAT -std=c99 -Wall -pedantic -D_BSD_SOURCE -D_GNU_SOURCE/" \
     -e "s/LDFLAGS  = .*/LDFLAGS = $LDFLAGS/" \
     -i config.mk
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
