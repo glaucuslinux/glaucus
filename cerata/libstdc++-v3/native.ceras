@@ -12,7 +12,7 @@ prepare() {
 
   $MKDIR $NBLD/$nom &&
   cd $NBLD/$nom
-}
+} &&
 
 configure() {
   $TSRC/gcc/$nom/configure \
@@ -27,11 +27,11 @@ configure() {
     --disable-cet \
     --disable-libstdcxx-threads \
     --with-gxx-include-dir=$TOOL/$TUPL/include/c++/$ver
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
