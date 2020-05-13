@@ -12,7 +12,7 @@ prepare() {
   $SCRD/gnu sub build-aux &&
 
   $SCRD/patch 1 $nom clear 0001-Lower-test-timeout
-}
+} &&
 
 configure() {
   $AUTORECONF &&
@@ -34,11 +34,11 @@ configure() {
     --enable-libzfs \
     --disable-werror \
     --without-included-regex
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
