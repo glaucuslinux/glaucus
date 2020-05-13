@@ -11,16 +11,16 @@ prepare() {
   $SCRD/gnu sub build-aux &&
 
   $SCRD/patch 0 $nom lfs 0001-fix-perl-bug
-}
+} &&
 
 configure() {
   ./configure \
     --prefix=/usr
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
