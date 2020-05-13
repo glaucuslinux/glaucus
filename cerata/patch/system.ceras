@@ -33,18 +33,18 @@ prepare() {
   $SCRD/$nom 1 $nom upstream 0023-Avoid-invalid-memory-access-in-context-format-diffs &&
   $SCRD/$nom 1 $nom upstream 0024-Fix-failed-assertion-outstate-after_newline &&
   $SCRD/$nom 1 $nom upstream 0025-Add-missing-section-tests-to-context-format-test-cas
-}
+} &&
 
 configure() {
   $AUTORECONF &&
 
   ./configure \
     --prefix=/usr
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
