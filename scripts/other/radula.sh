@@ -56,9 +56,9 @@ install() {
       ;;
     *)
       case $4 in
-        yes) torify wget $3 && ;;
-        no) wget $3 && ;;
-      esac
+        yes) torify wget $3 ;;
+        no) wget $3 ;;
+      esac &&
 
       sed "/^url=.*/a sum=$(printf $(sha512sum $(basename $3)) | awk \
         '{print $1}')" -i $CERD/$1/ceras
