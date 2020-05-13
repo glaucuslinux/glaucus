@@ -6,7 +6,7 @@
 prepare() {
   $MKDIR $CBLD/$nom &&
   cd $CBLD/$nom
-}
+} &&
 
 configure() {
   $SRCD/$nom/$nom-$ver/configure \
@@ -14,11 +14,11 @@ configure() {
     --prefix=$TOOL \
     --disable-static \
     --with-libedit
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MAKE \
