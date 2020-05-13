@@ -6,15 +6,15 @@
 prepare() {
   $RSYNC $SRCD/$nom $SSRC --delete &&
   cd $SSRC/$nom
-}
+} &&
 
 configure() {
   :
-}
+} &&
 
 build() {
   $MAKE
-}
+} &&
 
 install() {
   $MKDIR $SCER/$nom/sac/usr/bin $SCER/$nom/sac/usr/lib &&
