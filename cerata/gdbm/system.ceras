@@ -11,12 +11,13 @@ prepare() {
   $SCRD/gnu rpath build-aux &&
   $SCRD/gnu sub build-aux &&
 
+  $SCRD/patch 0 $nom lfs 0001-fix-no-common &&
+
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
 } &&
 
 configure() {
-  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --enable-libgdbm-compat \
