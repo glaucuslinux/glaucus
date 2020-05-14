@@ -56,6 +56,8 @@ configure() {
     --disable-decimal-float \
     --disable-rpath \
     --without-isl \
+    --disable-plugin \
+    --disable-lto \
     --with-sysroot=$GLAD \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
