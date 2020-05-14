@@ -1,14 +1,14 @@
 chainedPath: 1
 
-color-g++: /toolchain/bin/g++
-color-gcc: /toolchain/bin/gcc
-color-c++: /toolchain/bin/c++
-color-cc:  /toolchain/bin/cc
+color-g++: /home/glaucus/toolchain/bin/g++
+color-gcc: /home/glaucus/toolchain/bin/gcc
+color-c++: /home/glaucus/toolchain/bin/c++
+color-cc:  /home/glaucus/toolchain/bin/cc
 
-g++: /toolchain/bin/g++
-gcc: /toolchain/bin/gcc
-c++: /toolchain/bin/c++
-cc:  /toolchain/bin/cc
+g++: /home/glaucus/toolchain/bin/g++
+gcc: /home/glaucus/toolchain/bin/gcc
+c++: /home/glaucus/toolchain/bin/c++
+cc:  /home/glaucus/toolchain/bin/cc
 
 nocolor: dumb
 
