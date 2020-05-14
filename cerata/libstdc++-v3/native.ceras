@@ -21,6 +21,7 @@ configure() {
     --target=$TUPL \
     --prefix=$TOOL \
     --disable-multilib \
+    --disable-static \
     --disable-nls \
     --disable-rpath \
     --disable-libstdcxx-pch \
