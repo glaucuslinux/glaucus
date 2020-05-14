@@ -37,7 +37,7 @@ configure() {
     --libexecdir=$TOOL/lib \
     --libdir=$TOOL/lib \
     --with-local-prefix=$TOOL \
-    --with-native-system-header-dir=$TOOL/include \
+    --with-native-system-header-dir=/toolchain/include \
     --disable-shared \
     --disable-multilib \
     --disable-symvers \
