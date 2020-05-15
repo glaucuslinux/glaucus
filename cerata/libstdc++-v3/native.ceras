@@ -23,6 +23,7 @@ configure() {
     --disable-multilib \
     --disable-static \
     --disable-nls \
+    --enable-libstdcxx-time=rt \
     --disable-rpath \
     --disable-libstdcxx-pch \
     --disable-symvers \
