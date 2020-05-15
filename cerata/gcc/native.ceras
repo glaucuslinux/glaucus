@@ -54,6 +54,7 @@ configure() {
     --disable-werror \
     --disable-nls \
     --disable-rpath \
+    --enable-libstdcxx-time=rt \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-zstd \
