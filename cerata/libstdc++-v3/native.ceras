@@ -20,8 +20,8 @@ configure() {
     --host=$TUPL \
     --target=$TUPL \
     --prefix=$TOOL \
+    --libdir=$TOOL/lib \
     --disable-multilib \
-    --disable-static \
     --disable-nls \
     --enable-libstdcxx-time=rt \
     --disable-rpath \
