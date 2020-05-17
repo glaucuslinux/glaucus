@@ -1,7 +1,5 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-sudo \
-  $MKDIR $GLAD/etc &&
-sudo \
-  $RSYNC /etc/resolv.conf $GLAD/etc
+$MKDIR $GLAD/etc &&
+$RSYNC /etc/resolv.conf $GLAD/etc
