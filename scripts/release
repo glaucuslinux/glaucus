@@ -3,9 +3,9 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-/usr/bin/rsync -vaHAXSx toolchain /tmp --delete &&
+$RSYNC toolchain /tmp --delete &&
 
-. scripts/toolchain/variables &&
+. $SCRD/toolchain/variables &&
 
 $RM /tmp/toolchain/lib64 &&
 
