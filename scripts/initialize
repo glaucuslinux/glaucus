@@ -3,24 +3,22 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export MKDIR='/usr/bin/install -dv' &&
+$MKDIR $BAKD &&
+$MKDIR $SRCD &&
+$MKDIR $TOLD &&
 
-$MKDIR backup &&
-$MKDIR sources &&
-$MKDIR toolchain &&
+$MKDIR $LOGD/chroot &&
+$MKDIR $LOGD/system &&
+$MKDIR $LOGD/toolchain/cross &&
+$MKDIR $LOGD/toolchain/native &&
 
-$MKDIR logs/chroot &&
-$MKDIR logs/system &&
-$MKDIR logs/toolchain/cross &&
-$MKDIR logs/toolchain/native &&
+$MKDIR $TMPD/chroot/builds &&
+$MKDIR $TMPD/chroot/sources &&
 
-$MKDIR temporary/chroot/builds &&
-$MKDIR temporary/chroot/sources &&
+$MKDIR $TMPD/system/builds &&
+$MKDIR $TMPD/system/cerata &&
+$MKDIR $TMPD/system/sources &&
 
-$MKDIR temporary/system/builds &&
-$MKDIR temporary/system/cerata &&
-$MKDIR temporary/system/sources &&
-
-$MKDIR temporary/toolchain/sources &&
-$MKDIR temporary/toolchain/cross/builds &&
-$MKDIR temporary/toolchain/native/builds
+$MKDIR $TMPD/toolchain/sources &&
+$MKDIR $TMPD/toolchain/cross/builds &&
+$MKDIR $TMPD/toolchain/native/builds
