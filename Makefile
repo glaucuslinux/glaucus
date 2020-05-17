@@ -3,9 +3,15 @@ VERBOSE = $(or $(V),$(VERBOSE))
 
 export GLAD=$(PWD)
 
+export BAKD=$(GLAD)/backup
 export CERD=$(GLAD)/cerata
+export LOGD=$(GLAD)/logs
 export SCRD=$(GLAD)/scripts
 export SRCD=$(GLAD)/sources
+export TMPD=$(GLAD)/temporary
+export TOLD=$(GLAD)/toolchain
+
+export TOOL=/toolchain
 
 ifneq ($(V),)
 	export AUTORECONF=autoreconf -fis
@@ -42,6 +48,9 @@ endif
 
 all: toolchain chroot
 
+initialize:
+	time scripts/$@
+
 toolchain:
 	time scripts/$@/run
 
@@ -50,9 +59,6 @@ chroot:
 
 system:
 	time scripts/$@/run
-
-initialize:
-	time scripts/$@
 
 release:
 	time scripts/$@
