@@ -77,7 +77,7 @@ else
 endif
 
 restore-chroot:
-ifneq ($(wildcard $(GLAD)/backup/chrooti/*),)
+ifneq ($(wildcard $(GLAD)/backup/chroot/*),)
 	$(RSYNC) $(GLAD)/backup/chroot/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the chroot first!
