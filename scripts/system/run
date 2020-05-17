@@ -3,7 +3,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-. /scripts/system/variables &&
+. $SCRD/system/variables &&
 . $SSCR/prepare &&
 
 $SCRD/log $SLOG $SSCR/construct &&
