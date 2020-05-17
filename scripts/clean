@@ -3,64 +3,34 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export GLAD=/home/glaucus &&
-
-export CHOWN='/usr/bin/chown -v' &&
-export RM='/usr/bin/rm -frv' &&
-export RSYNC='/usr/bin/rsync -vaHAXSxh' &&
-export UMOUNT='/usr/bin/umount -fRv' &&
-
-sudo \
-  $UMOUNT $GLAD/dev ||
+$UMOUNT $GLAD/dev ||
   true
-sudo \
-  $UMOUNT $GLAD/proc ||
+$UMOUNT $GLAD/proc ||
   true
-sudo \
-  $UMOUNT $GLAD/sys ||
+$UMOUNT $GLAD/sys ||
   true
-sudo \
-  $UMOUNT $GLAD/run ||
+$UMOUNT $GLAD/run ||
   true
 
-sudo \
-  $RM $GLAD/bin ||
+$RM $GLAD/bin ||
   true
-sudo \
-  $RM $GLAD/boot ||
+$RM $GLAD/boot ||
   true
-sudo \
-  $RM $GLAD/dev ||
+$RM $GLAD/dev ||
   true
-sudo \
-  $RM $GLAD/etc ||
+$RM $GLAD/etc ||
   true
-sudo \
-  $RM $GLAD/proc ||
+$RM $GLAD/proc ||
   true
-sudo \
-  $RM $GLAD/root ||
+$RM $GLAD/root ||
   true
-sudo \
-  $RM $GLAD/run ||
+$RM $GLAD/run ||
   true
-sudo \
-  $RM $GLAD/sys ||
+$RM $GLAD/sys ||
   true
-sudo \
-  $RM $GLAD/usr ||
+$RM $GLAD/usr ||
   true
-sudo \
-  $RM $GLAD/var ||
+$RM $GLAD/var ||
   true
-sudo \
-  $RM $GLAD/tmp ||
+$RM $GLAD/tmp ||
   true
-
-sudo \
-  $CHOWN glaucus:glaucus /home/glaucus &&
-
-[ -d $GLAD/backup/toolchain ] &&
-
-sudo \
-  $RSYNC $GLAD/backup/toolchain/ $GLAD/toolchain --delete
