@@ -27,6 +27,4 @@ export CFLAGSNOLTO="$(printf -- "$CFLAGS" | sed "s/$LTO //")" &&
 
 export CXXFLAGS="$CFLAGS" &&
 
-export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed -Wl,--gc-sections $CFLAGS" &&
-
-export MAKEFLAGS=-j1
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed -Wl,--gc-sections $CFLAGS"
