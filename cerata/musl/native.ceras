@@ -13,7 +13,7 @@ configure() {
 
   CROSS_COMPILE=$TUPL- \
   ./configure \
-    --target=$TUPL \
+    --host=$TUPL \
     --prefix=$TOOL \
     --syslibdir=$TOOL/lib \
     --disable-wrapper \
