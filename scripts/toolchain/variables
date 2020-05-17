@@ -1,15 +1,14 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export TLOG=$GLAD/logs/toolchain &&
+export TLOG=$LOGD/toolchain &&
 export TSCR=$SCRD/toolchain &&
-export TTMP=$GLAD/temporary/toolchain &&
-export TSRC=$TTMP/sources &&
+export TTMP=$TMPD/toolchain &&
 
-export TOOL=$GLAD/toolchain &&
+export TSRC=$TTMP/sources &&
 
 export CCCH=/usr/lib64/ccache &&
 
-export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin:/usr/bin/core_perl &&
+export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin &&
 
 . $SCRD/genome
