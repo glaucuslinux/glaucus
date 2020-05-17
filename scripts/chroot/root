@@ -1,5 +1,4 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-sudo \
-  chown -Rv 0:0 $TOOL/
+chown -Rv 0:0 $TOOL/
