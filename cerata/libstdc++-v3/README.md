@@ -3,6 +3,14 @@
 ## Native
 
 ### Configure
+Don't disable static support because it's needed by both native binutils and
+GCC:
+```
+configure:5081: checking whether g++ accepts -static-libstdc++ -static-libgcc
+configure:5098: x86_64-glaucus-linux-musl-g++ -o conftest -g -O2   -static-libstdc++ -static-libgcc conftest.cpp  >&5
+| #error -static-libstdc++ not implemented
+```
+
 libstdc++-v3 is inside gcc's tree and is being built by default after
 enabling the c++ language support.
 
