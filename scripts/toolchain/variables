@@ -1,14 +1,8 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export GLAD=/home/glaucus &&
-
-export CERD=$GLAD/cerata &&
-export SCRD=$GLAD/scripts &&
-export SRCD=$GLAD/sources &&
-
 export TLOG=$GLAD/logs/toolchain &&
-export TSCR=$GLAD/scripts/toolchain &&
+export TSCR=$SCRD/toolchain &&
 export TTMP=$GLAD/temporary/toolchain &&
 export TSRC=$TTMP/sources &&
 
@@ -17,14 +11,5 @@ export TOOL=$GLAD/toolchain &&
 export CCCH=/usr/lib64/ccache &&
 
 export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin:/usr/bin/core_perl &&
-
-export LN='/usr/bin/ln -fsv' &&
-export MAKE="/usr/bin/make \
-V=1" &&
-export MKDIR='/usr/bin/install -dv' &&
-export RM='/usr/bin/rm -frv' &&
-export RSYNC='/usr/bin/rsync -vaHAXSx' &&
-
-export MAKEFLAGS=-j1 &&
 
 . $SCRD/genome
