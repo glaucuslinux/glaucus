@@ -1,12 +1,8 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export CERD=/cerata &&
-export SCRD=/scripts &&
-export SRCD=/sources &&
-
 export SLOG=/logs/system/$(ls -l /logs/system | wc -l) &&
-export SSCR=/scripts/system &&
+export SSCR=$SCRD/system &&
 export STMP=/temporary/system &&
 export SBLD=$STMP/builds &&
 export SCER=$STMP/cerata &&
@@ -17,17 +13,6 @@ export TOOL=/toolchain &&
 export PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin &&
 
 export CCACHE_DIR=/.ccache &&
-
-export AUTORECONF='autoreconf -vfis' &&
-export CHMOD='chmod -Rv' &&
-export CHOWN='chown -Rv' &&
-export LN='ln -fsv' &&
-export MAKE="make \
-V=1" &&
-export MKDIR='install -dv' &&
-export MV='mv -v' &&
-export RM='rm -frv' &&
-export RSYNC='rsync -vaHXSx' &&
 
 export AR=gcc-ar &&
 export NM=gcc-nm &&
