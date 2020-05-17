@@ -2,7 +2,11 @@
 # Distributed under the terms of the ISC License
 
 $RM $TOOL &&
-$MKDIR $TOOL &&
+
+$RM $TOLD &&
+$MKDIR $TOLD &&
+
+$LN $TOLD $TOOL &&
 
 $MKDIR $TOOL/lib &&
 $LN lib $TOOL/lib64
