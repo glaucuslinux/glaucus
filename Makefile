@@ -73,25 +73,25 @@ clean:
 
 distclean:
 	time scripts/$@
-	$(RM) backup
-	$(RM) logs
-	$(RM) sources
-	$(RM) temporary
-	$(RM) toolchain
+	$(RM) $(BAKD)
+	$(RM) $(LOGD)
+	$(RM) $(SRCD)
+	$(RM) $(TMPD)
+	$(RM) $(TOLD)
 
 restore restore-toolchain: clean
-ifneq ($(wildcard $(GLAD)/backup/toolchain/*),)
+ifneq ($(wildcard $(BAKD)/toolchain/*),)
 	sudo \
-		$(RSYNC) $(GLAD)/backup/toolchain/ $(GLAD)/toolchain --delete
+		$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the toolchain first!
 	@exit 1
 endif
 
 restore-chroot: clean
-ifneq ($(wildcard $(GLAD)/backup/chroot/*),)
+ifneq ($(wildcard $(BAKD)/chroot/*),)
 	sudo \
-		$(RSYNC) $(GLAD)/backup/chroot/ $(GLAD)/toolchain --delete
+		$(RSYNC) $(BAKD)/chroot/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the chroot first!
 	@exit 1
