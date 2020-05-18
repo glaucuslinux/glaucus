@@ -7,8 +7,4 @@ export TTMP=$TMPD/toolchain &&
 
 export TSRC=$TTMP/sources &&
 
-export CCCH=/usr/lib64/ccache &&
-
-export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin &&
-
 . $SCRD/genome
