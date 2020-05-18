@@ -3,34 +3,49 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$UMOUNT $GLAD/dev ||
+sudo \
+  $UMOUNT $GLAD/dev ||
   true
-$UMOUNT $GLAD/proc ||
+sudo \
+  $UMOUNT $GLAD/proc ||
   true
-$UMOUNT $GLAD/sys ||
+sudo \
+  $UMOUNT $GLAD/sys ||
   true
-$UMOUNT $GLAD/run ||
+sudo \
+  $UMOUNT $GLAD/run ||
   true
 
-$RM $GLAD/bin ||
+sudo \
+  $RM $GLAD/bin ||
   true
-$RM $GLAD/boot ||
+sudo \
+  $RM $GLAD/boot ||
   true
-$RM $GLAD/dev ||
+sudo \
+  $RM $GLAD/dev ||
   true
-$RM $GLAD/etc ||
+sudo \
+  $RM $GLAD/etc ||
   true
-$RM $GLAD/proc ||
+sudo \
+  $RM $GLAD/proc ||
   true
-$RM $GLAD/root ||
+sudo \
+  $RM $GLAD/root ||
   true
-$RM $GLAD/run ||
+sudo \
+  $RM $GLAD/run ||
   true
-$RM $GLAD/sys ||
+sudo \
+  $RM $GLAD/sys ||
   true
-$RM $GLAD/usr ||
+sudo \
+  $RM $GLAD/usr ||
   true
-$RM $GLAD/var ||
+sudo \
+  $RM $GLAD/var ||
   true
-$RM $GLAD/tmp ||
+sudo \
+  $RM $GLAD/tmp ||
   true
