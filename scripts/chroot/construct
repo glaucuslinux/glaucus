@@ -10,6 +10,8 @@ $SCRD/construct chroot toybox &&
 $SCRD/construct chroot hostname &&
 $SCRD/construct chroot which &&
 $SCRD/construct chroot popt &&
+$SCRD/construct chroot attr &&
+$SCRD/construct chroot acl &&
 $SCRD/construct chroot rsync &&
 $SCRD/construct chroot diffutils &&
 $SCRD/construct chroot file &&
@@ -17,9 +19,7 @@ $SCRD/construct chroot findutils &&
 $SCRD/construct chroot mawk &&
 $SCRD/construct chroot grep &&
 $SCRD/construct chroot make &&
-$SCRD/construct chroot attr &&
 $SCRD/construct chroot patch &&
-$SCRD/construct chroot acl &&
 $SCRD/construct chroot sed &&
 $SCRD/construct chroot libarchive &&
 $SCRD/construct chroot zstd &&
