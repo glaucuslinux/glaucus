@@ -13,6 +13,10 @@ export TOLD=$(GLAD)/toolchain
 
 export TOOL=/toolchain
 
+export CCCH=/usr/lib64/ccache
+
+export PATH=$(TOOL)/bin/ccache:$(TOOL)/bin:$(CCCH):/usr/bin
+
 ifneq ($(V),)
 	export AUTORECONF=autoreconf -fis
 	export CHMOD=chmod -R
@@ -31,7 +35,7 @@ else
 	export LN=ln -fsv
 	export MAKE=make \
 		V=1
-	export MKDIR=install -dv
+	export MKDIR=/usr/bin/install -dv
 	export MV=mv -v
 	export RM=rm -frv
 	export RSYNC=rsync -vaHAXSx
@@ -58,6 +62,7 @@ chroot:
 	time scripts/$@/run
 
 system:
+	export PATH=/usr/bin/ccache:/usr/bin:/bin:$(TOOL)/bin/ccache:$(TOOL)/bin
 	time scripts/$@/run
 
 release:
@@ -74,20 +79,25 @@ distclean:
 	$(RM) temporary
 	$(RM) toolchain
 
-restore-toolchain:
+restore restore-toolchain: clean
 ifneq ($(wildcard $(GLAD)/backup/toolchain/*),)
-	$(RSYNC) $(GLAD)/backup/toolchain/ $(GLAD)/toolchain --delete
+	sudo \
+		$(RSYNC) $(GLAD)/backup/toolchain/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the toolchain first!
 	@exit 1
 endif
 
-restore-chroot:
+restore-chroot: clean
 ifneq ($(wildcard $(GLAD)/backup/chroot/*),)
-	$(RSYNC) $(GLAD)/backup/chroot/ $(GLAD)/toolchain --delete
+	sudo \
+		$(RSYNC) $(GLAD)/backup/chroot/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the chroot first!
 	@exit 1
 endif
+
+enter-chroot:
+	dash -eux /home/glaucus/scripts/chroot/chroot
 
 .PHONY: toolchain
