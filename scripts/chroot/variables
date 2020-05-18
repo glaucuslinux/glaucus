@@ -1,16 +1,12 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export CLOG=$LOGD/chroot/$(ls -l $GLAD/logs/chroot | wc -l) &&
+export CLOG=$LOGD/chroot/$(ls -l $LOGD/chroot | wc -l) &&
 export CSCR=$SCRD/chroot &&
 export CTMP=$TMPD/chroot &&
 
 export CBLD=$CTMP/builds &&
 export CSRC=$CTMP/sources &&
-
-export CCCH=/usr/lib64/ccache &&
-
-export PATH=$TOOL/bin/ccache:$TOOL/bin:$CCCH:/usr/bin &&
 
 export AR=gcc-ar &&
 export NM=gcc-nm &&
