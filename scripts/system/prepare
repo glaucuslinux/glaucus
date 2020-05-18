@@ -65,4 +65,4 @@ printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
 
 printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
 
-$RSYNC /backup/chroot/ $TOOL --delete
+$RSYNC $BAKD/chroot/ $TOOL --delete
