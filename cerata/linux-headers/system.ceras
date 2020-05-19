@@ -9,6 +9,7 @@ prepare() {
   cd $SRCD/linux/linux-$ver &&
 
   $MAKE \
+    ARCH=$LARCH \
     mrproper
 } &&
 
