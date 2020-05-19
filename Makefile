@@ -6,7 +6,7 @@ export LOGD=$(GLAD)/logs
 export SCRD=$(GLAD)/scripts
 export SRCD=$(GLAD)/sources
 export TMPD=$(GLAD)/temporary
-export TOOD=$(GLAD)/toolchain
+export TLCD=$(GLAD)/toolchain
 
 export TOOL=/toolchain
 
@@ -40,7 +40,6 @@ chroot:
 	time scripts/$@/run
 
 system:
-	export GLAD=$(PWD)
 	export PATH=/usr/bin/ccache:/usr/bin:/bin:$(TOOL)/bin/ccache:$(TOOL)/bin
 	time scripts/$@/run
 
