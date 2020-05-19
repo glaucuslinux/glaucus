@@ -33,9 +33,9 @@ scripts/verify linguist-language=Shell
 
 scripts/chroot/backup linguist-language=Shell
 scripts/chroot/check linguist-language=Shell
-scripts/chroot/chroot linguist-language=Shell
 scripts/chroot/clean linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
+scripts/chroot/enter linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
 scripts/chroot/resolv linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
