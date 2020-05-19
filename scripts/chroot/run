@@ -17,4 +17,4 @@ $SCRD/log $CLOG $CSCR/construct &&
 
 . $SCRD/system/check &&
 
-. $CSCR/chroot
+. $CSCR/enter
