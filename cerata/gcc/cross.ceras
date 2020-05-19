@@ -5,12 +5,11 @@
 
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
-  
-  $RSYNC $SRCD/gmp/gmp-6.2.0/ $TSRC/$nom/gmp --delete &&
-  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
-  $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
-  
   cd $TSRC/$nom &&
+
+  $RSYNC $SRCD/gmp/gmp-6.2.0/ gmp --delete &&
+  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ mpfr --delete &&
+  $RSYNC $SRCD/mpc/mpc-1.1.0/ mpc --delete &&
 
   $SCRD/gnu guess . &&
   $SCRD/gnu rpath . &&
@@ -38,7 +37,7 @@ configure() {
     --libexecdir=$TOOL/lib \
     --libdir=$TOOL/lib \
     --with-local-prefix=$TOOL \
-    --with-native-system-header-dir=/toolchain/include \
+    --with-native-system-header-dir=$TOOL/include \
     --disable-shared \
     --disable-multilib \
     --disable-symvers \
