@@ -5,13 +5,12 @@
 
 prepare() {
   $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
- 
-  $RSYNC $SRCD/gmp/gmp-6.2.0/ $TSRC/$nom/gmp --delete &&
-  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ $TSRC/$nom/mpfr --delete &&
-  $RSYNC $SRCD/mpc/mpc-1.1.0/ $TSRC/$nom/mpc --delete &&
-  $RSYNC $SRCD/isl/isl-0.22.1/ $TSRC/$nom/isl --delete &&
-
   cd $TSRC/$nom &&
+ 
+  $RSYNC $SRCD/gmp/gmp-6.2.0/ gmp --delete &&
+  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ mpfr --delete &&
+  $RSYNC $SRCD/mpc/mpc-1.1.0/ mpc --delete &&
+  $RSYNC $SRCD/isl/isl-0.22.1/ isl --delete &&
 
   $SCRD/gnu guess . &&
   $SCRD/gnu rpath . &&
