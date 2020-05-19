@@ -5,7 +5,7 @@
 
 $MKDIR $BAKD &&
 $MKDIR $SRCD &&
-$MKDIR $TOLD &&
+$MKDIR $TLCD &&
 
 $MKDIR $LOGD/chroot &&
 $MKDIR $LOGD/system &&
