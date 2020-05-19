@@ -4,11 +4,11 @@
 sudo \
   $RM $TOOL &&
 
-$RM $TOLD &&
-$MKDIR $TOLD &&
+$RM $TLCD &&
+$MKDIR $TLCD &&
 
 sudo \
-  $LN $TOLD $TOOL &&
+  $LN $TLCD $TOOL &&
 
 $MKDIR $TOOL/lib &&
 $LN lib $TOOL/lib64
