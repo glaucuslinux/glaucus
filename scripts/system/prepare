@@ -16,6 +16,7 @@ $MKDIR $SCER &&
 
 $MKDIR /bin &&
 $MKDIR /boot &&
+$MKDIR /etc &&
 $MKDIR /usr/bin &&
 $MKDIR /usr/cerata &&
 $MKDIR /usr/include &&
