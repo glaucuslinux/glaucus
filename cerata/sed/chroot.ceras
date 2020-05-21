@@ -16,6 +16,7 @@ prepare() {
 } &&
 
 configure() {
+  LIBS=-lattr \
   $CSRC/$nom/configure \
     --host=$TUPL \
     --prefix=$TOOL \
