@@ -2,45 +2,47 @@
 # Distributed under the terms of the ISC License
 
 $RM $SBLD &&
-$RM $SCER &&
-
-$RM /bin &&
-$RM /boot &&
-$RM /root &&
-$RM /tmp &&
-$RM /usr &&
-$RM /var &&
-
 $MKDIR $SBLD &&
+
+$RM $SCER &&
 $MKDIR $SCER &&
 
-$MKDIR /bin &&
+$RM /boot &&
 $MKDIR /boot &&
-$MKDIR /etc &&
-$MKDIR /usr/bin &&
-$MKDIR /usr/cerata &&
-$MKDIR /usr/include &&
-$MKDIR /usr/lib &&
-$MKDIR /usr/share &&
-$MKDIR /var &&
-$MKDIR /var/lib &&
-$MKDIR /var/lib/urandom &&
-$MKDIR /var/log &&
 
+$MKDIR /etc &&
+
+printf 'root:x:0:
+tty:x:1:
+disk:x:2:
+audio:x:3:
+video:x:4:
+utmp:x:5:\n' > /etc/group &&
+
+printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
+
+printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
+
+$RM /lib &&
+
+$RM /root &&
 $MKDIR -m 0750 /root &&
+
+$RM /tmp &&
 $MKDIR -m 1777 /tmp &&
 
-$LN $TOOL/bin/echo /bin &&
-$LN $TOOL/bin/false /bin &&
-$LN $TOOL/bin/ls /bin &&
-
-$LN $TOOL/bin/dash /bin/sh &&
+$RM /usr &&
+$MKDIR /usr/bin &&
 
 $LN $TOOL/bin/dash /usr/bin &&
 $LN $TOOL/bin/env /usr/bin &&
 $LN $TOOL/bin/file /usr/bin &&
 $LN $TOOL/bin/pwd /usr/bin &&
 $LN $TOOL/bin/true /usr/bin &&
+
+$MKDIR /usr/cerata &&
+$MKDIR /usr/include &&
+$MKDIR /usr/lib &&
 
 $LN $TOOL/lib/libgcc_s.so /usr/lib &&
 $LN $TOOL/lib/libgcc_s.so.1 /usr/lib &&
@@ -55,15 +57,12 @@ $LN $TOOL/lib/libgomp.spec /usr/lib &&
 
 $LN $TOOL/lib/libz.so.1 /usr/lib &&
 
-printf 'root:x:0:
-tty:x:1:
-disk:x:2:
-audio:x:3:
-video:x:4:
-utmp:x:5:\n' > /etc/group &&
+$MKDIR /usr/share &&
 
-printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
-
-printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
+$RM /var &&
+$MKDIR /var &&
+$MKDIR /var/lib &&
+$MKDIR /var/lib/urandom &&
+$MKDIR /var/log &&
 
 $RSYNC $BAKD/chroot/ $TOOL --delete
