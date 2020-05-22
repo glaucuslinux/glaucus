@@ -19,7 +19,6 @@ $SCRD/check zlib-ng &&
 $SCRD/check lbzip2 &&
 $SCRD/check lbzip2-utils &&
 $SCRD/check xz &&
-$SCRD/check libedit &&
 $SCRD/check bc &&
 $SCRD/check skalibs &&
 $SCRD/check utmps &&

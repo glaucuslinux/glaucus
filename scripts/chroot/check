@@ -3,6 +3,7 @@
 
 $SCRD/check m4 &&
 $SCRD/check netbsd-curses &&
+$SCRD/check libedit &&
 $SCRD/check oksh &&
 $SCRD/check dash &&
 $SCRD/check libressl &&
