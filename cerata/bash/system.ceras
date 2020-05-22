@@ -31,8 +31,7 @@ prepare() {
 } &&
 
 configure() {
-  $AUTORECONF &&
-
+  LDFLAGS='-lcurses -lterminfo' \
   ./configure \
     --prefix=/usr \
     --enable-multibyte \
