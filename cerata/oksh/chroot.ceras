@@ -9,6 +9,9 @@ prepare() {
 } &&
 
 configure() {
+  $SCRD/patch 0 $nom glaucus 0001-netbsd-curses-compatibility &&
+
+  LDFLAGS=-lcurses \
   ./configure \
     --prefix=$TOOL \
     --bindir=$TOOL/bin \
