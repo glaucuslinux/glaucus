@@ -10,5 +10,7 @@ $MKDIR $TLCD &&
 sudo \
   $LN $TLCD $TOOL &&
 
+$MKDIR $TOOL/etc &&
+
 $MKDIR $TOOL/lib &&
 $LN lib $TOOL/lib64
