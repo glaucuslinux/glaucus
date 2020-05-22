@@ -3,6 +3,7 @@
 
 $SCRD/construct chroot m4 &&
 $SCRD/construct chroot netbsd-curses &&
+$SCRD/construct chroot libedit &&
 $SCRD/construct chroot oksh &&
 $SCRD/construct chroot dash &&
 $SCRD/construct chroot libressl &&
