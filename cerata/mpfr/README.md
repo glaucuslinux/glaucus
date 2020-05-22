@@ -53,3 +53,13 @@ configure: WARNING: If you did not use such an option, please send us a bug
 configure: WARNING: report so that we can try to find a workaround for your
 configure: WARNING: platform and/or document the behavior.
 ```
+
+LTO couldn't be enabled on the shared version of mpfr, as it would result
+in the following error when running configure:
+error: --enable-lto can only work in static mode (--disable-shared)
+
+Also, `--enable-decimal-float` can't be used on system mpfr...:
+```C
+configure: error: internal or link error.
+Please build MPFR without --enable-decimal-float.
+```
