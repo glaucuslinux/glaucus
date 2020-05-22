@@ -33,7 +33,7 @@ scripts/verify linguist-language=Shell
 
 scripts/chroot/backup linguist-language=Shell
 scripts/chroot/check linguist-language=Shell
-scripts/chroot/clean linguist-language=Shell
+scripts/chroot/strip linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
 scripts/chroot/enter linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
@@ -45,7 +45,7 @@ scripts/chroot/vkfs linguist-language=Shell
 
 scripts/system/adjust linguist-language=Shell
 scripts/system/check linguist-language=Shell
-scripts/system/clean linguist-language=Shell
+scripts/system/strip linguist-language=Shell
 scripts/system/configure linguist-language=Shell
 scripts/system/construct linguist-language=Shell
 scripts/system/envenomate linguist-language=Shell
