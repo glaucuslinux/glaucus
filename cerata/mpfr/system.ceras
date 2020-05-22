@@ -22,8 +22,7 @@ configure() {
     --enable-shared-cache \
     --disable-static \
     --enable-decimal-float \
-    --enable-float128 \
-    --enable-lto
+    --enable-float128
 } &&
 
 build() {
