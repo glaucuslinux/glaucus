@@ -4,7 +4,7 @@
 export SPCS=atlanticus &&
 
 ALIGN="$($SCRD/classify genome x86-64 -malign-data=cacheline)" &&
-COMMON=-fno-common &&
+COMMON=-fcommon &&
 DEBUG=-g0 &&
 DEVIRT=-fdevirtualize-at-ltrans &&
 EXPAND=-fvariable-expansion-in-unroller &&
@@ -27,17 +27,17 @@ SMS='-fmodulo-sched -fmodulo-sched-allow-regmoves' &&
 STRIP=-s &&
 TLS="$($SCRD/classify genome x86-64 -mtls-dialect=gnu2)" &&
 
-export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $COMMON $PLT $FARCH $TLS $FPMATH $ALIGN" &&
+export CFLAGS="$PIPE $OPENMP $DEBUG $OFAST $SMS $GCSE $IRA $IPA $GRAPHITE $MERGE $DEVIRT $SEMANTIC $EXPAND $LTO $PGO $STRIP $PLT $FARCH $TLS $FPMATH $ALIGN" &&
 
 export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
-export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$COMMON //")" &&
+export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$STRIP /&$COMMON /")" &&
 
 export CFLAGSFINITE="$(printf -- "$CFLAGS" | sed "s/$OFAST/& $FINITE/")" &&
 
-export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/$COMMON //" -e "s/$LTO //")" &&
+export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/$STRIP /&$COMMON /" -e "s/$LTO //")" &&
 export CFLAGSNOFPMATHNOLTO="$(printf -- "$CFLAGS" | sed -e "s/ $FPMATH//" -e "s/$LTO //")" &&
 
-export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$COMMON //")" &&
+export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$STRIP /&$COMMON /")" &&
 
 export CFLAGSNOIPANOLTO="$(printf -- "$CFLAGS" | sed -e "s/$IPA //" -e "s/$LTO //")" &&
 
