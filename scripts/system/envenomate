@@ -14,6 +14,7 @@ $SCRD/envenomate automake &&
 $SCRD/envenomate gettext-tiny &&
 $SCRD/envenomate bison &&
 $SCRD/envenomate netbsd-curses &&
+$SCRD/envenomate libedit &&
 $SCRD/envenomate bash &&
 $SCRD/envenomate zstd &&
 $SCRD/envenomate zlib-ng &&
@@ -21,7 +22,6 @@ $SCRD/envenomate lbzip2 &&
 $SCRD/envenomate lbzip2-utils &&
 $SCRD/envenomate xz &&
 $SCRD/envenomate file &&
-$SCRD/envenomate libedit &&
 $SCRD/envenomate m4 &&
 $SCRD/envenomate bc &&
 $SCRD/envenomate binutils &&
@@ -35,7 +35,7 @@ $SCRD/envenomate skalibs &&
 $SCRD/envenomate utmps &&
 $SCRD/envenomate libcap &&
 $SCRD/envenomate shadow &&
-$SCRD/envenomate gcc &&
+#$SCRD/envenomate gcc &&
 $SCRD/envenomate ccache &&
 $SCRD/envenomate pkgconf &&
 $SCRD/envenomate sed &&
