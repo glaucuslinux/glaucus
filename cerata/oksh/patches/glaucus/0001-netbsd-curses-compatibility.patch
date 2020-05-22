@@ -1,0 +1,20 @@
+--- configure
++++ configure
+@@ -101,7 +101,7 @@
+ #include <curses.h>
+ int main(void){setupterm(NULL, 0, NULL);return 0;}
+ EOF
+-  $cc $cflags $ldflags -o conftest conftest.c -lcurses > /dev/null 2>&1
++  $cc $cflags $ldflags -o conftest conftest.c -lcurses -lterminfo > /dev/null 2>&1
+   if [ $? -eq 0 ] ; then
+     rm -f conftest conftest.o conftest.c
+     return 0
+@@ -688,7 +688,7 @@
+ if [ $curses -eq 1 ] ; then
+   cursescheck
+   if [ $? -eq 0 ] ; then
+-    libs="-lcurses"
++    libs="-lcurses -lterminfo"
+     echo "#define HAVE_CURSES" >> pconfig.h
+     echo "curses.h"
+   else
