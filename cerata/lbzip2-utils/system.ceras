@@ -29,7 +29,7 @@ install() {
   $LN lbzegrep $SCER/$nom/sac/usr/bin/bzegrep &&
   $LN lbzfgrep $SCER/$nom/sac/usr/bin/bzfgrep &&
   $LN lbzgrep $SCER/$nom/sac/usr/bin/bzgrep &&
-  $LN lbzrecover $SCER/$nom/sac/usr/bin/bzip2recover
+  $LN lbzrecover $SCER/$nom/sac/usr/bin/bzip2recover &&
   $LN lbzless $SCER/$nom/sac/usr/bin/bzless &&
   $LN lbzmore $SCER/$nom/sac/usr/bin/bzmore
 }
