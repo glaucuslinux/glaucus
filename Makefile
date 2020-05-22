@@ -77,7 +77,11 @@ endif
 
 enter enter-chroot:
 	. $(SCRD)/chroot/variables
+	. $(SCRD)/chroot/root
+	. $(SCRD)/chroot/compat
 	. $(SCRD)/chroot/vkfs
+	. $(SCRD)/chroot/resolv
+	. $(SCRD)/system/check
 	. $(SCRD)/chroot/enter
 
 .PHONY: toolchain
