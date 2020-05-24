@@ -11,6 +11,7 @@ prepare() {
   cd $SSRC/$nom &&
 
   $MAKE \
+    ARCH=$LARCH \
     mrproper &&
 
   $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups.patch &&
@@ -67,21 +68,25 @@ configure() {
 
   $MAKE \
     O=$SBLD/$nom \
+    ARCH=$LARCH \
     oldconfig &&
   
   $MAKE \
     O=$SBLD/$nom \
+    ARCH=$LARCH \
     prepare
 } &&
 
 build() {
   $MAKE \
-    O=$SBLD/$nom
+    O=$SBLD/$nom \
+    ARCH=$LARCH
 } &&
 
 install() {
   $MAKE \
     O=$SBLD/$nom \
+    ARCH=$LARCH \
     INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
     modules_install &&
 
