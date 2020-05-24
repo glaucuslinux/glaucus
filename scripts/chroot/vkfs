@@ -19,10 +19,10 @@ sudo \
   mount -vB /dev $GLAD/dev &&
 
 sudo \
-  mount -vt devpts -o noexec,nosuid,gid=1,mode=0600 devpts $GLAD/dev/pts &&
+  mount -vt devpts -o gid=1,mode=0600 devpts $GLAD/dev/pts &&
 sudo \
-  mount -vt proc -o nodev,noexec,nosuid proc $GLAD/proc &&
+  mount -vt proc proc $GLAD/proc &&
 sudo \
-  mount -vt sysfs -o noatime,nodev,noexec,nosuid sys $GLAD/sys &&
+  mount -vt sysfs sys $GLAD/sys &&
 sudo \
-  mount -vt tmpfs -o noatime,nodev,noexec,nosuid tmpfs $GLAD/run
+  mount -vt tmpfs tmpfs $GLAD/run
