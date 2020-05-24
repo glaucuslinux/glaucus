@@ -17,17 +17,97 @@ configure() {
 } &&
 
 build() {
-  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
+  CFLAGS="$CFLAGSNOCOMMONNOLTO" \
   LDFLAGS="$LDFLAGSNORELRO" \
   $MAKE
 } &&
 
 install() {
   $MKDIR $SCER/$nom/sac/usr/bin &&
-
   $RSYNC $nom $SCER/$nom/sac/usr/bin &&
 
-  for i in $(./$nom); do
-    $LN $nom $SCER/$nom/sac/usr/bin/$i
-  done
+  $LN $nom $SCER/$nom/sac/usr/bin/base64 &&
+  $LN $nom $SCER/$nom/sac/usr/bin/basename &&
+  $LN $nom $SCER/$nom/sac/usr/bin/cat &&
+  $LN $nom $SCER/$nom/sac/usr/bin/chgrp &&
+  $LN $nom $SCER/$nom/sac/usr/bin/chmod &&
+  $LN $nom $SCER/$nom/sac/usr/bin/chown &&
+  $LN $nom $SCER/$nom/sac/usr/bin/chroot &&
+  $LN $nom $SCER/$nom/sac/usr/bin/cksum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/comm &&
+  $LN $nom $SCER/$nom/sac/usr/bin/cp &&
+  $LN $nom $SCER/$nom/sac/usr/bin/cut &&
+  $LN $nom $SCER/$nom/sac/usr/bin/date &&
+  $LN $nom $SCER/$nom/sac/usr/bin/dd &&
+  $LN $nom $SCER/$nom/sac/usr/bin/df &&
+  $LN $nom $SCER/$nom/sac/usr/bin/dirname &&
+  $LN $nom $SCER/$nom/sac/usr/bin/du &&
+  $LN $nom $SCER/$nom/sac/usr/bin/echo &&
+  $LN $nom $SCER/$nom/sac/usr/bin/env &&
+  $LN $nom $SCER/$nom/sac/usr/bin/expand &&
+  $LN $nom $SCER/$nom/sac/usr/bin/expr
+  $LN $nom $SCER/$nom/sac/usr/bin/factor &&
+  $LN $nom $SCER/$nom/sac/usr/bin/false &&
+  $LN $nom $SCER/$nom/sac/usr/bin/fmt &&
+  $LN $nom $SCER/$nom/sac/usr/bin/fold &&
+  $LN $nom $SCER/$nom/sac/usr/bin/groups &&
+  $LN $nom $SCER/$nom/sac/usr/bin/head &&
+  $LN $nom $SCER/$nom/sac/usr/bin/hostid &&
+  $LN $nom $SCER/$nom/sac/usr/bin/iconv &&
+  $LN $nom $SCER/$nom/sac/usr/bin/id &&
+  $LN $nom $SCER/$nom/sac/usr/bin/install &&
+  $LN $nom $SCER/$nom/sac/usr/bin/iotop &&
+  $LN $nom $SCER/$nom/sac/usr/bin/link &&
+  $LN $nom $SCER/$nom/sac/usr/bin/ln &&
+  $LN $nom $SCER/$nom/sac/usr/bin/logname &&
+  $LN $nom $SCER/$nom/sac/usr/bin/ls &&
+  $LN $nom $SCER/$nom/sac/usr/bin/md5sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/mkdir &&
+  $LN $nom $SCER/$nom/sac/usr/bin/mkfifo &&
+  $LN $nom $SCER/$nom/sac/usr/bin/mknod &&
+  $LN $nom $SCER/$nom/sac/usr/bin/mktemp &&
+  $LN $nom $SCER/$nom/sac/usr/bin/mv &&
+  $LN $nom $SCER/$nom/sac/usr/bin/nice &&
+  $LN $nom $SCER/$nom/sac/usr/bin/nl &&
+  $LN $nom $SCER/$nom/sac/usr/bin/nohup &&
+  $LN $nom $SCER/$nom/sac/usr/bin/nproc &&
+  $LN $nom $SCER/$nom/sac/usr/bin/od &&
+  $LN $nom $SCER/$nom/sac/usr/bin/paste &&
+  $LN $nom $SCER/$nom/sac/usr/bin/printenv &&
+  $LN $nom $SCER/$nom/sac/usr/bin/printf &&
+  $LN $nom $SCER/$nom/sac/usr/bin/pwd &&
+  $LN $nom $SCER/$nom/sac/usr/bin/readlink &&
+  $LN $nom $SCER/$nom/sac/usr/bin/realpath &&
+  $LN $nom $SCER/$nom/sac/usr/bin/rm &&
+  $LN $nom $SCER/$nom/sac/usr/bin/rmdir &&
+  $LN $nom $SCER/$nom/sac/usr/bin/seq &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sha1sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sha224sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sha256sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sha384sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sha512sum &&
+  $LN $nom $SCER/$nom/sac/usr/bin/shred &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sleep &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sort &&
+  $LN $nom $SCER/$nom/sac/usr/bin/split &&
+  $LN $nom $SCER/$nom/sac/usr/bin/stat &&
+  $LN $nom $SCER/$nom/sac/usr/bin/sync &&
+  $LN $nom $SCER/$nom/sac/usr/bin/tac &&
+  $LN $nom $SCER/$nom/sac/usr/bin/tail &&
+  $LN $nom $SCER/$nom/sac/usr/bin/tee &&
+  $LN $nom $SCER/$nom/sac/usr/bin/test &&
+  $LN $nom $SCER/$nom/sac/usr/bin/time &&
+  $LN $nom $SCER/$nom/sac/usr/bin/timeout &&
+  $LN $nom $SCER/$nom/sac/usr/bin/touch &&
+  $LN $nom $SCER/$nom/sac/usr/bin/tr &&
+  $LN $nom $SCER/$nom/sac/usr/bin/true &&
+  $LN $nom $SCER/$nom/sac/usr/bin/truncate &&
+  $LN $nom $SCER/$nom/sac/usr/bin/tty &&
+  $LN $nom $SCER/$nom/sac/usr/bin/uname &&
+  $LN $nom $SCER/$nom/sac/usr/bin/uniq &&
+  $LN $nom $SCER/$nom/sac/usr/bin/unlink &&
+  $LN $nom $SCER/$nom/sac/usr/bin/wc &&
+  $LN $nom $SCER/$nom/sac/usr/bin/who &&
+  $LN $nom $SCER/$nom/sac/usr/bin/whoami &&
+  $LN $nom $SCER/$nom/sac/usr/bin/yes
 }

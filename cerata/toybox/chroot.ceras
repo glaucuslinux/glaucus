@@ -17,7 +17,7 @@ configure() {
 } &&
 
 build() {
-  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMONNOLTO" "$CFLAGSNOLTO")" \
+  CFLAGS="$CFLAGSNOCOMMONNOLTO" \
   LDFLAGS="$LDFLAGSNORELRO" \
   $MAKE
 } &&
