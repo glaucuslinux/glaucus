@@ -12,7 +12,4 @@ export AR=gcc-ar &&
 export NM=gcc-nm &&
 export RANLIB=gcc-ranlib &&
 
-. $SCRD/genome &&
-
-. $SCRD/species &&
 export CPPFLAGS=-I$TOOL/include
