@@ -6,6 +6,9 @@
 . $SCRD/system/variables &&
 . $SSCR/prepare &&
 
+. $SCRD/genome &&
+. $SCRD/species &&
+
 $SCRD/log $SLOG $SSCR/construct &&
 
 . $SSCR/adjust &&
