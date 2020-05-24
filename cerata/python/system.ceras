@@ -10,8 +10,7 @@ prepare() {
   $SCRD/gnu guess . &&
   $SCRD/gnu sub . &&
 
-  $SCRD/patch 1 $nom clear 0001-Fix-$nom-path-for-linux &&
-  $SCRD/patch 1 $nom clear CVE-2020-8492
+  $SCRD/patch 1 $nom clear 0001-Fix-$nom-path-for-linux
 } &&
 
 configure() {
