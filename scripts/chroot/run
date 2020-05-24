@@ -7,12 +7,14 @@
 . $CSCR/check &&
 . $CSCR/prepare &&
 
+. $SCRD/genome &&
+. $SCRD/species &&
+
 $SCRD/log $CLOG $CSCR/construct &&
 
 . $CSCR/strip &&
 . $CSCR/backup &&
 . $CSCR/root &&
-. $CSCR/compat &&
 . $CSCR/vkfs &&
 . $CSCR/resolv &&
 
