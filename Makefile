@@ -17,7 +17,7 @@ export PATH=$(TOOL)/bin/ccache:$(TOOL)/bin:$(CCCH):/usr/bin
 export AUTORECONF=autoreconf -vfis
 export CHMOD=chmod -Rv
 export CHOWN=chown -Rv
-export LN=ln -fsv
+export LN=ln -fnsv
 export MAKE=make \
 	V=1
 export MKDIR=$(shell which install) -dv
@@ -40,7 +40,6 @@ chroot:
 	time scripts/$@/run
 
 system:
-	export PATH=/usr/bin/ccache:/usr/bin:/bin:$(TOOL)/bin/ccache:$(TOOL)/bin
 	time scripts/$@/run
 
 release:
@@ -75,10 +74,9 @@ else
 	@exit 1
 endif
 
-enter enter-chroot:
+enter enter-chroot: restore-chroot
 	. $(SCRD)/chroot/variables
 	. $(SCRD)/chroot/root
-	. $(SCRD)/chroot/compat
 	. $(SCRD)/chroot/vkfs
 	. $(SCRD)/chroot/resolv
 	. $(SCRD)/system/check
