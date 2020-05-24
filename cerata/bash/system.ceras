@@ -31,15 +31,12 @@ prepare() {
 } &&
 
 configure() {
-  LDFLAGS='-lcurses -lterminfo' \
   ./configure \
     --prefix=/usr \
     --enable-multibyte \
     --disable-nls \
     --disable-rpath \
     --without-$nom-malloc \
-    --with-curses \
-    --with-installed-readline \
     --without-included-gettext
 } &&
 
