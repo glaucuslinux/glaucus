@@ -3,8 +3,8 @@
 
 export SPCS=bennettae &&
 
-ALIGN="$($SCRD/classify genome riscv64 -malign-data=natural)" &&
 AUNWIND=-fno-asynchronous-unwind-tables &&
+COMMON=-fcommon &&
 DSECTS=-fdata-sections &&
 DEBUG=-g0 &&
 FAT=-ffat-lto-objects &&
@@ -16,15 +16,21 @@ PIPE=-pipe &&
 STRIP=-s &&
 UNWIND=-fno-unwind-tables &&
 
-export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH $ALIGN" &&
+export CFLAGS="$PIPE $DEBUG $OS $OMIT $LTO $FSECTS $DSECTS $STRIP $UNWIND $AUNWIND $FARCH " &&
 
 export CFLAGSFAT="$(printf -- "$CFLAGS" | sed "s/$LTO/& $FAT/")" &&
+export CFLAGSFATNOCOMMON="$(printf -- "$CFLAGSFAT" | sed "s/$STRIP /&$COMMON /")" &&
 export CFLAGSFATNODSECTS="$(printf -- "$CFLAGSFAT" | sed "s/$DSECTS //")" &&
 
 export CFLAGSNODSECTS="$(printf -- "$CFLAGS" | sed "s/$DSECTS //")" &&
+
+export CFLAGSNOCOMMON="$(printf -- "$CFLAGS" | sed "s/$STRIP /&$COMMON /")" &&
+export CFLAGSNOCOMMONNOLTO="$(printf -- "$CFLAGS" | sed -e "s/$STRIP /&$COMMON /" -e "s/$LTO //")" &&
 
 export CFLAGSNOLTO="$(printf -- "$CFLAGS" | sed "s/$LTO //")" &&
 
 export CXXFLAGS="$CFLAGS" &&
 
-export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed -Wl,--gc-sections $CFLAGS"
+export LDFLAGS="-Wl,--strip-all -Wl,-z,now,-z,relro -Wl,--as-needed -Wl,--gc-sections $CFLAGS" &&
+
+export LDFLAGSNORELRO="-Wl,--strip-all -Wl,--as-needed $CFLAGS"
