@@ -15,13 +15,13 @@ prepare() {
 } &&
 
 configure() {
-  CFLAGS="$($SCRD/classify species atlanticus "$CFLAGSNOCOMMON" "$CFLAGS")" \
+  CFLAGS="$CFLAGSNOCOMMON" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --disable-static \
-    --with-pkg-config-dir=/usr/lib/pkgconf:/usr/share/pkgconfig
+    --with-pkg-config-dir=/usr/lib/pkgconfig:/usr/share/pkgconfig
 } &&
 
 build() {
