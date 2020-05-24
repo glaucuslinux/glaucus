@@ -1,16 +1,27 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+$RSYNC $BAKD/chroot/ $TOOL --delete &&
+
 $RM $SBLD &&
 $MKDIR $SBLD &&
 
 $RM $SCER &&
 $MKDIR $SCER &&
 
+$RM /bin &&
+$MKDIR /bin &&
+
+$LN $TOOL/bin/echo /bin &&
+$LN $TOOL/bin/false /bin &&
+$LN $TOOL/bin/ls /bin &&
+
+$LN $TOOL/bin/dash /bin/sh &&
+
+$LN /usr/bin/bash /bin &&
+
 $RM /boot &&
 $MKDIR /boot &&
-
-$MKDIR /etc &&
 
 printf 'root:x:0:
 tty:x:1:
@@ -20,6 +31,8 @@ video:x:4:
 utmp:x:5:\n' > /etc/group &&
 
 printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
+
+$LN /proc/self/mounts /etc/mtab &&
 
 printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
 
@@ -50,19 +63,16 @@ $LN $TOOL/lib/libgcc_s.so.1 /usr/lib &&
 $LN $TOOL/lib/libstdc++.so /usr/lib &&
 $LN $TOOL/lib/libstdc++.so.6 /usr/lib &&
 
-$LN $TOOL/lib/libgomp.so /usr/lib &&
-$LN $TOOL/lib/libgomp.so.1 /usr/lib &&
-$LN $TOOL/lib/libgomp.so.1.0.0 /usr/lib &&
-$LN $TOOL/lib/libgomp.spec /usr/lib &&
-
-$LN $TOOL/lib/libz.so.1 /usr/lib &&
+grep -q atlanticus $SCRD/$(readlink $SCRD/species) && {
+  $LN $TOOL/lib/libgomp.so /usr/lib &&
+  $LN $TOOL/lib/libgomp.so.1 /usr/lib &&
+  $LN $TOOL/lib/libgomp.so.1.0.0 /usr/lib &&
+  $LN $TOOL/lib/libgomp.spec /usr/lib;
+} ||
 
 $MKDIR /usr/share &&
 
 $RM /var &&
-$MKDIR /var &&
 $MKDIR /var/lib &&
 $MKDIR /var/lib/urandom &&
-$MKDIR /var/log &&
-
-$RSYNC $BAKD/chroot/ $TOOL --delete
+$MKDIR /var/log
