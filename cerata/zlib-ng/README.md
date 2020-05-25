@@ -19,3 +19,7 @@ Doesn't build with `-fno-common`:
 collect2: error: ld returned 1 exit status
 make: *** [Makefile:233: example] Error 1
 ```
+### Install
+Don't install as `install-shared` in system because we need the header files it
+provides for certain cerata (e.g. `ccache` when used with
+`--without-bundled-zlib`).
