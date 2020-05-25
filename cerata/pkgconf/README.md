@@ -1,4 +1,8 @@
 # pkgconf
+## Chroot
+### Configure
+`--with-sysroot` has to be specified and given a value of `$GLAD` because our
+cross/native toolchain won't list a sysroot with `gcc --print-sysroot`.
 ## System
 ### Configure
 No need to specify `--with-system-libdir` and `--with-system-includedir` when
