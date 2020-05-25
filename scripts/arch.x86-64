@@ -12,4 +12,4 @@ export GARCH="--with-arch=$ARCH \
 export LARCH=x86_64 &&
 export MARCH=$LARCH &&
 
-export TUPL=$LARCH-glaucus-linux-musl
+export TUPL=$LARCH-linux-musl
