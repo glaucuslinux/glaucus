@@ -23,7 +23,6 @@ $SCRD/check bc &&
 $SCRD/check skalibs &&
 $SCRD/check utmps &&
 $SCRD/check shadow &&
-$SCRD/check pkgconf &&
 $SCRD/check libcap &&
 $SCRD/check psmisc &&
 $SCRD/check flex &&

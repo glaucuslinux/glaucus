@@ -8,6 +8,12 @@ export CTMP=$TMPD/chroot &&
 export CBLD=$CTMP/builds &&
 export CSRC=$CTMP/sources &&
 
+export PKG_CONFIG_PATH=$TOOL/lib/pkgconfig:$TOOL/share/pkgconfig &&
+export PKG_CONFIG_LIBDIR=$TOOL/lib/pkgconfig:$TOOL/share/pkgconfig &&
+export PKG_CONFIG_SYSROOT_DIR=$GLAD &&
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$TOOL/include &&
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$TOOL/lib &&
+
 export AR=gcc-ar &&
 export NM=gcc-nm &&
 export RANLIB=gcc-ranlib &&
