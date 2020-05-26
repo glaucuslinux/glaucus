@@ -29,7 +29,8 @@ install() {
   $MAKE \
     install &&
 
-  $RSYNC $CERD/$nom/ld-$nom-$MARCH.path.system /etc/ld-$nom-$MARCH.path &&
+  $RSYNC $CERD/$nom/ld-$nom.path.system /etc/ld-$nom-$MARCH.path &&
+  $CHOWN 0:0 /etc/ld-$nom-$MARCH.path &&
 
   $RSYNC $CERD/$nom/ldconfig /usr/bin &&
 

@@ -34,5 +34,5 @@ install() {
 
   $LN ../lib/ld-$nom-$MARCH.so.1 $TOOL/bin/ldd &&
 
-  $RSYNC $CERD/$nom/ld-$nom-$MARCH.path.native $TOOL/etc/ld-$nom-$MARCH.path
+  $RSYNC $CERD/$nom/ld-$nom.path.native $TOOL/etc/ld-$nom-$MARCH.path
 }
