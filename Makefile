@@ -12,53 +12,52 @@ export TOOL=/toolchain
 
 export CCCH=/usr/lib64/ccache
 
-export PATH=$(TOOL)/bin/ccache:$(TOOL)/bin:$(CCCH):/usr/bin
+export PATH=$(TOOL)/bin/ccache:$(TOOL)/bin:$(TOOL)/lib/gcc:$(CCCH):/usr/bin
 
-export AUTORECONF=autoreconf -vfis
-export CHMOD=chmod -Rv
-export CHOWN=chown -Rv
-export LN=ln -fnsv
-export MAKE=make \
-	V=1
-export MKDIR=$(shell which install) -dv
-export MV=mv -v
-export RM=rm -frv
-export RSYNC=rsync -vaHAXSx
-export UMOUNT=umount -fRv
+export AUTORECONF=autoreconf -fis
+export CHMOD=chmod -R
+export CHOWN=chown -R
+export LN=ln -fns
+export MAKE=make
+export MKDIR=$(shell which install) -d
+export MV=mv
+export RM=rm -fr
+export RSYNC=rsync -aHAXSx
+export UMOUNT=umount -fqR
 
-export MAKEFLAGS=-j1
+export MAKEFLAGS=-j12
 
 all: toolchain chroot
 
 initialize:
-	time scripts/$@
+	@scripts/$@
 
 toolchain:
-	time scripts/$@/run
+	@scripts/$@/run
 
 chroot:
-	time scripts/$@/run
+	@scripts/$@/run
 
 system:
-	time scripts/$@/run
+	@scripts/$@/run
 
 release:
-	time scripts/$@
+	@scripts/$@
 
 clean:
-	time scripts/$@
+	@scripts/$@
 
 distclean:
-	time scripts/$@
-	$(RM) $(BAKD)
-	$(RM) $(LOGD)
-	$(RM) $(SRCD)
-	$(RM) $(TMPD)
-	$(RM) $(TOLD)
+	@scripts/$@
+	@$(RM) $(BAKD)
+	@$(RM) $(LOGD)
+	@$(RM) $(SRCD)
+	@$(RM) $(TMPD)
+	@$(RM) $(TOLD)
 
 restore restore-toolchain: clean
 ifneq ($(wildcard $(BAKD)/toolchain/*),)
-	sudo \
+	@sudo \
 		$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the toolchain first!
@@ -67,7 +66,7 @@ endif
 
 restore-chroot: clean
 ifneq ($(wildcard $(BAKD)/chroot/*),)
-	sudo \
+	@sudo \
 		$(RSYNC) $(BAKD)/chroot/ $(GLAD)/toolchain --delete
 else
 	@echo Please construct the chroot first!
@@ -75,11 +74,11 @@ else
 endif
 
 enter enter-chroot: restore-chroot
-	. $(SCRD)/chroot/variables
-	. $(SCRD)/chroot/root
-	. $(SCRD)/chroot/vkfs
-	. $(SCRD)/chroot/resolv
-	. $(SCRD)/system/check
-	. $(SCRD)/chroot/enter
+	@. $(SCRD)/chroot/variables
+	@. $(SCRD)/chroot/root
+	@. $(SCRD)/chroot/vkfs
+	@. $(SCRD)/chroot/resolv
+	@. $(SCRD)/system/check
+	@. $(SCRD)/chroot/enter
 
 .PHONY: toolchain
