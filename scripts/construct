@@ -1,4 +1,4 @@
-#!/usr/bin/dash -eux
+#!/usr/bin/dash -e
 
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
@@ -6,18 +6,30 @@
 . $CERD/$2/ceras &&
 . $CERD/$nom/$1.ceras &&
 
-prepare ||
-$SCRD/exit $1 $nom prepare $? ||
-exit &&
+$SCRD/contact 34 "$nom version $ver" &&
 
-configure ||
-$SCRD/exit $1 $nom configure $? ||
-exit &&
-
-build ||
-$SCRD/exit $1 $nom build $? ||
-exit &&
-
-install ||
-$SCRD/exit $1 $nom install $? ||
+$SCRD/contact 34 "~~\033[0m prepare" &&
+$MKDIR $FLOG/$nom/prepare &&
+prepare > $FLOG/$nom/prepare/out.log 2> $FLOG/$nom/prepare/err.log ||
+$SCRD/die $1 $nom prepare $? ||
 exit
+
+$SCRD/contact 34 "~~\033[0m configure" &&
+$MKDIR $FLOG/$nom/configure &&
+configure > $FLOG/$nom/configure/out.log 2> $FLOG/$nom/configure/err.log ||
+$SCRD/die $1 $nom configure $? ||
+exit
+
+$SCRD/contact 34 "~~\033[0m build" &&
+$MKDIR $FLOG/$nom/build &&
+build > $FLOG/$nom/build/out.log 2> $FLOG/$nom/build/err.log ||
+$SCRD/die $1 $nom build $? ||
+exit
+
+$SCRD/contact 34 "~~\033[0m install" &&
+$MKDIR $FLOG/$nom/install &&
+install > $FLOG/$nom/install/out.log 2> $FLOG/$nom/install/err.log ||
+$SCRD/die $1 $nom install $? ||
+exit
+
+$SCRD/contact 34 "\033[0m"
