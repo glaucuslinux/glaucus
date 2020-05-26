@@ -16,13 +16,13 @@ sudo \
   mknod -m 666 $GLAD/dev/null c 1 3 &&
 
 sudo \
-  mount -vB /dev $GLAD/dev &&
+  mount -B /dev $GLAD/dev &&
 
 sudo \
-  mount -vt devpts -o gid=1,mode=0600 devpts $GLAD/dev/pts &&
+  mount -t devpts -o gid=1,mode=0600 devpts $GLAD/dev/pts &&
 sudo \
-  mount -vt proc proc $GLAD/proc &&
+  mount -t proc proc $GLAD/proc &&
 sudo \
-  mount -vt sysfs sys $GLAD/sys &&
+  mount -t sysfs sys $GLAD/sys &&
 sudo \
-  mount -vt tmpfs tmpfs $GLAD/run
+  mount -t tmpfs tmpfs $GLAD/run
