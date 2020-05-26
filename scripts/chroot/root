@@ -2,4 +2,4 @@
 # Distributed under the terms of the ISC License
 
 sudo \
-  chown -Rv 0:0 $TOOL/
+  $CHOWN 0:0 $TLCD
