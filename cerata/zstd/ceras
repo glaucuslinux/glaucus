@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=zstd
-ver=1.4.4
-url=https://github.com/facebook/$nom/releases/download/v$ver/$nom-$ver.tar.gz
-sum=f12b6f38bd322a0538179ef90e4c83d2cba29e1fef391a8e8e964785e5761e7ba685f62e9a5a1d6b66171fd64e4fd6374e607569531e2f4c05c470cff2294454
+ver=1.4.5
+url=https://github.com/facebook/$nom/releases/download/v$ver/$nom-$ver.tar.zst
+sum=f41783d032763c0b50ea66a8539df118d794c8477d6f42d6ba5a8bd4032af3a77c53906f61a6e66e9779d6b24f850451a30deaeaa6a6282b45f2873c78296470
 lic='BSD-3-Clause GPL-2.0-only'
