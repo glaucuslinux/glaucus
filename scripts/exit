@@ -1,7 +1,0 @@
-#!/usr/bin/dash -eux
-
-# Copyright (c) 2018-2020, Firas Khalil Khana
-# Distributed under the terms of the ISC License
-
-[ $4 ] && printf "\n\033[0;41m$1 $2 $3 exited with status $4\033[0m\n" >&2 &&
-exit $4
