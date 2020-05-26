@@ -5,9 +5,9 @@ $RM $TOOL/lib64 &&
 
 find $TOOL/ -name *.la -delete &&
 
-strip -gv $TOOL/lib/* ||
+strip -g $TOOL/lib/* ||
 true
-/usr/bin/strip --strip-unneeded -v $TOOL/bin/* ||
+/usr/bin/strip --strip-unneeded $TOOL/bin/* ||
 true
 
 $RM $TOOL/share/doc &&
