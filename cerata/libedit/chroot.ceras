@@ -15,6 +15,7 @@ prepare() {
 } &&
 
 configure() {
+  CFLAGS="$CFLAGS -D__STDC_ISO_10646__" \
   $CSRC/$nom/configure \
     --prefix=$TOOL \
     --disable-static \

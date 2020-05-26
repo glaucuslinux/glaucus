@@ -15,6 +15,7 @@ prepare() {
 } &&
 
 configure() {
+  CFLAGS="$CFLAGS -D__STDC_ISO_10646__" \
   $SSRC/$nom/configure \
     --prefix=/usr \
     --disable-static \
