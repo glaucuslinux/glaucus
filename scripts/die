@@ -1,0 +1,8 @@
+#!/usr/bin/dash -e
+
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+[ $4 ] && printf "\033[0;31m~~ ~~ exit with status $4\033[0m\n" >&2 &&
+tail $FLOG/$2/$3/err.log | sed -e "s/^/$(printf '\033[0;31m~~ ~~ ')/" -e "s/$/$(printf '\033[0m')/" &&
+exit $4
