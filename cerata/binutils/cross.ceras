@@ -30,7 +30,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
-    --with-lib-path==$TOOL/lib \
+    --with-lib-path=$TOOL/lib \
     --with-sysroot=$GLAD \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \

@@ -24,7 +24,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
-    --with-lib-path==$TOOL/lib \
+    --with-lib-path=$TOOL/lib \
     --with-sysroot \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
@@ -48,7 +48,7 @@ install() {
     -C ld clean &&
 
   $MAKE \
-    LIB_PATH==/usr/lib \
+    LIB_PATH=/usr/lib \
     -C ld &&
 
   $RSYNC ld/ld-new $TOOL/bin &&
