@@ -4,7 +4,8 @@
 sudo \
   $RM $TOOL &&
 
-$RM $TLCD &&
+sudo \
+  $RM $TLCD &&
 $MKDIR $TLCD &&
 
 sudo \
