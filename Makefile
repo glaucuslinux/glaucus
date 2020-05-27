@@ -31,21 +31,27 @@ all: toolchain chroot
 
 initialize:
 	@scripts/$@
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 toolchain:
 	@scripts/$@/run
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 chroot:
 	@scripts/$@/run
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 system:
 	@scripts/$@/run
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 release:
 	@scripts/$@
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 clean:
 	@scripts/$@
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 distclean:
 	@scripts/$@
@@ -54,11 +60,13 @@ distclean:
 	@$(RM) $(SRCD)
 	@$(RM) $(TMPD)
 	@$(RM) $(TOLD)
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 restore restore-toolchain: clean
 ifneq ($(wildcard $(BAKD)/toolchain/*),)
 	@sudo \
 		$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 else
 	@echo Please construct the toolchain first!
 	@exit 1
@@ -68,6 +76,7 @@ restore-chroot: clean
 ifneq ($(wildcard $(BAKD)/chroot/*),)
 	@sudo \
 		$(RSYNC) $(BAKD)/chroot/ $(GLAD)/toolchain --delete
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 else
 	@echo Please construct the chroot first!
 	@exit 1
@@ -80,5 +89,6 @@ enter enter-chroot: restore-chroot
 	@. $(SCRD)/chroot/resolv
 	@. $(SCRD)/system/check
 	@. $(SCRD)/chroot/enter
+	@$(SCRD)/contact 34 "\033[0m $@ complete"
 
 .PHONY: toolchain
