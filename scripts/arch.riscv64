@@ -13,4 +13,4 @@ export GARCH="--with-arch=rv64imafdc \
 export LARCH=riscv &&
 export MARCH=$ARCH &&
 
-export TUPL=$ARCH-linux-musl
+export TUPL=$ARCH-glaucus-linux-musl
