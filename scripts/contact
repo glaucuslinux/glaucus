@@ -3,4 +3,4 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-printf "\033[0;${1}m~~ $2\n"
+printf "\033[0;34m~~\033[0m $1\n"

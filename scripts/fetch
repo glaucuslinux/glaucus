@@ -1,19 +1,19 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$SCRD/contact 34 "~~\033[0m fetch $nom" &&
+$SCRD/contact "fetch $nom" &&
 
 if [ $ver = git ]; then
-  $SCRD/contact 34 "~~\033[0m clone $nom" &&
+  $SCRD/contact "clone $nom" &&
   git clone -q $url $SRCD/$nom &&
 
-  $SCRD/contact 34 "\033[0m"
+  $SCRD/contact
 else
-  $SCRD/contact 34 "~~\033[0m download $nom" &&
+  $SCRD/contact "download $nom" &&
   curl -Lso $SRCD/$nom/$(basename $url) $url &&
 
   . $SCRD/verify &&
 
-  $SCRD/contact 34 "~~\033[0m extract $nom" &&
+  $SCRD/contact "extract $nom" &&
   tar xf $SRCD/$nom/$(basename $url) -C $SRCD/$nom
 fi

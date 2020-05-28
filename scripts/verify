@@ -2,9 +2,11 @@
 # Distributed under the terms of the ISC License
 
 if [ $ver != git ]; then
+  $SCRD/contact "verify" &&
   printf "$sum $SRCD/$nom/$(basename $url)" | sha512sum -c > /dev/null ||
   $SCRD/die ceras $nom verify $? ||
   exit
 else
+  $SCRD/contact &&
   exit 0
 fi

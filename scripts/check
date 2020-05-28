@@ -5,12 +5,16 @@
 
 . $CERD/$1/ceras &&
 
-if [ ! -d $SRCD/$nom ]; then
- $MKDIR $SRCD/$nom &&
+$SCRD/contact "$nom version $ver" &&
 
- . $SCRD/fetch ||
- $SCRD/die ceras $nom fetch $? ||
- exit
+$SCRD/contact "check" &&
+if [ ! -d $SRCD/$nom ]; then
+  $MKDIR $SRCD/$nom &&
+
+  . $SCRD/fetch ||
+  $SCRD/die ceras $nom fetch $? ||
+  exit
 else
- . $SCRD/verify
+  . $SCRD/verify &&
+  $SCRD/contact
 fi

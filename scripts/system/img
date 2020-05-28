@@ -1,16 +1,20 @@
+#!/usr/bin/dash -eux
+
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
+
+CHOWN="chown -R" &&
+LN="ln -fns" &&
+MKDIR="install -d" &&
+RM="rm -fr" &&
+RSYNC="rsync -aHAXx" &&
+UMOUNT="umount -fqR" &&
 
 NAME=glaucus.img &&
 SIZE=2G &&
 LOOP=$(losetup -f) &&
 
-MKDIR='/usr/bin/install -dv' &&
-RM='/usr/bin/rm -frv' &&
-RSYNC='/usr/bin/rsync -vaHAXx' &&
-
-cd /home/glaucus &&
-
+$RM glaucus.img &&
 qemu-img create -f raw $NAME $SIZE &&
 dd if=scripts/other/mbr.bin of=glaucus.img conv=notrunc bs=440 count=1 &&
 
@@ -33,16 +37,21 @@ $MKDIR /mnt/loop/proc &&
 $MKDIR /mnt/loop/run &&
 $MKDIR /mnt/loop/sys &&
 
-$RSYNC boot /mnt/loop --delete &&
+$MKDIR -m 0750 /mnt/loop/root &&
+
+$RSYNC boot /mnt/loop &&
 $RSYNC etc /mnt/loop &&
-$RSYNC root /mnt/loop &&
 $RSYNC usr /mnt/loop &&
 $RSYNC var /mnt/loop &&
 
+$LN usr/bin /mnt/loop/bin &&
+$LN usr/lib /mnt/loop/lib &&
+
 $MKDIR /mnt/loop/boot/extlinux &&
 $RSYNC scripts/other/extlinux.conf /mnt/loop/boot/extlinux &&
+$CHOWN 0:0 /mnt/loop/boot/extlinux/extlinux.conf &&
 extlinux --install /mnt/loop/boot/extlinux &&
 
-umount /mnt/loop &&
+$UMOUNT /mnt/loop &&
 partx -d $LOOP &&
 losetup -d $LOOP

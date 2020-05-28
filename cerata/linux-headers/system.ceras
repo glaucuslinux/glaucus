@@ -10,7 +10,12 @@ prepare() {
 
   $MAKE \
     ARCH=$LARCH \
-    mrproper
+    mrproper &&
+
+  $MAKE \
+    O=$SBLD/$nom \
+    ARCH=$LARCH \
+    headers_check
 } &&
 
 configure() {
