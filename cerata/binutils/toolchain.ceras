@@ -11,15 +11,17 @@ prepare() {
   $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
-  $MKDIR $XBLD/$nom &&
-  cd $XBLD/$nom
+  $MKDIR $TBLD/$nom &&
+  cd $TBLD/$nom
 } &&
 
 configure() {
   $TSRC/$nom/configure \
-    --target=$TUPL \
-    --prefix=$TOOL \
-    --libdir=$TOOL/lib \
+    --build=$XBLD \
+    --host=$XBLD \
+    --target=$XTGT \
+    --prefix=$TLCD \
+    --libdir=$TLCD/lib \
     --enable-deterministic-archives \
     --disable-compressed-debug-sections \
     --enable-new-dtags \
@@ -30,8 +32,7 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-initfini-array \
-    --with-lib-path=$TOOL/lib \
-    --with-sysroot=$GLAD \
+    --with-sysroot=$TLCD/sysroot \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --without-included-gettext \
@@ -43,23 +44,28 @@ configure() {
 } &&
 
 build() {
-  $MAKE
+  $MAKE \
+    all-binutils \
+    all-gas \
+    all-ld
 } &&
 
 install() {
   $MAKE \
-    install-strip &&
+    install-strip-binutils \
+    install-strip-gas \
+    install-strip-ld &&
 
-  $LN $TUPL-ld.bfd $TOOL/bin/$TUPL-ld &&
+  $LN $TUPL-ld.bfd $TLCD/bin/$TUPL-ld &&
 
-  $LN ../../bin/$TUPL-ar $TOOL/$TUPL/bin/ar &&
-  $LN ../../bin/$TUPL-as $TOOL/$TUPL/bin/as &&
-  $LN ../../bin/$TUPL-ld $TOOL/$TUPL/bin/ld &&
-  $LN ../../bin/$TUPL-ld.bfd $TOOL/$TUPL/bin/ld.bfd &&
-  $LN ../../bin/$TUPL-nm $TOOL/$TUPL/bin/nm &&
-  $LN ../../bin/$TUPL-objcopy $TOOL/$TUPL/bin/objcopy &&
-  $LN ../../bin/$TUPL-objdump $TOOL/$TUPL/bin/objdump &&
-  $LN ../../bin/$TUPL-ranlib $TOOL/$TUPL/bin/ranlib &&
-  $LN ../../bin/$TUPL-readelf $TOOL/$TUPL/bin/readelf &&
-  $LN ../../bin/$TUPL-strip $TOOL/$TUPL/bin/strip
+  $LN ../../bin/$TUPL-ar $TLCD/sysroot/bin/ar &&
+  $LN ../../bin/$TUPL-as $TLCD/sysroot/bin/as &&
+  $LN ../../bin/$TUPL-ld $TLCD/sysroot/bin/ld &&
+  $LN ../../bin/$TUPL-ld.bfd $TLCD/sysroot/bin/ld.bfd &&
+  $LN ../../bin/$TUPL-nm $TLCD/sysroot/bin/nm &&
+  $LN ../../bin/$TUPL-objcopy $TLCD/sysroot/bin/objcopy &&
+  $LN ../../bin/$TUPL-objdump $TLCD/sysroot/bin/objdump &&
+  $LN ../../bin/$TUPL-ranlib $TLCD/sysroot/bin/ranlib &&
+  $LN ../../bin/$TUPL-readelf $TLCD/sysroot/bin/readelf &&
+  $LN ../../bin/$TUPL-strip $TLCD/sysroot/bin/strip
 }
