@@ -1,5 +1,0 @@
-#!/bin/sh
-for cond in $(ls /etc/smdev/$ACTION)
-do
-        . /etc/smdev/$ACTION/$cond
-done
