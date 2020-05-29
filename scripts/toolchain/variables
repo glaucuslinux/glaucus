@@ -1,10 +1,11 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export TLOG=$LOGD/toolchain &&
+export TLOG=$LOGD/toolchain/$(ls -l $LOGD/toolchain | wc -l) &&
 export TSCR=$SCRD/toolchain &&
 export TTMP=$TMPD/toolchain &&
 
 export TSRC=$TTMP/sources &&
+export TBLD=$TTMP/builds &&
 
-. $SCRD/genome
+export XBLD=$($CERD/binutils/config.guess)

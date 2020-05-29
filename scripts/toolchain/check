@@ -2,6 +2,10 @@
 # Distributed under the terms of the ISC License
 
 $SCRD/check musl &&
-$SCRD/check zlib-ng &&
+$SCRD/check binutils &&
+$SCRD/check gmp &&
+$SCRD/check mpfr &&
+$SCRD/check mpc &&
 $SCRD/check isl &&
-$SCRD/check zstd
+$SCRD/check gcc &&
+$SCRD/check ccache

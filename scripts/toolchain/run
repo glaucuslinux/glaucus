@@ -4,9 +4,11 @@
 # Distributed under the terms of the ISC License
 
 . $SCRD/toolchain/variables &&
+. $TSCR/check &&
 . $TSCR/prepare &&
 
-. $TSCR/cross/run &&
-. $TSCR/native/run &&
+. $SCRD/genome &&
+
+$SCRD/log $TLOG $TSCR/construct &&
 
 . $TSCR/backup
