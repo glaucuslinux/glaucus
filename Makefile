@@ -8,11 +8,7 @@ export SRCD=$(GLAD)/sources
 export TMPD=$(GLAD)/temporary
 export TLCD=$(GLAD)/toolchain
 
-export TOOL=/toolchain
-
-export CCCH=/usr/lib64/ccache
-
-export PATH=$(TOOL)/bin/ccache:$(TOOL)/bin:$(TOOL)/lib/gcc:$(CCCH):/usr/bin
+export PATH=$(TLCD)/bin:/usr/bin
 
 export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R
