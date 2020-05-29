@@ -16,31 +16,22 @@ prepare() {
   $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
-  $SCRD/patch 0 $nom glaucus 0001-adjust-toolchain-paths-for-$ARCH &&
-  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
+  $SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH &&
 
   $SCRD/patch 1 $nom upstream Enable-CET-in-cross-compiler-if-possible &&
 
-  cat $nom/limitx.h > $(dirname $($TUPL-$nom \
-    -print-lib$nom-file-name))/include-fixed/limits.h &&
-  cat $nom/glimits.h >> $(dirname $($TUPL-$nom \
-    -print-lib$nom-file-name))/include-fixed/limits.h &&
-  cat $nom/limity.h >> $(dirname $($TUPL-$nom \
-    -print-lib$nom-file-name))/include-fixed/limits.h &&
-
-  $MKDIR $NBLD/$nom &&
-  cd $NBLD/$nom
+  $MKDIR $TBLD/$nom &&
+  cd $TBLD/$nom
 } &&
 
 configure() {
   $TSRC/$nom/configure \
-    --host=$TUPL \
-    --target=$TUPL \
-    --prefix=$TOOL \
-    --libexecdir=$TOOL/lib \
-    --libdir=$TOOL/lib \
-    --with-local-prefix=$TOOL \
-    --with-native-system-header-dir=$TOOL/include \
+    --build=$XBLD \
+    --host=$XBLD \
+    --target=$XTGT \
+    --prefix=$TLCD \
+    --libexecdir=$TLCD/lib \
+    --libdir=$TLCD/lib \
     --disable-multilib \
     --disable-symvers \
     --disable-cet \
@@ -54,6 +45,8 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --enable-libstdcxx-time=rt \
+    --disable-initfini-array \
+    --with-sysroot=$TLCD/sysroot \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-zstd \
@@ -66,22 +59,23 @@ configure() {
 } &&
 
 build() {
-  $MAKE
+  $MAKE \
+    all-gcc
 } &&
 
 install() {
   $MAKE \
-    install-strip &&
+    install-strip-gcc &&
 
-  $LN g++ $TOOL/bin/c++ &&
+  $LN g++ $TLCD/bin/c++ &&
   
-  $RSYNC $CERD/$nom/c89 $TOOL/bin &&
-  $RSYNC $CERD/$nom/c99 $TOOL/bin &&
+  $RSYNC $CERD/$nom/c89 $TLCD/bin &&
+  $RSYNC $CERD/$nom/c99 $TLCD/bin &&
 
-  $LN $nom $TOOL/bin/cc &&
+  $LN $nom $TLCD/bin/cc &&
 
-  $LN $TUPL-g++ $TOOL/bin/$TUPL-c++ &&
+  $LN $XTGT-g++ $TLCD/bin/$XTGT-c++ &&
 
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-cc &&
-  $LN $TUPL-$nom $TOOL/bin/$TUPL-$nom-$ver
+  $LN $XTGT-$nom $TLCD/bin/$XTGT-cc &&
+  $LN $XTGT-$nom $TLCD/bin/$XTGT-$nom-$ver
 }
