@@ -1,0 +1,32 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $MKDIR $TBLD/$nom &&
+  cd $TBLD/$nom
+} &&
+
+configure() {
+  ARCH=$MARCH \
+  CROSS_COMPILE= \
+  $SRCD/$nom/$nom-$ver/configure \
+    --host=$XTGT \
+    --prefix=/usr \
+    --disable-wrapper \
+    --disable-static
+} &&
+
+build() {
+  :
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$TLCD/sysroot \
+    install-headers &&
+
+  $RM $TLCD/sysroot/usr/include/utmp.h &&
+  $RM $TLCD/sysroot/usr/include/utmpx.h
+}
