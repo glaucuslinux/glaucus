@@ -1,4 +1,0 @@
-if [[ $MODALIAS ]]
-then
-        modprobe $MODALIAS
-fi
