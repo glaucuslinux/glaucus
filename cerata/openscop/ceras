@@ -1,7 +1,0 @@
-nom=openscop
-ver=git
-url=https://github.com/periscop/$nom
-lic=BSDv3
-build(){
-        :
-}
