@@ -4,14 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $TBLD/$nom &&
-  cd $TBLD/$nom
+  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
+  cd $TSRC/$nom &&
+
+  $SCRD/patch 0 $nom qword 0001-enable-fast-math
 } &&
 
 configure() {
   ARCH=$MARCH \
-  CROSS_COMPILE= \
-  $SRCD/$nom/$nom-$ver/configure \
+  CC=$XTGT-gcc \
+  CFLAGS=-ffast-math \
+  CROSS_COMPILE=$XTGT- \
+  ./configure \
     --host=$XTGT \
     --prefix=/usr \
     --disable-wrapper \

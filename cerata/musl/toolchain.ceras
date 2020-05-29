@@ -1,0 +1,29 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  cd $TSRC/$nom
+} &&
+
+configure() {
+  :
+} &&
+
+build() {
+  $MAKE
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$TLCD/sysroot \
+    install-libs \
+    install-tools &&
+
+  $RSYNC $CERD/$nom/ldconfig $TLCD/bin &&
+
+  $LN ../lib/ld-$nom-$MARCH.so.1 $TLCD/bin/ldd &&
+
+  $RSYNC $CERD/$nom/ld-$nom.path.native $TLCD/etc/ld-$nom-$MARCH.path
+}

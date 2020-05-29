@@ -1,10 +1,1 @@
-# Copyright (c) 2018-2020, Firas Khalil Khana
-# Distributed under the terms of the ISC License
-
-# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
-
-nom=musl-headers
-ver=1.2.0
-url=https://www.$nom-libc.org/releases/$nom-$ver.tar.gz
-sum=58bd88189a6002356728cea1c6f6605a893fe54f7687595879add4eab283c8692c3b031eb9457ad00d1edd082cfe62fcc0eb5eb1d3bf4f1d749c0efa2a95fec1
-lic=MIT
+../musl/ceras
