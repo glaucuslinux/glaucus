@@ -9,8 +9,7 @@ $MKDIR $TLCD &&
 
 $MKDIR $LOGD/chroot &&
 $MKDIR $LOGD/system &&
-$MKDIR $LOGD/toolchain/cross &&
-$MKDIR $LOGD/toolchain/native &&
+$MKDIR $LOGD/toolchain &&
 
 $MKDIR $TMPD/chroot/builds &&
 $MKDIR $TMPD/chroot/sources &&
@@ -20,5 +19,4 @@ $MKDIR $TMPD/system/cerata &&
 $MKDIR $TMPD/system/sources &&
 
 $MKDIR $TMPD/toolchain/sources &&
-$MKDIR $TMPD/toolchain/cross/builds &&
-$MKDIR $TMPD/toolchain/native/builds
+$MKDIR $TMPD/toolchain/builds

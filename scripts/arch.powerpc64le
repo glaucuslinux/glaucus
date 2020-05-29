@@ -13,4 +13,4 @@ export GARCH="--with-cpu=powerpc64le \
 export LARCH=powerpc &&
 export MARCH=$ARCH &&
 
-export TUPL=$ARCH-glaucus-linux-musl
+export XTGT=$ARCH-glaucus-linux-musl

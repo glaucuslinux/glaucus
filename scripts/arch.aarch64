@@ -16,4 +16,4 @@ export GARCH="--with-arch=armv8-a \
 export LARCH=arm64 &&
 export MARCH=$ARCH &&
 
-export TUPL=$ARCH-glaucus-linux-musl
+export XTGT=$ARCH-glaucus-linux-musl
