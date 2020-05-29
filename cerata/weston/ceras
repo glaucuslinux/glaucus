@@ -1,7 +1,0 @@
-nom=weston
-ver=git
-url=https://gitlab.freedesktop.org/wayland/$nom
-lic='CC-BY-SA-3.0 MIT'
-build(){
-        :
-}
