@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  cd $TBLD/$nom
+  cd $TBLD/gcc
 } &&
 
 configure() {
@@ -13,10 +13,10 @@ configure() {
 
 build() {
   $MAKE \
-    all-target-lib$nom
+    all-target-$nom
 } &&
 
 install() {
   $MAKE \
-    install-strip-target-lib$nom
+    install-strip-target-$nom
 }

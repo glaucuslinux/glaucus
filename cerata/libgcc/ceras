@@ -1,1 +1,11 @@
-../gcc/ceras
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=libgcc
+ver=10.1.0
+url=https://ftpmirror.gnu.org/gcc/gcc-$ver/gcc-$ver.tar.xz
+sum=0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096
+lic='BSD-3-Clause BSL-1.0 GFDL-1.2-only GFDL-1.3-only GPL-2.0-only GPL-3.0-only
+LGPL-2.1-only LGPL-3.0-only MIT'
