@@ -58,14 +58,14 @@ install() {
 
   $LN $XTGT-ld.bfd $TLCD/bin/$XTGT-ld &&
 
-  $LN ../../bin/$XTGT-ar $TLCD/sysroot/bin/ar &&
-  $LN ../../bin/$XTGT-as $TLCD/sysroot/bin/as &&
-  $LN ../../bin/$XTGT-ld $TLCD/sysroot/bin/ld &&
-  $LN ../../bin/$XTGT-ld.bfd $TLCD/sysroot/bin/ld.bfd &&
-  $LN ../../bin/$XTGT-nm $TLCD/sysroot/bin/nm &&
-  $LN ../../bin/$XTGT-objcopy $TLCD/sysroot/bin/objcopy &&
-  $LN ../../bin/$XTGT-objdump $TLCD/sysroot/bin/objdump &&
-  $LN ../../bin/$XTGT-ranlib $TLCD/sysroot/bin/ranlib &&
-  $LN ../../bin/$XTGT-readelf $TLCD/sysroot/bin/readelf &&
-  $LN ../../bin/$XTGT-strip $TLCD/sysroot/bin/strip
+  $LN ../../bin/$XTGT-ar $TLCD/$XTGT/bin/ar &&
+  $LN ../../bin/$XTGT-as $TLCD/$XTGT/bin/as &&
+  $LN ../../bin/$XTGT-ld $TLCD/$XTGT/bin/ld &&
+  $LN ../../bin/$XTGT-ld.bfd $TLCD/$XTGT/bin/ld.bfd &&
+  $LN ../../bin/$XTGT-nm $TLCD/$XTGT/bin/nm &&
+  $LN ../../bin/$XTGT-objcopy $TLCD/$XTGT/bin/objcopy &&
+  $LN ../../bin/$XTGT-objdump $TLCD/$XTGT/bin/objdump &&
+  $LN ../../bin/$XTGT-ranlib $TLCD/$XTGT/bin/ranlib &&
+  $LN ../../bin/$XTGT-readelf $TLCD/$XTGT/bin/readelf &&
+  $LN ../../bin/$XTGT-strip $TLCD/$XTGT/bin/strip
 }
