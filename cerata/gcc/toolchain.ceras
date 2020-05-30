@@ -67,14 +67,15 @@ install() {
   $MAKE \
     install-strip-gcc &&
 
-  $LN g++ $TLCD/bin/c++ &&
-  
-  $RSYNC $CERD/$nom/c89 $TLCD/bin &&
-  $RSYNC $CERD/$nom/c99 $TLCD/bin &&
-
-  $LN $nom $TLCD/bin/cc &&
-
   $LN $XTGT-g++ $TLCD/bin/$XTGT-c++ &&
+
+  $RSYNC $CERD/$nom/c89 $TLCD/bin/$XTGT-c89 &&
+  $RSYNC $CERD/$nom/c99 $TLCD/bin/$XTGT-c99 &&
+
+  sed s/gcc/$XTGT-gcc/ \
+    -i $TLCD/bin/$XTGT-c89 &&
+  sed s/gcc/$XTGT-gcc/ \
+    -i $TLCD/bin/$XTGT-c99 &&
 
   $LN $XTGT-$nom $TLCD/bin/$XTGT-cc &&
   $LN $XTGT-$nom $TLCD/bin/$XTGT-$nom-$ver
