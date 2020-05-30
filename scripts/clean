@@ -41,11 +41,14 @@ sudo \
   $RM $GLAD/sys ||
   true
 sudo \
+  $RM $GLAD/tmp ||
+  true
+sudo \
+  $RM $GLAD/toolchain ||
+  true
+sudo \
   $RM $GLAD/usr ||
   true
 sudo \
   $RM $GLAD/var ||
-  true
-sudo \
-  $RM $GLAD/tmp ||
   true
