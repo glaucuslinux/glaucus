@@ -4,17 +4,18 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $RSYNC $SRCD/$nom/$nom-$ver/ $TSRC/$nom --delete &&
-  cd $TSRC/$nom &&
+  $RSYNC $SRCD/musl/musl-$ver/ $TSRC/musl --delete &&
+  cd $TSRC/musl &&
 
-  $SCRD/patch 0 $nom qword 0001-enable-fast-math
+  $SCRD/patch 0 musl qword 0001-enable-fast-math
 } &&
 
 configure() {
   ARCH=$MARCH \
-  CC=$XTGT-gcc \
-  CFLAGS=-ffast-math \
+  CC=gcc \
+  CFLAGS='-O2 -ffast-math' \
   CROSS_COMPILE=$XTGT- \
+  LIBCC=' ' \
   ./configure \
     --host=$XTGT \
     --prefix=/usr \
@@ -31,6 +32,6 @@ install() {
     DESTDIR=$TLCD/sysroot \
     install-headers &&
 
-  $RM $TLCD/sysroot/usr/include/utmp.h &&
-  $RM $TLCD/sysroot/usr/include/utmpx.h
+  $RM $TLCD/$XTGT/usr/include/utmp.h &&
+  $RM $TLCD/$XTGT/usr/include/utmpx.h
 }

@@ -8,7 +8,8 @@ prepare() {
 } &&
 
 configure() {
-  :
+  sed "s/CC = gcc/CC = $XTGT-gcc/" \
+    -i config.mak
 } &&
 
 build() {
@@ -19,11 +20,5 @@ install() {
   $MAKE \
     DESTDIR=$TLCD/sysroot \
     install-libs \
-    install-tools &&
-
-  $RSYNC $CERD/$nom/ldconfig $TLCD/bin &&
-
-  $LN ../lib/ld-$nom-$MARCH.so.1 $TLCD/bin/ldd &&
-
-  $RSYNC $CERD/$nom/ld-$nom.path.native $TLCD/etc/ld-$nom-$MARCH.path
+    install-tools
 }
