@@ -7,5 +7,4 @@ $SCRD/check gmp &&
 $SCRD/check mpfr &&
 $SCRD/check mpc &&
 $SCRD/check isl &&
-$SCRD/check gcc &&
-$SCRD/check ccache
+$SCRD/check gcc
