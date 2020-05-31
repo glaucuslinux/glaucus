@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 nom=pkgconf
-ver=1.6.3
+ver=1.7.3
 url=https://distfiles.dereferenced.org/$nom/$nom-$ver.tar.xz
-sum=437c5a5c9866e2047e62e0592639930b2420d4afd41d98cef51f3475165418a39e916477860025314828a6ee0a4eefc10fdf26bda66f80c291f324d9674fa5c1
+sum=37b6c4f9f3b93970e35b6970fde22fbbde65e7fa32a5634b3fdfc25cc1f33843582722ad13d9a8e96fd6768406fcbe86bf5feb76996ddd0bb66d6ff91e65f0b6
 lic=ISC
