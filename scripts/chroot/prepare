@@ -5,4 +5,4 @@ $RM $CBLD &&
 $MKDIR $CBLD &&
 
 sudo \
-  $RSYNC $BAKD/toolchain/ $TOOL --delete
+  $RSYNC $BAKD/toolchain/ $TLCD --delete
