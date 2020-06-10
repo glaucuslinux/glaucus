@@ -26,8 +26,8 @@ build() {
 
 install() {
   $MAKE \
-    PREFIX=$TOOL \
+    PREFIX=$TLCD \
     install &&
 
-  $RM $TOOL/lib/lib$nom.a
+  $RM $TLCD/lib/lib$nom.a
 }
