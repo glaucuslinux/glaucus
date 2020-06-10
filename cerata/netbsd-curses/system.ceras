@@ -11,18 +11,18 @@ prepare() {
 } &&
 
 configure() {
-  $RSYNC $CERD/$nom/config.mak.system config.mak &&
-
   $SCRD/patch 0 $nom glaucus 0001-optimize-more
 } &&
 
 build() {
   $MAKE \
+    PREFIX=/usr \
     all-dynamic
 } &&
 
 install() {
   $MAKE \
+    PREFIX=/usr \
     DESTDIR=$SCER/$nom/sac \
     install-dynamic &&
 
