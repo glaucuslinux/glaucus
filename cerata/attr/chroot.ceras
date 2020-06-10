@@ -18,8 +18,8 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
-    --sysconfdir=$TOOL/etc \
+    --prefix=$TLCD \
+    --sysconfdir=$TLCD/etc \
     --disable-static \
     --disable-nls \
     --disable-rpath
