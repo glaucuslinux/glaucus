@@ -17,8 +17,8 @@ prepare() {
 
 configure() {
   $CSRC/$nom/configure \
-    --host=$TUPL \
-    --prefix=$TOOL \
+    --host=$XTGT \
+    --prefix=$TLCD \
     --enable-threads=posix \
     --disable-rpath \
     --with-packager=glaucus \
@@ -33,5 +33,5 @@ install() {
   $MAKE \
     install-strip &&
 
-  $LN $nom $TOOL/bin/g$nom
+  $LN $nom $TLCD/bin/g$nom
 }
