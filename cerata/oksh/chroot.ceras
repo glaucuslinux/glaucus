@@ -12,9 +12,9 @@ configure() {
   $SCRD/patch 0 $nom glaucus 0001-netbsd-curses-compatibility &&
 
   ./configure \
-    --prefix=$TOOL \
-    --bindir=$TOOL/bin \
-    --mandir=$TOOL/share/man &&
+    --prefix=$TLCD \
+    --bindir=$TLCD/bin \
+    --mandir=$TLCD/share/man &&
 
   sed "s/CFLAGS = .*/CFLAGS = $CFLAGS -DVI -w -D_GNU_SOURCE/" \
     -i Makefile
@@ -28,9 +28,9 @@ install() {
   $MAKE \
     install &&
 
-  $LN $nom $TOOL/bin/ksh &&
-  $LN $nom $TOOL/bin/rksh &&
+  $LN $nom $TLCD/bin/ksh &&
+  $LN $nom $TLCD/bin/rksh &&
 
-  $LN $nom.1 $TOOL/share/man/man1/ksh.1 &&
-  $LN $nom.1 $TOOL/share/man/man1/rksh.1
+  $LN $nom.1 $TLCD/share/man/man1/ksh.1 &&
+  $LN $nom.1 $TLCD/share/man/man1/rksh.1
 }
