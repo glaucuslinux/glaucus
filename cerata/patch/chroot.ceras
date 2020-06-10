@@ -40,7 +40,7 @@ configure() {
 
   ./configure \
     --host=$TUPL \
-    --prefix=$TOOL
+    --prefix=$TLCD
 } &&
 
 build() {
