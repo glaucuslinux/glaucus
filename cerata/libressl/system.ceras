@@ -19,14 +19,14 @@ prepare() {
 
 configure() {
   $SSRC/$nom/configure \
+    --build=$XBLD \
+    --host=$XTGT \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --disable-static \
-    --enable-nc &&
-
-  sed 's/tests //' \
-    -i Makefile
+    --enable-nc \
+    --disable-tests
 } &&
 
 build() {
