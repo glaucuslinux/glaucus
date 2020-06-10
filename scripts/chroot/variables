@@ -8,14 +8,19 @@ export CTMP=$TMPD/chroot &&
 export CBLD=$CTMP/builds &&
 export CSRC=$CTMP/sources &&
 
-export PKG_CONFIG_PATH=$TOOL/lib/pkgconfig:$TOOL/share/pkgconfig &&
-export PKG_CONFIG_LIBDIR=$TOOL/lib/pkgconfig:$TOOL/share/pkgconfig &&
-export PKG_CONFIG_SYSROOT_DIR=$GLAD &&
-export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$TOOL/include &&
-export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$TOOL/lib &&
+export AR=$XTGT-gcc-ar &&
+export AS=$XTGT-as &&
+export CC=$XTGT-gcc &&
+export CPP="$XTGT-gcc -E" &&
+export CXX=$XTGT-g++ &&
+export LD=$XTGT-ld &&
+export NM=$XTGT-gcc-nm &&
+export OBJCOPY=$XTGT-objcopy &&
+export OBJDUMP=$XTGT-objdump &&
+export RANLIB=$XTGT-gcc-ranlib &&
+export READELF=$XTGT-readelf &&
+export SIZE=$XTGT-size &&
+export STRINGS=$XTGT-strings &&
+export STRIP=$XTGT-strip &&
 
-export AR=gcc-ar &&
-export NM=gcc-nm &&
-export RANLIB=gcc-ranlib &&
-
-export CPPFLAGS=-I$TOOL/include
+export XBLD=$($CERD/binutils/config.guess)
