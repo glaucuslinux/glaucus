@@ -17,7 +17,7 @@ prepare() {
 configure() {
   CFLAGS="$CFLAGS -D__STDC_ISO_10646__" \
   $CSRC/$nom/configure \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --disable-static \
     --disable-examples
 } &&
@@ -30,12 +30,12 @@ install() {
   $MAKE \
     install-strip &&
 
-  $MKDIR $TOOL/include/readline &&
+  $MKDIR $TLCD/include/readline &&
   
-  touch $TOOL/include/readline/history.h &&
-  touch $TOOL/include/readline/tilde.h &&
+  touch $TLCD/include/readline/history.h &&
+  touch $TLCD/include/readline/tilde.h &&
 
-  $LN ../editline/readline.h $TOOL/include/readline/readline.h &&
+  $LN ../editline/readline.h $TLCD/include/readline/readline.h &&
   
-  $LN $nom.so $TOOL/lib/libreadline.so
+  $LN $nom.so $TLCD/lib/libreadline.so
 }
