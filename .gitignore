@@ -1,6 +1,7 @@
 # hidden files
 .bash_history
 .cvspass
+.fdignore
 .gitconfig
 .lesshst
 *.swp
