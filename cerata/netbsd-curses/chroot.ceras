@@ -25,6 +25,6 @@ install() {
   $MAKE \
     install-dynamic &&
 
-  $LN tic $TOOL/bin/captoinfo &&
-  $LN tic $TOOL/bin/infotocap
+  $LN tic $TLCD/bin/captoinfo &&
+  $LN tic $TLCD/bin/infotocap
 }
