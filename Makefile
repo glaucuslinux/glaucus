@@ -10,6 +10,12 @@ export TLCD=$(GLAD)/toolchain
 
 export PATH=$(TLCD)/bin:/usr/bin
 
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
+export PKG_CONFIG_LIBDIR=$(TLCD)/usr/lib/pkgconfig:$(TLCD)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=$(TLCD)/sysroot
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(TLCD)/usr/include
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(TLCD)/usr/lib
+
 export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R
 export CHOWN=chown -R
@@ -21,11 +27,15 @@ export RM=rm -fr
 export RSYNC=rsync -aHAXSx
 export UMOUNT=umount -fqR
 
-export MAKEFLAGS=-j12
+export MAKEFLAGS=-j1
 
-all: toolchain chroot
+all: toolchain system
 
 initialize:
+	@scripts/$@
+	@$(SCRD)/contact "$@ complete"
+
+update:
 	@scripts/$@
 	@$(SCRD)/contact "$@ complete"
 
@@ -37,11 +47,12 @@ release:
 	@scripts/$@
 	@$(SCRD)/contact "$@ complete"
 
-chroot:
+chroot: restore-toolchain
 	@scripts/$@/run
 	@$(SCRD)/contact "$@ complete"
 
-system:
+system: restore-toolchain
+	@$(SCRD)/contact
 	@scripts/$@/run
 	@$(SCRD)/contact "$@ complete"
 
@@ -65,12 +76,12 @@ distclean:
 
 restore restore-toolchain: clean
 ifneq ($(wildcard $(BAKD)/toolchain/*),)
-	@sudo \
-		$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
+	@$(SCRD)/contact
+	@$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
 	@$(SCRD)/contact "$@ complete"
 else
-	@echo Please construct the toolchain first!
-	@exit 1
+	@$(SCRD)/contact "$@ Please construct the toolchain first!"
+	@echo 	@exit 1
 endif
 
 restore-chroot: clean
@@ -79,7 +90,7 @@ ifneq ($(wildcard $(BAKD)/chroot/*),)
 		$(RSYNC) $(BAKD)/chroot/ $(GLAD)/toolchain --delete
 	@$(SCRD)/contact "$@ complete"
 else
-	@echo Please construct the chroot first!
+	@$(SCRD)/contact "$@ Please construct the chroot first!"
 	@exit 1
 endif
 
