@@ -5,9 +5,9 @@
 
 sudo \
   chroot $GLAD \
-    $TOOL/bin/env -i \
+    $TLCD/bin/env -i \
     HOME=/root \
-    PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin \
+    PATH=/usr/bin/ccache:/usr/bin:/bin:$TLCD/bin/ccache:$TLCD/bin \
     TERM=xterm-256color \
     PS1='[\[\033[0;44m\]glaucus\[\033[0m\]:\[\033[1m\]\w\[\033[0m\]]$ ' \
     oksh
