@@ -9,20 +9,19 @@ addons:
     - lzip
     - zstd
 before_install:
-  - sudo git clone https://github.com/glaucuslinux/glaucus .
+  - sudo git clone https://github.com/glaucuslinux/glaucus
+  - cd glaucus
   - make initialize
 install:
   - sudo curl -Lo toolchain-28052020.tar.zstd https://github.com/glaucuslinux/toolchain/releases/download/28052020/toolchain-28052020.tar.zstd
   - sudo printf '1c5129ebc0ee9a021da9eceba356a4cfe788cb69fb037ef8c00484a207c7765d138ee3cac458a0b3587b58e52a8248dcde392e340b05e851c52cac6a537e652c  toolchain-28052020.tar.zstd' | sha512sum -c
-  - sudo rm -frv toolchain
+  - sudo rm -fr toolchain
   - sudo tar -I "zstd --long=31" -xf toolchain-28052020.tar.zstd -C .
 script:
-  - sudo sed 's/tar xvf/sudo tar xf/' -i scripts/fetch
   - export CERD=cerata
   - export SCRD=scripts
   - export SRCD=sources
   - export MKDIR="$(which install) -dv"
-  - sudo dash -eux $SCRD/toolchain/cross/check
-  - sudo dash -eux $SCRD/toolchain/native/check
+  - sudo dash -eux $SCRD/toolchain/check
   - sudo dash -eux $SCRD/chroot/check
   - sudo dash -eux $SCRD/system/check
