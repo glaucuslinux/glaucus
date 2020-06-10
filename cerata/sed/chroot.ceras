@@ -19,7 +19,7 @@ configure() {
   LIBS=-lattr \
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --enable-threads=posix \
     --disable-nls \
     --disable-rpath \
