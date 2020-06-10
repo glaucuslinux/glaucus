@@ -18,7 +18,7 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --disable-nls \
     --disable-rpath \
     --without-guile
