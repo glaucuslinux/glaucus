@@ -19,9 +19,9 @@ prepare() {
 
 configure() {
   $CSRC/$nom/configure \
-    --prefix=$TOOL \
-    --sysconfdir=$TOOL/etc \
-    --localstatedir=$TOOL/var \
+    --prefix=$TLCD \
+    --sysconfdir=$TLCD/etc \
+    --localstatedir=$TLCD/var \
     --disable-static \
     --enable-nc &&
 
@@ -37,7 +37,7 @@ install() {
   $MAKE \
     install-strip &&
 
-  $CHMOD 0755 $TOOL/lib/libcrypto.so.46.0.1 &&
-  $CHMOD 0755 $TOOL/lib/libssl.so.48.0.1 &&
-  $CHMOD 0755 $TOOL/lib/libtls.so.20.0.1
+  $CHMOD 0755 $TLCD/lib/libcrypto.so.46.0.1 &&
+  $CHMOD 0755 $TLCD/lib/libssl.so.48.0.1 &&
+  $CHMOD 0755 $TLCD/lib/libtls.so.20.0.1
 }
