@@ -1,3 +1,0 @@
-PREFIX = /toolchain
-AR = gcc-ar
-RANLIB = gcc-ranlib

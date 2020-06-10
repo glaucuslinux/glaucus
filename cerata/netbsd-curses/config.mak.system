@@ -1,3 +1,0 @@
-PREFIX = /usr
-AR = gcc-ar
-RANLIB = gcc-ranlib
