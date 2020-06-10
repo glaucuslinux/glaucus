@@ -1,15 +1,15 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$RM $TOOL/lib64 &&
+$RM $TLCD/lib64 &&
 
-find $TOOL/ -name *.la -delete &&
+find $TLCD/ -name *.la -delete &&
 
-strip -g $TOOL/lib/* ||
+strip -g $TLCD/lib/* ||
 true
-/usr/bin/strip --strip-unneeded $TOOL/bin/* ||
+/usr/bin/strip --strip-unneeded $TLCD/bin/* ||
 true
 
-$RM $TOOL/share/doc &&
-$RM $TOOL/share/info &&
-$RM $TOOL/share/man
+$RM $TLCD/share/doc &&
+$RM $TLCD/share/info &&
+$RM $TLCD/share/man
