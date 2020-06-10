@@ -17,8 +17,8 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
-    --bindir=$TOOL/bin/$nom \
+    --prefix=$TLCD \
+    --bindir=$TLCD/bin/$nom \
     --disable-man \
     --without-bundled-zlib
 } &&
@@ -31,12 +31,12 @@ install() {
   $MAKE \
     install &&
 
-  $LN $nom $TOOL/bin/$nom/c++ &&
-  $LN $nom $TOOL/bin/$nom/c89 &&
-  $LN $nom $TOOL/bin/$nom/c99 &&
-  $LN $nom $TOOL/bin/$nom/cc &&
-  $LN $nom $TOOL/bin/$nom/cpp &&
-  $LN $nom $TOOL/bin/$nom/g++ &&
-  $LN $nom $TOOL/bin/$nom/gcc &&
-  $LN $nom $TOOL/bin/$nom/gcc-10.1.0
+  $LN $nom $TLCD/bin/$nom/c++ &&
+  $LN $nom $TLCD/bin/$nom/c89 &&
+  $LN $nom $TLCD/bin/$nom/c99 &&
+  $LN $nom $TLCD/bin/$nom/cc &&
+  $LN $nom $TLCD/bin/$nom/cpp &&
+  $LN $nom $TLCD/bin/$nom/g++ &&
+  $LN $nom $TLCD/bin/$nom/gcc &&
+  $LN $nom $TLCD/bin/$nom/gcc-10.1.0
 }
