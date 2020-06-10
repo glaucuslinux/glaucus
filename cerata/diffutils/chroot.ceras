@@ -18,7 +18,7 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --disable-rpath \
     --disable-nls \
     --with-packager=glaucus \
