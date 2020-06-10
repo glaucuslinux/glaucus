@@ -1,7 +1,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$RSYNC $BAKD/chroot/ $TOOL --delete &&
+$RSYNC $BAKD/toolchain/ $TLCD --delete &&
 
 $RM $SBLD &&
 $MKDIR $SBLD &&
@@ -9,70 +9,32 @@ $MKDIR $SBLD &&
 $RM $SCER &&
 $MKDIR $SCER &&
 
-$RM /bin &&
-$MKDIR /bin &&
+$RM $TLCD/sysroot/boot &&
+$MKDIR $TLCD/sysroot/boot &&
 
-$LN $TOOL/bin/echo /bin &&
-$LN $TOOL/bin/false /bin &&
-$LN $TOOL/bin/ls /bin &&
-
-$LN $TOOL/bin/dash /bin/sh &&
-
-$LN /usr/bin/bash /bin &&
-
-$RM /boot &&
-$MKDIR /boot &&
+$RM $TLCD/sysroot/etc &&
+$MKDIR $TLCD/sysroot/etc &&
 
 printf 'root:x:0:
 tty:x:1:
 disk:x:2:
 audio:x:3:
 video:x:4:
-utmp:x:5:\n' > /etc/group &&
+utmp:x:5:\n' > $TLCD/sysroot/etc/group &&
 
-printf '127.0.0.1 localhost glaucus\n' > /etc/hosts &&
+printf '127.0.0.1 localhost glaucus\n' > $TLCD/sysroot/etc/hosts &&
 
-$LN /proc/self/mounts /etc/mtab &&
+printf 'root::0:0:root:/root:/usr/bin/ksh\n' > $TLCD/sysroot/etc/passwd &&
 
-printf 'root::0:0:root:/root:/usr/bin/ksh\n' > /etc/passwd &&
+$RM $TLCD/sysroot/root &&
+$MKDIR -m 0750 $TLCD/sysroot/root &&
 
-$RM /lib &&
+$RM $TLCD/sysroot/tmp &&
+$MKDIR -m 1777 $TLCD/sysroot/tmp &&
 
-$RM /root &&
-$MKDIR -m 0750 /root &&
+$MKDIR $TLCD/sysroot/usr/cerata &&
 
-$RM /tmp &&
-$MKDIR -m 1777 /tmp &&
-
-$RM /usr &&
-$MKDIR /usr/bin &&
-
-$LN $TOOL/bin/dash /usr/bin &&
-$LN $TOOL/bin/env /usr/bin &&
-$LN $TOOL/bin/file /usr/bin &&
-$LN $TOOL/bin/pwd /usr/bin &&
-$LN $TOOL/bin/true /usr/bin &&
-
-$MKDIR /usr/cerata &&
-$MKDIR /usr/include &&
-$MKDIR /usr/lib &&
-
-$LN $TOOL/lib/libgcc_s.so /usr/lib &&
-$LN $TOOL/lib/libgcc_s.so.1 /usr/lib &&
-
-$LN $TOOL/lib/libstdc++.so /usr/lib &&
-$LN $TOOL/lib/libstdc++.so.6 /usr/lib &&
-
-grep -q atlanticus $SCRD/$(readlink $SCRD/species) && {
-  $LN $TOOL/lib/libgomp.so /usr/lib &&
-  $LN $TOOL/lib/libgomp.so.1 /usr/lib &&
-  $LN $TOOL/lib/libgomp.so.1.0.0 /usr/lib &&
-  $LN $TOOL/lib/libgomp.spec /usr/lib;
-} ||
-
-$MKDIR /usr/share &&
-
-$RM /var &&
-$MKDIR /var/lib &&
-$MKDIR /var/lib/urandom &&
-$MKDIR /var/log
+$RM $TLCD/sysroot/var &&
+$MKDIR $TLCD/sysroot/var/lib &&
+$MKDIR $TLCD/sysroot/var/lib/urandom &&
+$MKDIR $TLCD/sysroot/var/log

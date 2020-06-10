@@ -1,15 +1,6 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export BAKD=/backup &&
-export CERD=/cerata &&
-export LOGD=/logs &&
-export SCRD=/scripts &&
-export SRCD=/sources &&
-export TMPD=/temporary &&
-
-export TOOL=/toolchain &&
-
 export SLOG=$LOGD/system/$(ls -l $LOGD/system | wc -l) &&
 export SSCR=$SCRD/system &&
 export STMP=$TMPD/system &&
@@ -18,15 +9,22 @@ export SBLD=$STMP/builds &&
 export SCER=$STMP/cerata &&
 export SSRC=$STMP/sources &&
 
-export PATH=/usr/bin/ccache:/usr/bin:/bin:$TOOL/bin/ccache:$TOOL/bin &&
+export HOSTCC=gcc &&
+export HOSTCXX=g++ &&
 
-export CCACHE_DIR=/.ccache &&
+export AR=$XTGT-gcc-ar &&
+export AS=$XTGT-as &&
+export CC=$XTGT-gcc &&
+export CPP="$XTGT-gcc -E" &&
+export CXX=$XTGT-g++ &&
+export LD=$XTGT-ld &&
+export NM=$XTGT-gcc-nm &&
+export OBJCOPY=$XTGT-objcopy &&
+export OBJDUMP=$XTGT-objdump &&
+export RANLIB=$XTGT-gcc-ranlib &&
+export READELF=$XTGT-readelf &&
+export SIZE=$XTGT-size &&
+export STRINGS=$XTGT-strings &&
+export STRIP=$XTGT-strip &&
 
-export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig &&
-export PKG_CONFIG_LIBDIR=/usr/lib/pkgconfig:/usr/share/pkgconfig &&
-export PKG_CONFIG_SYSTEM_INCLUDE_PATH=/usr/include &&
-export PKG_CONFIG_SYSTEM_LIBRARY_PATH=/usr/lib &&
-
-export AR=gcc-ar &&
-export NM=gcc-nm &&
-export RANLIB=gcc-ranlib
+export XBLD=$($CERD/binutils/config.guess)
