@@ -18,9 +18,9 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
-    --libexecdir=$TOOL/lib/$nom \
-    --localstatedir=$TOOL/var/lib/locate \
+    --prefix=$TLCD \
+    --libexecdir=$TLCD/lib/$nom \
+    --localstatedir=$TLCD/var/lib/locate \
     --enable-threads=posix \
     --disable-rpath \
     --disable-nls \
