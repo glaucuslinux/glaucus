@@ -43,9 +43,10 @@ sudo \
 sudo \
   $RM $GLAD/tmp ||
   true
-sudo \
-  $RM $GLAD/toolchain ||
+
+$RM $GLAD/toolchain ||
   true
+
 sudo \
   $RM $GLAD/usr ||
   true
