@@ -20,6 +20,6 @@ install() {
   $MAKE \
     BINDIR=/bin \
     MANDIR=/share/man \
-    BASEDIR=$TOOL \
+    BASEDIR=$TLCD \
     install
 }
