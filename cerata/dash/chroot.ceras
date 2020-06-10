@@ -13,7 +13,7 @@ prepare() {
 configure() {
   ./configure \
     --host=$TUPL \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --disable-static \
     --with-libedit
 } &&
@@ -26,5 +26,5 @@ install() {
   $MAKE \
     install-strip &&
 
-  $LN $nom $TOOL/bin/sh
+  $LN $nom $TLCD/bin/sh
 }
