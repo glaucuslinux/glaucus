@@ -12,11 +12,15 @@ configure() {
   $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
 
   ./configure \
+    --host=$XTGT \
     --prefix=/usr \
     --datadir=/etc \
+    --with-include=$TLCD/sysroot/usr/include \
+    --with-dynlib=$TLCD/sysroot/usr/lib \
     --disable-static \
     --disable-all-pic \
-    --disable-ipv6 &&
+    --disable-ipv6 \
+    --with-sysdep-devurandom=yes &&
 
   sed "s/CFLAGS := .*/CFLAGS := $CFLAGS -fno-stack-protector/" \
     -i config.mak
