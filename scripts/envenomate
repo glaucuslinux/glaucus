@@ -8,4 +8,4 @@ $MKDIR $SCER/$1/venom &&
 
 $SCRD/construct system $1 &&
 
-$RSYNC $SCER/$1/sac/ /
+$RSYNC $SCER/$1/sac/ $TLCD/sysroot
