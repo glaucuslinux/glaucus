@@ -17,7 +17,7 @@ prepare() {
 configure() {
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
+    --prefix=$TLCD \
     --disable-debug \
     --without-included-popt \
     --without-included-zlib
