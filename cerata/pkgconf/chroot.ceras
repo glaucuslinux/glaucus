@@ -18,12 +18,12 @@ configure() {
   CFLAGS="$CFLAGSNOCOMMON" \
   $CSRC/$nom/configure \
     --host=$TUPL \
-    --prefix=$TOOL \
-    --sysconfdir=$TOOL/etc \
-    --localstatedir=$TOOL/var \
+    --prefix=$TLCD \
+    --sysconfdir=$TLCD/etc \
+    --localstatedir=$TLCD/var \
     --disable-static \
     --with-sysroot=$GLAD \
-    --with-pkg-config-dir=$TOOL/lib/pkgconfig:$TOOL/share/pkgconfig
+    --with-pkg-config-dir=$TLCD/lib/pkgconfig:$TLCD/share/pkgconfig
 } &&
 
 build() {
@@ -34,7 +34,7 @@ install() {
   $MAKE \
     install-strip &&
 
-  $LN $nom $TOOL/bin/pkg-config &&
-  $LN $nom $TOOL/bin/$TUPL-pkg-config &&
-  $LN $nom $TOOL/bin/$TUPL-$nom
+  $LN $nom $TLCD/bin/pkg-config &&
+  $LN $nom $TLCD/bin/$TUPL-pkg-config &&
+  $LN $nom $TLCD/bin/$TUPL-$nom
 }
