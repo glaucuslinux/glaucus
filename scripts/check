@@ -5,9 +5,9 @@
 
 . $CERD/$1/ceras &&
 
-$SCRD/contact "$nom version $ver" &&
+$SCRD/contact "$nom $ver" &&
 
-$SCRD/contact "check" &&
+$SCRD/contact check &&
 if [ ! -d $SRCD/$nom ]; then
   $MKDIR $SRCD/$nom &&
 
