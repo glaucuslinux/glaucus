@@ -4,11 +4,5 @@
 $RM $TBLD &&
 $MKDIR $TBLD &&
 
-sudo \
-  $RM $TLCD &&
-$MKDIR $TLCD &&
-
-$MKDIR $TLCD/etc &&
-
-$MKDIR $TLCD/lib &&
-$LN lib $TLCD/lib64
+$RM $TLCD &&
+$MKDIR $TLCD
