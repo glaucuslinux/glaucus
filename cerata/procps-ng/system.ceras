@@ -30,7 +30,9 @@ configure() {
     --disable-nls \
     --disable-rpath \
     --disable-kill \
-    --disable-modern-top
+    --disable-modern-top \
+    --disable-whining \
+    --without-systemd
 } &&
 
 build() {
