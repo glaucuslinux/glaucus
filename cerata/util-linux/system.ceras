@@ -12,15 +12,17 @@ prepare() {
   $SCRD/gnu sub config &&
 
   $MKDIR $SBLD/$nom &&
-  cd $SBLD/$nom &&
+  cd $SBLD/$nom
 
-  $MKDIR /var/lib/hwclock
+  $MKDIR $SCER/$nom/sac/var/lib/hwclock
 } &&
 
 configure() {
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
   $SSRC/$nom/configure \
+    --build=$XBLD \
+    --host=$XTGT \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
@@ -37,7 +39,9 @@ configure() {
     --disable-more \
     --disable-bash-completion \
     --disable-pylibmount \
+    --disable-use-tty-group \
     --enable-usrdir-path \
+    --disable-makeinstall-chown \
     --without-systemd \
     --without-systemdsystemunitdir \
     --without-python &&
@@ -53,7 +57,5 @@ build() {
 install() {
   $MAKE \
     DESTDIR=$SCER/$nom/sac \
-    install-strip &&
-
-  $CHOWN 0:0 $SCER/$nom/sac/usr/bin/wall
+    install-strip
 }
