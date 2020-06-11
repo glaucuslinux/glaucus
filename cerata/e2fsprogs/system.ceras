@@ -16,8 +16,9 @@ prepare() {
 } &&
 
 configure() {
-  MKDIR_P="$MKDIR" \
   $SSRC/$nom/configure \
+    --build=$XBLD \
+    --host=$XTGT \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
