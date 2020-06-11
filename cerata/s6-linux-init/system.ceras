@@ -12,12 +12,13 @@ configure() {
   $SCRD/patch 0 $nom glaucus 0001-use-gnu-hash-style &&
 
   ./configure \
+    --host=$XTGT \
     --prefix=/usr \
     --libexecdir=/usr/lib/$nom \
     --skeldir=/etc/$nom/skel \
-    --with-sysdeps=/usr/lib/skalibs/sysdeps \
-    --with-include=/usr/include \
-    --with-dynlib=/usr/lib \
+    --with-sysdeps=$TLCD/sysroot/usr/lib/skalibs/sysdeps \
+    --with-include=$TLCD/sysroot/usr/include \
+    --with-dynlib=$TLCD/sysroot/usr/lib \
     --enable-shared \
     --disable-static \
     --disable-allstatic \
@@ -36,7 +37,5 @@ build() {
 install() {
   $MAKE \
     DESTDIR=$SCER/$nom/sac \
-    install &&
-
-  rm -frv $SCER/$nom/sac/etc
+    install
 }
