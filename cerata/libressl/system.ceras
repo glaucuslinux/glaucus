@@ -26,7 +26,8 @@ configure() {
     --localstatedir=/var \
     --disable-static \
     --enable-nc \
-    --disable-tests
+    --disable-tests \
+    --with-openssldir=/etc/ssl
 } &&
 
 build() {
