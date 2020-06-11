@@ -13,6 +13,8 @@ prepare() {
 
 configure() {
   ./configure \
+    --build=$XBLD \
+    --host=$XTGT \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
