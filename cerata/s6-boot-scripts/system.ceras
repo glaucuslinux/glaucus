@@ -18,8 +18,8 @@ build() {
 install() {
   $RSYNC $SRCD/$nom/etc $SCER/$nom/sac --delete &&
   $RSYNC $SRCD/$nom/usr $SCER/$nom/sac --delete &&
-  
-  $CHOWN 0:0 $SCER/$nom/sac &&
 
-  s6-rc-compile $SCER/$nom/sac/etc/s6/compiled $SCER/$nom/sac/etc/s6/source
+  $MKDIR $SCER/$nom/sac/etc/s6/run-image/utmps
+  
+  #s6-rc-compile $SCER/$nom/sac/etc/s6/compiled $SCER/$nom/sac/etc/s6/source
 }
