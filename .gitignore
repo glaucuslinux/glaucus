@@ -15,6 +15,7 @@
 # hidden directories
 .cache/
 .ccache/
+.ccls-cache/
 .config/
 .gnupg/
 .local/
