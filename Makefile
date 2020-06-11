@@ -10,11 +10,11 @@ export TLCD=$(GLAD)/toolchain
 
 export PATH=$(TLCD)/bin:/usr/bin
 
-export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
-export PKG_CONFIG_LIBDIR=$(TLCD)/usr/lib/pkgconfig:$(TLCD)/usr/share/pkgconfig
+export PKG_CONFIG_PATH=$(TLCD)/sysroot/usr/lib/pkgconfig:$(TLCD)/sysroot/usr/share/pkgconfig
+export PKG_CONFIG_LIBDIR=$(TLCD)/sysroot/usr/lib/pkgconfig:$(TLCD)/sysroot/usr/share/pkgconfig
 export PKG_CONFIG_SYSROOT_DIR=$(TLCD)/sysroot
-export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(TLCD)/usr/include
-export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(TLCD)/usr/lib
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(TLCD)/sysroot/usr/include
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(TLCD)/sysroot/usr/lib
 
 export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R
