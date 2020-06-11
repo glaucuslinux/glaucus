@@ -35,5 +35,7 @@ build() {
 install() {
   $MAKE \
     DESTDIR=$SCER/$nom/sac \
-    install
+    install &&
+
+  $LN ${nom}b $SCER/$nom/sac/usr/bin/$nom
 }
