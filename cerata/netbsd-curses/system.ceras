@@ -27,5 +27,7 @@ install() {
     install-dynamic &&
 
   $LN tic $SCER/$nom/sac/usr/bin/captoinfo &&
-  $LN tic $SCER/$nom/sac/usr/bin/infotocap
+  $LN tic $SCER/$nom/sac/usr/bin/infotocap &&
+
+  $LN libterminfo.so $SCER/$nom/sac/usr/lib/libtinfo.so
 }
