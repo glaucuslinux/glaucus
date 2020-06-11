@@ -11,12 +11,12 @@ RSYNC="rsync -aHAXx" &&
 UMOUNT="umount -fqR" &&
 
 NAME=glaucus.img &&
-SIZE=2G &&
+SIZE=64M &&
 LOOP=$(losetup -f) &&
 
-$RM glaucus.img &&
+$RM $NAME &&
 qemu-img create -f raw $NAME $SIZE &&
-dd if=scripts/other/mbr.bin of=glaucus.img conv=notrunc bs=440 count=1 &&
+dd if=scripts/other/mbr.bin of=$NAME conv=notrunc bs=440 count=1 &&
 
 parted -s $NAME mklabel msdos &&
 parted -s -a none $NAME mkpart primary ext4 0 $SIZE &&
@@ -38,11 +38,12 @@ $MKDIR /mnt/loop/run &&
 $MKDIR /mnt/loop/sys &&
 
 $MKDIR -m 0750 /mnt/loop/root &&
+$MKDIR -m 1777 /mnt/loop/tmp &&
 
-$RSYNC boot /mnt/loop &&
-$RSYNC etc /mnt/loop &&
-$RSYNC usr /mnt/loop &&
-$RSYNC var /mnt/loop &&
+$RSYNC toolchain/sysroot/boot /mnt/loop &&
+$RSYNC toolchain/sysroot/etc /mnt/loop &&
+$RSYNC toolchain/sysroot/usr /mnt/loop &&
+$RSYNC toolchain/sysroot/var /mnt/loop &&
 
 $LN usr/bin /mnt/loop/bin &&
 $LN usr/lib /mnt/loop/lib &&
