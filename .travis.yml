@@ -11,7 +11,8 @@ addons:
 before_install:
   - sudo git clone https://github.com/glaucuslinux/glaucus
   - cd glaucus
-  - make initialize
+  - sudo ln -fnsv /bin/dash /usr/bin/dash
+  - sudo make initialize
 install:
   - sudo make toolchain
 script:
