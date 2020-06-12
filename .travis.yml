@@ -12,7 +12,7 @@ before_install:
   - sudo git clone https://github.com/glaucuslinux/glaucus
   - cd glaucus
   - sudo ln -fnsv /bin/dash /usr/bin/dash
-  - make initialize
+  - sudo make initialize
 install:
   - sudo make toolchain
 script:
