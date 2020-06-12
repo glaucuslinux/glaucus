@@ -20,5 +20,7 @@ install() {
   $MAKE \
     DESTDIR=$TLCD/sysroot \
     install-libs \
-    install-tools
+    install-tools &&
+
+  $LN libc.so $TLCD/sysroot/usr/lib/ld-musl-$MARCH.so.1
 }
