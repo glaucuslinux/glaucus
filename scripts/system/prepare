@@ -24,7 +24,7 @@ utmp:x:5:\n' > $TLCD/sysroot/etc/group &&
 
 printf '127.0.0.1 localhost glaucus\n' > $TLCD/sysroot/etc/hosts &&
 
-printf 'root::0:0:root:/root:/usr/bin/dash\n' > $TLCD/sysroot/etc/passwd &&
+printf 'root::0:0:root:/root:/usr/bin/ksh\n' > $TLCD/sysroot/etc/passwd &&
 
 $RM $TLCD/sysroot/var &&
 $MKDIR $TLCD/sysroot/var/lib &&
