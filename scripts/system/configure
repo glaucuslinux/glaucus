@@ -11,4 +11,6 @@ mkfifo -m 0600 $TLCD/sysroot/etc/s6/run-image/service/s6-svscan-log/fifo &&
 
 printf '/usr/bin/dash
 /usr/bin/ksh
+/usr/bin/oksh
+/usr/bin/rksh
 /usr/bin/sh\n' > $TLCD/sysroot/etc/shells
