@@ -1,4 +1,4 @@
-From dacbf15ae1e2027e71eb1ef45ea4d831189923dc Mon Sep 17 00:00:00 2001
+From 06d587d864bc5c95bfcff6abad3b86baa3e82fbf Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Thu, 30 Apr 2020 14:41:25 -0400
 Subject: [PATCH 10/10] padata: document multithreaded jobs
@@ -11,7 +11,7 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  1 file changed, 31 insertions(+), 10 deletions(-)
 
 diff --git a/Documentation/core-api/padata.rst b/Documentation/core-api/padata.rst
-index 9a24c111781d..b7e047af993e 100644
+index 9a24c1117..b7e047af9 100644
 --- a/Documentation/core-api/padata.rst
 +++ b/Documentation/core-api/padata.rst
 @@ -4,23 +4,26 @@
@@ -77,5 +77,5 @@ index 9a24c111781d..b7e047af993e 100644
  =========
  
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

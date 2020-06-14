@@ -1,4 +1,4 @@
-From 09828a28b104334ea5d1744fdfb525bfc51549b3 Mon Sep 17 00:00:00 2001
+From e90b0cc7dd38382b7589f43dabeac2dfab87d41f Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Mon, 6 Apr 2020 12:14:23 -0400
 Subject: [PATCH 08/10] mm: move zone iterator outside of
@@ -24,10 +24,10 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  1 file changed, 27 insertions(+), 61 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 68669d3a5a66..990514d8f0d9 100644
+index 667f34a27..913a7d8ae 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -1708,55 +1708,23 @@ deferred_init_mem_pfn_range_in_zone(u64 *i, struct zone *zone,
+@@ -1750,55 +1750,23 @@ deferred_init_mem_pfn_range_in_zone(u64 *i, struct zone *zone,
  }
  
  /*
@@ -95,7 +95,7 @@ index 68669d3a5a66..990514d8f0d9 100644
  
  	return nr_pages;
  }
-@@ -1814,9 +1782,11 @@ static int __init deferred_init_memmap(void *data)
+@@ -1856,9 +1824,11 @@ static int __init deferred_init_memmap(void *data)
  	 * that we can avoid introducing any issues with the buddy
  	 * allocator.
  	 */
@@ -110,7 +110,7 @@ index 68669d3a5a66..990514d8f0d9 100644
  	}
  zone_empty:
  	/* Sanity check that the next zone really is unpopulated */
-@@ -1883,22 +1853,18 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
+@@ -1925,22 +1895,18 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
  	 * that we can avoid introducing any issues with the buddy
  	 * allocator.
  	 */
@@ -144,5 +144,5 @@ index 68669d3a5a66..990514d8f0d9 100644
  	pgdat_resize_unlock(pgdat, &flags);
  
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

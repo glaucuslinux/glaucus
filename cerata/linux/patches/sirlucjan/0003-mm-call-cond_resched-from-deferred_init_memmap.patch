@@ -1,4 +1,4 @@
-From 14beeebb8bff7b5f1baed7648a0e050d7a74012e Mon Sep 17 00:00:00 2001
+From 7569ff673a5e42027e5cb9364b2cb53e7011e96e Mon Sep 17 00:00:00 2001
 From: Pavel Tatashin <pasha.tatashin@soleen.com>
 Date: Wed, 29 Apr 2020 04:02:02 +0000
 Subject: [PATCH 03/10] mm: call cond_resched() from deferred_init_memmap()
@@ -64,10 +64,10 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 4a60f2427eb0..68669d3a5a66 100644
+index 7d6ef26eb..667f34a27 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -1816,7 +1816,7 @@ static int __init deferred_init_memmap(void *data)
+@@ -1858,7 +1858,7 @@ static int __init deferred_init_memmap(void *data)
  	 */
  	while (spfn < epfn) {
  		nr_pages += deferred_init_maxorder(&i, zone, &spfn, &epfn);
@@ -77,5 +77,5 @@ index 4a60f2427eb0..68669d3a5a66 100644
  zone_empty:
  	/* Sanity check that the next zone really is unpopulated */
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

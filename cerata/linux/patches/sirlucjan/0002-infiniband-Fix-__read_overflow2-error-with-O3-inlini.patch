@@ -1,7 +1,7 @@
-From 44b1c9423b19d7c32e12b7359c9d1c88e8188849 Mon Sep 17 00:00:00 2001
+From 6a6880aaec6dfbb605694e20fcf768d46d1a0899 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Fri, 26 Oct 2018 11:22:33 +0100
-Subject: [PATCH 02/10] infiniband: Fix __read_overflow2 error with -O3
+Subject: [PATCH 02/11] infiniband: Fix __read_overflow2 error with -O3
  inlining
 
 ---
@@ -21,5 +21,5 @@ index 1753a9801..184b30282 100644
  	int ret;
  
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

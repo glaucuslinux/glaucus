@@ -1,7 +1,7 @@
-From 8b573c41fae35d35db9bb69bfce6e6d4999b4b7a Mon Sep 17 00:00:00 2001
+From 384e01d123813ddfcd076e44a9cf28ce95bcdd74 Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Tue, 31 Mar 2020 22:39:07 -0700
-Subject: [PATCH 2/8] lib: prepare xxhash for preboot environment
+Subject: [PATCH 2/9] lib: prepare xxhash for preboot environment
 
 Don't export symbols if XXH_PREBOOT is defined.
 
@@ -16,7 +16,7 @@ Signed-off-by: Nick Terrell <terrelln@fb.com>
  1 file changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/lib/xxhash.c b/lib/xxhash.c
-index aa61e2a3802f..b4364e011392 100644
+index aa61e2a38..b4364e011 100644
 --- a/lib/xxhash.c
 +++ b/lib/xxhash.c
 @@ -80,13 +80,11 @@ void xxh32_copy_state(struct xxh32_state *dst, const struct xxh32_state *src)
@@ -110,5 +110,5 @@ index aa61e2a3802f..b4364e011392 100644
  MODULE_DESCRIPTION("xxHash");
 +#endif
 -- 
-2.26.0.51.ga7d14a4428
+2.27.0.rc2
 

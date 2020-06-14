@@ -1,4 +1,4 @@
-From 0e955dc47a08815500de2f559d0e6781622cbbf2 Mon Sep 17 00:00:00 2001
+From 2c41403837b5fa7341a5a7054322f8d0f8b6cb3d Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Tue, 26 Nov 2019 02:38:09 -0500
 Subject: [PATCH 07/10] padata: add basic support for multithreaded jobs
@@ -24,7 +24,7 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  2 files changed, 178 insertions(+), 3 deletions(-)
 
 diff --git a/include/linux/padata.h b/include/linux/padata.h
-index 3bfa503503ac..b0affa466a84 100644
+index 3bfa50350..b0affa466 100644
 --- a/include/linux/padata.h
 +++ b/include/linux/padata.h
 @@ -4,6 +4,9 @@
@@ -78,7 +78,7 @@ index 3bfa503503ac..b0affa466a84 100644
  			      cpumask_var_t cpumask);
  extern int padata_start(struct padata_instance *pinst);
 diff --git a/kernel/padata.c b/kernel/padata.c
-index edd3ff551e26..ccb617d37677 100644
+index 78ff9aa52..e78f57d9a 100644
 --- a/kernel/padata.c
 +++ b/kernel/padata.c
 @@ -7,6 +7,9 @@
@@ -294,5 +294,5 @@ index edd3ff551e26..ccb617d37677 100644
  {
  	INIT_LIST_HEAD(&pd_list->list);
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

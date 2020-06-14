@@ -11,87 +11,85 @@ prepare() {
   cd $SSRC/$nom &&
 
   $MAKE \
-    ARCH=$LARCH \
-    mrproper
+    mrproper &&
 
-  #$SCRD/patch 1 $nom clear 0104-pci-pme-wakeups.patch &&
-  #$SCRD/patch 1 $nom clear 0105-ksm-wakeups.patch &&
-  #$SCRD/patch 1 $nom clear 0106-intel_idle-tweak-cpuidle-cstates.patch &&
-  #$SCRD/patch 1 $nom clear 0108-smpboot-reuse-timer-calibration.patch &&
-  #$SCRD/patch 1 $nom clear 0110-Initialize-ata-before-graphics.patch &&
-  #$SCRD/patch 1 $nom clear 0111-give-rdrand-some-credit.patch &&
-  #$SCRD/patch 1 $nom clear 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch &&
-  #$SCRD/patch 1 $nom clear 0113-kernel-time-reduce-ntp-wakeups.patch &&
-  #$SCRD/patch 1 $nom clear 0121-use-lfence-instead-of-rep-and-nop.patch &&
-  #$SCRD/patch 1 $nom clear 0122-do-accept-in-LIFO-order-for-cache-efficiency.patch &&
-  #$SCRD/patch 1 $nom clear 0123-locking-rwsem-spin-faster.patch &&
-  #$SCRD/patch 1 $nom clear 0124-ata-libahci-ignore-staggered-spin-up.patch &&
-  #$SCRD/patch 1 $nom clear 0129-nvme-workaround.patch &&
+  $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups &&
+  $SCRD/patch 1 $nom clear 0105-ksm-wakeups &&
+  $SCRD/patch 1 $nom clear 0106-intel_idle-tweak-cpuidle-cstates &&
+  $SCRD/patch 1 $nom clear 0108-smpboot-reuse-timer-calibration &&
+  $SCRD/patch 1 $nom clear 0110-Initialize-ata-before-graphics &&
+  $SCRD/patch 1 $nom clear 0111-give-rdrand-some-credit &&
+  $SCRD/patch 1 $nom clear 0112-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit &&
+  $SCRD/patch 1 $nom clear 0113-kernel-time-reduce-ntp-wakeups &&
+  $SCRD/patch 1 $nom clear 0121-use-lfence-instead-of-rep-and-nop &&
+  $SCRD/patch 1 $nom clear 0122-do-accept-in-LIFO-order-for-cache-efficiency &&
+  $SCRD/patch 1 $nom clear 0123-locking-rwsem-spin-faster &&
+  $SCRD/patch 1 $nom clear 0124-ata-libahci-ignore-staggered-spin-up &&
+  $SCRD/patch 1 $nom clear 0129-nvme-workaround &&
 
-  #$SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
+  $SCRD/patch 1 $nom dolohow uksm-5.7 &&
 
-  #$SCRD/patch 1 $nom sirlucjan 0001-UKSM-for-5.6.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-aufs-20200413.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-consolemap-Fix-a-memory-leaking-bug-in-drivers-tty-v.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-cpu-5.6-merge-graysky-s-patchset.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-futex-Implement-mechanism-to-wait-on-any-of-several-.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-lib-prepare-zstd-for-preboot-environment.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-mm-pagealloc.c-call-touch_nmi_watchdog-on-max-order-.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0002-ZEN-intel-pstate-Implement-enable-parameter.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0002-infiniband-Fix-__read_overflow2-error-with-O3-inlini.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0002-lib-prepare-xxhash-for-preboot-environment.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0002-mm-initialize-deferred-pages-with-interrupts-enabled.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O-.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0003-lib-add-zstd-support-to-decompress.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0003-mm-call-cond_resched-from-deferred_init_memmap.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0004-init-add-support-for-zstd-compressed-kernel.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0004-kbuild-reuse-intermediate-linker-scripts-in-the-fina.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead-.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0004-padata-remove-exit-routine.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0005-padata-initialize-earlier.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0005-usr-add-support-for-zstd-compressed-initramfs.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0006-padata-allocate-work-structures-for-parallel-jobs-fr.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0006-x86-bump-ZO_z_extra_bytes-margin-for-zstd.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0007-padata-add-basic-support-for-multithreaded-jobs.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0007-x86-Add-support-for-ZSTD-compressed-kernel.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0008-.gitignore-add-ZSTD-compressed-files.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0008-mm-move-zone-iterator-outside-of-deferred_init_maxor.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0009-mm-parallelize-deferred_init_memmap.patch &&
-  #$SCRD/patch 1 $nom sirlucjan 0010-padata-document-multithreaded-jobs.patch
+  $SCRD/patch 0 $nom glaucus 0001-libarchive-bsdtar-compatibility &&
+
+  $SCRD/patch 1 $nom graysky enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+ &&
+
+  $SCRD/patch 1 $nom sirlucjan 0001-aufs-20200518 &&
+  $SCRD/patch 1 $nom sirlucjan 0001-futex-Implement-mechanism-to-wait-on-any-of-several- &&
+  $SCRD/patch 1 $nom sirlucjan 0001-lib-prepare-zstd-for-preboot-environment &&
+  $SCRD/patch 1 $nom sirlucjan 0001-mm-pagealloc.c-call-touch_nmi_watchdog-on-max-order- &&
+  $SCRD/patch 1 $nom sirlucjan 0001-net-sched-allow-configuring-cake-qdisc-as-default &&
+  $SCRD/patch 1 $nom sirlucjan 0002-ZEN-intel-pstate-Implement-enable-parameter &&
+  $SCRD/patch 1 $nom sirlucjan 0002-block-Fix-depends-for-BLK_DEV_ZONED &&
+  $SCRD/patch 1 $nom sirlucjan 0002-infiniband-Fix-__read_overflow2-error-with-O3-inlini &&
+  $SCRD/patch 1 $nom sirlucjan 0002-init-Kconfig-enable-O3-for-all-arches &&
+  $SCRD/patch 1 $nom sirlucjan 0002-lib-prepare-xxhash-for-preboot-environment &&
+  $SCRD/patch 1 $nom sirlucjan 0002-mm-initialize-deferred-pages-with-interrupts-enabled &&
+  $SCRD/patch 1 $nom sirlucjan 0003-block-set-rq_affinity-2-for-full-multithreading-I-O- &&
+  $SCRD/patch 1 $nom sirlucjan 0003-lib-add-zstd-support-to-decompress &&
+  $SCRD/patch 1 $nom sirlucjan 0003-mm-call-cond_resched-from-deferred_init_memmap &&
+  $SCRD/patch 1 $nom sirlucjan 0003-sched-core-nr_migrate-256-increases-number-of-tasks- &&
+  $SCRD/patch 1 $nom sirlucjan 0004-init-add-support-for-zstd-compressed-kernel &&
+  $SCRD/patch 1 $nom sirlucjan 0004-mm-set-2048-for-address_space-level-file-read-ahead- &&
+  $SCRD/patch 1 $nom sirlucjan 0004-padata-remove-exit-routine &&
+  $SCRD/patch 1 $nom sirlucjan 0005-padata-initialize-earlier &&
+  $SCRD/patch 1 $nom sirlucjan 0005-usr-add-support-for-zstd-compressed-initramfs &&
+  $SCRD/patch 1 $nom sirlucjan 0006-padata-allocate-work-structures-for-parallel-jobs-fr &&
+  $SCRD/patch 1 $nom sirlucjan 0006-x86-bump-ZO_z_extra_bytes-margin-for-zstd &&
+  $SCRD/patch 1 $nom sirlucjan 0007-padata-add-basic-support-for-multithreaded-jobs &&
+  $SCRD/patch 1 $nom sirlucjan 0007-x86-Add-support-for-ZSTD-compressed-kernel &&
+  $SCRD/patch 1 $nom sirlucjan 0008-.gitignore-add-ZSTD-compressed-files &&
+  $SCRD/patch 1 $nom sirlucjan 0008-mm-move-zone-iterator-outside-of-deferred_init_maxor &&
+  $SCRD/patch 1 $nom sirlucjan 0009-init-add-support-for-zstd-compressed-modules &&
+  $SCRD/patch 1 $nom sirlucjan 0009-mm-parallelize-deferred_init_memmap &&
+  $SCRD/patch 1 $nom sirlucjan 0010-padata-document-multithreaded-jobs &&
+  $SCRD/patch 1 $nom sirlucjan 0011-kbuild-Disable-stack-conservation-for-GCC
 } &&
 
 configure() {
-  $RSYNC $CERD/$nom/glaucus.config $SBLD/$nom/.config &&
-
   $MAKE \
     O=$SBLD/$nom \
     ARCH=$LARCH \
-    oldconfig &&
-  
-  $MAKE \
-    O=$SBLD/$nom \
-    ARCH=$LARCH \
-    prepare
+    CROSS_COMPILE=$XTGT- \
+    ${LCARCH}defconfig
 } &&
 
 build() {
   $MAKE \
     O=$SBLD/$nom \
-    ARCH=$LARCH
+    ARCH=$LARCH \
+    CROSS_COMPILE=$XTGT-
 } &&
 
 install() {
-  #$MAKE \
-    #O=$SBLD/$nom \
-    #ARCH=$LARCH \
-    #INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
-    #modules_install &&
+  $MAKE \
+    O=$SBLD/$nom \
+    ARCH=$LARCH \
+    CROSS_COMPILE=$XTGT- \
+    INSTALL_MOD_PATH=$SCER/$nom/sac/usr \
+    modules_install &&
 
   $MKDIR $SCER/$nom/sac/boot &&
 
-  $RSYNC $SBLD/$nom/arch/x86/boot/bzImage $SCER/$nom/sac/boot/vmlinuz &&
+  $RSYNC $SBLD/$nom/$LIARCH $SCER/$nom/sac/boot/vmlinuz &&
   $RSYNC $SBLD/$nom/System.map $SCER/$nom/sac/boot
 }

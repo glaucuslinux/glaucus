@@ -1,4 +1,4 @@
-From 5caab6aa6a673469e451ecdd018c5a42b2fb1f10 Mon Sep 17 00:00:00 2001
+From 300c083f6b2039426c068d315e38938a0a898443 Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Wed, 29 Apr 2020 04:02:01 +0000
 Subject: [PATCH 01/10] mm/pagealloc.c: call touch_nmi_watchdog() on max order
@@ -11,7 +11,6 @@ make code more modular and allow jiffies to update.
 
 Original approach, and discussion can be found here:
  http://lkml.kernel.org/r/20200311123848.118638-1-shile.zhang@linux.alibaba.com
-
 
 This patch (of 3):
 
@@ -48,10 +47,10 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 3c4eb750a199..e8ff6a176164 100644
+index a54e91517..1fa278c30 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -1639,7 +1639,6 @@ static void __init deferred_free_pages(unsigned long pfn,
+@@ -1681,7 +1681,6 @@ static void __init deferred_free_pages(unsigned long pfn,
  		} else if (!(pfn & nr_pgmask)) {
  			deferred_free_range(pfn - nr_free, nr_free);
  			nr_free = 1;
@@ -59,7 +58,7 @@ index 3c4eb750a199..e8ff6a176164 100644
  		} else {
  			nr_free++;
  		}
-@@ -1669,7 +1668,6 @@ static unsigned long  __init deferred_init_pages(struct zone *zone,
+@@ -1711,7 +1710,6 @@ static unsigned long  __init deferred_init_pages(struct zone *zone,
  			continue;
  		} else if (!page || !(pfn & nr_pgmask)) {
  			page = pfn_to_page(pfn);
@@ -67,7 +66,7 @@ index 3c4eb750a199..e8ff6a176164 100644
  		} else {
  			page++;
  		}
-@@ -1809,8 +1807,10 @@ static int __init deferred_init_memmap(void *data)
+@@ -1851,8 +1849,10 @@ static int __init deferred_init_memmap(void *data)
  	 * that we can avoid introducing any issues with the buddy
  	 * allocator.
  	 */
@@ -79,7 +78,7 @@ index 3c4eb750a199..e8ff6a176164 100644
  zone_empty:
  	pgdat_resize_unlock(pgdat, &flags);
  
-@@ -1894,6 +1894,7 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
+@@ -1936,6 +1936,7 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
  		first_deferred_pfn = spfn;
  
  		nr_pages += deferred_init_maxorder(&i, zone, &spfn, &epfn);
@@ -88,5 +87,5 @@ index 3c4eb750a199..e8ff6a176164 100644
  		/* We should only stop along section boundaries */
  		if ((first_deferred_pfn ^ spfn) < PAGES_PER_SECTION)
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

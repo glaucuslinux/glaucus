@@ -1,4 +1,4 @@
-From 018908fd0f9a56156bc34bc86781a7877c3d4d20 Mon Sep 17 00:00:00 2001
+From cc00dbb52d59cb9e0bd3a7af390a86f429b7436a Mon Sep 17 00:00:00 2001
 From: Pavel Tatashin <pasha.tatashin@soleen.com>
 Date: Wed, 29 Apr 2020 04:02:01 +0000
 Subject: [PATCH 02/10] mm: initialize deferred pages with interrupts enabled
@@ -47,10 +47,10 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
  2 files changed, 9 insertions(+), 13 deletions(-)
 
 diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index 462f6873905a..c5bdf55da034 100644
+index 1b9de7d22..6196fd16b 100644
 --- a/include/linux/mmzone.h
 +++ b/include/linux/mmzone.h
-@@ -721,6 +721,8 @@ typedef struct pglist_data {
+@@ -678,6 +678,8 @@ typedef struct pglist_data {
  	/*
  	 * Must be held any time you expect node_start_pfn,
  	 * node_present_pages, node_spanned_pages or nr_zones to stay constant.
@@ -60,10 +60,10 @@ index 462f6873905a..c5bdf55da034 100644
  	 * pgdat_resize_lock() and pgdat_resize_unlock() are provided to
  	 * manipulate node_size_lock without checking for CONFIG_MEMORY_HOTPLUG
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index e8ff6a176164..4a60f2427eb0 100644
+index 1fa278c30..7d6ef26eb 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -1790,6 +1790,13 @@ static int __init deferred_init_memmap(void *data)
+@@ -1832,6 +1832,13 @@ static int __init deferred_init_memmap(void *data)
  	BUG_ON(pgdat->first_deferred_pfn > pgdat_end_pfn(pgdat));
  	pgdat->first_deferred_pfn = ULONG_MAX;
  
@@ -77,7 +77,7 @@ index e8ff6a176164..4a60f2427eb0 100644
  	/* Only the highest zone is deferred so find it */
  	for (zid = 0; zid < MAX_NR_ZONES; zid++) {
  		zone = pgdat->node_zones + zid;
-@@ -1812,8 +1819,6 @@ static int __init deferred_init_memmap(void *data)
+@@ -1854,8 +1861,6 @@ static int __init deferred_init_memmap(void *data)
  		touch_nmi_watchdog();
  	}
  zone_empty:
@@ -86,7 +86,7 @@ index e8ff6a176164..4a60f2427eb0 100644
  	/* Sanity check that the next zone really is unpopulated */
  	WARN_ON(++zid < MAX_NR_ZONES && populated_zone(++zone));
  
-@@ -1855,17 +1860,6 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
+@@ -1897,17 +1902,6 @@ deferred_grow_zone(struct zone *zone, unsigned int order)
  
  	pgdat_resize_lock(pgdat, &flags);
  
@@ -105,5 +105,5 @@ index e8ff6a176164..4a60f2427eb0 100644
  	 * If someone grew this zone while we were waiting for spinlock, return
  	 * true, as there might be enough pages already.
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

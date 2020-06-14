@@ -1,7 +1,7 @@
-From 14004d7fd1cbec8440d1ec4eeb8cd908bb306b12 Mon Sep 17 00:00:00 2001
+From 08b7a212044b515c28ff781670ca79f7652b507b Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Tue, 31 Mar 2020 22:39:12 -0700
-Subject: [PATCH 7/8] x86: Add support for ZSTD compressed kernel
+Subject: [PATCH 7/9] x86: Add support for ZSTD compressed kernel
 
 * Add support for zstd compressed kernel
 * Bump the heap size for zstd.
@@ -32,10 +32,10 @@ Signed-off-by: Nick Terrell <terrelln@fb.com>
  5 files changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/x86/boot.rst b/Documentation/x86/boot.rst
-index c9c201596c3e..cedcf4d49bf0 100644
+index 5325c71ca..7fafc7ac0 100644
 --- a/Documentation/x86/boot.rst
 +++ b/Documentation/x86/boot.rst
-@@ -786,9 +786,9 @@ Protocol:	2.08+
+@@ -782,9 +782,9 @@ Protocol:	2.08+
    uncompressed data should be determined using the standard magic
    numbers.  The currently supported compression formats are gzip
    (magic numbers 1F 8B or 1F 9E), bzip2 (magic number 42 5A), LZMA
@@ -49,10 +49,10 @@ index c9c201596c3e..cedcf4d49bf0 100644
  ============	==============
  Field name:	payload_length
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index beea77046f9b..12d88997a3a6 100644
+index 2d3f963fd..897b32531 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
-@@ -183,6 +183,7 @@ config X86
+@@ -185,6 +185,7 @@ config X86
  	select HAVE_KERNEL_LZMA
  	select HAVE_KERNEL_LZO
  	select HAVE_KERNEL_XZ
@@ -61,7 +61,7 @@ index beea77046f9b..12d88997a3a6 100644
  	select HAVE_KPROBES_ON_FTRACE
  	select HAVE_FUNCTION_ERROR_INJECTION
 diff --git a/arch/x86/boot/compressed/Makefile b/arch/x86/boot/compressed/Makefile
-index 26050ae0b27e..8233f598f15b 100644
+index 5f7c262bc..7f0aaf9c0 100644
 --- a/arch/x86/boot/compressed/Makefile
 +++ b/arch/x86/boot/compressed/Makefile
 @@ -24,7 +24,7 @@ OBJECT_FILES_NON_STANDARD	:= y
@@ -73,7 +73,7 @@ index 26050ae0b27e..8233f598f15b 100644
  
  KBUILD_CFLAGS := -m$(BITS) -O2
  KBUILD_CFLAGS += -fno-strict-aliasing $(call cc-option, -fPIE, -fPIC)
-@@ -145,6 +145,8 @@ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
+@@ -143,6 +143,8 @@ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
  	$(call if_changed,lzo)
  $(obj)/vmlinux.bin.lz4: $(vmlinux.bin.all-y) FORCE
  	$(call if_changed,lz4)
@@ -82,7 +82,7 @@ index 26050ae0b27e..8233f598f15b 100644
  
  suffix-$(CONFIG_KERNEL_GZIP)	:= gz
  suffix-$(CONFIG_KERNEL_BZIP2)	:= bz2
-@@ -152,6 +154,7 @@ suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
+@@ -150,6 +152,7 @@ suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
  suffix-$(CONFIG_KERNEL_XZ)	:= xz
  suffix-$(CONFIG_KERNEL_LZO) 	:= lzo
  suffix-$(CONFIG_KERNEL_LZ4) 	:= lz4
@@ -91,7 +91,7 @@ index 26050ae0b27e..8233f598f15b 100644
  quiet_cmd_mkpiggy = MKPIGGY $@
        cmd_mkpiggy = $(obj)/mkpiggy $< > $@
 diff --git a/arch/x86/boot/compressed/misc.c b/arch/x86/boot/compressed/misc.c
-index 9652d5c2afda..39e592d0e0b4 100644
+index 9652d5c2a..39e592d0e 100644
 --- a/arch/x86/boot/compressed/misc.c
 +++ b/arch/x86/boot/compressed/misc.c
 @@ -77,6 +77,10 @@ static int lines, cols;
@@ -106,7 +106,7 @@ index 9652d5c2afda..39e592d0e0b4 100644
   * NOTE: When adding a new decompressor, please update the analysis in
   * ../header.S.
 diff --git a/arch/x86/include/asm/boot.h b/arch/x86/include/asm/boot.h
-index 680c320363db..d6dd43d25d9f 100644
+index 680c32036..d6dd43d25 100644
 --- a/arch/x86/include/asm/boot.h
 +++ b/arch/x86/include/asm/boot.h
 @@ -24,9 +24,11 @@
@@ -124,5 +124,5 @@ index 680c320363db..d6dd43d25d9f 100644
  #endif
  
 -- 
-2.26.0.51.ga7d14a4428
+2.27.0.rc2
 

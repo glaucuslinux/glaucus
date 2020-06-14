@@ -1,4 +1,4 @@
-From 62075c45f01af2c4c1fc6f315bd7cfc9c3a3c1ee Mon Sep 17 00:00:00 2001
+From 112f2f0aef60e63e841ad08c71a663a5bf648047 Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Tue, 26 Nov 2019 02:38:09 -0500
 Subject: [PATCH 04/10] padata: remove exit routine
@@ -15,10 +15,10 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  1 file changed, 6 deletions(-)
 
 diff --git a/kernel/padata.c b/kernel/padata.c
-index 72777c10bb9c..36a8e98741bb 100644
+index a6afa12fb..835919c74 100644
 --- a/kernel/padata.c
 +++ b/kernel/padata.c
-@@ -1071,10 +1071,4 @@ static __init int padata_driver_init(void)
+@@ -1072,10 +1072,4 @@ static __init int padata_driver_init(void)
  }
  module_init(padata_driver_init);
  
@@ -30,5 +30,5 @@ index 72777c10bb9c..36a8e98741bb 100644
 -module_exit(padata_driver_exit);
  #endif
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

@@ -1,4 +1,4 @@
-From e26200a16b12befc4f2be816ef1f6f0a0b34653d Mon Sep 17 00:00:00 2001
+From f30c9bd7a9e061c6a64233ca8daba2b9717b7329 Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Tue, 26 Nov 2019 02:38:09 -0500
 Subject: [PATCH 06/10] padata: allocate work structures for parallel jobs from
@@ -33,7 +33,7 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  2 files changed, 78 insertions(+), 48 deletions(-)
 
 diff --git a/include/linux/padata.h b/include/linux/padata.h
-index 476ecfa41f36..3bfa503503ac 100644
+index 476ecfa41..3bfa50350 100644
 --- a/include/linux/padata.h
 +++ b/include/linux/padata.h
 @@ -24,7 +24,6 @@
@@ -78,7 +78,7 @@ index 476ecfa41f36..3bfa503503ac 100644
  	int				cpu;
  	struct padata_cpumask		cpumask;
 diff --git a/kernel/padata.c b/kernel/padata.c
-index b05cd30f8905..edd3ff551e26 100644
+index 6f709bc0f..78ff9aa52 100644
 --- a/kernel/padata.c
 +++ b/kernel/padata.c
 @@ -32,7 +32,15 @@
@@ -239,7 +239,7 @@ index b05cd30f8905..edd3ff551e26 100644
  	atomic_set(&pd->refcnt, 1);
  	spin_lock_init(&pd->lock);
  	pd->cpu = cpumask_first(pd->cpumask.pcpu);
-@@ -1050,6 +1071,7 @@ EXPORT_SYMBOL(padata_free_shell);
+@@ -1051,6 +1072,7 @@ EXPORT_SYMBOL(padata_free_shell);
  
  void __init padata_init(void)
  {
@@ -247,7 +247,7 @@ index b05cd30f8905..edd3ff551e26 100644
  #ifdef CONFIG_HOTPLUG_CPU
  	int ret;
  
-@@ -1061,13 +1083,27 @@ void __init padata_init(void)
+@@ -1062,13 +1084,27 @@ void __init padata_init(void)
  
  	ret = cpuhp_setup_state_multi(CPUHP_PADATA_DEAD, "padata:dead",
  				      NULL, padata_cpu_dead);
@@ -281,5 +281,5 @@ index b05cd30f8905..edd3ff551e26 100644
 +	pr_warn("padata: initialization failed\n");
  }
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

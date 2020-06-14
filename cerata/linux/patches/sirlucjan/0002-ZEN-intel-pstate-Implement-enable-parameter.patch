@@ -1,4 +1,4 @@
-From 1ac1f1e259083e1752f5ca13fa9bdc84b904cbdc Mon Sep 17 00:00:00 2001
+From 50ddd5f7d99087b0a167c32b3edc549c5a7f5dd2 Mon Sep 17 00:00:00 2001
 From: Steven Barrett <steven@liquorix.net>
 Date: Wed, 15 Jan 2020 20:43:56 -0600
 Subject: [PATCH 2/2] ZEN: intel-pstate: Implement "enable" parameter
@@ -29,10 +29,10 @@ selection.
  2 files changed, 5 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index c07815d23..be3f0dd2b 100644
+index 2ee7a9173..f6badf534 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -1792,6 +1792,9 @@
+@@ -1826,6 +1826,9 @@
  			disable
  			  Do not enable intel_pstate as the default
  			  scaling driver for the supported processors
@@ -43,10 +43,10 @@ index c07815d23..be3f0dd2b 100644
  			  Use intel_pstate as a scaling driver, but configure it
  			  to work with generic cpufreq governors (instead of
 diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
-index c81e1ff29..a5e7a239f 100644
+index 0d01987c5..54d8fa860 100644
 --- a/drivers/cpufreq/intel_pstate.c
 +++ b/drivers/cpufreq/intel_pstate.c
-@@ -2822,6 +2822,8 @@ static int __init intel_pstate_setup(char *str)
+@@ -2831,6 +2831,8 @@ static int __init intel_pstate_setup(char *str)
  		pr_info("HWP disabled\n");
  		no_hwp = 1;
  	}
@@ -56,5 +56,5 @@ index c81e1ff29..a5e7a239f 100644
  		force_load = 1;
  	if (!strcmp(str, "hwp_only"))
 -- 
-2.26.0.51.ga7d14a4428
+2.27.0.rc2
 

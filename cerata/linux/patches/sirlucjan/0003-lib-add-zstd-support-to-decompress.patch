@@ -1,7 +1,7 @@
-From df999c3ae5c3fe9799cf6caf733994dba5d2295c Mon Sep 17 00:00:00 2001
+From 47e836d161e2de7240a2bc722716dc7e4976e3de Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Tue, 31 Mar 2020 22:39:08 -0700
-Subject: [PATCH 3/8] lib: add zstd support to decompress
+Subject: [PATCH 3/9] lib: add zstd support to decompress
 
 * Add unzstd() and the zstd decompress interface.
 * Add zstd support to decompress_method().
@@ -28,7 +28,7 @@ Signed-off-by: Nick Terrell <terrelln@fb.com>
 
 diff --git a/include/linux/decompress/unzstd.h b/include/linux/decompress/unzstd.h
 new file mode 100644
-index 000000000000..56d539ae880f
+index 000000000..56d539ae8
 --- /dev/null
 +++ b/include/linux/decompress/unzstd.h
 @@ -0,0 +1,11 @@
@@ -44,10 +44,10 @@ index 000000000000..56d539ae880f
 +	   void (*error_fn)(char *x));
 +#endif
 diff --git a/lib/Kconfig b/lib/Kconfig
-index bc7e56370129..11de5fa09a52 100644
+index 712243942..eeb4b5360 100644
 --- a/lib/Kconfig
 +++ b/lib/Kconfig
-@@ -336,6 +336,10 @@ config DECOMPRESS_LZ4
+@@ -335,6 +335,10 @@ config DECOMPRESS_LZ4
  	select LZ4_DECOMPRESS
  	tristate
  
@@ -59,10 +59,10 @@ index bc7e56370129..11de5fa09a52 100644
  # Generic allocator support is selected if needed
  #
 diff --git a/lib/Makefile b/lib/Makefile
-index 611872c06926..09ad45ba6883 100644
+index e9584575b..124d68ad9 100644
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -160,6 +160,7 @@ lib-$(CONFIG_DECOMPRESS_LZMA) += decompress_unlzma.o
+@@ -163,6 +163,7 @@ lib-$(CONFIG_DECOMPRESS_LZMA) += decompress_unlzma.o
  lib-$(CONFIG_DECOMPRESS_XZ) += decompress_unxz.o
  lib-$(CONFIG_DECOMPRESS_LZO) += decompress_unlzo.o
  lib-$(CONFIG_DECOMPRESS_LZ4) += decompress_unlz4.o
@@ -71,7 +71,7 @@ index 611872c06926..09ad45ba6883 100644
  obj-$(CONFIG_TEXTSEARCH) += textsearch.o
  obj-$(CONFIG_TEXTSEARCH_KMP) += ts_kmp.o
 diff --git a/lib/decompress.c b/lib/decompress.c
-index 857ab1af1ef3..ab3fc90ffc64 100644
+index 857ab1af1..ab3fc90ff 100644
 --- a/lib/decompress.c
 +++ b/lib/decompress.c
 @@ -13,6 +13,7 @@
@@ -102,7 +102,7 @@ index 857ab1af1ef3..ab3fc90ffc64 100644
  
 diff --git a/lib/decompress_unzstd.c b/lib/decompress_unzstd.c
 new file mode 100644
-index 000000000000..f317afab502f
+index 000000000..f317afab5
 --- /dev/null
 +++ b/lib/decompress_unzstd.c
 @@ -0,0 +1,342 @@
@@ -449,5 +449,5 @@ index 000000000000..f317afab502f
 +}
 +#endif
 -- 
-2.26.0.51.ga7d14a4428
+2.27.0.rc2
 

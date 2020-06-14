@@ -1,4 +1,4 @@
-From b87c24b69608305c65161165eb07460ecddb8a70 Mon Sep 17 00:00:00 2001
+From 4f01682052404ba50717256ae8c5c10aaee3b068 Mon Sep 17 00:00:00 2001
 From: Daniel Jordan <daniel.m.jordan@oracle.com>
 Date: Thu, 13 Dec 2018 13:18:27 -0500
 Subject: [PATCH 09/10] mm: parallelize deferred_init_memmap()
@@ -91,10 +91,10 @@ Signed-off-by: Daniel Jordan <daniel.m.jordan@oracle.com>
  2 files changed, 41 insertions(+), 11 deletions(-)
 
 diff --git a/mm/Kconfig b/mm/Kconfig
-index ab80933be65f..e5007206c760 100644
+index c1acc34c1..04c1da3f9 100644
 --- a/mm/Kconfig
 +++ b/mm/Kconfig
-@@ -622,13 +622,13 @@ config DEFERRED_STRUCT_PAGE_INIT
+@@ -750,13 +750,13 @@ config DEFERRED_STRUCT_PAGE_INIT
  	depends on SPARSEMEM
  	depends on !NEED_PER_CPU_KM
  	depends on 64BIT
@@ -112,7 +112,7 @@ index ab80933be65f..e5007206c760 100644
  	  initialisation.
  
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 990514d8f0d9..96d6d0d920c2 100644
+index 913a7d8ae..7ff13d814 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -68,6 +68,7 @@
@@ -123,7 +123,7 @@ index 990514d8f0d9..96d6d0d920c2 100644
  
  #include <asm/sections.h>
  #include <asm/tlbflush.h>
-@@ -1729,6 +1730,25 @@ deferred_init_maxorder(struct zone *zone, unsigned long *start_pfn,
+@@ -1771,6 +1772,25 @@ deferred_init_maxorder(struct zone *zone, unsigned long *start_pfn,
  	return nr_pages;
  }
  
@@ -149,7 +149,7 @@ index 990514d8f0d9..96d6d0d920c2 100644
  /* Initialise remaining memory on a node */
  static int __init deferred_init_memmap(void *data)
  {
-@@ -1738,7 +1758,7 @@ static int __init deferred_init_memmap(void *data)
+@@ -1780,7 +1800,7 @@ static int __init deferred_init_memmap(void *data)
  	unsigned long first_init_pfn, flags;
  	unsigned long start = jiffies;
  	struct zone *zone;
@@ -158,7 +158,7 @@ index 990514d8f0d9..96d6d0d920c2 100644
  	u64 i;
  
  	/* Bind memory initialisation thread to a local node if possible */
-@@ -1778,15 +1798,25 @@ static int __init deferred_init_memmap(void *data)
+@@ -1820,15 +1840,25 @@ static int __init deferred_init_memmap(void *data)
  		goto zone_empty;
  
  	/*
@@ -192,5 +192,5 @@ index 990514d8f0d9..96d6d0d920c2 100644
  zone_empty:
  	/* Sanity check that the next zone really is unpopulated */
 -- 
-2.26.2.266.ge870325ee8
+2.27.0.rc2
 

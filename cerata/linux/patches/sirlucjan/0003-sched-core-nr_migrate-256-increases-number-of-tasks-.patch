@@ -1,7 +1,7 @@
-From e0c63c8e0993bde7b36ec87c771ad5f317d68665 Mon Sep 17 00:00:00 2001
+From 5585f843148f804f1addd642471516b55eddc2f7 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 10 Jun 2019 22:15:13 +0100
-Subject: [PATCH 3/5] sched/core: nr_migrate = 256 increases number of tasks to
+Subject: [PATCH 3/6] sched/core: nr_migrate = 256 increases number of tasks to
  iterate in a single balance run
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -10,7 +10,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index fc1dfc007..08d873821 100644
+index 9a2fbf98f..e595cc77b 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -57,7 +57,7 @@ const_debug unsigned int sysctl_sched_features =
@@ -35,5 +35,5 @@ index fc1dfc007..08d873821 100644
  /*
   * __task_rq_lock - lock the rq @p resides on.
 -- 
-2.25.0.191.gde93cc14ab.dirty
+2.27.0
 
