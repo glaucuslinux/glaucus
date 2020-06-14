@@ -4,14 +4,14 @@ Date: Sat, 8 Dec 2018 18:21:32 +0000
 Subject: [PATCH] use lfence instead of rep and nop
 
 ---
- arch/x86/include/asm/processor.h | 2 +-
+ arch/x86/include/asm/vdso/processor.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/x86/include/asm/processor.h b/arch/x86/include/asm/processor.h
-index 09705cc..2e4e588 100644
---- a/arch/x86/include/asm/processor.h
-+++ b/arch/x86/include/asm/processor.h
-@@ -680,7 +680,7 @@ static inline unsigned int cpuid_edx(unsigned int op)
+diff --git a/arch/x86/include/asm/vdso/processor.h b/arch/x86/include/asm/vdso/processor.h
+index 57b1a70..e2c4567 100644
+--- a/arch/x86/include/asm/vdso/processor.h
++++ b/arch/x86/include/asm/vdso/processor.h
+@@ -10,7 +10,7 @@
  /* REP NOP (PAUSE) is a good thing to insert into busy-wait loops. */
  static __always_inline void rep_nop(void)
  {

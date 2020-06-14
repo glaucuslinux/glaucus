@@ -26,7 +26,7 @@ index b6b1f54..aa06b93 100644
  
  static struct cpumask watchdog_allowed_mask __read_mostly;
 diff --git a/mm/ksm.c b/mm/ksm.c
-index c55b89d..5039943 100644
+index 281c001..45b1546 100644
 --- a/mm/ksm.c
 +++ b/mm/ksm.c
 @@ -2422,9 +2422,14 @@ static int ksm_scan_thread(void *nothing)
