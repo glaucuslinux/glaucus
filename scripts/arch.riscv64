@@ -10,7 +10,10 @@ export FARCH='-mabi=lp64d -march=rv64imafdc -mtune=rocket' &&
 export GARCH="--with-arch=rv64imafdc \
 --with-tune=rocket \
 --with-abi=lp64d" &&
-export LARCH=riscv &&
 export MARCH=$ARCH &&
+
+export LARCH=riscv &&
+export LCARCH= &&
+export LIARCH=arch/$LARCH/boot/Image &&
 
 export XTGT=$ARCH-glaucus-linux-musl

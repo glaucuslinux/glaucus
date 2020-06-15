@@ -10,7 +10,10 @@ export FARCH='-mcpu=powerpc64le -mabi=elfv2' &&
 export GARCH="--with-cpu=powerpc64le \
 --with-abi=elfv2 \
 --disable-decimal-float" &&
-export LARCH=powerpc &&
 export MARCH=$ARCH &&
+
+export LARCH=powerpc &&
+export LCARCH=powernv_ &&
+export LIARCH=vmlinux &&
 
 export XTGT=$ARCH-glaucus-linux-musl

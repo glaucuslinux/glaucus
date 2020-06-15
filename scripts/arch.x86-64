@@ -9,7 +9,10 @@ export FARCH="-march=$ARCH -mtune=generic -mabi=sysv" &&
 
 export GARCH="--with-arch=$ARCH \
 --with-tune=generic" &&
-export LARCH=x86_64 &&
-export MARCH=$LARCH &&
+export MARCH=x86_64 &&
 
-export XTGT=$LARCH-glaucus-linux-musl
+export LARCH=$MARCH &&
+export LCARCH=${MARCH}_ &&
+export LIARCH=arch/x86/boot/bzImage &&
+
+export XTGT=$MARCH-glaucus-linux-musl

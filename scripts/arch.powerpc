@@ -1,19 +1,18 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export ARCH=powerpc64 &&
+export ARCH=powerpc &&
 
 export CARCH= &&
 
-export FARCH='-mcpu=powerpc64 -mabi=elfv1' &&
+export FARCH=-mcpu=powerpc &&
 
-export GARCH="--with-cpu=powerpc64 \
---with-abi=elfv1 \
+export GARCH="--with-cpu=powerpc \
 --disable-decimal-float" &&
 export MARCH=$ARCH &&
 
 export LARCH=powerpc &&
-export LCARCH=g5_ &&
+export LCARCH=pmac32_ &&
 export LIARCH=vmlinux &&
 
 export XTGT=$ARCH-glaucus-linux-musl
