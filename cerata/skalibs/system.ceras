@@ -15,8 +15,8 @@ configure() {
     --host=$XTGT \
     --prefix=/usr \
     --datadir=/etc \
-    --with-include=$TLCD/sysroot/usr/include \
-    --with-dynlib=$TLCD/sysroot/usr/lib \
+    --with-include=$SYSD/usr/include \
+    --with-dynlib=$SYSD/usr/lib \
     --disable-static \
     --disable-all-pic \
     --disable-ipv6 \

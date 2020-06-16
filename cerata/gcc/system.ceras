@@ -12,7 +12,8 @@ prepare() {
   $SCRD/gnu sub . &&
 
   $SCRD/patch 0 $nom glaucus 0002-adjust-system-paths-for-$ARCH &&
-  $SCRD/patch 0 $nom glaucus 0003-pure64-for-$ARCH &&
+
+  $GPARCH &&
 
   $MKDIR $SBLD/$nom &&
   cd $SBLD/$nom
@@ -29,7 +30,7 @@ configure() {
     --disable-symvers \
     --disable-cet \
     --enable-threads=posix \
-    $GARCH \
+    $GCARCH \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \

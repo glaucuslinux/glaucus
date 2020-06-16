@@ -16,7 +16,7 @@ prepare() {
   $SCRD/gnu rpath . &&
   $SCRD/gnu sub . &&
 
-  $SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH &&
+  $GPARCH &&
 
   $SCRD/patch 1 $nom upstream Enable-CET-in-cross-compiler-if-possible &&
 
@@ -36,7 +36,7 @@ configure() {
     --disable-symvers \
     --disable-cet \
     --enable-threads=posix \
-    $GARCH \
+    $GCARCH \
     --disable-bootstrap \
     --enable-languages=c,c++ \
     --disable-libsanitizer \
@@ -46,7 +46,7 @@ configure() {
     --disable-rpath \
     --enable-libstdcxx-time=rt \
     --disable-initfini-array \
-    --with-sysroot=$TLCD/sysroot \
+    --with-sysroot=$SYSD \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-zstd \

@@ -30,6 +30,6 @@ install() {
   $MAKE \
     O=$SBLD/$nom \
     ARCH=$LARCH \
-    INSTALL_HDR_PATH=$TLCD/sysroot/usr \
+    INSTALL_HDR_PATH=$SYSD/usr \
     headers_install
 }

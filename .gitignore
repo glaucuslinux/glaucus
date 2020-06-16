@@ -68,6 +68,5 @@ var/
 
 # to ensure that subdirectories that share the same name with the excluded root
 # directories above aren't excluded as well
+!scripts/system/
 !scripts/toolchain/
-!scripts/toolchain/cross/
-!scripts/toolchain/native/

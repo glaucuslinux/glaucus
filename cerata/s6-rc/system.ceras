@@ -15,9 +15,9 @@ configure() {
     --host=$XTGT \
     --prefix=/usr \
     --libexecdir=/usr/lib/$nom \
-    --with-sysdeps=$TLCD/sysroot/usr/lib/skalibs/sysdeps \
-    --with-include=$TLCD/sysroot/usr/include \
-    --with-dynlib=$TLCD/sysroot/usr/lib \
+    --with-sysdeps=$SYSD/usr/lib/skalibs/sysdeps \
+    --with-include=$SYSD/usr/include \
+    --with-dynlib=$SYSD/usr/lib \
     --enable-shared \
     --disable-static \
     --disable-allstatic \
