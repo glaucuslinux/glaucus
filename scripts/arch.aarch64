@@ -13,7 +13,7 @@ export GCARCH="--with-arch=armv8-a \
 --with-abi=lp64 \
 --enable-fix-cortex-a53-835769 \
 --enable-fix-cortex-a53-843419" &&
-export GPARCH="$SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH" &&
+export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
 
 export MCARCH=$ARCH &&
 export MPARCH= &&

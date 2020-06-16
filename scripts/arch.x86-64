@@ -9,7 +9,7 @@ export FARCH="-march=$ARCH -mtune=generic -mabi=sysv" &&
 
 export GCARCH="--with-arch=$ARCH \
 --with-tune=generic" &&
-export GPARCH="$SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH" &&
+export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
 
 export MCARCH=x86_64 &&
 export MPARCH= &&
