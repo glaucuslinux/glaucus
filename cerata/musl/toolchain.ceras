@@ -18,9 +18,9 @@ build() {
 
 install() {
   $MAKE \
-    DESTDIR=$TLCD/sysroot \
+    DESTDIR=$SYSD \
     install-libs \
     install-tools &&
 
-  $LN libc.so $TLCD/sysroot/usr/lib/ld-musl-$MARCH.so.1
+  $LN libc.so $SYSD/usr/lib/ld-musl-$MCARCH.so.1
 }
