@@ -7,12 +7,15 @@ export CARCH=--with-gcc-arch=$ARCH &&
 
 export FARCH="-march=$ARCH -mtune=generic -mabi=sysv" &&
 
-export GARCH="--with-arch=$ARCH \
+export GCARCH="--with-arch=$ARCH \
 --with-tune=generic" &&
-export MARCH=x86_64 &&
+export GPARCH="$SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH" &&
 
-export LARCH=$MARCH &&
-export LCARCH=${MARCH}_ &&
+export MCARCH=x86_64 &&
+export MPARCH= &&
+
+export LARCH=$MCARCH &&
+export LCARCH=${MCARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
 
-export XTGT=$MARCH-glaucus-linux-musl
+export XTGT=$MCARCH-glaucus-linux-musl

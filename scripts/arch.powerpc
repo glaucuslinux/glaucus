@@ -5,11 +5,15 @@ export ARCH=powerpc &&
 
 export CARCH= &&
 
-export FARCH=-mcpu=powerpc &&
+export FARCH='-mcpu=powerpc -msecure-plt -mlong-double-64' &&
 
-export GARCH="--with-cpu=powerpc \
---disable-decimal-float" &&
-export MARCH=$ARCH &&
+export GCARCH="--with-cpu=powerpc \
+--enable-secureplt \
+--with-long-double-64" &&
+export GPARCH= &&
+
+export MCARCH=$ARCH &&
+export MPARCH="$SCRD/patch 0 musl glaucus 0001-$ARCH-support" &&
 
 export LARCH=powerpc &&
 export LCARCH=pmac32_ &&

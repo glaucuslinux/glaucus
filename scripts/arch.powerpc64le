@@ -7,10 +7,12 @@ export CARCH= &&
 
 export FARCH='-mcpu=powerpc64le -mabi=elfv2' &&
 
-export GARCH="--with-cpu=powerpc64le \
---with-abi=elfv2 \
---disable-decimal-float" &&
-export MARCH=$ARCH &&
+export GCARCH="--with-cpu=powerpc64le \
+--with-abi=elfv2" &&
+export GPARCH="$SCRD/patch 0 $nom glaucus 0001-pure64-for-$ARCH" &&
+
+export MCARCH=$ARCH &&
+export MPARCH= &&
 
 export LARCH=powerpc &&
 export LCARCH=powernv_ &&
