@@ -5,16 +5,17 @@ export CERD=$(GLAD)/cerata
 export LOGD=$(GLAD)/logs
 export SCRD=$(GLAD)/scripts
 export SRCD=$(GLAD)/sources
+export SYSD=$(GLAD)/system
 export TMPD=$(GLAD)/temporary
 export TLCD=$(GLAD)/toolchain
 
 export PATH=$(TLCD)/bin:/usr/bin
 
-export PKG_CONFIG_PATH=$(TLCD)/sysroot/usr/lib/pkgconfig:$(TLCD)/sysroot/usr/share/pkgconfig
-export PKG_CONFIG_LIBDIR=$(TLCD)/sysroot/usr/lib/pkgconfig:$(TLCD)/sysroot/usr/share/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR=$(TLCD)/sysroot
-export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(TLCD)/sysroot/usr/include
-export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(TLCD)/sysroot/usr/lib
+export PKG_CONFIG_PATH=$(SYSD)/usr/lib/pkgconfig:$(SYSD)/usr/share/pkgconfig
+export PKG_CONFIG_LIBDIR=$(SYSD)/usr/lib/pkgconfig:$(SYSD)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=$(SYSD)
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(SYSD)/usr/include
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(SYSD)/usr/lib
 
 export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R

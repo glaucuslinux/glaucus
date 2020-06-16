@@ -11,7 +11,7 @@ RSYNC="rsync -aHAXx" &&
 UMOUNT="umount -fqR" &&
 
 NAME=glaucus.img &&
-SIZE=64M &&
+SIZE=128M &&
 LOOP=$(losetup -f) &&
 
 $RM $NAME &&
@@ -40,10 +40,10 @@ $MKDIR /mnt/loop/sys &&
 $MKDIR -m 0750 /mnt/loop/root &&
 $MKDIR -m 1777 /mnt/loop/tmp &&
 
-$RSYNC toolchain/sysroot/boot /mnt/loop &&
-$RSYNC toolchain/sysroot/etc /mnt/loop &&
-$RSYNC toolchain/sysroot/usr /mnt/loop &&
-$RSYNC toolchain/sysroot/var /mnt/loop &&
+$RSYNC system/boot /mnt/loop &&
+$RSYNC system/etc /mnt/loop &&
+$RSYNC system/usr /mnt/loop &&
+$RSYNC system/var /mnt/loop &&
 
 $LN usr/bin /mnt/loop/bin &&
 $LN usr/lib /mnt/loop/lib &&

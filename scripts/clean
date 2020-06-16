@@ -40,6 +40,10 @@ sudo \
 sudo \
   $RM $GLAD/sys ||
   true
+
+$RM $GLAD/system ||
+  true
+
 sudo \
   $RM $GLAD/tmp ||
   true

@@ -1,14 +1,14 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-find $TLCD/sysroot/etc -type d -empty -delete &&
+find $SYSD/etc -type d -empty -delete &&
 
-$RM $TLCD/sysroot/tmp/* &&
+$RM $SYSD/tmp/* &&
 
-find $TLCD/sysroot/usr -name *.a -type f -exec strip -gv {} \; &&
-find $TLCD/sysroot/usr \( -name *.so* -a ! -name *dbg \) -type f -exec strip \
+find $SYSD/usr -name *.a -type f -exec strip -gv {} \; &&
+find $SYSD/usr \( -name *.so* -a ! -name *dbg \) -type f -exec strip \
   --strip-unneeded -v {} \; &&
-find $TLCD/sysroot/usr -type f -exec strip -sv {} \; &&
-find $TLCD/sysroot/usr -name *.la -delete &&
+find $SYSD/usr -type f -exec strip -sv {} \; &&
+find $SYSD/usr -name *.la -delete &&
 
-$RM $TLCD/sysroot/usr/lib/charset.alias
+$RM $SYSD/usr/lib/charset.alias

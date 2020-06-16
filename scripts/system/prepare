@@ -9,24 +9,24 @@ $MKDIR $SBLD &&
 $RM $SCER &&
 $MKDIR $SCER &&
 
-$RM $TLCD/sysroot/boot &&
-$MKDIR $TLCD/sysroot/boot &&
+$RM $SYSD/boot &&
+$MKDIR $SYSD/boot &&
 
-$RM $TLCD/sysroot/etc &&
-$MKDIR $TLCD/sysroot/etc &&
+$RM $SYSD/etc &&
+$MKDIR $SYSD/etc &&
 
 printf 'root:x:0:
 tty:x:1:
 disk:x:2:
 audio:x:3:
 video:x:4:
-utmp:x:5:\n' > $TLCD/sysroot/etc/group &&
+utmp:x:5:\n' > $SYSD/etc/group &&
 
-printf '127.0.0.1 localhost glaucus\n' > $TLCD/sysroot/etc/hosts &&
+printf '127.0.0.1 localhost glaucus\n' > $SYSD/etc/hosts &&
 
-printf 'root::0:0:root:/root:/usr/bin/oksh\n' > $TLCD/sysroot/etc/passwd &&
+printf 'root::0:0:root:/root:/usr/bin/oksh\n' > $SYSD/etc/passwd &&
 
-$RM $TLCD/sysroot/var &&
-$MKDIR $TLCD/sysroot/var/lib &&
-$MKDIR $TLCD/sysroot/var/lib/urandom &&
-$MKDIR $TLCD/sysroot/var/log
+$RM $SYSD/var &&
+$MKDIR $SYSD/var/lib &&
+$MKDIR $SYSD/var/lib/urandom &&
+$MKDIR $SYSD/var/log
