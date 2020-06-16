@@ -4,9 +4,9 @@ cerata/*/ceras linguist-language=Shell
 cerata/*/ceras/ceras linguist-language=Shell
 
 cerata/elfutils/error.h linguist-language=C
-cerata/smdev/config.h linguist-language=C
 
 scripts/arch.aarch64 linguist-language=Shell
+scripts/arch.powerpc linguist-language=Shell
 scripts/arch.powerpc64 linguist-language=Shell
 scripts/arch.powerpc64le linguist-language=Shell
 scripts/arch.riscv64 linguist-language=Shell
@@ -34,40 +34,28 @@ scripts/verify linguist-language=Shell
 
 scripts/chroot/backup linguist-language=Shell
 scripts/chroot/check linguist-language=Shell
-scripts/chroot/strip linguist-language=Shell
 scripts/chroot/construct linguist-language=Shell
 scripts/chroot/enter linguist-language=Shell
 scripts/chroot/prepare linguist-language=Shell
 scripts/chroot/resolv linguist-language=Shell
 scripts/chroot/root linguist-language=Shell
 scripts/chroot/run linguist-language=Shell
+scripts/chroot/strip linguist-language=Shell
 scripts/chroot/variables linguist-language=Shell
 scripts/chroot/vkfs linguist-language=Shell
 
-scripts/system/adjust linguist-language=Shell
 scripts/system/check linguist-language=Shell
-scripts/system/strip linguist-language=Shell
 scripts/system/configure linguist-language=Shell
-scripts/system/construct linguist-language=Shell
 scripts/system/envenomate linguist-language=Shell
 scripts/system/img linguist-language=Shell
 scripts/system/prepare linguist-language=Shell
 scripts/system/run linguist-language=Shell
+scripts/system/strip linguist-language=Shell
 scripts/system/variables linguist-language=Shell
 
 scripts/toolchain/backup linguist-language=Shell
+scripts/toolchain/check linguist-language=Shell
+scripts/toolchain/construct linguist-language=Shell
 scripts/toolchain/prepare linguist-language=Shell
 scripts/toolchain/run linguist-language=Shell
 scripts/toolchain/variables linguist-language=Shell
-
-scripts/toolchain/cross/check linguist-language=Shell
-scripts/toolchain/cross/construct linguist-language=Shell
-scripts/toolchain/cross/prepare linguist-language=Shell
-scripts/toolchain/cross/run linguist-language=Shell
-scripts/toolchain/cross/variables linguist-language=Shell
-
-scripts/toolchain/native/check linguist-language=Shell
-scripts/toolchain/native/construct linguist-language=Shell
-scripts/toolchain/native/prepare linguist-language=Shell
-scripts/toolchain/native/run linguist-language=Shell
-scripts/toolchain/native/variables linguist-language=Shell
