@@ -33,8 +33,8 @@ configure() {
     --host=$XBLD \
     --target=$XTGT \
     --prefix=$TLCD \
-    --libexecdir=$TOOL/lib \
-    --libdir=$TOOL/lib \
+    --libexecdir=$TLCD/lib \
+    --libdir=$TLCD/lib \
     --disable-shared \
     --disable-multilib \
     --disable-symvers \
