@@ -13,7 +13,7 @@ configure() {
 
   $SCRD/patch 0 musl qword 0002-enable-fast-math &&
 
-  ARCH=$MCARCH \
+  ARCH=$MARCH \
   CC=gcc \
   CFLAGS='-O2 -ffast-math' \
   CROSS_COMPILE=$XTGT- \

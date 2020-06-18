@@ -12,7 +12,8 @@ export GCARCH="--with-cpu=powerpc \
 --with-long-double-64" &&
 export GPARCH= &&
 
-export MCARCH=$ARCH &&
+export MARCH=$ARCH &&
+export MCARCH='-e "s/LIBCC =  /LIBCC = -lgcc/"' &&
 export MPARCH="$SCRD/patch 0 musl glaucus 0001-$ARCH-support" &&
 
 export LARCH=powerpc &&

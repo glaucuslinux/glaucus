@@ -8,7 +8,8 @@ prepare() {
 } &&
 
 configure() {
-  sed "s/CC = gcc/CC = $XTGT-gcc/" \
+  sed -e "s/CC = gcc/CC = $XTGT-gcc/" \
+    $MCARCH \
     -i config.mak
 } &&
 
@@ -22,5 +23,5 @@ install() {
     install-libs \
     install-tools &&
 
-  $LN libc.so $SYSD/usr/lib/ld-musl-$MCARCH.so.1
+  $LN libc.so $SYSD/usr/lib/ld-musl-$MARCH.so.1
 }

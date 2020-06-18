@@ -14,7 +14,8 @@ export GCARCH="--with-arch=armv8-a \
 --enable-fix-cortex-a53-843419" &&
 export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
 
-export MCARCH=$ARCH &&
+export MARCH=$ARCH &&
+export MCARCH='-e "s/LIBCC =  /LIBCC = -lgcc/"' &&
 export MPARCH= &&
 
 export LARCH=arm64 &&
