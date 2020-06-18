@@ -19,4 +19,6 @@ export LARCH=powerpc &&
 export LCARCH=pmac32_ &&
 export LIARCH=vmlinux &&
 
+export TARCH="$SCRD/construct toolchain libgcc-static" &&
+
 export XTGT=$ARCH-glaucus-linux-musl

@@ -9,7 +9,6 @@ export FARCH='-mabi=lp64 -mfix-cortex-a53-835769 -mfix-cortex-a53-843419
 -march=armv8-a -mtune=generic' &&
 
 export GCARCH="--with-arch=armv8-a \
---with-tune=generic \
 --with-abi=lp64 \
 --enable-fix-cortex-a53-835769 \
 --enable-fix-cortex-a53-843419" &&
@@ -21,5 +20,7 @@ export MPARCH= &&
 export LARCH=arm64 &&
 export LCARCH= &&
 export LIARCH=arch/$LARCH/boot/Image &&
+
+export TARCH="$SCRD/construct toolchain libgcc-static" &&
 
 export XTGT=$ARCH-glaucus-linux-musl

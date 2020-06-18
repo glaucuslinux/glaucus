@@ -4,71 +4,11 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $RSYNC $SRCD/gcc/gcc-$ver/ $TSRC/$nom --delete &&
-  cd $TSRC/$nom &&
- 
-  $RSYNC $SRCD/gmp/gmp-6.2.0/ gmp --delete &&
-  $RSYNC $SRCD/mpfr/mpfr-4.0.2/ mpfr --delete &&
-  $RSYNC $SRCD/mpc/mpc-1.1.0/ mpc --delete &&
-  $RSYNC $SRCD/isl/isl-0.22.1/ isl --delete &&
-
-  $SCRD/gnu guess . &&
-  $SCRD/gnu rpath . &&
-  $SCRD/gnu sub . &&
-
-  $GPARCH &&
-
-  $SCRD/patch 1 gcc upstream Enable-CET-in-cross-compiler-if-possible &&
-
-  $MKDIR $TBLD/$nom &&
-  cd $TBLD/$nom
+  cd $TBLD/gcc
 } &&
 
 configure() {
-  CFLAGS='-g0 -Os' \
-  CXXFLAGS='-g0 -Os' \
-  LDFLAGS=-s \
-  $TSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XBLD \
-    --target=$XTGT \
-    --prefix=$TLCD \
-    --libexecdir=$TLCD/lib \
-    --libdir=$TLCD/lib \
-    --disable-shared \
-    --disable-multilib \
-    --disable-symvers \
-    --disable-cet \
-    --enable-threads=single \
-    $GARCH \
-    --disable-bootstrap \
-    --enable-languages=c \
-    --disable-libsanitizer \
-    --disable-libssp \
-    --disable-libquadmath \
-    --disable-libgomp \
-    --disable-libvtv \
-    --disable-werror \
-    --disable-nls \
-    --disable-decimal-float \
-    --disable-rpath \
-    --without-isl \
-    --disable-plugin \
-    --disable-lto \
-    --disable-initfini-array \
-    --with-sysroot=$SYSD \
-    --with-pkgversion="glaucus $ARCH" \
-    --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
-    --without-included-gettext \
-    --with-system-zlib \
-    --with-linker-hash-style=gnu \
-    --without-headers \
-    --with-newlib \
-    --disable-libatomic \
-    --disable-libstdcxx &&
-
-  $MAKE \
-    configure-host
+  :
 } &&
 
 build() {

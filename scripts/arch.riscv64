@@ -19,4 +19,6 @@ export LARCH=riscv &&
 export LCARCH= &&
 export LIARCH=arch/$LARCH/boot/Image &&
 
+export TARCH="$SCRD/construct toolchain libgcc-static" &&
+
 export XTGT=$ARCH-glaucus-linux-musl

@@ -18,4 +18,6 @@ export LARCH=$MCARCH &&
 export LCARCH=${MCARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
 
+export TARCH= &&
+
 export XTGT=$MCARCH-glaucus-linux-musl

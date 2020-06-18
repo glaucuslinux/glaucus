@@ -10,25 +10,25 @@ $SCRD/contact "$nom $ver" &&
 
 $SCRD/contact "prepare" &&
 $MKDIR $FLOG/$nom/prepare &&
-prepare > $FLOG/$nom/prepare/out.log 2> $FLOG/$nom/prepare/err.log ||
+prepare || #> $FLOG/$nom/prepare/out.log 2> $FLOG/$nom/prepare/err.log ||
 $SCRD/die $1 $nom prepare $? ||
 exit
 
 $SCRD/contact "configure" &&
 $MKDIR $FLOG/$nom/configure &&
-configure > $FLOG/$nom/configure/out.log 2> $FLOG/$nom/configure/err.log ||
+configure || #> $FLOG/$nom/configure/out.log 2> $FLOG/$nom/configure/err.log ||
 $SCRD/die $1 $nom configure $? ||
 exit
 
 $SCRD/contact "build" &&
 $MKDIR $FLOG/$nom/build &&
-build > $FLOG/$nom/build/out.log 2> $FLOG/$nom/build/err.log ||
+build || #> $FLOG/$nom/build/out.log 2> $FLOG/$nom/build/err.log ||
 $SCRD/die $1 $nom build $? ||
 exit
 
 $SCRD/contact "install" &&
 $MKDIR $FLOG/$nom/install &&
-install > $FLOG/$nom/install/out.log 2> $FLOG/$nom/install/err.log ||
+install || #> $FLOG/$nom/install/out.log 2> $FLOG/$nom/install/err.log ||
 $SCRD/die $1 $nom install $? ||
 exit
 
