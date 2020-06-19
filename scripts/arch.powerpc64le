@@ -5,9 +5,9 @@ export ARCH=powerpc64le &&
 
 export CARCH= &&
 
-export FARCH='-mcpu=powerpc64le -mabi=elfv2' &&
+export FARCH="-mcpu=$ARCH -mabi=elfv2" &&
 
-export GCARCH="--with-cpu=powerpc64le \
+export GCARCH="--with-cpu=$ARCH \
 --with-abi=elfv2" &&
 export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-powerpc64" &&
 

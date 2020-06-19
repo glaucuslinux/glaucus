@@ -1,7 +1,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export ARCH=x86-64 &&
+export ARCH=i686 &&
 
 export CARCH=--with-gcc-arch=$ARCH &&
 
@@ -9,16 +9,16 @@ export FARCH="-march=$ARCH -mtune=generic -mabi=sysv" &&
 
 export GCARCH="--with-arch=$ARCH \
 --with-tune=generic" &&
-export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
+export GPARCH= &&
 
-export MARCH=x86_64 &&
+export MARCH=$ARCH &&
 export MCARCH= &&
 export MPARCH= &&
 
-export LARCH=$MARCH &&
-export LCARCH=${MARCH}_ &&
+export LARCH=$ARCH &&
+export LCARCH=${ARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
 
 export TARCH= &&
 
-export XTGT=$MARCH-glaucus-linux-musl
+export XTGT=$ARCH-glaucus-linux-musl

@@ -5,9 +5,9 @@ export ARCH=powerpc &&
 
 export CARCH= &&
 
-export FARCH='-mcpu=powerpc -msecure-plt -mlong-double-64' &&
+export FARCH="-mcpu=$ARCH -msecure-plt -mlong-double-64" &&
 
-export GCARCH="--with-cpu=powerpc \
+export GCARCH="--with-cpu=$ARCH \
 --enable-secureplt \
 --with-long-double-64" &&
 export GPARCH= &&
@@ -16,7 +16,7 @@ export MARCH=$ARCH &&
 export MCARCH='-e "s/LIBCC =  /LIBCC = -lgcc/"' &&
 export MPARCH="$SCRD/patch 0 musl glaucus 0001-$ARCH-support" &&
 
-export LARCH=powerpc &&
+export LARCH=$ARCH &&
 export LCARCH=pmac32_ &&
 export LIARCH=vmlinux &&
 
