@@ -4,6 +4,7 @@
 $SCRD/construct toolchain musl-headers &&
 $SCRD/construct toolchain binutils &&
 $SCRD/construct toolchain gcc &&
+$TARCH &&
 $SCRD/construct toolchain musl &&
 $SCRD/construct toolchain libgcc &&
 $SCRD/construct toolchain libstdc++-v3 &&

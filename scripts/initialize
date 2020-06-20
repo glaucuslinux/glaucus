@@ -8,15 +8,15 @@ $MKDIR $SRCD &&
 $MKDIR $TLCD &&
 
 $MKDIR $LOGD/chroot &&
-$MKDIR $LOGD/system &&
+$MKDIR $LOGD/cross &&
 $MKDIR $LOGD/toolchain &&
 
 $MKDIR $TMPD/chroot/builds &&
 $MKDIR $TMPD/chroot/sources &&
 
-$MKDIR $TMPD/system/builds &&
-$MKDIR $TMPD/system/cerata &&
-$MKDIR $TMPD/system/sources &&
+$MKDIR $TMPD/cross/builds &&
+$MKDIR $TMPD/cross/cerata &&
+$MKDIR $TMPD/cross/sources &&
 
 $MKDIR $TMPD/toolchain/sources &&
 $MKDIR $TMPD/toolchain/builds

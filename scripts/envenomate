@@ -3,9 +3,9 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-$MKDIR $SCER/$1/sac &&
-$MKDIR $SCER/$1/venom &&
+$MKDIR $XCER/$1/sac &&
+$MKDIR $XCER/$1/venom &&
 
-$SCRD/construct system $1 &&
+$SCRD/construct cross $1 &&
 
-$RSYNC $SCER/$1/sac/ $TLCD/sysroot
+$RSYNC $XCER/$1/sac/ $CRSD

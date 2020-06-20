@@ -1,0 +1,53 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/gnu guess config &&
+  $SCRD/gnu rpath config &&
+  $SCRD/gnu sub config &&
+
+  $MKDIR $XBLD/$nom &&
+  cd $XBLD/$nom
+} &&
+
+configure() {
+  $XSRC/$nom/configure \
+    --build=$XBLD \
+    --host=$XTGT \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --enable-symlink-install \
+    --enable-elf-shlibs \
+    --disable-bsd-shlibs \
+    --disable-libuuid \
+    --disable-libblkid \
+    --disable-fsck \
+    --disable-uuidd \
+    --disable-nls \
+    --enable-threads=posix \
+    --disable-rpath \
+    --enable-lto \
+    --without-included-gettext
+} &&
+
+build() {
+  $MAKE
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$XCER/$nom/sac \
+    install-strip &&
+  
+  $MAKE \
+    DESTDIR=$XCER/$nom/sac \
+    install-libs &&
+
+  find $XCER/$nom/sac/usr/lib -name *.a -type f -exec $CHMOD u+w {} \;
+}

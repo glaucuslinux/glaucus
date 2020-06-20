@@ -1,0 +1,10 @@
+#!/usr/bin/dash -e
+
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+for i in $(find $CERD -maxdepth 2 -type f -name ceras); do
+  . $i
+  echo $(basename $url)
+  #curl -fIo /dev/null -s $url
+done

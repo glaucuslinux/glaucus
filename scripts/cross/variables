@@ -1,13 +1,13 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-export SLOG=$LOGD/system/$(ls -l $LOGD/system | wc -l) &&
-export SSCR=$SCRD/system &&
-export STMP=$TMPD/system &&
+export XLOG=$LOGD/cross/$(ls -l $LOGD/cross | wc -l) &&
+export XSCR=$SCRD/cross &&
+export XTMP=$TMPD/cross &&
 
-export SBLD=$STMP/builds &&
-export SCER=$STMP/cerata &&
-export SSRC=$STMP/sources &&
+export XBLD=$XTMP/builds &&
+export XCER=$XTMP/cerata &&
+export XSRC=$XTMP/sources &&
 
 export HOSTCC=gcc &&
 export HOSTCXX=g++ &&

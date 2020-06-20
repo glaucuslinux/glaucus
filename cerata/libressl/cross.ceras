@@ -1,0 +1,45 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/gnu guess . &&
+  $SCRD/gnu sub . &&
+  
+  $SCRD/gnu guess scripts &&
+  $SCRD/gnu sub scripts &&
+
+  $MKDIR $XBLD/$nom &&
+  cd $XBLD/$nom
+} &&
+
+configure() {
+  $XSRC/$nom/configure \
+    --build=$XBLD \
+    --host=$XTGT \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-nc \
+    --disable-tests \
+    --with-openssldir=/etc/ssl
+} &&
+
+build() {
+  $MAKE
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$XCER/$nom/sac \
+    install-strip &&
+
+  $CHMOD 0755 $XCER/$nom/sac/usr/lib/libcrypto.so.46.0.1 &&
+  $CHMOD 0755 $XCER/$nom/sac/usr/lib/libssl.so.48.0.1 &&
+  $CHMOD 0755 $XCER/$nom/sac/usr/lib/libtls.so.20.0.1
+}

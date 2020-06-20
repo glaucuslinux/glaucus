@@ -18,6 +18,6 @@ $SCRD/log $CLOG $CSCR/construct &&
 . $CSCR/vkfs &&
 . $CSCR/resolv &&
 
-. $SCRD/system/check &&
+. $SCRD/cross/check &&
 
 . $CSCR/enter

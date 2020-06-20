@@ -1,0 +1,46 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/gnu guess . &&
+  $SCRD/gnu rpath . &&
+  $SCRD/gnu sub . &&
+
+  $SCRD/patch 1 $nom adelie use-utmpx
+} &&
+
+configure() {
+  $AUTORECONF &&
+
+  LIBS='-lutmps -lskarnet' \
+  ac_cv_func_malloc_0_nonnull=yes \
+  ac_cv_func_realloc_0_nonnull=yes \
+  ./configure \
+    --build=$XBLD \
+    --host=$XTGT \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --disable-static \
+    --disable-nls \
+    --disable-rpath \
+    --disable-kill \
+    --disable-modern-top \
+    --disable-whining \
+    --without-systemd
+} &&
+
+build() {
+  $MAKE
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$XCER/$nom/sac \
+    install-strip
+}

@@ -4,7 +4,7 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $SBLD/$nom &&
+  $MKDIR $XBLD/$nom &&
 
   cd $SRCD/linux/linux-$ver &&
 
@@ -13,7 +13,7 @@ prepare() {
     mrproper &&
 
   $MAKE \
-    O=$SBLD/$nom \
+    O=$XBLD/$nom \
     ARCH=$LARCH \
     headers_check
 } &&
@@ -28,7 +28,7 @@ build() {
 
 install() {
   $MAKE \
-    O=$SBLD/$nom \
+    O=$XBLD/$nom \
     ARCH=$LARCH \
     INSTALL_HDR_PATH=$CRSD/usr \
     headers_install

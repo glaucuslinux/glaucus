@@ -4,13 +4,16 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  cd $TSRC/$nom
+  $MKDIR $XBLD/$nom &&
+  cd $XBLD/$nom
 } &&
 
 configure() {
-  sed -e "s/CC = gcc/CC = $XTGT-gcc/" \
-    -e "s/LIBCC =  /LIBCC = $MCARCH/" \
-    -i config.mak
+  $SRCD/$nom/$nom-$ver/configure \
+    --host=$XTGT \
+    --prefix=/usr \
+    --disable-static \
+    --with-libedit
 } &&
 
 build() {
@@ -19,9 +22,8 @@ build() {
 
 install() {
   $MAKE \
-    DESTDIR=$SYSD \
-    install-libs \
-    install-tools &&
+    DESTDIR=$XCER/$nom/sac \
+    install-strip &&
 
-  $LN libc.so $SYSD/usr/lib/ld-musl-$MARCH.so.1
+  $LN $nom $XCER/$nom/sac/usr/bin/sh
 }

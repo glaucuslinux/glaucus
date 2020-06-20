@@ -3,7 +3,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
-DEST=temporary/system/iso &&
+DEST=temporary/cross/iso &&
 RSYNC='/usr/bin/rsync -vaHAXx' &&
 
 cd /home/glaucus &&

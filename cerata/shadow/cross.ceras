@@ -1,0 +1,51 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/gnu guess . &&
+  $SCRD/gnu rpath . &&
+  $SCRD/gnu sub . &&
+
+  $SCRD/patch 0 $nom glaucus 0001-customize-login-defaults &&
+  $SCRD/patch 0 $nom glaucus 0002-customize-useradd
+} &&
+
+configure() {
+  $SCRD/patch 0 $nom glaucus 0003-fix-installation-paths &&
+
+  sed 's/groups$(EXEEXT) //' \
+    -i src/Makefile.in &&
+
+  find man -name Makefile.in -exec sed 's/groups\.1 / /' -i {} \; &&
+
+  LIBS='-lutmps -lskarnet' \
+  ./configure \
+    --build=$XBLD \
+    --host=$XTGT \
+    --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --enable-shared \
+    --disable-static \
+    --enable-utmpx \
+    --disable-nls \
+    --disable-rpath \
+    --without-selinux \
+    --with-group-name-max-length=32
+} &&
+
+build() {
+  $MAKE
+} &&
+
+install() {
+  $MAKE \
+    DESTDIR=$XCER/$nom/sac \
+    install-strip
+}

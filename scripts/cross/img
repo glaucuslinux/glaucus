@@ -40,10 +40,10 @@ $MKDIR /mnt/loop/sys &&
 $MKDIR -m 0750 /mnt/loop/root &&
 $MKDIR -m 1777 /mnt/loop/tmp &&
 
-$RSYNC system/boot /mnt/loop &&
-$RSYNC system/etc /mnt/loop &&
-$RSYNC system/usr /mnt/loop &&
-$RSYNC system/var /mnt/loop &&
+$RSYNC cross/boot /mnt/loop &&
+$RSYNC cross/etc /mnt/loop &&
+$RSYNC cross/usr /mnt/loop &&
+$RSYNC cross/var /mnt/loop &&
 
 $LN usr/bin /mnt/loop/bin &&
 $LN usr/lib /mnt/loop/lib &&

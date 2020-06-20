@@ -1,0 +1,14 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+find $CRSD/etc -type d -empty -delete &&
+
+$RM $CRSD/tmp/* &&
+
+find $CRSD/usr -name *.a -type f -exec strip -gv {} \; &&
+find $CRSD/usr \( -name *.so* -a ! -name *dbg \) -type f -exec strip \
+  --strip-unneeded -v {} \; &&
+find $CRSD/usr -type f -exec strip -sv {} \; &&
+find $CRSD/usr -name *.la -delete &&
+
+$RM $CRSD/usr/lib/charset.alias

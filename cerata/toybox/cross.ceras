@@ -1,0 +1,113 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/patch 0 $nom glaucus 0001-extend-long-iso-format
+} &&
+
+configure() {
+  $RSYNC $CERD/$nom/system.config .config &&
+
+  scripts/genconfig.sh
+} &&
+
+build() {
+  CFLAGS="$CFLAGSNOCOMMONNOLTO" \
+  LDFLAGS="$LDFLAGSNORELRO" \
+  $MAKE
+} &&
+
+install() {
+  $MKDIR $XCER/$nom/sac/usr/bin &&
+  $RSYNC $nom $XCER/$nom/sac/usr/bin &&
+
+  $LN $nom $XCER/$nom/sac/usr/bin/base64 &&
+  $LN $nom $XCER/$nom/sac/usr/bin/basename &&
+  $LN $nom $XCER/$nom/sac/usr/bin/cat &&
+  $LN $nom $XCER/$nom/sac/usr/bin/chgrp &&
+  $LN $nom $XCER/$nom/sac/usr/bin/chmod &&
+  $LN $nom $XCER/$nom/sac/usr/bin/chown &&
+  $LN $nom $XCER/$nom/sac/usr/bin/chroot &&
+  $LN $nom $XCER/$nom/sac/usr/bin/cksum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/comm &&
+  $LN $nom $XCER/$nom/sac/usr/bin/cp &&
+  $LN $nom $XCER/$nom/sac/usr/bin/cut &&
+  $LN $nom $XCER/$nom/sac/usr/bin/date &&
+  $LN $nom $XCER/$nom/sac/usr/bin/dd &&
+  $LN $nom $XCER/$nom/sac/usr/bin/df &&
+  $LN $nom $XCER/$nom/sac/usr/bin/dirname &&
+  $LN $nom $XCER/$nom/sac/usr/bin/du &&
+  $LN $nom $XCER/$nom/sac/usr/bin/echo &&
+  $LN $nom $XCER/$nom/sac/usr/bin/env &&
+  $LN $nom $XCER/$nom/sac/usr/bin/expand &&
+  $LN $nom $XCER/$nom/sac/usr/bin/expr
+  $LN $nom $XCER/$nom/sac/usr/bin/factor &&
+  $LN $nom $XCER/$nom/sac/usr/bin/false &&
+  $LN $nom $XCER/$nom/sac/usr/bin/fmt &&
+  $LN $nom $XCER/$nom/sac/usr/bin/fold &&
+  $LN $nom $XCER/$nom/sac/usr/bin/groups &&
+  $LN $nom $XCER/$nom/sac/usr/bin/head &&
+  $LN $nom $XCER/$nom/sac/usr/bin/hostid &&
+  $LN $nom $XCER/$nom/sac/usr/bin/iconv &&
+  $LN $nom $XCER/$nom/sac/usr/bin/id &&
+  $LN $nom $XCER/$nom/sac/usr/bin/install &&
+  $LN $nom $XCER/$nom/sac/usr/bin/iotop &&
+  $LN $nom $XCER/$nom/sac/usr/bin/link &&
+  $LN $nom $XCER/$nom/sac/usr/bin/ln &&
+  $LN $nom $XCER/$nom/sac/usr/bin/logname &&
+  $LN $nom $XCER/$nom/sac/usr/bin/ls &&
+  $LN $nom $XCER/$nom/sac/usr/bin/md5sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/mkdir &&
+  $LN $nom $XCER/$nom/sac/usr/bin/mkfifo &&
+  $LN $nom $XCER/$nom/sac/usr/bin/mknod &&
+  $LN $nom $XCER/$nom/sac/usr/bin/mktemp &&
+  $LN $nom $XCER/$nom/sac/usr/bin/mv &&
+  $LN $nom $XCER/$nom/sac/usr/bin/nice &&
+  $LN $nom $XCER/$nom/sac/usr/bin/nl &&
+  $LN $nom $XCER/$nom/sac/usr/bin/nohup &&
+  $LN $nom $XCER/$nom/sac/usr/bin/nproc &&
+  $LN $nom $XCER/$nom/sac/usr/bin/od &&
+  $LN $nom $XCER/$nom/sac/usr/bin/paste &&
+  $LN $nom $XCER/$nom/sac/usr/bin/printenv &&
+  $LN $nom $XCER/$nom/sac/usr/bin/printf &&
+  $LN $nom $XCER/$nom/sac/usr/bin/pwd &&
+  $LN $nom $XCER/$nom/sac/usr/bin/readlink &&
+  $LN $nom $XCER/$nom/sac/usr/bin/realpath &&
+  $LN $nom $XCER/$nom/sac/usr/bin/rm &&
+  $LN $nom $XCER/$nom/sac/usr/bin/rmdir &&
+  $LN $nom $XCER/$nom/sac/usr/bin/seq &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sha1sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sha224sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sha256sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sha384sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sha512sum &&
+  $LN $nom $XCER/$nom/sac/usr/bin/shred &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sleep &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sort &&
+  $LN $nom $XCER/$nom/sac/usr/bin/split &&
+  $LN $nom $XCER/$nom/sac/usr/bin/stat &&
+  $LN $nom $XCER/$nom/sac/usr/bin/sync &&
+  $LN $nom $XCER/$nom/sac/usr/bin/tac &&
+  $LN $nom $XCER/$nom/sac/usr/bin/tail &&
+  $LN $nom $XCER/$nom/sac/usr/bin/tee &&
+  $LN $nom $XCER/$nom/sac/usr/bin/test &&
+  $LN $nom $XCER/$nom/sac/usr/bin/time &&
+  $LN $nom $XCER/$nom/sac/usr/bin/timeout &&
+  $LN $nom $XCER/$nom/sac/usr/bin/touch &&
+  $LN $nom $XCER/$nom/sac/usr/bin/tr &&
+  $LN $nom $XCER/$nom/sac/usr/bin/true &&
+  $LN $nom $XCER/$nom/sac/usr/bin/truncate &&
+  $LN $nom $XCER/$nom/sac/usr/bin/tty &&
+  $LN $nom $XCER/$nom/sac/usr/bin/uname &&
+  $LN $nom $XCER/$nom/sac/usr/bin/uniq &&
+  $LN $nom $XCER/$nom/sac/usr/bin/unlink &&
+  $LN $nom $XCER/$nom/sac/usr/bin/wc &&
+  $LN $nom $XCER/$nom/sac/usr/bin/who &&
+  $LN $nom $XCER/$nom/sac/usr/bin/whoami &&
+  $LN $nom $XCER/$nom/sac/usr/bin/yes
+}

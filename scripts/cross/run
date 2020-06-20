@@ -6,7 +6,7 @@
 . $SCRD/genome &&
 . $SCRD/species &&
 
-. $SCRD/system/variables &&
+. $SCRD/cross/variables &&
 . $SSCR/prepare &&
 
 $SCRD/log $SLOG $SSCR/envenomate &&

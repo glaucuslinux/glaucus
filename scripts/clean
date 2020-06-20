@@ -41,7 +41,7 @@ sudo \
   $RM $GLAD/sys ||
   true
 
-$RM $GLAD/system ||
+$RM $GLAD/cross ||
   true
 
 sudo \

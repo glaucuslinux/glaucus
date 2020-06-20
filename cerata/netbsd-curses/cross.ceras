@@ -1,0 +1,33 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+prepare() {
+  $RSYNC $SRCD/$nom/$nom-$ver/ $XSRC/$nom --delete &&
+  cd $XSRC/$nom &&
+
+  $SCRD/patch 1 $nom sabotage 0001-mac-compat-don-t-redefine-__dead
+} &&
+
+configure() {
+  $SCRD/patch 0 $nom glaucus 0001-optimize-more
+} &&
+
+build() {
+  $MAKE \
+    PREFIX=/usr \
+    all-dynamic
+} &&
+
+install() {
+  $MAKE \
+    PREFIX=/usr \
+    DESTDIR=$XCER/$nom/sac \
+    install-dynamic &&
+
+  $LN tic $XCER/$nom/sac/usr/bin/captoinfo &&
+  $LN tic $XCER/$nom/sac/usr/bin/infotocap &&
+
+  $LN libterminfo.so $XCER/$nom/sac/usr/lib/libtinfo.so
+}
