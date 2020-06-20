@@ -6,5 +6,5 @@
 nom=execline
 ver=2.6.1.0
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
-sum=b3504069e5992b8c030f5c77101981c9b5632b304d77dccceac1a06e9bb9f87bf8f2093ed2e4e7ac264379996487d8e3192379a320139665b0d4dfceefd90e30
+sum=5bddf400f4cddeb8ddf8c80415c426553f14c879feeb4e69d5e21adb517c76a781581e8b4769c8560b56dc6f89f10a8b38fcf296baa6989b86c73bdb2cd6603e
 lic=ISC
