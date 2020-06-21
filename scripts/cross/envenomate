@@ -1,6 +1,7 @@
 # Copyright (c) 2018-2020, Firas Khalil Khana
 # Distributed under the terms of the ISC License
 
+$SCRD/envenomate bison &&
 $SCRD/envenomate linux-headers &&
 $SCRD/envenomate skalibs &&
 $SCRD/envenomate execline &&
@@ -11,12 +12,12 @@ $SCRD/envenomate libressl &&
 $SCRD/envenomate toybox &&
 $SCRD/envenomate netbsd-curses &&
 $SCRD/envenomate procps-ng &&
-$SCRD/envenomate oksh &&
+#$SCRD/envenomate oksh &&
 $SCRD/envenomate dash &&
 $SCRD/envenomate util-linux &&
 $SCRD/envenomate e2fsprogs &&
 $SCRD/envenomate s6-linux-init &&
 $SCRD/envenomate s6-rc &&
 $SCRD/envenomate eudev &&
-$SCRD/envenomate s6-boot-scripts &&
-$SCRD/envenomate linux
+$SCRD/envenomate s6-boot-scripts
+#$SCRD/envenomate linux

@@ -46,7 +46,7 @@ configure() {
     --disable-rpath \
     --enable-libstdcxx-time=rt \
     --disable-initfini-array \
-    --with-sysroot=$SYSD \
+    --with-sysroot=$CRSD \
     --with-pkgversion="glaucus $ARCH" \
     --with-bugurl=https://github.com/glaucuslinux/glaucus/issues \
     --with-zstd \

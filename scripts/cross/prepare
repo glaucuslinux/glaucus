@@ -5,11 +5,11 @@ $RSYNC $BAKD/cross $GLAD --delete &&
 
 $RSYNC $BAKD/toolchain $GLAD --delete &&
 
-$RM $SBLD &&
-$MKDIR $SBLD &&
+$RM $XBLD &&
+$MKDIR $XBLD &&
 
-$RM $SCER &&
-$MKDIR $SCER &&
+$RM $XCER &&
+$MKDIR $XCER &&
 
 $RM $CRSD/boot &&
 $MKDIR $CRSD/boot &&

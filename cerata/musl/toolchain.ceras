@@ -19,9 +19,9 @@ build() {
 
 install() {
   $MAKE \
-    DESTDIR=$SYSD \
+    DESTDIR=$CRSD \
     install-libs \
     install-tools &&
 
-  $LN libc.so $SYSD/usr/lib/ld-musl-$MARCH.so.1
+  $LN libc.so $CRSD/usr/lib/ld-musl-$MARCH.so.1
 }

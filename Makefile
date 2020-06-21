@@ -2,20 +2,20 @@ export GLAD=$(PWD)
 
 export BAKD=$(GLAD)/backup
 export CERD=$(GLAD)/cerata
+export CRSD=$(GLAD)/cross
 export LOGD=$(GLAD)/logs
 export SCRD=$(GLAD)/scripts
 export SRCD=$(GLAD)/sources
-export SYSD=$(GLAD)/system
 export TMPD=$(GLAD)/temporary
 export TLCD=$(GLAD)/toolchain
 
 export PATH=$(TLCD)/bin:/usr/bin
 
-export PKG_CONFIG_PATH=$(SYSD)/usr/lib/pkgconfig:$(SYSD)/usr/share/pkgconfig
-export PKG_CONFIG_LIBDIR=$(SYSD)/usr/lib/pkgconfig:$(SYSD)/usr/share/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR=$(SYSD)
-export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(SYSD)/usr/include
-export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(SYSD)/usr/lib
+export PKG_CONFIG_PATH=$(CRSD)/usr/lib/pkgconfig:$(CRSD)/usr/share/pkgconfig
+export PKG_CONFIG_LIBDIR=$(CRSD)/usr/lib/pkgconfig:$(CRSD)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=$(CRSD)
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=$(CRSD)/usr/include
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=$(CRSD)/usr/lib
 
 export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R
@@ -30,7 +30,7 @@ export UMOUNT=umount -fqR
 
 export MAKEFLAGS=-j1
 
-all: toolchain system
+all: toolchain cross
 
 initialize:
 	@scripts/$@
@@ -52,14 +52,14 @@ chroot: restore-toolchain
 	@scripts/$@/run
 	@$(SCRD)/contact "$@ complete"
 
-system: restore-toolchain
+cross: restore-toolchain
 	@$(SCRD)/contact
 	@scripts/$@/run
 	@$(SCRD)/contact "$@ complete"
 
 img:
 	@sudo \
-		scripts/system/$@
+		scripts/cross/$@
 	@$(SCRD)/contact "$@ complete"
 
 clean:
@@ -101,7 +101,7 @@ enter enter-chroot: restore-chroot
 	@. $(SCRD)/chroot/root
 	@. $(SCRD)/chroot/vkfs
 	@. $(SCRD)/chroot/resolv
-	@. $(SCRD)/system/check
+	@. $(SCRD)/cross/check
 	@. $(SCRD)/chroot/enter
 	@$(SCRD)/contact "$@ complete"
 

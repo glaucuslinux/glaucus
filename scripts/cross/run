@@ -7,9 +7,9 @@
 . $SCRD/species &&
 
 . $SCRD/cross/variables &&
-. $SSCR/prepare &&
+. $XSCR/prepare &&
 
-$SCRD/log $SLOG $SSCR/envenomate &&
+$SCRD/log $XLOG $XSCR/envenomate &&
 
-. $SSCR/configure &&
-. $SSCR/strip
+. $XSCR/configure &&
+. $XSCR/strip

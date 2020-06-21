@@ -31,7 +31,7 @@ build() {
 
 install() {
   $MAKE \
-    DESTDIR=$SYSD \
+    DESTDIR=$CRSD \
     install-headers &&
 
   $RM $TLCD/$XTGT/usr/include/utmp.h &&
