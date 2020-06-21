@@ -15,13 +15,9 @@ export GCARCH="--with-arch=armv8-a \
 export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
 
 export MARCH=$ARCH &&
-export MCARCH='-e "s/LIBCC =  /LIBCC = -lgcc/"' &&
-export MPARCH= &&
 
 export LARCH=arm64 &&
 export LCARCH= &&
 export LIARCH=arch/$LARCH/boot/Image &&
-
-export TARCH="$SCRD/construct toolchain libgcc-static" &&
 
 export XTGT=$ARCH-glaucus-linux-musl

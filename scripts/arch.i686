@@ -12,13 +12,9 @@ export GCARCH="--with-arch=$ARCH \
 export GPARCH= &&
 
 export MARCH=$ARCH &&
-export MCARCH=-lgcc &&
-export MPARCH= &&
 
 export LARCH=i386 &&
 export LCARCH=${LARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
-
-export TARCH="$SCRD/construct toolchain libgcc-static" &&
 
 export XTGT=$ARCH-glaucus-linux-musl

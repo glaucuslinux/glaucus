@@ -29,12 +29,12 @@ install() {
   $MAKE \
     install &&
 
-  $RSYNC $CERD/$nom/ld-$nom.path.system /etc/ld-$nom-$MCARCH.path &&
-  $CHOWN 0:0 /etc/ld-$nom-$MCARCH.path &&
+  $RSYNC $CERD/$nom/ld-$nom.path.system /etc/ld-$nom-$MARCH.path &&
+  $CHOWN 0:0 /etc/ld-$nom-$MARCH.path &&
 
   $RSYNC $CERD/$nom/ldconfig /usr/bin &&
 
-  $LN ../lib/ld-$nom-$MCARCH.so.1 /usr/bin/ldd &&
+  $LN ../lib/ld-$nom-$MARCH.so.1 /usr/bin/ldd &&
 
   $RM /usr/include/utmp.h &&
   $RM /usr/include/utmpx.h

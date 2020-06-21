@@ -4,21 +4,15 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $RSYNC $SRCD/musl/musl-$ver/ $TSRC/musl --delete &&
-  cd $TSRC/musl
+  $MKDIR $TBLD/$nom &&
+  cd $TBLD/$nom
 } &&
 
 configure() {
-  eval $MPARCH &&
-
-  $SCRD/patch 0 musl qword 0002-enable-fast-math &&
-
   ARCH=$MARCH \
   CC=gcc \
-  CFLAGS='-O2 -ffast-math' \
-  CROSS_COMPILE=$XTGT- \
-  LIBCC=' ' \
-  ./configure \
+  CROSS_COMPILE=' ' \
+  $SRCD/musl/musl-$ver/configure \
     --host=$XTGT \
     --prefix=/usr \
     --disable-wrapper \
@@ -34,6 +28,6 @@ install() {
     DESTDIR=$CRSD \
     install-headers &&
 
-  $RM $TLCD/$XTGT/usr/include/utmp.h &&
-  $RM $TLCD/$XTGT/usr/include/utmpx.h
+  $RM $CRSD/usr/include/utmp.h &&
+  $RM $CRSD/usr/include/utmpx.h
 }

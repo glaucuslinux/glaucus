@@ -13,13 +13,9 @@ export GCARCH="--with-cpu=$ARCH \
 export GPARCH= &&
 
 export MARCH=$ARCH &&
-export MCARCH='-e "s/LIBCC =  /LIBCC = -lgcc/"' &&
-export MPARCH="$SCRD/patch 0 musl glaucus 0001-$ARCH-support" &&
 
 export LARCH=$ARCH &&
 export LCARCH=pmac32_ &&
 export LIARCH=vmlinux &&
-
-export TARCH="$SCRD/construct toolchain libgcc-static" &&
 
 export XTGT=$ARCH-glaucus-linux-musl

@@ -12,13 +12,9 @@ export GCARCH="--with-arch=$ARCH \
 export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-$ARCH" &&
 
 export MARCH=x86_64 &&
-export MCARCH= &&
-export MPARCH= &&
 
 export LARCH=$MARCH &&
 export LCARCH=${MARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
-
-export TARCH= &&
 
 export XTGT=$MARCH-glaucus-linux-musl

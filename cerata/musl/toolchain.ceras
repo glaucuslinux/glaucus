@@ -4,13 +4,19 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  cd $TSRC/$nom
+  $MKDIR $TBLD/$nom &&
+  cd $TBLD/$nom
 } &&
 
 configure() {
-  sed -e "s/CC = gcc/CC = $XTGT-gcc/" \
-    -e "s/LIBCC =  /LIBCC = $MCARCH/" \
-    -i config.mak
+  ARCH=$MARCH \
+  CC=$XTGT-gcc \
+  CROSS_COMPILE=$XTGT- \
+  $SRCD/$nom/$nom-$ver/configure \
+    --host=$XTGT \
+    --prefix=/usr \
+    --disable-wrapper \
+    --disable-static
 } &&
 
 build() {
@@ -20,8 +26,7 @@ build() {
 install() {
   $MAKE \
     DESTDIR=$CRSD \
-    install-libs \
-    install-tools &&
+    install &&
 
-  $LN libc.so $CRSD/usr/lib/ld-musl-$MARCH.so.1
+  $LN libc.so $CRSD/usr/lib/ld-$nom-$MARCH.so.1
 }
