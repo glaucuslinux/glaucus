@@ -7,4 +7,6 @@ nom=utmps
 ver=0.0.3.2
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
 sum=096615bf4ef4bf73af6128fcdebc0473c736a154fb3f1db89f6f2f2301fdaf2ea183b709991d4591e75e6e8c51426ac03ce602e2d8ce9cd4a5c360bc5b44003e
+cys='skalibs execline s6'
+cnt='make skalibs execline s6'
 lic=ISC
