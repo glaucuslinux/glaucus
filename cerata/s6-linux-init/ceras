@@ -7,4 +7,6 @@ nom=s6-linux-init
 ver=1.0.4.1
 url=https://skarnet.org/software/$nom/$nom-$ver.tar.gz
 sum=9d3e6d8cff02fd55ef632534b7bd0f6713dac640554c179eae7c715eac9055f7db1c0a58f99b9ad8bb5a0d0ad5ea8410c545570d27213a45dfc3005c3d85fb6b
+cys='skalibs execline s6 utmps'
+cnt='make skalibs execline s6 utmps'
 lic=ISC
