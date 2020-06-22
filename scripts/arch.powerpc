@@ -5,11 +5,11 @@ export ARCH=powerpc &&
 
 export CARCH= &&
 
-export FARCH="-mcpu=$ARCH -msecure-plt -mlong-double-64" &&
+export FARCH="-mcpu=$ARCH -msecure-plt" &&
 
 export GCARCH="--with-cpu=$ARCH \
 --enable-secureplt \
---with-long-double-64" &&
+--without-long-double-128" &&
 export GPARCH= &&
 
 export MARCH=$ARCH &&
