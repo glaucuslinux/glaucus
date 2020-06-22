@@ -11,7 +11,7 @@ export GCARCH="--with-cpu=$ARCH \
 --with-abi=elfv2" &&
 export GPARCH="$SCRD/patch 0 gcc glaucus 0001-pure64-for-powerpc64" &&
 
-export MARCH=$ARCH &&
+export MARCH=powerpc64 &&
 
 export LARCH=powerpc &&
 export LCARCH=powernv_ &&

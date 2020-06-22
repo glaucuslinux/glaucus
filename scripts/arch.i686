@@ -11,10 +11,10 @@ export GCARCH="--with-arch=$ARCH \
 --with-tune=generic" &&
 export GPARCH= &&
 
-export MARCH=$ARCH &&
+export MARCH=i386 &&
 
-export LARCH=i386 &&
-export LCARCH=${LARCH}_ &&
+export LARCH=$MARCH &&
+export LCARCH=${MARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
 
 export XTGT=$ARCH-glaucus-linux-musl
