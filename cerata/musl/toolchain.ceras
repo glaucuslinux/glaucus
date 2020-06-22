@@ -4,15 +4,14 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $TBLD/$nom &&
-  cd $TBLD/$nom
+  cd $TSRC/$nom
 } &&
 
 configure() {
   ARCH=$MARCH \
   CC=$XTGT-gcc \
   CROSS_COMPILE=$XTGT- \
-  $SRCD/$nom/$nom-$ver/configure \
+  ./configure \
     --host=$XTGT \
     --prefix=/usr \
     --disable-wrapper \
