@@ -15,7 +15,7 @@ export GPARCH= &&
 export MARCH=arm &&
 
 export LARCH=$MARCH &&
-export LCARCH=bcm2835 &&
+export LCARCH=bcm2835_ &&
 export LIARCH=arch/$MARCH/boot/zImage &&
 
 export XTGT=$ARCH-glaucus-linux-musleabihf
