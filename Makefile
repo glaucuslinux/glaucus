@@ -21,14 +21,12 @@ export AUTORECONF=autoreconf -fis
 export CHMOD=chmod -R
 export CHOWN=chown -R
 export LN=ln -fns
-export MAKE=make
+export MAKE=make -j1
 export MKDIR=$(shell which install) -d
 export MV=mv
 export RM=rm -fr
 export RSYNC=rsync -aHAXSx
 export UMOUNT=umount -fqR
-
-export MAKEFLAGS=-j1
 
 all: toolchain cross
 
