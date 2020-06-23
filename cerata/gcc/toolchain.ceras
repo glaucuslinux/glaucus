@@ -60,21 +60,29 @@ configure() {
 
 build() {
   $MAKE \
-    all-gcc
+    all-$nom &&
+
+  CFLAGS='-g0 -O0' \
+  CXXFLAGS='-g0 -O0' \
+  LDFLAGS=-s \
+  $MAKE \
+    enable_shared=no \
+    all-target-lib$nom
 } &&
 
 install() {
   $MAKE \
-    install-strip-gcc &&
+    install-strip-$nom \
+    install-strip-target-lib$nom &&
 
   $LN $XTGT-g++ $TLCD/bin/$XTGT-c++ &&
 
   $RSYNC $CERD/$nom/c89 $TLCD/bin/$XTGT-c89 &&
   $RSYNC $CERD/$nom/c99 $TLCD/bin/$XTGT-c99 &&
 
-  sed s/gcc/$XTGT-gcc/ \
+  sed s/$nom/$XTGT-$nom/ \
     -i $TLCD/bin/$XTGT-c89 &&
-  sed s/gcc/$XTGT-gcc/ \
+  sed s/$nom/$XTGT-$nom/ \
     -i $TLCD/bin/$XTGT-c99 &&
 
   $LN $XTGT-$nom $TLCD/bin/$XTGT-cc &&

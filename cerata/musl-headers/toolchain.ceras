@@ -4,19 +4,12 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  $MKDIR $TBLD/$nom &&
-  cd $TBLD/$nom
+  $RSYNC $SRCD/musl/musl-$ver/ $TSRC/musl --delete &&
+  cd $TSRC/musl
 } &&
 
 configure() {
-  ARCH=$MARCH \
-  CC=gcc \
-  CROSS_COMPILE=' ' \
-  $SRCD/musl/musl-$ver/configure \
-    --host=$XTGT \
-    --prefix=/usr \
-    --disable-wrapper \
-    --disable-static
+  :
 } &&
 
 build() {
@@ -25,6 +18,8 @@ build() {
 
 install() {
   $MAKE \
+    ARCH=$MARCH \
+    prefix=/usr \
     DESTDIR=$CRSD \
     install-headers &&
 

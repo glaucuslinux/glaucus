@@ -4,7 +4,10 @@
 # Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
 
 prepare() {
-  cd $TBLD/gcc
+  cd $TBLD/gcc &&
+
+  $MAKE \
+    -C $XTGT/$nom distclean
 } &&
 
 configure() {
