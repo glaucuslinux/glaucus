@@ -1,0 +1,10 @@
+# Copyright (c) 2018-2020, Firas Khalil Khana
+# Distributed under the terms of the ISC License
+
+# Voyager: Firas Khalil Khana (firasuke) <firasuke@glaucuslinux.org>
+
+nom=lksh
+ver=R59b
+url=http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-$ver.tgz
+sum=4ae330a79a09d2dd989116b1a836ab7f179d920eb34c97ea5da7d1434361911a93ba77ca47c5e473e5a5ce1877f2a2e919a807bb6139ec6c89c87969054d021d
+lic=MirOS
