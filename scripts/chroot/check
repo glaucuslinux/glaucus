@@ -5,7 +5,7 @@ $SCRD/check m4 &&
 $SCRD/check netbsd-curses &&
 $SCRD/check pkgconf &&
 $SCRD/check libedit &&
-$SCRD/check oksh &&
+$SCRD/check mksh &&
 $SCRD/check dash &&
 $SCRD/check libressl &&
 $SCRD/check toybox &&

@@ -26,9 +26,9 @@ prepare() {
 
 configure() {
   $TSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XBLD \
-    --target=$XTGT \
+    --build=$BLD \
+    --host=$BLD \
+    --target=$TGT \
     --prefix=$TLCD \
     --libexecdir=$TLCD/lib \
     --libdir=$TLCD/lib \
@@ -75,16 +75,16 @@ install() {
     install-strip-$nom \
     install-strip-target-lib$nom &&
 
-  $LN $XTGT-g++ $TLCD/bin/$XTGT-c++ &&
+  $LN $TGT-g++ $TLCD/bin/$TGT-c++ &&
 
-  $RSYNC $CERD/$nom/c89 $TLCD/bin/$XTGT-c89 &&
-  $RSYNC $CERD/$nom/c99 $TLCD/bin/$XTGT-c99 &&
+  $RSYNC $CERD/$nom/c89 $TLCD/bin/$TGT-c89 &&
+  $RSYNC $CERD/$nom/c99 $TLCD/bin/$TGT-c99 &&
 
-  sed s/$nom/$XTGT-$nom/ \
-    -i $TLCD/bin/$XTGT-c89 &&
-  sed s/$nom/$XTGT-$nom/ \
-    -i $TLCD/bin/$XTGT-c99 &&
+  sed s/$nom/$TGT-$nom/ \
+    -i $TLCD/bin/$TGT-c89 &&
+  sed s/$nom/$TGT-$nom/ \
+    -i $TLCD/bin/$TGT-c99 &&
 
-  $LN $XTGT-$nom $TLCD/bin/$XTGT-cc &&
-  $LN $XTGT-$nom $TLCD/bin/$XTGT-$nom-$ver
+  $LN $TGT-$nom $TLCD/bin/$TGT-cc &&
+  $LN $TGT-$nom $TLCD/bin/$TGT-$nom-$ver
 }

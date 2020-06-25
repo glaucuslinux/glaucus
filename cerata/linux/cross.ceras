@@ -11,6 +11,7 @@ prepare() {
   cd $XSRC/$nom &&
 
   $MAKE \
+    ARCH=$LARCH \
     mrproper &&
 
   $SCRD/patch 1 $nom clear 0104-pci-pme-wakeups &&
@@ -69,7 +70,7 @@ configure() {
   $MAKE \
     O=$XBLD/$nom \
     ARCH=$LARCH \
-    CROSS_COMPILE=$XTGT- \
+    CROSS_COMPILE=$TGT- \
     ${LCARCH}defconfig
 } &&
 
@@ -77,14 +78,14 @@ build() {
   $MAKE \
     O=$XBLD/$nom \
     ARCH=$LARCH \
-    CROSS_COMPILE=$XTGT-
+    CROSS_COMPILE=$TGT-
 } &&
 
 install() {
   $MAKE \
     O=$XBLD/$nom \
     ARCH=$LARCH \
-    CROSS_COMPILE=$XTGT- \
+    CROSS_COMPILE=$TGT- \
     INSTALL_MOD_PATH=$XCER/$nom/sac/usr \
     modules_install &&
 

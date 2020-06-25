@@ -18,4 +18,4 @@ export LARCH=$ARCH &&
 export LCARCH=pmac32_ &&
 export LIARCH=vmlinux &&
 
-export XTGT=$ARCH-glaucus-linux-musl
+export TGT=$ARCH-glaucus-linux-musl

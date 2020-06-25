@@ -11,7 +11,7 @@ RSYNC="rsync -aHAXx" &&
 UMOUNT="umount -fqR" &&
 
 NAME=glaucus.img &&
-SIZE=128M &&
+SIZE=256M &&
 LOOP=$(losetup -f) &&
 
 $RM $NAME &&
@@ -50,7 +50,9 @@ $LN usr/lib /mnt/loop/lib &&
 
 $MKDIR /mnt/loop/boot/extlinux &&
 $RSYNC scripts/other/extlinux.conf /mnt/loop/boot/extlinux &&
-$CHOWN 0:0 /mnt/loop/boot/extlinux/extlinux.conf &&
+
+$CHOWN -R 0:0 /mnt/loop &&
+
 extlinux --install /mnt/loop/boot/extlinux &&
 
 $UMOUNT /mnt/loop &&

@@ -18,4 +18,4 @@ export LARCH=$MARCH &&
 export LCARCH=bcm2835_ &&
 export LIARCH=arch/$MARCH/boot/zImage &&
 
-export XTGT=$ARCH-glaucus-linux-musleabihf
+export TGT=$ARCH-glaucus-linux-musleabihf

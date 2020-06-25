@@ -17,4 +17,4 @@ export LARCH=powerpc &&
 export LCARCH=g5_ &&
 export LIARCH=vmlinux &&
 
-export XTGT=$ARCH-glaucus-linux-musl
+export TGT=$ARCH-glaucus-linux-musl

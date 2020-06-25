@@ -8,4 +8,4 @@ export TTMP=$TMPD/toolchain &&
 export TSRC=$TTMP/sources &&
 export TBLD=$TTMP/builds &&
 
-export XBLD=$($CERD/binutils/config.guess)
+export BLD=$($CERD/binutils/config.guess)

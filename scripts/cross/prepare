@@ -26,7 +26,7 @@ utmp:x:5:\n' > $CRSD/etc/group &&
 
 printf '127.0.0.1 localhost glaucus\n' > $CRSD/etc/hosts &&
 
-printf 'root::0:0:root:/root:/usr/bin/oksh\n' > $CRSD/etc/passwd &&
+printf 'root::0:0:root:/root:/usr/bin/mksh\n' > $CRSD/etc/passwd &&
 
 $RM $CRSD/var &&
 $MKDIR $CRSD/var/lib &&

@@ -17,9 +17,9 @@ prepare() {
 
 configure() {
   $TSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XBLD \
-    --target=$XTGT \
+    --build=$BLD \
+    --host=$BLD \
+    --target=$TGT \
     --prefix=$TLCD \
     --libdir=$TLCD/lib \
     --enable-deterministic-archives \
@@ -56,16 +56,16 @@ install() {
     install-strip-gas \
     install-strip-ld &&
 
-  $LN $XTGT-ld.bfd $TLCD/bin/$XTGT-ld &&
+  $LN $TGT-ld.bfd $TLCD/bin/$TGT-ld &&
 
-  $LN ../../bin/$XTGT-ar $TLCD/$XTGT/bin/ar &&
-  $LN ../../bin/$XTGT-as $TLCD/$XTGT/bin/as &&
-  $LN ../../bin/$XTGT-ld $TLCD/$XTGT/bin/ld &&
-  $LN ../../bin/$XTGT-ld.bfd $TLCD/$XTGT/bin/ld.bfd &&
-  $LN ../../bin/$XTGT-nm $TLCD/$XTGT/bin/nm &&
-  $LN ../../bin/$XTGT-objcopy $TLCD/$XTGT/bin/objcopy &&
-  $LN ../../bin/$XTGT-objdump $TLCD/$XTGT/bin/objdump &&
-  $LN ../../bin/$XTGT-ranlib $TLCD/$XTGT/bin/ranlib &&
-  $LN ../../bin/$XTGT-readelf $TLCD/$XTGT/bin/readelf &&
-  $LN ../../bin/$XTGT-strip $TLCD/$XTGT/bin/strip
+  $LN ../../bin/$TGT-ar $TLCD/$TGT/bin/ar &&
+  $LN ../../bin/$TGT-as $TLCD/$TGT/bin/as &&
+  $LN ../../bin/$TGT-ld $TLCD/$TGT/bin/ld &&
+  $LN ../../bin/$TGT-ld.bfd $TLCD/$TGT/bin/ld.bfd &&
+  $LN ../../bin/$TGT-nm $TLCD/$TGT/bin/nm &&
+  $LN ../../bin/$TGT-objcopy $TLCD/$TGT/bin/objcopy &&
+  $LN ../../bin/$TGT-objdump $TLCD/$TGT/bin/objdump &&
+  $LN ../../bin/$TGT-ranlib $TLCD/$TGT/bin/ranlib &&
+  $LN ../../bin/$TGT-readelf $TLCD/$TGT/bin/readelf &&
+  $LN ../../bin/$TGT-strip $TLCD/$TGT/bin/strip
 }

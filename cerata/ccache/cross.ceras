@@ -16,7 +16,7 @@ prepare() {
 
 configure() {
   $TSRC/$nom/configure \
-    --target=$TUPL \
+    --target=$TGT \
     --prefix=$TOOL \
     --bindir=$TOOL/bin/$nom \
     --disable-man \
@@ -31,12 +31,12 @@ install() {
   $MAKE \
     install &&
 
-  $LN $nom $TOOL/bin/$nom/$TUPL-c++ &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-c89 &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-c99 &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-cc &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-cpp &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-g++ &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-gcc &&
-  $LN $nom $TOOL/bin/$nom/$TUPL-gcc-10.1.0
+  $LN $nom $TOOL/bin/$nom/$TGT-c++ &&
+  $LN $nom $TOOL/bin/$nom/$TGT-c89 &&
+  $LN $nom $TOOL/bin/$nom/$TGT-c99 &&
+  $LN $nom $TOOL/bin/$nom/$TGT-cc &&
+  $LN $nom $TOOL/bin/$nom/$TGT-cpp &&
+  $LN $nom $TOOL/bin/$nom/$TGT-g++ &&
+  $LN $nom $TOOL/bin/$nom/$TGT-gcc &&
+  $LN $nom $TOOL/bin/$nom/$TGT-gcc-10.1.0
 }

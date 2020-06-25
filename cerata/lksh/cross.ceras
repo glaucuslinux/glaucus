@@ -20,5 +20,6 @@ build() {
 } &&
 
 install() {
+  $MKDIR $XCER/$nom/sac/usr/bin &&
   $RSYNC $nom $XCER/$nom/sac/usr/bin/$nom
 }

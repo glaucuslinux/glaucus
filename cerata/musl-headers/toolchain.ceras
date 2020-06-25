@@ -23,6 +23,5 @@ install() {
     DESTDIR=$CRSD \
     install-headers &&
 
-  $RM $CRSD/usr/include/utmp.h &&
   $RM $CRSD/usr/include/utmpx.h
 }

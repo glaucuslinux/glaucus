@@ -21,8 +21,8 @@ configure() {
   ac_cv_func_malloc_0_nonnull=yes \
   ac_cv_func_realloc_0_nonnull=yes \
   ./configure \
-    --build=$XBLD \
-    --host=$XTGT \
+    --build=$BLD \
+    --host=$TGT \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \

@@ -7,7 +7,7 @@ prepare() {
   cd $TBLD/gcc &&
 
   $MAKE \
-    -C $XTGT/$nom distclean
+    -C $TGT/$nom distclean
 } &&
 
 configure() {

@@ -19,8 +19,8 @@ prepare() {
 
 configure() {
   $SSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XTGT \
+    --build=$BLD \
+    --host=$TGT \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \

@@ -17,4 +17,4 @@ export LARCH=$MARCH &&
 export LCARCH=${MARCH}_ &&
 export LIARCH=arch/x86/boot/bzImage &&
 
-export XTGT=$ARCH-glaucus-linux-musl
+export TGT=$ARCH-glaucus-linux-musl

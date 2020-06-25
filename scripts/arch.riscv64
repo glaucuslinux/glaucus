@@ -18,4 +18,4 @@ export LARCH=riscv &&
 export LCARCH= &&
 export LIARCH=arch/$LARCH/boot/Image &&
 
-export XTGT=$ARCH-glaucus-linux-musl
+export TGT=$ARCH-glaucus-linux-musl

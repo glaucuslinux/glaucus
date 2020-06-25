@@ -11,6 +11,6 @@ mkfifo -m 0600 $CRSD/etc/s6/run-image/service/s6-svscan-log/fifo &&
 
 printf '/usr/bin/dash
 /usr/bin/ksh
-/usr/bin/oksh
+/usr/bin/mksh
 /usr/bin/rksh
 /usr/bin/sh\n' > $CRSD/etc/shells

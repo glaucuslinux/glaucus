@@ -21,8 +21,8 @@ configure() {
   LIBS='-lutmps -lskarnet' \
   ADJTIME_PATH=/var/lib/hwclock/adjtime \
   $XSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XTGT \
+    --build=$BLD \
+    --host=$TGT \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \

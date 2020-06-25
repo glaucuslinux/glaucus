@@ -9,10 +9,10 @@ prepare() {
 
 configure() {
   ARCH=$MARCH \
-  CROSS_COMPILE=$XTGT- \
-  LIBCC="$TLCD/lib/gcc/$XTGT/10.1.0/libgcc.a" \
+  CROSS_COMPILE=$TGT- \
+  LIBCC="$TLCD/lib/gcc/$TGT/10.1.0/libgcc.a" \
   ./configure \
-    --host=$XTGT \
+    --host=$TGT \
     --prefix=/usr \
     --disable-wrapper \
     --disable-static

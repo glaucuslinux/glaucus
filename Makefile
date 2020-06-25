@@ -76,7 +76,7 @@ distclean:
 restore restore-toolchain: clean
 ifneq ($(wildcard $(BAKD)/toolchain/*),)
 	@$(SCRD)/contact
-	@$(RSYNC) $(BAKD)/toolchain/ $(GLAD)/toolchain --delete
+	@$(RSYNC) $(BAKD)/toolchain $(GLAD) --delete
 	@$(SCRD)/contact "$@ complete"
 else
 	@$(SCRD)/contact "$@ Please construct the toolchain first!"
@@ -86,7 +86,7 @@ endif
 restore-chroot: clean
 ifneq ($(wildcard $(BAKD)/chroot/*),)
 	@sudo \
-		$(RSYNC) $(BAKD)/chroot/ $(GLAD)/toolchain --delete
+		$(RSYNC) $(BAKD)/chroot $(GLAD) --delete
 	@$(SCRD)/contact "$@ complete"
 else
 	@$(SCRD)/contact "$@ Please construct the chroot first!"

@@ -13,12 +13,14 @@ configure() {
 } &&
 
 build() {
-  sh $SRCD/$nom/$nom-$ver/Build.sh \
+  sh $SRCD/$nom/$nom/Build.sh \
     -r
 } &&
 
 install() {
+  $MKDIR $XCER/$nom/sac/usr/bin &&
   $RSYNC $nom $XCER/$nom/sac/usr/bin/$nom &&
 
-  $LN $nom $XCER/$nom/sac/usr/bin/ksh
+  $LN $nom $XCER/$nom/sac/usr/bin/ksh &&
+  $LN $nom $XCER/$nom/sac/usr/bin/rksh
 }

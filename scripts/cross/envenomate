@@ -11,7 +11,7 @@ $SCRD/envenomate libressl &&
 $SCRD/envenomate toybox &&
 $SCRD/envenomate netbsd-curses &&
 $SCRD/envenomate procps-ng &&
-$SCRD/envenomate oksh &&
+$SCRD/envenomate mksh &&
 $SCRD/envenomate dash &&
 $SCRD/envenomate util-linux &&
 $SCRD/envenomate e2fsprogs &&

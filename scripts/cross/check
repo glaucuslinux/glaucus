@@ -9,7 +9,7 @@ $SCRD/check libressl &&
 $SCRD/check toybox &&
 $SCRD/check netbsd-curses &&
 $SCRD/check procps &&
-$SCRD/check oksh &&
+$SCRD/check mksh &&
 $SCRD/check dash &&
 $SCRD/check e2fsprogs &&
 $SCRD/check linux &&

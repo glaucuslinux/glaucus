@@ -11,6 +11,7 @@ prepare() {
 configure() {
   $SCRD/patch 0 $nom glaucus 0001-netbsd-curses-compatibility &&
 
+  CC=gcc \
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -21,7 +22,8 @@ configure() {
 } &&
 
 build() {
-  $MAKE
+  $MAKE \
+    CC=$CC
 } &&
 
 install() {

@@ -17,8 +17,8 @@ prepare() {
 
 configure() {
   $XSRC/$nom/configure \
-    --build=$XBLD \
-    --host=$XTGT \
+    --build=$BLD \
+    --host=$TGT \
     --prefix=/usr \
     --enable-threads=posix \
     --disable-rpath \
