@@ -47,6 +47,13 @@ before further reading.
 * Convenient
 
 ## Architectures
+* aarch64
+* armv6zk
+* i686
+* powerpc
+* powerpc64
+* powerpc64le
+* riscv64
 * x86-64
 
 ## Install
