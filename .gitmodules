@@ -1,0 +1,6 @@
+[submodule "cerata"]
+	path = cerata
+	url = https://github.com/glaucuslinux/cerata
+[submodule "radula"]
+	path = radula
+	url = https://github.com/glaucuslinux/radula

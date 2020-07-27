@@ -21,10 +21,6 @@
 .ssh/
 .vim/
 
-# other glaucus related repositories that are in their own separate repositories
-cerata/
-radula/
-
 # the image and iso resulting from the build process of system
 glaucus.img
 glaucus.iso
