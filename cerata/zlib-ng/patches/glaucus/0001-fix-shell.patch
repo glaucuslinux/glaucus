@@ -1,8 +1,0 @@
---- configure
-+++ configure
-@@ -1,4 +1,4 @@
--#!/usr/bin/env bash
-+#!/usr/bin/env dash
- # configure script for zlib.
- #
- # Normally configure builds both a static and a shared library.

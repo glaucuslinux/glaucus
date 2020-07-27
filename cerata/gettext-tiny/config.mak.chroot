@@ -1,4 +1,0 @@
-prefix=/toolchain
-LIBINTL=MUSL
-AR=gcc-ar
-RANLIB=gcc-ranlib

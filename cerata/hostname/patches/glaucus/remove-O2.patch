@@ -1,8 +1,0 @@
---- Makefile
-+++ Makefile
-@@ -1,4 +1,4 @@
--CFLAGS+=-O2 -Wall -D_GNU_SOURCE
-+CFLAGS+=-Wall -D_GNU_SOURCE
- 
- # uncomment the following line if you want to install to a different base dir.
- #BASEDIR=/mnt/test
