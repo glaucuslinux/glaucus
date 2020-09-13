@@ -6,6 +6,7 @@
 *.swp
 glaucus.img
 glaucus.iso
+toolchain-*.tar.zst
 
 #
 # Directories
