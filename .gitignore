@@ -15,6 +15,6 @@ toolchain-*.tar.zst
 .ccls-cache/
 backup/
 cross/
-sources/
-temporary/
+src/
+tmp/
 toolchain/
