@@ -13,7 +13,7 @@ toolchain-*.tar.zst
 #
 
 .ccls-cache/
-backup/
+bak/
 cross/
 log/
 src/
