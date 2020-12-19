@@ -54,6 +54,7 @@ before further reading.
 * powerpc64
 * powerpc64le
 * riscv64
+* s390x
 * x86-64
 
 ## Install
