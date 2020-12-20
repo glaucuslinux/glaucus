@@ -50,6 +50,7 @@ before further reading.
 * aarch64
 * armv6zk
 * i686
+* or1k
 * powerpc
 * powerpc64
 * powerpc64le
