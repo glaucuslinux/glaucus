@@ -10,7 +10,7 @@ https://badges.gitter.im/glaucuslinux/glaucus.svg)](
 https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <p align=center><img
-src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-black.png
+src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-white-bg.png
 height=256 width=256></p>
 
 glaucus is an independent, open-source, general-purpose, bleeding-edge, 
