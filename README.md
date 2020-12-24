@@ -52,6 +52,10 @@ before further reading.
 * i686
 * microblaze
 * microblazeel
+* mips64
+* mips64el
+* mips64r6
+* mips64r6el
 * or1k
 * powerpc
 * powerpc64
