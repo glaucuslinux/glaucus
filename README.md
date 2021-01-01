@@ -24,10 +24,10 @@ possible while remaining clean, simple and most importantly convenient.
 
 ## History
 glaucus initially started out as a hobby project called snail, and has thus been
-under development for 2 years now.
+under development for 3 years now.
 
 For more information on glaucus's history, kindly refer to the [History](
-https://github.com/glaucuslinux/glaucus/wiki/History) page in the wiki.
+https://wiki.glaucuslinux.org/preface/foreword/) page in the wiki.
 
 ## Inspiration
 glaucus drew most of its inspiration from the Linux From Scratch (LFS) project
@@ -35,9 +35,7 @@ and several other [awesome projects](https://github.com/firasuke/awesome).
 
 ## Naming Convention
 glaucus follows a strict naming convention so it's highly recommended that you
-refer to the [Naming Convention](
-https://github.com/glaucuslinux/glaucus/wiki/Naming-Convention) page in the wiki
-before further reading.
+refer to the [Naming Convention](#) page in the wiki before further reading.
 
 ## Features
 * Fast
@@ -65,16 +63,15 @@ before further reading.
 * x86-64
 
 ## Install
-Kindly refer to the [Install](
-https://github.com/glaucuslinux/glaucus/wiki/install) page in the wiki.
+Kindly refer to the [Install](#) page in the wiki.
 
 ## Releases
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
 page.
 
 ## Wiki
-Kindly refer to the [Wiki](https://github.com/glaucuslinux/glaucus/wiki) for
-more information regarding glaucus.
+Kindly refer to the [Wiki](https://wiki.glaucuslinux.org/) for more information
+regarding glaucus.
 
 ## Screenshots
 Kindly refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
