@@ -48,18 +48,7 @@ refer to the [Naming Convention](#) page in the wiki before further reading.
 * aarch64
 * armv6zk
 * i686
-* microblaze
-* microblazeel
-* mips64
-* mips64el
-* mips64r6
-* mips64r6el
-* or1k
-* powerpc
-* powerpc64
-* powerpc64le
 * riscv64
-* s390x
 * x86-64
 
 ## Install
