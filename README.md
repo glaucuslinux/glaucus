@@ -51,9 +51,6 @@ refer to the [Naming Convention](#) page in the wiki before further reading.
 * riscv64
 * x86-64
 
-## Install
-Kindly refer to the [Install](#) page in the wiki.
-
 ## Releases
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
 page.
