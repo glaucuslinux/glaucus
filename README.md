@@ -48,7 +48,6 @@ refer to the [Naming Convention](#) page in the wiki before further reading.
 * aarch64
 * armv6zk
 * i686
-* riscv64
 * x86-64
 
 ## Releases
