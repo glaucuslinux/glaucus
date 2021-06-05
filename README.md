@@ -51,7 +51,7 @@ refer to the [Naming Convention](#) page in the wiki before further reading.
 * aarch64
 * armv6zk
 * i686
-* x86-64
+* x86-64-v3
 
 ## Releases
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
