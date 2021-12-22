@@ -92,6 +92,7 @@ This project is dedicated to my lovely family.
 
 ## Mirrors
 * [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
+* [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
 * [Framagit](https://framagit.org/glaucuslinux/glaucus)
 * [GitHub](https://github.com/glaucuslinux/glaucus)
 * [GitLab](https://gitlab.com/glaucuslinux/glaucus)
