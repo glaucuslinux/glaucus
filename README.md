@@ -27,7 +27,7 @@ possible while remaining clean, simple and most importantly convenient.
 
 ## History
 glaucus initially started out as a hobby project called snail, and has thus been
-under development for 3 years now.
+under development for 5 years now.
 
 For more information on glaucus's history, kindly refer to the [History](
 https://wiki.glaucuslinux.org/preface/foreword/) page in the wiki.
