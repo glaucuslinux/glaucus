@@ -2,9 +2,6 @@
 [![Codacy Badge](
 https://api.codacy.com/project/badge/Grade/d1957f890b964ffe8c60c320444bf4b5)](
 https://app.codacy.com/gh/glaucuslinux/glaucus?utm_source=github.com&utm_medium=referral&utm_content=glaucuslinux/glaucus&utm_campaign=Badge_Grade_Dashboard)
-[![FOSSA Status](
-https://app.fossa.com/api/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus.svg?type=shield)](
-https://app.fossa.com/projects/git%2Bgithub.com%2Fglaucuslinux%2Fglaucus?ref=badge_shield)
 [![Downloads](
 https://img.shields.io/github/downloads/glaucuslinux/glaucus/total.svg)](
 https://github.com/glaucuslinux/glaucus/releases)
