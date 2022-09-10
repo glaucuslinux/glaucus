@@ -16,14 +16,13 @@ https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_cam
 src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-white-bg.png
 height=256 width=256></p>
 
-glaucus is an independent, open-source, general-purpose, bleeding-edge,
-rolling-release, source-based Linux® distribution based on musl libc and toybox,
-built from scratch around the suckless philosophy without sacrificing
-convenience.
+glaucus is an independent, open-source, rolling-release lightweight Linux®
+distribution based on musl libc and toybox, designed from scratch for optimum
+performance without sacrificing convenience.
 
 ## Philosophy
-Optimized for performance and size, glaucus strives to be as fast and minimal as
-possible while remaining clean, simple and most importantly convenient.
+glaucus strives to be as fast as possible while remaining clean, lightweight and
+most importantly convenient.
 
 ## History
 glaucus initially started out as a hobby project called snail, and has thus been
@@ -33,18 +32,16 @@ For more information on glaucus's history, kindly refer to the [History](
 https://wiki.glaucuslinux.org/preface/foreword/) page in the wiki.
 
 ## Inspiration
-glaucus drew most of its inspiration from the Linux From Scratch (LFS) project
-and several other [awesome projects](https://github.com/firasuke/awesome).
+glaucus drew its inspiration from many [awesome projects](
+https://github.com/firasuke/awesome).
 
 ## Naming Convention
-glaucus follows a strict naming convention so it's highly recommended that you
-refer to the [Naming Convention](#) page in the wiki before further reading.
+glaucus follows a strict [Naming Convention](#).
 
 ## Features
 * Fast
-* Minimal
+* Lightweight
 * Clean
-* Simple
 * Convenient
 
 ## Architectures
