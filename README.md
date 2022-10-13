@@ -10,7 +10,7 @@ https://badges.gitter.im/glaucuslinux/glaucus.svg)](
 https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <p align=center><img
-src=https://github.com/glaucuslinux/artwork/raw/master/glaucus-logo-white-bg.png
+src='https://github.com/glaucuslinux/artwork/raw/master/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
 glaucus is an independent, open-source, rolling-release lightweight Linux®
@@ -22,8 +22,8 @@ glaucus strives to be as fast as possible while remaining clean, lightweight and
 most importantly convenient.
 
 ## History
-glaucus initially started out as a hobby project called snail, and has thus been
-under development for 5 years now.
+glaucus initially started out in 2018 as a hobby project called snail, and has
+thus been under development for 5 years now.
 
 For more information on glaucus's history, kindly refer to the [History](
 https://wiki.glaucuslinux.org/preface/foreword/) page in the wiki.
@@ -62,7 +62,7 @@ repository to see glaucus in action.
 
 ## Artwork
 <img
-src=https://github.com/glaucuslinux/artwork/raw/master/Tux-Puffy-Glaucus.jpg
+src='https://github.com/glaucuslinux/artwork/raw/master/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
 align=right height=256 width=256>
 
 Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
