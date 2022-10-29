@@ -33,7 +33,8 @@ glaucus drew its inspiration from many [awesome projects](
 https://github.com/firasuke/awesome).
 
 ## Naming Convention
-glaucus follows a strict [Naming Convention](#).
+glaucus follows a strict [Naming Convention](
+https://wiki.glaucuslinux.org/index.html#naming-convention).
 
 ## Features
 * Fast
