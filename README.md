@@ -44,8 +44,6 @@ https://wiki.glaucuslinux.org/index.html#naming-convention).
 
 ## Architectures
 * aarch64
-* armv6zk
-* i686
 * riscv64
 * x86-64-v3
 
