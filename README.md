@@ -10,7 +10,7 @@ https://badges.gitter.im/glaucuslinux/glaucus.svg)](
 https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <p align=center><img
-src='https://github.com/glaucuslinux/artwork/raw/master/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
+src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
 glaucus is an independent, open-source, rolling-release lightweight Linux®
@@ -61,7 +61,7 @@ repository to see glaucus in action.
 
 ## Artwork
 <img
-src='https://github.com/glaucuslinux/artwork/raw/master/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
+src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
 align=right height=256 width=256>
 
 Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
