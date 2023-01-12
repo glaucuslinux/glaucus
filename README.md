@@ -1,7 +1,4 @@
 # glaucus
-[![Codacy Badge](
-https://api.codacy.com/project/badge/Grade/d1957f890b964ffe8c60c320444bf4b5)](
-https://app.codacy.com/gh/glaucuslinux/glaucus?utm_source=github.com&utm_medium=referral&utm_content=glaucuslinux/glaucus&utm_campaign=Badge_Grade_Dashboard)
 [![Downloads](
 https://img.shields.io/github/downloads/glaucuslinux/glaucus/total.svg)](
 https://github.com/glaucuslinux/glaucus/releases)
