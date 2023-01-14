@@ -89,5 +89,4 @@ This project is dedicated to my lovely family.
 * [GitHub](https://github.com/glaucuslinux/glaucus)
 * [GitLab](https://gitlab.com/glaucuslinux/glaucus)
 * [NotABug](https://notabug.org/glaucuslinux/glaucus)
-* [SourceForge](https://git.code.sf.net/p/glaucuslinux/glaucus)
 * [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
