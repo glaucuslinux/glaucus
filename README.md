@@ -80,6 +80,14 @@ repository to see glaucus in action.
 Kindly refer to the [Wiki](https://wiki.glaucuslinux.org/) for more information
 regarding glaucus.
 
+## Artwork
+<img
+src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
+align=right height=256 width=256>
+
+Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
+for glaucus related artwork.
+
 ## Community
 As glaucus matures, it is only natural for more voyagers to join the project:
 
@@ -89,14 +97,6 @@ As glaucus matures, it is only natural for more voyagers to join the project:
 * [Telegram](https://t.me/glaucuslinux)
 * [Twitter](https://twitter.com/glaucuslinux)
 * [YouTube](https://www.youtube.com/@glaucuslinux)
-
-## Artwork
-<img
-src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
-align=right height=256 width=256>
-
-Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
-for glaucus related artwork.
 
 ## Voyager
 Firas Khalil Khana (firasuke) <[firasuke@glaucuslinux.org](
