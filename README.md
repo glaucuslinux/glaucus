@@ -10,51 +10,85 @@ https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_cam
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
-glaucus is an independent, open-source, rolling-release lightweight Linux®
-distribution based on musl libc and toybox, designed from scratch for optimum
-performance without sacrificing convenience.
-
-## Philosophy
-glaucus strives to be as fast as possible while remaining clean, lightweight and
-most importantly convenient.
-
-## History
-glaucus initially started out in 2018 as a hobby project called snail, and has
-thus been under development for 5 years now.
-
-For more information on glaucus's history, kindly refer to the [History](
-https://wiki.glaucuslinux.org/preface/foreword/) page in the wiki.
-
-## Inspiration
-glaucus drew its inspiration from many [awesome projects](
-https://github.com/firasuke/awesome).
-
-## Naming Convention
-glaucus follows a strict [Naming Convention](
-https://wiki.glaucuslinux.org/index.html#naming-convention).
+A simple and lightweight Linux® distribution based on musl libc and toybox.
 
 ## Features
-* Fast
+* Simple
 * Lightweight
-* Clean
-* Convenient
+* Pragmatic
+* Unobtrusive
+
+## Software
+* bc-gh is the default bc implementation
+* booster is the default initramfs generator
+* byacc is the default yacc implementation
+* flex is the default lex implementation
+* gettext-tiny is the default gettext implementation
+* iproute2 and iputils are the default networking utilities
+* lbzip2 is the default bzip2 implementation
+* less is the default terminal pager
+* libarchive is the default archive and compression library
+* libedit is the default command line editor library
+* libressl is the default TLS library
+* mandoc is the default manual pages reader
+* mawk is the default awk implementation
+* musl is the default C standard library
+* netbsd-curses is the default curses library
+* nsss is the default NSS implementation
+* opendoas is the default privilege escalation tool
+* pigz is the default gzip implementation
+* pkgconf is the default pkg-config implementation
+* plocate is the default locate implementation
+* plzip is the default lzip implementation
+* python 3 is the default Python version
+* s6 is the default init system
+* s6-rc is the default service manager
+* samurai is the default Ninja implementation
+* toybox is the default unix user space
+* ugrep is the default grep implementation
+* utmps is the default utmpx implementation
+* vim is the default text editor
+* wayland is the default display server protocol
+* wget2 is the default wget version
+* yash is the default unix shell
+* zlib-ng is the default zlib implementation
+
+## Security
+* Executable-Space Protection (ESP)
+* Position Independent Code (PIC)
+* Position Independent Executables (PIE)
+* RELocation Read-Only (RELRO)
+* Stack Smashing Protection (SSP)
 
 ## Architectures
 * aarch64
 * riscv64
 * x86-64-v3
 
-## Releases
+Support for architectures other than x86-64-v3 is provided through native
+compilation under QEMU.
+
+## Download
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
 page.
+
+## Screenshots
+Kindly refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
+repository to see glaucus in action.
 
 ## Wiki
 Kindly refer to the [Wiki](https://wiki.glaucuslinux.org/) for more information
 regarding glaucus.
 
-## Screenshots
-Kindly refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
-repository to see glaucus in action.
+## Community
+As glaucus matures, it is only natural for more voyagers to join the project:
+
+* [Discord](https://discord.gg/nDKNmNc)
+* [Gitter](https://gitter.im/glaucuslinux/glaucus)
+* [Reddit](https://www.reddit.com/r/glaucus)
+* [Telegram](https://t.me/glaucuslinux)
+* [Twitter](https://twitter.com/glaucuslinux)
+* [YouTube](https://www.youtube.com/@glaucuslinux)
 
 ## Artwork
 <img
@@ -71,16 +105,12 @@ mailto:firasuke@glaucuslinux.org)>
 ## License
 glaucus is licensed under the Internet Systems Consortium (ISC) license.
 
+## Inspiration
+glaucus drew inspiration from many [awesome projects](
+https://github.com/firasuke/awesome).
+
 ## Dedication
 This project is dedicated to my lovely family.
-
-## Community
-* [Discord](https://discord.gg/nDKNmNc)
-* [Gitter](https://gitter.im/glaucuslinux/glaucus)
-* [Reddit](https://www.reddit.com/r/glaucus)
-* [Telegram](https://t.me/glaucuslinux)
-* [Twitter](https://twitter.com/glaucuslinux)
-* [YouTube](https://www.youtube.com/@glaucuslinux)
 
 ## Mirrors
 * [BitBucket](https://bitbucket.org/glaucuslinux/glaucus)
