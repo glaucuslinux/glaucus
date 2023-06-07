@@ -32,6 +32,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox.
 * libressl is the default TLS library
 * mandoc is the default manual pages reader
 * mawk is the default awk implementation
+* muon is the default meson implementation
 * musl is the default C standard library
 * netbsd-curses is the default curses library
 * nsss is the default NSS implementation
