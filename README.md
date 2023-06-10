@@ -10,7 +10,7 @@ https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_cam
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
-A simple and lightweight Linux® distribution based on musl libc and toybox.
+A simple and lightweight Linux® distribution based on musl libc and toybox
 
 ## Features
 * Simple
