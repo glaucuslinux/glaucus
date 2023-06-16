@@ -45,6 +45,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * s6 is the default init system
 * s6-rc is the default service manager
 * samurai is the default Ninja implementation
+* spleen is the default console font
 * toybox is the default unix user space
 * ugrep is the default grep implementation
 * utmps is the default utmpx implementation
