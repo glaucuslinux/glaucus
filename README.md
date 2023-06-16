@@ -24,6 +24,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`byacc`](https://invisible-island.net/byacc/byacc.html) is the default yacc implementation
 * [`flex`](https://github.com/westes/flex) is the default lex implementation
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
+* [`hardened_malloc`](https://github.com/GrapheneOS/hardened_malloc) is the default memory allocator
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
 * [`lbzip2`](https://lbzip2.org/) is the default bzip2 implementation
 * [`less`](https://www.greenwoodsoftware.com/less/) is the default terminal pager
