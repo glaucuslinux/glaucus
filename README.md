@@ -13,47 +13,47 @@ height=256 width=256></p>
 A simple and lightweight Linux® distribution based on musl libc and toybox
 
 ## Features
-* Simple
-* Lightweight
-* Pragmatic
-* Unobtrusive
+* **Simple**: Written in Nim and POSIX shell script, because complexity is a cost
+* **Lightweight**: Based on musl libc and toybox
+* **Pragmatic**: Practical without sacrificing convenience
+* **Unobtrusive**: Stays out of your way, giving you peace of mind
 
 ## Software
-* bc-gh is the default bc implementation
-* booster is the default initramfs generator
-* byacc is the default yacc implementation
-* flex is the default lex implementation
-* gettext-tiny is the default gettext implementation
-* iproute2 and iputils are the default networking utilities
-* lbzip2 is the default bzip2 implementation
-* less is the default terminal pager
-* libarchive is the default archive and compression library
-* libedit is the default command line editor library
-* libressl is the default TLS library
-* mandoc is the default manual pages reader
-* mawk is the default awk implementation
-* muon is the default meson implementation
-* musl is the default C standard library
-* netbsd-curses is the default curses library
-* nsss is the default NSS implementation
-* opendoas is the default privilege escalation tool
-* pigz is the default gzip implementation
-* pkgconf is the default pkg-config implementation
-* plocate is the default locate implementation
-* plzip is the default lzip implementation
-* python 3 is the default Python version
-* s6 is the default init system
-* s6-rc is the default service manager
-* samurai is the default Ninja implementation
-* spleen is the default console font
-* toybox is the default unix user space
-* ugrep is the default grep implementation
-* utmps is the default utmpx implementation
-* vim is the default text editor
-* wayland is the default display server protocol
-* wget2 is the default wget version
-* yash is the default unix shell
-* zlib-ng is the default zlib implementation
+* [`bc-gh`](https://git.gavinhoward.com/gavin/bc) is the default bc implementation
+* [`booster`](https://github.com/anatol/booster) is the default initramfs generator
+* [`byacc`](https://invisible-island.net/byacc/byacc.html) is the default yacc implementation
+* [`flex`](https://github.com/westes/flex) is the default lex implementation
+* [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
+* [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
+* [`lbzip2`](https://lbzip2.org/) is the default bzip2 implementation
+* [`less`](https://www.greenwoodsoftware.com/less/) is the default terminal pager
+* [`libarchive`](https://www.libarchive.org/) is the default archive and compression library
+* [`libedit`](https://www.thrysoee.dk/editline/) is the default command line editor library
+* [`libressl`](https://www.libressl.org/) is the default TLS library
+* [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
+* [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
+* [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
+* [`musl`](https://musl.libc.org/) is the default C standard library
+* [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
+* [`nsss`](https://skarnet.org/software/nsss/) is the default NSS implementation
+* [`opendoas`](https://github.com/Duncaen/OpenDoas) is the default privilege escalation tool
+* [`pigz`](https://zlib.net/pigz/) is the default gzip implementation
+* [`pkgconf`](https://github.com/pkgconf/pkgconf) is the default pkg-config implementation
+* [`plocate`](https://plocate.sesse.net/) is the default locate implementation
+* [`plzip`](https://www.nongnu.org/lzip/plzip.html) is the default lzip implementation
+* [`python`](https://www.python.org/) 3 is the default Python version
+* [`s6`](https://skarnet.org/software/s6/) is the default init system
+* [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
+* [`samurai`](https://github.com/michaelforney/samurai) is the default Ninja implementation
+* [`spleen`](https://github.com/fcambus/spleen) is the default console font
+* [`toybox`](https://landley.net/toybox/) is the default unix user space
+* [`ugrep`](https://github.com/Genivia/ugrep) is the default grep implementation
+* [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
+* [`vim`](https://www.vim.org/) is the default text editor
+* [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
+* [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
+* [`yash`](https://yash.osdn.jp/index.html.en) is the default unix shell
+* [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
 
 ## Security
 * Executable-Space Protection (ESP)
