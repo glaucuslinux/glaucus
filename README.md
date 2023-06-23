@@ -24,15 +24,17 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`byacc`](https://invisible-island.net/byacc/byacc.html) is the default yacc implementation
 * [`flex`](https://github.com/westes/flex) is the default lex implementation
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
-* [`hardened_malloc`](https://github.com/GrapheneOS/hardened_malloc) is the default memory allocator
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
-* [`lbzip2`](https://lbzip2.org/) is the default bzip2 implementation
+* [`lbzip2`](https://github.com/kjn/lbzip2) is the default bzip2 implementation
 * [`less`](https://www.greenwoodsoftware.com/less/) is the default terminal pager
 * [`libarchive`](https://www.libarchive.org/) is the default archive and compression library
 * [`libedit`](https://www.thrysoee.dk/editline/) is the default command line editor library
+* [`libudev-zero`](https://github.com/illiliti/libudev-zero) is the default libudev implementation
 * [`libressl`](https://www.libressl.org/) is the default TLS library
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
+* [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
+* [`mimalloc`](https://github.com/microsoft/mimalloc) is the default memory allocator
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
 * [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
