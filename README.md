@@ -29,8 +29,8 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`less`](https://www.greenwoodsoftware.com/less/) is the default terminal pager
 * [`libarchive`](https://www.libarchive.org/) is the default archive and compression library
 * [`libedit`](https://www.thrysoee.dk/editline/) is the default command line editor library
-* [`libudev-zero`](https://github.com/illiliti/libudev-zero) is the default libudev implementation
 * [`libressl`](https://www.libressl.org/) is the default TLS library
+* [`libudev-zero`](https://github.com/illiliti/libudev-zero) is the default libudev implementation
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
