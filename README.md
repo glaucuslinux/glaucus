@@ -16,7 +16,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * **Simple**: Written in Nim and POSIX shell script
 * **Lightweight**: Based on musl libc and toybox
 * **Pragmatic**: Does not sacrifice convenience
-* **Unobtrusive**: Stays out of your way
+* **Unobtrusive**: Does not get in your way
 
 ## Software
 * [`bc-gh`](https://git.gavinhoward.com/gavin/bc) is the default bc implementation
