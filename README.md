@@ -58,10 +58,12 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
 
 ## Security
+* Data Execution Prevention (DEP)
 * Executable-Space Protection (ESP)
 * Position Independent Code (PIC)
 * Position Independent Executables (PIE)
 * RELocation Read-Only (RELRO)
+* Stack Clash Protection (SCP)
 * Stack Smashing Protection (SSP)
 
 ## Architectures
