@@ -50,7 +50,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`samurai`](https://github.com/michaelforney/samurai) is the default Ninja implementation
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`ugrep`](https://github.com/Genivia/ugrep) is the default grep implementation
-* [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
 * [`vim`](https://www.vim.org/) is the default text editor
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 * [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
@@ -63,7 +62,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * Data Execution Prevention (DEP)
 * Executable-Space Protection (ESP)
 * eXecute Disable (XD)
-* Format Security (FORMAT)
 * No eXecute (NX)
 * Position Independent Code (PIC)
 * Position Independent Executables (PIE)
