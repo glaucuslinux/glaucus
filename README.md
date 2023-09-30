@@ -68,14 +68,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * Stack Clash Protection (SCP)
 * Stack Smashing Protection (SSP)
 
-## Architectures
-* aarch64
-* riscv64
-* x86-64-v3
-
-Support for architectures other than x86-64-v3 is provided through native
-compilation under QEMU.
-
 ## Download
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
 page.
