@@ -47,6 +47,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`s6`](https://skarnet.org/software/s6/) is the default init system
 * [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
 * [`samurai`](https://github.com/michaelforney/samurai) is the default Ninja implementation
+* [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`ugrep`](https://github.com/Genivia/ugrep) is the default grep implementation
 * [`vim`](https://www.vim.org/) is the default text editor
