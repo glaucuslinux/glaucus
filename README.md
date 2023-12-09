@@ -2,9 +2,6 @@
 [![Downloads](
 https://img.shields.io/github/downloads/glaucuslinux/glaucus/total.svg)](
 https://github.com/glaucuslinux/glaucus/releases)
-[![Join the chat at https://gitter.im/glaucuslinux/glaucus](
-https://badges.gitter.im/glaucuslinux/glaucus.svg)](
-https://gitter.im/glaucuslinux/glaucus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <p align=center><img
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
