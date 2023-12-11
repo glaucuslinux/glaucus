@@ -90,7 +90,6 @@ for glaucus related artwork.
 As glaucus matures, it is only natural for more voyagers to join the project:
 
 * [Discord](https://discord.gg/nDKNmNc)
-* [Gitter](https://gitter.im/glaucuslinux/glaucus)
 * [Reddit](https://www.reddit.com/r/glaucus)
 * [Telegram](https://t.me/glaucuslinux)
 * [Twitter](https://twitter.com/glaucuslinux)
