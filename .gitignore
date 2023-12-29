@@ -2,17 +2,13 @@
 # Files
 #
 
-.fdignore
-*.swp
-glaucus.img
-glaucus.iso
-toolchain-*.tar.zst
+glaucus-*.img
+glaucus-*.iso
 
 #
 # Directories
 #
 
-.ccls-cache/
 bak/
 cross/
 log/
