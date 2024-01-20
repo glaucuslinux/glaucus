@@ -52,6 +52,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
 * [`yash`](https://yash.osdn.jp/index.html.en) is the default unix shell
 * [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
+* [`zstd`](https://facebook.github.io/zstd/) is the default compression algorithm
 
 ## Security
 * Address Space Layout Randomization (ASLR)
