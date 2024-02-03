@@ -44,7 +44,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`python`](https://www.python.org/) 3 is the default Python version
 * [`s6`](https://skarnet.org/software/s6/) is the default init system
 * [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
-* [`samurai`](https://github.com/michaelforney/samurai) is the default Ninja implementation
+* [`samurai`](https://github.com/michaelforney/samurai) is the default ninja implementation
 * [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
