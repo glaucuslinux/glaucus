@@ -16,11 +16,11 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * **Unobtrusive**: Does not get in your way
 
 ## Software
-* [`basu`](https://sr.ht/~emersion/basu/) is the default sd-bus library
+* [`basu`](https://sr.ht/~emersion/basu/) is the default D-Bus library
 * [`bc-gh`](https://git.gavinhoward.com/gavin/bc) is the default bc implementation
 * [`booster`](https://github.com/anatol/booster) is the default initramfs generator
 * [`byacc`](https://invisible-island.net/byacc/byacc.html) is the default yacc implementation
-* [`dbus-broker`](https://github.com/bus1/dbus-broker) is the default message bus daemon
+* [`dbus-broker`](https://github.com/bus1/dbus-broker) is the default D-Bus daemon
 * [`flex`](https://github.com/westes/flex) is the default lex implementation
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
