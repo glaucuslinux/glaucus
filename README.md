@@ -51,7 +51,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`ugrep`](https://github.com/Genivia/ugrep) is the default grep implementation
-* [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
+* [`utmps`](https://skarnet.org/software/utmps/) is the default utmp implementation
 * [`vim`](https://www.vim.org/) is the default text editor
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 * [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
