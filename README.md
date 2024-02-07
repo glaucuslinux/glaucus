@@ -38,6 +38,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
 * [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
+* [`nsss`](https://skarnet.org/software/nsss/) is the default NSS implementation
 * [`opendoas`](https://github.com/Duncaen/OpenDoas) is the default privilege escalation tool
 * [`pigz`](https://zlib.net/pigz/) is the default gzip implementation
 * [`pkgconf`](https://github.com/pkgconf/pkgconf) is the default pkg-config implementation
