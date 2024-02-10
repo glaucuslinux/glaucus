@@ -33,7 +33,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
-* [`mimalloc`](https://github.com/microsoft/mimalloc) is the default memory allocator
+* [`mimalloc`](https://microsoft.github.io/mimalloc/) is the default memory allocator
 * [`mold`](https://github.com/rui314/mold) is the default linker
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
@@ -41,7 +41,7 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`nsss`](https://skarnet.org/software/nsss/) is the default NSS implementation
 * [`opendoas`](https://github.com/Duncaen/OpenDoas) is the default privilege escalation tool
 * [`pigz`](https://zlib.net/pigz/) is the default gzip implementation
-* [`pkgconf`](https://github.com/pkgconf/pkgconf) is the default pkg-config implementation
+* [`pkgconf`](https://pkgconf.org/) is the default pkg-config implementation
 * [`plocate`](https://plocate.sesse.net/) is the default locate implementation
 * [`plzip`](https://www.nongnu.org/lzip/plzip.html) is the default lzip implementation
 * [`python`](https://www.python.org/) 3 is the default Python version
@@ -51,12 +51,12 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`slibtool`](https://git.foss21.org/slibtool) is the default libtool implementation
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
-* [`ugrep`](https://github.com/Genivia/ugrep) is the default grep implementation
+* [`ugrep`](https://ugrep.com/) is the default grep implementation
 * [`utmps`](https://skarnet.org/software/utmps/) is the default utmp implementation
 * [`vim`](https://www.vim.org/) is the default text editor
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
 * [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
-* [`yash`](https://yash.osdn.jp/index.html.en) is the default unix shell
+* [`yash`](https://magicant.github.io/yash/) is the default unix shell
 * [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
 * [`zstd`](https://facebook.github.io/zstd/) is the default compression algorithm
 
