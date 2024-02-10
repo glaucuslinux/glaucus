@@ -25,9 +25,9 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
 * [`lbzip2`](https://github.com/kjn/lbzip2) is the default bzip2 implementation
-* [`less`](https://www.greenwoodsoftware.com/less/) is the default terminal pager
-* [`libarchive`](https://www.libarchive.org/) is the default archive and compression library
-* [`libedit`](https://www.thrysoee.dk/editline/) is the default command line editor library
+* [`less`](https://greenwoodsoftware.com/less/) is the default terminal pager
+* [`libarchive`](https://libarchive.org/) is the default archive and compression library
+* [`libedit`](https://thrysoee.dk/editline/) is the default command line editor library
 * [`libressl`](https://www.libressl.org/) is the default TLS library
 * [`libudev-zero`](https://github.com/illiliti/libudev-zero) is the default libudev implementation
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
