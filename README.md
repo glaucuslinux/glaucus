@@ -34,7 +34,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
 * [`mimalloc`](https://microsoft.github.io/mimalloc/) is the default memory allocator
-* [`mold`](https://github.com/rui314/mold) is the default linker
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
 * [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
