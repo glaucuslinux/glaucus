@@ -43,7 +43,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`pkgconf`](https://pkgconf.org/) is the default pkg-config implementation
 * [`plocate`](https://plocate.sesse.net/) is the default locate implementation
 * [`plzip`](https://www.nongnu.org/lzip/plzip.html) is the default lzip implementation
-* [`python`](https://www.python.org/) 3 is the default Python version
 * [`s6`](https://skarnet.org/software/s6/) is the default init system
 * [`s6-rc`](https://skarnet.org/software/s6-rc/) is the default service manager
 * [`samurai`](https://github.com/michaelforney/samurai) is the default ninja implementation
@@ -51,10 +50,9 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`sway`](https://swaywm.org/) is the default Wayland compositor
 * [`toybox`](https://landley.net/toybox/) is the default unix user space
 * [`ugrep`](https://ugrep.com/) is the default grep implementation
-* [`utmps`](https://skarnet.org/software/utmps/) is the default utmp implementation
+* [`utmps`](https://skarnet.org/software/utmps/) is the default utmpx implementation
 * [`vim`](https://www.vim.org/) is the default text editor
 * [`wayland`](https://wayland.freedesktop.org/) is the default display server protocol
-* [`wget2`](https://gitlab.com/gnuwget/wget2) is the default wget version
 * [`yash`](https://magicant.github.io/yash/) is the default unix shell
 * [`zlib-ng`](https://github.com/zlib-ng/zlib-ng) is the default zlib implementation
 * [`zstd`](https://facebook.github.io/zstd/) is the default compression algorithm
