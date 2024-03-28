@@ -16,11 +16,9 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * **Unobtrusive**: Does not get in your way
 
 ## Software
-* [`basu`](https://sr.ht/~emersion/basu/) is the default D-Bus library
 * [`bc-gh`](https://git.gavinhoward.com/gavin/bc) is the default bc implementation
 * [`booster`](https://github.com/anatol/booster) is the default initramfs generator
 * [`byacc`](https://invisible-island.net/byacc/byacc.html) is the default yacc implementation
-* [`dbus-broker`](https://github.com/bus1/dbus-broker) is the default D-Bus daemon
 * [`flex`](https://github.com/westes/flex) is the default lex implementation
 * [`gettext-tiny`](https://github.com/sabotage-linux/gettext-tiny) is the default gettext implementation
 * [`iproute2`](https://wiki.linuxfoundation.org/networking/iproute2) and [`iputils`](https://github.com/iputils/iputils) are the default networking utilities
@@ -33,7 +31,6 @@ A simple and lightweight Linux® distribution based on musl libc and toybox
 * [`mandoc`](https://mandoc.bsd.lv/) is the default manual pages reader
 * [`mawk`](https://invisible-island.net/mawk/) is the default awk implementation
 * [`mdevd`](https://skarnet.org/software/mdevd/) is the default udevd implementation
-* [`mimalloc`](https://microsoft.github.io/mimalloc/) is the default memory allocator
 * [`muon`](https://sr.ht/~lattis/muon/) is the default meson implementation
 * [`musl`](https://musl.libc.org/) is the default C standard library
 * [`netbsd-curses`](https://github.com/sabotage-linux/netbsd-curses) is the default curses library
