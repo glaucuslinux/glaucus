@@ -2,8 +2,9 @@
 # Files
 #
 
-glaucus-*.img
-glaucus-*.iso
+*.img
+*.iso
+*.zst
 
 #
 # Directories
