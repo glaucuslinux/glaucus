@@ -4,3 +4,6 @@
 [submodule "radula"]
 	path = radula
 	url = https://github.com/glaucuslinux/radula
+[submodule "s6-boot-scripts"]
+	path = s6-boot-scripts
+	url = https://github.com/glaucuslinux/s6-boot-scripts
