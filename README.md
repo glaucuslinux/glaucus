@@ -2,6 +2,8 @@
 [![Downloads](
 https://img.shields.io/github/downloads/glaucuslinux/glaucus/total.svg)](
 https://github.com/glaucuslinux/glaucus/releases)
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](
+https://ko-fi.com/glaucuslinux)
 
 <p align=center><img
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
