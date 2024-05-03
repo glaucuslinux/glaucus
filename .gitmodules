@@ -1,9 +1,9 @@
 [submodule "cerata"]
 	path = cerata
 	url = https://github.com/glaucuslinux/cerata
-[submodule "radula"]
-	path = radula
-	url = https://github.com/glaucuslinux/radula
+[submodule "rad"]
+	path = rad
+	url = https://github.com/glaucuslinux/rad
 [submodule "s6-boot-scripts"]
 	path = s6-boot-scripts
 	url = https://github.com/glaucuslinux/s6-boot-scripts
