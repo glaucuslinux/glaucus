@@ -1,3 +1,6 @@
+[submodule "bubble"]
+	path = bubble
+	url = https://github.com/glaucuslinux/bubble
 [submodule "cerata"]
 	path = cerata
 	url = https://github.com/glaucuslinux/cerata
