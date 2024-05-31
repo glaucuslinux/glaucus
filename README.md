@@ -31,7 +31,7 @@ regarding glaucus.
 
 ## Artwork
 <img
-src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-Glaucus.jpg'
+src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-glaucus.jpg'
 align=right height=256 width=256>
 
 Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
