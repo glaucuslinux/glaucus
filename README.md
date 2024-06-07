@@ -12,10 +12,10 @@ height=256 width=256></p>
 A simple and lightweight Linux® distribution based on musl libc and toybox
 
 ## Features
-* **Simple**: Written in Nim and POSIX shell script
-* **Lightweight**: Based on musl libc and toybox
-* **Pragmatic**: Does not sacrifice convenience
-* **Unobtrusive**: Does not get in your way
+- **Simple**: Written in Nim and POSIX shell script
+- **Lightweight**: Based on musl libc and toybox
+- **Pragmatic**: Does not sacrifice convenience
+- **Unobtrusive**: Does not get in your way
 
 ## Download
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
@@ -40,11 +40,11 @@ for glaucus related artwork.
 ## Community
 As glaucus matures, it is only natural for more voyagers to join the project:
 
-* [Discord](https://discord.gg/nDKNmNc)
-* [Reddit](https://www.reddit.com/r/glaucus)
-* [Telegram](https://t.me/glaucuslinux)
-* [Twitter](https://twitter.com/glaucuslinux)
-* [YouTube](https://www.youtube.com/@glaucuslinux)
+- [Discord](https://discord.gg/nDKNmNc)
+- [Reddit](https://www.reddit.com/r/glaucus)
+- [Telegram](https://t.me/glaucuslinux)
+- [Twitter](https://twitter.com/glaucuslinux)
+- [YouTube](https://www.youtube.com/@glaucuslinux)
 
 ## Voyager
 Firas Khalil Khana (firasuke) <[firasuke@glaucuslinux.org](
@@ -61,8 +61,8 @@ https://github.com/firasuke/awesome).
 This project is dedicated to my lovely family.
 
 ## Mirrors
-* [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
-* [Framagit](https://framagit.org/glaucuslinux/glaucus)
-* [GitHub](https://github.com/glaucuslinux/glaucus)
-* [GitLab](https://gitlab.com/glaucuslinux/glaucus)
-* [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
+- [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
+- [Framagit](https://framagit.org/glaucuslinux/glaucus)
+- [GitHub](https://github.com/glaucuslinux/glaucus)
+- [GitLab](https://gitlab.com/glaucuslinux/glaucus)
+- [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
