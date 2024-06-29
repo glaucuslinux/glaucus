@@ -1,11 +1,13 @@
 *.img
 *.iso
 *.zst
+initramfs
 
 bak/
 cross/
 iso/
 log/
+pkg/
 src/
 tmp/
 toolchain/
