@@ -63,5 +63,4 @@ This project is dedicated to my lovely family.
 ## Mirrors
 - [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
 - [GitHub](https://github.com/glaucuslinux/glaucus)
-- [GitLab](https://gitlab.com/glaucuslinux/glaucus)
 - [SourceHut](https://git.sr.ht/~glaucuslinux/glaucus)
