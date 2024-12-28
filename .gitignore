@@ -5,6 +5,7 @@ initramfs
 
 bak/
 cross/
+img/
 iso/
 log/
 pkg/
