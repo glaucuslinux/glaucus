@@ -38,9 +38,9 @@ for glaucus related artwork.
 As glaucus matures, it is only natural for more voyagers to join the project:
 
 - [Discord](https://discord.gg/nDKNmNc)
-- [Reddit](https://www.reddit.com/r/glaucus)
+- [Reddit](https://reddit.com/r/glaucus)
 - [Telegram](https://t.me/glaucuslinux)
-- [Twitter](https://twitter.com/glaucuslinux)
+- [X](https://x.com/glaucuslinux)
 - [YouTube](https://www.youtube.com/@glaucuslinux)
 
 ## Voyager
