@@ -12,13 +12,7 @@ https://liberapay.com/glaucuslinux)
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
-A simple and lightweight Linux® distribution based on musl libc and toybox
-
-## Features
-- **Simple**: Written in Nim and POSIX shell script
-- **Lightweight**: Based on musl libc and toybox
-- **Pragmatic**: Does not sacrifice convenience
-- **Unobtrusive**: Does not get in your way
+A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
 
 ## Download
 Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
