@@ -12,31 +12,26 @@ https://liberapay.com/glaucuslinux)
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Logo/glaucus-logo-white-bg.png'
 height=256 width=256></p>
 
-A simple, lightweight and opinionated Linux® distribution based on musl libc and toybox
+An opinionated Linux® distribution based on musl libc and toybox
 
 ## Download
-Kindly refer to the [Releases](https://github.com/glaucuslinux/glaucus/releases)
-page.
+Refer to [Releases](https://github.com/glaucuslinux/glaucus/releases)
 
 ## Screenshots
-Kindly refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
-repository to see glaucus in action.
+Refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
+repository
 
 ## Wiki
-Kindly refer to the [Wiki](https://wiki.glaucuslinux.org/) for more information
-regarding glaucus.
+Refer to the [Wiki](https://wiki.glaucuslinux.org/)
 
 ## Artwork
 <img
 src='https://github.com/glaucuslinux/artwork/raw/main/Andy Cuccaro/Sketches/Tux-Puffy-glaucus.jpg'
 align=right height=256 width=256>
 
-Kindly refer to [artwork](https://github.com/glaucuslinux/artwork) repository
-for glaucus related artwork.
+Refer to the [artwork](https://github.com/glaucuslinux/artwork) repository
 
 ## Community
-As glaucus matures, it is only natural for more voyagers to join the project:
-
 - [Discord](https://discord.gg/nDKNmNc)
 - [Reddit](https://reddit.com/r/glaucus)
 - [Telegram](https://t.me/glaucuslinux)
@@ -44,18 +39,18 @@ As glaucus matures, it is only natural for more voyagers to join the project:
 - [YouTube](https://youtube.com/@glaucuslinux)
 
 ## Voyager
-Firas Khalil Khana (firasuke) <[firasuke@glaucuslinux.org](
+Firas Khana (firasuke) <[firasuke@glaucuslinux.org](
 mailto:firasuke@glaucuslinux.org)>
 
 ## License
-glaucus is licensed under the Internet Systems Consortium (ISC) license.
+Licensed under the [Mozilla Public License Version 2.0
+(MPL-2.0)](https://mozilla.org/MPL/2.0/)
 
 ## Inspiration
-glaucus drew inspiration from many [awesome projects](
-https://github.com/firasuke/awesome).
+Inspired by [awesome](https://github.com/firasuke/awesome) projects
 
 ## Dedication
-This project is dedicated to my lovely family.
+Dedicated to my family
 
 ## Mirrors
 - [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
