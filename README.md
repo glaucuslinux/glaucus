@@ -17,12 +17,12 @@ An opinionated Linux® distribution based on musl libc and toybox
 ## Download
 Refer to [Releases](https://github.com/glaucuslinux/glaucus/releases)
 
+## Wiki
+Refer to the [Wiki](https://wiki.glaucuslinux.org/)
+
 ## Screenshots
 Refer to the [screenshots](https://github.com/glaucuslinux/screenshots)
 repository
-
-## Wiki
-Refer to the [Wiki](https://wiki.glaucuslinux.org/)
 
 ## Artwork
 <img
@@ -31,26 +31,26 @@ align=right height=256 width=256>
 
 Refer to the [artwork](https://github.com/glaucuslinux/artwork) repository
 
-## Community
-- [Discord](https://discord.gg/nDKNmNc)
-- [Reddit](https://reddit.com/r/glaucus)
-- [Telegram](https://t.me/glaucuslinux)
-- [X](https://x.com/glaucuslinux)
-- [YouTube](https://youtube.com/@glaucuslinux)
+## License
+Licensed under the [Mozilla Public License Version 2.0
+(MPL-2.0)](https://mozilla.org/MPL/2.0/)
 
 ## Voyager
 Firas Khana (firasuke) <[firasuke@glaucuslinux.org](
 mailto:firasuke@glaucuslinux.org)>
-
-## License
-Licensed under the [Mozilla Public License Version 2.0
-(MPL-2.0)](https://mozilla.org/MPL/2.0/)
 
 ## Inspiration
 Inspired by [awesome](https://github.com/firasuke/awesome) projects
 
 ## Dedication
 Dedicated to my family
+
+## Community
+- [Discord](https://discord.gg/nDKNmNc)
+- [Reddit](https://reddit.com/r/glaucus)
+- [Telegram](https://t.me/glaucuslinux)
+- [X](https://x.com/glaucuslinux)
+- [YouTube](https://youtube.com/@glaucuslinux)
 
 ## Mirrors
 - [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
