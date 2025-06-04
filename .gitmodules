@@ -1,16 +1,12 @@
 [submodule "bubble"]
   path = bubble
   url = https://github.com/glaucuslinux/bubble
-  branch = main
 [submodule "cerata"]
   path = cerata
   url = https://github.com/glaucuslinux/cerata
-  branch = main
 [submodule "rad"]
   path = rad
   url = https://github.com/glaucuslinux/rad
-  branch = main
 [submodule "s6-boot-scripts"]
   path = s6-boot-scripts
   url = https://github.com/glaucuslinux/s6-boot-scripts
-  branch = main
