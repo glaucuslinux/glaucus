@@ -1,9 +1,9 @@
 [submodule "bubble"]
   path = bubble
   url = https://github.com/glaucuslinux/bubble
-[submodule "cerata"]
-  path = cerata
-  url = https://github.com/glaucuslinux/cerata
+[submodule "core"]
+  path = core
+  url = https://github.com/glaucuslinux/core
 [submodule "rad"]
   path = rad
   url = https://github.com/glaucuslinux/rad
