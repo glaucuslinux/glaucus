@@ -1,9 +1,9 @@
-[submodule "bubble"]
-  path = bubble
-  url = https://github.com/glaucuslinux/bubble
 [submodule "core"]
   path = core
   url = https://github.com/glaucuslinux/core
+[submodule "live"]
+  path = live
+  url = https://github.com/glaucuslinux/live
 [submodule "rad"]
   path = rad
   url = https://github.com/glaucuslinux/rad
