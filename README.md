@@ -43,7 +43,6 @@ Inspired by [awesome](https://github.com/firasuke/awesome) projects
 Dedicated to my family
 
 ## Community
-- [Discord](https://discord.gg/nDKNmNc)
 - [Reddit](https://reddit.com/r/glaucus)
 - [Telegram](https://t.me/glaucuslinux)
 - [X](https://x.com/glaucuslinux)
