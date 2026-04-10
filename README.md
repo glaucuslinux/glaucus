@@ -40,12 +40,6 @@ Inspired by [awesome](https://github.com/firasuke/awesome) projects
 ## Dedication
 Dedicated to my family
 
-## Community
-- [Reddit](https://reddit.com/r/glaucus)
-- [Telegram](https://t.me/glaucuslinux)
-- [X](https://x.com/glaucuslinux)
-- [YouTube](https://youtube.com/@glaucuslinux)
-
 ## Mirrors
 - [Codeberg](https://codeberg.org/glaucuslinux/glaucus)
 - [GitHub](https://github.com/glaucuslinux/glaucus)
